@@ -1,9 +1,9 @@
 module.exports = {
-  title: `Paul2021-R.github.io`,
-  description: `전지적 사회학적 시점의 Paul`,
+  title: `Be.Insight.Coder`,
+  description: `반갑습니다. 인문학적, 소통하는 개발자 류한솔의 기술 블로그입니다.`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://paul2021-r.github.io/`,
-  ogImage: `profile.png`, // Path to your in the 'static' folder
+  ogImage: `og-image.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
       repo: `Paul2021-R/Paul2021-R.github.io`, // `zoomkoding/zoomkoding-gatsby-blog`,
@@ -43,10 +43,10 @@ module.exports = {
       // ========================================================
       // ========================================================
       {
-        date: '2021.09 ~',
-        activity: '42 Seoul Start!',
+        date: '2021.09 ~ 10',
+        activity: '42 Seoul Lapiscine',
         links: {
-          post: '',
+          post: 'https://42seoul.kr/seoul42/main/view',
           github: '',
           demo: '',
         },
@@ -96,7 +96,7 @@ module.exports = {
       {
         title: '개발 블로그 테마 적용',
         description:
-          '기술 블로그 운영 및 향후 프로젝트 쇼케이스 용으로 활용할 기술블로그 적용 및 최적화를 진행하였습니다. Mac Arm에 호환되지 않은 요소들이 많았기에 해당 호환성 개선 및 Gatsby를 활용한 정적 페이지 생성을 완료.',
+          '기술 블로그 운영 및 향후 프로젝트 쇼케이스 용으로 활용할 기술블로그 적용 및 최적화를 진행하였습니다. Mac M1 Processor에 호환되지 않은 요소들이 많았기에 해당 호환성 개선, Favicon update, profile image,utterance 적용, Gatsby를 활용한 정적 페이지 생성을 완료.',
         techStack: ['gatsby', 'react', 'Java Script'],
         thumbnailUrl: 'blog.png',
         links: {
