@@ -3,24 +3,24 @@ module.exports = {
   description: `전지적 사회학적 시점의 Paul`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://paul2021-r.github.io/`,
-  ogImage: `profile-image_custom`, // Path to your in the 'static' folder
+  ogImage: `profile.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
-      repo: ``, // `zoomkoding/zoomkoding-gatsby-blog`,
+      repo: `https://github.com/Paul2021-R/Paul2021-R.github.io`, // `zoomkoding/zoomkoding-gatsby-blog`,
     },
   },
   ga: '0', // Google Analytics Tracking ID
   author: {
-    name: `정진혁`,
+    name: `류한솔`,
     bio: {
-      role: `개발자`,
-      description: ['사람에 가치를 두는', '능동적으로 일하는', '이로운 것을 만드는'],
+      role: `야생의 개발자..!`,
+      description: ['인문학적', '스스로 질문하는', '소통을 중시하는'],
       thumbnail: 'profile.png', // Path to the image in the 'asset' folder
     },
     social: {
-      github: ``, // `https://github.com/zoomKoding`,
-      linkedIn: ``, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
-      email: ``, // `zoomkoding@gmail.com`,
+      github: `https://github.com/Paul2021-R`, // `https://github.com/zoomKoding`,
+      linkedIn: `https://www.linkedin.com/in/hansol-ryu-371581163`, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
+      email: `ryu.axel@gmail.com`, // `zoomkoding@gmail.com`,
     },
   },
 
@@ -43,12 +43,34 @@ module.exports = {
       // ========================================================
       // ========================================================
       {
-        date: '2021.02 ~',
-        activity: '개인 블로그 개발 및 운영',
+        date: '2021.09 ~',
+        activity: '42 Seoul Start!',
         links: {
-          post: '/gatsby-starter-zoomkoding-introduction',
-          github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-          demo: 'https://www.zoomkoding.com',
+          post: '',
+          github: '',
+          demo: '',
+        },
+      },
+	  {
+        date: '2021.11.08',
+        activity: '42 Seoul Lapiscine 통과, 5기 최종 합격',
+        links: {
+          github: '',
+          post: '',
+          googlePlay: '',
+          appStore: '',
+          demo: '',
+        },
+      },
+	  {
+        date: '2022.03.12',
+        activity: '실전 기술블로그 런칭',
+        links: {
+          github: '',
+          post: '',
+          googlePlay: '',
+          appStore: '',
+          demo: '',
         },
       },
     ],
@@ -72,15 +94,15 @@ module.exports = {
       // ========================================================
       // ========================================================
       {
-        title: '개발 블로그 테마 개발',
+        title: '개발 블로그 테마 적용',
         description:
-          '개발 블로그를 운영하는 기간이 조금씩 늘어나고 점점 많은 생각과 경험이 블로그에 쌓아가면서 제 이야기를 담고 있는 블로그를 직접 만들어보고 싶게 되었습니다. 그동안 여러 개발 블로그를 보면서 좋았던 부분과 불편했던 부분들을 바탕으로 레퍼런스를 참고하여 직접 블로그 테마를 만들게 되었습니다.',
-        techStack: ['gatsby', 'react'],
+          '기술 블로그 운영 및 향후 프로젝트 쇼케이스 용으로 활용할 기술블로그 적용 및 최적화를 진행하였습니다. Mac Arm에 호환되지 않은 요소들이 많았기에 해당 호환성 개선 및 Gatsby를 활용한 정적 페이지 생성을 완료.',
+        techStack: ['gatsby', 'react', 'Java Script'],
         thumbnailUrl: 'blog.png',
         links: {
-          post: '/gatsby-starter-zoomkoding-introduction',
-          github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-          demo: 'https://www.zoomkoding.com',
+          post: '',
+          github: 'https://github.com/Paul2021-R/Paul2021-R.github.io',
+          demo: '',
         },
       },
     ],
