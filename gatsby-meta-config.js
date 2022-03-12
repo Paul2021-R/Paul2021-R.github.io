@@ -6,14 +6,14 @@ module.exports = {
   ogImage: `profile.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
-      repo: `https://github.com/Paul2021-R/Paul2021-R.github.io`, // `zoomkoding/zoomkoding-gatsby-blog`,
+      repo: `Paul2021-R/Paul2021-R.github.io`, // `zoomkoding/zoomkoding-gatsby-blog`,
     },
   },
   ga: '0', // Google Analytics Tracking ID
   author: {
     name: `류한솔`,
     bio: {
-      role: `야생의 개발자..!`,
+      role: `야생의 개발자...`,
       description: ['인문학적', '스스로 질문하는', '소통을 중시하는'],
       thumbnail: 'profile.png', // Path to the image in the 'asset' folder
     },
