@@ -1,6 +1,6 @@
 module.exports = {
   title: `Be.Insight.Coder`,
-  description: `반갑습니다. 인문학적, 소통하는 개발자 류한솔의 기술 블로그입니다.`,
+  description: `인문학적, 소통을 중시하는 개발자 류한솔의 기술 블로그입니다.`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://paul2021-r.github.io/`,
   ogImage: `og-image.png`, // Path to your in the 'static' folder
@@ -9,7 +9,7 @@ module.exports = {
       repo: `Paul2021-R/Paul2021-R.github.io`, // `zoomkoding/zoomkoding-gatsby-blog`,
     },
   },
-  ga: '0', // Google Analytics Tracking ID
+  ga: 'G-NVHKE8M912', // Google Analytics Tracking ID
   author: {
     name: `류한솔`,
     bio: {
