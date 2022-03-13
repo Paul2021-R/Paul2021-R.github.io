@@ -1,7 +1,7 @@
 ---
 emoji: 🖥
 title: MinlibX_06_Loops
-date: '2022-03-14 01:45:00'
+date: '2022-03-14 01:35:00'
 author: Paul
 tags: 42seoul so_long MiniLibX
 categories: 42_seoul
