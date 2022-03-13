@@ -1,7 +1,7 @@
 ---
 emoji: 🖥
-title: MinlibX_08_Sync
-date: '2022-03-14 01:05:00'
+title: MinlibX_07_Images
+date: '2022-03-14 01:40:00'
 author: Paul
 tags: 42seoul so_long MiniLibX
 categories: 42_seoul
