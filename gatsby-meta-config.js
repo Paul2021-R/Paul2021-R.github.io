@@ -9,7 +9,7 @@ module.exports = {
       repo: `Paul2021-R/Paul2021-R.github.io`, // `zoomkoding/zoomkoding-gatsby-blog`,
     },
   },
-  ga: 'G-NVHKE8M912', // Google Analytics Tracking ID
+  ga: 'G-YDPMMYNR6Y', // Google Analytics Tracking ID
   author: {
     name: `류한솔`,
     bio: {
