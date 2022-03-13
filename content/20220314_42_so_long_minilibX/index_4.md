@@ -7,6 +7,70 @@ tags: 42seoul so_long MiniLibX
 categories: 42_seoul
 ---
 
+### Hooks
+
+컴퓨터 프로그래밍에서 hooking 이란 용어는 SW 컴포넌트 사이에서 지나가는 메시지, 혹은 이벤트들, 혹은 함수 호출을 가로채감으로써 다른 SW 컴포넌트의 혹은 어플리케이션의, 혹은 운영체제의 행동, 인자를 대체하는데 사용하는 기술을 아우르는 말이다. 그러한 함수 콜, 이벤트들, 메시지를 가로채는 걸 다루는 code 들을 hook 이라고 부른다.
+
+1.  Introduction
+
+    Hooking은 디버깅이라던지, 함수의 확장 등을 포함하여 다양한 목적으로 사용된다. 예시로서는 키보드를 가로채거나, 어플리케이션에 도달하기 이전에 마우스 이벤트 메시지를 취한다거나, 특정 어플리케이션이나 다른 컴포넌트의 함수 수정 혹은 감시하는 행위를 위해 운영체제의 호출을 가로채는 등을 들 수 있다. 이는 벤치마킹 프로그램등에서도 널리 쓰이며, 이는 3D 게임의 프레임레이트를 측정하는 용으로 쓸 수도 있다.
+
+    그러므로 mlx의 근간에 hooking이 있는 것은 전혀 이상한게 아니다.
+
+2.  Hooking into key events
+
+    hooking 은 아마도 어려워 보이지만, 실제론 간단하게 구현 가능하다.
+
+    ```c
+    #include <mlx.h>
+    #include <stdio.h>
+
+    typedef struct	s_vars {
+    	void	*mlx;
+    	void	*win;
+    }				t_vars;
+
+    int	key_hook(int keycode, t_vars *vars)
+    {
+    	printf("Hello from key_hook!\n");
+    	return (0);
+    }
+
+    int	main(void)
+    {
+    	t_vars	vars;
+
+    	vars.mlx = mlx_init();
+    	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
+    	mlx_key_hook(vars.win, key_hook, &vars);
+    	mlx_loop(vars.mlx);
+    }
+    ```
+
+    이제 키를 누를 때 메시지를 출력하는 함수를 등록했다. 보시다시피, `mlx_key_hook` 를 사용해서 등록이 가능하다. 그러나 간단한 함수 `mlx_hook` 를 X11 이벤트 타입을 적절히 활용한다면, 백그라운드에서 간단하게 함수를 hook 하는 것이 가능하다.
+
+3.  Hooking into mouse events
+
+    마우스 이벤트 역시 hook 하는 것이 가능하다.
+
+    ![mouse](./src/Untitled.png)
+
+    Mac OS 상에 마우스 코드는 다음과 같다.
+
+    - Left click: 1
+    - Right click: 2
+    - Middle click: 3
+    - Scroll up: 4
+    - Scroll down : 5
+
+4.  Test your skills!
+
+    우리걸로 만들기 위해 시도해볼것!
+
+    1. 키를 누르면 키코드가 터미널 상에 출력되도록 해보기
+    2. 마우스를 움직이면 현재의 마우스가 있는 좌표를 출력해보기
+    3. 마우스 버튼이 눌렀을 누르면 창위에서 터미널로 움직인 각을 출력해보시오
+
 ## 주제별 라이브러리 설명(링크 참조)
 
 해당 내용들은 분량이 너무 많은 관계로 링크로 대신 합니다.
