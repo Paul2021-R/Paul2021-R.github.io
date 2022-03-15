@@ -17,14 +17,14 @@ categories: 42_seoul
 
 - 맥에서 컴파일 하기(x86-64, intel Based)
 
-MiniLibX는 맥 OS의 Cocoa(Appkit) 와 OpenGL(더이상 X11을 사용하지 않는다) 필요로 하기 때문에, 우리는 두 가지 사항을 링킹할 필요가 있습니다. 이는 복잡한 컴파일 과정일 수 있습니다. 기본적인 컴파일 절차는 다음과 같습니다.
+  MiniLibX는 맥 OS의 Cocoa(Appkit) 와 OpenGL(더이상 X11을 사용하지 않는다) 필요로 하기 때문에, 우리는 두 가지 사항을 링킹할 필요가 있습니다. 이는 복잡한 컴파일 과정일 수 있습니다. 기본적인 컴파일 절차는 다음과 같습니다.
 
-목적파일을 위해, 당신의 프로젝트 루트 단에 `mlx`로 지정된 디렉토리 안에 mlx 소스코드가 있다는 전제 하에 다음 규칙을 당신의 Makefile에 추가하십시오.
+  목적파일을 위해, 당신의 프로젝트 루트 단에 `mlx`로 지정된 디렉토리 안에 mlx 소스코드가 있다는 전제 하에 다음 규칙을 당신의 Makefile에 추가하십시오.
 
-    ```makefile
-    %.o: %.c
-    $(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
-    ```
+  ```makefile
+  %.o: %.c
+  $(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+  ```
 
 필요한 내장 맥 OS API를 연결시키기 위해
 
