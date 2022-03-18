@@ -64,49 +64,221 @@
         }
       }
     })
-  </script><title data-react-helmet="true">MinlibX_08_Sync</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="MinlibX_08_Sync"/><meta data-react-helmet="true" property="og:site_title" content="MinlibX_08_Sync"/><meta data-react-helmet="true" name="description" content="Sync What is sync? 이전에 설명한 것처럼, 직접 mlx 를 가지고 프레임을 관리할수 있습니다. 하지만 이는 꽤나 끔직하며 시간 소비적인 일입니다. 게다가 더 많은 메모리를 먹고, 우리가 관리하는 프레임은 지속적으로 완전히 갱신되어야 할 필요가 있죠. 이는 매우 비효율적이고 더 나아가선 모든 코스트를 제외할 필요를 야기할 수 있습니다. 2020년의 MLX 버전 부터는 프레임을 synchronize 시키는 것이 가능해졌습니다. 이는 임시 방편으로 다수의 이미지를 스크린 버퍼링을 위해 만들 필요가 사라졌다는 것을 의미합니다. Using sync 우선 이해해야 하는 걸 먼저 정의하고 시작하겠습니다.  함수는 정의된 커맨드 코드들로 호출될 수 있습니다. 첫번째로  은 이미지에 대한 모든 다음 호출을 버퍼해줍니다. ( 은 MLX image object 의 포인터입니다.) 만약 변화를 증식시키길 원한다면, 당신은 이미지가 표시되는 중인 창을  를 활용하고,  에대해 flush를 …"/><meta data-react-helmet="true" property="og:description" content="Sync What is sync? 이전에 설명한 것처럼, 직접 mlx 를 가지고 프레임을 관리할수 있습니다. 하지만 이는 꽤나 끔직하며 시간 소비적인 일입니다. 게다가 더 많은 메모리를 먹고, 우리가 관리하는 프레임은 지속적으로 완전히 갱신되어야 할 필요가 있죠. 이는 매우 비효율적이고 더 나아가선 모든 코스트를 제외할 필요를 야기할 수 있습니다. 2020년의 MLX 버전 부터는 프레임을 synchronize 시키는 것이 가능해졌습니다. 이는 임시 방편으로 다수의 이미지를 스크린 버퍼링을 위해 만들 필요가 사라졌다는 것을 의미합니다. Using sync 우선 이해해야 하는 걸 먼저 정의하고 시작하겠습니다.  함수는 정의된 커맨드 코드들로 호출될 수 있습니다. 첫번째로  은 이미지에 대한 모든 다음 호출을 버퍼해줍니다. ( 은 MLX image object 의 포인터입니다.) 만약 변화를 증식시키길 원한다면, 당신은 이미지가 표시되는 중인 창을  를 활용하고,  에대해 flush를 …"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-593da3ccc7290f6208b3.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-6518652461cd89a2e985.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/20220314_42_so_long_minilibX/index_8/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🖥</div><div class="info"><div class="categories"><a class="category" href="/posts/42_seoul">42_seoul</a></div></div><h1 class="title">MinlibX_08_Sync</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->March 14, 2022</div></header><div class="post-content"><div class="markdown"><h3 id="sync" style="position:relative;"><a href="#sync" aria-label="sync permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sync</h3>
+  </script><title data-react-helmet="true">exam_rank_02</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="exam_rank_02"/><meta data-react-helmet="true" property="og:site_title" content="exam_rank_02"/><meta data-react-helmet="true" name="description" content="RANK_02 Study 스터디 해야하 할 로직들을 빠르게 정리한 것입니다. 구체적으로 어떤 문제인지는 과제를 잘 해결해오신 분들에게는 너무나 쉬운 내용일 것입니다. 해당 내용은 바뀔 수 있으며, 도용을 방지하고자 구체적인 코드는 작성하여 올리지 않을 것입니다. 핵심 내용 서클 과제들을 클리어하고 그 로직과 원리를 이해해둘 것. vim 을 활용하는 만큼, vim 핵심 기능 몇 가지는 숙지해둘 것 준비물 A4 펜 시험 과정 해당 내용은 개선되었을 여지가 있어 차후 작성 예정입니다. 로직 정리 printf 핵심 %c, %s, %x 를 printf 와 같이 출력해 낼 수 있는가? 알아야 하는 주요 개념 허용함수 : write, malloc, free 필요헤더 : &lt;stdlib.h&gt;, &lt;unistd.h&gt; 가변인자 : 인자들을 가변적으로 받을 수 있는 자료형 필요 헤더 : &lt;stdarg.h&gt; 핵심사항 :  변수 선언 -&gt; ({변수명}, s) -&gt; ({변수명}, {자료타입}) 으로 해당 변수…"/><meta data-react-helmet="true" property="og:description" content="RANK_02 Study 스터디 해야하 할 로직들을 빠르게 정리한 것입니다. 구체적으로 어떤 문제인지는 과제를 잘 해결해오신 분들에게는 너무나 쉬운 내용일 것입니다. 해당 내용은 바뀔 수 있으며, 도용을 방지하고자 구체적인 코드는 작성하여 올리지 않을 것입니다. 핵심 내용 서클 과제들을 클리어하고 그 로직과 원리를 이해해둘 것. vim 을 활용하는 만큼, vim 핵심 기능 몇 가지는 숙지해둘 것 준비물 A4 펜 시험 과정 해당 내용은 개선되었을 여지가 있어 차후 작성 예정입니다. 로직 정리 printf 핵심 %c, %s, %x 를 printf 와 같이 출력해 낼 수 있는가? 알아야 하는 주요 개념 허용함수 : write, malloc, free 필요헤더 : &lt;stdlib.h&gt;, &lt;unistd.h&gt; 가변인자 : 인자들을 가변적으로 받을 수 있는 자료형 필요 헤더 : &lt;stdarg.h&gt; 핵심사항 :  변수 선언 -&gt; ({변수명}, s) -&gt; ({변수명}, {자료타입}) 으로 해당 변수…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-593da3ccc7290f6208b3.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-6518652461cd89a2e985.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/20220318_exam_rank_02/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">📄</div><div class="info"><div class="categories"><a class="category" href="/posts/42_seoul">42_seoul</a></div></div><h1 class="title">exam_rank_02</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->March 18, 2022</div></header><div class="post-content"><div class="markdown"><h1 id="rank_02-study" style="position:relative;"><a href="#rank_02-study" aria-label="rank_02 study permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RANK_02 Study</h1>
+<p>스터디 해야하 할 로직들을 빠르게 정리한 것입니다. 구체적으로 어떤 문제인지는 과제를 잘 해결해오신 분들에게는 너무나 쉬운 내용일 것입니다. 해당 내용은 바뀔 수 있으며, 도용을 방지하고자 구체적인 코드는 작성하여 올리지 않을 것입니다.</p>
+<h2 id="핵심-내용" style="position:relative;"><a href="#%ED%95%B5%EC%8B%AC-%EB%82%B4%EC%9A%A9" aria-label="핵심 내용 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>핵심 내용</strong></h2>
+<ol>
+<li>서클 과제들을 클리어하고 그 로직과 원리를 이해해둘 것.</li>
+<li>vim 을 활용하는 만큼, vim 핵심 기능 몇 가지는 숙지해둘 것</li>
+</ol>
+<h2 id="준비물" style="position:relative;"><a href="#%EC%A4%80%EB%B9%84%EB%AC%BC" aria-label="준비물 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>준비물</strong></h2>
+<ol>
+<li>A4</li>
+<li>펜</li>
+</ol>
+<h2 id="시험-과정" style="position:relative;"><a href="#%EC%8B%9C%ED%97%98-%EA%B3%BC%EC%A0%95" aria-label="시험 과정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>시험 과정</strong></h2>
+<p>해당 내용은 개선되었을 여지가 있어 차후 작성 예정입니다.</p>
+<h2 id="로직-정리" style="position:relative;"><a href="#%EB%A1%9C%EC%A7%81-%EC%A0%95%EB%A6%AC" aria-label="로직 정리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>로직 정리</strong></h2>
+<h3 id="printf" style="position:relative;"><a href="#printf" aria-label="printf permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>printf</h3>
 <ol>
 <li>
-<p>What is sync?</p>
-<p>이전에 설명한 것처럼, 직접 mlx 를 가지고 프레임을 관리할수 있습니다. 하지만 이는 꽤나 끔직하며 시간 소비적인 일입니다. 게다가 더 많은 메모리를 먹고, 우리가 관리하는 프레임은 지속적으로 완전히 갱신되어야 할 필요가 있죠. 이는 매우 비효율적이고 더 나아가선 모든 코스트를 제외할 필요를 야기할 수 있습니다.</p>
-<p>2020년의 MLX 버전 부터는 프레임을 synchronize 시키는 것이 가능해졌습니다. 이는 임시 방편으로 다수의 이미지를 스크린 버퍼링을 위해 만들 필요가 사라졌다는 것을 의미합니다.</p>
+<p>핵심</p>
+<ul>
+<li>%c, %s, %x 를 printf 와 같이 출력해 낼 수 있는가?</li>
+</ul>
 </li>
 <li>
-<p>Using sync</p>
-<p>우선 이해해야 하는 걸 먼저 정의하고 시작하겠습니다.</p>
-<div class="gatsby-highlight" data-language="c"><pre class="language-c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MLX_SYNC_IMAGE_WRITABLE</span>		<span class="token expression"><span class="token number">1</span></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MLX_SYNC_WIN_FLUSH_CMD</span>		<span class="token expression"><span class="token number">2</span></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MLX_SYNC_WIN_CMD_COMPLETED</span>	<span class="token expression"><span class="token number">3</span></span></span>
-
-<span class="token keyword">int</span>	<span class="token function">mlx_sync</span><span class="token punctuation">(</span><span class="token keyword">int</span> cmd<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>ptr<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p><code class="language-text">mlx_sync</code> 함수는 정의된 커맨드 코드들로 호출될 수 있습니다. 첫번째로 <code class="language-text">MLX_SYNC_IMAGE_WRITABLE</code> 은 이미지에 대한 모든 다음 호출을 버퍼해줍니다. (<code class="language-text">ptr</code> 은 MLX image object 의 포인터입니다.) 만약 변화를 증식시키길 원한다면, 당신은 이미지가 표시되는 중인 창을 <code class="language-text">MLX_SYNC_WIN_FLUSH_CMD</code> 를 활용하고, <code class="language-text">ptr</code> 에대해 flush를 원하는 창을 flush 할 필요가 있습니다.</p>
+<p>알아야 하는 주요 개념</p>
+<ul>
+<li>허용함수 : write, malloc, free
+<ul>
+<li>필요헤더 : &#x3C;stdlib.h>, &#x3C;unistd.h></li>
+</ul>
+</li>
+<li>가변인자 : 인자들을 가변적으로 받을 수 있는 자료형
+<ul>
+<li>필요 헤더 : &#x3C;stdarg.h></li>
+<li>핵심사항 : <code class="language-text">va_list</code> 변수 선언 -> <code class="language-text">va_start</code>({변수명}, s) -> <code class="language-text">va_arg</code>({변수명}, {자료타입}) 으로 해당 변수를 추출 -> 적절하게 사용 -> <code class="language-text">va_end</code>({변수명})</li>
+</ul>
+</li>
+<li>유의 사항
+<ol>
+<li>문자열의 경우 null 이 들어간 경우 (null) 이라고 출력해야 한다..</li>
+<li>구분자 %가 나오고, 뒤에 서식자가 아닌게 나온 경우 해당 문자는 일반 문자 취급하여 나와야 한다.</li>
+</ol>
+</li>
+</ul>
 </li>
 <li>
-<p>Test your skills!</p>
-<p>이전에 반복문을 활용해 만든 작은 circle-game 에 <code class="language-text">mlx_syncd</code> 을 추가하여 렌더링을 해보세요.</p>
+<p>로직</p>
+<ol>
+<li>va_list 타입 변수 선언</li>
+<li>va_start(변수, s); 로 시작</li>
+<li>들어온 문자열 반복문으로 돌리기</li>
+<li>구분자’%’ 를 인식하면 해당 조건에 맞는 출력</li>
+<li>포인트는 출력 시 굳이 간단하다면 malloc을 쓸 필요가 없다는 점.</li>
+<li>동시에 write 를 사용하여 printf의 리턴값으로 점진적으로 더해 나갈 것</li>
+</ol>
 </li>
 </ol>
-<h2 id="주제별-라이브러리-설명링크-참조" style="position:relative;"><a href="#%EC%A3%BC%EC%A0%9C%EB%B3%84-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%A4%EB%AA%85%EB%A7%81%ED%81%AC-%EC%B0%B8%EC%A1%B0" aria-label="주제별 라이브러리 설명링크 참조 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>주제별 라이브러리 설명(링크 참조)</h2>
-<p>해당 내용들은 분량이 너무 많은 관계로 링크로 대신 합니다.</p>
+<h3 id="get_next_line" style="position:relative;"><a href="#get_next_line" aria-label="get_next_line permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_next_line</h3>
+<ol>
+<li>핵심
+<ul>
+<li>fd값으로 받아 파일을 <code class="language-text">read</code> 하여, 한 줄씩 혹은 그 이상 읽어내되, 개행 문자가 발견되면 <code class="language-text">read</code>를 멈추고, 개행문자까지 리턴 값을 준비 한 뒤, 남은 부분은 static 변수에 저장 + 리턴한다.</li>
+<li>개행문자가 나올 때와 아닐 때를 명확히 구분해야 한다.</li>
+</ul>
+</li>
+<li>알아야 하는 주요 개념
+<ul>
+<li>허용 함수 : read, malloc, free</li>
+<li>허용 해더 : &#x3C;stdlib.h> &#x3C;unistd.h></li>
+<li>BUFFER_SIZE 지정 => 기본 제공 될 수도 있으나, 제공 안 될 수 있음. 헤더 파일 내에 <code class="language-text"># ifndef</code> 를 활용하여 <code class="language-text"># define</code> 을 해 둘 것.</li>
+<li>구현해두어야 할 요소 : ft_strjoin, ft_strchr, ft_strlen</li>
+</ul>
+</li>
+<li>로직
+<ul>
+<li>핵심은 총 3파트의 주요 로직이 있다는 것을 기억하자. <br />
+<ol>
+<li><code class="language-text">read</code> 함수를 활용하여 전체 문장을 저장. 이때 개행문자 <code class="language-text">'\n'</code>를 발견시 멈추며, 그전까지는 buffer로 들어온 문자열을 계속 합친다. <br />
 <blockquote>
-<h3 id="1-introduction" style="position:relative;"><a href="#1-introduction" aria-label="1 introduction permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong><a href="https://paul2021-r.github.io/20220314_42_so_long_minilibX/index_0/">1. Introduction</a></strong></h3>
-<h3 id="2-getting-started" style="position:relative;"><a href="#2-getting-started" aria-label="2 getting started permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong><a href="https://paul2021-r.github.io/20220314_42_so_long_minilibX/index_2/">2. Getting Started</a></strong></h3>
-<h3 id="3-colors" style="position:relative;"><a href="#3-colors" aria-label="3 colors permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong><a href="https://paul2021-r.github.io/20220314_42_so_long_minilibX/index_3/">3. Colors</a></strong></h3>
-<h3 id="4-hooks" style="position:relative;"><a href="#4-hooks" aria-label="4 hooks permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong><a href="https://paul2021-r.github.io/20220314_42_so_long_minilibX/index_4/">4. Hooks</a></strong></h3>
-<h3 id="5-events" style="position:relative;"><a href="#5-events" aria-label="5 events permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong><a href="https://paul2021-r.github.io/20220314_42_so_long_minilibX/index_5/">5. Events</a></strong></h3>
-<h3 id="6-loops" style="position:relative;"><a href="#6-loops" aria-label="6 loops permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong><a href="https://paul2021-r.github.io/20220314_42_so_long_minilibX/index_6/">6. Loops</a></strong></h3>
-<h3 id="7-images" style="position:relative;"><a href="#7-images" aria-label="7 images permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong><a href="https://paul2021-r.github.io/20220314_42_so_long_minilibX/index_7/">7. Images</a></strong></h3>
-<h3 id="8-sync" style="position:relative;"><a href="#8-sync" aria-label="8 sync permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong><a href="https://paul2021-r.github.io/20220314_42_so_long_minilibX/index_8/">8. Sync</a></strong></h3>
+<p>1.1 이때, buffer에 해당하는 문자열은 BUFFER_SIZE + 1을 해서 할당해야 사용이 용이하다. <br />
+1.2 해당 로직에선 ft_strjoin을 구현하여 합친다. <br />
+1.3 합치고 나면 반드시 buffer 문자열은 free하여 누수를 유의한다.</p>
 </blockquote>
-<div class="table-of-contents">
-<ul>
+</li>
+<li>리턴값을 만드는 파트로, 기억해야 할 것은 <code class="language-text">개행문자가 무조건 문장에 들어가진 않는다</code>는 점이다. <br />
+<blockquote>
+<p>2.1 개행 전까지의 문장을 확인한다. <br />
+2.2 개행문자를 고려하여 문장 크기를 할당한다.
+2.3 할당한 문장에 해당 부분까지 직접 집어 넣는다. (개행문자 전 까지가 안전하다. 없는 경우 새그폴트 발생한다.)</p>
+</blockquote>
+</li>
+<li>개행문자 이후 부분을 발견하고, 문장으로 만든다.
+<blockquote>
+<p>3.1 문장에서 개행문자가 없이 끝난 경우, 문장이 종료된 것이므로, 이를 고려하여 <code class="language-text">free</code>후 <code class="language-text">NULL</code>을 반환한다.
+3.2 새로운 문장 길이를 재고 할당한 뒤, 값을 집어 넣고, 마지막에 <code class="language-text">'\0'</code> 을 넣고, 기존의 문장의 할당을 해지한다.</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="inter" style="position:relative;"><a href="#inter" aria-label="inter permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>inter</h3>
+<ol>
 <li>
+<p>핵심</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Assignment name  : inter
+Expected files   : inter.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes two strings and displays, without doubles, the
+characters that appear in both strings, in the order they appear in the first
+one.
+
+The display will be followed by a \n.
+
+If the number of arguments is not 2, the program displays \n.
+
+Examples:
+
+$>./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+padinto$
+$>./inter ddf6vewg64f gtwthgdwthdwfteewhrtag6h4ffdhsd | cat -e
+df6ewg4$
+$>./inter "nothing" "This sentence hides nothing" | cat -e
+nothig$
+$>./inter | cat -e
+$</code></pre></div>
+<p>두개의 문자열에서 모두 나온 문자만을 출력시킨다.
+write 함수만 사용할 수 있으며, 순서는 입력받은 문자열 순서데로 동일한 순서로 출력된다.</p>
+</li>
+<li>
+<p>알아야 하는 주요 개념</p>
 <ul>
-<li><a href="#sync">Sync</a></li>
+<li>int argc : 메인함수에 전달되는 정보의 개수(프로그램명이 0에 들어가므로 무조건 1부터 시작된다.)</li>
+<li>char **argv : 메인함수에 전달되는 문자 배열(개수 만큼 2차원 배열 열이 증가 한다.)(argc처럼 실행프로그램 명이 argv[0]에 들어간다.)</li>
 </ul>
 </li>
 <li>
-<p><a href="#%EC%A3%BC%EC%A0%9C%EB%B3%84-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%A4%EB%AA%85%EB%A7%81%ED%81%AC-%EC%B0%B8%EC%A1%B0">주제별 라이브러리 설명(링크 참조)</a></p>
-</li>
+<p>로직</p>
+<ul>
+<li>첫번째 문자열의 글자부터 돌면서 순차적으로 1번, 2번 문자열을 돌며 있는지 여부를 본다.</li>
+<li>이때, 돌고있는 기준 문자의 인덱스가 1번 문장인지, 2번 문장에서 왔는지를 확인하고, 동시에 인덱스까지 확인하여 출력 여부를 결정한다.</li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/20220314_42_so_long_minilibX/index_7/"><div class="direction">이전 글</div><div class="title">MinlibX_07_Images</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/20220318_markdown/"><div class="direction">다음 글</div><div class="title">Markdown 사용을 위한 메뉴얼</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/20220314_42_so_long_minilibX/index_8/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-6518652461cd89a2e985.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-6518652461cd89a2e985.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-593da3ccc7290f6208b3.js" async=""></script></body></html>
+</li>
+</ol>
+<h3 id="union" style="position:relative;"><a href="#union" aria-label="union permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>union</h3>
+<ol>
+<li>
+<p>핵심</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Assignment name  : union
+Expected files   : union.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes two strings and displays, without doubles, the
+characters that appear in either one of the strings.
+
+The display will be in the order characters appear in the command line, and
+will be followed by a \n.
+
+If the number of arguments is not 2, the program displays \n.
+
+Example:
+
+$>./union zpadinton "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+    zpadintoqefwjy$
+
+$>./union ddf6vewg64f gtwthgdwthdwfteewhrtag6h4ffdhsd | cat -e
+    df6vewg4thras$
+
+$>./union "rien" "cette phrase ne cache rien" | cat -e
+    rienct phas$
+
+$>./union | cat -e
+    $
+$>
+
+$>./union "rien" | cat -e
+    $
+$></code></pre></div>
+<p>프로그램으로 들어오는 두 문장을 출력하되 중복된 문자인 경우 한번만 나오고, 어느쪽 문자열이든 포함되었던 문자는 출력한다.
+허용하는 함수는 write 뿐이다.
+인자 2개가 아니면 실행되지 않는다.</p>
+</li>
+<li>
+<p>알아야 하는 주요 개념</p>
+<ul>
+<li>int argc : 메인함수에 전달되는 정보의 개수(프로그램명이 0에 들어가므로 무조건 1부터 시작된다.)</li>
+<li>char **argv : 메인함수에 전달되는 문자 배열(개수 만큼 2차원 배열 열이 증가 한다.)(argc처럼 실행프로그램 명이 argv[0]에 들어간다.)</li>
+</ul>
+</li>
+<li>
+<p>로직</p>
+<ul>
+<li>처음 들어오는 argv[1] 부터 시작하여 argv[2] 에 대하여 반복문을 동작 시킨다.</li>
+<li>av[1][0] 을 시작으로 돌리면서 자신의 인덱스를 데외하고, 자기보다 인덱스가 먼저 나온 문자가 존재한다면, 출력하지 않고 넘긴다.</li>
+</ul>
+</li>
+</ol>
+<h2 id="추가-학습-내용-정리" style="position:relative;"><a href="#%EC%B6%94%EA%B0%80-%ED%95%99%EC%8A%B5-%EB%82%B4%EC%9A%A9-%EC%A0%95%EB%A6%AC" aria-label="추가 학습 내용 정리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>추가 학습 내용 정리</h2>
+<h3 id="headerh의-구조-정리" style="position:relative;"><a href="#headerh%EC%9D%98-%EA%B5%AC%EC%A1%B0-%EC%A0%95%EB%A6%AC" aria-label="headerh의 구조 정리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>‘header.h’의 구조 정리</h3>
+<div class="gatsby-highlight" data-language="c"><pre class="language-c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">HEADER_H</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">define</span> <span class="token macro-name">HEADER_H</span></span>
+<span class="token comment">// 시작시 선언</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token comment">//라이브러리</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">ifndef</span> <span class="token expression">BUFFER_SIZE</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span>  <span class="token directive keyword">define</span> <span class="token macro-name">BUFFER_SIZE</span> <span class="token expression"><span class="token number">42</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">endif</span></span>
+<span class="token comment">//정의, define만 해도 되지만, 정의 될 경우 건드릴 수 없기 때문에 ifndef를 활용함.</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">define</span> <span class="token macro-name">BUFFER</span> <span class="token expression"><span class="token number">0</span></span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span><span class="token comment">//헤더 마무리 선언</span></span></code></pre></div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/20220318_markdown/"><div class="direction">이전 글</div><div class="title">Markdown 사용을 위한 메뉴얼</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/20220318_exam_rank_02/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-6518652461cd89a2e985.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-6518652461cd89a2e985.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-593da3ccc7290f6208b3.js" async=""></script></body></html>
