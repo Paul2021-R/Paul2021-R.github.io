@@ -5,6 +5,7 @@ today=`date +%y-%m-%d`
 echo "----------------------------------------"
 echo $today 
 echo "블로그 자동화 프로그램을 실행합니다."
+echo "ver 0.0.9"
 echo "----------------------------------------"
 sleep 1 && clear
 echo "----------------------------------------"
@@ -30,11 +31,12 @@ echo"----------------------------------------"
 git log -3
 echo"----------------------------------------"
 sleep 1 && clear
-echo"git push 를 진행합니다."
-echo"git push -u origin main"
+git_push="git push"
+echo"$git_push 를 진행합니다."
+printf "git push -u origin main.\n"
 git push -u origin main
 sleep 1 && clear
-echo"npm run deploy"
+printf "npm run deploy\n"
 npm run deploy
 sleep 1 && echo "모든 작업이 마무리 되었습니다."
 exit
