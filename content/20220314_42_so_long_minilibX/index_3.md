@@ -1,6 +1,6 @@
 ---
 emoji: 🖥
-title: MinlibX_03_colors
+title: MinlibX_03_colors(수정중)
 date: '2022-03-14 01:15:00'
 author: Paul
 tags: 42seoul so_long MiniLibX
