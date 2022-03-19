@@ -14,7 +14,7 @@ module.exports = {
     name: `류한솔`,
     bio: {
       role: `야생의 개발자`,
-      description: ['인문학적', '스스로 질문하는', '소통을 중시하는'],
+      description: ['사람답게 만들고', '스스로 질문하며', '소통을 중시하는'],
       thumbnail: 'profile.png', // Path to the image in the 'asset' folder
     },
     social: {

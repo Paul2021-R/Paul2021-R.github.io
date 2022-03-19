@@ -6,22 +6,14 @@ module.exports = {
   siteMetadata: metaConfig,
 
   plugins: [
-   {
+    {
      resolve: `gatsby-plugin-gtag`,
      options:{
        trackingId: metaConfig.ga,
        head: false,
        anonymize: true,
      },
-   },
-	//  {
-  //     resolve: `gatsby-plugin-google-analytics`,
-  //     options: {
-  //       trackingId: metaConfig.ga,
-  //       head: false,
-  //       anonymize: true,
-  //     },
-  //   },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
