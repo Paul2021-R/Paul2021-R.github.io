@@ -1,6 +1,6 @@
 ---
 emoji: 🖥
-title: MinlibX_라이브러리 가이드 문서 번역(작성중)
+title: MinilibX_라이브러리 가이드 문서 번역(작성중)
 date: '2022-03-14 01:05:00'
 author: Paul
 tags: 42seoul so_long MiniLibX

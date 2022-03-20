@@ -1,6 +1,6 @@
 ---
 emoji: 🖥
-title: MinlibX_08_Sync(수정중)
+title: MinilibX_08_Sync(수정중)
 date: '2022-03-14 01:50:00'
 author: Paul
 tags: 42seoul so_long MiniLibX
