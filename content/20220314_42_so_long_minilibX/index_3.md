@@ -1,11 +1,15 @@
 ---
 emoji: 🖥
-title: MinilibX_03_colors(수정중)
+title: MinilibX_03_colors(완료)
 date: '2022-03-14 01:15:00'
 author: Paul
 tags: 42seoul so_long MiniLibX
 categories: 42_seoul
 ---
+
+### 들어가기 앞서
+
+해당 내용은 참고 정도로 생각하면 좋습니다. 픽셀을 직접 그리는 과제를 제외하곤 사용성이 크게 있진 않은 개념입니다.
 
 ### Colors
 
@@ -30,44 +34,7 @@ categories: 42_seoul
 
 2.  Encoding and decoding colors
 
-    색을 encode, decode 하는 방법으로 두가지를 사용할 수 있다.
-
-    - BitShifting
-    - char/int conversion
-    - BitShifting
-
-      각 바이트는 `2^8 = 256` 의 값(1 byte = 8 bits)을 지닌다. 그리고 RGB 값의 범위는 0 \~ 255를 가진다. 이는 정수 값 안에 완벽하게 담을 수 있다. 프로그램적으로 값들을 담기 위하여, 우리는 `bitshifting` 을 사용 한다. 이제 정확하게 만들어내는 함수를 만들어봅시다.
-
-      ```c
-      int creat_trgb(int t, int r, int g, int b)
-      {
-      	return (t << 24 | r << 16 | g << 8 | b);
-      }
-      ```
-
-      정수는 오른쪽부터 왼쪽으로 정렬되므로, 비트들을 거꾸로의 값에 따라 각 값을 bitshift 할 필요가 있습니다. 더불어 완전히 정 반대로 하는 것 그리고 인코딩된 TRGB로부터 정수 값을 복구 하는 것도 가능합니다.
-
-      ```c
-      int	get_t(int trgb)
-      {
-      	return ((trgb >> 24) & 0xFF); // 1바이트를 모두 1로 채운 값과 & 연산으로 1인 경우만 남겨버리게 된다.
-      }
-
-      int	get_r(int trgb)
-      {
-      	return ((trgb >> 16) & 0xFF);
-      }
-
-      int	get_g(int trgb)
-      {
-      	return ((trgb >> 8) & 0xFF);
-      }
-
-      int	get_b(int trgb)
-      {
-      	return (trgb & 0xFF);
-      }
-      ```
+    색을 encode, decode 하는 방법으로 두가지를 사용할 수 있습니다. 비트 연산을 활용하는 방법과, int, char 값으로 변환하는 방법입니다.
 
     - char/int conversion
 
@@ -100,7 +67,7 @@ categories: 42_seoul
       }
       ```
 
-      변환을 이해하기 위해선 아래의 표를 참고하시면 됩니다. `0x0FAE1` 는 `int trgb` 의 변수 주소다.
+      변환을 이해하기 위해선 아래의 표를 참고하시면 됩니다. `0x0FAE1` 는 `int trgb` 의 변수 주소입니다.
 
       | Address | char            | int          |
       | ------- | --------------- | ------------ |
@@ -109,12 +76,49 @@ categories: 42_seoul
       | 0x0FAE3 | unsigned char r | \[allocated] |
       | 0x0FAE4 | unsigned char t | \[allocated] |
 
+    - BitShifting
+
+      1 바이트는 `2^8 = 256` 의 값(1 byte = 8 bits)을 지닙니다. 따라서 int형인 색깔은 각 바이트당 의미를 갖게 되고, 하나의 요소의 값의 범위는 0 ~ 255 가지수를 가질 수 있습니다. 따라서 TRGB의 값은 정수 값 안에 완벽하게 담을 수 있습니다. 더불어 정수 값을 사용하는 만큼 프로그램적으로 값들을 담기 위하여, `bitshifting` 을 사용이 가능합니다.
+
+      ```c
+      int creat_trgb(int t, int r, int g, int b)
+      {
+      	return (t << 24 | r << 16 | g << 8 | b);
+      }
+      ```
+
+      정수는 오른쪽부터 왼쪽으로 정렬되므로, 비트들을 거꾸로의 값에 따라 각 값을 bitshift 할 필요가 있습니다. 리턴에서 비트 OR 연산으로 완벽한 TRGB 값을 만들 수 있게 되는 것이지요. 더불어 로직을 정 반대로 하는 것을 통해 인코딩된 TRGB로부터 개별 정수 값을 복구도 가능합니다.
+
+      ```c
+      int	get_t(int trgb)
+      {
+      	return ((trgb >> 24) & 0xFF); // 1바이트를 모두 1로 채운 값과 & 연산으로 1인 경우만 남겨버리게 된다.
+      }
+
+      int	get_r(int trgb)
+      {
+      	return ((trgb >> 16) & 0xFF);
+      }
+
+      int	get_g(int trgb)
+      {
+      	return ((trgb >> 8) & 0xFF);
+      }
+
+      int	get_b(int trgb)
+      {
+      	return (trgb & 0xFF);
+      }
+      ```
+
 3.  Test your skills
 
-    이제 색을 어떤 식으로 초기화 할 수 있는지의 기초를 이해했다면, 익숙해지고, 다음 컬러 조작 함수들을 만들어보는 것을 시도하면 된다.
+    이제 색을 어떤 식으로 초기화 할 수 있는지의 기초를 이해했다면, 익숙해지고, 다음 컬러 조작 함수들을 만들어보는 것을 시도하면 됩니다.
 
-    - `add_shade` 는 double(거리)와 int(색) 을 인자대로 수용해주는 함수이다. 0은 색상에 쉐이딩을 추가 하지 않으며, 반면에 1은 완벽하게 어둡게 만들어 줍니다. 0.5 는 절반정도 어둡게 만들고, .25는 1/4 정도 그렇게 만듭니다. 해당 포인트를 얻어 보세요.
-    - `get_opposite` 함수는 int(색) 인자를 수용하고, 생상을 반전 시켜 줍니다. ⇒ 보색 활용해야함
+    - `add_shade` 는 double(거리)와 int(색) 을 인자대로 수용해주는 함수입니다. 0은 색상에 쉐이딩을 추가 하지 않으며, 반면에 1은 완벽하게 어둡게 만들어 줍니다. 0.5 는 절반정도 어둡게 만들고, .25는 1/4 정도 그렇게 만듭니다. 해당 포인트를 얻어 보세요.
+    - `get_opposite` 함수는 int(색) 인자를 수용하고, 생상을 반전 시켜 줍니다. ⇒ 보색 을 얻어냅니다.
+
+<p>
 
 ## 주제별 라이브러리 설명(링크 참조)
 
