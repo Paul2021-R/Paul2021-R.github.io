@@ -54,6 +54,10 @@ _강조_
 
 <img src="https://paul2021-r.github.io/static/cf5a08c22e7c4a5628b008d7869e4730/a11f2/profile.webp" width="40%" height="30%" title="%(비율) 크기 설정" alt="RubberDuck"></img>
 
+### 수학 수식 작성 방법
+
+$f_n = f_{n-1} + f_{n-2}, (n >= 2)$
+
 ```toc
 
 ```
