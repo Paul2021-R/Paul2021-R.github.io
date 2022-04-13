@@ -771,8 +771,11 @@
 }
 
 .markdown table {
-  display: block;
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1920px;
+  width: auto;
+  display: table;
   overflow: auto;
 }
 
@@ -796,8 +799,8 @@
 
 .markdown img {
   display: block;
-  margin: 0px auto;
-  max-width: 100%;
+  margin: 0px auto 0px;
+  max-width: 1024px;
   box-sizing: initial;
   background-color: transparent;
 }
@@ -1054,6 +1057,8 @@
 
 // added for image resizing
 .markdown .gatsby-resp-image-wrapper {
+  margin-top: 25px;
+  margin-bottom : 10px;
   display: flex !important;
   justify-content: center !important;
   width: 100% !important;
@@ -1062,7 +1067,7 @@
   img {
     max-width: 100% !important;
     max-height: $content-image-max-height !important;
-    width: auto !important;
+    width: 90% !important;
     height: auto !important;
     position: relative !important;
   }
