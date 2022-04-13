@@ -1,0 +1,867 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.24fc2d55559c092cfbf8.css" data-identity="gatsby-global-css">@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:100;src:local("Montserrat Thin "),local("Montserrat-Thin"),url(/static/montserrat-latin-100-8d7d79679b70dbe27172b6460e7a7910.woff2) format("woff2"),url(/static/montserrat-latin-100-ec38980a9e0119a379e2a9b3dbb1901a.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:100;src:local("Montserrat Thin italic"),local("Montserrat-Thinitalic"),url(/static/montserrat-latin-100italic-e279051046ba1286706adc886cf1c96b.woff2) format("woff2"),url(/static/montserrat-latin-100italic-3b325a3173c8207435cd1b76e19bf501.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:200;src:local("Montserrat Extra Light "),local("Montserrat-Extra Light"),url(/static/montserrat-latin-200-9d266fbbfa6cab7009bd56003b1eeb67.woff2) format("woff2"),url(/static/montserrat-latin-200-2d8ba08717110d27122e54c34b8a5798.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:200;src:local("Montserrat Extra Light italic"),local("Montserrat-Extra Lightitalic"),url(/static/montserrat-latin-200italic-6e5b3756583bb2263eb062eae992735e.woff2) format("woff2"),url(/static/montserrat-latin-200italic-a0d6f343e4b536c582926255367a57da.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:300;src:local("Montserrat Light "),local("Montserrat-Light"),url(/static/montserrat-latin-300-00b3e893aab5a8fd632d6342eb72551a.woff2) format("woff2"),url(/static/montserrat-latin-300-ea303695ceab35f17e7d062f30e0173b.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:300;src:local("Montserrat Light italic"),local("Montserrat-Lightitalic"),url(/static/montserrat-latin-300italic-56f34ea368f6aedf89583d444bbcb227.woff2) format("woff2"),url(/static/montserrat-latin-300italic-54b0bf2c8c4c12ffafd803be2466a790.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:400;src:local("Montserrat Regular "),local("Montserrat-Regular"),url(/static/montserrat-latin-400-b71748ae4f80ec8c014def4c5fa8688b.woff2) format("woff2"),url(/static/montserrat-latin-400-0659a9f4e90db5cf51b50d005bff1e41.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:400;src:local("Montserrat Regular italic"),local("Montserrat-Regularitalic"),url(/static/montserrat-latin-400italic-6eed6b4cbb809c6efc7aa7ddad6dbe3e.woff2) format("woff2"),url(/static/montserrat-latin-400italic-7583622cfde30ae49086d18447ab28e7.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:500;src:local("Montserrat Medium "),local("Montserrat-Medium"),url(/static/montserrat-latin-500-091b209546e16313fd4f4fc36090c757.woff2) format("woff2"),url(/static/montserrat-latin-500-edd311588712a96bbf435fad264fff62.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:500;src:local("Montserrat Medium italic"),local("Montserrat-Mediumitalic"),url(/static/montserrat-latin-500italic-c90ced68b46050061d1a41842d6dfb43.woff2) format("woff2"),url(/static/montserrat-latin-500italic-5146cbfe02b1deea5dffea27a5f2f998.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:600;src:local("Montserrat SemiBold "),local("Montserrat-SemiBold"),url(/static/montserrat-latin-600-0480d2f8a71f38db8633b84d8722e0c2.woff2) format("woff2"),url(/static/montserrat-latin-600-b77863a375260a05dd13f86a1cee598f.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:600;src:local("Montserrat SemiBold italic"),local("Montserrat-SemiBolditalic"),url(/static/montserrat-latin-600italic-cf46ffb11f3a60d7df0567f8851a1d00.woff2) format("woff2"),url(/static/montserrat-latin-600italic-c4fcfeeb057724724097167e57bd7801.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:700;src:local("Montserrat Bold "),local("Montserrat-Bold"),url(/static/montserrat-latin-700-7dbcc8a5ea2289d83f657c25b4be6193.woff2) format("woff2"),url(/static/montserrat-latin-700-99271a835e1cae8c76ef8bba99a8cc4e.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:700;src:local("Montserrat Bold italic"),local("Montserrat-Bolditalic"),url(/static/montserrat-latin-700italic-c41ad6bdb4bd504a843d546d0a47958d.woff2) format("woff2"),url(/static/montserrat-latin-700italic-6779372f04095051c62ed36bc1dcc142.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:800;src:local("Montserrat ExtraBold "),local("Montserrat-ExtraBold"),url(/static/montserrat-latin-800-db9a3e0ba7eaea32e5f55328ace6cf23.woff2) format("woff2"),url(/static/montserrat-latin-800-4e3c615967a2360f5db87d2f0fd2456f.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:800;src:local("Montserrat ExtraBold italic"),local("Montserrat-ExtraBolditalic"),url(/static/montserrat-latin-800italic-bf45bfa14805969eda318973947bc42b.woff2) format("woff2"),url(/static/montserrat-latin-800italic-fe82abb0bcede51bf724254878e0c374.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:900;src:local("Montserrat Black "),local("Montserrat-Black"),url(/static/montserrat-latin-900-e66c7edc609e24bacbb705175669d814.woff2) format("woff2"),url(/static/montserrat-latin-900-8211f418baeb8ec880b80ba3c682f957.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:900;src:local("Montserrat Black italic"),local("Montserrat-Blackitalic"),url(/static/montserrat-latin-900italic-4454c775e48152c1a72510ceed3603e2.woff2) format("woff2"),url(/static/montserrat-latin-900italic-efcaa0f6a82ee0640b83a0916e6e8d68.woff) format("woff")}.search-input-wrapper{align-items:center;display:none;margin-top:3px;width:180px}@media(min-width:768px){.search-input-wrapper{display:flex}}.search-icon{color:var(--primary-text-color);margin-right:2px}.search-input{height:100%;width:100%}.search-input .MuiAutocomplete-inputRoot{padding-right:0!important}.search-input .MuiInputBase-input{color:var(--primary-text-color)!important;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;font-weight:500;padding-bottom:2px!important}.search-input .MuiInput-underline:before{border-bottom-width:1px}.search-input .MuiInput-underline:after,.search-input .MuiInput-underline:before{border-bottom-color:var(--primary-text-color)}.page-header-wrapper{display:flex;height:60px;justify-content:center;width:100%}.page-header-wrapper .page-header{align-items:center;display:flex;justify-content:space-between;max-width:720px;width:100%}.page-header-wrapper .page-header .link{color:var(--primary-text-color);font-size:17px;font-weight:700}@media(min-width:768px){.page-header-wrapper .page-header .link{font-size:20px;font-weight:700}}.page-header-wrapper .page-header .trailing-section{align-items:center;display:flex}.page-header-wrapper .page-header .trailing-section .link{margin-right:10px}@media(min-width:768px){.page-header-wrapper .page-header .trailing-section .link{margin-right:20px}}.page-footer-wrapper{align-items:center;display:flex;height:62px;justify-content:center;margin-top:auto;width:100%}.page-footer-wrapper .page-footer{max-width:720px;text-align:center;width:100%}.page-footer-wrapper .page-footer .link{color:var(--primary-text-color);font-size:20px;font-weight:700;margin-right:20px}.page-footer-wrapper .page-footer a{color:#3a95ff}.dark-mode-button-wrapper{align-items:center;bottom:20px;display:flex;justify-content:center;position:fixed;right:20px}.dark-mode-button{-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);background-color:#363f47!important;border-radius:50px;box-shadow:0 5px 25px rgba(0,0,0,.12);cursor:pointer;height:50px;width:50px;z-index:3}.dark-mode-icon{color:#fff}a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{border:0;font-size:100%;font:inherit;margin:0;padding:0;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}table{border-collapse:collapse;border-spacing:0}a{outline:none;text-decoration:none}html{--background-color:#fff;--primary-text-color:#000;--secondary-text-color:#9e9e9e;--content-text-color:#37352f;--button-background-color:#f3f3f4;--button-text-color:#363f47;--tab-text-color:#6e6d7a;--tab-hover-text-color:#0d0c22;--tab-selected-background-color:rgba(13,12,34,.05);--bio-link-icon-color:rgba(0,0,0,.54);--about-link-icon-color:#a8a8a8;--chip-background-color:#f3f3f4;--link-text-color:rgba(55,53,47,.7);--post-card-border-color:rgba(0,0,0,.12);--markdown-table-even-cell-background-color:#f6f8fa;--markdown-table-border-color:#dfe2e5;--markdown-blockquote-border-color:#dfe2e5;--markdown-border-color:#e1e4e8}html[data-theme=dark]{--background-color:#232326;--primary-text-color:#e6e6e6;--secondary-text-color:#768390;--content-text-color:#e6e6e6;--button-background-color:#444c56;--button-text-color:#363f47;--tab-text-color:#768390;--tab-hover-text-color:#acbac7;--tab-selected-background-color:#373e47;--chip-background-color:#323a42;--bio-link-icon-color:#e6e6e6;--about-link-icon-color:#a8a8a8;--link-text-color:#90b0ec;--post-card-border-color:#363f47;--markdown-table-even-cell-background-color:#2d333b;--markdown-table-border-color:#444c56;--markdown-blockquote-border-color:#4f5864;--markdown-border-color:#e1e4e8}*{-webkit-appearance:none;appearance:none;box-sizing:border-box}html{font-size:14px;height:100%;overflow-y:scroll;width:100%}body{background-color:var(--background-color)!important}a{color:var(--link-text-color)}.page-wrapper{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--primary-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;justify-content:center;min-height:100vh;padding-left:15px;padding-right:15px;word-break:keep-all}.page-wrapper,.page-wrapper .page-content{align-items:center;display:flex;flex-direction:column;width:100%}.page-wrapper .page-content{max-width:720px}.icon{color:var(--about-link-icon-color);font-size:20px}.social-links .icon{color:var(--bio-link-icon-color);font-size:30px}@keyframes blinking-cursor{0%{opacity:0}50%{opacity:1}to{opacity:0}}.bio{color:var(--primary-text-color);display:flex;flex-direction:column;justify-content:space-between;margin-bottom:120px;margin-top:120px;width:100%}@media(min-width:768px){.bio{align-items:center;flex-direction:row}}.bio .introduction{display:flex;flex-direction:column;word-break:keep-all}.bio .introduction .react-rotating-text-cursor{animation:blinking-cursor .8s cubic-bezier(.68,.01,.01,.99) 0s infinite}.bio .introduction strong{display:inline-block;font-weight:600}.bio .introduction.korean{font-size:32px;font-weight:100;line-height:1.2}.bio .introduction.korean .title .react-rotating-text-cursor{font-size:35px;line-height:35px}@media(min-width:768px){.bio .introduction.korean{font-size:40px}.bio .introduction.korean .title .react-rotating-text-cursor{font-size:45px;line-height:45px}}.bio .introduction.english{font-family:montserrat;font-size:25px;line-height:1.2}@media(min-width:768px){.bio .introduction.english{font-size:45px}}.bio .introduction.english .name{font-size:35px;font-weight:600}.bio .introduction.english .job{font-size:35px}.bio .introduction.english .description{font-size:20px;font-weight:200;margin-top:8px}.bio .introduction.english .social-links{display:flex;margin-top:20px}.bio .thumbnail-wrapper{display:none;width:250px}@media(min-width:768px){.bio .thumbnail-wrapper{display:block}}.section-header-wrapper{display:flex;justify-content:center;margin-bottom:32px;width:100%}.section-header-wrapper .section-header{border-bottom:4px solid var(--primary-text-color);color:var(--primary-text-color);font-size:30px;font-weight:700;padding-bottom:5px}.timestamp-section{align-items:center;display:flex;flex-direction:column;justify-content:center;margin-bottom:50px;width:100%;word-break:keep-all}.timestamp-section .body{padding:0 10px;width:100%}.timestamp-section .body .timestamp{border-left:2px solid #bdbdbd;display:flex;font-size:18px;font-weight:400;justify-items:center;margin-left:5px;padding:10px 0;width:100%}.timestamp-section .body .timestamp:first-child{padding-top:7px}.timestamp-section .body .timestamp:last-child{padding-bottom:7px}.timestamp-section .body .timestamp:before{align-self:center;background-color:var(--background-color);border:2px solid #828282;border-radius:10px;content:"";height:10px;left:-1px;position:relative;transform:translatex(-50%);width:10px}.timestamp-section .body .timestamp .date{align-self:center;color:#828282;margin-left:5px;margin-right:5px;min-width:115px;width:115px}@media(min-width:768px){.timestamp-section .body .timestamp .date{min-width:200px;width:200px}}.timestamp-section .body .timestamp .activity{line-height:23px;width:100%}.project-section{align-items:center;justify-content:center}.project-section,.project-section .project{display:flex;flex-direction:column;width:100%}.project-section .project{margin-bottom:30px;padding:15px}.project-section .project .head{font-size:20px;font-weight:700;line-height:30px;margin-bottom:10px}.project-section .project .body{display:flex;flex-direction:column;width:100%}.project-section .project .body .thumbnail{margin-bottom:10px;width:100%}.project-section .project .body .tech-stack{display:flex;margin-bottom:10px}.project-section .project .body .tech-stack .tech{background-color:var(--chip-background-color);border-radius:10px;font-size:15px;font-weight:500;margin-right:5px;padding:5px 7px}.project-section .project .body .description{font-size:16px;font-weight:400;line-height:1.4}@media(min-width:768px){.project-section .project .body{flex-direction:column}.project-section .project .body .content{margin-top:0}}.post-header{border-bottom:1px solid var(--post-card-border-color);display:flex;flex-direction:column;justify-content:center;margin-bottom:40px;margin-top:20px;padding-bottom:10px;width:100%;word-break:keep-all}.post-header .emoji{font-size:78px;margin-bottom:20px}.post-header .categories{margin-bottom:5px}.post-header .categories .category{color:var(--primary-text-color);font-weight:600;margin-right:4px}.post-header .categories .category:hover{text-decoration:underline}.post-header .title{color:var(--primary-text-color);font-size:32px;font-weight:600;line-height:1.3;margin-bottom:6px}.post-header .info{color:var(--secondary-text-color);display:flex;flex-wrap:wrap;font-size:16px;font-weight:500;line-height:1.5;width:100%}.post-header .info .author{margin-right:4px}.post-header .info strong{color:var(--primary-text-color);font-weight:600}.post-navigator{column-gap:1.4%;display:grid;grid-template-columns:49.3% 49.3%;width:100%}.post-navigator .post-card{border:1px solid var(--post-card-border-color);border-radius:6px;color:var(--primary-text-color);cursor:pointer;display:flex;flex-direction:column;padding:15px;transition:transform .2s;width:100%}.post-navigator .post-card:hover .title{text-decoration:underline}.post-navigator .post-card.prev{margin-right:auto}.post-navigator .post-card.next{margin-left:auto}.post-navigator .post-card .direction{color:gray;font-size:14px;font-weight:500;margin-bottom:5px}.post-navigator .post-card .title{font-size:16px;font-weight:600;line-height:1.4;margin-bottom:7px}.markdown .octicon{fill:currentColor;display:inline-block;vertical-align:text-bottom}.markdown .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown .anchor:focus{outline:none}.markdown h1 .octicon-link,.markdown h2 .octicon-link,.markdown h3 .octicon-link,.markdown h4 .octicon-link,.markdown h5 .octicon-link,.markdown h6 .octicon-link{color:#1b1f23;vertical-align:middle;visibility:hidden}.markdown h1:hover .anchor,.markdown h2:hover .anchor,.markdown h3:hover .anchor,.markdown h4:hover .anchor,.markdown h5:hover .anchor,.markdown h6:hover .anchor{text-decoration:none}.markdown h1:hover .anchor .octicon-link,.markdown h2:hover .anchor .octicon-link,.markdown h3:hover .anchor .octicon-link,.markdown h4:hover .anchor .octicon-link,.markdown h5:hover .anchor .octicon-link,.markdown h6:hover .anchor .octicon-link{visibility:visible}.markdown h1:hover .anchor .octicon-link:before,.markdown h2:hover .anchor .octicon-link:before,.markdown h3:hover .anchor .octicon-link:before,.markdown h4:hover .anchor .octicon-link:before,.markdown h5:hover .anchor .octicon-link:before,.markdown h6:hover .anchor .octicon-link:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' aria-hidden='true' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'/%3E%3C/svg%3E");content:" ";display:inline-block;height:16px;width:16px}.markdown{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-wrap:break-word;color:var(--content-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;font-weight:500;line-height:1.5}.markdown details{display:block}.markdown summary{display:list-item}.markdown a{background-color:initial}.markdown a:active,.markdown a:hover{outline-width:0}.markdown strong{font-weight:inherit;font-weight:bolder}.markdown h1{margin:.67em 0}.markdown img{border-style:none}.markdown code,.markdown kbd,.markdown pre{font-family:monospace,monospace;font-size:1em}.markdown hr{box-sizing:initial;overflow:visible}.markdown input{font:inherit;margin:0;overflow:visible}.markdown [type=checkbox]{box-sizing:border-box;padding:0}.markdown *{box-sizing:border-box}.markdown input{font-family:inherit;font-size:inherit;line-height:inherit}.markdown a{border-bottom:.05em solid;border-bottom-color:var(--link-text-color);border-left-color:var(--link-text-color);border-right-color:var(--link-text-color);border-top-color:var(--link-text-color);color:var(--link-text-color);text-decoration:none}.markdown a.anchor{border-bottom:none}.markdown strong{font-weight:700}.markdown hr{background:transparent;border-bottom:1px solid var(--markdown-blockquote-border-color);height:0;margin:15px 0;overflow:hidden}.markdown hr:after,.markdown hr:before{content:"";display:table}.markdown hr:after{clear:both}.markdown table{border-collapse:collapse;border-spacing:0}.markdown td,.markdown th{padding:0}.markdown details summary{cursor:pointer}.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{margin-bottom:0;margin-top:0}.markdown h1{font-size:32px}.markdown h1,.markdown h2{font-weight:600}.markdown h2{font-size:24px}.markdown h3{font-size:20px}.markdown h3,.markdown h4{font-weight:600}.markdown h4{font-size:16px}.markdown h5{font-size:14px}.markdown h5,.markdown h6{font-weight:600}.markdown h6{font-size:12px}.markdown p{margin-bottom:10px;margin-top:0}.markdown blockquote{margin:0}.markdown ol,.markdown ul{margin-bottom:0;margin-top:0;padding-left:0}.markdown ol ol,.markdown ul ol{list-style-type:lower-roman}.markdown ol ol ol,.markdown ol ul ol,.markdown ul ol ol,.markdown ul ul ol{list-style-type:lower-alpha}.markdown dd{margin-left:0}.markdown code,.markdown pre{font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px}.markdown code.language-text{border-radius:3px;font-size:85%;padding:.2em .4em}.markdown :not(pre)>code.language-text{background:hsla(44,6%,50%,.15);color:#eb5757;overflow-wrap:break-word}.markdown pre{margin-bottom:0;margin-top:0}.markdown input::-webkit-inner-spin-button,.markdown input::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}.markdown :checked+.radio-label{border-color:#0366d6;position:relative;z-index:1}.markdown .border{border:1px solid var(--markdown-border-color)!important}.markdown .border-0{border:0!important}.markdown .border-bottom{border-bottom:1px solid var(--markdown-border-color)!important}.markdown .rounded-1{border-radius:3px!important}.markdown .bg-white{background-color:transparent!important}.markdown .bg-gray-light{background-color:#fafbfc!important}.markdown .text-gray-light{color:#6a737d!important}.markdown .pl-3,.markdown .px-3{padding-left:16px!important}.markdown .px-3{padding-right:16px!important}.markdown .f6{font-size:12px!important}.markdown .lh-condensed{line-height:1.25!important}.markdown .text-bold{font-weight:600!important}.markdown .pl-c{color:#6a737d}.markdown .pl-c1,.markdown .pl-s .pl-v{color:#005cc5}.markdown .pl-e,.markdown .pl-en{color:#6f42c1}.markdown .pl-s .pl-s1,.markdown .pl-smi{color:#24292e}.markdown .pl-ent{color:#22863a}.markdown .pl-k{color:#d73a49}.markdown .pl-pds,.markdown .pl-s,.markdown .pl-s .pl-pse .pl-s1,.markdown .pl-sr,.markdown .pl-sr .pl-cce,.markdown .pl-sr .pl-sra,.markdown .pl-sr .pl-sre{color:#032f62}.markdown .pl-smw,.markdown .pl-v{color:#e36209}.markdown .pl-bu{color:#b31d28}.markdown .pl-ii{background-color:#b31d28;color:#fafbfc}.markdown .pl-c2{background-color:#d73a49;color:#fafbfc}.markdown .pl-c2:before{content:"^M"}.markdown .pl-sr .pl-cce{color:#22863a;font-weight:700}.markdown .pl-ml{color:#735c0f}.markdown .pl-mh,.markdown .pl-mh .pl-en,.markdown .pl-ms{color:#005cc5;font-weight:700}.markdown .pl-mi{color:#24292e;font-style:italic}.markdown .pl-mb{color:#24292e;font-weight:700}.markdown .pl-md{background-color:#ffeef0;color:#b31d28}.markdown .pl-mi1{background-color:#f0fff4;color:#22863a}.markdown .pl-mc{background-color:#ffebda;color:#e36209}.markdown .pl-mi2{background-color:#005cc5;color:#f6f8fa}.markdown .pl-mdr{color:#6f42c1;font-weight:700}.markdown .pl-ba{color:#586069}.markdown .pl-sg{color:#959da5}.markdown .pl-corl{color:#032f62;text-decoration:underline}.markdown .mb-0{margin-bottom:0!important}.markdown .my-2{margin-bottom:8px!important;margin-top:8px!important}.markdown .pl-0{padding-left:0!important}.markdown .py-0{padding-bottom:0!important;padding-top:0!important}.markdown .pl-1{padding-left:4px!important}.markdown .pl-2{padding-left:8px!important}.markdown .py-2{padding-bottom:8px!important;padding-top:8px!important}.markdown .pl-3{padding-left:16px!important}.markdown .pl-4{padding-left:24px!important}.markdown .pl-5{padding-left:32px!important}.markdown .pl-6{padding-left:40px!important}.markdown .pl-7{padding-left:48px!important}.markdown .pl-8{padding-left:64px!important}.markdown .pl-9{padding-left:80px!important}.markdown .pl-10{padding-left:96px!important}.markdown .pl-11{padding-left:112px!important}.markdown .pl-12{padding-left:128px!important}.markdown hr{border-bottom-color:#eee}.markdown kbd{background-color:#fafbfc;border:1px solid #d1d5da;border-radius:3px;box-shadow:inset 0 -1px 0 #d1d5da;color:#444d56;display:inline-block;font:11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown:after,.markdown:before{content:"";display:table}.markdown:after{clear:both}.markdown>:first-child{margin-top:0!important}.markdown>:last-child{margin-bottom:0!important}.markdown a:not([href]){color:inherit;text-decoration:none}.markdown blockquote,.markdown details,.markdown dl,.markdown ol,.markdown p,.markdown pre,.markdown table,.markdown ul{margin-bottom:16px;margin-top:0}.markdown hr{background-color:var(--markdown-border-color);border:0;height:.25em;margin:24px 0;padding:0}.markdown blockquote{border-left:.25em solid var(--markdown-blockquote-border-color);color:#6a737d;padding:0 1em}.markdown blockquote>:first-child{margin-top:0}.markdown blockquote>:last-child{margin-bottom:0}.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown h1{font-size:2em}.markdown h2{font-size:1.5em}.markdown h3{font-size:1.25em}.markdown h4{font-size:1em}.markdown h5{font-size:.875em}.markdown h6{color:#6a737d;font-size:.85em}.markdown ol,.markdown ul{padding-left:2em}.markdown ol ol,.markdown ol ul,.markdown ul ol,.markdown ul ul{margin-bottom:0;margin-top:0}.markdown ol{list-style-type:decimal}.markdown ul{list-style-type:disc}.markdown li{word-wrap:break-all;display:list-item;text-align:-webkit-match-parent}.markdown li>p{margin-top:16px}.markdown li+li{margin-top:.25em}.markdown dl{padding:0}.markdown dl dt{font-size:1em;font-style:italic;font-weight:600;margin-top:16px;padding:0}.markdown dl dd{margin-bottom:16px;padding:0 16px}.markdown table{display:table;margin-left:auto;margin-right:auto;max-width:1920px;overflow:auto;width:auto}.markdown table th{font-weight:600}.markdown table td,.markdown table th{border:1px solid var(--markdown-table-border-color);padding:6px 13px}.markdown table tr{border-top:1px solid var(--markdown-table-border-color)}.markdown table tr:nth-child(2n){background-color:var(--markdown-table-even-cell-background-color)}.markdown img{background-color:transparent;box-sizing:initial;display:block;margin:0 auto;max-width:1024px}.markdown img[align=right]{padding-left:20px}.markdown img[align=left]{padding-right:20px}.markdown code{background-color:rgba(27,31,35,.05);border-radius:3px;font-size:85%;margin:0;padding:.2em .4em}.markdown pre{word-wrap:normal}.markdown pre>code{background:transparent;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown .highlight{margin-bottom:16px}.markdown .highlight pre{margin-bottom:0;word-break:normal}.markdown .highlight pre,.markdown pre{background-color:#f6f8fa;border-radius:3px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}.markdown pre code{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown .commit-tease-sha{color:#444d56;display:inline-block;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:90%}.markdown .full-commit .btn-outline:not(:disabled):hover{border-color:#005cc5;color:#005cc5}.markdown .blob-wrapper{overflow-x:auto;overflow-y:hidden}.markdown .blob-wrapper-embedded{max-height:240px;overflow-y:auto}.markdown .blob-num{color:rgba(27,31,35,.3);cursor:pointer;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;line-height:20px;min-width:50px;padding-left:10px;padding-right:10px;text-align:right;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:top;white-space:nowrap;width:1%}.markdown .blob-num:hover{color:rgba(27,31,35,.6)}.markdown .blob-num:before{content:attr(data-line-number)}.markdown .blob-code{line-height:20px;padding-left:10px;padding-right:10px;position:relative;vertical-align:top}.markdown .blob-code-inner{word-wrap:normal;color:#24292e;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;overflow:visible;white-space:pre}.markdown .pl-token.active,.markdown .pl-token:hover{background:#ffea7f;cursor:pointer}.markdown .tab-size[data-tab-size="1"]{-moz-tab-size:1;-o-tab-size:1;tab-size:1}.markdown .tab-size[data-tab-size="2"]{-moz-tab-size:2;-o-tab-size:2;tab-size:2}.markdown .tab-size[data-tab-size="3"]{-moz-tab-size:3;-o-tab-size:3;tab-size:3}.markdown .tab-size[data-tab-size="4"]{-moz-tab-size:4;-o-tab-size:4;tab-size:4}.markdown .tab-size[data-tab-size="5"]{-moz-tab-size:5;-o-tab-size:5;tab-size:5}.markdown .tab-size[data-tab-size="6"]{-moz-tab-size:6;-o-tab-size:6;tab-size:6}.markdown .tab-size[data-tab-size="7"]{-moz-tab-size:7;-o-tab-size:7;tab-size:7}.markdown .tab-size[data-tab-size="8"]{-moz-tab-size:8;-o-tab-size:8;tab-size:8}.markdown .tab-size[data-tab-size="9"]{-moz-tab-size:9;-o-tab-size:9;tab-size:9}.markdown .tab-size[data-tab-size="10"]{-moz-tab-size:10;-o-tab-size:10;tab-size:10}.markdown .tab-size[data-tab-size="11"]{-moz-tab-size:11;-o-tab-size:11;tab-size:11}.markdown .tab-size[data-tab-size="12"]{-moz-tab-size:12;-o-tab-size:12;tab-size:12}.markdown .task-list-item{list-style-type:none}.markdown .task-list-item+.task-list-item{margin-top:3px}.markdown .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown .table-of-contents{align-items:flex-start;display:flex;flex-direction:column;justify-content:center;position:fixed;right:0;top:75px;width:340px}@media(max-width:1300px){.markdown .table-of-contents{display:none}}.markdown .table-of-contents ul{cursor:pointer;list-style-type:none}.markdown .table-of-contents ul li a{border-bottom:none;color:var(--secondary-text-color);font-size:14px;height:30px;padding:6px 2px;width:100%}.markdown .table-of-contents ul p{margin:0}.markdown .gatsby-resp-image-wrapper{display:flex!important;justify-content:center!important;margin-bottom:10px;margin-top:25px;max-height:560px!important;width:100%!important}.markdown .gatsby-resp-image-wrapper img{height:auto!important;max-height:560px!important;max-width:100%!important;position:relative!important;width:90%!important}.markdown .gatsby-resp-image-wrapper+em{color:#6a737d;display:block;font-size:15px;font-style:italic;text-align:center}code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#000;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;text-align:left;text-shadow:0 1px #fff;white-space:pre;word-break:normal;word-spacing:normal}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{background:#b3d4fc;text-shadow:none}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{background:hsla(0,0%,100%,.5);color:#9a6e3a}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.post-content{margin-bottom:20px;text-align:justify;width:100%}.category-page-header-wrapper,.post-content{display:flex;flex-direction:column;justify-content:center}.category-page-header-wrapper{align-items:center;margin-bottom:30px;margin-top:30px}.category-page-header-wrapper .category-page-title{border-bottom:3px solid var(--primary-text-color);font-size:40px;font-weight:700;margin-bottom:15px;padding-bottom:7px;text-align:center;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.category-page-header-wrapper .category-page-subtitle{font-size:20px;font-weight:500;padding-bottom:10px;text-align:center}.post-card-wrapper{display:flex;justify-content:center;min-height:150px;width:100%}.post-card-wrapper .post-card{border:1px solid var(--post-card-border-color);border-radius:6px;color:var(--primary-text-color);cursor:pointer;display:flex;flex-direction:column;height:100%;margin-bottom:15px;max-width:720px;padding:15px;transition:transform .2s;width:100%}.post-card-wrapper .post-card:hover .title{text-decoration:underline}@media(min-width:768px){.post-card-wrapper .post-card{margin-bottom:0}}.post-card-wrapper .post-card .title{font-size:18px;font-weight:600;line-height:1.4;margin-bottom:7px}.post-card-wrapper .post-card .description{-webkit-line-clamp:3;-webkit-box-orient:vertical;color:var(--primary-text-color);display:-webkit-box;font-size:13px;line-height:20px;margin-bottom:10px;overflow:hidden;text-overflow:ellipsis}.post-card-wrapper .post-card .info{color:var(--about-link-icon-color);display:flex;font-size:14px;justify-content:space-between;margin-top:auto}.post-card-wrapper .post-card .info .categories{display:flex}.post-card-wrapper .post-card .info .categories .category{margin-left:4px}.post-card-wrapper .post-card .info .categories .category:hover{text-decoration:underline}.post-card-column-wrapper{display:flex;justify-content:center;width:100%}.post-card-column-wrapper .post-card-column{align-items:center;display:flex;flex-direction:column;width:100%}.post-card-column-wrapper .post-card-column .post-card-wrapper{margin-bottom:10px}.post-card-column-wrapper .post-card-column .more-post-card-button{background-color:var(--button-background-color);color:var(--tab-hover-text-color);font-size:15px;font-weight:500;height:40px}.post-tabs-wrapper{align-self:flex-start;display:flex;flex-direction:column;justify-content:center;top:0;width:100%}.post-tabs-wrapper .post-tabs{display:flex;height:40px;justify-content:center;margin-bottom:12px;max-width:760px;width:100%}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root{color:var(--tab-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:17px;font-weight:500;height:40px;min-height:auto;min-width:auto;padding:10px 12px;transition:all .2s ease}.post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected,.post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root :hover{color:var(--tab-hover-text-color);transition:all .2s ease}.post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected{background-color:var(--tab-selected-background-color);border-radius:8px;font-weight:600}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabScrollButton-root{height:40px;width:20px}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabs-scrollable{height:40px}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabs-indicator{display:none}</style><meta name="generator" content="Gatsby 3.14.6"/><style data-emotion="css-global o6gwfi">html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;-webkit-text-size-adjust:100%;}*,*::before,*::after{box-sizing:inherit;}strong,b{font-weight:700;}body{margin:0;color:rgba(0, 0, 0, 0.87);font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;background-color:#fff;}@media print{body{background-color:#fff;}}body::backdrop{background-color:#fff;}</style><style data-emotion="css-global 1prfaxn">@-webkit-keyframes mui-auto-fill{from{display:block;}}@keyframes mui-auto-fill{from{display:block;}}@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css 1l6di18 feqhe6 11tfndm mnn31 vubbuv 1yxmbwk 6flbmm">.css-1l6di18.Mui-focused .MuiAutocomplete-clearIndicator{visibility:visible;}@media (pointer: fine){.css-1l6di18:hover .MuiAutocomplete-clearIndicator{visibility:visible;}}.css-1l6di18 .MuiAutocomplete-tag{margin:3px;max-width:calc(100% - 6px);}.css-1l6di18 .MuiAutocomplete-inputRoot{-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiAutocomplete-inputRoot,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiAutocomplete-inputRoot{padding-right:30px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiAutocomplete-inputRoot{padding-right:56px;}.css-1l6di18 .MuiAutocomplete-inputRoot .MuiAutocomplete-input{width:0;min-width:30px;}.css-1l6di18 .MuiInput-root{padding-bottom:1px;}.css-1l6di18 .MuiInput-root .MuiInput-input{padding:4px 4px 4px 0px;}.css-1l6di18 .MuiInput-root.MuiInputBase-sizeSmall .MuiInput-input{padding:2px 4px 3px 0;}.css-1l6di18 .MuiOutlinedInput-root{padding:9px;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiOutlinedInput-root,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiOutlinedInput-root{padding-right:39px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiOutlinedInput-root{padding-right:65px;}.css-1l6di18 .MuiOutlinedInput-root .MuiAutocomplete-input{padding:7.5px 4px 7.5px 6px;}.css-1l6di18 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment{right:9px;}.css-1l6di18 .MuiOutlinedInput-root.MuiInputBase-sizeSmall{padding:6px;}.css-1l6di18 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input{padding:2.5px 4px 2.5px 6px;}.css-1l6di18 .MuiFilledInput-root{padding-top:19px;padding-left:8px;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiFilledInput-root,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiFilledInput-root{padding-right:39px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiFilledInput-root{padding-right:65px;}.css-1l6di18 .MuiFilledInput-root .MuiFilledInput-input{padding:7px 4px;}.css-1l6di18 .MuiFilledInput-root .MuiAutocomplete-endAdornment{right:9px;}.css-1l6di18 .MuiFilledInput-root.MuiInputBase-sizeSmall{padding-bottom:1px;}.css-1l6di18 .MuiFilledInput-root.MuiInputBase-sizeSmall .MuiFilledInput-input{padding:2.5px 4px;}.css-1l6di18 .MuiInputBase-hiddenLabel{padding-top:8px;}.css-1l6di18 .MuiAutocomplete-input{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;text-overflow:ellipsis;opacity:1;}.css-feqhe6{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;position:relative;min-width:0;padding:0;margin:0;border:0;vertical-align:top;width:100%;}.css-11tfndm{font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.4375em;letter-spacing:0.00938em;color:rgba(0, 0, 0, 0.87);box-sizing:border-box;position:relative;cursor:text;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:100%;position:relative;}.css-11tfndm.Mui-disabled{color:rgba(0, 0, 0, 0.38);cursor:default;}label+.css-11tfndm{margin-top:16px;}.css-11tfndm:after{border-bottom:2px solid #1976d2;left:0;bottom:0;content:"";position:absolute;right:0;-webkit-transform:scaleX(0);-moz-transform:scaleX(0);-ms-transform:scaleX(0);transform:scaleX(0);-webkit-transition:-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;transition:transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;pointer-events:none;}.css-11tfndm.Mui-focused:after{-webkit-transform:scaleX(1);-moz-transform:scaleX(1);-ms-transform:scaleX(1);transform:scaleX(1);}.css-11tfndm.Mui-error:after{border-bottom-color:#d32f2f;-webkit-transform:scaleX(1);-moz-transform:scaleX(1);-ms-transform:scaleX(1);transform:scaleX(1);}.css-11tfndm:before{border-bottom:1px solid rgba(0, 0, 0, 0.42);left:0;bottom:0;content:"\00a0";position:absolute;right:0;-webkit-transition:border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;pointer-events:none;}.css-11tfndm:hover:not(.Mui-disabled):before{border-bottom:2px solid rgba(0, 0, 0, 0.87);}@media (hover: none){.css-11tfndm:hover:not(.Mui-disabled):before{border-bottom:1px solid rgba(0, 0, 0, 0.42);}}.css-11tfndm.Mui-disabled:before{border-bottom-style:dotted;}.css-mnn31{font:inherit;letter-spacing:inherit;color:currentColor;padding:4px 0 5px;border:0;box-sizing:content-box;background:none;height:1.4375em;margin:0;-webkit-tap-highlight-color:transparent;display:block;min-width:0;width:100%;-webkit-animation-name:mui-auto-fill-cancel;animation-name:mui-auto-fill-cancel;-webkit-animation-duration:10ms;animation-duration:10ms;}.css-mnn31::-webkit-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31::-moz-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31:-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31::-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31:focus{outline:0;}.css-mnn31:invalid{box-shadow:none;}.css-mnn31::-webkit-search-decoration{-webkit-appearance:none;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-webkit-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-moz-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:-ms-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-ms-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-webkit-input-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-moz-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus:-ms-input-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-ms-input-placeholder{opacity:0.42;}.css-mnn31.Mui-disabled{opacity:1;-webkit-text-fill-color:rgba(0, 0, 0, 0.38);}.css-mnn31:-webkit-autofill{-webkit-animation-duration:5000s;animation-duration:5000s;-webkit-animation-name:mui-auto-fill;animation-name:mui-auto-fill;}.css-vubbuv{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:1.5rem;}.css-1yxmbwk{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;overflow:visible;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-1yxmbwk::-moz-focus-inner{border-style:none;}.css-1yxmbwk.Mui-disabled{pointer-events:none;cursor:default;}@media print{.css-1yxmbwk{-webkit-print-color-adjust:exact;color-adjust:exact;}}.css-1yxmbwk:hover{background-color:rgba(0, 0, 0, 0.04);}@media (hover: none){.css-1yxmbwk:hover{background-color:transparent;}}.css-1yxmbwk.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}.css-6flbmm{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:2.1875rem;}</style><link rel="icon" href="/favicon-32x32.png?v=f1d997717ebc85005aead99721bc1835" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=f1d997717ebc85005aead99721bc1835"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=f1d997717ebc85005aead99721bc1835"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=f1d997717ebc85005aead99721bc1835"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=f1d997717ebc85005aead99721bc1835"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=f1d997717ebc85005aead99721bc1835"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=f1d997717ebc85005aead99721bc1835"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=f1d997717ebc85005aead99721bc1835"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=f1d997717ebc85005aead99721bc1835"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><title data-react-helmet="true">push swap 정복기(1)</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="push swap 정복기(1)"/><meta data-react-helmet="true" property="og:site_title" content="push swap 정복기(1)"/><meta data-react-helmet="true" name="description" content="Prologue 올 것이 왔습니다. 사실 C 언어 강의를 마무리 짓고, So_long이나 Minitalk을 통한 소켓통신 구현 등… 이런 녀석들에 대해선 부담이란걸 느낀 적은 없었습니다. 멘탈이 바스라질 일은 있었지만(so_long… ^^) 그렇다고 못할 수준이냐? 지금 생각하면 그렇진 않았습니다. 하지만 알고리즘은 확실히 부담이 느껴집니다. 이유는 수학을 손 놓은지 어언 몇 년째이고, 정리 정돈이라니…! 내가 제일 못 하는 부분 중에 하나를 들이밀다니. 😳 해본적 없는 걸 해보게 된다는 것 만큼 가슴 두근거리는(부정적으로) 일은 없을 것 같습니다. 그럼에도 인강도 듣고, 결국 해쳐서 해결해 나갈 것을 알기에… 제대로 빡세게 공부해보려고 합니다. 이왕 하는김에! 보너스까지!(이래놓고 so_long은 보너스 안 했지만(…)) 우선, 가이드로 제공되는 문서들을 찬찬히 훑어보먼서 핵심들 위주로 정리해보고자 합니다. 그 뒤에 실제 부분부분 구현부터 시작해서 진행해보겠습니다. Push Sw…"/><meta data-react-helmet="true" property="og:description" content="Prologue 올 것이 왔습니다. 사실 C 언어 강의를 마무리 짓고, So_long이나 Minitalk을 통한 소켓통신 구현 등… 이런 녀석들에 대해선 부담이란걸 느낀 적은 없었습니다. 멘탈이 바스라질 일은 있었지만(so_long… ^^) 그렇다고 못할 수준이냐? 지금 생각하면 그렇진 않았습니다. 하지만 알고리즘은 확실히 부담이 느껴집니다. 이유는 수학을 손 놓은지 어언 몇 년째이고, 정리 정돈이라니…! 내가 제일 못 하는 부분 중에 하나를 들이밀다니. 😳 해본적 없는 걸 해보게 된다는 것 만큼 가슴 두근거리는(부정적으로) 일은 없을 것 같습니다. 그럼에도 인강도 듣고, 결국 해쳐서 해결해 나갈 것을 알기에… 제대로 빡세게 공부해보려고 합니다. 이왕 하는김에! 보너스까지!(이래놓고 so_long은 보너스 안 했지만(…)) 우선, 가이드로 제공되는 문서들을 찬찬히 훑어보먼서 핵심들 위주로 정리해보고자 합니다. 그 뒤에 실제 부분부분 구현부터 시작해서 진행해보겠습니다. Push Sw…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-e8a2b168be1b8d9b7311.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-30421660458d39979c7c.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/42 seoul/push_swap/20220413_push_swap/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">😳</div><div class="info"><div class="categories"><a class="category" href="/posts/42_seoul">42_seoul</a></div></div><h1 class="title">push swap 정복기(1)</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->April 13, 2022</div></header><div class="post-content"><div class="markdown"><h1 id="prologue" style="position:relative;"><a href="#prologue" aria-label="prologue permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Prologue</h1>
+<p>올 것이 왔습니다. 사실 C 언어 강의를 마무리 짓고, So_long이나 Minitalk을 통한 소켓통신 구현 등… 이런 녀석들에 대해선 부담이란걸 느낀 적은 없었습니다.</p>
+<p>멘탈이 바스라질 일은 있었지만(so_long… ^^) 그렇다고 못할 수준이냐? 지금 생각하면 그렇진 않았습니다.</p>
+<p>하지만 알고리즘은 확실히 부담이 느껴집니다. 이유는 수학을 손 놓은지 어언 몇 년째이고, 정리 정돈이라니…!</p>
+<p>내가 제일 못 하는 부분 중에 하나를 들이밀다니. 😳</p>
+<p>해본적 없는 걸 해보게 된다는 것 만큼 가슴 두근거리는(부정적으로) 일은 없을 것 같습니다.</p>
+<p>그럼에도 인강도 듣고, 결국 해쳐서 해결해 나갈 것을 알기에… 제대로 빡세게 공부해보려고 합니다. 이왕 하는김에! 보너스까지!(이래놓고 so_long은 보너스 안 했지만(…))</p>
+<p>우선, 가이드로 제공되는 문서들을 찬찬히 훑어보먼서 핵심들 위주로 정리해보고자 합니다. 그 뒤에 실제 부분부분 구현부터 시작해서 진행해보겠습니다.</p>
+<h1 id="push-swap" style="position:relative;"><a href="#push-swap" aria-label="push swap permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Push Swap</h1>
+<h2 id="개념-잡기" style="position:relative;"><a href="#%EA%B0%9C%EB%85%90-%EC%9E%A1%EA%B8%B0" aria-label="개념 잡기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>개념 잡기</h2>
+<p>Push Swap 은 스택 2개를 제공합니다. 이 제공되는 스택 중 하나 (stack A)에는 정돈되지 않은 정수들이 들어 있으며, 여기서 알고리즘을 활용하고, 한 개의 추가적인 빈 스택을 최대한 활용해 최소한의 제공되는 명령어로 정렬을 해야하는 프로젝트입니다. 생각해보면 이상한 프로젝트이긴 합니다. 시간 복잡도도 공간 복잡도도 아닌, 절차로 제공되는 기믹들의 사용 횟수를 줄인다라는… 참 신기한 구성이지만 아마도 알고리즘을 이렇게 해서 재대로 곱씹지 않으면 못 해결하도록 유도한게 아닌가. 그렇기에 조금 공부를 했던 사람들 입장에선 당황스러운 과제가 되지 않을까 예상해봅니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 39.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA60lEQVQoz5VSCQqDQBDb/z/ID/gJQUXxxvvGe9qMrG5pC21gYEcz2UxYEYYhoYIg+Kk+8aMoItM0qSxLEvTEPM/0D7Zte/s2DANVVXUK5nnOpOM4XkpiXVdaloXP0zTxILDvOxfQNM0tGMfx5VIKYTBJEl7PcRwqioKHwavr+uJKftu2tyAIqiOg73vSdZ00TSPLsijLMh7CJmmavq3cdd0piHUQ7DiOvBqsIw/0cAUSLpQOMej7PjtFDz64kieQjW3b7Agk13U502+AsOd5V6Y4wzGEUQL5qU8BT0B9FnCj/pdntUfWhmGw8AMVg2R/ZTcSbgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="push_swap"
+        title="push_swap"
+        src="/static/e77811a39dda92e31eff0739f8a3ffdf/37523/001_pushswap.png"
+        srcset="/static/e77811a39dda92e31eff0739f8a3ffdf/e9ff0/001_pushswap.png 180w,
+/static/e77811a39dda92e31eff0739f8a3ffdf/f21e7/001_pushswap.png 360w,
+/static/e77811a39dda92e31eff0739f8a3ffdf/37523/001_pushswap.png 720w,
+/static/e77811a39dda92e31eff0739f8a3ffdf/302a4/001_pushswap.png 1080w,
+/static/e77811a39dda92e31eff0739f8a3ffdf/f09ab/001_pushswap.png 1250w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+이 과제에는 허용되는 액션이 정해져 있습니다.
+<strong>sa, sb, ss, ra, rb, rr, rra, rrb, rrr, pa, pb</strong></p>
+<h2 id="허용-액션-정리해보자" style="position:relative;"><a href="#%ED%97%88%EC%9A%A9-%EC%95%A1%EC%85%98-%EC%A0%95%EB%A6%AC%ED%95%B4%EB%B3%B4%EC%9E%90" aria-label="허용 액션 정리해보자 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>허용 액션 정리해보자</h2>
+<p>허용 되는 액션에 대해선 매우 깔끔하게 정리한 이미지들이 있습니다. 이를 적극 활용하려고 합니다(증말 만들어주신 분 땡큐…)
+우선 직접 번역하여 정리한 명령어들에 대한 설명은 다음과 같습니다.</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">sa</code> : (swap a) : 스택 a의 top 에 최초 2개의 요소를 스왑한다. 만약 거기에 한개 혹은 요소가 전혀 없다면 아무 일도 하면 안된다.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">sb</code> : (swap b) : 스택 b의 top에 최초 2개의 요소를 스왑한다. 만약 거기에 한개 혹은 요소가 전혀 없다면 아무 일도 하면 안된다.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">ss</code> : <code class="language-text">sa</code> 와 <code class="language-text">sb</code> 를 동시에 진행한다.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">pa</code> : (push a) : b의 top에 있는 첫 인자를 취해라 그리곤 a의 top에 그것을 넣어라. b 스택이 비어있다면 아무 것도 하면 안된다.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">pb</code> : (push b) : a의 top에 있는 첫 인자를 취해라 그리곤 b의 top에 그것을 넣어라. a 스택이 비어 있다면 아무것도 하면 안된다.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">ra</code> : (rotate a) : 스택 a의 모든 요소들을 1 씩 top 쪽으로 해라. 최초 멤버는 마지막이 된다.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">rb</code> : (rotate b) : 스택 b의 모든 요소들을 1씩 top 쩍ㅇ로 해라. 최초 멤버는 마지막이 된다.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">rr</code> : <code class="language-text">ra</code> 와 <code class="language-text">rb</code> 를 동시에 진행한다.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">rra</code> : (reverse rotate a) : 스택 a의 모든 요소를 1씩 bottom 쪽으로 해라. 마지막 멤버는 최초 멤버가 된다.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">rrb</code> : (reverse rotate b) : 스택 b의 모든 요소를 1씩 bottom 쪽으로 해라. 마지막 멤버는 최초 멤버가 된다.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">rrr</code> : <code class="language-text">rra</code> 와 <code class="language-text">rrb</code> 를 동시에 진행한다.</li>
+</ul>
+<p>주욱 읽어보면 대충 무슨 말인지 이해가 됩니다. 하지만 역시 한 방에 이해하는게 좋지 않겠는가? 바로 그림으로 설명하면 다음과 같습니다.</p>
+<p>단, 한 가지 기억해야 할 것은 원래 stack 구조는 전통적 <code class="language-text">top</code> 부분이 아래로 가게 표현해야 합니다.(반대로, <code class="language-text">bottom</code>은 위로 가야 합니다.) 하지만 이 그림을 만드신 분은 그런 전통적인 표현을 지키진 않은 것으로 보이니 주의 하십시오.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 67.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB1klEQVQ4y31Ta2+qUBDk//+ZNk3TT0365d6maUyNT1B8IVGjogiIiA+mO9seorb3bnIiHGZnZ2dXKwxDDAYDjEYjXMZut0MQBPqc5zkmk4niFovFFW6z2SCO4zLHWq1WSuY4DrbbLVggSRKkaapgQ0hMp9PBcDjEfr/Her3We+KzLFMccyzzMpvNlJBA/h4OB7AYgxiCi6KA7/uqhEpJzHviS0J+ZDCZyphUnM9YLpelQpLz2+l0QhRFpSIGBVAlgwVUIRMajQZarZZWjqVIo9lEr9dTYnrEwixaqVRQq9WwEeJIFH1Uq6jX65jP51pMCcnMZG88Rt918f70CLv6gYnY0O124XmeElINcWNp27XbeH24x6jfVxt6kkfbypYvw3t5RuSPy/fj8VhO0kQWLOE+3KGQwZjQlo0nNJSHz7v8oCrYIicZCyYUdUyggOl0qi3mUsjk8V5bPssAbs9RPA3DtSbqesgw8nOBVKbJItxJHaBgOajLXAv/iZUsdiLVg64D/+2v3k3Fp/R7TbgRt2HpmvxyzF5FomTebsJ9/YNMfAykVXpqCG/PD4WXhFxY27bhyAo12204si7B4ifhlcLfWjUgDohexXISUZdsv/4V9O1fLX8Ckl/l5F3ZFQAAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="series_s"
+        title="series_s"
+        src="/static/1370cd3b53c5b74feeda0830e15fc3c2/37523/002_series_s.png"
+        srcset="/static/1370cd3b53c5b74feeda0830e15fc3c2/e9ff0/002_series_s.png 180w,
+/static/1370cd3b53c5b74feeda0830e15fc3c2/f21e7/002_series_s.png 360w,
+/static/1370cd3b53c5b74feeda0830e15fc3c2/37523/002_series_s.png 720w,
+/static/1370cd3b53c5b74feeda0830e15fc3c2/302a4/002_series_s.png 1080w,
+/static/1370cd3b53c5b74feeda0830e15fc3c2/f213e/002_series_s.png 1192w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+S 시리즈의 경우 <code class="language-text">top</code> 부분부터 시작하여 2개의 숫자의 <code class="language-text">위치</code>를 바꾸는 역할을 합니다.(swap)</p>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 66.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAABtUlEQVQ4y32SWU7DQBBEff+j8MEhEBJCQnxAcOzYxMq+Eid2djtp+jUZK5ilpdEsrilXVY+33W4lTVNhvq7NZiPn89nWeZ7LbreT5XIpZVlWmNPpZOeu4PCSJJF2uy3z+VyKoqiIu92u7SmI4jg2nPsO8X6/l16v902E1+l05HA4SL/ft4uj0ciIptNppYYzXGRZJuPxWCaTiQk4Ho+2/kYIEDWLxaKycVKi9XpdEa5WKyPlp6jiHBwzil00Zhl1s9lMfN+XwWAgpQLbGkMQBKYKMMpQw1mr1TJyihg4Gw6HVdYe1sgmDEMDxAoIGg2Joqg6xybhs4cgimIJX1+lqTi/2ZTkIoDZc9YKVWDNeHyQ5P5OMIEqvqEUJ6g1uzo3bm9kkbx/NUgz55sphBAw2TBYp5onYbOnQWDIhzWNI5q1XnZ33D1wHszWiMtgjz1ski2dO6gqzmgOeaHYYet3PamV6xh2ucycqrVzWUimCngu/5UprA/3cDdqM1eL/ecnWSnRLs8sJ/fj34ZXV+cIsYA1XzsZvr1J4+VFevoKshrhD4V/WWYmZEg/tEk0Y6kZEv41rl6fpdLokHvLmYkAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="series_rr"
+        title="series_rr"
+        src="/static/5371cbd25687f5c567dc02e7190411fb/37523/003_rr.png"
+        srcset="/static/5371cbd25687f5c567dc02e7190411fb/e9ff0/003_rr.png 180w,
+/static/5371cbd25687f5c567dc02e7190411fb/f21e7/003_rr.png 360w,
+/static/5371cbd25687f5c567dc02e7190411fb/37523/003_rr.png 720w,
+/static/5371cbd25687f5c567dc02e7190411fb/302a4/003_rr.png 1080w,
+/static/5371cbd25687f5c567dc02e7190411fb/e72de/003_rr.png 1198w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+rr 시리즈 경우 <code class="language-text">top</code> 부분의 숫자를 <code class="language-text">bottom</code>으로 전달하고, 2번째 숫자가 <code class="language-text">top</code>으로 올라가게 만듭니다.</p>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 66.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB3klEQVQ4y21T7Y6aUBC97/8kmzTN/mqaJn0Du40W3O3CVkXlU7gICKiI0zmzXqp2J5ncAc6cOTNzUVpr8n2fqqqi/X5PbduKN00zxFmWEXBpmt5gEBs/HA5UFAWpKIokKMuSjJ3PZ9psNsMzYhDmeS6Jxo7HoxQzhiJquVyKmjAMhTiOY3lG3Pe9AFerFe12O+kiSZKBvOs6OY0hT6G64ziiAhWhFCq22+2gFgSe59F8Pqe6riUR5CiIbwYnhKfTSSqhdYBgaCMIfJkNzJCjC3xrL+8T7iYMIykCA16hBVQej8dkWxYlrPRtsSDLtsl5fZUWoR4KJpOJ4FzuKNU5Wc/PZHGO47osIBCswuYwty3PImMl7o8RjT490Ga9pjTTAoIqEOLEzHLGjR4/06+vX6isG3lv1CsMG4bWRXZZUDC1qdDZMBsUxXwRY24NbzN6mZKe/RFM37/ngkthAXAk4DxxUsEfPN4+AEeeb8ck+A6HQs9bUMULwB24zsWp6CMDKV8bzKVmUu2vqeGz5vYC/gmwTYO7N4U27h3WcbUKCncVzb5/ozbXMpbr6/SRq1th/whxznj77nRKLz+f6LdtUTyfUXG5Wte4G4X/d3seloRl4MrE7Iibyz9+X/za/gJAFuaKRytN0QAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="series_rrr"
+        title="series_rrr"
+        src="/static/350a1f22316a3a67c1f071b742ceafd2/37523/004_rrr.png"
+        srcset="/static/350a1f22316a3a67c1f071b742ceafd2/e9ff0/004_rrr.png 180w,
+/static/350a1f22316a3a67c1f071b742ceafd2/f21e7/004_rrr.png 360w,
+/static/350a1f22316a3a67c1f071b742ceafd2/37523/004_rrr.png 720w,
+/static/350a1f22316a3a67c1f071b742ceafd2/302a4/004_rrr.png 1080w,
+/static/350a1f22316a3a67c1f071b742ceafd2/187fa/004_rrr.png 1194w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+rrr 시리즈 경우 <code class="language-text">bottom</code>의 숫자를 <code class="language-text">top</code> 으로 올리고, 나머지 숫자를 아래로 내립니다.</p>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 51.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABaUlEQVQoz12S626CQBCFff/HaWr7o+kDNE0aLQSx3iBcRJQKgnfldM8ks6FOMpllZ/abC9Or6xq32w1lWaIoChwOB1wuF1yvV7H7/V7s+XxG0zQSezqdwHebzcb6aOnv6WPCttst1uu1aBzHoNBPJWi322G1WiHPc4HRJkkCFSYSYFVVoirH4xGz2UzOmv1+vwuMIBXeaZy+62l1rEqFgOl0atsmtG1bqVoT85v+yWQiYAtksM5FhYFsh/ePLTO+W2EYhuK3QILooBKkEK1AW9ZKKYyhn1a//81wPp/D931kWcZe8DMew/M8+xd1hq7rYjQaYblcCiAIAjiOI1XSL0BmpS4WC0RRhNRAUzN8ntn2Y8tMHoYBYgNNTCyhnC0rtkDScwMpzW55728Y9p/wa/aSAAWyfc6oMve12U33tQ/n5Rm12dvGvLMtcxkZrH8qc7+RDr7s0Lno3SVvzV1rfNHnB9LhQM5d/x87rADeX4ZVYAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="series_p"
+        title="series_p"
+        src="/static/9c4535443aba11142cb8fb387f61cc4c/37523/005_series_p.png"
+        srcset="/static/9c4535443aba11142cb8fb387f61cc4c/e9ff0/005_series_p.png 180w,
+/static/9c4535443aba11142cb8fb387f61cc4c/f21e7/005_series_p.png 360w,
+/static/9c4535443aba11142cb8fb387f61cc4c/37523/005_series_p.png 720w,
+/static/9c4535443aba11142cb8fb387f61cc4c/302a4/005_series_p.png 1080w,
+/static/9c4535443aba11142cb8fb387f61cc4c/a13c9/005_series_p.png 1178w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+p 시리즈는 명칭에 맞춰 자기 스텍에서 지정된 스텍으로 <code class="language-text">top</code> 부분의 숫자를 옴기는 역할을 합니다.</p></p>
+<p>정말 이해가 잘 되게 그린 그림이라 생각합니다. 이제 이걸 활용해서 알고리즘을 선택할 것이고, 선택한 알고리즘에 이 액션들을 적용하여 정리가 될 수 있도록 만들 것입니다.</p>
+<h2 id="어떻게-작동되는가" style="position:relative;"><a href="#%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%9E%91%EB%8F%99%EB%90%98%EB%8A%94%EA%B0%80" aria-label="어떻게 작동되는가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>어떻게 작동되는가?</h2>
+<p>우선, 스텍 A에서 최장 증가 부분 수열(Longest Increasing Sequence, LIS)을 발견함으로 시작을 하면 좋을 것으로 생각됩니다. 예를 들면 이렇게 말이죠.</p>
+<blockquote>
+<p>최장증가부분수열에 대해선 이 <a href="https://chanhuiseok.github.io/posts/algo-49/">링크</a>를 참조하세요.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center"><code class="language-text">top</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">7</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center"><code class="language-text">0</code></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>A</strong></td>
+<td align="center"><strong>B</strong></td>
+</tr>
+<tr>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"><code class="language-text">bottom</code></td>
+</tr>
+</tbody>
+</table>
+<p>시작함과 동시에, stack A를 tmp라는 스텍을 만들어 복사해야하고, 가장 작은 숫자(이 예시에선 <code class="language-text">0</code>)를 top에 넣어야 합니다. 스텍의 절반의 bottom 부분 혹은 top에 숫자가 있는지 없는지에 따라서<code class="language-text">ra</code> 와 <code class="language-text">rra</code>를 사용할 것입니다.
+이번 샘플에 경우 top으로부터 5번째 위치에 있으므로, <code class="language-text">ra</code>를 사용합니다.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center"><code class="language-text">top</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code class="language-text">0</code></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>tmp</strong></td>
+<td align="center"><strong>B</strong></td>
+</tr>
+<tr>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"><code class="language-text">bottom</code></td>
+</tr>
+</tbody>
+</table>
+<p>이제 LIS 는 <code class="language-text">0, 1, 2, 3, 8, 9</code> 입니다. 이에 대한 튜토리얼들은 많이 찾아 볼 수 있으니 확인해보십시오.
+LIS 를 확보 했으니, Stack B 에 LIS에 속하지 않는 정수들을 옮겨 줍니다. 그래서 이런 식으로 정리 될 것입니다.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center"><code class="language-text">top</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>a</strong></td>
+<td align="center"><strong>b</strong></td>
+</tr>
+<tr>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"><code class="language-text">bottom</code></td>
+</tr>
+</tbody>
+</table>
+<p>다음으로 스택 B에서 스택 A로 정확한 위치로 push 할수 있는 가장 최선의 정수가 어떤 수인지를 정하는 것이 가장 중요합니다.</p>
+<p>우선, 매번 stack B의 top 위에 현재 숫자를 넣기 위해 필요한 이동수를 계산하고 저장하고자, 스택 B의 top에서 bottom까지 스택의 중간에 도달할 때까지 반복합니다. 스택 A에도 정확한 포지션에 놓기위해 움직임의 수를 계산하고 저장합니다.</p>
+<p>예를 들어, stack B의 top에 10을 놓기 위해, 필요시 되는 움직임의 숫자는 ‘0’ 입니다. 왜냐면 이미 top 에 있기 때문입니다. 정수 10은 stack A의 9, 0 사이에 들어가야 할 것입니다. 이를 위해 stack A에서 액션을 3회 시킬 필요가 있고, 그 뒤에 <code class="language-text">pb</code> 를 진행해야 합니다. 따라서 최종적으로 정수 10을 옮기기 위해선 정확히 4회의 액션이 필요한 것을 알 수 있습니다.</p>
+<p>그렇다면 어떻게 ‘10’ 의 적절한 위치를 알수 있을 까요?
+stack A에서 위치시켜야할 숫자들의 위치를 알기 위해 필요한 4가지 경우의 수가 있습니다. (stack A에 대해 우리는 top~bottom까지 반복시키고 있다는 사실을 기억해주세요.)</p>
+<ol>
+<li><code class="language-text">A[size_of_stack_A - 1]</code>와 <code class="language-text">A[0]</code> 사이에 있습니다. [2, 3](이걸 한 번에 점검하면 된다.)</li>
+<li><code class="language-text">A[i]</code>, <code class="language-text">A[i+1]</code>의 사이에 있다. [3, 8]. i는 0부터 시작하여 <code class="language-text">stack A 의 크기의 절반</code>이며, 위의 사례의 경우 6입니다.</li>
+<li><code class="language-text">A[j]</code>, <code class="language-text">A[j-1]</code>의 사이에 있다. [1, 2]. j는 stack A의 사이즈 - 1부터 stack A의 절반 까지입니다.</li>
+<li>위의 모든 경우가 아닌 경우. 이 경우, <code class="language-text">현재 숫자는 두 스택의 최댓값</code>입니다. 스택 A의 최대 수의 위치(이 예에서는 인덱스 3, 9의 위치) 를 찾아야 하며, 여기에 10이 배치될 곳입니다.</li>
+</ol>
+<p>이제 이 위치를 크기 2의 배열에, <code class="language-text">tmp[2] = {pos_a, pos_b}</code> (예시 - ‘10’, tmp[2]={3, 0})로 저장해야 비교 할 수 있습니다. 그리하여 다음 숫자의 위치와 이전 숫자의 위치 다음 숫자의 위치와 이전의 숫자 위치를 비교할 수 있습니다. 다소 헷갈릴 수 있는 설명인되, 뒷 부분에서 이해가 될 수 있을 것입니다.</p>
+<p>우리는 stack A에 최적에 요소들을 되돌리기 위한 stack B의 처음 수를 항상 고려해야 합니다. 그러나 stack B 전체를 반복함과 함께, 우리는 A로 보내야할 최적의 숫자를 찾거나, 혹은 찾지 못할 수도 있습니다.</p>
+<p>이제는 ‘7’ 이란 수의 위치를 계산해봅시다. 우리는 tmp[2] = {1, -1}를 얻을 것입니다.(음수 값은 걱정마세요. 뒤에서 이해가 되실 겁니다.) 이 수는 10의 위치 선정보단 낫지요. 그래서 현재 최적의 수는 10 대신 7이 됩니다.</p>
+<p>이번엔 6, tmp[2] = {1, 1}, 이 수의 경우 7과 똑같은 위치네요. 그렇기에 처음 시작으로 할 숫자는 변하지 않습니다. 그러면 4는 어떨까요? 4의 경우 tmp[2] = {1, -2} 이고, 그래서 최적의 숫자는 변하지 않습니다. 이제 어느정도 무슨 방식으로 작동하는지 이해가 되셨나요? 천천히 어떤 식으로 pos_a, pos_b의 작동 방식을 이해해보시길 바랍니다.</p>
+<p>이 예제에서, 우리는 쉽게 stack A에 7을 되돌려 넣을 수 있습니다. 하지만 만약에 7에 대해 tmp[2]={3, 2}으로 지정이 된다면, 그리고 이게 우리가 전달 가능한 최적의 숫자라면? 우리는 <code class="language-text">rb</code>를 2회, <code class="language-text">ra</code>를 3회 진행하면 됩니다. 하지만 이 경우 액션의 숫자를 최소화 시킬 순 없겠습니다.(<code class="language-text">rb</code> _ 2 + <code class="language-text">ra</code> _ 3 = <code class="language-text">5</code>)</p>
+<table>
+<thead>
+<tr>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center"><code class="language-text">top</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>a</strong></td>
+<td align="center"><strong>b</strong></td>
+</tr>
+<tr>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"><code class="language-text">bottom</code></td>
+</tr>
+</tbody>
+</table>
+<p>마지막에 이야기 한 경우를 생각해봅시다. stack A의 8은 ra _ 3, stack B 의 7은 rb _ 2가 필요합니다.
+이러한 경우 우리는 <code class="language-text">rr</code> 을 활용해서 액션의 숫자를 줄일 수 있습니다. (<code class="language-text">rr</code> _ 2 + ra _ 1 = <code class="language-text">3</code>).</p>
+<p>여기서 기억해야할 부분이, ra-rb 뿐 아니라, rra-rrb, sa-sb 액션들도 공통적으로 필요할 때 사용하는 방식을 활용한다면 훨씬 더 최적화 시키는 것이 가능합니다.</p>
+<p>stack B를 계속해서 회전시킬 때, 최근의 숫자의 위치가 top 혹은 bottom, 어느 곳에 위치하고 있는지를 알아야 합니다. 여기서 활용 가능한 방법은 음수 인덱스를 사용하는 것입니다. 즉, 스택 B의 아래쪽 절반에 숫자가 있는 경우 <code class="language-text">pos_b</code>를 음수로 저장하고 stack A의 올바른 위치가 아래쪽 절반에 있으면, <code class="language-text">pos_a</code> 역시 음수가 됩니다. 그럼에도 bottom의 중간 아래에 있는 수라고 해도 적절하게 처리할 수 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center">비고</th>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center">비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">←2번째 위치 A의 bottom, pos_a = -2</td>
+<td align="center">7</td>
+<td align="center">←3번째 위치 B의 bottom, pos_b = -3</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>a</strong></td>
+<td align="center"></td>
+<td align="center"><strong>b</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"></td>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>이제 최적의 숫자를 결정하기 위한 똑똑한 회전에 대한 신중한 고민을 할 때입니다. 이제 stack A 안에서 현재 숫자의 정확한 위치를 결정할수 있는 최대 움직임을 계산해야합니다. 예를 들여, 만약 우리가 생각하는 최적의 수를 ‘15’라고 한다면, 이는 stack B의 bottom 부에 존재합니다. 이는 tmp[2] = {-2, -3}일 것이고, 최대 움직임 횟수는 3이겠지요.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center">비고</th>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center">비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">rrr*2 + rrb</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">이렇게 하면</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">바꿔야 할 숫자의 위치가</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">top으로 바뀝니다.</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="center">15</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>a</strong></td>
+<td align="center"></td>
+<td align="center"><strong>b</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"></td>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>이제 어떤 식으로 계산이 되는지 이해가 되시나요? 확신이 안선다면 (pos_a * pos_b) 가 양수인지 확인하고 사용하면 될 겁니다.</p>
+<p>최적의 숫자가 중간을 기준으로 위쪽에 존재한다면, 동일하게 정용합니다. 그저 양수로 된 pos_a, pos_b를 사용하면 될 뿐입니다.</p>
+<p>음수의 횟수를 사용하는 경우는 중간을 기준으로 bottom 쪽에 배치된 숫자일 경우 사용하시면 됩니다. 하지만 stack을 회전시킬 때, pos_a의 절대 값, 그리고(혹은) pos_b의 절대값을 사용하면 됩니다.</p>
+<p>그러면 다시 원래 샘플을 보면서 이야기 해봅시다.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center"><code class="language-text">top</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center"><code class="language-text">7</code></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>a</strong></td>
+<td align="center"><strong>b</strong></td>
+</tr>
+<tr>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"><code class="language-text">bottom</code></td>
+</tr>
+</tbody>
+</table>
+<p>7을 옮겼습니다. 그러면 이제 동일한 작업을 진행하여, stack B를 비워줍니다.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center"><code class="language-text">top</code></th>
+<th align="center"><code class="language-text">top</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center"><code class="language-text">10</code></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center"><code class="language-text">6</code></td>
+<td align="center">-</td>
+<td align="center">0</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center"><code class="language-text">4</code></td>
+<td align="center">-</td>
+<td align="center">7</td>
+<td align="center">-</td>
+<td align="center">1</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">-</td>
+<td align="center">8</td>
+<td align="center">-</td>
+<td align="center">2</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">-</td>
+<td align="center">9</td>
+<td align="center">-</td>
+<td align="center">3</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">-</td>
+<td align="center">0</td>
+<td align="center">-</td>
+<td align="center">4</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">-</td>
+<td align="center">1</td>
+<td align="center">-</td>
+<td align="center">6</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">-</td>
+<td align="center">2</td>
+<td align="center">-</td>
+<td align="center">7</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">10</td>
+<td align="center">3</td>
+<td align="center">-</td>
+<td align="center">8</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">10</td>
+<td align="center">9</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>a</strong></td>
+<td align="center"><strong>b</strong></td>
+<td align="center"><strong>a</strong></td>
+<td align="center"><strong>b</strong></td>
+<td align="center"><strong>a</strong></td>
+<td align="center"><strong>b</strong></td>
+</tr>
+<tr>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"><code class="language-text">bottom</code></td>
+<td align="center"><code class="language-text">bottom</code></td>
+</tr>
+</tbody>
+</table>
+<p>진행 방향은 → 이쪽으로 진행이 됩니다.
+이렇게 정리하다보면 어느새 배열은 정돈이 되어 있습니다. 가장 마지막 해야할 일은 가장 적은 숫자로 stack A의 top에 가장 작은 숫자가 있는지 여부를 점검하는 것입니다.</p>
+<p>만약 이상적인 상태라면, 그야말로 최적이지만, 그렇지 않을 경우 <code class="language-text">ra</code>와 <code class="language-text">rra</code>를 활용해서 정돈을 하시면 됩니다</p>
+<p>축하드립니다. 성공적으로 stack A를 최소한의 액션 수로 정리하신 것이 됩니다. 😁</p>
+<p>깃허브를 참고하시면 수 많은 시각화 도구들이 존재합니다. 이걸 쓰는 것은 뭔가 잘못되었을 때만 참고 하시는게 가장 좋을 것으로 보입니다.</p>
+<h2 id="마무리를-지으면서" style="position:relative;"><a href="#%EB%A7%88%EB%AC%B4%EB%A6%AC%EB%A5%BC-%EC%A7%80%EC%9C%BC%EB%A9%B4%EC%84%9C" aria-label="마무리를 지으면서 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>마무리를 지으면서</h2>
+<p>해당 내용은 push swap에서도 어떤 방식으로 정렬하면 좋을지 꽤나 쉽게 정돈 되어 있던 문서이자, LIS 알고리즘을 활용한 것으로 보입니다. 알고리즘의 방식도 다양하고, 기존의 풀이한 분들 중에선, quick sort 나, greedy 방식을 이용하신 분들이 많은데, 해당 방식도 충분히 알고리즘으로써 가치가 있고, 훨씬 쉬운 접근이 아닐까 생각했습니다.</p>
+<p>구현해야할 일이 많긴 한데… 로직은 얼추 이해가 되었으니, 함수로 구현 및 푸시스왑을 위한 자료형을 어떤 식으로 짤지를 고민해 봐야겠습니다.</p>
+<div class="table-of-contents">
+<ul>
+<li>
+<p><a href="#prologue">Prologue</a></p>
+</li>
+<li>
+<p><a href="#push-swap">Push Swap</a></p>
+<ul>
+<li><a href="#%EA%B0%9C%EB%85%90-%EC%9E%A1%EA%B8%B0">개념 잡기</a></li>
+<li><a href="#%ED%97%88%EC%9A%A9-%EC%95%A1%EC%85%98-%EC%A0%95%EB%A6%AC%ED%95%B4%EB%B3%B4%EC%9E%90">허용 액션 정리해보자</a></li>
+<li><a href="#%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%9E%91%EB%8F%99%EB%90%98%EB%8A%94%EA%B0%80">어떻게 작동되는가?</a></li>
+<li><a href="#%EB%A7%88%EB%AC%B4%EB%A6%AC%EB%A5%BC-%EC%A7%80%EC%9C%BC%EB%A9%B4%EC%84%9C">마무리를 지으면서</a></li>
+</ul>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/algorithm/20220413_06/"><div class="direction">이전 글</div><div class="title">알고리즘 박살내기 - 06. 파이썬 기초(사전, 집합 자료형)</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+    window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
+      'G-YDPMMYNR6Y'
+    );
+    window.GATSBY_GTAG_PLUGIN_ANONYMIZE = true;
+
+    var options = {
+      send_page_view: false
+    };
+    if (true) {
+      options.anonymize_ip = true;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-YDPMMYNR6Y', options);
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/42 seoul/push_swap/20220413_push_swap/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-30421660458d39979c7c.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-30421660458d39979c7c.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-e8a2b168be1b8d9b7311.js" async=""></script></body></html>
