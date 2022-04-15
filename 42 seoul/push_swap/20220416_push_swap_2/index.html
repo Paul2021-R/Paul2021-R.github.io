@@ -48,789 +48,199 @@
         }
       }
     })
-  </script><title data-react-helmet="true">push swap 정복기(1)</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="push swap 정복기(1)"/><meta data-react-helmet="true" property="og:site_title" content="push swap 정복기(1)"/><meta data-react-helmet="true" name="description" content="Prologue 올 것이 왔습니다. 사실 C 언어 강의를 마무리 짓고, So_long이나 Minitalk을 통한 소켓통신 구현 등… 이런 녀석들에 대해선 부담이란걸 느낀 적은 없었습니다. 멘탈이 바스라질 일은 있었지만(so_long… ^^) 그렇다고 못할 수준이냐? 지금 생각하면 그렇진 않았습니다. 하지만 알고리즘은 확실히 부담이 느껴집니다. 이유는 수학을 손 놓은지 어언 몇 년째이고, 정리 정돈이라니…! 내가 제일 못 하는 부분 중에 하나를 들이밀다니. 😳 해본적 없는 걸 해보게 된다는 것 만큼 가슴 두근거리는(부정적으로) 일은 없을 것 같습니다. 그럼에도 인강도 듣고, 결국 해쳐서 해결해 나갈 것을 알기에… 제대로 빡세게 공부해보려고 합니다. 이왕 하는김에! 보너스까지!(이래놓고 so_long은 보너스 안 했지만(…)) 우선, 가이드로 제공되는 문서들을 찬찬히 훑어보먼서 핵심들 위주로 정리해보고자 합니다. 그 뒤에 실제 부분부분 구현부터 시작해서 진행해보겠습니다. Push Sw…"/><meta data-react-helmet="true" property="og:description" content="Prologue 올 것이 왔습니다. 사실 C 언어 강의를 마무리 짓고, So_long이나 Minitalk을 통한 소켓통신 구현 등… 이런 녀석들에 대해선 부담이란걸 느낀 적은 없었습니다. 멘탈이 바스라질 일은 있었지만(so_long… ^^) 그렇다고 못할 수준이냐? 지금 생각하면 그렇진 않았습니다. 하지만 알고리즘은 확실히 부담이 느껴집니다. 이유는 수학을 손 놓은지 어언 몇 년째이고, 정리 정돈이라니…! 내가 제일 못 하는 부분 중에 하나를 들이밀다니. 😳 해본적 없는 걸 해보게 된다는 것 만큼 가슴 두근거리는(부정적으로) 일은 없을 것 같습니다. 그럼에도 인강도 듣고, 결국 해쳐서 해결해 나갈 것을 알기에… 제대로 빡세게 공부해보려고 합니다. 이왕 하는김에! 보너스까지!(이래놓고 so_long은 보너스 안 했지만(…)) 우선, 가이드로 제공되는 문서들을 찬찬히 훑어보먼서 핵심들 위주로 정리해보고자 합니다. 그 뒤에 실제 부분부분 구현부터 시작해서 진행해보겠습니다. Push Sw…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-08617d2bf68de91db5cc.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/42 seoul/push_swap/20220413_push_swap/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">😳</div><div class="info"><div class="categories"><a class="category" href="/posts/42_seoul">42_seoul</a></div></div><h1 class="title">push swap 정복기(1)</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->April 13, 2022</div></header><div class="post-content"><div class="markdown"><h1 id="prologue" style="position:relative;"><a href="#prologue" aria-label="prologue permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Prologue</h1>
-<p>올 것이 왔습니다. 사실 C 언어 강의를 마무리 짓고, So_long이나 Minitalk을 통한 소켓통신 구현 등… 이런 녀석들에 대해선 부담이란걸 느낀 적은 없었습니다.</p>
-<p>멘탈이 바스라질 일은 있었지만(so_long… ^^) 그렇다고 못할 수준이냐? 지금 생각하면 그렇진 않았습니다.</p>
-<p>하지만 알고리즘은 확실히 부담이 느껴집니다. 이유는 수학을 손 놓은지 어언 몇 년째이고, 정리 정돈이라니…!</p>
-<p>내가 제일 못 하는 부분 중에 하나를 들이밀다니. 😳</p>
-<p>해본적 없는 걸 해보게 된다는 것 만큼 가슴 두근거리는(부정적으로) 일은 없을 것 같습니다.</p>
-<p>그럼에도 인강도 듣고, 결국 해쳐서 해결해 나갈 것을 알기에… 제대로 빡세게 공부해보려고 합니다. 이왕 하는김에! 보너스까지!(이래놓고 so_long은 보너스 안 했지만(…))</p>
-<p>우선, 가이드로 제공되는 문서들을 찬찬히 훑어보먼서 핵심들 위주로 정리해보고자 합니다. 그 뒤에 실제 부분부분 구현부터 시작해서 진행해보겠습니다.</p>
+  </script><title data-react-helmet="true">push swap 정복기(2) - LIS 하위 배열을 만들어보자.</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="push swap 정복기(2) - LIS 하위 배열을 만들어보자."/><meta data-react-helmet="true" property="og:site_title" content="push swap 정복기(2) - LIS 하위 배열을 만들어보자."/><meta data-react-helmet="true" name="description" content="Prologue 우선은 중간 정리.
+LIS 알고리즘으로 하겠다고 결정을 하고, 내용을 이해하고 구현할 수 있는 곳까지 구현을 마무리 지어봤습니다. 핵심적인 알고리즘을 다 마무리 하고 싶었지만, 추가로 사용하기 위한 것들을 만들다 터지고…, 서순을 잘못 하거나 하는 등으로 노드를 잘못 연결시킨다던가 하는 일들 때문에… 어느새 하루를 다 쓰고,  부터  까지 만들고나니 12시가… 😅 이러나 저러나 코드가 나름 순조롭게 진행 중인 것 같아. 다행이라면 다행인? 상황입니다. 알고리즘이라고 잔뜩 쫄았지만, 생각보다 알고리즘 자체에 대한 이해가 어느 정도 되고, 레퍼런스가 될만한 것들을 구글링 하면서 찾아보면서 나름 순조롭게 된것 같아 다행입니다. 그리하야… CS 공부를 하기 전 해놓았던 것들을 정리하는 글을 써 놓으려고 합니다. Push Swap LIS 의 핵심은 여기에 있다고 생각했습니다. 다른 소팅 방식도 있지만, 다른 소팅의 경우 기준이 될만한 것을 만든다기 보단, 분할 -&gt; 기준치를…"/><meta data-react-helmet="true" property="og:description" content="Prologue 우선은 중간 정리.
+LIS 알고리즘으로 하겠다고 결정을 하고, 내용을 이해하고 구현할 수 있는 곳까지 구현을 마무리 지어봤습니다. 핵심적인 알고리즘을 다 마무리 하고 싶었지만, 추가로 사용하기 위한 것들을 만들다 터지고…, 서순을 잘못 하거나 하는 등으로 노드를 잘못 연결시킨다던가 하는 일들 때문에… 어느새 하루를 다 쓰고,  부터  까지 만들고나니 12시가… 😅 이러나 저러나 코드가 나름 순조롭게 진행 중인 것 같아. 다행이라면 다행인? 상황입니다. 알고리즘이라고 잔뜩 쫄았지만, 생각보다 알고리즘 자체에 대한 이해가 어느 정도 되고, 레퍼런스가 될만한 것들을 구글링 하면서 찾아보면서 나름 순조롭게 된것 같아 다행입니다. 그리하야… CS 공부를 하기 전 해놓았던 것들을 정리하는 글을 써 놓으려고 합니다. Push Swap LIS 의 핵심은 여기에 있다고 생각했습니다. 다른 소팅 방식도 있지만, 다른 소팅의 경우 기준이 될만한 것을 만든다기 보단, 분할 -&gt; 기준치를…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-08617d2bf68de91db5cc.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/42 seoul/push_swap/20220416_push_swap_2/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">😂</div><div class="info"><div class="categories"><a class="category" href="/posts/42_seoul">42_seoul</a></div></div><h1 class="title">push swap 정복기(2) - LIS 하위 배열을 만들어보자.</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->April 16, 2022</div></header><div class="post-content"><div class="markdown"><h1 id="prologue" style="position:relative;"><a href="#prologue" aria-label="prologue permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Prologue</h1>
+<p>우선은 중간 정리.
+LIS 알고리즘으로 하겠다고 결정을 하고, 내용을 이해하고 구현할 수 있는 곳까지 구현을 마무리 지어봤습니다. 핵심적인 알고리즘을 다 마무리 하고 싶었지만, 추가로 사용하기 위한 것들을 만들다 터지고…, 서순을 잘못 하거나 하는 등으로 노드를 잘못 연결시킨다던가 하는 일들 때문에… 어느새 하루를 다 쓰고, <code class="language-text">sa</code> 부터 <code class="language-text">rrr</code> 까지 만들고나니 12시가… 😅</p>
+<p>이러나 저러나 코드가 나름 순조롭게 진행 중인 것 같아. 다행이라면 다행인? 상황입니다. 알고리즘이라고 잔뜩 쫄았지만, 생각보다 알고리즘 자체에 대한 이해가 어느 정도 되고, 레퍼런스가 될만한 것들을 구글링 하면서 찾아보면서 나름 순조롭게 된것 같아 다행입니다. 그리하야… CS 공부를 하기 전 해놓았던 것들을 정리하는 글을 써 놓으려고 합니다.</p>
 <h1 id="push-swap" style="position:relative;"><a href="#push-swap" aria-label="push swap permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Push Swap</h1>
-<h2 id="개념-잡기" style="position:relative;"><a href="#%EA%B0%9C%EB%85%90-%EC%9E%A1%EA%B8%B0" aria-label="개념 잡기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>개념 잡기</h2>
-<p>Push Swap 은 스택 2개를 제공합니다. 이 제공되는 스택 중 하나 (stack A)에는 정돈되지 않은 정수들이 들어 있으며, 여기서 알고리즘을 활용하고, 한 개의 추가적인 빈 스택을 최대한 활용해 최소한의 제공되는 명령어로 정렬을 해야하는 프로젝트입니다. 생각해보면 이상한 프로젝트이긴 합니다. 시간 복잡도도 공간 복잡도도 아닌, 절차로 제공되는 기믹들의 사용 횟수를 줄인다라는… 참 신기한 구성이지만 아마도 알고리즘을 이렇게 해서 재대로 곱씹지 않으면 못 해결하도록 유도한게 아닌가. 그렇기에 조금 공부를 했던 사람들 입장에선 당황스러운 과제가 되지 않을까 예상해봅니다.</p>
+<h2 id="lis" style="position:relative;"><a href="#lis" aria-label="lis permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LIS</h2>
+<p><code class="language-text">최장 증가 부분 수열(Longest Increasing Subsequence)</code>의 핵심은 여기에 있다고 생각했습니다. 다른 소팅 방식도 있지만, 다른 소팅의 경우 기준이 될만한 것을 만든다기 보단, 분할 -> 기준치를 만들고 그 기준으로 크기 비교하여 정리의 구조이다보니 자연스레 시간복잡도가 올라가게 되고, 최적화하는 과정에 대한 고민이 되더군요. 그런 점에서 LIS의 사용은 생각보다 괜찮다고 느꼈습니다. 물론 단점도 있지만 말이지요.</p>
+<p>LIS는 어떤 수열이 주어질 때 그 수열에서 몇 개의 수들을 제거하여 부분 수열을 만드는데, 이때 그 중 오름차순으로 정렬된 가장 긴 수열을 만들어내는 것입니다. 최장 증가 부분 수열(LIS) 라고 하며, 동적계획법(DP)으로 풀이를 한다고 보시면 됩니다.</p>
 <p><span
       class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 557px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 39.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA60lEQVQoz5VSCQqDQBDb/z/ID/gJQUXxxvvGe9qMrG5pC21gYEcz2UxYEYYhoYIg+Kk+8aMoItM0qSxLEvTEPM/0D7Zte/s2DANVVXUK5nnOpOM4XkpiXVdaloXP0zTxILDvOxfQNM0tGMfx5VIKYTBJEl7PcRwqioKHwavr+uJKftu2tyAIqiOg73vSdZ00TSPLsijLMh7CJmmavq3cdd0piHUQ7DiOvBqsIw/0cAUSLpQOMej7PjtFDz64kieQjW3b7Agk13U502+AsOd5V6Y4wzGEUQL5qU8BT0B9FnCj/pdntUfWhmGw8AMVg2R/ZTcSbgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+    style="padding-bottom: 16.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA3klEQVQI1xWO207CUBBF++H8QOMXEGICKtRSjsADH0BilJyUKgUL5VKBELyU1iqU3vSM+zxMMtlrT2YpbPGXXpkHajppwOa/jjY+ku4kZMzykf5yjm+evqjlFp4xy7ZyB4sMN7cb9g/VnyOBfIjJJWs6yVBpzQsqXfaoPvpOumt6K/c9kg86Hu1q5iFT2SPdLUWIXqCyAV1bYSpZuf9KlfsttVe0QSYu2pwg5CqwCG4ncY5wjy8WDDJYJjXT59r45IMJsCmYq01OAmbvkuGuQDeu8s+Hhn2M0BVV/jH4BxaGx3EgzDjEAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="push_swap"
-        title="push_swap"
-        src="/static/e77811a39dda92e31eff0739f8a3ffdf/37523/001_pushswap.png"
-        srcset="/static/e77811a39dda92e31eff0739f8a3ffdf/e9ff0/001_pushswap.png 180w,
-/static/e77811a39dda92e31eff0739f8a3ffdf/f21e7/001_pushswap.png 360w,
-/static/e77811a39dda92e31eff0739f8a3ffdf/37523/001_pushswap.png 720w,
-/static/e77811a39dda92e31eff0739f8a3ffdf/302a4/001_pushswap.png 1080w,
-/static/e77811a39dda92e31eff0739f8a3ffdf/f09ab/001_pushswap.png 1250w"
-        sizes="(max-width: 720px) 100vw, 720px"
+        alt="LIS"
+        title="LIS"
+        src="/static/5537c4b6573c95025a6acb1847e66937/30d00/006_array.png"
+        srcset="/static/5537c4b6573c95025a6acb1847e66937/e9ff0/006_array.png 180w,
+/static/5537c4b6573c95025a6acb1847e66937/f21e7/006_array.png 360w,
+/static/5537c4b6573c95025a6acb1847e66937/30d00/006_array.png 557w"
+        sizes="(max-width: 557px) 100vw, 557px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
         decoding="async"
       />
-    </span>
-이 과제에는 허용되는 액션이 정해져 있습니다.
-<strong>sa, sb, ss, ra, rb, rr, rra, rrb, rrr, pa, pb</strong></p>
-<h2 id="허용-액션-정리해보자" style="position:relative;"><a href="#%ED%97%88%EC%9A%A9-%EC%95%A1%EC%85%98-%EC%A0%95%EB%A6%AC%ED%95%B4%EB%B3%B4%EC%9E%90" aria-label="허용 액션 정리해보자 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>허용 액션 정리해보자</h2>
-<p>허용 되는 액션에 대해선 매우 깔끔하게 정리한 이미지들이 있습니다. 이를 적극 활용하려고 합니다(증말 만들어주신 분 땡큐…)
-우선 직접 번역하여 정리한 명령어들에 대한 설명은 다음과 같습니다.</p>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">sa</code> : (swap a) : 스택 a의 top 에 최초 2개의 요소를 스왑한다. 만약 거기에 한개 혹은 요소가 전혀 없다면 아무 일도 하면 안된다.</li>
-<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">sb</code> : (swap b) : 스택 b의 top에 최초 2개의 요소를 스왑한다. 만약 거기에 한개 혹은 요소가 전혀 없다면 아무 일도 하면 안된다.</li>
-<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">ss</code> : <code class="language-text">sa</code> 와 <code class="language-text">sb</code> 를 동시에 진행한다.</li>
-<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">pa</code> : (push a) : b의 top에 있는 첫 인자를 취해라 그리곤 a의 top에 그것을 넣어라. b 스택이 비어있다면 아무 것도 하면 안된다.</li>
-<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">pb</code> : (push b) : a의 top에 있는 첫 인자를 취해라 그리곤 b의 top에 그것을 넣어라. a 스택이 비어 있다면 아무것도 하면 안된다.</li>
-<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">ra</code> : (rotate a) : 스택 a의 모든 요소들을 1 씩 top 쪽으로 해라. 최초 멤버는 마지막이 된다.</li>
-<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">rb</code> : (rotate b) : 스택 b의 모든 요소들을 1씩 top 쩍ㅇ로 해라. 최초 멤버는 마지막이 된다.</li>
-<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">rr</code> : <code class="language-text">ra</code> 와 <code class="language-text">rb</code> 를 동시에 진행한다.</li>
-<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">rra</code> : (reverse rotate a) : 스택 a의 모든 요소를 1씩 bottom 쪽으로 해라. 마지막 멤버는 최초 멤버가 된다.</li>
-<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">rrb</code> : (reverse rotate b) : 스택 b의 모든 요소를 1씩 bottom 쪽으로 해라. 마지막 멤버는 최초 멤버가 된다.</li>
-<li class="task-list-item"><input type="checkbox" disabled> <code class="language-text">rrr</code> : <code class="language-text">rra</code> 와 <code class="language-text">rrb</code> 를 동시에 진행한다.</li>
-</ul>
-<p>주욱 읽어보면 대충 무슨 말인지 이해가 됩니다. 하지만 역시 한 방에 이해하는게 좋지 않겠는가? 바로 그림으로 설명하면 다음과 같습니다.</p>
-<p>단, 한 가지 기억해야 할 것은 원래 stack 구조는 전통적 <code class="language-text">top</code> 부분이 아래로 가게 표현해야 합니다.(반대로, <code class="language-text">bottom</code>은 위로 가야 합니다.) 하지만 이 그림을 만드신 분은 그런 전통적인 표현을 지키진 않은 것으로 보이니 주의 하십시오.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 67.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB1klEQVQ4y31Ta2+qUBDk//+ZNk3TT0365d6maUyNT1B8IVGjogiIiA+mO9seorb3bnIiHGZnZ2dXKwxDDAYDjEYjXMZut0MQBPqc5zkmk4niFovFFW6z2SCO4zLHWq1WSuY4DrbbLVggSRKkaapgQ0hMp9PBcDjEfr/Her3We+KzLFMccyzzMpvNlJBA/h4OB7AYgxiCi6KA7/uqhEpJzHviS0J+ZDCZyphUnM9YLpelQpLz2+l0QhRFpSIGBVAlgwVUIRMajQZarZZWjqVIo9lEr9dTYnrEwixaqVRQq9WwEeJIFH1Uq6jX65jP51pMCcnMZG88Rt918f70CLv6gYnY0O124XmeElINcWNp27XbeH24x6jfVxt6kkfbypYvw3t5RuSPy/fj8VhO0kQWLOE+3KGQwZjQlo0nNJSHz7v8oCrYIicZCyYUdUyggOl0qi3mUsjk8V5bPssAbs9RPA3DtSbqesgw8nOBVKbJItxJHaBgOajLXAv/iZUsdiLVg64D/+2v3k3Fp/R7TbgRt2HpmvxyzF5FomTebsJ9/YNMfAykVXpqCG/PD4WXhFxY27bhyAo12204si7B4ifhlcLfWjUgDohexXISUZdsv/4V9O1fLX8Ckl/l5F3ZFQAAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="series_s"
-        title="series_s"
-        src="/static/1370cd3b53c5b74feeda0830e15fc3c2/37523/002_series_s.png"
-        srcset="/static/1370cd3b53c5b74feeda0830e15fc3c2/e9ff0/002_series_s.png 180w,
-/static/1370cd3b53c5b74feeda0830e15fc3c2/f21e7/002_series_s.png 360w,
-/static/1370cd3b53c5b74feeda0830e15fc3c2/37523/002_series_s.png 720w,
-/static/1370cd3b53c5b74feeda0830e15fc3c2/302a4/002_series_s.png 1080w,
-/static/1370cd3b53c5b74feeda0830e15fc3c2/f213e/002_series_s.png 1192w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span>
-S 시리즈의 경우 <code class="language-text">top</code> 부분부터 시작하여 2개의 숫자의 <code class="language-text">위치</code>를 바꾸는 역할을 합니다.(swap)</p>
+    </span><em>이런 녀석에서</em>
 <span
       class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 557px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 66.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAABtUlEQVQ4y32SWU7DQBBEff+j8MEhEBJCQnxAcOzYxMq+Eid2djtp+jUZK5ilpdEsrilXVY+33W4lTVNhvq7NZiPn89nWeZ7LbreT5XIpZVlWmNPpZOeu4PCSJJF2uy3z+VyKoqiIu92u7SmI4jg2nPsO8X6/l16v902E1+l05HA4SL/ft4uj0ciIptNppYYzXGRZJuPxWCaTiQk4Ho+2/kYIEDWLxaKycVKi9XpdEa5WKyPlp6jiHBwzil00Zhl1s9lMfN+XwWAgpQLbGkMQBKYKMMpQw1mr1TJyihg4Gw6HVdYe1sgmDEMDxAoIGg2Joqg6xybhs4cgimIJX1+lqTi/2ZTkIoDZc9YKVWDNeHyQ5P5OMIEqvqEUJ6g1uzo3bm9kkbx/NUgz55sphBAw2TBYp5onYbOnQWDIhzWNI5q1XnZ33D1wHszWiMtgjz1ski2dO6gqzmgOeaHYYet3PamV6xh2ucycqrVzWUimCngu/5UprA/3cDdqM1eL/ecnWSnRLs8sJ/fj34ZXV+cIsYA1XzsZvr1J4+VFevoKshrhD4V/WWYmZEg/tEk0Y6kZEv41rl6fpdLokHvLmYkAAAAASUVORK5CYII='); background-size: cover; display: block;"
+    style="padding-bottom: 35.55555555555556%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAACIUlEQVQoz32Q3U9ScRjHfx3/mbrw0q2tVddddeFFmze9rVU6G6itGpimMw4avQwkFC3eX+UIODiQYSoGjJKRATYQlI3lBI8IyDnAgfN0/Ad6ts/2vfjueb7fB3Gjb2hahENnBC+FCqYdX9sOJDggubnwE4SSM0YsBVY8nWmJpvcZkRQ6T/GTUN4QI3mfr27h/A1bZJVdavoYK/gYWxS1RmfA2XcfzgSTdOzIfqjbV4G9qoe9sLZQ7h9rBB88AW5MRrHimeLWvUEoC17VYwVrXptXgSmr6nwDZ85F6VlFGIevbUcKsSOSWlUw0a4/Gi+tpz8nPQ0r625Z2G3v7K/2w4lyTTgJPLnKs6li5flroIenGmupxYynZQM/bQUnpdv11MywUjGe6xSKkorBxIb6ZcT5foDIqm956xaxq2p84f6h6I2TyqFEcGE8SMj6EreF3VmB6Hry7lCPJoBf0u4pr35KfLjCJ7uoS89eNuZU1+TfJd0oAG7GwVf0ckvHAVjeXTk1cvy19ipH/PZw9lMrpQE/EGGgtlC8tx+l7wwjfiHS5T4iTUqOFGEp0qeVyHQwh+QhHKENcIHujwK8NTOzDq5DDa/NB/PA/6bgPtYzhrQS1jrEDkLoAuSjWOSxsMsclGGG/BxmyCgxdfwdZsyqMD5h13zsLYb4ipS/aWNdJ/q/PNskbWl6aqYGcaSJkHVL8UvTDssl7SYAoHNuDtxA/5t/OMhzudLGVFUAAAAASUVORK5CYII='); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="series_rr"
-        title="series_rr"
-        src="/static/5371cbd25687f5c567dc02e7190411fb/37523/003_rr.png"
-        srcset="/static/5371cbd25687f5c567dc02e7190411fb/e9ff0/003_rr.png 180w,
-/static/5371cbd25687f5c567dc02e7190411fb/f21e7/003_rr.png 360w,
-/static/5371cbd25687f5c567dc02e7190411fb/37523/003_rr.png 720w,
-/static/5371cbd25687f5c567dc02e7190411fb/302a4/003_rr.png 1080w,
-/static/5371cbd25687f5c567dc02e7190411fb/e72de/003_rr.png 1198w"
-        sizes="(max-width: 720px) 100vw, 720px"
+        alt="LIS_example"
+        title="LIS_example"
+        src="/static/6441fb475e254b5deecb336d231d4bb4/30d00/007_lis.png"
+        srcset="/static/6441fb475e254b5deecb336d231d4bb4/e9ff0/007_lis.png 180w,
+/static/6441fb475e254b5deecb336d231d4bb4/f21e7/007_lis.png 360w,
+/static/6441fb475e254b5deecb336d231d4bb4/30d00/007_lis.png 557w"
+        sizes="(max-width: 557px) 100vw, 557px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
         decoding="async"
       />
-    </span>
-rr 시리즈 경우 <code class="language-text">top</code> 부분의 숫자를 <code class="language-text">bottom</code>으로 전달하고, 2번째 숫자가 <code class="language-text">top</code>으로 올라가게 만듭니다.</p>
-<span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 66.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB3klEQVQ4y21T7Y6aUBC97/8kmzTN/mqaJn0Du40W3O3CVkXlU7gICKiI0zmzXqp2J5ncAc6cOTNzUVpr8n2fqqqi/X5PbduKN00zxFmWEXBpmt5gEBs/HA5UFAWpKIokKMuSjJ3PZ9psNsMzYhDmeS6Jxo7HoxQzhiJquVyKmjAMhTiOY3lG3Pe9AFerFe12O+kiSZKBvOs6OY0hT6G64ziiAhWhFCq22+2gFgSe59F8Pqe6riUR5CiIbwYnhKfTSSqhdYBgaCMIfJkNzJCjC3xrL+8T7iYMIykCA16hBVQej8dkWxYlrPRtsSDLtsl5fZUWoR4KJpOJ4FzuKNU5Wc/PZHGO47osIBCswuYwty3PImMl7o8RjT490Ga9pjTTAoIqEOLEzHLGjR4/06+vX6isG3lv1CsMG4bWRXZZUDC1qdDZMBsUxXwRY24NbzN6mZKe/RFM37/ngkthAXAk4DxxUsEfPN4+AEeeb8ck+A6HQs9bUMULwB24zsWp6CMDKV8bzKVmUu2vqeGz5vYC/gmwTYO7N4U27h3WcbUKCncVzb5/ozbXMpbr6/SRq1th/whxznj77nRKLz+f6LdtUTyfUXG5Wte4G4X/d3seloRl4MrE7Iibyz9+X/za/gJAFuaKRytN0QAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="series_rrr"
-        title="series_rrr"
-        src="/static/350a1f22316a3a67c1f071b742ceafd2/37523/004_rrr.png"
-        srcset="/static/350a1f22316a3a67c1f071b742ceafd2/e9ff0/004_rrr.png 180w,
-/static/350a1f22316a3a67c1f071b742ceafd2/f21e7/004_rrr.png 360w,
-/static/350a1f22316a3a67c1f071b742ceafd2/37523/004_rrr.png 720w,
-/static/350a1f22316a3a67c1f071b742ceafd2/302a4/004_rrr.png 1080w,
-/static/350a1f22316a3a67c1f071b742ceafd2/187fa/004_rrr.png 1194w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span>
-rrr 시리즈 경우 <code class="language-text">bottom</code>의 숫자를 <code class="language-text">top</code> 으로 올리고, 나머지 숫자를 아래로 내립니다.</p>
-<span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 51.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABaUlEQVQoz12S626CQBCFff/HaWr7o+kDNE0aLQSx3iBcRJQKgnfldM8ks6FOMpllZ/abC9Or6xq32w1lWaIoChwOB1wuF1yvV7H7/V7s+XxG0zQSezqdwHebzcb6aOnv6WPCttst1uu1aBzHoNBPJWi322G1WiHPc4HRJkkCFSYSYFVVoirH4xGz2UzOmv1+vwuMIBXeaZy+62l1rEqFgOl0atsmtG1bqVoT85v+yWQiYAtksM5FhYFsh/ePLTO+W2EYhuK3QILooBKkEK1AW9ZKKYyhn1a//81wPp/D931kWcZe8DMew/M8+xd1hq7rYjQaYblcCiAIAjiOI1XSL0BmpS4WC0RRhNRAUzN8ntn2Y8tMHoYBYgNNTCyhnC0rtkDScwMpzW55728Y9p/wa/aSAAWyfc6oMve12U33tQ/n5Rm12dvGvLMtcxkZrH8qc7+RDr7s0Lno3SVvzV1rfNHnB9LhQM5d/x87rADeX4ZVYAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="series_p"
-        title="series_p"
-        src="/static/9c4535443aba11142cb8fb387f61cc4c/37523/005_series_p.png"
-        srcset="/static/9c4535443aba11142cb8fb387f61cc4c/e9ff0/005_series_p.png 180w,
-/static/9c4535443aba11142cb8fb387f61cc4c/f21e7/005_series_p.png 360w,
-/static/9c4535443aba11142cb8fb387f61cc4c/37523/005_series_p.png 720w,
-/static/9c4535443aba11142cb8fb387f61cc4c/302a4/005_series_p.png 1080w,
-/static/9c4535443aba11142cb8fb387f61cc4c/a13c9/005_series_p.png 1178w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span>
-p 시리즈는 명칭에 맞춰 자기 스택에서 지정된 스택으로 <code class="language-text">top</code> 부분의 숫자를 옴기는 역할을 합니다.</p></p>
-<p>정말 이해가 잘 되게 그린 그림이라 생각합니다. 이제 이걸 활용해서 알고리즘을 선택할 것이고, 선택한 알고리즘에 이 액션들을 적용하여 정리가 될 수 있도록 만들 것입니다.</p>
-<h2 id="어떻게-작동되는가" style="position:relative;"><a href="#%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%9E%91%EB%8F%99%EB%90%98%EB%8A%94%EA%B0%80" aria-label="어떻게 작동되는가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>어떻게 작동되는가?</h2>
-<p>우선, 스택 A에서 최장 증가 부분 수열(Longest Increasing Sequence, LIS)을 발견함으로 시작을 하면 좋을 것으로 생각됩니다. 예를 들면 이렇게 말이죠.</p>
+    </span><em>초록색으로 순차적인 수열을 만들면 됩니다.</em></p>
+<p>그렇다면 이해를 위해 좀더 들어가보도록 하겠습니다. 동적계획법에 대해 간단히 먼저 보고 가겠습니다.</p>
+<p>동적 계획법이란 ..</p>
 <blockquote>
-<p>최장증가부분수열에 대해선 이 <a href="https://chanhuiseok.github.io/posts/algo-49/">링크</a>를 참조하세요.</p>
+<p>“수학과 컴퓨터 과학, 그리고 경제학에서 동적 계획법(dynamic programming)이란 복잡한 문제를 간단한 여러 개의 문제로 나누어 푸는 방법을 말한다. 이것은 부분 문제 반복과 최적 부분 구조를 가지고 있는 알고리즘을 일반적인 방법에 비해 더욱 적은 시간 내에 풀 때 사용한다 -<a href="https://ko.wikipedia.org/wiki/%EB%8F%99%EC%A0%81_%EA%B3%84%ED%9A%8D%EB%B2%95">위키피디아</a>”</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center"><code class="language-text">top</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">7</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">9</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center"><code class="language-text">0</code></td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">6</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">10</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"><strong>A</strong></td>
-<td align="center"><strong>B</strong></td>
-</tr>
-<tr>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"><code class="language-text">bottom</code></td>
-</tr>
-</tbody>
-</table>
-<p>시작함과 동시에, stack A를 tmp라는 스택을 만들어 복사해야하고, 가장 작은 숫자(이 예시에선 <code class="language-text">0</code>)를 top에 넣어야 합니다. 스택의 절반의 bottom 부분 혹은 top에 숫자가 있는지 없는지에 따라서<code class="language-text">ra</code> 와 <code class="language-text">rra</code>를 사용할 것입니다.
-이번 샘플에 경우 top으로부터 5번째 위치에 있으므로, <code class="language-text">ra</code>를 사용합니다.</p>
-<table>
-<thead>
-<tr>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center"><code class="language-text">top</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><code class="language-text">0</code></td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">6</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">10</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">7</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">9</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"><strong>tmp</strong></td>
-<td align="center"><strong>B</strong></td>
-</tr>
-<tr>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"><code class="language-text">bottom</code></td>
-</tr>
-</tbody>
-</table>
-<p>이제 LIS 는 <code class="language-text">0, 1, 2, 3, 8, 9</code> 입니다. 이에 대한 튜토리얼들은 많이 찾아 볼 수 있으니 확인해보십시오.
-LIS 를 확보 했으니, Stack B 에 LIS에 속하지 않는 정수들을 옮겨 줍니다. 그래서 이런 식으로 정리 될 것입니다.</p>
-<table>
-<thead>
-<tr>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center"><code class="language-text">top</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">9</td>
-<td align="center">10</td>
-</tr>
-<tr>
-<td align="center">0</td>
-<td align="center">6</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td align="center">4</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">7</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"><strong>a</strong></td>
-<td align="center"><strong>b</strong></td>
-</tr>
-<tr>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"><code class="language-text">bottom</code></td>
-</tr>
-</tbody>
-</table>
-<p>다음으로 스택 B에서 스택 A로 정확한 위치로 push 할수 있는 가장 최선의 정수가 어떤 수인지를 정하는 것이 가장 중요합니다.</p>
-<p>우선, 매번 stack B의 top 위에 현재 숫자를 넣기 위해 필요한 이동수를 계산하고 저장하고자, 스택 B의 top에서 bottom까지 스택의 중간에 도달할 때까지 반복합니다. 스택 A에도 정확한 포지션에 놓기위해 움직임의 수를 계산하고 저장합니다.</p>
-<p>예를 들어, stack B의 top에 10을 놓기 위해, 필요시 되는 움직임의 숫자는 ‘0’ 입니다. 왜냐면 이미 top 에 있기 때문입니다. 정수 10은 stack A의 9, 0 사이에 들어가야 할 것입니다. 이를 위해 stack A에서 액션을 3회 시킬 필요가 있고, 그 뒤에 <code class="language-text">pb</code> 를 진행해야 합니다. 따라서 최종적으로 정수 10을 옮기기 위해선 정확히 4회의 액션이 필요한 것을 알 수 있습니다.</p>
-<p>그렇다면 어떻게 ‘10’ 의 적절한 위치를 알수 있을 까요?
-stack A에서 위치시켜야할 숫자들의 위치를 알기 위해 필요한 4가지 경우의 수가 있습니다. (stack A에 대해 우리는 top~bottom까지 반복시키고 있다는 사실을 기억해주세요.)</p>
+<p>사실 복잡한 내용은 지금 당장 설명한다고 나 역시 이해가 잘 되진 않습니다. 하지만 한 가지 확실한 것은, 이것이 가진 장점에 있다고 생각했습니다. 동적계획법의 경우 <code class="language-text">모든 방법</code>을 일일이 검토하여 최적의 해를 찾아내는 알고리즘입니다. 그리디 알고리즘과 분명하게 대비 되는 부분이 있는데, 그것은 그리디 알고리즘은 모든 해를 구하지 않고 순간 순간의 가장 최적의 해를 구합니다. 하지만, 이에 비해 동적 계획법은 모든 가능성을 찾아본 뒤의 결정을 진행합니다. 따라서 최선의 상태가 결정되게 될 경우 그 과정에선 느릴 순 있지만, 결과적으론 효율적이게 됩니다. 즉, 그리디에 비해선 <code class="language-text">과정의 시간이 오래걸리지만</code> 항상 <code class="language-text">최적의 해를 구할 수 있다</code>는 겁니다. 반대로 그리디의 경우 순간적인 최선을 선택하는 만큼 빠르지만, 순간적으로 고르는 결정이 궁극적인 최선은 아닐수 있다는 점이 차이일 수 있습니다.</p>
+<p>어쨌든, 이런 개념을 가지고 있는 동적계획법에 대해선 아직 부족함이 많지만, 분명한 것은 LIS 를 활용해 결정되는 수열은 이미 오름차순으로 정돈되는 결과를 가져옵니다. 그리곤 나머지 원소들을 스택 B로 옮기고, 그 옮긴 것들을 최대한 공통적인 명령어들로 수행시켜 위치에 옮겨준 뒤, 반복문을 통해 회전시켜(rotate) 주면 꽤나 빠른 형태로 정돈되지 않을까 생각해봤습니다.</p>
+<h2 id="그래서-lis-는-어떻게-구해봐야-할까" style="position:relative;"><a href="#%EA%B7%B8%EB%9E%98%EC%84%9C-lis-%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EA%B5%AC%ED%95%B4%EB%B4%90%EC%95%BC-%ED%95%A0%EA%B9%8C" aria-label="그래서 lis 는 어떻게 구해봐야 할까 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>그래서 LIS 는 어떻게 구해봐야 할까?</h2>
+<p>여기서부터는 역시 아직 자료구조를 배우지 않은 제 수준의 한계를 많이 느꼈습니다. 최초엔 직접 구현을 고려해보았으나 결정적으로 구현 과정에서 고려해야 할 요소들에 손이 미치지 못한 만큼 레퍼런스가 될 만한 로직을 보고 최대한 구현해보게 되었습니다. 참고로 한 글은 <a href="https://cocoon1787.tistory.com/713">여기</a>입니다.</p>
+<p>본 글에서 이야기 하는 핵심 아이디어는 이중 for문을 활용하는 방식과 이분 탐색을 활용하는 방식이었습니다. 결론적으로 push swap을 위해선 어떤게 최적의 방식인가? 에 대해선 이분탐색을 고려해보기로 했습니다. 그 이유는 아래와 같습니다.</p>
 <ol>
-<li><code class="language-text">A[size_of_stack_A - 1]</code>와 <code class="language-text">A[0]</code> 사이에 있습니다. [2, 3](이걸 한 번에 점검하면 된다.)</li>
-<li><code class="language-text">A[i]</code>, <code class="language-text">A[i+1]</code>의 사이에 있다. [3, 8]. i는 0부터 시작하여 <code class="language-text">stack A 의 크기의 절반</code>이며, 위의 사례의 경우 6입니다.</li>
-<li><code class="language-text">A[j]</code>, <code class="language-text">A[j-1]</code>의 사이에 있다. [1, 2]. j는 stack A의 사이즈 - 1부터 stack A의 절반 까지입니다.</li>
-<li>위의 모든 경우가 아닌 경우. 이 경우, <code class="language-text">현재 숫자는 두 스택의 최댓값</code>입니다. 스택 A의 최대 수의 위치(이 예에서는 인덱스 3, 9의 위치) 를 찾아야 하며, 여기에 10이 배치될 곳입니다.</li>
+<li>이중문을 활용한 경우, 결과에서 온전하게 LIS의 원소를 구할 순 있었지만, 문제는 <code class="language-text">중복</code>되어 들어간다는 점이 있었습니다. 이는 <code class="language-text">추가적인 필터링 기능</code>을 고려해봐야 했습니다.</li>
+<li>추가적인 필터링의 기능은 차치하더라도, 해당 알고리즘은 <code class="language-text">고정된 폭의 배열을 제공</code>하고, 받아내는 배열도 <code class="language-text">이미 길이가 얼마가 될지에 대해 알고 작성하는 방식</code>이었습니다. 즉, 동적으로 할당 해야 하며, 그런 와중에 어느정도 성능의 최적화를 고려한다면 이중 for 문의 형태를 개조해서 사용하는 로직은 타당치 않아 보였습니다.</li>
+<li>그에비해 이분탐색은 우선 <code class="language-text">시간 복잡도</code> 면에서 우수했습니다(<code class="language-text">n log n</code>).</li>
+<li>동시에 해당 방식을 활용할 경우 <code class="language-text">동적으로 배열을 할당하는게 어렵지 않았으며</code>, 처음에 적절하게 초기화만 이루게 되면 필요한 <code class="language-text">중복이 없는 단일 원소들의 LIS 배열을 구할 수 있다</code>는 점에서 매우 큰 강점이 있었습니다.</li>
 </ol>
-<p>이제 이 위치를 크기 2의 배열에, <code class="language-text">tmp[2] = {pos_a, pos_b}</code> (예시 - ‘10’, tmp[2]={3, 0})로 저장해야 비교 할 수 있습니다. 그리하여 다음 숫자의 위치와 이전 숫자의 위치 다음 숫자의 위치와 이전의 숫자 위치를 비교할 수 있습니다. 다소 헷갈릴 수 있는 설명인되, 뒷 부분에서 이해가 될 수 있을 것입니다.</p>
-<p>우리는 stack A에 최적에 요소들을 되돌리기 위한 stack B의 처음 수를 항상 고려해야 합니다. 그러나 stack B 전체를 반복함과 함께, 우리는 A로 보내야할 최적의 숫자를 찾거나, 혹은 찾지 못할 수도 있습니다.</p>
-<p>이제는 ‘7’ 이란 수의 위치를 계산해봅시다. 우리는 tmp[2] = {1, -1}를 얻을 것입니다.(음수 값은 걱정마세요. 뒤에서 이해가 되실 겁니다.) 이 수는 10의 위치 선정보단 낫지요. 그래서 현재 최적의 수는 10 대신 7이 됩니다.</p>
-<p>이번엔 6, tmp[2] = {1, 1}, 이 수의 경우 7과 똑같은 위치네요. 그렇기에 처음 시작으로 할 숫자는 변하지 않습니다. 그러면 4는 어떨까요? 4의 경우 tmp[2] = {1, -2} 이고, 그래서 최적의 숫자는 변하지 않습니다. 이제 어느정도 무슨 방식으로 작동하는지 이해가 되셨나요? 천천히 어떤 식으로 pos_a, pos_b의 작동 방식을 이해해보시길 바랍니다.</p>
-<p>이 예제에서, 우리는 쉽게 stack A에 7을 되돌려 넣을 수 있습니다. 하지만 만약에 7에 대해 tmp[2]={3, 2}으로 지정이 된다면, 그리고 이게 우리가 전달 가능한 최적의 숫자라면? 우리는 <code class="language-text">rb</code>를 2회, <code class="language-text">ra</code>를 3회 진행하면 됩니다. 하지만 이 경우 액션의 숫자를 최소화 시킬 순 없겠습니다.(<code class="language-text">rb</code> _ 2 + <code class="language-text">ra</code> _ 3 = <code class="language-text">5</code>)</p>
-<table>
-<thead>
-<tr>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center"><code class="language-text">top</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">7</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"><strong>a</strong></td>
-<td align="center"><strong>b</strong></td>
-</tr>
-<tr>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"><code class="language-text">bottom</code></td>
-</tr>
-</tbody>
-</table>
-<p>마지막에 이야기 한 경우를 생각해봅시다. stack A의 8은 ra _ 3, stack B 의 7은 rb _ 2가 필요합니다.
-이러한 경우 우리는 <code class="language-text">rr</code> 을 활용해서 액션의 숫자를 줄일 수 있습니다. (<code class="language-text">rr</code> _ 2 + ra _ 1 = <code class="language-text">3</code>).</p>
-<p>여기서 기억해야할 부분이, ra-rb 뿐 아니라, rra-rrb, sa-sb 액션들도 공통적으로 필요할 때 사용하는 방식을 활용한다면 훨씬 더 최적화 시키는 것이 가능합니다.</p>
-<p>stack B를 계속해서 회전시킬 때, 최근의 숫자의 위치가 top 혹은 bottom, 어느 곳에 위치하고 있는지를 알아야 합니다. 여기서 활용 가능한 방법은 음수 인덱스를 사용하는 것입니다. 즉, 스택 B의 아래쪽 절반에 숫자가 있는 경우 <code class="language-text">pos_b</code>를 음수로 저장하고 stack A의 올바른 위치가 아래쪽 절반에 있으면, <code class="language-text">pos_a</code> 역시 음수가 됩니다. 그럼에도 bottom의 중간 아래에 있는 수라고 해도 적절하게 처리할 수 있습니다.</p>
-<table>
-<thead>
-<tr>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center">비고</th>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center">비고</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">-</td>
-<td align="center"></td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center"></td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center"></td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center"></td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">←2번째 위치 A의 bottom, pos_a = -2</td>
-<td align="center">7</td>
-<td align="center">←3번째 위치 B의 bottom, pos_b = -3</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="center"></td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center"></td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center"></td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"><strong>a</strong></td>
-<td align="center"></td>
-<td align="center"><strong>b</strong></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"></td>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"></td>
-</tr>
-</tbody>
-</table>
-<p>이제 최적의 숫자를 결정하기 위한 똑똑한 회전에 대한 신중한 고민을 할 때입니다. 이제 stack A 안에서 현재 숫자의 정확한 위치를 결정할수 있는 최대 움직임을 계산해야합니다. 예를 들여, 만약 우리가 생각하는 최적의 수를 ‘15’라고 한다면, 이는 stack B의 bottom 부에 존재합니다. 이는 tmp[2] = {-2, -3}일 것이고, 최대 움직임 횟수는 3이겠지요.</p>
-<table>
-<thead>
-<tr>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center">비고</th>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center">비고</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">-</td>
-<td align="center"></td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">rrr*2 + rrb</td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">이렇게 하면</td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">바꿔야 할 숫자의 위치가</td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">top으로 바뀝니다.</td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center"></td>
-<td align="center">15</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">16</td>
-<td align="center"></td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center"></td>
-<td align="center">-</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"><strong>a</strong></td>
-<td align="center"></td>
-<td align="center"><strong>b</strong></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"></td>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"></td>
-</tr>
-</tbody>
-</table>
-<p>이제 어떤 식으로 계산이 되는지 이해가 되시나요? 확신이 안선다면 (pos_a * pos_b) 가 양수인지 확인하고 사용하면 될 겁니다.</p>
-<p>최적의 숫자가 중간을 기준으로 위쪽에 존재한다면, 동일하게 정용합니다. 그저 양수로 된 pos_a, pos_b를 사용하면 될 뿐입니다.</p>
-<p>음수의 횟수를 사용하는 경우는 중간을 기준으로 bottom 쪽에 배치된 숫자일 경우 사용하시면 됩니다. 하지만 stack을 회전시킬 때, pos_a의 절대 값, 그리고(혹은) pos_b의 절대값을 사용하면 됩니다.</p>
-<p>그러면 다시 원래 샘플을 보면서 이야기 해봅시다.</p>
-<table>
-<thead>
-<tr>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center"><code class="language-text">top</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center"><code class="language-text">7</code></td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">9</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">0</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td align="center">10</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">6</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">4</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"><strong>a</strong></td>
-<td align="center"><strong>b</strong></td>
-</tr>
-<tr>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"><code class="language-text">bottom</code></td>
-</tr>
-</tbody>
-</table>
-<p>7을 옮겼습니다. 그러면 이제 동일한 작업을 진행하여, stack B를 비워줍니다.</p>
-<table>
-<thead>
-<tr>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center"><code class="language-text">top</code></th>
-<th align="center"><code class="language-text">top</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-<td align="center">-</td>
-<td align="center">-</td>
-<td align="center"><code class="language-text">10</code></td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">-</td>
-<td align="center"><code class="language-text">6</code></td>
-<td align="center">-</td>
-<td align="center">0</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center"><code class="language-text">4</code></td>
-<td align="center">-</td>
-<td align="center">7</td>
-<td align="center">-</td>
-<td align="center">1</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">7</td>
-<td align="center">-</td>
-<td align="center">8</td>
-<td align="center">-</td>
-<td align="center">2</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="center">-</td>
-<td align="center">9</td>
-<td align="center">-</td>
-<td align="center">3</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">9</td>
-<td align="center">-</td>
-<td align="center">0</td>
-<td align="center">-</td>
-<td align="center">4</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">0</td>
-<td align="center">-</td>
-<td align="center">1</td>
-<td align="center">-</td>
-<td align="center">6</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td align="center">-</td>
-<td align="center">2</td>
-<td align="center">-</td>
-<td align="center">7</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">10</td>
-<td align="center">3</td>
-<td align="center">-</td>
-<td align="center">8</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">6</td>
-<td align="center">4</td>
-<td align="center">10</td>
-<td align="center">9</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"><strong>a</strong></td>
-<td align="center"><strong>b</strong></td>
-<td align="center"><strong>a</strong></td>
-<td align="center"><strong>b</strong></td>
-<td align="center"><strong>a</strong></td>
-<td align="center"><strong>b</strong></td>
-</tr>
-<tr>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"><code class="language-text">bottom</code></td>
-<td align="center"><code class="language-text">bottom</code></td>
-</tr>
-</tbody>
-</table>
-<p>진행 방향은 → 이쪽으로 진행이 됩니다.
-이렇게 정리하다보면 어느새 배열은 정돈이 되어 있습니다. 가장 마지막 해야할 일은 가장 적은 숫자로 stack A의 top에 가장 작은 숫자가 있는지 여부를 점검하는 것입니다.</p>
-<p>만약 이상적인 상태라면, 그야말로 최적이지만, 그렇지 않을 경우 <code class="language-text">ra</code>와 <code class="language-text">rra</code>를 활용해서 정돈을 하시면 됩니다</p>
-<p>축하드립니다. 성공적으로 stack A를 최소한의 액션 수로 정리하신 것이 됩니다. 😁</p>
-<p>깃허브를 참고하시면 수 많은 시각화 도구들이 존재합니다. 이걸 쓰는 것은 뭔가 잘못되었을 때만 참고 하시는게 가장 좋을 것으로 보입니다.</p>
+<h2 id="구현-결과" style="position:relative;"><a href="#%EA%B5%AC%ED%98%84-%EA%B2%B0%EA%B3%BC" aria-label="구현 결과 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>구현 결과</h2>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c">include <span class="token string">"../includes/pushswap.h"</span>
+
+<span class="token keyword">int</span>	<span class="token function">lower_bound</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>array<span class="token punctuation">,</span> <span class="token keyword">int</span> value<span class="token punctuation">,</span> <span class="token keyword">int</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> e<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">int</span>	mid<span class="token punctuation">;</span>
+
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>s <span class="token operator">&lt;</span> e<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		mid <span class="token operator">=</span> s <span class="token operator">+</span> <span class="token punctuation">(</span>e <span class="token operator">-</span> s<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">&lt;=</span> array<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span>
+			e <span class="token operator">=</span> mid<span class="token punctuation">;</span>
+		<span class="token keyword">else</span>
+			s <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span>	<span class="token function">make_lis</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>array<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span>ret<span class="token punctuation">,</span> <span class="token keyword">int</span> ref_i<span class="token punctuation">,</span> <span class="token keyword">int</span> max_len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">int</span>	i<span class="token punctuation">;</span>
+	<span class="token keyword">int</span>	j<span class="token punctuation">;</span>
+	<span class="token keyword">int</span>	pos<span class="token punctuation">;</span>
+
+	i <span class="token operator">=</span> ref_i<span class="token punctuation">;</span>
+	j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">++</span>i <span class="token operator">&lt;</span> max_len<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>ret<span class="token punctuation">)</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+			<span class="token punctuation">(</span><span class="token operator">*</span>ret<span class="token punctuation">)</span><span class="token punctuation">[</span>j<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+			<span class="token comment">// 순수하게 기준되는 (*ret)[j - 1] 값 보다작은 값이면, j 위치에 넣습니다.</span>
+		<span class="token keyword">else</span>
+		<span class="token punctuation">{</span>
+			pos <span class="token operator">=</span> <span class="token function">lower_bound</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>ret<span class="token punctuation">)</span><span class="token punctuation">,</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token comment">// 처음부터 현재 원소가 들어간 지점까지를 훑어서 더 작은 값이라면 해당 위치에 삽입됩니다.</span>
+			<span class="token punctuation">(</span><span class="token operator">*</span>ret<span class="token punctuation">)</span><span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span>	<span class="token function">find_lis_len</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>array<span class="token punctuation">,</span> <span class="token keyword">int</span> max_len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">int</span>	ret<span class="token punctuation">;</span>
+
+	ret <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>ret <span class="token operator">&lt;</span> max_len<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>ret<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> array<span class="token punctuation">[</span>ret <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+			<span class="token keyword">break</span> <span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>ret<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> ret <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">==</span> max_len<span class="token punctuation">)</span>
+			<span class="token keyword">break</span> <span class="token punctuation">;</span>
+		ret<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>ret<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span>	<span class="token function">get_lis</span><span class="token punctuation">(</span>t_pushlist <span class="token operator">*</span><span class="token operator">*</span>push<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">int</span>	<span class="token operator">*</span>lis_arr<span class="token punctuation">;</span>
+	<span class="token keyword">int</span>	i<span class="token punctuation">;</span>
+	<span class="token keyword">int</span>	pivot<span class="token punctuation">;</span>
+
+	pivot <span class="token operator">=</span> <span class="token function">find_minimun</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>push<span class="token punctuation">)</span><span class="token operator">-></span>array<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token operator">*</span>push<span class="token punctuation">)</span><span class="token operator">-></span>max_len<span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 기준이 되는 최솟값을 찾습니다.</span>
+	<span class="token comment">/* 위의 명령을 통해 인덱스를 지정합니다.
+	이는 앞 부분에서 작은 수가 들어올 때마다 자리를 내주기 때문에
+	이왕 이렇게 된거 스킵을 해버리는 단계입니다.*/</span>
+	pivot <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>push<span class="token punctuation">)</span><span class="token operator">-></span>max_len <span class="token operator">-</span> i<span class="token punctuation">;</span>
+	lis_arr <span class="token operator">=</span> <span class="token function">array_malloc_to_zero</span><span class="token punctuation">(</span>pivot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 필요한 양 만큼만 동적 할당을 진행합니다.</span>
+	<span class="token punctuation">(</span><span class="token operator">*</span>push<span class="token punctuation">)</span><span class="token operator">-></span>lis_len <span class="token operator">=</span> pivot<span class="token punctuation">;</span>
+	lis_arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>push<span class="token punctuation">)</span><span class="token operator">-></span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 첫 값을 지정합니다.</span>
+	<span class="token function">make_lis</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>push<span class="token punctuation">)</span><span class="token operator">-></span>array<span class="token punctuation">,</span> <span class="token operator">&amp;</span>lis_arr<span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token operator">*</span>push<span class="token punctuation">)</span><span class="token operator">-></span>max_len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// make_lis 함수를 활용해서 LIS 값을 while 문 안에서 돌려서 탐색합니다.</span>
+	<span class="token function">free</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>push<span class="token punctuation">)</span><span class="token operator">-></span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 기존에 array에 스택 A에 들어갈 초기 값으로 배열은 초기화하고</span>
+	<span class="token punctuation">(</span><span class="token operator">*</span>push<span class="token punctuation">)</span><span class="token operator">-></span>array <span class="token operator">=</span> lis_arr<span class="token punctuation">;</span>
+	<span class="token comment">// 새로운 배열을 해당 구조체에 지정함으로써, 배열 정렬을 위한 과정을 준비합니다.</span>
+	<span class="token punctuation">(</span><span class="token operator">*</span>push<span class="token punctuation">)</span><span class="token operator">-></span>lis_len <span class="token operator">=</span> <span class="token function">find_lis_len</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>push<span class="token punctuation">)</span><span class="token operator">-></span>array<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token operator">*</span>push<span class="token punctuation">)</span><span class="token operator">-></span>lis_len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">/*
+	만들어놓은 LIS의 문제가 하나 있었습니다. 이는 필요한 양을 동적으로 할당하는 것은 좋지만,
+	LIS 를 만드는 과정에서 실제 LIS는 동적할당한 배열의 길이보다 짧을 수 있다는 점이 었습니다.
+	따라서 이에 대하여 명확한 끝이 어딘지를 다시 탐색하는 과정이 필요했습니다.
+	*/</span>
+	<span class="token keyword">return</span> <span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>상당히 긴 것 가지만… 여하튼 이렇게 구현 로직을 활용하고, 이분 탐색으로 값 사이 작은 값들을 앞 쪽으로 보내는 방식으로 하면 결과를 이렇게 얻을 수 있습니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 84.44444444444446%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABYlAAAWJQFJUiTwAAAD+ElEQVQ4y42SW0wcZRTHP1+UghSWvc/Mtzt7m9nhvrO0cYElMbS2WpRysYKAi7i70N1SqNWKNhbLrVoQbGmLdmNNXzQ1sBWTpvHFNxMTX4xP+oJVpFzc0nQNZsPY7/jNbhNRSXSSX86ZSc5J/uc3CD6+hr45PblzdnbE+vb1eTw8fhGPDY/i4aExPDpyBk+9ew7PXLqML0xfxmfGJvHQ6Xfwe1MzeGJ8Gk9MXMCfXvscz83dsF689IFm/sZNhAAALX/39WRi7Uf4+c5vG2tryVRi5U4qsbqeWltOpBZvLaWWf1lLLS/epnUptbK0TL+vpuvq7ZVU8u69jXuJu7Dww62r6i60sPg9ivSGPhw8NQonXn3zj45ACAIv9kBn12EIho9A+wtBaG3rhLZAH0SOjkDvsVGI9o9AtC9D5Ojw/WD0DWgJBz5LLzz/7RX0eMe+WMtbbXBkpG+zK9hD+o8dJ63tAZKrNRMDayP5eoZozDJhnE8QzlVL2UNYZy1hHGq/V2HEGsgT2XgfLCDke6YOcYIr5pZl8Fb6lVLZR8QiDzilMtCZbRQe9IwN9GYMWiOzHYrWyIJOb4l3dX6E0L6n25FDKI5JJRXgksoVOkzydCyoFBgtD7DSQQwaA7sdSoGBA42Oi7eE3kcoHH0dlXkei1X694BnV5WiRjRhJ6iwvAAWRyGwVheY+XKwuf1gl6rT2NzVwItVYHf7FV7ygUl0xmfgd4Q++ek6OhCuj4XP9sDA5EklEu0nAwMnIdgdAatDAt5VBBzvAuyqAbenASS5HiTPQdrXg7tc7RsUwfsksF4xflOVUlG3HzGCMybI5SBXVqdv6C7xpm+o3k5jwA9is5CvN0G+zkzrVkyKRs+ARsvFm1vPI1TfHESCuzxW6vFBYekuhUalVjlQ0ZqsaSkZqBjG/jd0maqovdZkiYfOziJUW9eCeFdhTCyWgdpVWF4k6gJ12VYpBUZ6eAOzHVQKm5byXOcMQsHDr6WlVFEp3t1+KsVOjJwDTBSGyuBsIjAWKslaBlahioqozCBU0nefWhWLuBuMgiN+Dn5F6MuNr1Bj9NlY93gEeof6N4PhCHn5+AnSHniJcLxA7GIJrS5iEWqIJDeRIm8DKaRIMsVzkBTJTZtixQHgvOLcF6qUulAAYUm4YimWwMDb7tN/UY0ONqH4r8imLZH1/4pMNJnI84c6aGS724fytexUgZ4O6vF6no5J7tQySfpjJ+kd/wGf1G1Bm2FdvXmBEV9teWUapZ+snBx+x6O5/qzsHH92Tm6aHZSHs7L/F49k5dTQ6qSrHkKcvRD5n2pHtY3d6FBkFDWGTqGm0GCG8OB/9urM3uYIqtr/PDJZBPQnHr8MCqV6Lf8AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="real_example"
+        title="real_example"
+        src="/static/37a7d485d0491b8f64924247791768c4/37523/008_final_lis.png"
+        srcset="/static/37a7d485d0491b8f64924247791768c4/e9ff0/008_final_lis.png 180w,
+/static/37a7d485d0491b8f64924247791768c4/f21e7/008_final_lis.png 360w,
+/static/37a7d485d0491b8f64924247791768c4/37523/008_final_lis.png 720w,
+/static/37a7d485d0491b8f64924247791768c4/302a4/008_final_lis.png 1080w,
+/static/37a7d485d0491b8f64924247791768c4/07a9c/008_final_lis.png 1440w,
+/static/37a7d485d0491b8f64924247791768c4/93582/008_final_lis.png 1524w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span><em>확실하게 참고한 글과 동일한 결과를, 제가 직접 넣은 테스트 케이스에서도 정상 작동합니다</em></p>
+<h2 id="앞으로-남은-것은" style="position:relative;"><a href="#%EC%95%9E%EC%9C%BC%EB%A1%9C-%EB%82%A8%EC%9D%80-%EA%B2%83%EC%9D%80" aria-label="앞으로 남은 것은 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>앞으로 남은 것은?</h2>
+<p>가이드로 제공되는 문서들이나 힌트들을 종합해보면 LIS를 구한 뒤의 로직은 생각 이상으로 간단합니다.</p>
+<ol>
+<li>LIS를 기반으로 스택 A에서 <code class="language-text">LIS에 속하지 않는 원소들</code>을 <code class="language-text">스택 B</code>로 옮깁니다.</li>
+<li>분할 된 스택 A, B 사이에서 스택 B의 원소 중 가장 <code class="language-text">최적의 숫자</code>를 선정하는 로직을 만들어냅니다.</li>
+<li>해당 로직에 따라 B의 원소를 옮기기 위한 <code class="language-text">공통 액션(ss, rr, rrr) + 개별 액션</code>을 선택할 수 있는 알고리즘을 활용하여 옮긴다.</li>
+<li>끗.</li>
+</ol>
+<p>가장 핵심이 2번과 3번인데 이 녀석들이 진짜 가장 문제로 보여집니다. 가이드나 각종 문서들을 보긴 했지만 전혀 이해가 안된다는게 유머(…). 1번까지는 이미 구현이 완료되었고, 알고리즘 완성 후 버그나 생각 못한 예외 케이스에 대한 검토만 하면 됩니다. 대충 머릿속에 떠오르는 로직은 존재하지만, 그대로 했다간 최적화면에서 아주 꽝이리란 불안감이 있다보니(…) 좀더 고민을 하면서 적용 가능한 경우의 수를 선택하여 로직을 짜보는 방식으로 해봐야 하리라 생각합니다..</p>
 <h2 id="마무리를-지으면서" style="position:relative;"><a href="#%EB%A7%88%EB%AC%B4%EB%A6%AC%EB%A5%BC-%EC%A7%80%EC%9C%BC%EB%A9%B4%EC%84%9C" aria-label="마무리를 지으면서 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>마무리를 지으면서</h2>
-<p>해당 내용은 push swap에서도 어떤 방식으로 정렬하면 좋을지 꽤나 쉽게 정돈 되어 있던 문서이자, LIS 알고리즘을 활용한 것으로 보입니다. 알고리즘의 방식도 다양하고, 기존의 풀이한 분들 중에선, quick sort 나, greedy 방식을 이용하신 분들이 많은데, 해당 방식도 충분히 알고리즘으로써 가치가 있고, 훨씬 쉬운 접근이 아닐까 생각했습니다.</p>
-<p>구현해야할 일이 많긴 한데… 로직은 얼추 이해가 되었으니, 함수로 구현 및 푸시스왑을 위한 자료형을 어떤 식으로 짤지를 고민해 봐야겠습니다.</p>
+<p>원래는 LIS + 구현에 핵심인 명령어들 구현한 것도 함께 포스팅을 하고 싶었으나, 그러기엔 양의 압박이 심각할 것으로 보여(..) 여기서 마치려고 합니다. 여전히 LIS를 구하는 방식에도 최적화가 좀더 들어갈 수 있으리란 생각이 들긴 합니다. 이 글을 작성하던 중간에도 갑자기 생각나서 수정을 하긴 했는데(…) 역시 생각하면 할 수록 더 최적화가 되는 것이 아닌가 생각이 드네요.😂 다음주 중에는 마무리 짓고 필로소퍼를 도전 + 벌써 3트째인(…) 시험을 통과할 수 있길 ㅎㅎ;</p>
 <p><strong>😎 push swap 과제 시리즈 😎</strong></p>
 <p><a href="https://paul2021-r.github.io/42%20seoul/push_swap/20220413_push_swap/">push swap 정복기(1)</a></p>
 <p><a href="https://paul2021-r.github.io/42%20seoul/push_swap/20220416_push_swap/">push swap 정복기(2)</a></p>
@@ -842,14 +252,15 @@ stack A에서 위치시켜야할 숫자들의 위치를 알기 위해 필요한 
 <li>
 <p><a href="#push-swap">Push Swap</a></p>
 <ul>
-<li><a href="#%EA%B0%9C%EB%85%90-%EC%9E%A1%EA%B8%B0">개념 잡기</a></li>
-<li><a href="#%ED%97%88%EC%9A%A9-%EC%95%A1%EC%85%98-%EC%A0%95%EB%A6%AC%ED%95%B4%EB%B3%B4%EC%9E%90">허용 액션 정리해보자</a></li>
-<li><a href="#%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%9E%91%EB%8F%99%EB%90%98%EB%8A%94%EA%B0%80">어떻게 작동되는가?</a></li>
+<li><a href="#lis">LIS</a></li>
+<li><a href="#%EA%B7%B8%EB%9E%98%EC%84%9C-lis-%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EA%B5%AC%ED%95%B4%EB%B4%90%EC%95%BC-%ED%95%A0%EA%B9%8C">그래서 LIS 는 어떻게 구해봐야 할까?</a></li>
+<li><a href="#%EA%B5%AC%ED%98%84-%EA%B2%B0%EA%B3%BC">구현 결과</a></li>
+<li><a href="#%EC%95%9E%EC%9C%BC%EB%A1%9C-%EB%82%A8%EC%9D%80-%EA%B2%83%EC%9D%80">앞으로 남은 것은?</a></li>
 <li><a href="#%EB%A7%88%EB%AC%B4%EB%A6%AC%EB%A5%BC-%EC%A7%80%EC%9C%BC%EB%A9%B4%EC%84%9C">마무리를 지으면서</a></li>
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/algorithm/20220413_06/"><div class="direction">이전 글</div><div class="title">알고리즘 박살내기 - 06. 파이썬 기초(사전, 집합 자료형)</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/algorithm/20220414_07/"><div class="direction">다음 글</div><div class="title">알고리즘 박살내기 - 07. 파이썬 기초(기본 입출력)</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/algorithm/20220415_08/"><div class="direction">이전 글</div><div class="title">알고리즘 박살내기 - 08. 파이썬 기초(조건문)</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
@@ -867,4 +278,4 @@ stack A에서 위치시켜야할 숫자들의 위치를 알기 위해 필요한 
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', 'G-YDPMMYNR6Y', options);
-  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/42 seoul/push_swap/20220413_push_swap/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-79d732fed22ff3d3f034.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-79d732fed22ff3d3f034.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-08617d2bf68de91db5cc.js" async=""></script></body></html>
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/42 seoul/push_swap/20220416_push_swap_2/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-79d732fed22ff3d3f034.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-79d732fed22ff3d3f034.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-08617d2bf68de91db5cc.js" async=""></script></body></html>
