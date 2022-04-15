@@ -817,7 +817,7 @@
   padding: 0.2em 0.4em;
   margin: 0;
   font-size: 85%;
-  background-color: rgba(27, 31, 35, 0.05);
+  background-color: rgba(66, 68, 69, 0.05);
   border-radius: 3px;
 }
 
@@ -825,8 +825,22 @@
   word-wrap: normal;
 }
 
-.markdown pre>code {
+.gatsby-highlight pre[class*="language-"].line-numbers {
   padding: 0;
+  padding-left: 3em;
+  overflow: auto;
+}
+
+.gatsby-highlight {
+  background-color: rgb(245, 242, 240);
+  border-radius: 0.3em;
+  margin: 0.5em 0;
+  padding: 0.5em 1em 0.5em;
+  overflow: auto;
+}
+
+.markdown pre>code {
+  padding: 2.8em;
   margin: 0;
   font-size: 100%;
   word-break: normal;
