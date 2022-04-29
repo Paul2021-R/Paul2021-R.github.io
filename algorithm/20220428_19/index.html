@@ -65,14 +65,179 @@
 </li>
 </ul>
 <h2 id="bfs-동작-예시" style="position:relative;"><a href="#bfs-%EB%8F%99%EC%9E%91-%EC%98%88%EC%8B%9C" aria-label="bfs 동작 예시 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BFS 동작 예시</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 586px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 68.88888888888889%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAABTElEQVQ4y22TiXLDMAhE9f9/aju+4vukfky3JZowQyQLtCyskuyx+74trud52jiOtiyL5bauq8f2ff+/87jffH5SBNOeC9u22TzPVhSFtW1r7/fbmqbxPYWmabKcDJ4iEEbi6/VysL7vnRGM8eM4/Ew5keUfoIAIkgQ7DMCyLO26ro+WASYGeNd13km0BH3aqarqcy6/RWgxH4mMb0BxzTVBH1AJkAtEoljH1hSXSDBlTbCjAu3GynGldbWWx1gRCxwHZCYoCVOAcyYYYIB+A6QzhBIhF2UYBv8gQKVvoFRXnoRCHOVrLA7I4HVRzyIfPkZrzExg6iiSSiiDwrQuA5SEXHVy6rp2MNY4EooRT1AVdZjxDWOpy3uLb5A8nDt6WhTHOUtsNFiCVBM4q1gKUCNRixSUwpwlANjEfwStcKZ5RXEowOU4Ir1BMH4AFgpI+Npt1pYAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="step1"
+        title="step1"
+        src="/static/c41aa4f25d8709e29313c64d7602e1b4/a76f4/019_01.png"
+        srcset="/static/c41aa4f25d8709e29313c64d7602e1b4/e9ff0/019_01.png 180w,
+/static/c41aa4f25d8709e29313c64d7602e1b4/f21e7/019_01.png 360w,
+/static/c41aa4f25d8709e29313c64d7602e1b4/a76f4/019_01.png 586w"
+        sizes="(max-width: 586px) 100vw, 586px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
 <ol>
-<li>step 1 - 시작 노드 ‘1’을 큐에 삽입하고 방문 처리합니다.</li>
-<li>step 2 - 큐에서 1을 꺼내 방문하지 않은 인접 노드 2, 3, 8 을 큐에 넣고 방문 처리합니다.</li>
-<li>step 3 - 큐에서 2를 꺼내 방문하지 않은 인접 노드 1, 7 중 방문하지 않은 노드 7을 큐에 삽입하고 방문 처리를 합니다.</li>
-<li>step 4 - 큐에서 3을 꺼내 방문하지 않은 인접 노드 4, 5를 큐에 삽입하고 방문 처리 합니다.</li>
-<li>step 5 - 큐에서 8을 꺼내 방문하지 않은 인접 노드가 없으니, 무시하고 큐 안의 다음 경우로 넘어갑니다.
+<li>
+<p>step 1 - 시작 노드 ‘1’을 큐에 삽입하고 방문 처리합니다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 713px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 52.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABF0lEQVQoz2WSiQqDQAxE9/+/TUrpN/TAIt73lfIWRqIN6MZsZjJJDPu+mx5Mp/eXZbGrEbtiOMO6rqbHkyspyzK73x/2fn+sbVvrus7quo7nOI4HkZ5ApW3bbJ7nkzqpeD5fliQ3S9NvzCMGWVVVVhRFFOItQETSNE1HNZIAoAjr+96apjkByQFHHA6KHS2rMgHAkA3DcCK4tigDW5ZlLI6owEsKSaQiM4LYzwfzLfo4xcAhIhIiWS3jA1QrXhE53PkYBVCHSvy4FByB8VEHADAteQLuNA7u6AZjHHz/EUqhSKTUz40ZQ8CpEUAcCbVlbYp5aKsooRV8LQQjrn/R/wXkxBniSAUXkBDjG1Ce56etc0dMhD7nB45QXkymIjJWAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="step2"
+        title="step2"
+        src="/static/f94ad79bb173667b93a56542021e4097/01267/019_02.png"
+        srcset="/static/f94ad79bb173667b93a56542021e4097/e9ff0/019_02.png 180w,
+/static/f94ad79bb173667b93a56542021e4097/f21e7/019_02.png 360w,
+/static/f94ad79bb173667b93a56542021e4097/01267/019_02.png 713w"
+        sizes="(max-width: 713px) 100vw, 713px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+</li>
+<li>
+<p>step 2 - 큐에서 1을 꺼내 방문하지 않은 인접 노드 2, 3, 8 을 큐에 넣고 방문 처리합니다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 710px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 51.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABM0lEQVQoz22SaW6DQAyFuf/BItRfPUCgVEoUQFD2JWwun5ER0FqyhjHPz8/2OMMwyDzPMo6jTNMk2LIs6lhe1fL5zMULMynyTNq2lSiKxHU/xPP8Ex533u+3EkFshGZN00hZVRLEmcQ/xR4HGwTfEoaR9H1/ynGOCjnxNE3Vj+CqLBVzNRRXa1Gw5KpCPiDGkiSR282Vx+Opd/7R/LSe5Up6bVGLrYQQd10nDsxUNmJOZvN6hXuCnYyA5OuciWVZpjz/zpAY1Yqi+ENKzLrBwOEU22eIyiMh8u1e1/VpZhBDuhXudyJylBAygjZUnASqWpum6tj6/e6tzyfeOwKDAFVIwLZNJVTZ5lgE35Dwf2u71MX5/pfewYPTpdhCTAFJAOyJEIPsODcwSZKuxbcuwJKDwl9cOwwV27XY3QAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="step3"
+        title="step3"
+        src="/static/6110e75019ee33fca692281be7b4910c/7131f/019_03.png"
+        srcset="/static/6110e75019ee33fca692281be7b4910c/e9ff0/019_03.png 180w,
+/static/6110e75019ee33fca692281be7b4910c/f21e7/019_03.png 360w,
+/static/6110e75019ee33fca692281be7b4910c/7131f/019_03.png 710w"
+        sizes="(max-width: 710px) 100vw, 710px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+</li>
+<li>
+<p>step 3 - 큐에서 2를 꺼내 방문하지 않은 인접 노드 1, 7 중 방문하지 않은 노드 7을 큐에 삽입하고 방문 처리를 합니다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 707px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 51.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABTklEQVQoz2WS227CQAxE+f/vQqgP0KK+0YKAitKIJORKEnJhmrORU6CWVuv12uOZ9U66rlPbtm7dbjdh7OYT3+32Op1OqutaTVOrqirtw0xBXj3ksyZN0ziHnWJLMAvDUPP5q1arD2VZpqosFaWZluujPr+8MW8EHLo2riu7GX6SJLper4rj2AHfWxFFKs9nZZdLD9SNcQcIMwqRD/B6vdHx+PPAtOyZFUXxTwE1vu+7miRJ/yQDjEVRrOl05t7NCgwAxqaCGHeY7weazV50OHwPDGEHs7YdkoMgcIv4PSPAzr3M58Hxtp7nOaWOIXIotu72rmma/gMl99K/m1me5y7HFE5sIAZi0ohhFOM/MwLE7jCaj0Oh6yC5dcB0JZkiiknmvusGQPzl8l3b7W48m5qHb2PT5psAypnJwpjzPeBi8abNZjt8oT4n6r8R+y8W0Qo9DhMqAQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="step4"
+        title="step4"
+        src="/static/2b0be7b7cad732cf62c65adeb22e6d3d/394f7/019_04.png"
+        srcset="/static/2b0be7b7cad732cf62c65adeb22e6d3d/e9ff0/019_04.png 180w,
+/static/2b0be7b7cad732cf62c65adeb22e6d3d/f21e7/019_04.png 360w,
+/static/2b0be7b7cad732cf62c65adeb22e6d3d/394f7/019_04.png 707w"
+        sizes="(max-width: 707px) 100vw, 707px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+</li>
+<li>
+<p>step 4 - 큐에서 3을 꺼내 방문하지 않은 인접 노드 4, 5를 큐에 삽입하고 방문 처리 합니다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50.55555555555556%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABUklEQVQoz11Sa2+DMAzk//+z7tHSTS1rP7SiaGVSABUCITy9nDentJas4MM5n+0EwzAQvO8HmqaJYPM8s8PKsqQw/KDLJSGtNRljKEkSWq9DqqqKc3BP8oOu6/4Jez6XZq2lPC9ov49IKeVxYFH05c78IR+kAYhACh/HESjVxtLNKWuaxidD3bNN00h1XfO/tm3/FIIQAdTMTrp2ZO+xou+88lVhKIjLzyPB/e32k3a7iAV5hdY5ZtEPI53TjH5UzgWWpJiZKBEM5+l0pus1vSsEIU5uGbPrrMMsL0TUiAOT5eHEktCdYEwIEJWF0GQZX0aMf0vD4qR1zA45IsgTIqmTlltLx01IypEiLoqCDoejU1Z5UqUy3rLWd2Is0G9Z2gaApJe3DcXxhWM8jdXq1c8IlqYpYygiYxC1AVSIy5yMqybt8whc28sY301jHjYtb/gXIkAJkdZElCYAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="step5"
+        title="step5"
+        src="/static/576a66571c6530bfcaebf40351f47452/37523/019_05.png"
+        srcset="/static/576a66571c6530bfcaebf40351f47452/e9ff0/019_05.png 180w,
+/static/576a66571c6530bfcaebf40351f47452/f21e7/019_05.png 360w,
+/static/576a66571c6530bfcaebf40351f47452/37523/019_05.png 720w,
+/static/576a66571c6530bfcaebf40351f47452/b2982/019_05.png 729w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+</li>
+<li>
+<p>step 5 - 큐에서 8을 꺼내 방문하지 않은 인접 노드가 없으니, 무시하고 큐 안의 다음 경우로 넘어갑니다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 697px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 52.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABfElEQVQoz21Ta3OCMBDk//+vVq2j2H7RztQHTwtFHvIKqGyz0dBM252BMMllb2/vsC6XC/jcbjcQwzCMD5FlGQ4HB03TqLjr9YqyLLHb7VFV1XhHrxZfmtQkJJhkvd5gPl8gCALUdYW2bVWC56cpHMf9I8Jixq7r0Pc9TNR1rZRQhed5KkaDsXH8haIolHITFpUxQCuM4xi+7ytCE7xsqtcQQiBJEnknUN8WM/CD5XFdLm2sVm/KK1020ckzKv7PZ8/zMZ2+IAyPP4RaYRCEcF13LMW8mMsG0cPf++kpxfZje1fIcumPJtTk9M4k1WrzPL+TPUpupDWiFaPHykOS6KYI0Y6HLFEnGhvS9SjP53vjmPThtR6hP2PD8TgeP5UKKoqiSO2ZxLlskJMUSGX3JSM66XchldN3NTZUqNfFwoZtv+IsVdCvzeYdk8kMaZqOhFFWYraPEaZs0oBSqmM8LbKowvxToihWY6DBQDbKVChk2eFJzqDoxrnU9nwDu61VgQNZYakAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="step6"
+        title="step6"
+        src="/static/92cef251501aeb54a2e2e855c1f71aa8/7422e/019_06.png"
+        srcset="/static/92cef251501aeb54a2e2e855c1f71aa8/e9ff0/019_06.png 180w,
+/static/92cef251501aeb54a2e2e855c1f71aa8/f21e7/019_06.png 360w,
+/static/92cef251501aeb54a2e2e855c1f71aa8/7422e/019_06.png 697w"
+        sizes="(max-width: 697px) 100vw, 697px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 715px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 57.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABUUlEQVQoz22SbXOCQAyE+f8/zam2oyKCI9BR9IMi+IoKmPpcG3rXmpkbIGQ3u8l5dV0L536/S9u2QjweD3MI/oVhJPN5IufzWW63m5xOJ5lOQ4njhGoH40GkhDztoMF+v5fxeGJIL5eLIYR4MgkkCEK5Xq8OxoMEYNM05qgqQJBpvizLTrXWkKcOUr6NQjqijifEVVXJcDiWJEmdzoCPx2Nnz448zw0mW2a/CrUD3QaDj+fM4n/zRA3z+5snB2axWL6eIcDD4eAoUnBRFM6syTNb6nHxkhD7vKNWSe1FAdbgXR0aQtuyLmW7zTtrkO52O2ebzJkcahHyjdmaGkchxBD1em8SRbNnQWW22++/i+8H3T3FATMbjfxOJRjupSHULWuw4c1m01lMn9+rbOVYT9NPyX5yKEMAGM++BnSK41jW67VZDNb0nqGc4XPsf7YQ4gv4NVQc+wgItAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="step7"
+        title="step7"
+        src="/static/cdf98999be84e2fcaebfb057377f1f52/d0c0e/019_07.png"
+        srcset="/static/cdf98999be84e2fcaebfb057377f1f52/e9ff0/019_07.png 180w,
+/static/cdf98999be84e2fcaebfb057377f1f52/f21e7/019_07.png 360w,
+/static/cdf98999be84e2fcaebfb057377f1f52/d0c0e/019_07.png 715w"
+        sizes="(max-width: 715px) 100vw, 715px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
 → 이러한 과정을 반복하여 전체 노드의 탐색순서(큐에 들어간 순서는 다음과 같습니다.
-→ 가장 가까운 곳부터 먼저 확인하는 구조를 갖고 있습니다. 그러다보니 시작 노드인 1번 노드부터 가까운 경우를 계속 탐색합니다. 즉 기준이 되는 위치에서 어떤 특정 위치나 값을 찾을 때 찾는 원리에서부터 최단거리를 구하기 쉬운 구조로 되어 있습니다.</li>
+→ 가장 가까운 곳부터 먼저 확인하는 구조를 갖고 있습니다. 그러다보니 시작 노드인 1번 노드부터 가까운 경우를 계속 탐색합니다. 즉 기준이 되는 위치에서 어떤 특정 위치나 값을 찾을 때 찾는 원리에서부터 최단거리를 구하기 쉬운 구조로 되어 있습니다.</p>
+</li>
 </ol>
 <h2 id="bfs-소스코드-예제python" style="position:relative;"><a href="#bfs-%EC%86%8C%EC%8A%A4%EC%BD%94%EB%93%9C-%EC%98%88%EC%A0%9Cpython" aria-label="bfs 소스코드 예제python permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BFS 소스코드 예제(python)</h2>
 <div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">from</span> collections <span class="token keyword">import</span> deque
@@ -160,7 +325,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/algorithm/20220427_18/"><div class="direction">이전 글</div><div class="title">알고리즘 박살내기 - 18. DFS/BFS(Depth-First Search)</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/algorithm/20220427_18/"><div class="direction">이전 글</div><div class="title">알고리즘 박살내기 - 18. DFS/BFS(Depth-First Search)</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/algorithm/20220429_20/"><div class="direction">다음 글</div><div class="title">알고리즘 박살내기 - 20. DFS/BFS(기초 문제 풀이)</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
