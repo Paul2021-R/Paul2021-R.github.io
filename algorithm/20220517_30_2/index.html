@@ -48,7 +48,7 @@
         }
       }
     })
-  </script><title data-react-helmet="true">알고리즘 박살내기 - 30 - 1. 최단 경로 알고리즘(1)</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="알고리즘 박살내기 - 30 - 1. 최단 경로 알고리즘(1)"/><meta data-react-helmet="true" property="og:site_title" content="알고리즘 박살내기 - 30 - 1. 최단 경로 알고리즘(1)"/><meta data-react-helmet="true" name="description" content="Introduction 본 포스트는 알고리즘 학습에 대한 정리를 재대로 하기 위하여 남기는 것입니다. 더불어 기본 내용은 나동빈 저의 〖이것이 취업을 위한 코딩 테스트다〗라는 교재 및 유튜브 강의의 내용에서 발췌했고, 그 외 추가적인 궁금 사항들을 검색 및 정리해둔 것입니다. 최단 경로 알고리즘 개념 최단 경로 알고리즘은 가장 짧은 경로를 찾는 알고리즘을 의미합니다. 다양한 문제 상황 한 지점에서 다른 한 지점 까지의 최단 경로 한 지점에서 다른 모든 지점까지의 최단 경로 모든 지점에서 다른 모든 지점까지의 최단 경로 각 지점의 그래프에서 노드로 표현됩니다. 각 지점 간 연결된 도로는 그래프에서 간선으로 표현합니다. 노드 형태 예시 다익스트라 최단 경로 알고리즘의 개요 특정한 노드에서 출발하여 다른 모든 노드로 가는 최단 경로를 계산합니다. 다익스트라 최단 경로 알고리즘은 음의 간선이 없을 때 정상 동작합니다. (현실세계 처럼 동작하며, 실 세계에서 사용 가능합니다.) 다익스트라 …"/><meta data-react-helmet="true" property="og:description" content="Introduction 본 포스트는 알고리즘 학습에 대한 정리를 재대로 하기 위하여 남기는 것입니다. 더불어 기본 내용은 나동빈 저의 〖이것이 취업을 위한 코딩 테스트다〗라는 교재 및 유튜브 강의의 내용에서 발췌했고, 그 외 추가적인 궁금 사항들을 검색 및 정리해둔 것입니다. 최단 경로 알고리즘 개념 최단 경로 알고리즘은 가장 짧은 경로를 찾는 알고리즘을 의미합니다. 다양한 문제 상황 한 지점에서 다른 한 지점 까지의 최단 경로 한 지점에서 다른 모든 지점까지의 최단 경로 모든 지점에서 다른 모든 지점까지의 최단 경로 각 지점의 그래프에서 노드로 표현됩니다. 각 지점 간 연결된 도로는 그래프에서 간선으로 표현합니다. 노드 형태 예시 다익스트라 최단 경로 알고리즘의 개요 특정한 노드에서 출발하여 다른 모든 노드로 가는 최단 경로를 계산합니다. 다익스트라 최단 경로 알고리즘은 음의 간선이 없을 때 정상 동작합니다. (현실세계 처럼 동작하며, 실 세계에서 사용 가능합니다.) 다익스트라 …"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-e31a787e67d73c505515.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/algorithm/20220516_30/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🧑🏻‍💻</div><div class="info"><div class="categories"><a class="category" href="/posts/algorithm">algorithm</a></div></div><h1 class="title">알고리즘 박살내기 - 30 - 1. 최단 경로 알고리즘(1)</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->May 16, 2022</div></header><div class="post-content"><div class="markdown"><h1 id="introduction" style="position:relative;"><a href="#introduction" aria-label="introduction permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Introduction</h1>
+  </script><title data-react-helmet="true">알고리즘 박살내기 - 30 - 2. 최단 경로 알고리즘(2)</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="알고리즘 박살내기 - 30 - 2. 최단 경로 알고리즘(2)"/><meta data-react-helmet="true" property="og:site_title" content="알고리즘 박살내기 - 30 - 2. 최단 경로 알고리즘(2)"/><meta data-react-helmet="true" name="description" content="Introduction 본 포스트는 알고리즘 학습에 대한 정리를 재대로 하기 위하여 남기는 것입니다. 더불어 기본 내용은 나동빈 저의 〖이것이 취업을 위한 코딩 테스트다〗라는 교재 및 유튜브 강의의 내용에서 발췌했고, 그 외 추가적인 궁금 사항들을 검색 및 정리해둔 것입니다. 최단 경로 알고리즘 개념 최단 경로 알고리즘은 가장 짧은 경로를 찾는 알고리즘을 의미합니다. 다양한 문제 상황 한 지점에서 다른 한 지점 까지의 최단 경로 한 지점에서 다른 모든 지점까지의 최단 경로 모든 지점에서 다른 모든 지점까지의 최단 경로 각 지점의 그래프에서 노드로 표현됩니다. 각 지점 간 연결된 도로는 그래프에서 간선으로 표현합니다. 노드 형태 예시 간단한 구현 방법의 성능 분석 지난 포스팅에서 정리했던 간단한 구현 방법의 경우 선형 탐색으로 하나씩 확인하는 방식이었습니다. 그러다보니 최단 경로 알고리즘으로써 시간 복잡도는 전체 원소 개수의 제곱으로 나타나게 되면서 상당한 코스트가 소모됨을 보여주었…"/><meta data-react-helmet="true" property="og:description" content="Introduction 본 포스트는 알고리즘 학습에 대한 정리를 재대로 하기 위하여 남기는 것입니다. 더불어 기본 내용은 나동빈 저의 〖이것이 취업을 위한 코딩 테스트다〗라는 교재 및 유튜브 강의의 내용에서 발췌했고, 그 외 추가적인 궁금 사항들을 검색 및 정리해둔 것입니다. 최단 경로 알고리즘 개념 최단 경로 알고리즘은 가장 짧은 경로를 찾는 알고리즘을 의미합니다. 다양한 문제 상황 한 지점에서 다른 한 지점 까지의 최단 경로 한 지점에서 다른 모든 지점까지의 최단 경로 모든 지점에서 다른 모든 지점까지의 최단 경로 각 지점의 그래프에서 노드로 표현됩니다. 각 지점 간 연결된 도로는 그래프에서 간선으로 표현합니다. 노드 형태 예시 간단한 구현 방법의 성능 분석 지난 포스팅에서 정리했던 간단한 구현 방법의 경우 선형 탐색으로 하나씩 확인하는 방식이었습니다. 그러다보니 최단 경로 알고리즘으로써 시간 복잡도는 전체 원소 개수의 제곱으로 나타나게 되면서 상당한 코스트가 소모됨을 보여주었…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-e31a787e67d73c505515.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/algorithm/20220517_30_2/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🧑🏻‍💻</div><div class="info"><div class="categories"><a class="category" href="/posts/algorithm">algorithm</a></div></div><h1 class="title">알고리즘 박살내기 - 30 - 2. 최단 경로 알고리즘(2)</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->May 17, 2022</div></header><div class="post-content"><div class="markdown"><h1 id="introduction" style="position:relative;"><a href="#introduction" aria-label="introduction permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Introduction</h1>
 <p>본 포스트는 알고리즘 학습에 대한 정리를 재대로 하기 위하여 남기는 것입니다. 더불어 기본 내용은 나동빈 저의 〖이것이 취업을 위한 코딩 테스트다〗라는 교재 및 유튜브 강의의 내용에서 발췌했고, 그 외 추가적인 궁금 사항들을 검색 및 정리해둔 것입니다.</p>
 <h1 id="최단-경로-알고리즘" style="position:relative;"><a href="#%EC%B5%9C%EB%8B%A8-%EA%B2%BD%EB%A1%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98" aria-label="최단 경로 알고리즘 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>최단 경로 알고리즘</h1>
 <h2 id="개념" style="position:relative;"><a href="#%EA%B0%9C%EB%85%90" aria-label="개념 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>개념</h2>
@@ -86,156 +86,132 @@
         decoding="async"
       />
     </span><em>노드 형태 예시</em></p>
-<h2 id="다익스트라-최단-경로-알고리즘의-개요" style="position:relative;"><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%B5%9C%EB%8B%A8-%EA%B2%BD%EB%A1%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98-%EA%B0%9C%EC%9A%94" aria-label="다익스트라 최단 경로 알고리즘의 개요 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>다익스트라 최단 경로 알고리즘의 개요</h2>
+<h2 id="간단한-구현-방법의-성능-분석" style="position:relative;"><a href="#%EA%B0%84%EB%8B%A8%ED%95%9C-%EA%B5%AC%ED%98%84-%EB%B0%A9%EB%B2%95%EC%9D%98-%EC%84%B1%EB%8A%A5-%EB%B6%84%EC%84%9D" aria-label="간단한 구현 방법의 성능 분석 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>간단한 구현 방법의 성능 분석</h2>
 <ul>
-<li><strong>특정한 노드</strong>에서 출발하여 <strong>다른 모든 노드</strong>로 가는 최단 경로를 계산합니다.</li>
-<li>다익스트라 최단 경로 알고리즘은 음의 간선이 없을 때 정상 동작합니다. (현실세계 처럼 동작하며, 실 세계에서 사용 가능합니다.)</li>
-<li>다익스트라 최단 경로 알고리즘은 그리디 알고리즘으로 분류됩니다. : <strong>매 상황에서 가장 비용이 적은 노드를 선택</strong> 하는 과정의 반복입니다.</li>
-<li>본래 최단 경로 알고리즘은 그 성격상 다이나믹 프로그래밍을 활용하는 경우가 있으나, 본 알고리즘은 매 순간 선택을 기준으로 하는 만큼 그리디적 특성이 있다고 기억하시면 됩니다.</li>
-<li>더불어 다익스트라라는 인물은 다양한 알고리즘을 만들었지만, 그 중 대표적인 것이 바로 다익스트라의 최단 경로 알고리즘이기에, 줄여서 다익스트라 알고리즘이라고 하면 바로 이 알고리즘을 의미합니다.</li>
+<li>지난 포스팅에서 정리했던 간단한 구현 방법의 경우 선형 탐색으로 하나씩 확인하는 방식이었습니다. 그러다보니 최단 경로 알고리즘으로써 시간 복잡도는 전체 원소 개수의 제곱으로 나타나게 되면서 상당한 코스트가 소모됨을 보여주었습니다.</li>
+<li>노드 개수가 10000개를 넘어갈 경우 <strong>10000² 만큼의 연산횟수</strong>가 필요하다는 결론이 나게 되기에, 이를 개선할 필요가 있었습니다.</li>
 </ul>
-<h2 id="알고리즘-동작-과정" style="position:relative;"><a href="#%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%8F%99%EC%9E%91-%EA%B3%BC%EC%A0%95" aria-label="알고리즘 동작 과정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>알고리즘 동작 과정</h2>
-<ol>
-<li>출발 노드를 설정합니다.</li>
-<li>최단 거리 테이블을 초기화 합니다.</li>
-<li>방문하지 않은 노드 중에서 최단 거리가 가장 짧은 노드를 선택합니다.</li>
-<li>해당 노드를 거쳐 다른 노드로 가는 비용을 계산하고 최단 거리 테이블을 갱신합니다.</li>
-<li>위 과정에서 3번과 4번을 반복합니다.</li>
-</ol>
+<h2 id="우선순위-큐priority-que" style="position:relative;"><a href="#%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84-%ED%81%90priority-que" aria-label="우선순위 큐priority que permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>우선순위 큐(Priority Que)</h2>
 <ul>
-<li>
-<p>그리디적 특성 및 동작과정에서 볼 수 있듯 단순히 방문하지 않은 노드까지에서 최단거리가 가장 짧은 노드를 선택할 뿐입니다. 즉, 추가적으로 전체 노드 사이에 최단거리 정보를 보려는 형태는 아닙니다. 각 노드 사이 최단 경로를 확보한 것 뿐이며, 이런 상황에서 완전한 최단 경로를 찾기 위해선 별도의 알고리즘이 추가적으로 들어가야 하며(혹은 다이나믹 프로그래밍으로 DP 테이블을 만들거나 하는 방식으로) 작성되어야 합니다.</p>
-</li>
-<li>
-<p>그러나 코딩 테스트를 생각하는 기준에서 본다면, 이는 많이 출제 되지 않으므로 본 강의에서는 단순 다른 노드까지의 최단거리를 구하는 것으로 하여 알고리즘을 설계및 구현합니다.</p>
-</li>
-<li>
-<p>알고리즘 동작 과정에서 최단 거리 테이블은 각 노드에 대한 현재까지의 최단 거리 정보를 가지고 있습니다.</p>
-</li>
-<li>
-<p>처리 과정에서 더 짧은 경로를 발견하면, 항상 최솟값으로 갱신하여 최종값을 확정 짓습니다.</p>
-</li>
+<li>우선순위가 가장 높은 데이터를 가장 먼저 삭제하는 자료구조 입니다.</li>
+<li>예를들어 여러 개의 물건 데이터를 자료구조에 넣었다가, 가치가 높은 물건 데이터부터 꺼내서 확인해야 하는 경우 우선순위 큐를 이용할 수 있습니다.</li>
+<li>Python, C++, Java를 포함한 대부분의 프로그래밍 언어에서 표준 라이브러리 형태로 지원합니다.</li>
 </ul>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 427px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 91.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAAsTAAALEwEAmpwYAAACSklEQVQ4y4VU2Y7aQBD0/39NlLckDzwsuyIBBNiIxRhfGAOLucxlMEdlqpVBFgLS0qhnxjPV1dU9NqBsOBzCcRwEQQDP8+D7vvjimnN6PYr7ruvK+nw+wyCgbdvYbDZYLBZYr9dYrVbY7XZIplNZL5dLJMlM/Hw+F5+m//bVmePxKIC8J4BhGGKqPrRaLcxmMzQbTcU6RqVSEQZRFKlvJsLBAJZlotdzMJlM0G63Uf1TVUCprBlAABuNBnymp1IgIO16vUrkeBQLIMdAAWoZip6EiMEsBTDPj4rhF+YKLFZ69no9OUhdkySRVBidniNNU/GUg9Jst1sZJCGA0XCE1qeLphp+EKmPG2TZAf8zArCgZJjnuewZ4/EEFdNBvAW+MqDaCSRA0fb7vVy8t263K0yzLEOn08HhcIBhdWx4SYbvP8v49uMN9miN9991DKOBRKZ2/X4fptmSOffiOEa9XhdPEEpASVgY49PuoxunaDoj1BQ7e5TCVEFOp1wxyyQ6LzElzjk4Z1ewDy+Xizp7kmAsqLFXon7ULQHyZhl+vVURhIObRs+MQUqlkgCRKZv7VpSDiup6AfquL5VjZDY5jQx4UA8aXwT1IzP9ILQZj1hQaMuyRJtHxrZiTzJYseI3hnqhD7D3qJV+ktSMQWhMTZ7fYinfiveF4aPeKlq5XBbg8XiMWq0mVX513rinXDxErdgyfIK6PTSg1vYe1HgUTXumxCpS/CAIb/o9I/Aw5Xtw/gDYFgRl6tTvVUsZz8CKF6gfW0kX5lV//gVHg1rWwvjPaAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="shortest_path"
-        title="shortest_path"
-        src="/static/f87f946d11d9956a757fb77c5959d627/a7c74/030_02.png"
-        srcset="/static/f87f946d11d9956a757fb77c5959d627/e9ff0/030_02.png 180w,
-/static/f87f946d11d9956a757fb77c5959d627/f21e7/030_02.png 360w,
-/static/f87f946d11d9956a757fb77c5959d627/a7c74/030_02.png 427w"
-        sizes="(max-width: 427px) 100vw, 427px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span><em>바로 A를 가는 경우 8을 입력하고</em>
-<span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 460px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 83.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAAsSAAALEgHS3X78AAACSElEQVQ4y31U2ZaaQBD1/78kb3nOQ15zcnJGnRknKKuCLIK4ZFBwQW7qtsCgJlPnNN1d3XXr1tL0IOI4DjzPg+/7mM/nNzP1QRCofXsmOq8e3LuuizAMCYVeVVUwDEOBTqdTdcG2HfhibFkWoiiCruvKyHM9OLYtDkLEcaxAaNfMxOpdLhcFoo3HYmhgvV7DNE0kYmDJvFgsWqMkScSZrRwmyVIxH4vdcrlUGMTqkeZoNGpD4CFlv99jtVphNpspPWcOMqUDrjlzTyeMRoWsvkKV3heLWMK6XiAIdcfjEafTSQ2um8E9GXFdlmUNU10BDWuK4cTFaBrjWbOQZRm6QkOOe13DlLlvQHtpmqI/nsGK9/jtptDma4w0HefzScLOZT6r6nqeK+sSRVEodqZpYLvdqjUxeEcBBmEEzUvx/ccLvnz9Bj3K8LP/ijBg6/gq2feDeXsaDBTAQrqAwjQpQCb/14sOJz0gkEgHGpM9Q5PbB6l1kYRrS4XzPIctBSHLtigraZXhm47+mwlDN1FMTVR1zpjodtS6y6FAYRlIpaV8aR22WluU6obFdV1sN3jXNbWvOnp+CcqzYre7I159MOyyoKSbDbJ0idw22oqyOJTcMbFfrxDFiQq/a9e2DV13D8rauNplCIdPKuGOFGL++ozyz6Z2Ut6kpJHeY84/Dk/SW8ZYw0FyRoYzAc7qUO+BHgDvqavwpAOY9HdpdD7DnYA1f5Xu3U8Z3l/mG91ITtlek8mkzeW/2P0XsGvAJ8VXwCfGd/sZGOUv+AwR+N6S1t4AAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="shortest_path_2"
-        title="shortest_path_2"
-        src="/static/2d09ff016ebc243367d861b86c9c9be2/08a84/030_03.png"
-        srcset="/static/2d09ff016ebc243367d861b86c9c9be2/e9ff0/030_03.png 180w,
-/static/2d09ff016ebc243367d861b86c9c9be2/f21e7/030_03.png 360w,
-/static/2d09ff016ebc243367d861b86c9c9be2/08a84/030_03.png 460w"
-        sizes="(max-width: 460px) 100vw, 460px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span><em>B를 거쳐 갈 경우 7이 됨에 따라 갱신을 하고 최솟값으로 지정해둡니다.</em></p>
-<h2 id="동작과정-살펴보기" style="position:relative;"><a href="#%EB%8F%99%EC%9E%91%EA%B3%BC%EC%A0%95-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0" aria-label="동작과정 살펴보기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>동작과정 살펴보기</h2>
-<ol start="0">
-<li>초기 상태
-그래프를 준비하고 출발 노드를 설정합니다.</li>
-</ol>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 48.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABJUlEQVQoz2WSS27DMAxEff8DdNFDpBfJvpuiSBeuAwOF5P9Hthk9oWM4DgGC0kgcDill93thXdcZtm2bHY09Pk2TNU1jwzDs2PmeYpb/FpbnudV1vYMhBFuWJRER+75P5xSGlD138HVdn0gz772VZWlEDJK2bZOTMI5jwuZ5TuRE9s655JAfu8nsZCShhAghyRhKwIRLtc53Qi2Oc+GyFEEEAXuRioT2OXtq+ciOkcgD4Jql5ipyIqOoquq15fOLQcD8UHF8HDA9BkWJFJVa2a4w/M+G6qrGGqc1qRF2viMsEf4Nwd6vN3u7/tiXiy1sUVVUIQLa07yEEadpTmpZa96J0I/BLp+FfXx7u7n4ydfYVkz23u0jwFnzvURMy2CoT48WFT4A0uwPMkUDsOEAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="030_04"
-        title="030_04"
-        src="/static/10d9f75ac911efc1d1c153ee35a49606/37523/030_04.png"
-        srcset="/static/10d9f75ac911efc1d1c153ee35a49606/e9ff0/030_04.png 180w,
-/static/10d9f75ac911efc1d1c153ee35a49606/f21e7/030_04.png 360w,
-/static/10d9f75ac911efc1d1c153ee35a49606/37523/030_04.png 720w,
-/static/10d9f75ac911efc1d1c153ee35a49606/6d2da/030_04.png 936w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<ol>
-<li>방문하지 않은 노드 중에서 최단 거리가 가장 짧은 1번 노드를 처리합니다.</li>
-</ol>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 40%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsSAAALEgHS3X78AAABRElEQVQoz1VRW26EMBDj/r1WP9qeoH8sK4EKLK8AScgD1xMWuo1kZTLJeOxJ1rYthmGA9x7X2ndEwjI3TROcc0zt17WcH48HpFZQ13WC5LJumHC/39E0DXyI6BeDZXMwjNdtw7Ku0NZCG0PYRKa1Rp7nqa4oioTbrUBZlshiCLAs2AhDou+qg7IbNGPreUdigWHczwv6vk9vu67DMI50N0IpdSHD66Kt1XkENhHEGDkKB2ka/JEXhSKgqqrkqv75QctdrCfL+3NeAimQrmLvJBX4JzaOYKQiyUmdTNWvCwIb7ElPPAhfJMJt9p8a+RQhOslF3WtNMBqR9+dKlktl8J43yEeDXjvMhjbjoWjlpwhxUspGxxj8X6ymi1AaJcKvcsTb5w0flcKsLcaFJHwkas6ZyT7zU6TBssiuEfjGzwo7iU/CX9AsbMgYMgerAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="030_05"
-        title="030_05"
-        src="/static/87c317d50ecaa1ff21d4c60ced3d93a4/37523/030_05.png"
-        srcset="/static/87c317d50ecaa1ff21d4c60ced3d93a4/e9ff0/030_05.png 180w,
-/static/87c317d50ecaa1ff21d4c60ced3d93a4/f21e7/030_05.png 360w,
-/static/87c317d50ecaa1ff21d4c60ced3d93a4/37523/030_05.png 720w,
-/static/87c317d50ecaa1ff21d4c60ced3d93a4/302a4/030_05.png 1080w,
-/static/87c317d50ecaa1ff21d4c60ced3d93a4/22c86/030_05.png 1143w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<ol start="2">
-<li>방문하지 않은 노드 중 최단 거리가 가장 짧은 4번 노드를 처리합니다.</li>
-</ol>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>자료구조</strong></th>
+<th align="center"><strong>추출되는 데이터</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">스택(stack)</td>
+<td align="center">가장 나중에 삽입된 데이터</td>
+</tr>
+<tr>
+<td align="center">큐(Que)</td>
+<td align="center">가장 먼저 삽입된 데이터</td>
+</tr>
+<tr>
+<td align="center">우선순위 큐(Priority Que)</td>
+<td align="center">가장 우선순위가 높은 데이터</td>
+</tr>
+</tbody>
+</table>
+<h2 id="힙heap" style="position:relative;"><a href="#%ED%9E%99heap" aria-label="힙heap permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>힙(Heap)</h2>
+<ul>
+<li>우선순위 큐를 구현하기 위해 사용하는 자료 구조 중 하나입니다.</li>
+<li>최소 힙(Min Heap), 최대 힙(Mac Heap)이 있습니다.</li>
+<li>다익스트라 최단 경로 알고리즘을 포함해 다양한 알고리즘에서 사용됩니다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>우선순위 큐 구현 방식</strong></th>
+<th align="left"><strong>삽입시간</strong></th>
+<th align="left"><strong>삭제시간</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">리스트</td>
+<td align="left">𝑂(𝟏)</td>
+<td align="left">𝑂(𝑵)</td>
+</tr>
+<tr>
+<td align="left">힙(Heap)</td>
+<td align="left">𝑂(𝑙𝑜𝘨𝑵)</td>
+<td align="left">𝑂(𝑙𝑜𝘨𝑵)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="힙-라이브러리-사용-예제-최소-힙" style="position:relative;"><a href="#%ED%9E%99-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%A0%9C-%EC%B5%9C%EC%86%8C-%ED%9E%99" aria-label="힙 라이브러리 사용 예제 최소 힙 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>힙 라이브러리 사용 예제: 최소 힙</h2>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">import</span> heapq
+
+<span class="token comment"># 오름차순 힙 정렬(Heap Sort)</span>
+<span class="token keyword">def</span> <span class="token function">heapsort</span><span class="token punctuation">(</span>iterable<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	h <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+	result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+	<span class="token comment"># 모든 원소를 차례대로 힙에 삽입</span>
+	<span class="token keyword">for</span> value <span class="token keyword">in</span> iterable<span class="token punctuation">:</span>
+		heapq<span class="token punctuation">.</span>heappush<span class="token punctuation">(</span>v<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+	<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>h<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+		result<span class="token punctuation">.</span>append<span class="token punctuation">(</span>heap<span class="token punctuation">.</span>heappop<span class="token punctuation">(</span>h<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> result
+
+result <span class="token operator">=</span> heapsort<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+
+<span class="token comment"># 실행 결과</span>
+<span class="token comment"># [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+<span class="token comment"># 내장된 병합, 퀵 정렬 알고리즘과 같은 수준의 시간 복잡도를 보여줍니다. </span>
+<span class="token comment"># 따라서 최악의 경우에도 동일한 시간 복잡도를 보장해줍니다.</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h2 id="힙-라이브러리-사용-예제-최대-힙" style="position:relative;"><a href="#%ED%9E%99-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%A0%9C-%EC%B5%9C%EB%8C%80-%ED%9E%99" aria-label="힙 라이브러리 사용 예제 최대 힙 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>힙 라이브러리 사용 예제: 최대 힙</h2>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">import</span> heapq
+
+<span class="token comment"># 내림차순 힙 정렬(Heap Sort)</span>
+<span class="token keyword">def</span> <span class="token function">heapsort</span><span class="token punctuation">(</span>iterable<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	h <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+	result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+	<span class="token comment"># 모든 원소를 차례대로 힙에 삽입</span>
+	<span class="token keyword">for</span> value <span class="token keyword">in</span> iterable<span class="token punctuation">:</span>
+		heapq<span class="token punctuation">.</span>heappush<span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token operator">-</span>value<span class="token punctuation">)</span> <span class="token comment"># 기본적으로 파이썬은 최대힙은 지원하지 않습니다. </span>
+	<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>h<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+		result<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token operator">-</span>heap<span class="token punctuation">.</span>heappop<span class="token punctuation">(</span>h<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> result
+
+result <span class="token operator">=</span> heapsort<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+
+<span class="token comment"># 실행 결과</span>
+<span class="token comment"># [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h2 id="다익스트라-알고리즘-개선된-구현-방법" style="position:relative;"><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%9C%EC%84%A0%EB%90%9C-%EA%B5%AC%ED%98%84-%EB%B0%A9%EB%B2%95" aria-label="다익스트라 알고리즘 개선된 구현 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>다익스트라 알고리즘: 개선된 구현 방법</h2>
+<ul>
+<li>단계마다 방문하지 않은 노드 중에 최단 거리가 가장 짧은 노드를 선택하기 위해 Heap 자료구조를 이용합니다.</li>
+<li>기본 동작 원리는 동일합니다. 단, 가장 가까운 노드를 저장하기 위해 힙 자료구조를 추가적으로 활용한다는 점이 차이점입니다.</li>
+<li>이때 최단 거리를 보는 것이므로 최소 힙을 사용합니다.</li>
+</ul>
+<h2 id="다익스트라-알고리즘-동작-과정-살펴보기우선순위-큐" style="position:relative;"><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%8F%99%EC%9E%91-%EA%B3%BC%EC%A0%95-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84-%ED%81%90" aria-label="다익스트라 알고리즘 동작 과정 살펴보기우선순위 큐 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>다익스트라 알고리즘: 동작 과정 살펴보기(우선순위 큐)</h2>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 40%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAABSUlEQVQoz2WRSW7DMAxFff9NT5VVDpB2lTp2YsPxIA+aJf+SRGukrQCCMgk+/m8VTdtCKYUQAl7Pvu9SW5YFzjnknI9ejBFd10m0NN80DR6Ph+Sin2aUZSlNBnTdkwBeAN57GGME6KyFpZA7xfV6xb2+C6Sua1RVRfmOIqUkgwzj4cv7B7Q2ooJ7rDQRPFAoqo/TJOBhGMQZh9Ya67qKm+K3Txq0RtRFgoW8w0VaSNnzgm/V3BeldNeKFmwrPAniWsEKMg1QgiGrl7rHsBmBhJRFZUpRFHOwIob+nMwCXr4F+HpmS5tSFnUmRLHiaTNtJQP53wMl+k3Ju+MhxfJNaZzKHp/9jKnvBcJNfhxLA4u2eOqA1Xqq50Nt5vsyk8I/wNNtxNu5wrkasIwjJjUjxCAwtrsai1E7zJtGpH/Fj7BtG1LwAtxzOoBfSO9s4VENVwgAAAAASUVORK5CYII='); background-size: cover; display: block;"
+    style="padding-bottom: 42.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAABGElEQVQoz22RTY6DMAyFuf8Z5gBzj1l2MWuENAsQECgl/EMI4Oa5NYIpkSw7TvLlvcTzfZ/CMKQ4jjmnacq1cjlNEu4lLiulXE9RFEUcfd8TxrZtHDI8lWX74nGs60rLstA4jrxurf3YI6AT8P4oWUVZam5M08QxzzNDhmFgqDFmhyNfwRhYFAUFQeCAJasCQICAoAcwAvOqqqht2xPwpFBrTXme8yZYxCEEaoGhRkgNhf9hkr39zdx8etsCXKCiTmCw3DTNB2gHGoO3moHkhnVWYff4KV3XnZTisqvPeSvcaJgX+vnL6BZrsg60rssOhSJ5U8wli4NLy9Vk6es3om//Tv34OlzXNR+CveO8rht3wasP9YAfgU/hIb211TOWZgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="030_06"
-        title="030_06"
-        src="/static/4550e06910e811ef22eacae224c22519/37523/030_06.png"
-        srcset="/static/4550e06910e811ef22eacae224c22519/e9ff0/030_06.png 180w,
-/static/4550e06910e811ef22eacae224c22519/f21e7/030_06.png 360w,
-/static/4550e06910e811ef22eacae224c22519/37523/030_06.png 720w,
-/static/4550e06910e811ef22eacae224c22519/302a4/030_06.png 1080w,
-/static/4550e06910e811ef22eacae224c22519/c6671/030_06.png 1129w"
+        alt="priority_que_example"
+        title="priority_que_example"
+        src="/static/7b4ddc4fe26cda4f1571f4c4b9e752c0/37523/030_11_cut.png"
+        srcset="/static/7b4ddc4fe26cda4f1571f4c4b9e752c0/e9ff0/030_11_cut.png 180w,
+/static/7b4ddc4fe26cda4f1571f4c4b9e752c0/f21e7/030_11_cut.png 360w,
+/static/7b4ddc4fe26cda4f1571f4c4b9e752c0/37523/030_11_cut.png 720w,
+/static/7b4ddc4fe26cda4f1571f4c4b9e752c0/302a4/030_11_cut.png 1080w,
+/static/7b4ddc4fe26cda4f1571f4c4b9e752c0/07a9c/030_11_cut.png 1440w,
+/static/7b4ddc4fe26cda4f1571f4c4b9e752c0/e4d4a/030_11_cut.png 2198w"
         sizes="(max-width: 720px) 100vw, 720px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -243,40 +219,30 @@
       />
     </span></p>
 <ul>
-<li>
-<p>4번 노드까지는 1번 노드에서의 최단 거리를 생각해 선택해 온 것으로 치고, 4번에서 갈 수 있는 노드 들에 대해 비교하는 모습닙니다.</p>
-</li>
-<li>
-<p>이때 핵심은 현재 값이 3번 노드로 갈때 <code class="language-text">5</code>로 지정되어 있는데, 비교 값은 1번 노드에서 시작해서 온 값 + 4번에서 3번 노드를 가는 값 <code class="language-text">1 + 3</code>과 비교한다는 점입니다.</p>
-</li>
-<li>
-<p>5번 노드로 가는 길의 경우 값이 <code class="language-text">무한</code>으로 설정 되어 있으므로, 새로이 4에서 5번 노드로 가는 값 + 기본 1에서 4로 가는 최단거리를 더해 <code class="language-text">2</code>로 갱신합니다.</p>
-</li>
+<li>초기 상태에서 노드 1을 넣고 시작을 하며, 거리 값이 갱신 될 때 우선순위 큐에 집어 넣습니다.</li>
+<li>이때 핵심은 튜플 형식의 자료구조인데, 기존 간단한 방식과 달리 거리를 먼저 집어넣고, 노드 인덱스를 뒤로 집어 넣는 점입니다. 이를통해 우선순위를 지정하게 됩니다.</li>
+<li>그 외에 노드 테이블의 경우 노드 1번을 제외하고 무한으로 설정합니다.</li>
 </ul>
-<ol start="3">
-<li>방문하지 않은 노드 중 최단 거리가 가장 짧은 노드인 2번 노드를 처리합니다.</li>
-</ol>
-<ul>
-<li>여기서 핵심은, 실질적으로 4 ➡︎ 5 노드로 가는 것도 2이므로 같은 최솟값을 가지지만, 보통 이런경우 디폴트로 깊이가 덜 낮은 노드 먼저 진행하도록 짜야 합니다.</li>
-</ul>
+<hr>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 40%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAABUElEQVQoz12RTVOEMAyG+fv+KO968KI7jicGYdcDtIUWKP2gfU26sOOYmQAhydM3adX3PaZpQgwRp+Wc+QnnA75uAosLFOVHPoQAIUTxYRjADHYpJSoxTui6riRjjOUnN+SUCuhHzVg2R9++uKfctlnUdY22bXG93tA0zT3+blHt+04FG5xzWNcVl8vnPd4TAjkrzTkh8QGUV0rBUy0LWJal1BpjypTjOKLCH+NRWZ1nGDXRD/CBDGNn1d57nCKKWqNhZ0OCfBFVMaQUE9BS0fvHpSjBAfnrDGMVDDwt0fg5+Edc3S/glJggpEI6Gnink9YPAENZGb9P2wmYeJpjwjJyO1m8dhKd1NCkQOgFwkYYu8FaC03Qvh/KzriJD2JncJw1kv8HfK4HPL00eLsKGCXRqwlqdTCrJXWRgIYuQRYw73ie57KWnUCR9pcPxQz8BaaTa/PnKkBTAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+    style="padding-bottom: 42.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAABkklEQVQoz1WSS3LbMBBEef9L5AA5gtfZZRvbCyuyTEr8iD8Q/ANkpxuUnTKqpmYIgm+6B4z+nk7IsxxJkiBNU0aG9HbD9XpFeb/jI45RVTWKokASJ7g93uV5/jifhvPee2hFaZZhGAbs+L+2fcfGPMwL+r7HsizYt+3r/TzPiNlIYAlRfT6fcblcEN3ZXUXbNrDTiqS2GJ3HzI7DNDMmLOuKkdmy8cS9kVkgqb0RKldZdkRUVRXe3k4wBNZ2xHvZYSFQ6ha/YX7AJ+dQdxbW9hjHMcCKvEDOUZRlCXGUI80iZreaGzOtCbR5h40WNRfvjtpRpWxPVLqyFqBtW9SEGNMyTHiOrLVoTXfYY2dDFfogwBiqHaGqBdNMtaeluTvbYXNrqHfOPlppa+87oGswMw+95dCnABHAdt03qC5EHyq03NBjp6PPFcnOrz8nPP1+xjlvEJcGVdPStj8ugKoF1LnPrFtXA0FX01DhAQwK1eHnS4ofr/znzIRhccG+o40pZBdUKcuuVOuWNR4vcGe+1Cr/A2k4tAXnDbCpAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="030_07"
-        title="030_07"
-        src="/static/6ba3bbed0a4916827d1c5a0425aa6712/37523/030_07.png"
-        srcset="/static/6ba3bbed0a4916827d1c5a0425aa6712/e9ff0/030_07.png 180w,
-/static/6ba3bbed0a4916827d1c5a0425aa6712/f21e7/030_07.png 360w,
-/static/6ba3bbed0a4916827d1c5a0425aa6712/37523/030_07.png 720w,
-/static/6ba3bbed0a4916827d1c5a0425aa6712/302a4/030_07.png 1080w,
-/static/6ba3bbed0a4916827d1c5a0425aa6712/000c7/030_07.png 1137w"
+        alt="priority_que_example"
+        title="priority_que_example"
+        src="/static/289ca98bf493b3ff8c60024d2c5c1b4f/37523/030_12_cut.png"
+        srcset="/static/289ca98bf493b3ff8c60024d2c5c1b4f/e9ff0/030_12_cut.png 180w,
+/static/289ca98bf493b3ff8c60024d2c5c1b4f/f21e7/030_12_cut.png 360w,
+/static/289ca98bf493b3ff8c60024d2c5c1b4f/37523/030_12_cut.png 720w,
+/static/289ca98bf493b3ff8c60024d2c5c1b4f/302a4/030_12_cut.png 1080w,
+/static/289ca98bf493b3ff8c60024d2c5c1b4f/07a9c/030_12_cut.png 1440w,
+/static/289ca98bf493b3ff8c60024d2c5c1b4f/e4d4a/030_12_cut.png 2198w"
         sizes="(max-width: 720px) 100vw, 720px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -284,196 +250,277 @@
       />
     </span></p>
 <ul>
-<li>2번 노드에서 3, 4번 노드를 갈 수 있습니다. 이 경우 값 비교시 기존의 값보다 커지기 때문에 갱신은 둘다 하지 않고 끝나고, 다음 노드를 선택합니다.</li>
-<li>여기서 기존에 직접 방문한 노드에 대해선 (예를 들면 4번 노드) 건너뛰게 만들수도 있습니다. 왜냐하면 방문이 처리 되면 그 순간 최소거리가 이미 지정되기 때문입니다.</li>
+<li>1번 노드를 꺼내고 확인을 시작합니다. (방문 처리도 동시 진행함)</li>
+<li>인접 노드에 대한 최단거리 값을 갱신합니다(2, 3, 4번 노드)</li>
+<li>핵심은 갱신되는 여부에 따라 우선순위 큐에 집어 넣을지 말지를 결정하므로, 갱신된다 == 우선순위 큐에 들어가짐 이라고 생각하십시오.</li>
 </ul>
-<ol start="4">
-<li>방문하지 않은 노드 중 최단 거리가 가장 짧은 노드인 5번 노드를 처리합니다.</li>
-</ol>
+<hr>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 40%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsSAAALEgHS3X78AAABUklEQVQoz2WRy26DMBBF+fn+VfddVOqqSbtJgxKQGmIbbB5+YHM74wCq2pGusBn7+M5McWsaaK0xzzO2WJYlf6dpwvH4CeccfkcIAUIISJK4CzTEYCmlUIi2w+VygZQyQ6VU+QJDrbWoqjqDvfdZnOP96XSiXIW6rlGWJc7nMq+LGGM+wC6GYcDh8JFB/D+ltDtOKUJTXrUtPJ1lh1yZIfV9/1gbgwJ/gh0waBODF/r6uIpc7iZoPXYtJgK6tYLi8foC7tpIh97fjxjHcXVFQJKLLIL4gJYcxtU5R7ITluD3fbEN4JFNkNTYrVRLgEMlMAQqn/aRHg48IL6z3osETN7trcklX7XFa9WiVgam66g/MkubHqqf0HU6T1Qa6qGNGF3YWzH3+j/w+euOp5cSb1eBvlX4vjV52tzohYbBQH7grgg8OJhhhKcyZ2cJaDJ4A/4A7IlrBzwAgBkAAAAASUVORK5CYII='); background-size: cover; display: block;"
+    style="padding-bottom: 42.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAABhklEQVQoz1VSSW7DMAz0/3/RUz/RY8+9BV0SwA7seEm8y9osyVNSTYxGAE1SJIdDysnx54i6qlBcLqhIs5RliQv5TdMgyzL0fY/r9YoiL55ij/yK7rz34JNUVQ0pJbYN+9nujrUWy7JEvf1LMMYgz/MIXBRFtNM0xfl8RnLr+mhM00QyU7CI3Vi4UGsNt65kawKX0WcCDMIsmXld12BizDbpug6n0ykCsp1l5wi2MqsQ4EkcifUBg1ggiLFWCk3doKX89nbDOI4YhiHWJ9yFu/Xk8GiGhAEfIIZkZXt1CKQVgfH4UWj8VcwIbo0+x5ORmLX9AMldR4HPsod0HjZscAxG4zrnYhOlddwp3z2OWwQ273Y/mSlBNCXsjR6H7HFRUIaYEuiiDeZ5hifALXiE+14fDHdA5/bHTPjzfkjx9vGNNMvp18jRtd1ezPsapUGzWAjNrx3iapg1167T8AxoqcProcLLV4uimyCIEe+JC/hFmd0sNUZlIOTfPY+tFMWsgZunnS3rX7S2s8+p7lA2AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="030_08"
-        title="030_08"
-        src="/static/1ac4d9eafd93a3204c54cb53e3dde725/37523/030_08.png"
-        srcset="/static/1ac4d9eafd93a3204c54cb53e3dde725/e9ff0/030_08.png 180w,
-/static/1ac4d9eafd93a3204c54cb53e3dde725/f21e7/030_08.png 360w,
-/static/1ac4d9eafd93a3204c54cb53e3dde725/37523/030_08.png 720w,
-/static/1ac4d9eafd93a3204c54cb53e3dde725/302a4/030_08.png 1080w,
-/static/1ac4d9eafd93a3204c54cb53e3dde725/b5cea/030_08.png 1140w"
+        alt="priority_que_example"
+        title="priority_que_example"
+        src="/static/2e10bfdd19615cf7b90442d7a65d138b/37523/030_13_cut.png"
+        srcset="/static/2e10bfdd19615cf7b90442d7a65d138b/e9ff0/030_13_cut.png 180w,
+/static/2e10bfdd19615cf7b90442d7a65d138b/f21e7/030_13_cut.png 360w,
+/static/2e10bfdd19615cf7b90442d7a65d138b/37523/030_13_cut.png 720w,
+/static/2e10bfdd19615cf7b90442d7a65d138b/302a4/030_13_cut.png 1080w,
+/static/2e10bfdd19615cf7b90442d7a65d138b/07a9c/030_13_cut.png 1440w,
+/static/2e10bfdd19615cf7b90442d7a65d138b/e4d4a/030_13_cut.png 2198w"
         sizes="(max-width: 720px) 100vw, 720px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
         decoding="async"
       />
     </span></p>
-<ol start="5">
-<li>방문하지 않은 노드 중 최단 거리가 가장 짧은 노드인 3번 노드를 처리합니다. 마지막 노드 6의 경우 사실상 이미 모든게 끝난 상태이므로 마무리 합니다.</li>
-</ol>
+<ul>
+<li>계속해서 우선순위 큐에 따라 다음 노드를 꺼내고, 이에 대한 다음 노드의 거리 갱신을 반복합니다.</li>
+</ul>
+<hr>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 41.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsSAAALEgHS3X78AAABV0lEQVQoz1WR226DMAyGef+3mXa3m71EtbaTqlEKCTDCIZBwSMo/OxuIGVkmif37kx0ljxRKKXjvsdnz+QyxKApcrp+Y6W27Y+u6DmmaIssyZGmGJEkQxzHqukbU6h5CCGitKVFTkgjF7MYYNG0LuzjYeUGlDYrOoKU7FijLEjLPgzCfGSzyzmGapkCoVI37PcG6rnB0z5FtJXH2vNGIqw6WGlWVwjiO0ESrCYrphmFAhIOxKIuz0EZ5/PfkEzeiyA3dsmBqajiq4zPnRFsBm5Q5TqePXWihAmvtLsYj4Pnt86Qc3+sjExOu/whHItysyAucz5dQGL5D86BH7v4E+Y094uf3r2+8XnPEskRJQ05pc1JKPMoGSUWLkgUELYsXJoQMs2JiZw2WRu20gdBTfLuVeLkpyLYPA+9oyAPF3owYFw9NAnzm4Q+DgaVlBEFe5jwH0l9C4AcAcmoNEwsfoQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+    style="padding-bottom: 42.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAABjElEQVQoz1WR646jMAyFef/HWGmeYv7sC+yvUdXRbCWmQAu9QLgkBJLA2eNMi7qWLMdO9PnYSf5+faEsSxSnU4zi5/MZJ+aXS4X0+xtN0+B6vaLIi5e7y/a+ZC2EALGkrCoYY7Cu2Gx9JEqP2JcKZnYIL/fTNCHPcxTFKTaRc5qmOB4zJLe64eGIruui53ywsJtfFgx2Rkvo7DwMIa0ZYa3FSAF5lkfVt9v9v6mSuq5xOBwi7H6vYxcfFhhCFkJX+jNqrTEMA+w4ouJkbduipwtDXBokcpFlWSzMVGHpU/iBiAeBcQWyI4kjYcujJltwQ4fFu5+c9UQ6KqqzzlF2id1uHyGLQBgd6wITiIyr+V5qT/O6xxr8lieOalbdAb2CJlgpBT/PIAETAX3fR5jYExrVPD7O64EK/faZSSDw98cB73/2SI95/JS0vOGqZwzGRkDTKC6+ivsTm9nQEyIjulZhfQVO7PC2K/Hr845z00FTkRpGdNbBECbjikql2ggUkHzOKHfct++7Ta3Ef9SoswfNctF4AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="030_09"
-        title="030_09"
-        src="/static/068e244a5b6c582d2af75ce1ead2430a/37523/030_09.png"
-        srcset="/static/068e244a5b6c582d2af75ce1ead2430a/e9ff0/030_09.png 180w,
-/static/068e244a5b6c582d2af75ce1ead2430a/f21e7/030_09.png 360w,
-/static/068e244a5b6c582d2af75ce1ead2430a/37523/030_09.png 720w,
-/static/068e244a5b6c582d2af75ce1ead2430a/302a4/030_09.png 1080w,
-/static/068e244a5b6c582d2af75ce1ead2430a/f32b7/030_09.png 1136w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span>
-<span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 39.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsSAAALEgHS3X78AAABSElEQVQoz2WR227CMAyG+/6Xe5M9xe52BYhOYkijpYc06Ymkp6T/bAMd0ixZqV3ns/M7yvIcXdfBe4+nresqZ9u22O0OmKZ5y7GN44gsy1AUhZxJkiBNUpRliagyNc7nM4wxUsjJZVkE4JxDnhcEnCTHcVkqWGsFpJSSegaza60RhRDkAk/IE8XxF+Z53qBsXMPfhprvaeJhGAX6dPc4mRPhxfgSw/hkyNM55obyXxoFaRg4tjdyCx/uuUiKKWBrmoY029MEwwbhBgKjmt4N2F8UpuVPbz84hHHY4uhV7CDP7ra47284HI7bwgKVtm56fZQA/QPILHnysezw8VPhqhs0pBMLX1UaaXrF6fRNgpcS8xIMCa+aHpWd4WYPf+v/A9/jHG+fKeJMo6sNCgLyAhjAEytVoa7vjbQ2UHULbUdahhPg+pCMgb9LymmRjxRlVwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="030_10"
-        title="030_10"
-        src="/static/d29e2e275e1d7d25ead801677b7a52c6/37523/030_10.png"
-        srcset="/static/d29e2e275e1d7d25ead801677b7a52c6/e9ff0/030_10.png 180w,
-/static/d29e2e275e1d7d25ead801677b7a52c6/f21e7/030_10.png 360w,
-/static/d29e2e275e1d7d25ead801677b7a52c6/37523/030_10.png 720w,
-/static/d29e2e275e1d7d25ead801677b7a52c6/302a4/030_10.png 1080w,
-/static/d29e2e275e1d7d25ead801677b7a52c6/8802b/030_10.png 1135w"
+        alt="priority_que_example"
+        title="priority_que_example"
+        src="/static/ee3dab006710dac9232e1d1bdd1b744c/37523/030_14_cut.png"
+        srcset="/static/ee3dab006710dac9232e1d1bdd1b744c/e9ff0/030_14_cut.png 180w,
+/static/ee3dab006710dac9232e1d1bdd1b744c/f21e7/030_14_cut.png 360w,
+/static/ee3dab006710dac9232e1d1bdd1b744c/37523/030_14_cut.png 720w,
+/static/ee3dab006710dac9232e1d1bdd1b744c/302a4/030_14_cut.png 1080w,
+/static/ee3dab006710dac9232e1d1bdd1b744c/07a9c/030_14_cut.png 1440w,
+/static/ee3dab006710dac9232e1d1bdd1b744c/e4d4a/030_14_cut.png 2198w"
         sizes="(max-width: 720px) 100vw, 720px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
         decoding="async"
       />
     </span></p>
-<h2 id="다익스트라-알고리즘의-특징" style="position:relative;"><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98-%ED%8A%B9%EC%A7%95" aria-label="다익스트라 알고리즘의 특징 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>다익스트라 알고리즘의 특징</h2>
 <ul>
-<li>그리디 알고리즘 : <strong>매 상황에서 방문하지 않은 가장 비용이 적은 노드를 선택</strong>해 임의의 과정을 반복합니다.</li>
-<li>단계를 거치면서 한 번 처리된 노드의 최단거리는 고정이 됩니다.</li>
-<li>다익스트라 알고리즘이 수행되고 나면, 테이블에 각 노드까지의 최단거리 정보가 저장됩니다.</li>
+<li>핵심은 진행 중 거쳐가는 값이 현재 거리보다 커서 갱신이 되지 않는 경우 우선순위 큐에 들어가지 않는다는 점입니다.</li>
 </ul>
-<h2 id="다익스트라-알고리즘--간단한-구현-방법" style="position:relative;"><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98--%EA%B0%84%EB%8B%A8%ED%95%9C-%EA%B5%AC%ED%98%84-%EB%B0%A9%EB%B2%95" aria-label="다익스트라 알고리즘  간단한 구현 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>다익스트라 알고리즘 : 간단한 구현 방법</h2>
+<hr>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 42.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAABjElEQVQoz1VSy3KDMAzk//+ih/5Gbz33ksc0kwkhvAlgY4N5GNhKnkBbz2gsy/JqtbJ3uVyQpimiOHY7W5IkSOIEGfm+76OuaxRFgSgM3V1MuXme7/kpxeZ5Bi8vzXJ0XYd1XbGtza9rgcPhhGma8HcNw4CQwBk4iiLnc+EgCOA9q9o5TdOQKbqMXLVlWdD3PYSQBGgxjiMMFR4oZoxB+AgdS2aeZZkzZutVVYXr9eoA2b/fHw7MWuuYsvGZTegWum1dIQYoKb98Fk4SIYR773EVpsxBboVtA9iNQAc7w5LP7LZCLMykGywkyVbYk8SsJLCuH5CkGY7H894y72acYAhsnBdo00MTS2a/LdsqrPPv2VPUQpunGEsajlIQUu4PZGtwimuMC1V/DcuSluTtg5tbjfWVzzGP2/k8+fj4+sY9iOhrRLjdfBK8QKM0VNe7aef0Gwqh8DQWypAsry6sFP8BB63xfkjwdn4iriQ0D4ckkMS0Jfb8kAfmRJcKshuhiDl3YYceVjU7W95/AKwWsas+y8TCAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="priority_que_example"
+        title="priority_que_example"
+        src="/static/9df497a0faace73875336bc529459c50/37523/030_15_cut.png"
+        srcset="/static/9df497a0faace73875336bc529459c50/e9ff0/030_15_cut.png 180w,
+/static/9df497a0faace73875336bc529459c50/f21e7/030_15_cut.png 360w,
+/static/9df497a0faace73875336bc529459c50/37523/030_15_cut.png 720w,
+/static/9df497a0faace73875336bc529459c50/302a4/030_15_cut.png 1080w,
+/static/9df497a0faace73875336bc529459c50/07a9c/030_15_cut.png 1440w,
+/static/9df497a0faace73875336bc529459c50/e4d4a/030_15_cut.png 2198w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<hr>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 42.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAABhUlEQVQoz1VR7W7CMAzs+z/GpD3F/uwF9gs6NAR0lH7SNmnSFEqT9mZnUEGkk+PYOdvnYLvdIs9zpGnqLSPLMvIzFEWB/f4AIQTO5zNOp8THEsoty3LJz+nNOQc+QU6f+r7HPGM5890RQmK1/sblNuIpjNswEPkJSZIiIcv3KIpwPMYIqkbQ5QillAd3wdWmacL1eoWULQbrPKk0FyTCQJvek3DXVVU/TZUiaJoGu93Ok9V146swmbXWd8pgfybIzmB/Vuj6i5ejbVsoQlPXYB4uEHAgjmP/MNAoDCZ4BpP6rsn2FMe9EMswdhqTHf99yg06qiqpu+s4Is1yhOFmGdmSvdDYzxLorsNIuY/jTIfZ2cUPLHdgFKAlDBGzZo8PkrYbrtZE5pYP1o4vi3O9wWzt8hY4N+FztcPH1wa/R9pYfML+EKEsSqSVRFRKFFXj/eKOtlWLHFa1r4QDjfAeZnj7qZEJBaM1hJR+SVIbmJuDbDWJr0hn4SfQuvNy2IHk0Grplu0f0dqwwL0RXPIAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="priority_que_example"
+        title="priority_que_example"
+        src="/static/d155894c1a024197284a28324aa59c12/37523/030_16_cut.png"
+        srcset="/static/d155894c1a024197284a28324aa59c12/e9ff0/030_16_cut.png 180w,
+/static/d155894c1a024197284a28324aa59c12/f21e7/030_16_cut.png 360w,
+/static/d155894c1a024197284a28324aa59c12/37523/030_16_cut.png 720w,
+/static/d155894c1a024197284a28324aa59c12/302a4/030_16_cut.png 1080w,
+/static/d155894c1a024197284a28324aa59c12/07a9c/030_16_cut.png 1440w,
+/static/d155894c1a024197284a28324aa59c12/e4d4a/030_16_cut.png 2198w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<hr>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 42.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAABSElEQVQoz3VSy3KDMAzM/39FL/2MnnruqYRMGuqW9yMYbFpCeG4tTWAgbT2jkQXSWrvS7u14RBzFCMMQcRyzRVFk4ghJkkAIgaIokKYpfN+H53nIsozz8zzHfKZpYr+LTVFd17jFfMZxZC9lAcuy0XUd/jvTupAAz6bIdV1ordl8P8AwDAx6uVxQlgp937NVVWVyveWBGYz80qGUEo7jMFieSy4gMAKYEykmr5TC6eSgbdsV4LSlnBhtCISAr9crmqZhgLVRMnVNfg227nChzHSGkd8JzTD2+8NCmf4R7TkmrZWuNpR/aUhFaL6BL43aaKSURn8rIP1s+7Ap6ij/biAbDQdzeX59x9PLAeLT59UQ4sOsSYYgCPmeJKlZlTN7+k6PznL8CfhoRXiwM7jn0jSqIYuSB0Brow1F8hTT0KhrfaNNUtwD/gDlirbo1xZdHAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="priority_que_example"
+        title="priority_que_example"
+        src="/static/9b616f305580ed1fcdce84b8d5f63492/37523/030_17_cut.png"
+        srcset="/static/9b616f305580ed1fcdce84b8d5f63492/e9ff0/030_17_cut.png 180w,
+/static/9b616f305580ed1fcdce84b8d5f63492/f21e7/030_17_cut.png 360w,
+/static/9b616f305580ed1fcdce84b8d5f63492/37523/030_17_cut.png 720w,
+/static/9b616f305580ed1fcdce84b8d5f63492/302a4/030_17_cut.png 1080w,
+/static/9b616f305580ed1fcdce84b8d5f63492/07a9c/030_17_cut.png 1440w,
+/static/9b616f305580ed1fcdce84b8d5f63492/e4d4a/030_17_cut.png 2198w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
 <ul>
-<li>단계마다 1차원 테이블의 모든 원소를 확인(순차 탐색)하는 방법</li>
+<li>방문 처리를 했기에 재 연산을 생략해버립니다. 이로써  탐색을 하는 과정을 줄여줍니다.</li>
 </ul>
-<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># Python 구현 예제</span>
+<hr>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 42.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAABhElEQVQoz1VS23KjMAzl/79iZ/odfdkP6FMuO21KAjHXcLHBJgQMZyW1Q1PNiCPZ4ujm4PP0iTzPoZRClmWiaZoiTVKxwzBE0zQoyxLqepU7lSQoinKLz+jMew+WICMy5xzWFZus307bttjtDpimCc8yjiPiOEZCxFzIlRKdz2dcLhcEt7pBHEUwxqDrOrpUkm1ZFtzvdyGd51m073siugrW9F9V1YRfWlWVYMDG+8cHtNYSFEWxkDEBV8rKPiPHnGhE3BEnY7RE7qyFJR2GAQFXUBSFVMetsDLBszIZV814Hx8/Saj9ue+wzJPYfBY8zyZNM+z3x61lrpKzChn5xjrskxrD+DVTJvG2w+rnjSOYKRCuB3oNR1VqbYSIhVs8HI7bkvjrxt8Lmm2P9Tue4wLvF/zdnfD6dsQlUrKUMDzLs1AqETvPC3o2N8GKsKg1SjvBPjy8aanlJ8KRMrzsUvz5d4OiwJ62zctpWy1bM6bbfN5q27SoWwM9PDA4Gkdnfjog/A+lUbEuD5WHPQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="priority_que_example"
+        title="priority_que_example"
+        src="/static/49b43baa6b0214220412dd48d2ba46d7/37523/030_18_cut.png"
+        srcset="/static/49b43baa6b0214220412dd48d2ba46d7/e9ff0/030_18_cut.png 180w,
+/static/49b43baa6b0214220412dd48d2ba46d7/f21e7/030_18_cut.png 360w,
+/static/49b43baa6b0214220412dd48d2ba46d7/37523/030_18_cut.png 720w,
+/static/49b43baa6b0214220412dd48d2ba46d7/302a4/030_18_cut.png 1080w,
+/static/49b43baa6b0214220412dd48d2ba46d7/07a9c/030_18_cut.png 1440w,
+/static/49b43baa6b0214220412dd48d2ba46d7/e4d4a/030_18_cut.png 2198w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<hr>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 42.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAABRElEQVQoz3VSy26DMBDk//+ip/5ET733lJciBcIjYCDEMQTMM0y924JIoqxkrRfW45kdW/v9HlEUIQxDCCF4/dUR4jiGbTuQUiJJEgRBAN/3kaYp92dZhinGceRsCXOoqiosY/op5RXr9RZd1+FdTL1TWOeLhOe6UEohzwvDIMAwDLjf79C6xvWq0Pc9gxZFAdf10LbtAxjlmSHJcRyHmy8E7vkMRiBTI9WUc5XjcLCfAMdHyU3TsGRqquuaFwEsFzUTa8rE+lnuUra1LKJIYLPZzZKJZVXpGYxGsjIz1Vq/l8wD1zfgplAZ2TTL/t8E2tMFy4PlGwNnhoP58L2y8fWzw9E7ITCmOM7RPJMUp1PI+zhOuKacnTPOQsQoy/KVIQF+rgU+tmf4mUJpWNJzIXZkWMG1NHVuTLuw62Qe5bpuXgB/ASRQtnBkdHwGAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="priority_que_example"
+        title="priority_que_example"
+        src="/static/6b6ad533561e88edaf7651a9f64c0b18/37523/030_19_cut.png"
+        srcset="/static/6b6ad533561e88edaf7651a9f64c0b18/e9ff0/030_19_cut.png 180w,
+/static/6b6ad533561e88edaf7651a9f64c0b18/f21e7/030_19_cut.png 360w,
+/static/6b6ad533561e88edaf7651a9f64c0b18/37523/030_19_cut.png 720w,
+/static/6b6ad533561e88edaf7651a9f64c0b18/302a4/030_19_cut.png 1080w,
+/static/6b6ad533561e88edaf7651a9f64c0b18/07a9c/030_19_cut.png 1440w,
+/static/6b6ad533561e88edaf7651a9f64c0b18/e4d4a/030_19_cut.png 2198w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<h2 id="다익스트라-알고리즘-개선된-구현방법python" style="position:relative;"><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%9C%EC%84%A0%EB%90%9C-%EA%B5%AC%ED%98%84%EB%B0%A9%EB%B2%95python" aria-label="다익스트라 알고리즘 개선된 구현방법python permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>다익스트라 알고리즘: 개선된 구현방법(Python)</h2>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">import</span> heapq
 <span class="token keyword">import</span> sys
 <span class="token builtin">input</span> <span class="token operator">=</span> sys<span class="token punctuation">.</span>stdin<span class="token punctuation">.</span>readline
-INF <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token number">1e9</span><span class="token punctuation">)</span> <span class="token comment"># 무한을 의미하는 값으로 10억 설정</span>
+INF <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token number">1e9</span><span class="token punctuation">)</span>
+<span class="token comment"># 무한을 의미하는 값으로 10억을 설정</span>
 
-<span class="token comment"># 노드의 개수, 간선 개수 입력</span>
-n<span class="token punctuation">,</span> m <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment"># 시작 노드 번호</span>
+<span class="token comment"># Node 개수, 간선의 개수를 입력받기</span>
+n<span class="token punctuation">,</span> m <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>stdin<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 시작 노드 번호를 입력받기</span>
 start <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment"># 각 노드에 연결된 노드 정보 담은 리스트</span>
+<span class="token comment"># 각 노드에 연결된 정보 리스트</span>
 graph <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-<span class="token comment"># 방문한 노드 체크용 리스트</span>
-visited <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">False</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token comment"># 최단 거리 테이블을 모두 무한으로 초기화 </span>
+<span class="token comment"># 최단 거리 테이블</span>
 distance <span class="token operator">=</span> <span class="token punctuation">[</span>INF<span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment"># 해당 예제는 기존 방문 테이블이 따로 존재하지 않음</span>
 
-<span class="token comment"># 모든 간선 정보 입력 받기</span>
+<span class="token comment"># 간선 정보를 입력 받는다.</span>
 <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token comment"># a번 노드에서 b번 노드로 가는 비용이 c 라는 의미</span>
 	a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-	<span class="token comment"># a번 노드에서 b번 노드로 가는 비용이 c임</span>
 	graph<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="token comment"># 방문 안 한 노드 중 최단 거리 노드 번호 반환</span>
-<span class="token keyword">def</span> <span class="token function">get_smallest_node</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-	min_value <span class="token operator">=</span> INF 
-	index <span class="token operator">=</span> <span class="token number">0</span>
-	<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-		<span class="token keyword">if</span> distance<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> min_value <span class="token keyword">and</span> <span class="token keyword">not</span> visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
-			min_value <span class="token operator">=</span> distance<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-			index <span class="token operator">=</span> i
-	<span class="token keyword">return</span> index
-
 <span class="token keyword">def</span> <span class="token function">dijkstra</span><span class="token punctuation">(</span>start<span class="token punctuation">)</span><span class="token punctuation">:</span>
-	<span class="token comment"># 시작 노드에 대해서 초기화 </span>
+	q <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+	<span class="token comment"># 시작 위치 설정</span>
+	heapq<span class="token punctuation">.</span>heappush<span class="token punctuation">(</span>q<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> start<span class="token punctuation">)</span><span class="token punctuation">)</span>
 	distance<span class="token punctuation">[</span>start<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
-	visited<span class="token punctuation">[</span>start<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
-	<span class="token keyword">for</span> j <span class="token keyword">in</span> graph<span class="token punctuation">[</span>start<span class="token punctuation">]</span><span class="token punctuation">:</span>
-		distance<span class="token punctuation">[</span>j<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-	<span class="token comment"># 시작 노드를 제외한 전체 n - 1개의 노드에 대해 반복</span>
-	<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-		<span class="token comment"># 현재 최단 거리 노드, 방문 처리</span>
-		now <span class="token operator">=</span> get_smallest_node<span class="token punctuation">(</span><span class="token punctuation">)</span>
-		visited<span class="token punctuation">[</span>now<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
-		<span class="token comment"># 현재 노드와 연결된 노드 확인</span>
-		<span class="token keyword">for</span> j <span class="token keyword">in</span> graph<span class="token punctuation">[</span>now<span class="token punctuation">]</span><span class="token punctuation">:</span>
-			cost <span class="token operator">=</span> distance<span class="token punctuation">[</span>now<span class="token punctuation">]</span> <span class="token operator">+</span> j<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-			<span class="token comment"># 다른 노드까지 이동 거리 비교, 작으면 만들어진 값으로 대입</span>
-			<span class="token keyword">if</span> cost <span class="token operator">&lt;</span> distance<span class="token punctuation">[</span>j<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-				distance<span class="token punctuation">[</span>j<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> cost
+	<span class="token keyword">while</span> q<span class="token punctuation">:</span>
+		dist<span class="token punctuation">,</span> now <span class="token operator">=</span> heapq<span class="token punctuation">.</span>heappop<span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">:</span>
+		<span class="token keyword">if</span> distance<span class="token punctuation">[</span>now<span class="token punctuation">]</span> <span class="token operator">&lt;</span> dist<span class="token punctuation">:</span> <span class="token comment"># 현재 지정된 노가 이미 처리되어 dist 값보다 작다면 처리 안함</span>
+			<span class="token keyword">continue</span>
+		<span class="token comment"># 인접 노드 탐색</span>
+		<span class="token keyword">for</span> i <span class="token keyword">in</span> graph<span class="token punctuation">[</span>now<span class="token punctuation">]</span><span class="token punctuation">:</span>
+			cost <span class="token operator">=</span> dist <span class="token operator">+</span> i<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+			<span class="token comment"># 현재 해당 노드까지 가는데 걸리는 비용이 작은 경우 갱신</span>
+			<span class="token keyword">if</span> cost <span class="token operator">&lt;</span> distance<span class="token punctuation">[</span>i<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+				distance<span class="token punctuation">[</span>i<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> cost
+				<span class="token comment"># 갱신의 핵심인 priority que 사용</span>
+				heapq<span class="token punctuation">.</span>heappush<span class="token punctuation">(</span>q<span class="token punctuation">,</span> <span class="token punctuation">(</span>cost<span class="token punctuation">,</span> i<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 dijkstra<span class="token punctuation">(</span>start<span class="token punctuation">)</span>
 
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-	<span class="token keyword">if</span> distance<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> INF<span class="token punctuation">:</span>
-		<span class="token comment"># 도달 할 수 없는 경우 무한 출력</span>
+	<span class="token keyword">if</span> distance<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> INF<span class="token punctuation">:</span>
 		<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"INFINITY"</span><span class="token punctuation">)</span>
-	<span class="token keyword">else</span> <span class="token punctuation">:</span>
-		<span class="token keyword">print</span><span class="token punctuation">(</span>distance<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token comment">// C++ 구현예제 </span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+	<span class="token keyword">else</span><span class="token punctuation">:</span>
+		<span class="token keyword">print</span><span class="token punctuation">(</span>distance<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h2 id="다익스트라-알고리즘-개선된-구현방법c" style="position:relative;"><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%9C%EC%84%A0%EB%90%9C-%EA%B5%AC%ED%98%84%EB%B0%A9%EB%B2%95c" aria-label="다익스트라 알고리즘 개선된 구현방법c permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>다익스트라 알고리즘: 개선된 구현방법(C++)</h2>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;std/bitsc++.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">INF</span> <span class="token expression"><span class="token number">1e9</span></span></span>
 
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
 <span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">,</span> start<span class="token punctuation">;</span>
-vector<span class="token operator">&lt;</span>par<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">></span> graph<span class="token punctuation">[</span><span class="token number">100001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">bool</span> visited<span class="token punctuation">[</span><span class="token number">100001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+vector<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">>></span> graph<span class="token punctuation">[</span><span class="token number">100001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> d<span class="token punctuation">[</span><span class="token number">100001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-<span class="token keyword">int</span> <span class="token function">getSmallestNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-	<span class="token keyword">int</span> min_value <span class="token operator">=</span> INF<span class="token punctuation">;</span>
-	<span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-	<span class="token punctuation">{</span>
-		<span class="token keyword">if</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> min_value <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
-		<span class="token punctuation">{</span>
-			min_value <span class="token operator">=</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-			index <span class="token operator">=</span> i<span class="token punctuation">;</span>
-		<span class="token punctuation">}</span>
-	<span class="token punctuation">}</span>
-	<span class="token keyword">return</span> <span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
 
 <span class="token keyword">void</span> <span class="token function">dijkstra</span><span class="token punctuation">(</span><span class="token keyword">int</span> start<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
+	priority_queue<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">>></span> pq<span class="token punctuation">;</span>
+	pq<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span> start<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	d<span class="token punctuation">[</span>start<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-	visited<span class="token punctuation">[</span>start<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> graph<span class="token punctuation">[</span>start<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-		d<span class="token punctuation">[</span>graph<span class="token punctuation">[</span>start<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">]</span> <span class="token operator">=</span> graph<span class="token punctuation">[</span>start<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>second<span class="token punctuation">;</span>
-	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>pq<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 	<span class="token punctuation">{</span>
-		<span class="token keyword">int</span> now <span class="token operator">=</span> <span class="token function">getSmallestNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		visited<span class="token punctuation">[</span>now<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> graph<span class="token punctuation">[</span>now<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+		<span class="token keyword">int</span> dist <span class="token operator">=</span> <span class="token operator">-</span><span class="token function">pq</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">;</span>
+		<span class="token keyword">int</span> now <span class="token operator">=</span> pq<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>second<span class="token punctuation">;</span>
+		pq<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>now<span class="token punctuation">]</span> <span class="token operator">&lt;</span> dist<span class="token punctuation">)</span>
+			<span class="token keyword">continue</span> <span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>cost <span class="token operator">&lt;</span> d<span class="token punctuation">[</span>graph<span class="token punctuation">[</span>now<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">]</span><span class="token punctuation">)</span>
 		<span class="token punctuation">{</span>
-			<span class="token keyword">int</span> cost <span class="token operator">=</span> d<span class="token punctuation">[</span>now<span class="token punctuation">]</span> <span class="token operator">+</span> graph<span class="token punctuation">[</span>now<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>second<span class="token punctuation">;</span>
-			<span class="token keyword">if</span> <span class="token punctuation">(</span>cost <span class="token operator">&lt;</span> d<span class="token punctuation">[</span>graph<span class="token punctuation">[</span>now<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">]</span><span class="token punctuation">)</span>
-				d<span class="token punctuation">[</span>graph<span class="token punctuation">[</span>now<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">]</span> <span class="token operator">=</span> cost<span class="token punctuation">;</span>
+			d<span class="token punctuation">[</span>graph<span class="token punctuation">[</span>now<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">]</span> <span class="token operator">=</span> cost<span class="token punctuation">;</span>
+			pq<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">make_pair</span><span class="token punctuation">(</span><span class="token operator">-</span>cost<span class="token punctuation">,</span> graph<span class="token punctuation">[</span>now<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token comment">// 해당 라이브러리의 경우 파이선과 반대로 최대 힙으로 구성되어 있어 값을 음수로 집어 넣습니다. </span>
 		<span class="token punctuation">}</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
@@ -482,34 +529,39 @@ vector<span class="token operator">&lt;</span>par<span class="token operator">&l
 <span class="token punctuation">{</span>
 	cin <span class="token operator">>></span> n <span class="token operator">>></span> m <span class="token operator">>></span> start<span class="token punctuation">;</span>
 
-	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">,</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
 	<span class="token punctuation">{</span>
 		<span class="token keyword">int</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">;</span>
 		cin <span class="token operator">>></span> a <span class="token operator">>></span> b <span class="token operator">>></span> c<span class="token punctuation">;</span>
 		graph<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">{</span>b<span class="token punctuation">,</span> c<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">}</span>
 
-	<span class="token function">fill_n</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> <span class="token number">100001</span><span class="token punctuation">,</span> INF<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">fill</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> d <span class="token operator">+</span> <span class="token number">10001</span><span class="token punctuation">,</span> INF<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	<span class="token function">dijkstart</span><span class="token punctuation">(</span>start<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	
+	<span class="token function">dijkstra</span><span class="token punctuation">(</span>start<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
 	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
 	<span class="token punctuation">{</span>
 		<span class="token keyword">if</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> INF<span class="token punctuation">)</span>
 			cout <span class="token operator">&lt;&lt;</span> <span class="token string">"INFINITY"</span> <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
-		<span class="token keyword">else</span> 
+		<span class="token keyword">else</span>
 			cout <span class="token operator">&lt;&lt;</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<h2 id="다익스트라-알고리즘--간단한-구현-방법-성능-분석" style="position:relative;"><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98--%EA%B0%84%EB%8B%A8%ED%95%9C-%EA%B5%AC%ED%98%84-%EB%B0%A9%EB%B2%95-%EC%84%B1%EB%8A%A5-%EB%B6%84%EC%84%9D" aria-label="다익스트라 알고리즘  간단한 구현 방법 성능 분석 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>다익스트라 알고리즘 : 간단한 구현 방법 성능 분석</h2>
+</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h2 id="다익스트라-알고리즘-개선된-구현-방법의-성능-분석" style="position:relative;"><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%9C%EC%84%A0%EB%90%9C-%EA%B5%AC%ED%98%84-%EB%B0%A9%EB%B2%95%EC%9D%98-%EC%84%B1%EB%8A%A5-%EB%B6%84%EC%84%9D" aria-label="다익스트라 알고리즘 개선된 구현 방법의 성능 분석 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>다익스트라 알고리즘: 개선된 구현 방법의 성능 분석</h2>
 <ul>
-<li>총 𝑂(𝑉)번에 걸쳐서 최단 거리가 가장 짧은 노드를 매번 선형 탐색합니다. (V는 노드 개수)</li>
-<li>따라서 전체 시간 복잡도는 𝑂(𝑉²)입니다.</li>
-<li>일반적으로 코딩 테스트 전체 노드 개수가 5000개 이하라면 코드로 해결 가능하나, 노드 개수가 10000개가 넘어간다면 문제가 발생할 수 있습니다.</li>
-<li>따라서 이를 위한 효율적인 자료구조 형태를 만들어 내고 코드가 작성되어야 합니다.</li>
+<li>힙 자료구조를 이용하면 시간 복잡도는 𝑂(𝑬𝑙𝑜𝘨𝑉) 입니다.</li>
+<li>노드를 하나씩 꺼내 검사하는 반복문은 노드의 개수 V 이상 횟수로 처리 되지 않습니다.</li>
+<li>결론으로 현재 우선순위 큐에서 꺼낸 노드와 연결된 다른 노드들을 확인하는 총 횟수는 최대 간선의 개수(E) 만큼 연산이 수행될 수 있습니다.</li>
+<li>단, 직관적으로 뒷 부분에서 더 이상 판단할 필요가 없는 원소가 발생한다는 점 등을 고려시 전체 과정은 E 개의 원소를 우선순위에 넣었다 빼는 연산과 유사합니다.</li>
+<li>따라서 시간 복잡도는 𝑂(𝑬𝑙𝑜𝘨𝑬)로 판단할 수 있습니다.
+<ul>
+<li>중복간선을 포함하지 않는 경우에 이를 𝑂(𝑬𝑙𝑜𝘨𝑉)로 정리할 수 있습니다.</li>
+<li>𝑂(𝑬𝑙𝑜𝘨𝑬) &#x3C; 𝑂(𝑬𝑙𝑜𝘨𝑉²) == 𝑂(2𝑬𝑙𝑜𝘨𝑉) == 𝑂(𝑬𝑙𝑜𝘨𝑉) (빅오 표기법상 상수는 생략 됨)</li>
 </ul>
-<p>TO BE CONTINUED…</p>
+</li>
+</ul>
 <p><a href="https://paul2021-r.github.io/algorithm/20220411_00/">🧑🏻‍💻 알고리즘 박살내기 시리즈🧑🏻‍💻</a></p>
 <div class="table-of-contents">
 <ul>
@@ -520,16 +572,20 @@ vector<span class="token operator">&lt;</span>par<span class="token operator">&l
 <p><a href="#%EC%B5%9C%EB%8B%A8-%EA%B2%BD%EB%A1%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98">최단 경로 알고리즘</a></p>
 <ul>
 <li><a href="#%EA%B0%9C%EB%85%90">개념</a></li>
-<li><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%B5%9C%EB%8B%A8-%EA%B2%BD%EB%A1%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98-%EA%B0%9C%EC%9A%94">다익스트라 최단 경로 알고리즘의 개요</a></li>
-<li><a href="#%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%8F%99%EC%9E%91-%EA%B3%BC%EC%A0%95">알고리즘 동작 과정</a></li>
-<li><a href="#%EB%8F%99%EC%9E%91%EA%B3%BC%EC%A0%95-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0">동작과정 살펴보기</a></li>
-<li><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98-%ED%8A%B9%EC%A7%95">다익스트라 알고리즘의 특징</a></li>
-<li><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98--%EA%B0%84%EB%8B%A8%ED%95%9C-%EA%B5%AC%ED%98%84-%EB%B0%A9%EB%B2%95">다익스트라 알고리즘 : 간단한 구현 방법</a></li>
-<li><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98--%EA%B0%84%EB%8B%A8%ED%95%9C-%EA%B5%AC%ED%98%84-%EB%B0%A9%EB%B2%95-%EC%84%B1%EB%8A%A5-%EB%B6%84%EC%84%9D">다익스트라 알고리즘 : 간단한 구현 방법 성능 분석</a></li>
+<li><a href="#%EA%B0%84%EB%8B%A8%ED%95%9C-%EA%B5%AC%ED%98%84-%EB%B0%A9%EB%B2%95%EC%9D%98-%EC%84%B1%EB%8A%A5-%EB%B6%84%EC%84%9D">간단한 구현 방법의 성능 분석</a></li>
+<li><a href="#%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84-%ED%81%90priority-que">우선순위 큐(Priority Que)</a></li>
+<li><a href="#%ED%9E%99heap">힙(Heap)</a></li>
+<li><a href="#%ED%9E%99-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%A0%9C-%EC%B5%9C%EC%86%8C-%ED%9E%99">힙 라이브러리 사용 예제: 최소 힙</a></li>
+<li><a href="#%ED%9E%99-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%A0%9C-%EC%B5%9C%EB%8C%80-%ED%9E%99">힙 라이브러리 사용 예제: 최대 힙</a></li>
+<li><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%9C%EC%84%A0%EB%90%9C-%EA%B5%AC%ED%98%84-%EB%B0%A9%EB%B2%95">다익스트라 알고리즘: 개선된 구현 방법</a></li>
+<li><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%8F%99%EC%9E%91-%EA%B3%BC%EC%A0%95-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84-%ED%81%90">다익스트라 알고리즘: 동작 과정 살펴보기(우선순위 큐)</a></li>
+<li><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%9C%EC%84%A0%EB%90%9C-%EA%B5%AC%ED%98%84%EB%B0%A9%EB%B2%95python">다익스트라 알고리즘: 개선된 구현방법(Python)</a></li>
+<li><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%9C%EC%84%A0%EB%90%9C-%EA%B5%AC%ED%98%84%EB%B0%A9%EB%B2%95c">다익스트라 알고리즘: 개선된 구현방법(C++)</a></li>
+<li><a href="#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%9C%EC%84%A0%EB%90%9C-%EA%B5%AC%ED%98%84-%EB%B0%A9%EB%B2%95%EC%9D%98-%EC%84%B1%EB%8A%A5-%EB%B6%84%EC%84%9D">다익스트라 알고리즘: 개선된 구현 방법의 성능 분석</a></li>
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/algorithm/20220513_29_2/"><div class="direction">이전 글</div><div class="title">알고리즘 박살내기 - 29 - 2. 다이나믹 프로그래밍 기초 문제 풀이 (2)</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/algorithm/20220516_30_1/"><div class="direction">이전 글</div><div class="title">알고리즘 박살내기 - 30 - 1. 최단 경로 알고리즘(1)</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
@@ -547,4 +603,4 @@ vector<span class="token operator">&lt;</span>par<span class="token operator">&l
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', 'G-YDPMMYNR6Y', options);
-  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/algorithm/20220516_30/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-79d732fed22ff3d3f034.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-79d732fed22ff3d3f034.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-e31a787e67d73c505515.js" async=""></script></body></html>
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/algorithm/20220517_30_2/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-79d732fed22ff3d3f034.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-79d732fed22ff3d3f034.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-e31a787e67d73c505515.js" async=""></script></body></html>
