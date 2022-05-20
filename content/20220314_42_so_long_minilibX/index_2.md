@@ -60,7 +60,7 @@ categories: 42_seoul
 
   `xorg` `libext-dev` `zlib1g-dev` 해당 의존성 패키지를 다음을 통해 설치 가능합니다.
 
-  ```terminal
+  ```shell
   sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
   ```
 
@@ -235,6 +235,7 @@ int	main(void)
 - 사각형, 원, 삼각형, 육각형을 스크린 상에 pixel들로 그려봅시다.
 - 그라디에션을 추가하길 시도해보고, 무지개를 그려보고, rgb 색깔 사용에 친숙해 져보십시오.
 - 반복문을 활용해서 이미지를 생성하는 것으로 텍스쳐를 만들어봅시다.
+
 
 ## 주제별 라이브러리 설명(링크 참조)
 
