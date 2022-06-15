@@ -1,6 +1,6 @@
 ---
 emoji: 🇱🇷🇮🇸
-title: 10_The branstorm
+title: 10_The brainstorm
 date: '2022-06-14 08:30:00'
 author: Paul
 tags: 42Seoul study english business_english
@@ -15,9 +15,7 @@ categories: study
 
 # The Warehouse
 
-<center>
 <iframe width="500" height="281" frameborder="0" src="http://www.bbc.co.uk/programmes/p042nck7/player"></iframe>
-</center>
 
 ### 핵심 메모
 
