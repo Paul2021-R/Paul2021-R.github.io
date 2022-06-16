@@ -48,208 +48,156 @@
         }
       }
     })
-  </script><title data-react-helmet="true">알고리즘 박살내기 - 05. 파이썬 기초(문자열, 튜플)</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="알고리즘 박살내기 - 05. 파이썬 기초(문자열, 튜플)"/><meta data-react-helmet="true" property="og:site_title" content="알고리즘 박살내기 - 05. 파이썬 기초(문자열, 튜플)"/><meta data-react-helmet="true" name="description" content="Introduction 본 포스트는 알고리즘 학습에 대한 정리를 재대로 하기 위하여 남기는 것입니다. 더불어 기본 내용은 나동빈 저의 〖이것이 취업을 위한 코딩 테스트다〗라는 교재 및 유튜브 강의의 내용에서 발췌했고, 그 외 추가적인 궁금 사항들을 검색 및 정리해둔 것입니다. 문자열 자료형 문자열 자료형의 개요 Python 은 문자열을 사용하는 부분에서 다른 프로그램 언어로 사용하는 것과 다르게 굉장히 강력한 기능들을 갖고 있습니다. 문자열 변수의 초기화 : 다른 프로그램 언어 중 큰 따옴표(&quot;&quot;)와 작은 따옴표(”) 를 구분하여 의미를 부여하는 경우가 있으나, Python은 큰 구분이 없습니다. 단, 문자열 안에 다른 따옴표를 넣는 부분에선 사용에 구분이 필요합니다. 전체 문자열을 감싸는 따옴표가 큰 따옴표이면 작은 따옴표를 사용해야 하며, 그 반대는 동일하게 반대로 생각하면 됩니다. 혹은 백슬래쉬(\)를 사용하면 됩니다.(이러한 부분은 다른 프로그램 언어와 유사합니다.) 문자열…"/><meta data-react-helmet="true" property="og:description" content="Introduction 본 포스트는 알고리즘 학습에 대한 정리를 재대로 하기 위하여 남기는 것입니다. 더불어 기본 내용은 나동빈 저의 〖이것이 취업을 위한 코딩 테스트다〗라는 교재 및 유튜브 강의의 내용에서 발췌했고, 그 외 추가적인 궁금 사항들을 검색 및 정리해둔 것입니다. 문자열 자료형 문자열 자료형의 개요 Python 은 문자열을 사용하는 부분에서 다른 프로그램 언어로 사용하는 것과 다르게 굉장히 강력한 기능들을 갖고 있습니다. 문자열 변수의 초기화 : 다른 프로그램 언어 중 큰 따옴표(&quot;&quot;)와 작은 따옴표(”) 를 구분하여 의미를 부여하는 경우가 있으나, Python은 큰 구분이 없습니다. 단, 문자열 안에 다른 따옴표를 넣는 부분에선 사용에 구분이 필요합니다. 전체 문자열을 감싸는 따옴표가 큰 따옴표이면 작은 따옴표를 사용해야 하며, 그 반대는 동일하게 반대로 생각하면 됩니다. 혹은 백슬래쉬(\)를 사용하면 됩니다.(이러한 부분은 다른 프로그램 언어와 유사합니다.) 문자열…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-83816b6c6e1be0007865.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/algorithm/20220413_06/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🧑🏻‍💻</div><div class="info"><div class="categories"><a class="category" href="/posts/algorithm">algorithm</a></div></div><h1 class="title">알고리즘 박살내기 - 06. 파이썬 기초(사전, 집합 자료형)</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->April 13, 2022</div></header><div class="post-content"><div class="markdown"><h1 id="introduction" style="position:relative;"><a href="#introduction" aria-label="introduction permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Introduction</h1>
-<p>본 포스트는 알고리즘 학습에 대한 정리를 재대로 하기 위하여 남기는 것입니다. 더불어 기본 내용은 나동빈 저의 〖이것이 취업을 위한 코딩 테스트다〗라는 교재 및 유튜브 강의의 내용에서 발췌했고, 그 외 추가적인 궁금 사항들을 검색 및 정리해둔 것입니다.</p>
-<h1 id="사전-자료형" style="position:relative;"><a href="#%EC%82%AC%EC%A0%84-%EC%9E%90%EB%A3%8C%ED%98%95" aria-label="사전 자료형 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>사전 자료형</h1>
-<h2 id="개념" style="position:relative;"><a href="#%EA%B0%9C%EB%85%90" aria-label="개념 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>개념</h2>
+  </script><title data-react-helmet="true">12_The big day</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="12_The big day"/><meta data-react-helmet="true" property="og:site_title" content="12_The big day"/><meta data-react-helmet="true" name="description" content="Introduction 본 포스트는 영어를 하도 안 해서 굳어버린 것 같은 나의 혀를 풀어주기 위하 작업으로 시작하였습니다. 멘토님, 다른 분들과 함께 영어 학습을 진행하는 것이며 해당 글의 기반은  의 내용입니다. (원본링크) 해당 포스트는 전체 내용 중 기억하려는 핵심만을 정리해 두었으므로 다분히 개인적인 학습 메모입니다. The Warehouse P.S) iframe 이 정상작동을 하지 않아 영상은 없이 대본 번역만 올리도록 합니다 ㅠ. 내용 해석 
+Hello, welcome to the offices of Citrus Ventures!
+안녕하세요. Citrus Ventures 의 사무실에 오신 것을 환영합니다.
+It’s a big day for Anna, she’s about to present Tip Top Trading’s new Imperial Lemon to Mr Lime and his colleagues. This must not go wrong.
+오늘은 Anna에…"/><meta data-react-helmet="true" property="og:description" content="Introduction 본 포스트는 영어를 하도 안 해서 굳어버린 것 같은 나의 혀를 풀어주기 위하 작업으로 시작하였습니다. 멘토님, 다른 분들과 함께 영어 학습을 진행하는 것이며 해당 글의 기반은  의 내용입니다. (원본링크) 해당 포스트는 전체 내용 중 기억하려는 핵심만을 정리해 두었으므로 다분히 개인적인 학습 메모입니다. The Warehouse P.S) iframe 이 정상작동을 하지 않아 영상은 없이 대본 번역만 올리도록 합니다 ㅠ. 내용 해석 
+Hello, welcome to the offices of Citrus Ventures!
+안녕하세요. Citrus Ventures 의 사무실에 오신 것을 환영합니다.
+It’s a big day for Anna, she’s about to present Tip Top Trading’s new Imperial Lemon to Mr Lime and his colleagues. This must not go wrong.
+오늘은 Anna에…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-83816b6c6e1be0007865.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/english_talking/20220616_12_The big day/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🇱🇷🇮🇸</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">12_The big day</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->June 16, 2022</div></header><div class="post-content"><div class="markdown"><h1 id="introduction" style="position:relative;"><a href="#introduction" aria-label="introduction permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Introduction</h1>
+<p>본 포스트는 영어를 하도 안 해서 굳어버린 것 같은 나의 혀를 풀어주기 위하 작업으로 시작하였습니다. 멘토님, 다른 분들과 함께 영어 학습을 진행하는 것이며 해당 글의 기반은 <code class="language-text">BBC Learning English</code> 의 내용입니다. <a href="https://www.bbc.co.uk/learningenglish/english/">(원본링크)</a></p>
+<p>해당 포스트는 전체 내용 중 기억하려는 핵심만을 정리해 두었으므로 다분히 개인적인 학습 메모입니다.</p>
+<h1 id="the-warehouse" style="position:relative;"><a href="#the-warehouse" aria-label="the warehouse permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The Warehouse</h1>
+<p>P.S) iframe 이 정상작동을 하지 않아 영상은 없이 대본 번역만 올리도록 합니다 ㅠ.</p>
+<h3 id="내용-해석" style="position:relative;"><a href="#%EB%82%B4%EC%9A%A9-%ED%95%B4%EC%84%9D" aria-label="내용 해석 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>내용 해석</h3>
+<p><code class="language-text">Narrator</code><br>
+Hello, welcome to the offices of Citrus Ventures!<br>
+안녕하세요. Citrus Ventures 의 사무실에 오신 것을 환영합니다.<br>
+It’s a big day for Anna, she’s about to present Tip Top Trading’s new Imperial Lemon to Mr Lime and his colleagues. This must not go wrong.<br>
+오늘은 Anna에게 중요한 날입니다. Mr. Lime 씨 그리고 그의 동료들에게 Tip Top Trading 의 새로운 Imperial Lemon을 프레젠테이션을 막 진행할 예정이네요.</p>
+<p><code class="language-text">Anna</code><br>
+…revoltionary laser-curve… revolUtionary laser-curve… revol-<br>
+혁신적인 급등… 혁신적인 급등… 혁…<br></p>
+<p><code class="language-text">Narrator</code><br>
+How are you feeling today Anna?<br>
+Anna 기분이 어때?</p>
+<p><code class="language-text">Anna</code><br>
+Scared! I want to do really well. If I mess up and Citrus Ventures doesn’t place an order, I’ll be so upset.<br>
+무서워! 나 진짜 잘하고 싶다. 만약 내가 이걸 망치고 Citrus Ventures가 이걸 구매하지 않는다면, 속상할 거야.</p>
+<p><code class="language-text">Narrator</code><br>
+You’re well prepared, that’s the main thing. Explain clearly how your presentation will be organised.<br>
+넌 잘 준비되었어, 그게 중요한 거야. 프레젠테이션이 어떻게 구조로 짜여있는지 명확하게 설명하렴.</p>
+<p><code class="language-text">Anna</code><br>
+OK. Oh dear, I didn’t think of the very beginning. Can you give me examples of what I should say?<br>
+그렇지. 아이구, 나 가장 처음에 대해 생각을 안했어. 내가 뭐라 말해야 할지 설명해줄수 있어?</p>
+<p><code class="language-text">Narrator</code><br>
+After you’ve introduced yourself, you could say:<br>
+자기소개 이후에 넌 이렇게 말하는게 좋을 거야<br>
+Today I’m going to… and explain. Then say:<br>
+오늘은 제가 .. 할 것이고 설명할 것입니다. 그 다음에는 :
+I’ll start by…<br>
+이걸로 시작해보겠습니다.<br>
+And then I’m going to move on to discuss…<br>
+그리곤 … 에 대해 이야기 해보겠습니다. <br>
+And finally…<br>
+그리고 마지막으로…</p>
+<p><code class="language-text">Anna</code><br>
+OK, like this:<br>
+그래 이렇게 말이지<br>
+Today I’m going to…<br>
+I’ll start by…<br>
+And then I’m going to move on to discuss…<br>
+And finally…</p>
+<p><code class="language-text">Narrator</code><br>
+Exactly.<br>
+정확해</p>
+<p><code class="language-text">Anna</code><br>
+Right, thanks, I’ll try. Everything will be fine. I feel relaxed now.<br>
+좋아 고마워, 시도해볼게. 모든게 잘 될거야. 이젠 마음이 안하다.</p>
+<p><code class="language-text">Mr Lime</code><br>
+Anna!</p>
+<p><code class="language-text">Anna</code><br>
+Mr Lime!</p>
+<p><code class="language-text">Mr Lime</code><br>
+How lovely to see you. You look absolutely… <br>
+만나서 반가워요, 정말 아름… <br>
+I’ve been looking forward to this for days! Everyone is waiting in the meeting room. Come this way…<br>
+전 몇일 동안이나 이걸 기대하고 있었어요. 모두 미팅 룸에서 기다리고 있습니다. 이쪽으로 오시죠.</p>
+<p><code class="language-text">Anna</code><br>
+Oh gosh.</p>
+<p><code class="language-text">Mr Lime</code><br>
+Everyone in Citrus Ventures is very excited about this new Imperial Lemon, so I allowed a few extras to come and watch, I hope you don’t mind. <br>
+Citrus Ventures 의 일동 모두 이번 Imperial Lemon에 대해 매우 기대하고 있어요. 그래서 저는 조금 추가로 보고갈 사람들에 대해 허가해줬습니다만 기분나빠하지 않으시길 바래요.<br>
+All your equipment has been set up so you can begin!<br>
+당신의 모든 장비는 설치 된 상태니, 시작하시면 됩니다!</p>
+<p><code class="language-text">Anna</code><br>
+Hello, I’m Anna of Top Tip Trading… I mean, Tip Top Trading, sorry! I’m very unhappy to be here.<br>
+안녕하세요. 저는 Top Tip Trading 의 Anna.. 아, 제 말은 Tip Top Trading .. 죄송합니다. 여기에 오게 되어 엄청 긴장되네요.</p>
+<p><code class="language-text">Narrator</code><br>
+Anna- focus!<br>
+Anna- 집중해!</p>
+<p><code class="language-text">Anna</code><br>
+I mean, I’m very happy to be here.<br>
+아 제말은, 여기에 오게 되어 매우 행복합니다.</p>
+<p><code class="language-text">Narrator</code><br>
+Anna, breathe deeply, then say:<br>
+Anna, 숨 깊게 들이마시고, 이렇게 이야기 해:<br>
+Today I’m going to…<br>
+오늘 제가 할…</p>
+<p><code class="language-text">Anna</code><br>
+Today I’m going to… <br>
+오늘 제가 할..
+Today I’m going to present our revolutionary, new Imperial Lemon. <br>
+오늘은 제가 우리의 혁신적인 신상 Imperial Lemon에 대해 설명 드리겠습니다. <br>
+I’ll start by telling you a bit about Tip Top Trading and some of the exciting new developments at our company. <br>
+Tip Top Trading에 관하여, 우리 회사에서의 기대할만 한 새로운 개발 몇 가지를 설명해주면서 시작해볼까 합니다.<br>
+And then… I’m going to move on to explain how the Imperial Lemon is designed and what makes it so revolutionary. <br>
+그 뒤엔… 어떻게 Imperial Lemon이 디자인 되었고, 무엇이 이걸 혁신적으로 만들어주는 가에 대해 설명해 드리도록 하겠습니다.<br>
+And finally, you will all have a chance to see it close up for yourselves and ask questions. <br>
+마지막에는 직접 더 가까이에서 볼 기회이자 질문 시간을 갖게 될 것입니다.<br>
+So, let’s begin. This picture shows…<br>
+그러면 시작하지요. 이 사진은 …</p>
+<p><code class="language-text">Narrator</code><br>
+Well, as usual, Anna seems to be turning a difficult situation into a success. <br>
+흠, 평소처럼 Anna에게서 어려운 순간이 성공으로 바뀌는 걸 볼 수 있네.<br>
+She used the phrases we discussed, which made her opening clear and well-structured. She said:<br>
+그녀가 우리가 이야기한 구문들을 썻습니다. 그것들은 그녀가 명확하게, 짜임새있게 그녀의 발표 오프닝을 만들어주었지. 그녀가 말하길 : <br></p>
+<p>Today I’m going to…<br>
+I’ll start by…<br>
+And then I’m going to move on to discuss…<br>
+And finally…<br>
+But that’s just the beginning, now she’s got to get through the rest of the pitch – how will that go?<br>
+하지만 이건 그저 시작에 불과하지. 이제 그녀가 뚫고 지나가야 할 남은 문제들을 마주하게 될거야. - 얼마나 잘 가고 있을까?</p>
+<p><code class="language-text">Anna</code><br>
+…this picture shows….oh no, why isn’t it working…I should just click on this….oh, what’s wrong with this stupid computer!<br>
+이 사진이 보여주길… 응? 왜 작동하지 않지? 이걸 클릭해야 하는데. 응? 이 멍청한 컴퓨터 뭐가 문제야?</p>
+<p><code class="language-text">Narrator</code><br>
+Uh oh! It was all going so well but now Anna’s got computer problems. What is she going to do? We’ll find out next time. Bye!
+으음… 그렇게 잘 시작했는데 이젠 Anna의 컴퓨터가 문제구만. 그녀가 뭘 해야 하는 걸까요? 다음 시간에 이거에 대해 알아보도록 하죠. 안녕!</p>
+<h3 id="영단어나-표현-정리" style="position:relative;"><a href="#%EC%98%81%EB%8B%A8%EC%96%B4%EB%82%98-%ED%91%9C%ED%98%84-%EC%A0%95%EB%A6%AC" aria-label="영단어나 표현 정리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>영단어나 표현 정리</h3>
 <ul>
-<li>사전 자료형은 키와 값의 쌍으로 이루어진 자료형입니다.
-<blockquote>
-<p>앞서 다룬 자료형인 리스트나 튜플이 값을 순차적으로 저장하고, 인덱싱을 하는것 과는 대비됩니다.</p>
-</blockquote>
+<li>
+<p>오늘의 표현들은 발표를 하는데의 팁? 같은 느낌이고 중요한 표현~ 이라기보단 어떤 식의 짜임새가 좋은지에 대한 이야기를 해주는 느낌이었다.
+Today I’m going to…<br>
+I’ll start by…<br>
+And then I’m going to move on to discuss…<br>
+And finally…<br>
+구성진 설명이 주는 몰입감, 동시에 비즈니스 상에서 얻는 프로페셔널함을 위한 방식이라고 해야 맞을 듯.</p>
 </li>
-<li>사전 자료형은 키와 값의 쌍으로 데이터를 가지면서, 원하는 ‘변경 불가능한(Immutable) 자료형’을 키로 사용 가능합니다.</li>
-<li>사전 자료형은 해시 테이블을 이용하므로 데이터 조회 및 수정에 있어서 O(1) 의 시간 처리를 할 수 있습니다.
-<blockquote>
-<p>자료의 사용에 있어서 상당히 빠른 타이밍으로 확인이 가능합니다.</p>
-</blockquote>
-</li>
-<li>표로 표현하면 아래의 형태를 구현 한다고 보시면 됩니다.
-<table>
-<thead>
-<tr>
-<th align="left">key</th>
-<th align="left">value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">사과</td>
-<td align="left">Apple</td>
-</tr>
-<tr>
-<td align="left">바나나</td>
-<td align="left">Banana</td>
-</tr>
-<tr>
-<td align="left">코코넛</td>
-<td align="left">Coconut</td>
-</tr>
-</tbody>
-</table>
+<li>
+<p>발음상에서 미국식과 확실히 다름을 느끼게 해준다. t가 오는 부분에서 확실한 강세를 넣어줘야 한다.</p>
 </li>
 </ul>
-<h2 id="사용-방법" style="position:relative;"><a href="#%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95" aria-label="사용 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>사용 방법</h2>
-<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python">data <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-data<span class="token punctuation">[</span><span class="token string">'사과'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Apple'</span>
-data<span class="token punctuation">[</span><span class="token string">'바나나'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Banana'</span>
-data<span class="token punctuation">[</span><span class="token string">'코코넛'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Coconut'</span>
-
-
-data_b <span class="token operator">=</span> <span class="token punctuation">{</span>
-	<span class="token string">'홍길동'</span> <span class="token punctuation">:</span> <span class="token number">97</span><span class="token punctuation">,</span>
-	<span class="token string">'이순신'</span> <span class="token punctuation">:</span> <span class="token number">98</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>data_b<span class="token punctuation">)</span>
-
-<span class="token keyword">if</span> <span class="token string">'사과'</span> <span class="token keyword">in</span> data<span class="token punctuation">:</span>
- <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"'사과'를 키로 가지고 있는 데이터가 존재합니다."</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 실행 결과</span>
-<span class="token comment"># {'사과': 'Apple', '바나나': 'Banana', '코코넛': 'Coconut'}</span>
-<span class="token comment"># {'홍길동': 97, '이순신': 98}</span>
-<span class="token comment"># '사과'를 키로 가지고 있는 데이터가 존재합니다.</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<blockquote>
-<p>문자열을 관리하거나 탐색하는 면에 있어서 리스트보다 훨씬 효율적이고 빠르게 조회를 수행할 수 있습니다.</p>
-</blockquote>
-<h2 id="사전-자료형-관련-메서드" style="position:relative;"><a href="#%EC%82%AC%EC%A0%84-%EC%9E%90%EB%A3%8C%ED%98%95-%EA%B4%80%EB%A0%A8-%EB%A9%94%EC%84%9C%EB%93%9C" aria-label="사전 자료형 관련 메서드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>사전 자료형 관련 메서드</h2>
-<ul>
-<li><code class="language-text">keys()</code> : 키 데이터만 뽑아서 리스트로 이용할 때</li>
-<li><code class="language-text">values()</code> : 값 데이터만 뽑아서 리스트로 이용할 때</li>
-</ul>
-<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python">data <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-data<span class="token punctuation">[</span><span class="token string">'사과'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Apple'</span>
-data<span class="token punctuation">[</span><span class="token string">'바나나'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Banana'</span>
-data<span class="token punctuation">[</span><span class="token string">'코코넛'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Coconut'</span>
-
-<span class="token comment"># 메서드 활용한 사례</span>
-key_list <span class="token operator">=</span> data<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 사전 메서드 로만 진행시 하나의 객체로 취급됩니다.</span>
-value_list <span class="token operator">=</span> data<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>key_list<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>value_list<span class="token punctuation">)</span>
-
-key_list <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 리스트 함수를 활용하여 형변환을 할 경우 완전한 리스트로 형 변환이 되게 됩니다.</span>
-value_list <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>key_list<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>value_list<span class="token punctuation">)</span>
-
-<span class="token comment"># 각 키 값에 따른 값을 하나 씩 출력</span>
-<span class="token keyword">for</span> key <span class="token keyword">in</span> key_list<span class="token punctuation">:</span>
- <span class="token keyword">print</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment"># 특정 키를 활용해서 값을 찾아내는 방법입니다.</span>
-
-<span class="token comment"># 실행 결과</span>
-<span class="token comment"># dict_keys(['사과', '바나나', '코코넛'])</span>
-<span class="token comment"># dict_values(['Apple', 'Banana', 'Coconut'])</span>
-<span class="token comment"># ['사과', '바나나', '코코넛']</span>
-<span class="token comment"># ['Apple', 'Banana', 'Coconut']</span>
-<span class="token comment"># Apple</span>
-<span class="token comment"># Banana</span>
-<span class="token comment"># Coconut</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<h1 id="집합-자료형" style="position:relative;"><a href="#%EC%A7%91%ED%95%A9-%EC%9E%90%EB%A3%8C%ED%98%95" aria-label="집합 자료형 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>집합 자료형</h1>
-<h2 id="개념-1" style="position:relative;"><a href="#%EA%B0%9C%EB%85%90-1" aria-label="개념 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>개념</h2>
-<ul>
-<li>집합은 다음과 같은 특징을 가진 자료형 입니다.
-<blockquote>
-<ol>
-<li>중복을 허용하지 않습니다.</li>
-<li>순서가 없습니다.</li>
-</ol>
-</blockquote>
-</li>
-<li>집합은 리스트 혹은 문자열을 이용해서 초기화 할 수 있고, 이를 위해 <code class="language-text">set()</code> 함수를 이용합니다.</li>
-<li>혹은 중괄호<code class="language-text">{}</code> 안에 각 원소를 콤마(,) 를 기준으로 구분하여 삽입함으로써 초기화 할 수 있습니다.</li>
-<li>데이터 조회 및 수저엥 있어서 O(1)의 시간 처리가 가능합니다.</li>
-</ul>
-<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># 집합 자료형 초기화 방법 1</span>
-data <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-
-<span class="token comment"># 집합 자료형 초기화 방법 2</span>
-data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-
-<span class="token comment"># 실행 결과</span>
-<span class="token comment"># {1, 2, 3, 4, 5}</span>
-<span class="token comment"># {1, 2, 3, 4, 5}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<h2 id="집합-자료형의-연산" style="position:relative;"><a href="#%EC%A7%91%ED%95%A9-%EC%9E%90%EB%A3%8C%ED%98%95%EC%9D%98-%EC%97%B0%EC%82%B0" aria-label="집합 자료형의 연산 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>집합 자료형의 연산</h2>
-<ul>
-<li>수학의 집합과 동일하게 집합 연산이 가능합니다.</li>
-<li>합집합(A⋃B)</li>
-<li>교집합(A⋂B)</li>
-<li>차집합(A−B)</li>
-</ul>
-<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python">a <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-b <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 힙집합</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">|</span> b<span class="token punctuation">)</span>
-<span class="token comment"># 교집합</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">&amp;</span> b<span class="token punctuation">)</span>
-<span class="token comment"># 차집합</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">-</span> b<span class="token punctuation">)</span>
-
-<span class="token comment"># 실행 결과</span>
-<span class="token comment"># {1, 2, 3, 4, 5, 7, 8, 9}</span>
-<span class="token comment"># {3, 5}</span>
-<span class="token comment"># {1, 2, 4}</span>
-</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<h2 id="집합-자료형-관련-함수" style="position:relative;"><a href="#%EC%A7%91%ED%95%A9-%EC%9E%90%EB%A3%8C%ED%98%95-%EA%B4%80%EB%A0%A8-%ED%95%A8%EC%88%98" aria-label="집합 자료형 관련 함수 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>집합 자료형 관련 함수</h2>
-<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python">data <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-
-<span class="token comment"># 새로운 원소 추가</span>
-data<span class="token punctuation">.</span>add<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"add 함수 사용 후 : "</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
-
-<span class="token comment"># 새로운 원소 여러개 추가</span>
-data<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"update 함수 사용 후 : "</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
-
-<span class="token comment"># 특정한 값을 갖는 원소 삭제</span>
-data<span class="token punctuation">.</span>remove<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"remove 함수 사용 후 : "</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
-
-<span class="token comment"># 실행 결과</span>
-<span class="token comment"># {1, 2, 3}</span>
-<span class="token comment"># add 함수 사용 후 :  {1, 2, 3, 4}</span>
-<span class="token comment"># update 함수 사용 후 :  {1, 2, 3, 4, 5, 6}</span>
-<span class="token comment"># remove 함수 사용 후 :  {1, 2, 4, 5, 6}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<h1 id="사전-자료형과-집합-자료형의-특징" style="position:relative;"><a href="#%EC%82%AC%EC%A0%84-%EC%9E%90%EB%A3%8C%ED%98%95%EA%B3%BC-%EC%A7%91%ED%95%A9-%EC%9E%90%EB%A3%8C%ED%98%95%EC%9D%98-%ED%8A%B9%EC%A7%95" aria-label="사전 자료형과 집합 자료형의 특징 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>사전 자료형과 집합 자료형의 특징</h1>
-<ul>
-<li>리스트나 튜플은 순서가 있기 때문에 인덱싱을 통한 자료형의 값을 얻을 수 있습니다.</li>
-<li>이에 비해 사전 자료형, 집합자료형은 <code class="language-text">순서</code> 의 개념이 없으므로, 인덱싱으로 값을 얻을 순 없습니다. : 사전은 키 혹은 집합 원소를 이용해 O(1) 의 시간 복잡도로 조회할 수 있습니다.</li>
-</ul>
-<p><a href="https://paul2021-r.github.io/algorithm/20220411_00/">🧑🏻‍💻 알고리즘 박살내기 시리즈🧑🏻‍💻</a></p>
 <div class="table-of-contents">
 <ul>
 <li>
 <p><a href="#introduction">Introduction</a></p>
 </li>
 <li>
-<p><a href="#%EC%82%AC%EC%A0%84-%EC%9E%90%EB%A3%8C%ED%98%95">사전 자료형</a></p>
+<p><a href="#the-warehouse">The Warehouse</a></p>
 <ul>
-<li><a href="#%EA%B0%9C%EB%85%90">개념</a></li>
-<li><a href="#%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95">사용 방법</a></li>
-<li><a href="#%EC%82%AC%EC%A0%84-%EC%9E%90%EB%A3%8C%ED%98%95-%EA%B4%80%EB%A0%A8-%EB%A9%94%EC%84%9C%EB%93%9C">사전 자료형 관련 메서드</a></li>
-</ul>
-</li>
 <li>
-<p><a href="#%EC%A7%91%ED%95%A9-%EC%9E%90%EB%A3%8C%ED%98%95">집합 자료형</a></p>
 <ul>
-<li><a href="#%EA%B0%9C%EB%85%90-1">개념</a></li>
-<li><a href="#%EC%A7%91%ED%95%A9-%EC%9E%90%EB%A3%8C%ED%98%95%EC%9D%98-%EC%97%B0%EC%82%B0">집합 자료형의 연산</a></li>
-<li><a href="#%EC%A7%91%ED%95%A9-%EC%9E%90%EB%A3%8C%ED%98%95-%EA%B4%80%EB%A0%A8-%ED%95%A8%EC%88%98">집합 자료형 관련 함수</a></li>
+<li><a href="#%EB%82%B4%EC%9A%A9-%ED%95%B4%EC%84%9D">내용 해석</a></li>
+<li><a href="#%EC%98%81%EB%8B%A8%EC%96%B4%EB%82%98-%ED%91%9C%ED%98%84-%EC%A0%95%EB%A6%AC">영단어나 표현 정리</a></li>
 </ul>
 </li>
-<li>
-<p><a href="#%EC%82%AC%EC%A0%84-%EC%9E%90%EB%A3%8C%ED%98%95%EA%B3%BC-%EC%A7%91%ED%95%A9-%EC%9E%90%EB%A3%8C%ED%98%95%EC%9D%98-%ED%8A%B9%EC%A7%95">사전 자료형과 집합 자료형의 특징</a></p>
+</ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/algorithm/20220411_05/"><div class="direction">이전 글</div><div class="title">알고리즘 박살내기 - 05. 파이썬 기초(문자열, 튜플)</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/42 seoul/push_swap/20220413_push_swap/"><div class="direction">다음 글</div><div class="title">push swap 정복기(1)</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/english_talking/20220615_11_Overtime/"><div class="direction">이전 글</div><div class="title">11_Overtime</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
@@ -267,4 +215,4 @@ data<span class="token punctuation">.</span>remove<span class="token punctuation
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', 'G-YDPMMYNR6Y', options);
-  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/algorithm/20220413_06/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-79d732fed22ff3d3f034.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-79d732fed22ff3d3f034.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-83816b6c6e1be0007865.js" async=""></script></body></html>
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/english_talking/20220616_12_The big day/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-79d732fed22ff3d3f034.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-79d732fed22ff3d3f034.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-83816b6c6e1be0007865.js" async=""></script></body></html>
