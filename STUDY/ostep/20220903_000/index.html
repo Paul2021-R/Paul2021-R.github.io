@@ -48,377 +48,71 @@
         }
       }
     })
-  </script><title data-react-helmet="true">push swap 정복기(3) - LIS의 함정...두둥</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="push swap 정복기(3) - LIS의 함정...두둥"/><meta data-react-helmet="true" property="og:site_title" content="push swap 정복기(3) - LIS의 함정...두둥"/><meta data-react-helmet="true" name="description" content="Prologue 아.. 망했습니다. 사람은 역시 꼼꼼하게 읽어야 하는 것이었습니다. LIS 배열을 만드는 것에서 문제가 생겼습니다. 오늘 이 포스팅은 해당 내용에 대해서 스스로 반성 및 어떻게 할 지를 정리하는 글로써 남기려고 합니다. (그리곤 불타는 코딩 🫣) Push Swap LIS와 이분탐색의 한계 가장 큰 문제는 역시 제가 꼼꼼하게 읽지 않은 것이었습니다. 그
-리고 동시에 LIS 성능을 극대화 하는 방법은 무엇인가에 대한 고민이 없었기에 만들어놓고 결국 문제가 있음을 깨달았고 이를 수정해보기 전에 단순 로직 구현으론 어떤 문제가 생기는지를 정리하였습니다. 1. LIS 배열의 극대화 우선 첫 번째 발견한 문제는 LIS 작성 중의 효율에 대한 문제였습니다. 예를 들어 이런 숫자의 배열이 들어왔다고 가정합니다.  이 배열에서 현재 상태 그대로 LIS를 구한다고 하면, LIS 값은 이렇게 지정되게 됩니다.  보시다시피 , , 을 현재의 스택 상태에서 구하게 되고 그렇게 될 경우 스…"/><meta data-react-helmet="true" property="og:description" content="Prologue 아.. 망했습니다. 사람은 역시 꼼꼼하게 읽어야 하는 것이었습니다. LIS 배열을 만드는 것에서 문제가 생겼습니다. 오늘 이 포스팅은 해당 내용에 대해서 스스로 반성 및 어떻게 할 지를 정리하는 글로써 남기려고 합니다. (그리곤 불타는 코딩 🫣) Push Swap LIS와 이분탐색의 한계 가장 큰 문제는 역시 제가 꼼꼼하게 읽지 않은 것이었습니다. 그
-리고 동시에 LIS 성능을 극대화 하는 방법은 무엇인가에 대한 고민이 없었기에 만들어놓고 결국 문제가 있음을 깨달았고 이를 수정해보기 전에 단순 로직 구현으론 어떤 문제가 생기는지를 정리하였습니다. 1. LIS 배열의 극대화 우선 첫 번째 발견한 문제는 LIS 작성 중의 효율에 대한 문제였습니다. 예를 들어 이런 숫자의 배열이 들어왔다고 가정합니다.  이 배열에서 현재 상태 그대로 LIS를 구한다고 하면, LIS 값은 이렇게 지정되게 됩니다.  보시다시피 , , 을 현재의 스택 상태에서 구하게 되고 그렇게 될 경우 스…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-83816b6c6e1be0007865.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/42 seoul/push_swap/20220420_push_swap_3/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">😂</div><div class="info"><div class="categories"><a class="category" href="/posts/42_seoul">42_seoul</a></div></div><h1 class="title">push swap 정복기(3) - LIS의 함정...두둥</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->April 20, 2022</div></header><div class="post-content"><div class="markdown"><h1 id="prologue" style="position:relative;"><a href="#prologue" aria-label="prologue permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Prologue</h1>
-<p>아.. 망했습니다. 사람은 역시 꼼꼼하게 읽어야 하는 것이었습니다. LIS 배열을 만드는 것에서 문제가 생겼습니다. 오늘 이 포스팅은 해당 내용에 대해서 스스로 반성 및 어떻게 할 지를 정리하는 글로써 남기려고 합니다. (그리곤 불타는 코딩 🫣)</p>
-<h1 id="push-swap" style="position:relative;"><a href="#push-swap" aria-label="push swap permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Push Swap</h1>
-<h2 id="lis와-이분탐색의-한계" style="position:relative;"><a href="#lis%EC%99%80-%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89%EC%9D%98-%ED%95%9C%EA%B3%84" aria-label="lis와 이분탐색의 한계 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LIS와 이분탐색의 한계</h2>
-<p>가장 큰 문제는 역시 제가 꼼꼼하게 읽지 않은 것이었습니다. 그
-리고 동시에 LIS 성능을 극대화 하는 방법은 무엇인가에 대한 고민이 없었기에 만들어놓고 결국 문제가 있음을 깨달았고 이를 수정해보기 전에 단순 로직 구현으론 어떤 문제가 생기는지를 정리하였습니다.</p>
-<h3 id="1-lis-배열의-극대화" style="position:relative;"><a href="#1-lis-%EB%B0%B0%EC%97%B4%EC%9D%98-%EA%B7%B9%EB%8C%80%ED%99%94" aria-label="1 lis 배열의 극대화 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. LIS 배열의 극대화</h3>
-<p>우선 첫 번째 발견한 문제는 LIS 작성 중의 효율에 대한 문제였습니다. 예를 들어 이런 숫자의 배열이 들어왔다고 가정합니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 557px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 16.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA4UlEQVQI1y1OSU/CUBjsf/ekiQc84U2WvBYoNhASPMrFkALFbuAjWtniklIs0NLNvPE7ePiSycx8MyPdv4q0MvLRcM9Be/E7k+0IzDqhxXOzMUti2T5BXRRe6yVb16c/IC5UeW7VjD2YeRTkmyhOnNefQzTn6UTqLIHrrgF6TLorfN48uCgPPBC/rY532e3gHZqHvcqL4LI9RM0IUvJtrzQdpb6N3gYr8ogL9gjtDVxS3Dig5JwaP2iBQcEZMw9JZezr1OzTckHanDQuO5Fg1vHrXysUJ4rv9O8nwiGdIDz8Aw+BxzsDjhTdAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="make_better"
-        title="make_better"
-        src="/static/6365736b3d615cc8b1d18a19ecafa7ac/30d00/009_example_lis.png"
-        srcset="/static/6365736b3d615cc8b1d18a19ecafa7ac/e9ff0/009_example_lis.png 180w,
-/static/6365736b3d615cc8b1d18a19ecafa7ac/f21e7/009_example_lis.png 360w,
-/static/6365736b3d615cc8b1d18a19ecafa7ac/30d00/009_example_lis.png 557w"
-        sizes="(max-width: 557px) 100vw, 557px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<p>이 배열에서 현재 상태 그대로 LIS를 구한다고 하면, LIS 값은 이렇게 지정되게 됩니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 557px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 16.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA9ElEQVQI1x3OX0uDUByAYT98NwVFVBDURX+Oepy1iYIzF2x3FbO55Vw2qS1DtoXoEU2PbnF+ja5feHi51jurrqwIGpMybvq/r9jNQRxR0Jbei1mjQs8luN/czjr1zZdGBDBrMVXmkYPsFIRRydSFPzAoWv+3Sh5w6ifAvmYDHudUC2B5ZLpw2g3hjsxDlZzX4uwMeqAkWzQ+edwFlVxU+ioL91rPcKi/QScLAxwcs4PeDnRBmXLSpIhlr1ojO1nwQ2LjcVYLw5Ji3+ob9DoyCpmpCfI0wk/bPxLTc7TinY++5NINdqpC9KyH7WHaLhqs+X359AeePcPVbP2+SAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="bad_lis"
-        title="bad_lis"
-        src="/static/d9836f672f3e1efc929ed5e08fb221b7/30d00/010_bad_lis.png"
-        srcset="/static/d9836f672f3e1efc929ed5e08fb221b7/e9ff0/010_bad_lis.png 180w,
-/static/d9836f672f3e1efc929ed5e08fb221b7/f21e7/010_bad_lis.png 360w,
-/static/d9836f672f3e1efc929ed5e08fb221b7/30d00/010_bad_lis.png 557w"
-        sizes="(max-width: 557px) 100vw, 557px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<p>보시다시피 <code class="language-text">1</code>, <code class="language-text">3</code>, <code class="language-text">6</code>을 현재의 스택 상태에서 구하게 되고 그렇게 될 경우 스택 A와 스택 B는 이런 상태로 정돈 되게 됩니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 438px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 47.22222222222222%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAACWklEQVQoz3XQW0iTYRgH8FfzpiA6eREIYYFgQUQ3dhNpg666MSiI6iIvIiEsNSnQQp10oHA6N7Jygod20J3n1tyGTod+pKDu0DZPaWNQrKh0uuk2t3/PJ154US/8+N73+Z7nz8vLGGO55CwpJyWk6Fhh3pEOTwsbgcFpWVei0ydODWV06YFVeXAExi0p9zL9MaaCOaoIOmGIiYaF0P/shjXeN0XzrJBcIjfJZd7howfzRc4mCjQOWeMqdLhbEjSYtKwpfKMwJl/Z61MUBmtM5XNhYK1B82irLyyDI6WZ4AP3kBy2awGp7KG0ntkTmhEC2sMSVcLwq9fPn22bahrWQhfpDljj/dv/HSkdtJFu7+4cPjSLZF+rEWS1jlUxWaD6uORTlaB1vKJY5Ko4/9x2I//tzOMLYu5BsZirvCg0Xz/RPl1zrnn0Xol0ologHLh9iv1vDX4H0y3gimkZjbYI6mhfo51HqX4BddZvqKX6U+0cSkm14wfqzCE0amZxlZ/dR/KIgJwmJwvOFB2QcWFmWMakyr+ON8PzUM8loPRFQ1TDO9cS+oMbUHijIf0SIHUEIPesQOWPzbKdkFukgZSR+/sP5RY86bQw4zLsvdO/Ud9li+sWMxtyz+qMYQkblaLeTbl7JUOBbnMYf8qb2hNiqw/ahTTHB2bv4Nde/h1r35tyKIDR8Bh/I1MI1LxFN1xfNH4FNHPJ7ZrCE12kvgxf2z57o75/vh+XRJbEHmDtzi9lbYN+tcQe7Gk2Tcle6yfvSB2zXaSHbqR8oebuUp+kbfDzB/r2P1O5Hv4FVGCEhLBf5wMAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="bad_lis_2"
-        title="bad_lis_2"
-        src="/static/2f78d42e18189eb3048bc4210f34b88b/50e4b/011_bad_lis_2.png"
-        srcset="/static/2f78d42e18189eb3048bc4210f34b88b/e9ff0/011_bad_lis_2.png 180w,
-/static/2f78d42e18189eb3048bc4210f34b88b/f21e7/011_bad_lis_2.png 360w,
-/static/2f78d42e18189eb3048bc4210f34b88b/50e4b/011_bad_lis_2.png 438w"
-        sizes="(max-width: 438px) 100vw, 438px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<p>원래 짜놓은 로직은 그냥 이런 최악의 결과를 만들게 됩니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 557px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 16.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA4klEQVQI1y2O3UvCYBjF9693WdBF3Vh36WKbOR2JkBeBeBOydLEv9ZWcKSOLOTXd3Fe8x0fw7nDOj3OO0Pjkafk9QNU9hPXJ/1C2I0jWHjWWm9VhEsv2Huqk8GrjbPH4sQF5W5XllmisIZk7TnpATH7qeBqlA+H5C7huGiAzac6xvG27uOt6IN+v9FfZfXcGzcNaZUV4We9BNMKUOP9K03HzYqPlY17qTPmF+AptCiYobhxSc06L3/TAoOJMMv+Scj/QFScO6DmnbEQZk52IS9bu55wVihPFD/rvG+ntiSPdOwIAJMcgB8N2QAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="worst_array"
-        title="worst_array"
-        src="/static/03ada025028b215b51c7c16846da7b71/30d00/013_worst_array.png"
-        srcset="/static/03ada025028b215b51c7c16846da7b71/e9ff0/013_worst_array.png 180w,
-/static/03ada025028b215b51c7c16846da7b71/f21e7/013_worst_array.png 360w,
-/static/03ada025028b215b51c7c16846da7b71/30d00/013_worst_array.png 557w"
-        sizes="(max-width: 557px) 100vw, 557px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span>
-<span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 624px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 33.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB5UlEQVQoz5WQW0iTcRjG329bdITwthtZQnSllBF0FUKXXhV2pzfd2E1BWQZCSUM6QAXSxcg5zeXa4XNZnkpZDKvxldYOXzsobtN52Fwu53QevplP7+dVXvaHh//DC+/vfZ+XiEivEYRjpUdLjmw2PSLcfeLINbZg7c4DrDS2XGBR9pZBS//xalmXdRrNeTw0Egytw94r1zF1rQnFe08v4moDBTsG9omTReFNDBpVPZPbgmtqZ9eL/3i1vkssOXBQ66utF5QbzVS8bWjdbrg/u36zOZ6sqz83bvOQHSB7eIMGF0CD8yBHZJP650AjSyBndIvezYDcyyCG713VZf1ILwcCJ/tGE9X293KV6XPyhDuHyg8ZnLL9LOiH0jg9lEKlI7xxnOEVDDnD8LK+JMo9eZzlFHqVU0GCUL7/0OFSi7xGb2fgNH9Nw+LPZVwxRCzfs7D8+K1wnKA1mN+xBlfBjWH2+c6xDJxRRWZowSylwL9bBV5i1Wh1uioxqqiRRp71+/BidLrIk7NGTwxtn5LoTSDdNb4EVb1x/Or8tvjn+XAEfLsUnwNGTxzihDK2J7Lpyxx1B1Ye20KF6Ve+ZW+HlOrhqCFrIO9v987beDuZfdgsLYjd/pz0Wl6Nct3JPZI9tJ5gb/oLapc6ZoM/Ea8AAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="worst_lis"
-        title="worst_lis"
-        src="/static/ef4fbb0f2c8a0f4d018cea8dc0add936/39c09/014_worst_lis.png"
-        srcset="/static/ef4fbb0f2c8a0f4d018cea8dc0add936/e9ff0/014_worst_lis.png 180w,
-/static/ef4fbb0f2c8a0f4d018cea8dc0add936/f21e7/014_worst_lis.png 360w,
-/static/ef4fbb0f2c8a0f4d018cea8dc0add936/39c09/014_worst_lis.png 624w"
-        sizes="(max-width: 624px) 100vw, 624px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<p>이 경우 시간복잡도가 아닌 Push Swap의 관점에서 본다면 매우 문제가 있습니다. 왜냐면 스택 A -> 스택 B로 옮기기 + 다시 스택 B에서 LIS 알고리즘으로 정리한 것들을 스택 A로 조정하면서 전달까지 무지막지안 액션의 숫자를 만나게 되는 것입니다(..)</p>
-<p>결국 로직을 짜고 나온 값들의 알흠다운 상태를 보고, 다른 자료를 찾아 보던 도중 이런 생각이 들었습니다. LIS 알고리즘의 핵심은 일정하게 증가하는 수열값으로 값을 위치시키는 것이 중요하고, 거기서 효율적일 수 있는 방법은<center></p>
-<p><strong>“LIS 배열이 길어지고 스택 A의 움직임을 최소화하면서 스택 B에 들어갈 원소들을 최소화”</strong></p>
-</center>
-<p>하여 <code class="language-text">스택 A를 조작하는 경우를 최소화</code>시키는 것이었습니다.</p>
-<p>그렇기에 해당 알고리즘의 강점을 극대화할 수 있는 유일한 방법은?</p>
-<p>바로 ”<strong>최소 값</strong>“을 스택 A의 <code class="language-text">top</code>으로 끌고 와서 LIS 배열을 구성하는 방식입니다. 이렇게 되면 그림과 같은 결과물을 얻을 수 있습니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 557px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 16.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2UlEQVQI1xVPS6/BYBDtD7eytRUr4nnb0gi5iZWwdCklSrUll5B63Es9W32Qb5wuzsycnHMmM1x1/vazvQOJmmtXF+/Z1/hGPCAZ4RhwS6NLNC8rerDh1TtJZniVjEAVJg6BM3AFc1hQTlTRfYVDoVimQcXh2fte0z7VmlPmZ0v1FVkwBYl6n2q/dIbPjrTyzPPBrWTToAjIrNMdi8VL7chncmXtaYvaM8TCHa4ZIhCIU8fLD46yoD6OvPpg0HRoJjSGDw6FwUnGVS9h6rg5+b+DfsUelpP/uh/oischmvohjgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="best_stack_a"
-        title="best_stack_a"
-        src="/static/0eb481e0d6232eba1ec475fa1a331207/30d00/015_makebetter_stack.png"
-        srcset="/static/0eb481e0d6232eba1ec475fa1a331207/e9ff0/015_makebetter_stack.png 180w,
-/static/0eb481e0d6232eba1ec475fa1a331207/f21e7/015_makebetter_stack.png 360w,
-/static/0eb481e0d6232eba1ec475fa1a331207/30d00/015_makebetter_stack.png 557w"
-        sizes="(max-width: 557px) 100vw, 557px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span>
-<span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 531px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 39.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAACGUlEQVQoz4WOX0xScRTHz8CmznKth17b6r1eetNHN9fywfXqQz1Zra22tnJtbbJRNCMdTWHhIMB7+SdXICQoEaxcrCi11IkXRoxAQEgTBcobcDrXx3zobJ+d7++c3/meAwBwhGgnWtbwveQteiCErpFAbQpnBI5wRIlE4A+Hwbqz5q/a52frzrr4pnqc4AkMNpzo+cky5AM9xCDR29LW3K1feQph9GmN0VGUu+/V5tCdo4GsblmF3l2LQEv4F9uMoAzIMCBwWbGv8N5vTPBq9FdsftHwJHFc5PTZUyemdywQbLhML/dstNFMn+wVX9lepYyvfjlwumT57q+KPRZ9FdseXbx7oMtW5HLPQ/BvWNNKcOQfn7NlnlyzZ4f79WuDPew3RS/Vr7JJxRX96tAFe1p3m4YHjNGxy0xM00f67mRGf0f17mH3IcM3OwjOGHZ5kvjAv4GyqXXs59bxhi+NMqrJ2Qie4dKvwbWlBSauAXPiGbiKJuDyBhgNPzrw6CT6iK7Wo+2dw54F8KSQnVgoono2ilxM+M3x+/tjpJnFLWSXftwK5BC4VLiZDKWWpFZK1zVNZnRN6g9DEtHwPHGR6GhtO9ah8i2DN4M6Y6SAmlAcXQksOnihMD6fQspo+ly87k0juJMolZvn4L/B8QKYv5YGzF9KedtqOaUPb8wYIpsh60o5xSxu50a8S5cMH/Ng+lSQ3FQaD83/BWdCXbpBFHdHAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="best_lis"
-        title="best_lis"
-        src="/static/3caa68ac2df69b51c47712910632ea04/d4713/016_best_lis.png"
-        srcset="/static/3caa68ac2df69b51c47712910632ea04/e9ff0/016_best_lis.png 180w,
-/static/3caa68ac2df69b51c47712910632ea04/f21e7/016_best_lis.png 360w,
-/static/3caa68ac2df69b51c47712910632ea04/d4713/016_best_lis.png 531w"
-        sizes="(max-width: 531px) 100vw, 531px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<p>보이시나요? 우선적으로 <code class="language-text">ra</code> 나 <code class="language-text">rra</code>를 활용해 스택 A의 최솟값을 top으로 맞추면 자연스레 어떤 배열이든 깔끔하게 길어진 LIS 를 얻게되고 이러면 원소가 아무리 많아도 해야할 행동들이 매우 최소화 되는 결과를 얻게 됩니다.</p>
-<h3 id="2-lis-이분탐색법은-사실-정답이-아니었어" style="position:relative;"><a href="#2-lis-%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89%EB%B2%95%EC%9D%80-%EC%82%AC%EC%8B%A4-%EC%A0%95%EB%8B%B5%EC%9D%B4-%EC%95%84%EB%8B%88%EC%97%88%EC%96%B4" aria-label="2 lis 이분탐색법은 사실 정답이 아니었어 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. LIS 이분탐색법은 사실… 정답이 아니었어…</h3>
-<center>
-<iframe src="https://giphy.com/embed/a9xhxAxaqOfQs" width="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/sad-a9xhxAxaqOfQs">via GIPHY</a></p>
-</center>
-<p>이부분은 순수한 저의 실수였습니다. 신이나서 하루 만에 acition들을 다 구현했고, 활용해서 스택 A와, 스택 B로 옮기는 제일 큰 작업을 마무리 지었습니다. 그런데… 어째서인지 값이 좀 이상한 겁니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 557px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 16.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2ElEQVQI1xVPSU/CYBTsjzcS7l68gSyFlk2vnkjENGWvhfIZAmKIGxbKUroA3zA9vWXeLE+pTWWY661RHh3d6vt5rL7tUR4H0CfRUHNCP9/foCLiGfvP5E4XsUfMyg88lGxfct+tiFOczOR1lcYcuNVeULR2weMHvu+bczx0/lGfYUmBKF01QNM1hdyU1kJh4IVPCyxTegt3zw7YLzLmr7xRm7y7CIUubtHaxyR/MU2PLhFTBtnOymRdleyDJOYQE0miwnD7Q0OTH52I+5n236tqHzzyJIWNKxV8x0EiFcsNAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="binary_error"
-        title="binary_error"
-        src="/static/80aa640d70775c80b9c911620cc3ec94/30d00/017_bibary_search_error_example.png"
-        srcset="/static/80aa640d70775c80b9c911620cc3ec94/e9ff0/017_bibary_search_error_example.png 180w,
-/static/80aa640d70775c80b9c911620cc3ec94/f21e7/017_bibary_search_error_example.png 360w,
-/static/80aa640d70775c80b9c911620cc3ec94/30d00/017_bibary_search_error_example.png 557w"
-        sizes="(max-width: 557px) 100vw, 557px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span><em>여기서 우선 1번 발견 사항을 수정하여 최솟값을 top으로 올립니다.</em>
-<span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 557px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 16.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA70lEQVQI1xWOzU7CQBhF++A+gIkLjS5YGRBspxZIRQPFjcENmkqR/lFK1FhiRMTBwXbaTjHzOd3d5J5zc6Vb0PNrosANk/FlhKfyhAJyY2iFhX3hp/T86Qda892rFuSLuoWhOSuIFjBH9VNATsxFtpozVpScNs0s6Q46UPVPwEgbWXeZLI96AVQGz9B5g/ez0Zrtt+9Bf4GNkPDeaQ/kCcnL7rBrw3HfK7moMd7wA92E9vwvlAyqYiPViitS/UB+NEZuxhT3NxNjJnKTtepRLoRAPAjFYy7b28/66NsUeYe8hNYev4aKExPB8pq5evgHa1HGIUlQ1SYAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="018"
-        title="018"
-        src="/static/07b43b8818ab1380785a126d88bd21f1/30d00/018.png"
-        srcset="/static/07b43b8818ab1380785a126d88bd21f1/e9ff0/018.png 180w,
-/static/07b43b8818ab1380785a126d88bd21f1/f21e7/018.png 360w,
-/static/07b43b8818ab1380785a126d88bd21f1/30d00/018.png 557w"
-        sizes="(max-width: 557px) 100vw, 557px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span>
-<span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 555px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 87.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAAsTAAALEwEAmpwYAAAEM0lEQVQ4y42Ua0ybVRjHD7hxGc45I1Gz6OacJi4xLtE4FxPjBzOd8bNx30jclpl52WCEQWbmZMjVUZi7cQv2fqO0lbWlhRbaMjpGWy6lpfQFyq3c1gttaemFPj6vAT/1gyf55X3PyTn/93me9/kfQgg5gBxC8pEPX3gp/wQAkK4FuCSwR4E7FgTRZKx7GtdsAJk/VLcRCZX6j3TjFHIW+Ry5vjcrp45e7PVDIcvihSa9GzqnYZD+yBDAHpbFl1nB15NG1QRhKMbSCmYiGbuTd06cfFG1CkRojxbwxsObfFt4s820zO/xAcFoiXQGSDlXRxqU4yhqI/9rtA56aMEzmLIBnzq21f9nh2u7VjoLHEzzXv2j0YPNxnnSZvKkPf8e8jXyCVKSlZNbTKen8UIRy+qDZuMcoIgP6xj9Q24GwcQmMBSW4wxpiAhmjM9pEuKM3pQkQwudmfQ7LXgUeR85gnyas+/5s7SgwgOFfFsM2NYQiBxJr9iZ8jUbPCC0J6CcPfKWfPUpGQMBUcdFZAAUWF816Ul2pE/5Ts9jwhmfPc2zu3UC57ym9YmtkT1GtXXMeHTMEZe46Sn/uAO0bxpBcax7S5hvAtVRM/S+jRG+sqtxEDmMvPrZN6fyFBEm6QPRedUWO9EVat9QxznDmiTXLvO3Rrtj7Fl1XGjuCnIBxRLdMeGQMsKPPArx6LluV5CuXzFScPKrDw5I1liYhvKazMsBzkwTaFOyDU1cErozUA2KkCClg05Pi7UeuNR90MPfC2zqAdT3V4AWpJZdwSwkj4Y5xdijTnAIco6OULXFCWJkFsUm04FEkTlJmD0gSwjC8qTQL9lo71NGWGvKKCsu9baq0taw3ewiQufqaaFzWSeaWtawR90MvmOpTUyt9HGdKxwXo7HG31Df66+rURr4neV8t08uoVb7mdbpW/T5d5EvkY+Ry9m5+76n/7J6HQrZlg1smyWQuOCZ2JEM3JaPAs+RSISqWhbmL16DlQvFQIkfu+8NeaFeNkLvM/9rDuQj5BgtnJ2bd44WRLcUoUuAtp/YGfeJqO3gfexJzlQiGahtWZr7qQxWfyyFSZF+vgX9/lBH0fusaVOukTwhKHSGMxIY4I2H+lsMcw86dBRHYfIMCvSzHVRpVUO0tNIYvXpTq70rrGVOxlQie9T0UO+upc/n7rTNfrrJX37t9TfWMUKZGwrQFWH2RGRNObhkhMvXraErNwLJqzcnt0ore8Jl1d6tol9Xxri9SqYzscAbCYQEExEJ2andt8gXyO97s7IZ9KI2AIXM4XW4a5iDHvOzQKrkVnDw/BVAoW24cdszfKEQXN/9DDNS02LDwCJUcPvoW8m6G+H+nRsnK//QkcMTGCH695J4MgYCKrUt189SyeLfFoOllRAtq/JtlFSMx3+pg+3i8sTwX0orZxoiQtsmYIkM/wCX3sy4QL/pnwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="binary&#39;s limitation"
-        title="binary&#39;s limitation"
-        src="/static/4b03174abc183da105dabc0f33f87d04/cd039/019_binary_s_cons.png"
-        srcset="/static/4b03174abc183da105dabc0f33f87d04/e9ff0/019_binary_s_cons.png 180w,
-/static/4b03174abc183da105dabc0f33f87d04/f21e7/019_binary_s_cons.png 360w,
-/static/4b03174abc183da105dabc0f33f87d04/cd039/019_binary_s_cons.png 555w"
-        sizes="(max-width: 555px) 100vw, 555px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span><em>엥?😳</em></p>
-<p>뭔가 이상했습니다. LIS 배열은 증가하는 그 순서 그대로 가장 길게 나열할 수 있어야 하는데 뒤섞인 순서의 수열이 나온 겁니다.</p>
-<p>처음엔 제가 잘못 짠 줄 알았으나, 코드와 방법론은 전혀 문제가 없었고 결국 글 두 개를 한 서너번 읽었을 때 비로소 ‘이분탐색’ 방법이 가지는 한계, 즉 해당 로직을 통해 정확한 LIS의 ‘길이’는 구할 수 있지만, ‘값’을 찾는 것은 아니라는 사실을 인지할 수 있었습니다. <span style="color:grey"><del>정독을 안하니깐 이러지.</del></span> 그리하야 부랴부랴 해당 방식으로 알고리즘은 완벽할 수 없다는 것과 그에 대한 개선 방안을 찾아보고 고민을 해봤습니다. 관련 내용은 <a href="https://velog.io/@seho100/%EC%B5%9C%EA%B0%95-%EC%A6%9D%EA%B0%80-%EB%B6%80%EB%B6%84-%EC%88%98%EC%97%B4LIS-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98">여기서</a> 정보를 발췌했습니다.</p>
-<p>그리하야… 방법을 찾아본 결과 의외로 쉬운 방법이 있다는 것을 알게 되었습니다. 탐색을 진행하게 되면 lis 배열에 들어갈 각 원소가 들어갈 공간이 있습니다. 예를 들면 이런 식 이지요.</p>
+  </script><title data-react-helmet="true">OSTEP - Prologue</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="OSTEP - Prologue"/><meta data-react-helmet="true" property="og:site_title" content="OSTEP - Prologue"/><meta data-react-helmet="true" name="description" content="프롤로그 CS 공부를 확신하다 CS 공부를 할 때마다 굉장한 불안감을 안고 있었다. 어딜 가도 CS 학습보단 급급하게 문제를 풀어나가고 만들기에 바쁘단 생각이 앞섰다. 42서울에서 학습을 해나가면서, 그런 사람들의 이야기를 들을 때면 인터뷰를 한다거나, 실제 현업에서 고생하는 사람들의 이야기는 다소 신빙성이 떨어지는 듯, 보일 때가 많았다. 현업에 계신 분들은 CS를 채워야 하는것이 가장 힘들고 곤욕스럽다고 한다. 그럼에도 온갖 미디어에서나, 42에서 취업에 열중인 이들은 컴퓨터를 이해하기보단, 컴퓨터로 무언가를 시키기에 바쁜 모습. 그리고 거기서 나는 어느 흐름을 타야 하느라 걱정되었다. 하지만 CSAPP 교재를 1독을 끝을 내고, 과제를 하나씩 하나씩 해결해나가면서 드는 느낌은 사뭇 내 불안이 확신이 되게 만드는 과정이었다고 생각한다. 컴퓨터는 최첨단을 달리는 존재이고, 그런 바탕에서 눈 한번 깜빡하고 젖힐 때, 놀라울 정도로 그 다음 영역으로 성장하고 있는 것이 느껴진다. 그…"/><meta data-react-helmet="true" property="og:description" content="프롤로그 CS 공부를 확신하다 CS 공부를 할 때마다 굉장한 불안감을 안고 있었다. 어딜 가도 CS 학습보단 급급하게 문제를 풀어나가고 만들기에 바쁘단 생각이 앞섰다. 42서울에서 학습을 해나가면서, 그런 사람들의 이야기를 들을 때면 인터뷰를 한다거나, 실제 현업에서 고생하는 사람들의 이야기는 다소 신빙성이 떨어지는 듯, 보일 때가 많았다. 현업에 계신 분들은 CS를 채워야 하는것이 가장 힘들고 곤욕스럽다고 한다. 그럼에도 온갖 미디어에서나, 42에서 취업에 열중인 이들은 컴퓨터를 이해하기보단, 컴퓨터로 무언가를 시키기에 바쁜 모습. 그리고 거기서 나는 어느 흐름을 타야 하느라 걱정되었다. 하지만 CSAPP 교재를 1독을 끝을 내고, 과제를 하나씩 하나씩 해결해나가면서 드는 느낌은 사뭇 내 불안이 확신이 되게 만드는 과정이었다고 생각한다. 컴퓨터는 최첨단을 달리는 존재이고, 그런 바탕에서 눈 한번 깜빡하고 젖힐 때, 놀라울 정도로 그 다음 영역으로 성장하고 있는 것이 느껴진다. 그…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-83816b6c6e1be0007865.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/ostep/20220903_000/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🖥</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">OSTEP - Prologue</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->September 03, 2022</div></header><div class="post-content"><div class="markdown"><h1 id="프롤로그" style="position:relative;"><a href="#%ED%94%84%EB%A1%A4%EB%A1%9C%EA%B7%B8" aria-label="프롤로그 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프롤로그</h1>
+<h2 id="cs-공부를-확신하다" style="position:relative;"><a href="#cs-%EA%B3%B5%EB%B6%80%EB%A5%BC-%ED%99%95%EC%8B%A0%ED%95%98%EB%8B%A4" aria-label="cs 공부를 확신하다 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CS 공부를 확신하다</h2>
+<p>CS 공부를 할 때마다 굉장한 불안감을 안고 있었다. 어딜 가도 CS 학습보단 급급하게 문제를 풀어나가고 만들기에 바쁘단 생각이 앞섰다. 42서울에서 학습을 해나가면서, 그런 사람들의 이야기를 들을 때면 인터뷰를 한다거나, 실제 현업에서 고생하는 사람들의 이야기는 다소 신빙성이 떨어지는 듯, 보일 때가 많았다.</p>
+<p>현업에 계신 분들은 CS를 채워야 하는것이 가장 힘들고 곤욕스럽다고 한다. 그럼에도 온갖 미디어에서나, 42에서 취업에 열중인 이들은 컴퓨터를 이해하기보단, 컴퓨터로 무언가를 시키기에 바쁜 모습. 그리고 거기서 나는 어느 흐름을 타야 하느라 걱정되었다.</p>
+<p>하지만 CSAPP 교재를 1독을 끝을 내고, 과제를 하나씩 하나씩 해결해나가면서 드는 느낌은 사뭇 내 불안이 확신이 되게 만드는 과정이었다고 생각한다.</p>
+<p>컴퓨터는 최첨단을 달리는 존재이고, 그런 바탕에서 눈 한번 깜빡하고 젖힐 때, 놀라울 정도로 그 다음 영역으로 성장하고 있는 것이 느껴진다. 그리고 그런 상황에서 당연히 레거시 한 것이 가지는 의미란 ? 그렇게 중요하지 않게 느껴지는 것도 어쩔 수 없다고 생각된다.</p>
+<p>하지만 CS를 배워야 하는 이유를 여기 저기 드문드문 이야기 하는 이유는 분명하다고 느껴졌다. CS라고 하는 것이 가지는 가장 큰 의미는 ‘문제 해결능력’에서 가지는 확고한 지지기반이었다.</p>
+<p>C를 기반으로 짜여진 현재의 대부분의 OS와, 그 OS의 기반 언어에서 더 편하게, 더 빠르게, 더 세밀하게를 추구하는 과정에서 파생된 다양한 언어와 툴들은 자기 나름의 능력을 갖추고 있긴 하지만, 결과적으로 모든 컴파일 과정이나 인터프리팅 과정을 거치고 나면 기계어로 번역된다. 그리고 그 0과 1의, 바이너리의 세상에서 CPU 는 자의식을 가지지 못한채 본인에게 주어진일들을 수행하고 있기에, 문제가 생기면 이는 우리가 알아내고, ‘느껴’야 하며 그럴 때 사람이 왜 컴퓨터 보다 뛰어난지를 알 수 있으리라 생각했다.</p>
+<p>여튼.. 잡설이 길었지만 CS를 학습한다는 것이 학습의 이해도와 문제 해결능력을 월등히 키워준다고 느꼈다. 그것이 미니쉘을 만들면서 내가 얻은 결론이었고, 현재 과제들을 하나씩 해결해나가는 내 수준을 만들었다고 생각이 들었다. 비전공자임에도 불구하고 가능했던 이유. 가장 빠른 영역에서 가장 느리게 동작하는 무언가가 중요할 줄이야.. 라는 생각도 든다.</p>
+<p>그리하여 CSAPP는 마무리를 지었다. 물론 아직 완벽하진 않다. 다시 읽어야 할 것으로 판단되고, 이는 자격증을 마치면 해볼 생각이다. 그러나 그보다 앞서 이제는 새로우면서도 가장 이해도가 높아야 하는 영역을 찾게 되었다. 그것은 바로 Operating System, 소위 운영체제라고 하는 것이다.</p>
+<h2 id="운영체제는-왜-중요할까" style="position:relative;"><a href="#%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EB%8A%94-%EC%99%9C-%EC%A4%91%EC%9A%94%ED%95%A0%EA%B9%8C" aria-label="운영체제는 왜 중요할까 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>운영체제는 왜 중요할까?</h2>
+<p>운영체제는 틀이었다. CSAPP를 통해 배우면서, 시스템의 구조는 어떤지, 실제 운영체제가 파일이라고 하는 단위를 어떻게 읽는지를 이해했을 때, OS를 지배하는 것이 곧 컴퓨터 전체를 지배하는 것이며, 이는 현재 전세계를 뒤덮은 거대 IT 업체들이 매년 수백, 수십조의 단위로 R&#x26;D에 돈을 드리 붓는 이유라고 생각했다. 물론, 내가 가고 싶은 회사들을 생각하면 더더욱 필요하다고 느끼고도 있기 때문이다.</p>
+<p>운영체제의 구조를 이해함은, 어떤 종류의 디바이스이든 그 디바이스가 무얼 할 수 있고, 무얼 활용 가능한지를 보여주는 부분이라 생각한다. 하물며 빠르지만 성능이 좋게, 성능이 좋으면서도 안정적이게 만든다는 것은 그만큼 중요한게 아니겠는가? 개발자의 덕목이라고 생각되는 그것을 이해하기 위해 운영체제에 대한 이해는 필수라고 생각된다.</p>
+<h2 id="무엇을-할까" style="position:relative;"><a href="#%EB%AC%B4%EC%97%87%EC%9D%84-%ED%95%A0%EA%B9%8C" aria-label="무엇을 할까 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>무엇을 할까</h2>
+<p>사실 운영체제 학습에 대하여, 처음 강조를 받은 것은 지금은 자리를 내려놓으신 전 42서울의 총장님의 말씀에서였다. CSAPP가 다분히 하드웨어적인 컴퓨터에 좀더 집중했다고 한다면, 컴퓨터의 영혼에 가까운 운영체제에 대한 이해는 내가 컴퓨터를 가지고 할 수 있는일을 확장시키는 아주 좋은 수단이라고 말씀해주셨다. 거기다 한 술 더 나아가 운영체제를 만들어보라는(!) 이야기까지 하셨다.</p>
+<p>처음에는 과연 그게 맞나..? 라는 생각도 들었다. 하지만 그분의 말도 일리는 분명 있었다. 어차피 운영체제라는 것은 작동하는 매우 정교한 기계이다. 기계를 다루지 않고, 설명서만 봐서는 기계를 온전히 이해하지 못한다. 하물며 스마트폰이나, 노트북과 같은 기기들을 보면 그렇다. 내부 작동 방식이나, 설계, 그리고 그 설계에서 사용된 부품 하나하나를 이해할 때마다 왜 이 제품이 이정도 수준의 역할만 하거나, 소비자가 왜 만족하지 못하는지를 이해하는게 가능해진다. 운영체제는 심지어 그런 상황에서 작동 방식의 차이나, 심지어 그 영향에서 오는 신기한 문제점(?) 들이 있는데 이는 만들어보지 않고는 경험할 수 없다는 것이 그분의 설명이었다.</p>
+<p>생각해보면 그렇다. 이는 어플리케이션 수준의 프로그램에서도 동일한데, 예를 들면 인터넷 익스플로러와 크롬에 대한 이야기를 해볼 수가 있다. 인터넷 익스플로러는 과거 국내의 원탑을 찍었던 인터넷 브라우저이자, 맥을 쓸 때 가장 불편함을 만드는 ActiveX의 원동력 같은 놈이었다. 그리고 그 뒤 구글이 혜성처럼 크롬 브라우저를 만들어네고, 월등한 성능과 안정성을 보여주면서 이젠 크롬 천하가 되어버린 상태다.</p>
+<p>그런데 여기서 두 프로그램은 같은 목적을 가지지만 설계사상이 매우 달랐다고 한다. 인터넷 익스플로러는 기본적으로 멀티스레드로 구현이 되어 있었으며, 이는 개발 편의성이나, 메모리 자원에서의 효율성은 좋은 구조로 설계되어 있었다. 그러나 이에 비해 멀티스레드 특성상 스레드가 자원을 공유하고 있고, 한 스레드에서 문제가 발생하면 이 문제로 인해 생기는 데이터 레이스 문제, 데드락 문제등이 발생할 수 밖에 없었고, 이는 다시 말해 웹 환경에서 한 탭이 문제가 생기면 모두가 뻗어버리는 문제를 갖고 있음을 의미한다. 거기다 컴퓨터는 온전하게 데이터 공유 상황에서 생기는 문제를 ‘완벽하게’ 해결하지 못한 상태이다.</p>
+<p>이에 반해 크롬은 멀티 프로세스 형태로 구성되어 있다고 한다. 이는 비슷하면서도 아주 큰 차이를 갖고 있는데, 우선 프로세스가 독립적이므로 각 공간은 독립된 메모리 공간을 확보하고, 상호 배제되는 것이 보여진다. 거기다 스레드간에 컨텍스트 스위칭은 오버헤드가 적은 만큼 서로 영향을 받기 쉽지만, 프로세스 스위칭은 각 프로세스로의 전환은 느릴지 몰라도, 한 프로세스가 CPU를 점유할 때 스케쥴링 상에서 더 많은 자원과 연산 집중의 효과가 있다. 즉 그만큼 하나의 페이지 안에서의 프로세싱은 빠르다는 점이다. 따라서 하나의 프로세스가 에러가 발생해도 다른 탭은 살아 있고, 영향을 덜 받으며 동시에 빠르다는 장점을 갖고 있다. 그러나 동시에 프로세스 단위로 쪼개진다는 것은 그만큼 무겁다는 것이고 (각각의 가상 메모리 공간이 할당되니까) 그러다보니 크롬이라는 프로그램이 가지는 별명 ‘램처묵처묵’ 이 왜 붙었는지도 이해할 수 있다.</p>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 28.888888888888886%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB00lEQVQY002Ny08TYRTFv5WbbqoRXEjYGvcGd2ybqBtdaIghkvBfGCILQtQFpiRoClL6UNtGoLUSHk0wNgad8mibSqFMp+3MtPN+djotJC3j5evOk/xyzr03ORchhO5iRgaHbw5t2hG068RD3/QgpC5SlcjftuYn+G6iCmQgI0Ks2Faixzbzca8O8cq/09Ch0vuUM9rr5ctS8ECGLwUri7vQPcz967fcd3Z76+iHk9j4boYh1UldRAot8P/hIFFxOiuEALFjGyIFq7f0i4Y45bT6T8JHKqyRXTuwL8LnvCGg/zU5N4aC3PzIV9M36TtbeOBNC098GfX5682SZzlrjXt/1h97041H/pz9Ynaj6FnO2WMfCPXZmy3Ss7ivT7zdPvP0e25ghtxu9zD2a127Ny6ycsyQjJmmJr3TRG6ppSvTqtBYMVVxzlTEWZlnA5auvNLExqIu8e8tTZ42FCGsSdzLfuEo5qnL5XoIAOj8vLNDZAhgWAZkWYHTUgnMZhOKxRNg63WQZBly+Tzoun5JlstQpigwDNOhqArQDGP0Cwcwt7EGkskk4nl+iqbpk1qttsqy7A7DML9xjuFdBvs2Jo7zQbVajeLbHp7TmCjHcVmSJENXgU9Ehm7YGHwAAAAASUVORK5CYII='); background-size: cover; display: block;"
+    style="padding-bottom: 28.888888888888886%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA80lEQVQY04WQV2vEMBCE3XJH3JtchStuD7bB//+/TW4UzhACycOilXb221lpsZ9BlCGS5oFIfqCsQsi6Rj/0aNsWtm0jiiIYhgHXdREEAfI8V6emaXfouv6dC5FiGEbYnw4ejyfqWiJJEgghEIYh0jTFsiwKNo4juq5TZ9M0iONY6d5az/Og+b6Pfd9hWaaaIKVUjlgkjIDjOFQTdXT9dmSa5h28cwuNk6/regEtJWQDHRKYZRn6vld15ud5vrYZfqz6KxzHwbZtagofiqIAXTMILstSrUzX0zShqqq/gfz0eZ5vIAGEEcA/ImBdV3Wn7j/gFyIfjjygJBKxAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="better_way_to_make_lis"
-        title="better_way_to_make_lis"
-        src="/static/a138f312079845eab8eacd0f712f0dfc/37523/020_better_lis.png"
-        srcset="/static/a138f312079845eab8eacd0f712f0dfc/e9ff0/020_better_lis.png 180w,
-/static/a138f312079845eab8eacd0f712f0dfc/f21e7/020_better_lis.png 360w,
-/static/a138f312079845eab8eacd0f712f0dfc/37523/020_better_lis.png 720w,
-/static/a138f312079845eab8eacd0f712f0dfc/62de4/020_better_lis.png 746w"
+        alt="0000"
+        title="0000"
+        src="/static/0b9742ce3078cce189c67d0337ce41b5/37523/0000.png"
+        srcset="/static/0b9742ce3078cce189c67d0337ce41b5/e9ff0/0000.png 180w,
+/static/0b9742ce3078cce189c67d0337ce41b5/f21e7/0000.png 360w,
+/static/0b9742ce3078cce189c67d0337ce41b5/37523/0000.png 720w,
+/static/0b9742ce3078cce189c67d0337ce41b5/302a4/0000.png 1080w,
+/static/0b9742ce3078cce189c67d0337ce41b5/1320e/0000.png 1292w"
         sizes="(max-width: 720px) 100vw, 720px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
         decoding="async"
       />
     </span></p>
-<p>이분 탐색 로직을 활용하면 들어가야할 위치가 계산이 됩니다. 그리고 이를 가지고 위치를 파악한 뒤엔 해당 lis 배열에 대입을 해버리게 되면, 위에서 보여준 잘못된 LIS 를 구하게 됩니다. 우선 들어간 3, 5가 2, 4로 덫칠 되는 것이었지요.</p>
-<p>그렇다고 넣는 걸 막는 방법도 없습니다. 왜냐면 PushSwap 구조 상 정수 음양 모두 들어올 수 있으며, 이 경우 어떤 값이라도 결국 들어올 수 있는 숫자란 소린데, 이걸 넣는 걸 막겠다고 조건문을 거는건 너무나 비효율적인 방식이었지요.</p>
-<p>그렇다면 해결 방법은 무엇일까요? 참고를 한 원본 글에선 이를 개선하게 위해 record라는 곳에 해당 인덱스를 기록, 그걸 거꾸로 가면서 값을 불러들이는 방식을 썼습니다. 왜냐면 LIS 길이를 아니까, 해당 인덱스부터 거꾸로 값을 얻게 되는 것이지요.</p>
-<p>하지만 이 경우도 문제는 있을 수 있었습니다.</p>
-<p>왜냐면 거꾸로 집어 넣는 경우 나머지 값에 다른 값이 들어가야 하고(비어있다는) 이 경우 그렇게 약속한 값과 아닌 값 사이에 구분을 어떻게 할 것인가? 에 대한 문제도 있었던 것입니다. 그래서 저는 오히려 ‘처음’ 오는 인덱스인 경우 LIS에 넣는 방법으로 하면 어떤가? 를 생각해보았습니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 28.888888888888886%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB6klEQVQY002MbWgScRzH/682gqgWrV609jZ6H+tdb4XqTb0oIqRYUFGw4WqHlPMitQeaQi9yOHM+5PSgdYuipmC0F1tzK0tXezg9T9lu3qbe+XTjRM/9+vuuH3z4fvi9+CCE0ClM39HeIz2fawEUadHeD6IHwkqYDSzLRdfCVmM6DYw7KgD1V84H/9SyzrkNoNm9Ve+PfPPtL0l+n1TXPEs7MJmoxHALncac6Tp28GSkMYW+qvSnj5IXwnJICcQr4JrfhOmUujvxfQuo5SoE4uXm+CwHdFKtuhcF8P0swBTTqLXd/1vKof+vf6wfuRRvH9WavGnP+8/ZEruX7Gv1a+botsbB7mmt8fJFa6J6wcnBddO3jOZNrHrVvlC48vwLo3EsijdezKxr2p3DmJ6uzn29eDvg/qi2fvcJBQMWE+iMttagYRyGSFIdeDQBuhErdkvz1gN3y+kzFqS8QxQ2X1eKO6SUz/mK2/zDdvAs5vL+js7zAIDA9Cq0co+Akt4CdcNL4IceA5A22NCRUNY/BWVkFNK3h0Hx0+p6NgupZBIkqdRKpVjIZLNSO9iNOX7iwKHuiPYOkvXPDBJhXhGHTe/KhCVUIszz2Cn8i+KdEQkzXRo0LgljnmBGyM1xbHqW47ggz/MxhmG8/wB9BSztADAgYwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="best_lis"
-        title="best_lis"
-        src="/static/5487f7b09389735ec0483e0715211c33/37523/021_best_lis.png"
-        srcset="/static/5487f7b09389735ec0483e0715211c33/e9ff0/021_best_lis.png 180w,
-/static/5487f7b09389735ec0483e0715211c33/f21e7/021_best_lis.png 360w,
-/static/5487f7b09389735ec0483e0715211c33/37523/021_best_lis.png 720w,
-/static/5487f7b09389735ec0483e0715211c33/62de4/021_best_lis.png 746w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<p>전체 배열을 훑으면서 처음 나오는 인덱스의 숫자를 LIS 배열에 넣으면, 원본 스택 A의 각 값이 가지는 순서를 구할 수 있었습니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 28.888888888888886%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB1klEQVQY002MUUgTcRzH/0+KEJaR9ZD6Kr2HvfU6sF7qoYgYhb5IgbOlx9DzJjtPId1ASMXldCe6HaxmFNEGCwrUqUOW1mZLbVFs0+l26Z3e2N3583dv/eDD7/v78ONLCCHXkKbLDZfqPkg+EtGD/NuCF8JKeNu3IR94opny/A6kvKt74P8u54XEye+paBaCW3qSj+XV2bgoB36UN18t/AHfhrSGXeQ6cqPmyvnGSPk1+aQF378r8hCWQ4rv6yF4Fv/C/JZ27F3OgX/9EIRvkmq4Nyn1aBqLZ2L7EEgqkvtLGubiYpb8Py3jLcSj8E2CPtc6lp9tdq0f3x3dLD3kVnZN4ynVPBwX7wzFxdsTP7VH7FLG5P4FD14mS/cHY/umyTQ8HohmTUbPRaSuprKqAXcFPB82l544BGjnWHjGuHQL7Qar3Q4dvVNgZZzoOLW9exodo1t6Jk4t9Ch6O7oZ/O02Cm8i985VVN4CAALsSCjxlALRxkGJHoKMtQ9O7S7IdTpA6XkBJ8iOhQaNcWq76Pa6WNAZp57u6IUCxRWNwlrkan31hdqIuY3ItkG6SPUnCl1s4B/FhUSqfxGzINkGljF/POh0BPFexe3HewHzZ8TIazlrH38GkMohiMTpsVMAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="double_index"
-        title="double_index"
-        src="/static/a5b6dace01e935e3c401ce6b033fa964/37523/022_lis_case_double_index.png"
-        srcset="/static/a5b6dace01e935e3c401ce6b033fa964/e9ff0/022_lis_case_double_index.png 180w,
-/static/a5b6dace01e935e3c401ce6b033fa964/f21e7/022_lis_case_double_index.png 360w,
-/static/a5b6dace01e935e3c401ce6b033fa964/37523/022_lis_case_double_index.png 720w,
-/static/a5b6dace01e935e3c401ce6b033fa964/62de4/022_lis_case_double_index.png 746w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<p>그러나 이 경우에도 고민해야할 사항이 하나 있습니다. 우리에게는 다양한 LIS의 가능성이 나오는게 된다는 점입니다.</p>
-<p><code class="language-text">1</code> <code class="language-text">3</code> <code class="language-text">5</code> <code class="language-text">6</code></p>
-<p><code class="language-text">1</code> <code class="language-text">3</code> <code class="language-text">4</code> <code class="language-text">6</code></p>
-<p><code class="language-text">1</code> <code class="language-text">2</code> <code class="language-text">5</code> <code class="language-text">6</code></p>
-<p><code class="language-text">1</code> <code class="language-text">2</code> <code class="language-text">4</code> <code class="language-text">6</code> 등등 …</p>
-<p>중복되게 인접해 있으니 3, 2 그리고 5, 4가 짝을 이뤄서 어느걸 넣어도 LIS 가 성립이 되어 버리는 겁니다. 그러니 저는 가장 첫 번째 오는 숫자로 오는게 가장 적절한 로직이라고 판단을 내렸습니다. 로직을 정리하면 다음과 같습니다.</p>
-<ol>
-<li>LIS 에 들어가야할 스택 A의 각 값의 인덱스(= lis index)를 저장한다.</li>
-<li>스택 A와 이 lis index를 활용해 lis가 들어가야할 최대값까지 반복문을 사용한다.</li>
-<li>반복 과정에서 기준 역할을 해줄 변수를 증가시켜가며 0일 땐 lis[0]에 들어갈 것을 찾고, 1증가 시킨다. 이때 중복된 것이 나온다면? 이는 스킵하고 넘어가 버린다.</li>
-<li>최종적으로 lis[max]까지 가게 되면, 거기서 스톱하고 LIS 배열을 완벽하게 저장해둔다.</li>
-</ol>
-<h2 id="앞으로-남은-것은" style="position:relative;"><a href="#%EC%95%9E%EC%9C%BC%EB%A1%9C-%EB%82%A8%EC%9D%80-%EA%B2%83%EC%9D%80" aria-label="앞으로 남은 것은 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>앞으로 남은 것은?</h2>
-<p>으음, 생각보다 일이 커졌단 생각은 듭니다. 하지만 이 글을 작성하면서 나름 로직의 아이디어가 떠올라 매우 기분이 좋기도 합니다. 이제 할 일은 몇 가지 정도입니다.</p>
-<ol>
-<li>위에서 언급한 것들 수정하기(온전한 LIS 구하기 로직 작성하기)</li>
-<li>스택 B에 들어가는 녀석들의 가장 좋은 포지션을 어떻게 결정할지 정하기 - 혹은 그냥 깡으로할까?
-(<del>2번을 무식하게 할까…</del>)</li>
-</ol>
-<p>얼른 마무리 짓고 드뎌 미니쉘로 갈 수 있길…!</p>
-<p><strong>😎 push swap 과제 시리즈 😎</strong></p>
-<p><a href="https://paul2021-r.github.io/42%20seoul/push_swap/20220413_push_swap/">push swap 정복기(1)</a></p>
-<p><a href="https://paul2021-r.github.io/42%20seoul/push_swap/20220416_push_swap_2/">push swap 정복기(2)</a></p>
-<p><a href="https://paul2021-r.github.io/42%20seoul/push_swap/20220420_push_swap_3/">push swap 정복기(3)</a></p>
-<p><a href="https://paul2021-r.github.io/42%20seoul/push_swap/20220423_push_swap_4/">push swap 정복기(4)</a></p>
+<p>굉장히 긴 사견이었는데, 어쨌든 NCLC의 시대, 나 역시 살아남고 싶고 전문가가 되고 싶다. 그리고 기본적으로 재미가 있다는 점에서 OS 관련되서는 좀더 진득하게 보려고 한다.</p>
+<h2 id="향후-계획" style="position:relative;"><a href="#%ED%96%A5%ED%9B%84-%EA%B3%84%ED%9A%8D" aria-label="향후 계획 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>향후 계획</h2>
+<p>전 총장님의 말씀에 힘입어, C++ 를 활용한 국내 유일하게 한 권 운영체제를 만드는 교재가 있었다. 리눅스 마스터 2급, 웹 스터디가 어느정도 정돈이 되면, 그때는 해당 교재를 가지고 혼자 하든 같이 하든 실습형태로 진행해보려고 한다. 하지만 당장은 개념을 빠르게 훑는 것도 중요해 보이기에 <code class="language-text">OSTEP</code> 이라고 불리는 교재를 해보고자 한다.</p>
+<p><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a></p>
+<p>본 교재는 일단 원서이기도 하고, 기존의 유명한 다른 교재들은 너무 내용이 얕거나 부족한 실습 파트가 있었기에 해당 교재를 선택했다.</p>
+<p>앞으로 매주 화요일에는 정독하고 정리하는데로 바로 블로그에 해당 내용중 핵심을 업로드 하면 어떤가 생각하고 있다.</p>
+<h2 id="결론" style="position:relative;"><a href="#%EA%B2%B0%EB%A1%A0" aria-label="결론 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>결론…</h2>
+<p>뭔가 서론이 겁나게 길었지만, 여하튼 운영체제 공부도 다시 해보려고 한다. C++ 언어도 해야 하지만, 확실히 내실을 다질 수 있었던 CS 학습 놓치기엔 너무 아깝다. CSAPP를 할 때는 워낙 정신도 없고, 모르는 것들을 억지로 삼키느라 그거에만 몰두할 수 밖에 없었지만, 이번에는 좀더 여유를 가지고 학습을 진행해보자…!</p>
 <div class="table-of-contents">
 <ul>
 <li>
-<p><a href="#prologue">Prologue</a></p>
-</li>
-<li>
-<p><a href="#push-swap">Push Swap</a></p>
+<p><a href="#%ED%94%84%EB%A1%A4%EB%A1%9C%EA%B7%B8">프롤로그</a></p>
 <ul>
-<li>
-<p><a href="#lis%EC%99%80-%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89%EC%9D%98-%ED%95%9C%EA%B3%84">LIS와 이분탐색의 한계</a></p>
-<ul>
-<li><a href="#1-lis-%EB%B0%B0%EC%97%B4%EC%9D%98-%EA%B7%B9%EB%8C%80%ED%99%94">1. LIS 배열의 극대화</a></li>
-<li><a href="#2-lis-%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89%EB%B2%95%EC%9D%80-%EC%82%AC%EC%8B%A4-%EC%A0%95%EB%8B%B5%EC%9D%B4-%EC%95%84%EB%8B%88%EC%97%88%EC%96%B4">2. LIS 이분탐색법은 사실… 정답이 아니었어…</a></li>
-</ul>
-</li>
-<li>
-<p><a href="#%EC%95%9E%EC%9C%BC%EB%A1%9C-%EB%82%A8%EC%9D%80-%EA%B2%83%EC%9D%80">앞으로 남은 것은?</a></p>
-</li>
+<li><a href="#cs-%EA%B3%B5%EB%B6%80%EB%A5%BC-%ED%99%95%EC%8B%A0%ED%95%98%EB%8B%A4">CS 공부를 확신하다</a></li>
+<li><a href="#%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EB%8A%94-%EC%99%9C-%EC%A4%91%EC%9A%94%ED%95%A0%EA%B9%8C">운영체제는 왜 중요할까?</a></li>
+<li><a href="#%EB%AC%B4%EC%97%87%EC%9D%84-%ED%95%A0%EA%B9%8C">무엇을 할까</a></li>
+<li><a href="#%ED%96%A5%ED%9B%84-%EA%B3%84%ED%9A%8D">향후 계획</a></li>
+<li><a href="#%EA%B2%B0%EB%A1%A0">결론…</a></li>
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/algorithm/20220420_14/"><div class="direction">이전 글</div><div class="title">알고리즘 박살내기 - 14. 구현 유형 개요</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/algorithm/20220421_15/"><div class="direction">다음 글</div><div class="title">알고리즘 박살내기 - 15. 구현 유형 문제풀이</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/cpp/20220903_cpp_00_UpperCamelCase/"><div class="direction">이전 글</div><div class="title">CPP 스터디 00 - NamingConvention</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
@@ -436,4 +130,4 @@
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', 'G-YDPMMYNR6Y', options);
-  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/42 seoul/push_swap/20220420_push_swap_3/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-79d732fed22ff3d3f034.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-79d732fed22ff3d3f034.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-83816b6c6e1be0007865.js" async=""></script></body></html>
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/ostep/20220903_000/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-79d732fed22ff3d3f034.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-79d732fed22ff3d3f034.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-83816b6c6e1be0007865.js" async=""></script></body></html>
