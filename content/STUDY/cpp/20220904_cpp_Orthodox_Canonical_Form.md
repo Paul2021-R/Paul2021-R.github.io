@@ -1,12 +1,10 @@
 ---
 emoji: 😁
 title: CPP 스터디 00 - Orthodox Canonical Form
-date: '2022-09-04 14::00:00'
+date: '2022-09-04 14:00:00'
 author: Paul
 tags: CPP 42seoul
 categories: study
----
-
 ---
 
 # 관련 문서 원문 번역본
@@ -148,8 +146,6 @@ Foo& fooFunction(Foo foo){
 17.3 예시는 Foo 객체가 만들어지고, 사용되며, 파기 되는 것을 보여주는 메인 함수를 보여주고 있습니다. 헤더 파일 f.h 는 fooFunction() 이라는 함수를 위한 선언을 포함하고 있습니다. 해당 함수는 Foo 객체를 값으로 함수에 전달합니다.
 
 ![](./src/occf.png)
-
----
 
 # 핵심 정리 내용
 
