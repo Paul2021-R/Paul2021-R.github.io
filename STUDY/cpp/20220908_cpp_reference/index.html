@@ -48,159 +48,201 @@
         }
       }
     })
-  </script><title data-react-helmet="true">OSTEP - 02. 운영 체제 소개</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="OSTEP - 02. 운영 체제 소개"/><meta data-react-helmet="true" property="og:site_title" content="OSTEP - 02. 운영 체제 소개"/><meta data-react-helmet="true" name="description" content="본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
-전문은 이 곳을 방문하시면 보실 수 있습니다. 02. Introduction to Operating Systems 프로그램이 실행되면 무슨 일이 일어날까? : 가장 심플한 답은 아래와 같다. 들을 수행한다. 매초 마다 수백만회나, 프로세서들은 메모리에서 명령어를 가져오고(fetch), 이를 실행하고(execute), 한 명령어가 마무리 되면, 프로세서는 다음 명령어로 이동하며, 모든 작업이 마무리 될 때까지 계속 이어진다. 우리는 이 교재를 통해 프로그램의 동작을 배울 것이고, 프로그램이 동작하는 동안 아주 많은 다른 거친 일들이 작동하고 있음을 배울 것이다. 또한 이것의 주요 목적은 어디까지나 시스템을 사용하기 쉽게 만드는 것에 있다.  이러한 목적을 위한 소프트웨어의 몸통이 존재하고, 이 몸통은 프로그램들 사이에 메모리를 공유하거나, 프로그램과 장치 간의 상호작용을 가능케 하며, 여러 다른 재밌는 일들을 도와주는데 이…"/><meta data-react-helmet="true" property="og:description" content="본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
-전문은 이 곳을 방문하시면 보실 수 있습니다. 02. Introduction to Operating Systems 프로그램이 실행되면 무슨 일이 일어날까? : 가장 심플한 답은 아래와 같다. 들을 수행한다. 매초 마다 수백만회나, 프로세서들은 메모리에서 명령어를 가져오고(fetch), 이를 실행하고(execute), 한 명령어가 마무리 되면, 프로세서는 다음 명령어로 이동하며, 모든 작업이 마무리 될 때까지 계속 이어진다. 우리는 이 교재를 통해 프로그램의 동작을 배울 것이고, 프로그램이 동작하는 동안 아주 많은 다른 거친 일들이 작동하고 있음을 배울 것이다. 또한 이것의 주요 목적은 어디까지나 시스템을 사용하기 쉽게 만드는 것에 있다.  이러한 목적을 위한 소프트웨어의 몸통이 존재하고, 이 몸통은 프로그램들 사이에 메모리를 공유하거나, 프로그램과 장치 간의 상호작용을 가능케 하며, 여러 다른 재밌는 일들을 도와주는데 이…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-83816b6c6e1be0007865.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/ostep/20220907_002/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🖥</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">OSTEP - 02. 운영 체제 소개</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->September 07, 2022</div></header><div class="post-content"><div class="markdown"><blockquote>
-<p>본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
-전문은 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">이 곳</a>을 방문하시면 보실 수 있습니다.</p>
+  </script><title data-react-helmet="true">CPP 스터디 00 - reference</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="CPP 스터디 00 - reference"/><meta data-react-helmet="true" property="og:site_title" content="CPP 스터디 00 - reference"/><meta data-react-helmet="true" name="description" content="참조자의 도입 #CPP #reference #참조자
+C에선 어떤 변수를 가리키고 싶을 땐, 반드시 포인터를 사용 해야 했으나, 이를 쉽게 해결하는 방법을 C++ 에서 제공하는 것 정수값 a 는 3으로 초기화 되어 있습니다.
+그러나 여기서 참조자가 새롭게 정의 되어 있습니다. 참조자 기본형 :  예시에서는 그렇기에 위에서 a의 참조자로 another_a 가 지정되었으며, 이로써 값이 바뀌게 됩니다. 주의 : 레퍼런스는 반드시 처음에 누구의 별명이 될 것인지를 지정해야 합니다. 따라서 아래처럼 설정은 불가능합니다. 레퍼런스가 한 번 별명이 되면 절대로 다른이의 별명이 될 수 없습니다.
+또한 레퍼런스는 메모리 상에 존재하지 않을 수도 있습니다. 이러한 경우 뭔가 문제가 있어 보인다. 어떤 타입기준으로  참조자 타입은 이며 따라서 이중으로 참조를 하게 되면,  로 하는게 맞을 것으로 보이며, 그 경우 z는 int&amp;&amp; 가 될 것처럼 생각된다.
+하지만, 참조자의 참조자 라는 것은 말이 안되는…"/><meta data-react-helmet="true" property="og:description" content="참조자의 도입 #CPP #reference #참조자
+C에선 어떤 변수를 가리키고 싶을 땐, 반드시 포인터를 사용 해야 했으나, 이를 쉽게 해결하는 방법을 C++ 에서 제공하는 것 정수값 a 는 3으로 초기화 되어 있습니다.
+그러나 여기서 참조자가 새롭게 정의 되어 있습니다. 참조자 기본형 :  예시에서는 그렇기에 위에서 a의 참조자로 another_a 가 지정되었으며, 이로써 값이 바뀌게 됩니다. 주의 : 레퍼런스는 반드시 처음에 누구의 별명이 될 것인지를 지정해야 합니다. 따라서 아래처럼 설정은 불가능합니다. 레퍼런스가 한 번 별명이 되면 절대로 다른이의 별명이 될 수 없습니다.
+또한 레퍼런스는 메모리 상에 존재하지 않을 수도 있습니다. 이러한 경우 뭔가 문제가 있어 보인다. 어떤 타입기준으로  참조자 타입은 이며 따라서 이중으로 참조를 하게 되면,  로 하는게 맞을 것으로 보이며, 그 경우 z는 int&amp;&amp; 가 될 것처럼 생각된다.
+하지만, 참조자의 참조자 라는 것은 말이 안되는…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-83816b6c6e1be0007865.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/cpp/20220908_cpp_reference/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">😁</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">CPP 스터디 00 - reference</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->September 08, 2022</div></header><div class="post-content"><div class="markdown"><h1 id="참조자의-도입" style="position:relative;"><a href="#%EC%B0%B8%EC%A1%B0%EC%9E%90%EC%9D%98-%EB%8F%84%EC%9E%85" aria-label="참조자의 도입 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>참조자의 도입</h1>
+<p>#CPP #reference #참조자
+C에선 어떤 변수를 가리키고 싶을 땐, 반드시 포인터를 사용 해야 했으나, 이를 쉽게 해결하는 방법을 C++ 에서 제공하는 것</p>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span><span class="token operator">&amp;</span> another_a <span class="token operator">=</span> a<span class="token punctuation">;</span>
+
+  another_a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"a : "</span> <span class="token operator">&lt;&lt;</span> a <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"another_a : "</span> <span class="token operator">&lt;&lt;</span> another_a <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>정수값 a 는 3으로 초기화 되어 있습니다.
+그러나 여기서 참조자가 새롭게 정의 되어 있습니다.</p>
+<ul>
+<li>참조자 기본형 : <code class="language-text">{원하는 자료타입}&amp; 변수명 </code></li>
+</ul>
+<p>예시에서는 그렇기에 위에서 a의 참조자로 another_a 가 지정되었으며, 이로써 값이 바뀌게 됩니다.</p>
+<ul>
+<li>주의 : 레퍼런스는 반드시 처음에 누구의 별명이 될 것인지를 지정해야 합니다. 따라서 아래처럼 설정은 불가능합니다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">&amp;</span> anoter_a<span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span></span></pre></div>
+<p><strong>레퍼런스가 한 번 별명이 되면 절대로 다른이의 별명이 될 수 없습니다.</strong>
+또한 <strong>레퍼런스는 메모리 상에 존재하지 않을 수도 있습니다.</strong></p>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token operator">&amp;</span> another_a <span class="token operator">=</span> a<span class="token punctuation">;</span> <span class="token comment">// another_a의 자리는 사실 필요 없습니다. </span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span></span></pre></div>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token keyword">int</span> x<span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token operator">&amp;</span> y <span class="token operator">=</span> x<span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token operator">&amp;</span> z <span class="token operator">=</span> y<span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span></span></pre></div>
+<p>이러한 경우 뭔가 문제가 있어 보인다. 어떤 타입<code class="language-text">T</code>기준으로  참조자 타입은 <code class="language-text">T&amp;</code>이며 따라서 이중으로 참조를 하게 되면, <code class="language-text">T&amp;&amp;</code> 로 하는게 맞을 것으로 보이며, 그 경우 z는 int&#x26;&#x26; 가 될 것처럼 생각된다.
+하지만, <em>참조자의 참조자</em> 라는 것은 말이 안되는 말이고, 실제로는 참조자 y, z 모두 C++ 문법상 x의 참조자가 됩니다.</p>
+<p>C에서는 입력을 받을 때, 포인터를 활용해 받거나 했음에도 왜 C++ 은 <code class="language-text">cin >> </code>으로 쉽게 받게 되어 있을까요? 바로 위에서 이야기 한 참조자 개념을 활용했기 때문입니다.</p>
+<h1 id="상수에-대한-참조자" style="position:relative;"><a href="#%EC%83%81%EC%88%98%EC%97%90-%EB%8C%80%ED%95%9C-%EC%B0%B8%EC%A1%B0%EC%9E%90" aria-label="상수에 대한 참조자 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>상수에 대한 참조자</h1>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">int</span> <span class="token operator">&amp;</span>ref <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+
+	std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> ref <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>위의 소스를 컴파일 해보면 오류가 발생합니다.</p>
+<p><img src="./src/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202022-09-04%20%EC%98%A4%ED%9B%84%207.38.32.png" alt=""></p>
+<p>이는 상수값 = 리터럴이기 때문입니다. 리터럴은 텍스트 영역 메모리 안에 저장되고, 해당 영역에 저장되는 리터럴의 경우 C++ 문법 상 상수로 레퍼런스 참조가 불가능합니다.</p>
+<p>단, <code class="language-text">상수 참조자</code>로 선언 한다면 리터럴도 참조가 가능합니다.</p>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>ref <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+
+	std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> ref <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>또한 상수 참조자의 경우 레퍼런스화 되기 때문에
+<code class="language-text">int a = ref</code> = <code class="language-text">int a = 4</code>와 동일하게 처리된다고 생각하면 됩니다.</p>
+<h1 id="레퍼런스의-배열과-배열의-레퍼런스" style="position:relative;"><a href="#%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4%EC%9D%98-%EB%B0%B0%EC%97%B4%EA%B3%BC-%EB%B0%B0%EC%97%B4%EC%9D%98-%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4" aria-label="레퍼런스의 배열과 배열의 레퍼런스 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>레퍼런스의 배열과 배열의 레퍼런스</h1>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token keyword">int</span> a<span class="token punctuation">,</span> b<span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token operator">&amp;</span> arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>a<span class="token punctuation">,</span> b<span class="token punctuation">}</span><span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span></span></pre></div>
+<p>해당 예시는 그럴듯 하지만, 불법이라고 컴파일 에러가 발생합니다.
+이는 불법으로 되어 있는데, 생각해보면 충분히 될 수도 있어 보입니다.</p>
+<blockquote>
+<p>하지만 레퍼런스 arr[2] 가 의미하는 바는 <code class="language-text">arr[0] = *(arr + 1)</code> 로 주소값이 존재해야 한다는 것 또한 의미합니다.</p>
 </blockquote>
-<h1 id="02-introduction-to-operating-systems" style="position:relative;"><a href="#02-introduction-to-operating-systems" aria-label="02 introduction to operating systems permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>02. Introduction to Operating Systems</h1>
-<ul>
-<li>프로그램이 실행되면 무슨 일이 일어날까? : 가장 심플한 답은 아래와 같다.
-<ul>
-<li><code class="language-text">instruction</code>들을 수행한다.</li>
-<li>매초 마다 수백만회나, 프로세서들은 메모리에서 명령어를 가져오고(fetch), 이를 실행하고(execute), 한 명령어가 마무리 되면, 프로세서는 다음 명령어로 이동하며, 모든 작업이 마무리 될 때까지 계속 이어진다.</li>
-</ul>
-</li>
-<li>우리는 이 교재를 통해 프로그램의 동작을 배울 것이고, 프로그램이 동작하는 동안 아주 많은 다른 거친 일들이 작동하고 있음을 배울 것이다. 또한 <span style="background-color: lightyellow; color: black;">이것의 주요 목적은 어디까지나 시스템을 사용하기 쉽게 만드는 것에 있다. </span></li>
-<li>이러한 목적을 위한 소프트웨어의 몸통이 존재하고, 이 몸통은 프로그램들 사이에 메모리를 공유하거나, 프로그램과 장치 간의 상호작용을 가능케 하며, 여러 다른 재밌는 일들을 도와주는데 이를 우리는 <code class="language-text">운영체제</code><sup>operating system(OS)</sup>라고 한다. 운영체제는 따라서 정확하고 효율적으로 사용하기 쉬워야 한다는 기준을 갖고 시스템을 작동하게 만들 책임이 있다.</li>
-<li>운영체제가 작동하는 주요한 방식 중 하나로 일반적인 기술이며, 소위 <code class="language-text">가상화</code><sup>virtualization</sup>라고 부른다.
-<ul>
-<li>물리적 자원(Physical resource)을 좀더 사용하기 쉽고, 관리하기 쉬우며, 강력한 도구로 가상희 형태로 만드는 것을 의미한다.</li>
-<li>이러한 기술적 기반 아래에 있다보니 운영체제를 때때로 <code class="language-text">가상머신</code><sup>virtual machine</sup>이라고 부르기도 한다.</li>
-</ul>
-</li>
-<li>전형적인 OS의 경우, 대략 수백여개 정도의 <strong>시스템 콜</strong>이란 기능을 제공하며, 이는 여러 자원을 사용하는 기능들을 수행하기 위함이며, 이를 때론 “OS가 <code class="language-text">표준 라이브러리</code><sup>standard library</sup>를 어플리케이션에게 제공한다고 표현합니다. ”</li>
-<li>가상화는 많은 프로그램들이 실행하거나, 많은 프로그램들을 동시에 접근하거나, 장치에 접근하기를 허락해주기 때문에, 운영체제는 때론 <code class="language-text">자원관리자</code><sup>resource manager</sup>이라고도 불립니다.</li>
-</ul>
-<h2 id="21-virtualizing-the-cpu" style="position:relative;"><a href="#21-virtualizing-the-cpu" aria-label="21 virtualizing the cpu permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.1 Virtualizing The CPU</h2>
-<ul>
-<li>Figure 2.1 Simple Example: Code That Loops And Prints(cpu.c)</li>
-</ul>
-<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/time.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;assert.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"common.h"</span></span>
+<p>그러나 여기서 보이듯, ‘주소값’이 존재한다는 말은 메모리 상에 어떤 의미든 해당 원소가 존재해야 한다는 거지만, <span style="background-color: lightblue; color: black;">레퍼런스는 특별한 경우가 아닌 이상 메모리 상에 공간을 차지하지 않습니다. </span> <strong>따라서 이런 모순에 의해 레퍼런스들의 배열 정의는 언어 차원에서 금지 되어 있습니다.</strong></p>
+<p>하지만 그렇다고 불가능한 것은 아닙니다. 다음처럼 설정시 배열의 레퍼런스가 가능합니다.</p>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-	<span class="token keyword">if</span> <span class="token punctuation">(</span>argc <span class="token operator">!=</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-		<span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"usage: cpu &lt;string>\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-	<span class="token keyword">char</span> <span class="token operator">*</span>str <span class="token operator">=</span> argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token function">Spin</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<div class="gatsby-highlight" data-language="shell"><pre style="counter-reset: linenumber NaN" class="language-shell line-numbers"><code class="language-shell">prompt<span class="token operator">></span> gcc -o cpu cpu.c -Wall
-prompt<span class="token operator">></span> ./cpu <span class="token string">"A"</span>
-A
-A
-A
-A
-^C
-prompt<span class="token operator">></span> </code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<ul>
-<li>
-<p>위 예시 코드는 1초가 경과 할 때까지 점검을 한 뒤, 1초가 지나면 사용자가 입력한 값을 입력해주는 단순한 프로그램이다. 이는 영원히 이어지지만, 컨트롤 + C를 통해, 중지할 수 있다.</p>
-</li>
-<li>
-<p>Figure 2.2: Running Many Programs At Once</p>
-</li>
-</ul>
-<div class="gatsby-highlight" data-language="shell"><pre style="counter-reset: linenumber NaN" class="language-shell line-numbers"><code class="language-shell">prompt<span class="token operator">></span> ./cpu A <span class="token operator">&amp;</span> ./cpu B <span class="token operator">&amp;</span> ./cpu C <span class="token operator">&amp;</span> ./cpu D <span class="token operator">&amp;</span>
-<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">7353</span>
-<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token number">7354</span>
-<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token number">7355</span>
-<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token number">7356</span> 
-A
-B
-D
-C
-A
-B
-D
-C
-A
-<span class="token punctuation">..</span>.</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<ul>
-<li>이제는 여러개를 한꺼번에 실행시켜 볼 수 있다. 이러면 다소 상황이 흥미로워 지는데, 비록 하나의 프로세서를 갖고 있지만, 어떻게인지 모든 4개의 프로그램은 거의 동시에 작동하는 거처럼 보여진다. 이는 왜, 어떻게 발생하는 것일까?</li>
-<li>여기서 운영체제, 하드웨어의 다소 도움과 함께, 우리가 눈에 보이는 환상을 만드는 역할을 한다는 것을 알 수 있다.
-<ul>
-<li>단일 CPU를 마치 무한한 갯수의 CPU처럼 보이게 만들고, 많은 프로그램들이 이를 통해 즉시 돌아가는 것처럼 만든다. 이를 우리는 <code class="language-text">CPU 가상화</code><sup>virtualizing the CPU</sup> 라고 부른다.</li>
-<li>물론 이를 위해서는 운영체제와 프로그램 사에서 필요한 것을 소통하는 도구가 필요하다.(API)</li>
-<li>또한 복수의 프로그램을 즉시 실행하는 능력이 있다는 것을 깨달았기에, 우리는 다른 종류의 새로운 질문이 생길 수 있다. 이러한 질문들에 대해 답할 수 있는 것이 바로 <code class="language-text">운영체제의 정책</code><sup>a policy of the OS</sup>이다.</li>
-<li>그렇기에 이러한 운영체제 작동의 기초적인 메커니즘에 관해 배울것이고, 더 나아가 운영체제가 <code class="language-text">자원 관리자</code><sup>resource manager</sup>의 역할에 대해서도 배워볼 것입니다.</li>
-</ul>
-</li>
-</ul>
-<h2 id="22-virtualizing-memory" style="position:relative;"><a href="#22-virtualizing-memory" aria-label="22 virtualizing memory permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.2 Virtualizing Memory</h2>
-<ul>
-<li>Figure 2.3 A Program That Accesses Memory(mem.c)</li>
-</ul>
-<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">imclude</span> <span class="token expression"><span class="token operator">&lt;</span>assert<span class="token punctuation">.</span>h<span class="token operator">></span></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"common.h"</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">int</span>	arr<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+	<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">&amp;</span>ref<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">;</span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-	<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token function">malloc</span> <span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//a1</span>
-	<span class="token function">assert</span><span class="token punctuation">(</span>p <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"(%d) address pointed to by p : %p\n"</span><span class="token punctuation">,</span> <span class="token function">getpid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//a2</span>
-	<span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//a3</span>
-	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token function">Spin</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">*</span>p <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"(%d) p: %d\n"</span><span class="token punctuation">,</span> <span class="token function">getpid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//a4</span>
-	<span class="token punctuation">}</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> idx <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> idx <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> idx<span class="token operator">++</span><span class="token punctuation">)</span>
+		std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> ref<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
 	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<div class="gatsby-highlight" data-language="shell"><pre style="counter-reset: linenumber NaN" class="language-shell line-numbers"><code class="language-shell">prompt<span class="token operator">></span> ./mem
-<span class="token punctuation">(</span><span class="token number">2134</span><span class="token punctuation">)</span> address pointed to by p: 0x200000
-<span class="token punctuation">(</span><span class="token number">2134</span><span class="token punctuation">)</span> p: <span class="token number">1</span>
-<span class="token punctuation">(</span><span class="token number">2134</span><span class="token punctuation">)</span> p: <span class="token number">2</span>
-<span class="token punctuation">(</span><span class="token number">2134</span><span class="token punctuation">)</span> p: <span class="token number">3</span>
-<span class="token punctuation">(</span><span class="token number">2134</span><span class="token punctuation">)</span> p: <span class="token number">4</span>
-<span class="token punctuation">(</span><span class="token number">2134</span><span class="token punctuation">)</span> p: <span class="token number">5</span>
-^C
-prompt<span class="token operator">></span> </code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>다음 에시는 <code class="language-text">ref</code>가 <code class="language-text">arr</code>를 참조하도록 하였습니다. 단 이때, 포인터와는 다르게 배열의 레퍼런스의 경우 <strong>참조하기 위해 반드시 배열 크기를 명시</strong> 해야 합니다.</p>
+<h1 id="레퍼런스를-리턴하는-함수" style="position:relative;"><a href="#%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4%EB%A5%BC-%EB%A6%AC%ED%84%B4%ED%95%98%EB%8A%94-%ED%95%A8%EC%88%98" aria-label="레퍼런스를 리턴하는 함수 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>레퍼런스를 리턴하는 함수</h1>
+<h3 id="지역-변수의-레퍼런스를-리턴" style="position:relative;"><a href="#%EC%A7%80%EC%97%AD-%EB%B3%80%EC%88%98%EC%9D%98-%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4%EB%A5%BC-%EB%A6%AC%ED%84%B4" aria-label="지역 변수의 레퍼런스를 리턴 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>지역 변수의 레퍼런스를 리턴</h3>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">&amp;</span> <span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  b <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>이 경우 에러가 발생하지만, 실행은 됩니다. 여기서의 문제점은 int&#x26; 반환 타입이라는 점은 곧 레퍼런스(참조자)를 반환한다는 점 때문입니다.</li>
+<li>지역변수 a를 리턴하게 되는데, 이때 함수에 대해서 참조자가 자동 변환되어 나오게 되는 것인데, 문제는 로컬 함수가 종료 되면서, 그 값은 사라지고, 아무것도 가리키고 있지 않는 레퍼런스만이 남게 되는 것이 문제인 것이었습니다.</li>
+<li><span style="background-color: lightblue; color: black;">이를 댕글링 레퍼런(Dangling reference) 라고 부릅니다. 즉, 이처럼 레퍼런스를 리턴하는 함수에서는 지역 변수의 레퍼런스를 리턴하지 않도록 해야 합니다. </span></li>
+</ul>
+<h3 id="외부-변수의-레퍼런스를-리턴" style="position:relative;"><a href="#%EC%99%B8%EB%B6%80-%EB%B3%80%EC%88%98%EC%9D%98-%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4%EB%A5%BC-%EB%A6%AC%ED%84%B4" aria-label="외부 변수의 레퍼런스를 리턴 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>외부 변수의 레퍼런스를 리턴</h3>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">&amp;</span> <span class="token function">function</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">&amp;</span> a<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+	<span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token function">function</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>이 경우 레퍼런스를 받아 그대로 리턴하는 구조입니다. main 이 살아있는 이상, 댕글링 레퍼런스가 되지 않으며, 이는 c = b 와 같은 의미로 동작하게 됩니다.</p>
+<p>하지만 이렇게 참조자를 리턴하는 경우를 굳이 써야 하는 이유, 장점은 무엇일까요?</p>
+<p>이는 C언어의 구조체를 사용하는 것과 동일한 효과를 냅니다.</p>
+<p>레퍼런스를 리턴하게 된다면, 레퍼런스가 참조하는 타입의 크기와 상관없이 딱 한 번의 주소값 복사로 전달이 끝나게 되므로 매우 효율적일 수 있습니다.</p>
+<h3 id="참조가-아닌-값을-리턴하는-함수를-참조자로-받기" style="position:relative;"><a href="#%EC%B0%B8%EC%A1%B0%EA%B0%80-%EC%95%84%EB%8B%8C-%EA%B0%92%EC%9D%84-%EB%A6%AC%ED%84%B4%ED%95%98%EB%8A%94-%ED%95%A8%EC%88%98%EB%A5%BC-%EC%B0%B8%EC%A1%B0%EC%9E%90%EB%A1%9C-%EB%B0%9B%EA%B8%B0" aria-label="참조가 아닌 값을 리턴하는 함수를 참조자로 받기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>참조가 아닌 값을 리턴하는 함수를 참조자로 받기</h3>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">int</span><span class="token operator">&amp;</span> c <span class="token operator">=</span> <span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>이 경우 컴파일 오류가 발생합니다. 그리고 이는 레퍼런스가 function 함수의 리턴값을 참조할 수없다는 의미입니다.</p>
+<p><img src="./src/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202022-09-04%20%EC%98%A4%ED%9B%84%208.55.13.png" alt=""></p>
+<p>이러한 경우는 위에서 언급한 댕글릴 레퍼런스가 되어 버리기 때문입니다. 그렇다면 여기서 예외는 분명 존재할 것입니다.</p>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+
+<span class="token keyword">int</span> <span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token keyword">int</span><span class="token operator">&amp;</span> c <span class="token operator">=</span> <span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"c : "</span> <span class="token operator">&lt;&lt;</span> c <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>위 코드는 성공적으로 컴파일이 되며, 실행시 성공적으로 <code class="language-text">c : 5</code>라는 출력을 확인할 수 있습니다. 심지어 표준 출력으로 값도 접근이 가능합니다.</p>
+<p>이러한 현상이 나오는 이유는 <code class="language-text">상수 레퍼런스</code>에서는 리턴값을 받게 되면 해당 리턴값의 생명이 연장되며, 레퍼런스가 사라질 때까지 그 값을 보존합니다.</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">함수에서 값 리턴(<code class="language-text">int f()</code>)</th>
+<th align="left">함수에서 참조자 리턴<br>(<code class="language-text">int&amp; f()</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">값 타입 받음<br>(<code class="language-text">int a = f()</code>)</td>
+<td align="left">값 복사됨</td>
+<td align="left">값 복사됨, 다만 지역 변수의 레퍼런스를 리턴하지 않도록 주의.</td>
+</tr>
+<tr>
+<td align="left">참조자 타입 받음<br>(<code class="language-text">int&amp; a = f()</code>)</td>
+<td align="left">컴파일 오류</td>
+<td align="left">값 복사됨, 다만 지역 변수의 레퍼런스를 리턴하지 않도록 주의.</td>
+</tr>
+<tr>
+<td align="left">상수참조자 타입 받음<br>(<code class="language-text">const int&amp; a = f()</code>)</td>
+<td align="left">가능</td>
+<td align="left">값 복사됨, 다만 지역 변수의 레퍼런스를 리턴하지 않도록 주의.</td>
+</tr>
+</tbody>
+</table>
+<div class="table-of-contents">
 <ul>
 <li>
-<p>현대의 기계에 의해 표지되는 물리 메모리의 모델은 매우 가단합니다. 메모리는 그저 바이트 배열일 뿐입니다.</p>
-<ul>
-<li>메모리를 읽기 위해선, 메모리 주소 값이 구체화되어야 거기에 저장된 데이터에 접근하는 것이 가능하다.</li>
-<li>메모리를 쓰거나 갱신을 하려면, 제공되는 주소에 쓰여진 데이터를 구체화해야 한다.</li>
-</ul>
+<p><a href="#%EC%B0%B8%EC%A1%B0%EC%9E%90%EC%9D%98-%EB%8F%84%EC%9E%85">참조자의 도입</a></p>
 </li>
 <li>
-<p>Figure 2.4: Running The Memory Program Multiple Times</p>
+<p><a href="#%EC%83%81%EC%88%98%EC%97%90-%EB%8C%80%ED%95%9C-%EC%B0%B8%EC%A1%B0%EC%9E%90">상수에 대한 참조자</a></p>
+</li>
+<li>
+<p><a href="#%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4%EC%9D%98-%EB%B0%B0%EC%97%B4%EA%B3%BC-%EB%B0%B0%EC%97%B4%EC%9D%98-%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4">레퍼런스의 배열과 배열의 레퍼런스</a></p>
+</li>
+<li>
+<p><a href="#%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4%EB%A5%BC-%EB%A6%AC%ED%84%B4%ED%95%98%EB%8A%94-%ED%95%A8%EC%88%98">레퍼런스를 리턴하는 함수</a></p>
+<ul>
+<li>
+<ul>
+<li><a href="#%EC%A7%80%EC%97%AD-%EB%B3%80%EC%88%98%EC%9D%98-%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4%EB%A5%BC-%EB%A6%AC%ED%84%B4">지역 변수의 레퍼런스를 리턴</a></li>
+<li><a href="#%EC%99%B8%EB%B6%80-%EB%B3%80%EC%88%98%EC%9D%98-%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4%EB%A5%BC-%EB%A6%AC%ED%84%B4">외부 변수의 레퍼런스를 리턴</a></li>
+<li><a href="#%EC%B0%B8%EC%A1%B0%EA%B0%80-%EC%95%84%EB%8B%8C-%EA%B0%92%EC%9D%84-%EB%A6%AC%ED%84%B4%ED%95%98%EB%8A%94-%ED%95%A8%EC%88%98%EB%A5%BC-%EC%B0%B8%EC%A1%B0%EC%9E%90%EB%A1%9C-%EB%B0%9B%EA%B8%B0">참조가 아닌 값을 리턴하는 함수를 참조자로 받기</a></li>
+</ul>
 </li>
 </ul>
-<div class="gatsby-highlight" data-language="shell"><pre style="counter-reset: linenumber NaN" class="language-shell line-numbers"><code class="language-shell">prompt<span class="token operator">></span> ./mem <span class="token operator">&amp;</span><span class="token punctuation">;</span> ./mem <span class="token operator">&amp;</span>
-<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">24113</span>
-<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token number">24114</span>
-<span class="token punctuation">(</span><span class="token number">24113</span><span class="token punctuation">)</span> address pointed to by p: 0x200000
-<span class="token punctuation">(</span><span class="token number">24114</span><span class="token punctuation">)</span> address pointed to by p: 0x200000
-<span class="token punctuation">(</span><span class="token number">24113</span><span class="token punctuation">)</span> p: <span class="token number">1</span>
-<span class="token punctuation">(</span><span class="token number">24114</span><span class="token punctuation">)</span> p: <span class="token number">1</span>
-<span class="token punctuation">(</span><span class="token number">24114</span><span class="token punctuation">)</span> p: <span class="token number">2</span>
-<span class="token punctuation">(</span><span class="token number">24113</span><span class="token punctuation">)</span> p: <span class="token number">2</span>
-<span class="token punctuation">(</span><span class="token number">24113</span><span class="token punctuation">)</span> p: <span class="token number">3</span>
-<span class="token punctuation">(</span><span class="token number">24114</span><span class="token punctuation">)</span> p: <span class="token number">3</span>
-<span class="token punctuation">(</span><span class="token number">24113</span><span class="token punctuation">)</span> p: <span class="token number">4</span>
-<span class="token punctuation">(</span><span class="token number">24114</span><span class="token punctuation">)</span> p: <span class="token number">4</span>
-<span class="token punctuation">..</span>.</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<ul>
-<li>2.4 예시를 통해 복수의 동일 프로그램을 실행 시켰을 때, 동일한 주소 값(0x200000) 공간에 할당이 되고, 값도 독립적으로 변하는 것을 볼 수 있다. 이는 각 프로그램이 다른 프로그램과 공유하는 동일한 물리 메모리를 공유하는 것 대신에 private memory 를 소지하고 있음을 보여준다.</li>
-<li>운영체제 상에서 정확히 무엇이 일어났는가에 대해, 이것이 <code class="language-text">메모리 가상화</code><sup>virtualizing memory</sup>라고 한다. 각 프로세스들은 자신들의 <code class="language-text">사적 가상 주소 공간</code><sup>private virtual address space</sup>을 가지며, 이는 머신의 물리 메모리 상에 어딘가와 매핑이 된다.</li>
-<li>정확하게 어떻게 이렇게 수행되는 지는 이 책의 가상화 토픽의 최초 파트의 주제 다.</li>
-</ul></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/ostep/20220907_001/"><div class="direction">이전 글</div><div class="title">OSTEP - 01.A Dialogue on The Book</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/STUDY/cpp/20220908_cpp_reference/"><div class="direction">다음 글</div><div class="title">CPP 스터디 00 - reference</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/ostep/20220907_002/"><div class="direction">이전 글</div><div class="title">OSTEP - 02. 운영 체제 소개</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/STUDY/cpp/20220908_cpp_objective_language/"><div class="direction">다음 글</div><div class="title">CPP 스터디 00 - obejective language</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
@@ -218,4 +260,4 @@ prompt<span class="token operator">></span> </code><span aria-hidden="true" clas
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', 'G-YDPMMYNR6Y', options);
-  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/ostep/20220907_002/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-79d732fed22ff3d3f034.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-79d732fed22ff3d3f034.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-83816b6c6e1be0007865.js" async=""></script></body></html>
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/cpp/20220908_cpp_reference/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-79d732fed22ff3d3f034.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js" async=""></script><script src="/app-79d732fed22ff3d3f034.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-83816b6c6e1be0007865.js" async=""></script></body></html>
