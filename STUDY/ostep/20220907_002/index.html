@@ -103,7 +103,7 @@ A
 A
 A
 ^C
-prompt<span class="token operator">></span> </code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+prompt<span class="token operator">></span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
 <ul>
 <li>
 <p>위 예시 코드는 1초가 경과 할 때까지 점검을 한 뒤, 1초가 지나면 사용자가 입력한 값을 입력해주는 단순한 프로그램이다. 이는 영원히 이어지지만, 컨트롤 + C를 통해, 중지할 수 있다.</p>
@@ -116,7 +116,7 @@ prompt<span class="token operator">></span> </code><span aria-hidden="true" clas
 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">7353</span>
 <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token number">7354</span>
 <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token number">7355</span>
-<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token number">7356</span> 
+<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token number">7356</span>
 A
 B
 D
@@ -169,7 +169,7 @@ A
 <span class="token punctuation">(</span><span class="token number">2134</span><span class="token punctuation">)</span> p: <span class="token number">4</span>
 <span class="token punctuation">(</span><span class="token number">2134</span><span class="token punctuation">)</span> p: <span class="token number">5</span>
 ^C
-prompt<span class="token operator">></span> </code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+prompt<span class="token operator">></span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
 <ul>
 <li>
 <p>현대의 기계에 의해 표지되는 물리 메모리의 모델은 매우 가단합니다. 메모리는 그저 바이트 배열일 뿐입니다.</p>
@@ -200,7 +200,186 @@ prompt<span class="token operator">></span> </code><span aria-hidden="true" clas
 <li>2.4 예시를 통해 복수의 동일 프로그램을 실행 시켰을 때, 동일한 주소 값(0x200000) 공간에 할당이 되고, 값도 독립적으로 변하는 것을 볼 수 있다. 이는 각 프로그램이 다른 프로그램과 공유하는 동일한 물리 메모리를 공유하는 것 대신에 private memory 를 소지하고 있음을 보여준다.</li>
 <li>운영체제 상에서 정확히 무엇이 일어났는가에 대해, 이것이 <code class="language-text">메모리 가상화</code><sup>virtualizing memory</sup>라고 한다. 각 프로세스들은 자신들의 <code class="language-text">사적 가상 주소 공간</code><sup>private virtual address space</sup>을 가지며, 이는 머신의 물리 메모리 상에 어딘가와 매핑이 된다.</li>
 <li>정확하게 어떻게 이렇게 수행되는 지는 이 책의 가상화 토픽의 최초 파트의 주제 다.</li>
-</ul></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/ostep/20220907_001/"><div class="direction">이전 글</div><div class="title">OSTEP - 01.A Dialogue on The Book</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/STUDY/cpp/20220908_cpp_reference/"><div class="direction">다음 글</div><div class="title">CPP 스터디 00 - reference</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</ul>
+<h2 id="23-concurrency" style="position:relative;"><a href="#23-concurrency" aria-label="23 concurrency permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.3 Concurrency</h2>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token comment">// Figure 2.5 : A Multi-thread Program(threads.c)</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"common.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"common_thread.h"</span></span>
+
+<span class="token keyword">volatile</span> <span class="token keyword">int</span> counter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> loops<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span><span class="token operator">*</span> <span class="token function">worker</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>arg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">int</span> i<span class="token punctuation">;</span>
+
+	<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> loops<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+		counter<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>argc <span class="token operator">!=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"usage: threads &lt;value>\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">exit</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	loops <span class="token operator">=</span> <span class="token function">atoi</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token class-name">pthread_t</span> p1<span class="token punctuation">,</span> p2<span class="token punctuation">;</span>
+	<span class="token function">printf</span> <span class="token punctuation">(</span><span class="token string">"Initial value : %d\n"</span><span class="token punctuation">,</span> counter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token function">Pthread_create</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>p1<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> worker<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">Pthread_create</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>p2<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> worker<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">Pthread_join</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">Pthread_join</span><span class="token punctuation">(</span>p2<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Final value : %d\n"</span><span class="token punctuation">,</span> counter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>본 교의 또다른 주제는 동시성에 대한 내용이다. 이는 하의 프로그램 상에서 즉시 여러가지 일들이 작업되는 상황에서 발생하며 대처해야하는 주요한 대상으로 간주 된다.</li>
+<li>실제로 모던 다중 스레드 프로그램들은 이러한 문제들을 가지며, 이에대한 예시가 2.5의 코드 내용이다.</li>
+<li>이 예시는 각 스레드가 시작되면, <code class="language-text">worker()</code> 함수를 호출하며, loops 라는 변수의 값 안에서 counter 라는 전역 변수의 값을 증가 시키는 구조의 예시다.</li>
+<li>이걸 바라보면서, 우리는 간단히 스레드가 2개이니, 만약 loops = 1000 이면, counter = 2000 이 되리라 생각한다.</li>
+<li>하지만 정작 결과물은 전혀 다른 값이 나오게 된다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="shell"><pre style="counter-reset: linenumber NaN" class="language-shell line-numbers"><code class="language-shell">prompt<span class="token operator">></span> ./thread <span class="token number">100000</span>
+Initial value <span class="token builtin class-name">:</span> <span class="token number">0</span>
+Final value   <span class="token builtin class-name">:</span> <span class="token number">143012</span>
+prompt<span class="token operator">></span> ./thread <span class="token number">100000</span>
+Initial value <span class="token builtin class-name">:</span> <span class="token number">0</span>
+Final value   <span class="token builtin class-name">:</span> <span class="token number">137298</span>
+// huh??
+// what the??</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>이런 이상한 현상이 일어나는 이유는, 명령들이 <strong>원자적</strong><sup>atomically</sup>으로 작동하지 않기 때문이며, 이것이 <code class="language-text">동시성</code><sup>concurrency</sup>이 가지는 문제이며, 이 책의 두 번째 파트에서 집중적으로 다룰 내용이다.</li>
+</ul>
+<h2 id="24-persistence" style="position:relative;"><a href="#24-persistence" aria-label="24 persistence permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.4 Persistence</h2>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token comment">// Figure 2.6 : A Program That Does I/O(io.c)</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;assert.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;fcntl.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">int</span> fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"/temp/file"</span><span class="token punctuation">,</span> O_WRONLY <span class="token operator">|</span> O_CREAT <span class="token operator">|</span> O_TRUNC<span class="token punctuation">.</span> S_IRWXU<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">assert</span> <span class="token punctuation">(</span>fd <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+	<span class="token keyword">int</span> rc <span class="token operator">=</span> <span class="token function">write</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> <span class="token string">"hello world\n"</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">assert</span><span class="token punctuation">(</span>rc <span class="token operator">==</span> <span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">close</span><span class="token punctuation">(</span>fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>세번째 핵심 주제는 <code class="language-text">지속성</code><sup>persistence</sup> 이다.</li>
+<li>메모리 체계 상에서 데이터는 쉽게 소실 될 수 있다. DRAM은 값을 저장하지만 이는 한시적이며, 시스템의 문제나 전력 공급이 끊기면 데이터를 소실할 수 밖에 없고 그렇기에 이에 대응하여 데이터를 지속적으로 저장할 수 있는 하드웨어, 소프트웨어가 필요시 된다.</li>
+<li>하드웨어는 보통 입출력 단자들을 의미하며 하드드라이브, SSD 등이 이에 포함되며 소프트웨어는 디스크를 관리하는 <code class="language-text">파일 시스템</code><sup>file system</sup> 을 말합니다. 이 시스템은 사용자가 작성하는 어떤 파일이든 신뢰성과 효율성의 기준을 가지고 시스템의 디스크에 저장하는 역할을 해준다.</li>
+<li>CPU나 메모리를 위해 운영체제에 의해 제공되는 추상화와는 다르게, 운영체제는 사적인 혹은 가상화된 디스크를 각 프로그램을 위해서 만들 수 없다. 이는 사용자가 정보를 공유하고, 여러 곳에서 사용하기를 원하기 때문이다.</li>
+<li>이러한 내용을 이해하기 위해 2.6과 같은 예시를 보면 된다. 여기서는 운영체제를 통해 3가지 주요 기능이 실행되는데,
+<ul>
+<li>첫 번째는 파일을 열거나 만드는 작업</li>
+<li>두 번째는 파일에 어떤 데이터를 쓰는 작업</li>
+<li>세 번째는 지금까지 사용한 작업의 파일 종료하고, 더이상 데이터를 쓰지 않는 작업</li>
+<li>이러한 시스템 콜들은 파일 시스템이라고 불리는 운영체제의 일부분에서 관장한다.</li>
+</ul>
+</li>
+<li>이러한 내용들에대해 제 3장에서, <code class="language-text">지속성</code><sup>persistence</sup> 에 대해 파일시스템들에 대해 디테일하게 알아볼 것이다.</li>
+</ul>
+<h2 id="25-design-goals" style="position:relative;"><a href="#25-design-goals" aria-label="25 design goals permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.5 Design Goals</h2>
+<ul>
+<li>이제 우리는 운영체제에 대한, 실제로 이것이 무엇인가에 대한 몇 가지 아이디어를 얻었다.
+<ul>
+<li>우선 물리적 자원이 존재하여서, CPU, 메모리, 디스크등을 가지고 있으며 이를 <code class="language-text">가상화</code><sup>virtualization</sup> 한다.</li>
+<li>이러한 자원을 운영체제는 관리하며, <code class="language-text">동시성</code>과 관련된 다양한 이슈들을도 다룬다.</li>
+<li>그리고 운영체제는 지속적으로 파일을 저장한다. 그래서 그러한 파일들을 장기간 안정적이게 만들 수 있다.</li>
+</ul>
+</li>
+<li>이러한 상황에서 우리는 그러한 시스템을 만들길 원하며, 우리의 이런 디자인과 목표를 돕기 위한 몇가지 골들을 가질 수 있으며, 이는 간혹 트레이드오프 사항으로 필요시 된다.</li>
+<li>이러한 시스템을 만들기 위한 가장 기초적인 골 중에 하나는 시스템을 편리하게 혹은 사용하기 쉽게 만들기 위하여 ‘추상화’<sup>abstraction</sub>라는 것을 만들어 내야 한다.</li>
+<li>또 다른 운영체제의 설계나 구현의 목표는 높은 성능을 보장해야 한다는 점이며, 달리 표현하면 운영체제의 오버헤드를 최소화 시켜야 한다는 것이다.</li>
+<li>또 다른 목표는 프로그램과 운영체제 사이에서 <code class="language-text">보호</code><sup>protection</sup>을 제공하는 것이다. 왜냐하면 다양한 프로그램이 동시에 운영체제 상에서 돌아갈 때, 하나의 프로그램의 오류로 운영체제 자체를 공격하거나, 안정성을 저해하는 것은 피해야 하는 것이다.
+보호의 개념은 운영체제 상에서, <code class="language-text">독립성</code><sup>isolation</sup>이라는 주요한 원리 아래의 핵심이라고 볼 수 있다.
+<ul>
+<li>이 외에도 에너지 효율성, 보안성, 이식성<sup>mobility</sup> 등은 운영체제에 대한 다른 지향점들로 소개된다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="26-some-history" style="position:relative;"><a href="#26-some-history" aria-label="26 some history permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.6 Some History</h2>
+<ul>
+<li>소개글을 마치기 전에 현재까지 운영체제의 어떤 발전 궤적을 가졌는지에 대해 소개해본다.</li>
+</ul>
+<h3 id="early-operating-systems-just-libraries" style="position:relative;"><a href="#early-operating-systems-just-libraries" aria-label="early operating systems just libraries permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Early Operating Systems: Just Libraries</h3>
+<ul>
+<li>최초의 운영체제는 많은 일을 하진 않았다. 아주 기본적인 자주 사용하는 함수들의 라이브러리와 같은 역할 정도를 수행했다.</li>
+<li>이런 시스템이 사용되던 시대에는 보통 한번에 하나의 프로그램만 수행 되었으며 이는 인간인 오퍼레이터에 의해 통제 되었다. 당신이 생각하는 현대의 운영체제에서 행동하는 것들이 모두 오퍼레이터에 의해 수행되었다.</li>
+<li>이러한 형태의 연산은 <code class="language-text">batch</code> 라는 처리 과정으로 알려졌는데, 수많은 작업이 설정되고 실행되는 것은 <code class="language-text">batch</code> 안에서 동작했고, 이는 오퍼레이터(교환원)에 의해 수행되었다.</li>
+</ul>
+<h3 id="beyond-libraries-protection" style="position:relative;"><a href="#beyond-libraries-protection" aria-label="beyond libraries protection permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Beyond Libraries: Protection</h3>
+<ul>
+<li>운영체제는 더 발전하게 되고, 보다 중심적 역할을 관리하는 머신화 된다. 여기서 특히나 중요한 측면은 운영체제로 돌아가는 프로그램에 대해선 다소 특별하게 구분지어야 할 필요를 느꼈다는 점이다. 그래서 파일 시스템을 구현하게 되는 등의 일이 일어난다.</li>
+<li>또한 이를 위해 <strong>시스템 콜</strong> 이라는 개념도 발명되었으며, 이 아이디어는 특수한 하드웨어 명령어 쌍과 운영체제 에 보다 형식적인 제어되는 프로세스로 변화하는 하드웨어 상태를 추가하는 것이었다.</li>
+<li>시스템 콜과 프로세져 콜 사이의 가장 큰 특징은 시스템 콜은 ‘제어권한’을 운영체제 전달할 수 있다는 것 하드웨어의 권한 수준을 올리는 것이 가능하다는 점이다.</li>
+</ul>
+<h3 id="the-era-of-multiprogramming" style="position:relative;"><a href="#the-era-of-multiprogramming" aria-label="the era of multiprogramming permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The Era of Multiprogramming</h3>
+<ul>
+<li>메인 프레임에서 연산되던 시대를 끝낸 운영체제는 바로 미니 컴퓨터의 도래에서 비롯되었다.</li>
+<li>PDP와 같은 기기들의 발달로 많은 제조사들이 이러한 기기들을 개발해나갔다.</li>
+<li>가격면에서 하락하다는 주요 요인 덕분에 개발 활동은 증가하게 된다. 보다 더 많은 똑똑한 사람들이 컴퓨터 쪽으로 오게 되었고, 이럴 수록 컴퓨터 시스템은 흥미롭지만 아름다운 것들을 만들어내게 된다.</li>
+<li>특히나 장치의 자원 사용을 더 좋게 만들고 싶은 욕망으로 <code class="language-text">멀티 프로그래밍</code>이 대세로 자리잡게 된다. 여기에는 특히나 입출력단자의 교환이 느리기 때문이다. 이를 기다리는 시간이 상당한 낭비가 되기 때문에 대신에 다른 작업을 돌리면 된다는 것에서 착안되어 시스템이 발전되어 왔다.</li>
+<li>멀티프로그래밍을 지원하기를 바라는 요구와 입출력 특성등이 겹쳐 지면서 점점 운영체제의 개념적 개발 상에서 혁신이 요구되어진다.
+<ul>
+<li>메모리 보호</li>
+<li>동시성 문제</li>
+</ul>
+</li>
+<li>이런 상황에서 가장 실질적인 진보라 칠 수 있는 주요한 내용이 바로 유닉스 운영체제의 등장이다.</li>
+</ul>
+<h3 id="the-modern-era" style="position:relative;"><a href="#the-modern-era" aria-label="the modern era permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The Modern Era</h3>
+<ul>
+<li>미니 컴퓨터 시대를 넘어서 새로운 종류의 기기가 나타나게 되는데, 이는 더 싸고 더 빠르며 대량생산이 가능한 개인용 컴퓨터<sup>personal computer</sup>, 오늘날에 PC의 등장이다. 최초의 시작은 애플사의 초기 머신들이며, IBM PC 등이다. 이들은 점차 확장되어 갔고 컴퓨팅 을 더 낮은 가격에 그룹 당 미니컴퓨터 한대로 공유하는 대신 데스크톱 당 한대의 기기를 가지는 것을 가능케 한다.</li>
+<li>애매한 것은, 최초의 PC는 미니 컴퓨터 시대에서의 배운 점들을 잊어버린 듯 여러 문제들을 직면했었다는 것이다.</li>
+</ul>
+<h2 id="27-summary" style="position:relative;"><a href="#27-summary" aria-label="27 summary permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.7 Summary</h2>
+<ul>
+<li>운영체제에 대한 첫 소개를 해보았다. 오늘날의 운영체제는 시스템을 상대적으로 쉽게 사용하고, 가상으로 우리가 오늘날 사용하는 모든 운영체제는 이 책을 통해(OSTEP) 논의되어지는 개발 환경에 의해 영향을 받았다.</li>
+<li>애석하게도 시간적 제한 사항들로 인해, 이 책에서는 운영체제에 대해 다루지 못하는 부분도 있다. 예를 들면 네트워킹과 관련된 코드들이 그렇다. 이에 대해선 네트워크 클래스에서 배우기위해 남겨 두었다. 그래픽 관련 분야또한 그러하며, 마지막으로 몇가지 운영체제 책들은 보안에 관해서 아주 자세히 설명해 줄 것이다. 우리 역시 실행중인 프로그램과 그들의 파일들을 지키는 능력을 제공하는 것 사이에서 운영체제가 반드시 보호 기능이 있어야 한다는 사실을 알지만, 보안 코스 상에서 배우는 매우 깊은 보안 이슈들에 대해서는 다루지 않을 생각이다.</li>
+<li>그러나 본 교재는 많은 중요한 토픽들을 다루고 있다. CPU나 메모리의 가상화, 동시성, 장치와 파일 시스템을 경유하는 지속성 등이다. 걱정말아라! 여기엔 이야기할 것들이 꽤나많고 이는 상당히 멋진 것들이다. 당신은 이제 어떻게 컴퓨터 시스템이 실제로 작동하는지에 대한 시각을 얻게 될 것이다. 이제 배우러 가보자!</li>
+</ul>
+<div class="table-of-contents">
+<ul>
+<li>
+<p><a href="#02-introduction-to-operating-systems">02. Introduction to Operating Systems</a></p>
+<ul>
+<li>
+<p><a href="#21-virtualizing-the-cpu">2.1 Virtualizing The CPU</a></p>
+</li>
+<li>
+<p><a href="#22-virtualizing-memory">2.2 Virtualizing Memory</a></p>
+</li>
+<li>
+<p><a href="#23-concurrency">2.3 Concurrency</a></p>
+</li>
+<li>
+<p><a href="#24-persistence">2.4 Persistence</a></p>
+</li>
+<li>
+<p><a href="#25-design-goals">2.5 Design Goals</a></p>
+</li>
+<li>
+<p><a href="#26-some-history">2.6 Some History</a></p>
+<ul>
+<li><a href="#early-operating-systems-just-libraries">Early Operating Systems: Just Libraries</a></li>
+<li><a href="#beyond-libraries-protection">Beyond Libraries: Protection</a></li>
+<li><a href="#the-era-of-multiprogramming">The Era of Multiprogramming</a></li>
+<li><a href="#the-modern-era">The Modern Era</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#27-summary">2.7 Summary</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/ostep/20220907_001/"><div class="direction">이전 글</div><div class="title">OSTEP - 01.A Dialogue on The Book</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/STUDY/cpp/20220908_cpp_reference/"><div class="direction">다음 글</div><div class="title">CPP 스터디 00 - reference</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );

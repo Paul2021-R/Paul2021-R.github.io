@@ -67,30 +67,7 @@
 <p>생각해보면 그렇다. 이는 어플리케이션 수준의 프로그램에서도 동일한데, 예를 들면 인터넷 익스플로러와 크롬에 대한 이야기를 해볼 수가 있다. 인터넷 익스플로러는 과거 국내의 원탑을 찍었던 인터넷 브라우저이자, 맥을 쓸 때 가장 불편함을 만드는 ActiveX의 원동력 같은 놈이었다. 그리고 그 뒤 구글이 혜성처럼 크롬 브라우저를 만들어네고, 월등한 성능과 안정성을 보여주면서 이젠 크롬 천하가 되어버린 상태다.</p>
 <p>그런데 여기서 두 프로그램은 같은 목적을 가지지만 설계사상이 매우 달랐다고 한다. 인터넷 익스플로러는 기본적으로 멀티스레드로 구현이 되어 있었으며, 이는 개발 편의성이나, 메모리 자원에서의 효율성은 좋은 구조로 설계되어 있었다. 그러나 이에 비해 멀티스레드 특성상 스레드가 자원을 공유하고 있고, 한 스레드에서 문제가 발생하면 이 문제로 인해 생기는 데이터 레이스 문제, 데드락 문제등이 발생할 수 밖에 없었고, 이는 다시 말해 웹 환경에서 한 탭이 문제가 생기면 모두가 뻗어버리는 문제를 갖고 있음을 의미한다. 거기다 컴퓨터는 온전하게 데이터 공유 상황에서 생기는 문제를 ‘완벽하게’ 해결하지 못한 상태이다.</p>
 <p>이에 반해 크롬은 멀티 프로세스 형태로 구성되어 있다고 한다. 이는 비슷하면서도 아주 큰 차이를 갖고 있는데, 우선 프로세스가 독립적이므로 각 공간은 독립된 메모리 공간을 확보하고, 상호 배제되는 것이 보여진다. 거기다 스레드간에 컨텍스트 스위칭은 오버헤드가 적은 만큼 서로 영향을 받기 쉽지만, 프로세스 스위칭은 각 프로세스로의 전환은 느릴지 몰라도, 한 프로세스가 CPU를 점유할 때 스케쥴링 상에서 더 많은 자원과 연산 집중의 효과가 있다. 즉 그만큼 하나의 페이지 안에서의 프로세싱은 빠르다는 점이다. 따라서 하나의 프로세스가 에러가 발생해도 다른 탭은 살아 있고, 영향을 덜 받으며 동시에 빠르다는 장점을 갖고 있다. 그러나 동시에 프로세스 단위로 쪼개진다는 것은 그만큼 무겁다는 것이고 (각각의 가상 메모리 공간이 할당되니까) 그러다보니 크롬이라는 프로그램이 가지는 별명 ‘램처묵처묵’ 이 왜 붙었는지도 이해할 수 있다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 28.888888888888886%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA80lEQVQY04WQV2vEMBCE3XJH3JtchStuD7bB//+/TW4UzhACycOilXb221lpsZ9BlCGS5oFIfqCsQsi6Rj/0aNsWtm0jiiIYhgHXdREEAfI8V6emaXfouv6dC5FiGEbYnw4ejyfqWiJJEgghEIYh0jTFsiwKNo4juq5TZ9M0iONY6d5az/Og+b6Pfd9hWaaaIKVUjlgkjIDjOFQTdXT9dmSa5h28cwuNk6/regEtJWQDHRKYZRn6vld15ud5vrYZfqz6KxzHwbZtagofiqIAXTMILstSrUzX0zShqqq/gfz0eZ5vIAGEEcA/ImBdV3Wn7j/gFyIfjjygJBKxAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="0000"
-        title="0000"
-        src="/static/0b9742ce3078cce189c67d0337ce41b5/37523/0000.png"
-        srcset="/static/0b9742ce3078cce189c67d0337ce41b5/e9ff0/0000.png 180w,
-/static/0b9742ce3078cce189c67d0337ce41b5/f21e7/0000.png 360w,
-/static/0b9742ce3078cce189c67d0337ce41b5/37523/0000.png 720w,
-/static/0b9742ce3078cce189c67d0337ce41b5/302a4/0000.png 1080w,
-/static/0b9742ce3078cce189c67d0337ce41b5/1320e/0000.png 1292w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
+<p><img src="./src/0000.png" alt=""></p>
 <p>굉장히 긴 사견이었는데, 어쨌든 NCLC의 시대, 나 역시 살아남고 싶고 전문가가 되고 싶다. 그리고 기본적으로 재미가 있다는 점에서 OS 관련되서는 좀더 진득하게 보려고 한다.</p>
 <h2 id="향후-계획" style="position:relative;"><a href="#%ED%96%A5%ED%9B%84-%EA%B3%84%ED%9A%8D" aria-label="향후 계획 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>향후 계획</h2>
 <p>전 총장님의 말씀에 힘입어, C++ 를 활용한 국내 유일하게 한 권 운영체제를 만드는 교재가 있었다. 리눅스 마스터 2급, 웹 스터디가 어느정도 정돈이 되면, 그때는 해당 교재를 가지고 혼자 하든 같이 하든 실습형태로 진행해보려고 한다. 하지만 당장은 개념을 빠르게 훑는 것도 중요해 보이기에 <code class="language-text">OSTEP</code> 이라고 불리는 교재를 해보고자 한다.</p>
