@@ -151,20 +151,226 @@
 </ul>
 </li>
 </ul>
-<p><img src="./src/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202022-09-14%20%EC%98%A4%ED%9B%84%207.24.39.png" alt=""></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABGUlEQVR42o2SyY6DQAxE8/9XxIUrICEEgrCEJQgI+1959Cw1MxllkjmUDLa7ulzuyzwv8o1ZlmWRaZr0e9s22ff9xLquZ40+4vP5RS6GyDSN4yh938vj8ZC6riVNU8myTEEeDMPwJ+kTIYqSJJEoiiQMQ3FdVyzLEtu2xXEcKYpCgiDQOhe/IVyeFLZtK13XqZI4jpXkdrtpD6qpfVRovGOk+/0u1+tVv/HuOA6t5XmuxOT5/0iIb3jGSChrmkbVkidWVXXW/z0yPgJUQeT7vniep8rMpqkbst+kSmiSpplogDJ8QxGE5kLw9tlwGLPxjtFQxMZ5LnjHqIAcdpRl+UPd/NpDtsrTQBWLgZSDKCRyUZEXCnKvCL8AozSECjd01PcAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="001"
+        title="001"
+        src="/static/80c728a6b2a005cccb5df618084687e0/37523/001.png"
+        srcset="/static/80c728a6b2a005cccb5df618084687e0/e9ff0/001.png 180w,
+/static/80c728a6b2a005cccb5df618084687e0/f21e7/001.png 360w,
+/static/80c728a6b2a005cccb5df618084687e0/37523/001.png 720w,
+/static/80c728a6b2a005cccb5df618084687e0/302a4/001.png 1080w,
+/static/80c728a6b2a005cccb5df618084687e0/07a9c/001.png 1440w,
+/static/80c728a6b2a005cccb5df618084687e0/f2f8c/001.png 1490w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
 <ul>
 <li>ready 상태에서 running 상태로 전환하는 것을, 프로세스가 <strong>scheduled</strong> 되었다 라고 이야기 하며, running 상태에서 ready 상태로 전환되는 것을 <strong>descheduled</strong>되었다고 말한다.</li>
+<li>입출력을 요청할 때 CPU가 이용되지 않고, 이러한 상황에서 다른 프로세스에게 해야할 결정하는 것을 <strong>OS scheduler</strong>라고 부른다.</li>
 </ul>
 <h2 id="45-data-structures" style="position:relative;"><a href="#45-data-structures" aria-label="45 data structures permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.5 Data Structures</h2>
-<h2 id="46-summary" style="position:relative;"><a href="#46-summary" aria-label="46 summary permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.6 Summary</h2>
+<ul>
+<li>운영체제 역시 프로그램들처럼, 다양한 관련된 정보의 단편들을 추적하기 위한 핵심 데이터 구조체를 가지고 있다. 각 프로세스의 상태를 추적하기 위해 프로세스 리스트를 갖고 있다거나, 이에 대한 현재 실행중인 경우 추가적인 정보를 갖고 있다거나 하는 식이다.</li>
+<li>당연히 blocked 된 프로세스에 대해서도 어떻게서든지 추적이 되고 있어야 하는데, 운영체제에서 갖고 있는 방식은 다음 처럼 보여진다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 115.55555555555554%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAABYlAAAWJQFJUiTwAAACH0lEQVR42p2UiY7CMAxE+/9/iETFTQ9KobRc5cjmWR0EJazYrWQSWmc8HtuJzuezq+vabbdbt16vzaqqcqvVym02G9uXZWnv+W/7onDH49Hd73fHo5UnAozD2GKxMAOc/4DsdjszgPBtmsb2vLvdbu+Al8vFlf4gTjCQ07fPM5gBApDnuZtNp7bK6Vt7YwggzKTdJ8BnRiGgF0DAsiwz7fqAIZDfQE1DCrBcLg34LymHAdvW/fcJarjf713h+4qCYGobJEiSxNpjSsH8fzohTVPzO51OQdCIBgUUOxwOtraeNWCDwcAOz+dzNxqNbI80cRxbPwYZ8gcdr9erAREZY4IwArASGNN3APlGUZ81jUgJNrPZzFioOKykjRx8J1VJwx5ZnsdPTCOiZZ0+rJ8mRTMveRq/11hCAHBjyM/KRyUioDj3W4EgpKiCAKC55914PDb9XyZFN45AYYST9GGKJA3r3K9UH1/YUYPX0fP6cAgJVHFYSXTdMnmXjcY0OHoSnULgDNvKr4oKoK45FYszpEwggvMdMgaoCpIO+tBGahmc2SM+gKoyfqyAk2HqA+D/uBx0aQJsDt657ioJKAYg3/FV27S90bXGhnriU+FAPBxaWhhpwZYHYCZm4Y1MVBz1JKSMITqREpGUKsZ7gREUNhwsuuLBsvAE+sWJAApdlGoXJAG8P2Kf/KP+BQorUkNsCqDe4x19N5lMHlMRuht/AIjz9kxshxkHAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="002"
+        title="002"
+        src="/static/2847aecb7d90a8286baf94bec8209d50/37523/002.png"
+        srcset="/static/2847aecb7d90a8286baf94bec8209d50/e9ff0/002.png 180w,
+/static/2847aecb7d90a8286baf94bec8209d50/f21e7/002.png 360w,
+/static/2847aecb7d90a8286baf94bec8209d50/37523/002.png 720w,
+/static/2847aecb7d90a8286baf94bec8209d50/302a4/002.png 1080w,
+/static/2847aecb7d90a8286baf94bec8209d50/b1584/002.png 1342w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>위의 예시는 xv6 커널 상에서 각 프로세스를 추적하기 위해 OS가 필요로 하는 정보들이 무슨 타입인지를 보여준다.</li>
+<li>위의 예시에서 프로세스에 관하여 OS가 추적하는 정보의 단편들은 <strong>register context</strong>가 쥐고 있으며, 프로세스가 멈출때 그것의 레지스터들이 메모리 장소를 기억하고 있다가, 레지스터를 복구함으로써 OS 는 실행중인 프로세스를 재시작 하게 만들 있다. 이것을 <strong>context switch</strong><sup>컨텍스트 스위치</sup>라고 부른다.</li>
+<li>프로세스의 상태는 enum 형태로 저장되는데, 여기서 마지막 Zombie 라고 하는 것은, 프로세스가 존재는 하지만, 아징 정리되진 못하는 경우를 의미한다.</li>
+<li>parent 프로세스가 종료 되었을 때 wait 등으로 마지막 호출을 진행시켜 child 를 호출하고, 자식이 종료하면, 이를 OS에게 알려 Zombie 가 되는 것을 막을 수 있다.</li>
+</ul>
+<div style=“margin:10px;”>
+<h3 style="display:inline-box; background-color:#9b9600; padding:10px 10px 5px 10px; border-radius:10px 10px 0 0; margin: 0px; color:white;">💡 핵심 프로세스 용어 </h3>
+<div style="display:box; background-color:#fffa7f; margin: 0px; padding: 10 10 5 10; color:black; border-radius: 0 0 10px 10px;">
+<ul>
+<li>프로세스 : 프로그램이 실행되는 것을 OS 단에 추상화 시킨 형태. 해당 개념에는 그것의 주소 공간에 있으며, CPU 레지스터의 컨텐츠, 입출력과 관련된 정보들을 담고 있다(PC, 스택 포인터 등등)</li>
+<li>프로세스 API : 프로세스와 관련된 일들을 수행하는 호출 함수들을 포함한다. 보통 프로세스의 생성과 소멸, 그리고 다른 유용한 호출 함수들이 포함된다.</li>
+<li>프로세스 상태<sup>Process state</sup> : 프로세스의 상태를 담고 있으며 여기에는 running, ready, blocked, Zombie 를 포함한다.</li>
+<li>프로세스 리스트 : 시스템 상에서 모든 프로세스의 정보를 담고 있는 리스트를 말하며, 각 엔트리들은 PCB<sup>process control block</sup>이라고 불리며, 구체적인 프로세스에관한 정보들이 담겨진 구조체들이다.</li>
+</ul>
+</div>
+</div>
 <h1 id="5-interlude-process-api" style="position:relative;"><a href="#5-interlude-process-api" aria-label="5 interlude process api permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5 Interlude: Process API</h1>
+<ul>
+<li>이 파트에서는 보다 시스템에서 실천적 측면을 볼 것이다. 시스템 API 등이 이러한 것중 하나다. <code class="language-text">fork()</code>, <code class="language-text">exec()</code>, <code class="language-text">wait()</code> 등이 있다.</li>
+</ul>
+<blockquote>
+<p>핵심은 어떻게 프로세스를 ‘만들고’, ‘제어하는가’이다.<br>
+OS 들은 어떤 인터페이스들을 프로세스 생성과 제어하는가?</p>
+</blockquote>
 <h2 id="51-the-fork-system-call" style="position:relative;"><a href="#51-the-fork-system-call" aria-label="51 the fork system call permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.1 The fork() System Call</h2>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token keyword">int</span> arg<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">printf</span> <span class="token punctuation">(</span><span class="token string">"hello world (pid:§d) In"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token function">getpid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">int</span> rc <span class="token operator">=</span> <span class="token function">fork</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>rc <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//fork failed</span>
+		<span class="token function">fprintf</span> <span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"fork failed\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">exit</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>rc <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">// 자식프로세스(복사된 프로세스)</span>
+		<span class="token function">printf</span> <span class="token punctuation">(</span><span class="token string">"hello, I am child (pid:%d) In"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token function">getpid</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span> <span class="token punctuation">{</span>
+		<span class="token comment">// 부모프로세스</span>
+		<span class="token function">printf</span> <span class="token punctuation">(</span><span class="token string">"hello, I am parent of %d (pid:%d) In"</span><span class="token punctuation">,</span> rc<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token function">getpid</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<div class="gatsby-highlight" data-language="shell"><pre style="counter-reset: linenumber NaN" class="language-shell line-numbers"><code class="language-shell">prompt<span class="token operator">></span> ./p1
+hello world <span class="token punctuation">(</span>pid:29146<span class="token punctuation">)</span>
+hello, I am parent of <span class="token number">29147</span> <span class="token punctuation">(</span>pid:29146<span class="token punctuation">)</span>
+hello, I am child <span class="token punctuation">(</span>pid:29147<span class="token punctuation">)</span>
+prompt<span class="token operator">></span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>해당 방식으로 부모-자식 프로세스 두개가 생기게 된다. 그리고 이경우 각각 활성화된 프로세들은 알아서 동작하게 된다. 그래서 결과물을 보면, 처음엔 부모가 먼저 자신의 pid를 출력하고 자식이 pid를 출력한다. 하지만 다시 실행시켜보면 정 반대의 경우가 발생한다.</li>
+<li>이러한 경우를 우리는 <code class="language-text">비결정성</code><sup>nondeterminism</sup> 이라고 부른다. 이러한 상황은 멀티-쓰레드 프로그램<sup>multi-threaded programs</sup> 에서도 동일하게 발생한다.</li>
+<li>더 나아가서 이러한 상황은, 동시성<sup>concurrency</sup> 파트를 공부할 때도 나오게 되는 개념이다.</li>
+</ul>
 <h2 id="52-the-wait-system-call" style="position:relative;"><a href="#52-the-wait-system-call" aria-label="52 the wait system call permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.2 The wait() System Call</h2>
+<ul>
+<li>비결정성을 해결하면서도, 자식프로세스가 먼저 진행되고 그것을 부모가 기다리도록 만드는 방법으로 사용된다. 다음 예시는 이러한 결정성을 보여준다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/wait.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token keyword">int</span> argo<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">printf</span> <span class="token punctuation">(</span><span class="token string">"hello world (pid:%d) In"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token function">getpid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">int</span> rc <span class="token operator">=</span> <span class="token function">fork</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>rc <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">// fork failed; exit</span>
+		<span class="token function">fprintf</span> <span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"fork failed\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">exit</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>rc <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">// child (new process)</span>
+		<span class="token function">printf</span> <span class="token punctuation">(</span><span class="token string">"hello, I am child (pid:%d) In"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token function">getpid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+		<span class="token comment">// parent goes down this path (main)</span>
+		<span class="token keyword">int</span> rc_wait <span class="token operator">=</span> <span class="token function">wait</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+		<span class="token function">print</span> <span class="token punctuation">(</span><span class="token string">"hello, I am parent of id (rc_wait:%d) (pid:%d) In"</span><span class="token punctuation">,</span> rc<span class="token punctuation">,</span> rc_wait<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token function">getpid</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>위 코드를 통해 결정성이 확보된다. 위의 예시의 경우 부모에서 wait() 시스템 콜을 통해 부모는 자식 프로세스가 커널을 거쳐 종료되는 것에 대한 시그널을 한번 보내기 전까지 멈춰있게 되기에 결과물은 항상 자식이 먼저 출력하고, 이후에 부모가 출력하는 결과물을 만들게 된다.</li>
+</ul>
 <h2 id="53-finally-the-exec-system-call" style="position:relative;"><a href="#53-finally-the-exec-system-call" aria-label="53 finally the exec system call permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.3 Finally, The exec() System Call</h2>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/wait.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"hello wolrd (pid:%d)\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token function">getpid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">int</span> rc <span class="token operator">=</span> <span class="token function">fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>rc <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"fork failed\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// fork 에러 발생 시</span>
+		<span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>rc <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">// child</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"hello, I am child (pid:%d)\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token function">getpid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">char</span> <span class="token operator">*</span>myargs<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		myargs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">strdup</span><span class="token punctuation">(</span><span class="token string">"wc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 프로그램 "Wc"</span>
+		myargs<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">strdup</span><span class="token punctuation">(</span><span class="token string">"p3.c"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 인자로 제공할 파일 명</span>
+		myargs<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span> <span class="token comment">// 배열 끝 표현</span>
+		<span class="token function">execvp</span><span class="token punctuation">(</span>myargs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> myargs<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 프로그램 자식에서 실행</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"this shouldn't print out\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span> <span class="token punctuation">{</span>
+		<span class="token comment">// parent</span>
+		<span class="token keyword">int</span> rc_wait <span class="token operator">=</span> <span class="token function">wait</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"hello, I am parent of %d (rc_wait : %d) (pid:%d)\n"</span><span class="token punctuation">,</span> rc<span class="token punctuation">,</span> rc_wait<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token function">getpid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<div class="gatsby-highlight" data-language="shell"><pre style="counter-reset: linenumber NaN" class="language-shell line-numbers"><code class="language-shell">prompt<span class="token operator">></span> ./p3
+hello world <span class="token punctuation">(</span>pid:29383<span class="token punctuation">)</span>
+hello, I am child <span class="token punctuation">(</span>pid:29384<span class="token punctuation">)</span>
+      <span class="token number">29</span>     <span class="token number">107</span>    <span class="token number">1030</span> p3.c
+hello, I am parent of <span class="token number">29384</span> <span class="token punctuation">(</span>rc_wait:29384<span class="token punctuation">)</span> <span class="token punctuation">(</span>pid:29383<span class="token punctuation">)</span>
+prompt<span class="token operator">></span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>execve 계열 함수들은 자식 프로세스에서 실행되게 되었을 때, 실행 가능한 파일 및 인자들을 가지고 자식 프로세스의 코드(와 정적 데이터)를 실행파일에서 읽어서, 현재 프로세서의 code segment(와 현재 static data) 위치에 덮어씌워 버린다. 그리곤 힙이나 스택 영역도 대 초기화가 이루어지면서 새로운 프로그램이 실행되게 된다.</li>
+</ul>
 <h2 id="54-why-motivating-the-api" style="position:relative;"><a href="#54-why-motivating-the-api" aria-label="54 why motivating the api permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.4 why? Motivating The API</h2>
+<ul>
+<li>이러한 구조를 바라보다보면, 왜 우리가 이런 희안한 인터페이스적 순서를 가지고 다른 프로세스를 만들어야 하는지 의구심이 들 것이다.</li>
+<li>이러한 형태는 UNIX 쉘에서부터 비롯된 구분인데, 이러한 구성으로 되어 있어서 프로세스의 생성 - 이후 프로그램 실행의 구조(for() - execve()) 는 여러가지 기능적 흥미로운 특성을 제공해주기 때문이다.</li>
+<li>fork()와 exec()의 분리는 여러가지 유용한 기능들을 제공한다. 예를 들면 다음과 같다. <br>
+<code class="language-text">prompt> wc p3.c > newfile.txt</code><br>
+이러한 예시의 경우 프로그램 wc 의 출력이 리다이렉션되어 <code class="language-text">newfile.txt</code> 에 저장되도록 되어 있는 경우를 들 수 있다. 표준 입출력을 쉘이 닫고, <code class="language-text">newfile.txt</code>를 열어서 해당 출력 스트림으로 연결을 해주게 된다.</li>
+</ul>
 <h2 id="55-process-control-and-users" style="position:relative;"><a href="#55-process-control-and-users" aria-label="55 process control and users permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.5 Process Control And Users</h2>
+<ul>
+<li>기본적인 fork(), exec(), wait() 을 넘어서서 더 편리하고 흥미로운 인터페이스들도 존재한다.</li>
+<li>kill() : 커널을 통해 시그널을 프로세스로 전달하는 기능을 가진다. 전체 시그널 하위 시스템은 프로세스들에 대한 굉장히 다양한 외부 이벤트를 전달할 수 있고, 개별 프로세스 뿐 아니라 전체 프로세스 그룹에게도 전달이 가능하다.</li>
+<li>signal() : kill() 에서 보낸 시그널을 받는 역할을 한다.</li>
+<li>단 일반적으로 다수의 사용자가 동일한 시간대에 동일한 시스템 상에서 사용이 이루어질 때, 임의의 시그널을 보낸다면 이는 문제가 될 수 있다. 따라서 현대의 OS 체계는 강력한 <code class="language-text">user</code>의 개념을 도입했다.</li>
+<li>사용자가 패스워드를 통해 권한이 증명이 되면, 이제 시스템 자원에 접근 및 사용이 가능하도록 되어있다.</li>
+</ul>
 <h2 id="56-useful-tools" style="position:relative;"><a href="#56-useful-tools" aria-label="56 useful tools permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.6 Useful Tools</h2>
+<ul>
+<li>각종 리눅스 커맨드들을 도구로 설명해준다.</li>
+</ul>
 <h2 id="57-summary" style="position:relative;"><a href="#57-summary" aria-label="57 summary permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.7 Summary</h2>
+<div style=“margin:10px;”>
+<h3 style="display:inline-box; background-color:#9b9600; padding:10px 10px 5px 10px; border-radius:10px 10px 0 0; margin: 0px; color:white;">💡 핵심 프로세스 API 용어 </h3>
+<div style="display:box; background-color:#fffa7f; margin: 0px; padding: 10 10 5 10; color:black; border-radius: 0 0 10px 10px;">
+<ul>
+<li>process ID(PID)</li>
+<li>fork()</li>
+<li>wait()</li>
+<li>exec()</li>
+<li>shell의 프로그램 실행의 과정에서의 분리는 왜? : 입출력의 리다이렉션<sup>redirection</sup>을 위함, pipes를 활용하거나 다른 좋은 기능으로 그 사이사이 환경을 수정 하는 것도 가능하다.</li>
+<li>Sginals : 프로세스를 제어하기 위하여 사용하는 개념이며 이를 제어하는 kill(), signal()과 같은 시스템 콜 함수가 존재한다.</li>
+<li>user : user 개념의 도입으로 개별 사람의 권한을 만들고 이로써 프로세스 제어의 기준을 세웠다.</li>
+<li>superuser : </li>
+</ul>
+</div>
+</div>
 <h1 id="6-mechanism-limited-direct-execution" style="position:relative;"><a href="#6-mechanism-limited-direct-execution" aria-label="6 mechanism limited direct execution permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6 Mechanism: Limited Direct Execution</h1>
 <h2 id="61-basic-technique-limited-direct-execution" style="position:relative;"><a href="#61-basic-technique-limited-direct-execution" aria-label="61 basic technique limited direct execution permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6.1 Basic Technique: Limited Direct Execution</h2>
 <h2 id="62-problem-1-restricted-operations" style="position:relative;"><a href="#62-problem-1-restricted-operations" aria-label="62 problem 1 restricted operations permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6.2 Problem #1: Restricted Operations</h2>
@@ -184,7 +390,6 @@
 <li><a href="#43-process-creation-a-little-more-detail">4.3 Process Creation: A Little More Detail</a></li>
 <li><a href="#44-process-states">4.4 Process States</a></li>
 <li><a href="#45-data-structures">4.5 Data Structures</a></li>
-<li><a href="#46-summary">4.6 Summary</a></li>
 </ul>
 </li>
 <li>
