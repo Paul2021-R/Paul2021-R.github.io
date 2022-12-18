@@ -299,7 +299,90 @@
 </ul>
 <h2 id="78-입출력-연산의-고려" style="position:relative;"><a href="#78-%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%97%B0%EC%82%B0%EC%9D%98-%EA%B3%A0%EB%A0%A4" aria-label="78 입출력 연산의 고려 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7.8 입출력 연산의 고려</h2>
 <ul>
-<li></li>
+<li>이제부터는 현실에서 일어나는 작업에 유사하게 가정들을 제거해 가면서 이에 대응하여 어떻게 동작하게 만들 수 있는지를 볼 것이다.</li>
+</ul>
+<blockquote>
+<p>팁 : 중첩은 높은 이용률을 가능하게 한다.<br>
+어느 경우라도 이 작업들을 시작한 후에 다른 작업으로 전환하는 것은 시스템의 전반적인 사용률과 효율성이 향상된다.</p>
+</blockquote>
+<ul>
+<li>모든 프로그램은 입출력 작업을 수행한다. 현재 실행중인 프로세스가 입출력 작업을 요청하는 경우 스케줄러는 다음에 어떤 작업을 실행할지 결정해야한다. 현재 실행 중인 작업은 입출력이 완료될 때까지 CPU를 사용하지 않는다.</li>
+<li>입출력 작업의 경우 특히나 프로세스는 보조 기억장치의 현재 입출력 워크로드를 기다리고 있으므로, 좀더 긴 시간의 대기가 필요하다. 따라서 이러한 상황에서 스케줄러는 무엇을 할지 다른 작업의 스케줄을 해야 한다.</li>
+<li>뿐만 아니라 입출력 완료 시에도 의사 결정을 해야 하며, 입출력 완료와 함께 인터럽트가 발생, OS가 실행되어 입출력 요청의 프로세스를 <strong>대기</strong>상태에서 <strong>준비</strong>상태로 이동시킨다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 35%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABGklEQVR42m2RzUvDQBDF+y9XGg8ml3q3h7aH9iKCtxoQBEG8C1KIae3RYiEWk9R8bZqEJCR97o6kxsQJj7czTH68ZTsH8O/wI1FFUYAxhiRJEMcxoigiFz1jAXzPwz4MEQQBzUTV/+80B+v1GxRFxng8wnQywWBwgdFwSGep18P11SUeH+5xd6ti/vzUBtabNE0R+D5UVcWpJEGRz3De73OXcdLt4mY2g+97sEyT65PO/yT8vbJQlmUwDAMvmoblYoHV6hW6rkPj/WbzTrDt9gMmB1qWRfsV9Hjl+qDyeuV53pqJvbIsSS1gEyaWomiPMGT0ADZP4joOdjub3HPdI6gZ4k/COjhJYsT8hQXYdb4IYlsmAYWaySr/Bp2kC4/ucUTdAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202212180204"
+        title="202212180204"
+        src="/static/d28e62308d7389377412f36c3d7a173b/37523/202212180204.png"
+        srcset="/static/d28e62308d7389377412f36c3d7a173b/e9ff0/202212180204.png 180w,
+/static/d28e62308d7389377412f36c3d7a173b/f21e7/202212180204.png 360w,
+/static/d28e62308d7389377412f36c3d7a173b/37523/202212180204.png 720w,
+/static/d28e62308d7389377412f36c3d7a173b/302a4/202212180204.png 1080w,
+/static/d28e62308d7389377412f36c3d7a173b/f1c64/202212180204.png 1390w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>위의 예시를 보면 작업 A, B 가 비효율적인 방식으로 스케줄링 되어 있느 것이 보인다.</li>
+<li>A 는 10밀리초 실행후 입출력을 요청한다. 그리고 입출력에 10밀리초가 걸리다보니, 지속적으로 CPU를 사용하지 않게 된다. 따라서 B 작업이 중간 중간 들어가는 STCF 스케줄러를 이용해 처리하는 것이 가능하다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 34.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABGUlEQVR42m1R7U7CQBDkRZVoDH8MggUkJmqiD2J4E4kE0yZaXgEQj9gKlN61Xj/H22prW91kM3PZ28nObiNNU1DkmCQJfN+HEByeJ75TEHrg3IWUn8X/ei9ho14cjx8w6J/jYqDh7vYGvV4Xw2Ef11eXOD46xGz2jHLkfYVgWYxzDsbe0OmcZdlqnUDTumi3T9FsHmA0usd+7yCQUk0qEUXR3wnLgkkcIwxDmKYJQ9fxNJ0q/gLD0DGZPGK5XMC2LazXDKvVKyzrXYmGlRU06qPTDusRBLLg5TrxOI6qgpUJ1Qf5Y0co+47jwHVdbDebjNOh6E0o1KEI/znKryDtZLfbZlclO4v5HLalLDKmdsvwYduF1TzLYpRfjn0JINCpsFgAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202212180232"
+        title="202212180232"
+        src="/static/ce11d3528a2ac3115ccbc74bccc15f6e/37523/202212180232.png"
+        srcset="/static/ce11d3528a2ac3115ccbc74bccc15f6e/e9ff0/202212180232.png 180w,
+/static/ce11d3528a2ac3115ccbc74bccc15f6e/f21e7/202212180232.png 360w,
+/static/ce11d3528a2ac3115ccbc74bccc15f6e/37523/202212180232.png 720w,
+/static/ce11d3528a2ac3115ccbc74bccc15f6e/302a4/202212180232.png 1080w,
+/static/ce11d3528a2ac3115ccbc74bccc15f6e/b79a5/202212180232.png 1372w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>
+<p>하나의 프로세스가 입출력 완료를 대기하는 동안, 다른 프로세스가 CPU를 사용하여 연산의 중첩이 가능해졌고, 시스템 사용률을 향상 시킬 수 있다.</p>
+</li>
+<li>
+<p>각 CPU 버스트를 하나의 작업으로 간주하고, 스케줄러는 대화형 프로세스가 더 자주 실행되는 것을 보장하며, 이는 다른 계산 위주의 작업들이 실행된다. 결론적으로 CPU 의 이용률 향상을 야기한다.</p>
+</li>
+</ul>
+<h2 id="79-만병통치약은-없다no-more-oracle" style="position:relative;"><a href="#79-%EB%A7%8C%EB%B3%91%ED%86%B5%EC%B9%98%EC%95%BD%EC%9D%80-%EC%97%86%EB%8B%A4no-more-oracle" aria-label="79 만병통치약은 없다no more oracle permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7.9 만병통치약은 없다(No More Oracle)</h2>
+<ul>
+<li>입출력을 고려한 기본 접근 방식에서, 가장 문제가 있는 가정은 스케줄러가 각 작업의 실행 시간을 알고 있다는 가정이다.</li>
+<li>일반적인 운영체제에서 작업의 길이를 미리 할 수 있는 길은 없고, 이 상황에서 응답시간까지 개선을 위해서 다양한 아이디어가 필요하다.</li>
+</ul>
+<h2 id="710-요약" style="position:relative;"><a href="#710-%EC%9A%94%EC%95%BD" aria-label="710 요약 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7.10 요약</h2>
+<ul>
+<li>스케줄링의 기본적 개념과 두가지 접근법을 배웠다.</li>
+<li>첫 번째 종류는 가장 짧은 작업을 먼저 작업하도록 하여 평균 반환시간을 최소화한다.</li>
+<li>두 번째 종류는 모든 작업을 번갈아 실행하여 응답시간을 최소화하는 방식이다.</li>
+<li>이 두가지 기준에서 최적화를 하는 것에서 한쪽에 비중을 두면 한쪽이 좋지 않아지는 특성을 갖고 있어, 두가지의 절충이 중요하다.</li>
+<li>CPU 스케줄링에서 입출력과 같은 부분도 연산에서 중요한 부분이며, 정확한 스케줄링을 위해선 프로세스의 미래 동작을 예측해야 하는 어려움이 있다.</li>
+<li>프로세스 미래 동작을 예측함에 있어 과거 프로세스 동작 이력을 반영하는 방식으로 이 문제를 해결하고 이러한 스케줄러를 <strong>멀티 레벨 피드백 큐</strong><sup>multi-level feedback queue</sup></li>
 </ul>
 <div class="table-of-contents">
 <ul>
@@ -314,6 +397,8 @@
 <li><a href="#76-%EC%83%88%EB%A1%9C%EC%9A%B4-%ED%8F%89%EA%B0%80-%EA%B8%B0%EC%A4%80--%EC%9D%91%EB%8B%B5%EC%8B%9C%EA%B0%84supresponse-timesup">7.6 새로운 평가 기준 : 응답시간<sup>Response Time</sup></a></li>
 <li><a href="#77-%EB%9D%BC%EC%9A%B4%EB%93%9C-%EB%A1%9C%EB%B9%88">7.7 라운드 로빈</a></li>
 <li><a href="#78-%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%97%B0%EC%82%B0%EC%9D%98-%EA%B3%A0%EB%A0%A4">7.8 입출력 연산의 고려</a></li>
+<li><a href="#79-%EB%A7%8C%EB%B3%91%ED%86%B5%EC%B9%98%EC%95%BD%EC%9D%80-%EC%97%86%EB%8B%A4no-more-oracle">7.9 만병통치약은 없다(No More Oracle)</a></li>
+<li><a href="#710-%EC%9A%94%EC%95%BD">7.10 요약</a></li>
 </ul>
 </li>
 </ul>
