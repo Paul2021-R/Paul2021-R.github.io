@@ -48,20 +48,20 @@
         }
       }
     })
-  </script><title data-react-helmet="true">OSTEP - 04. Part 1 Virtualization</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="OSTEP - 04. Part 1 Virtualization"/><meta data-react-helmet="true" property="og:site_title" content="OSTEP - 04. Part 1 Virtualization"/><meta data-react-helmet="true" name="description" content="본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
-전문은 이 곳을 방문하시면 보실 수 있습니다. 7 Scheduling : Introduction 스케줄링 정책scheduling policy 이라는 것은 원칙discipline이라고도 하며, 오랜시간 개발되어왔다. 초기에 생산 관리 분야에서 어떻게 효과적이고 효율적으로 할지에 대한 방법론적 문제가 존재해왔고, 그것이 컴퓨터라는 영역에서도 연결되어 왔다고 생각하면 된다. 핵심 질문 : 스케줄링 정책은 어떻게 개발하는가스케줄링 정책을 하기 위한 기본적인 프레임워크는 어떻게 만드는가, 어떤 가정과 어떤 기준으로 정책의 평가가 일어나는가? 초기의 기법들은 무엇이 있을까? 7.1 워크로드에 대한 가정 워크로드workload : 프로세스가 동작하는 일련의 행위 적절한 워크로드의 선정이, 스케줄링 정책 개발에 매우 중요한 부분이다. 시스템에서 실행 중인 프로세스 혹은 작업(job) 에 대해 다음과 같은 가정을 한다. 모든 작업은 같은…"/><meta data-react-helmet="true" property="og:description" content="본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
-전문은 이 곳을 방문하시면 보실 수 있습니다. 7 Scheduling : Introduction 스케줄링 정책scheduling policy 이라는 것은 원칙discipline이라고도 하며, 오랜시간 개발되어왔다. 초기에 생산 관리 분야에서 어떻게 효과적이고 효율적으로 할지에 대한 방법론적 문제가 존재해왔고, 그것이 컴퓨터라는 영역에서도 연결되어 왔다고 생각하면 된다. 핵심 질문 : 스케줄링 정책은 어떻게 개발하는가스케줄링 정책을 하기 위한 기본적인 프레임워크는 어떻게 만드는가, 어떤 가정과 어떤 기준으로 정책의 평가가 일어나는가? 초기의 기법들은 무엇이 있을까? 7.1 워크로드에 대한 가정 워크로드workload : 프로세스가 동작하는 일련의 행위 적절한 워크로드의 선정이, 스케줄링 정책 개발에 매우 중요한 부분이다. 시스템에서 실행 중인 프로세스 혹은 작업(job) 에 대해 다음과 같은 가정을 한다. 모든 작업은 같은…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-83816b6c6e1be0007865.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/ostep/20221217_004/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🖥</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">OSTEP - 04. Part 1 Virtualization</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->December 17, 2022</div></header><div class="post-content"><div class="markdown"><blockquote>
+  </script><title data-react-helmet="true">OSTEP - 04. Part 1 Virtualization - 7 ~ 8</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="OSTEP - 04. Part 1 Virtualization - 7 ~ 8"/><meta data-react-helmet="true" property="og:site_title" content="OSTEP - 04. Part 1 Virtualization - 7 ~ 8"/><meta data-react-helmet="true" name="description" content="본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
+전문은 이 곳을 방문하시면 보실 수 있습니다. 7 Scheduling : Introduction 스케줄링 정책 (scheduling policy) 이라는 것은 원칙 (discipline)이라고도 하며, 오랜시간 개발되어왔다. 초기에 생산 관리 분야에서 어떻게 효과적이고 효율적으로 할지에 대한 방법론적 문제가 존재해왔고, 그것이 컴퓨터라는 영역에서도 연결되어 왔다고 생각하면 된다. 핵심 질문 : 스케줄링 정책은 어떻게 개발하는가스케줄링 정책을 하기 위한 기본적인 프레임워크는 어떻게 만드는가, 어떤 가정과 어떤 기준으로 정책의 평가가 일어나는가? 초기의 기법들은 무엇이 있을까? 7.1 워크로드에 대한 가정 워크로드 (workload) : 프로세스가 동작하는 일련의 행위 적절한 워크로드의 선정이, 스케줄링 정책 개발에 매우 중요한 부분이다. 시스템에서 실행 중인 프로세스 혹은 작업(job) 에 대해 다음과 같은 가정을 한다. …"/><meta data-react-helmet="true" property="og:description" content="본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
+전문은 이 곳을 방문하시면 보실 수 있습니다. 7 Scheduling : Introduction 스케줄링 정책 (scheduling policy) 이라는 것은 원칙 (discipline)이라고도 하며, 오랜시간 개발되어왔다. 초기에 생산 관리 분야에서 어떻게 효과적이고 효율적으로 할지에 대한 방법론적 문제가 존재해왔고, 그것이 컴퓨터라는 영역에서도 연결되어 왔다고 생각하면 된다. 핵심 질문 : 스케줄링 정책은 어떻게 개발하는가스케줄링 정책을 하기 위한 기본적인 프레임워크는 어떻게 만드는가, 어떤 가정과 어떤 기준으로 정책의 평가가 일어나는가? 초기의 기법들은 무엇이 있을까? 7.1 워크로드에 대한 가정 워크로드 (workload) : 프로세스가 동작하는 일련의 행위 적절한 워크로드의 선정이, 스케줄링 정책 개발에 매우 중요한 부분이다. 시스템에서 실행 중인 프로세스 혹은 작업(job) 에 대해 다음과 같은 가정을 한다. …"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-83816b6c6e1be0007865.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/ostep/20221217_004/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🖥</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">OSTEP - 04. Part 1 Virtualization - 7 ~ 8</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->December 17, 2022</div></header><div class="post-content"><div class="markdown"><blockquote>
 <p>본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
 전문은 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">이 곳</a>을 방문하시면 보실 수 있습니다.</p>
 </blockquote>
 <h1 id="7-scheduling--introduction" style="position:relative;"><a href="#7-scheduling--introduction" aria-label="7 scheduling  introduction permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7 Scheduling : Introduction</h1>
 <ul>
-<li>스케줄링 정책<sup>scheduling policy</sup> 이라는 것은 원칙<sup>discipline</sup>이라고도 하며, 오랜시간 개발되어왔다. 초기에 생산 관리 분야에서 어떻게 효과적이고 효율적으로 할지에 대한 방법론적 문제가 존재해왔고, 그것이 컴퓨터라는 영역에서도 연결되어 왔다고 생각하면 된다.</li>
+<li>스케줄링 정책 (scheduling policy) 이라는 것은 원칙 (discipline)이라고도 하며, 오랜시간 개발되어왔다. 초기에 생산 관리 분야에서 어떻게 효과적이고 효율적으로 할지에 대한 방법론적 문제가 존재해왔고, 그것이 컴퓨터라는 영역에서도 연결되어 왔다고 생각하면 된다.</li>
 </ul>
 <p><span style="background-color: grey; display:block; padding : 10px; font-weight:500; border-radius: 10px;" width="1vw;">핵심 질문 : 스케줄링 정책은 어떻게 개발하는가<br>스케줄링 정책을 하기 위한 기본적인 프레임워크는 어떻게 만드는가, 어떤 가정과 어떤 기준으로 정책의 평가가 일어나는가? 초기의 기법들은 무엇이 있을까?</span></p>
 <h2 id="71-워크로드에-대한-가정" style="position:relative;"><a href="#71-%EC%9B%8C%ED%81%AC%EB%A1%9C%EB%93%9C%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B0%80%EC%A0%95" aria-label="71 워크로드에 대한 가정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7.1 워크로드에 대한 가정</h2>
 <ul>
-<li>워크로드<sup>workload</sup> : 프로세스가 동작하는 일련의 행위</li>
+<li>워크로드 (workload) : 프로세스가 동작하는 일련의 행위</li>
 <li>적절한 워크로드의 선정이, 스케줄링 정책 개발에 매우 중요한 부분이다. 시스템에서 실행 중인 프로세스 혹은 작업(job) 에 대해 다음과 같은 가정을 한다.</li>
 </ul>
 <blockquote>
@@ -75,11 +75,11 @@
 </blockquote>
 <h2 id="72-스케줄링의-평가-항목" style="position:relative;"><a href="#72-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81%EC%9D%98-%ED%8F%89%EA%B0%80-%ED%95%AD%EB%AA%A9" aria-label="72 스케줄링의 평가 항목 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7.2 스케줄링의 평가 항목</h2>
 <ul>
-<li>워크로드에 대한 가정 이외에 스케줄링 정책의 평가를 위해 <strong>스케줄링 평가 항목</strong><sup>scehduling metric</sup>을 결정해야 한다.</li>
+<li>워크로드에 대한 가정 이외에 스케줄링 정책의 평가를 위해 <strong>스케줄링 평가 항목</strong> (scehduling metric)을 결정해야 한다.</li>
 <li>평가기준은 다음과 같다.
 <ul>
-<li>반환시간<sup>turnaround time</sup> : 작업이 완료된 시각에서 작업이 도착한 시각을 뺀 시간이다. 성능적 측면의 평가 기준이다. <br><div style="text-align:center">T<sub>turnaround</sub> = T<sub>completion</sub> - T<sub>arrival<sub></div></li>
-<li>공정성<sup>fairness</sup> : 대표적인 예시로 <strong>Jain’s Fairness Index</strong>라는 지표가 있다.</li>
+<li>반환시간 (turnaround time) : 작업이 완료된 시각에서 작업이 도착한 시각을 뺀 시간이다. 성능적 측면의 평가 기준이다. <br><div style="text-align:center">T(turnaround) = T(completion) - T(arrival)</div></li>
+<li>공정성 (fairness) : 대표적인 예시로 <strong>Jain’s Fairness Index</strong>라는 지표가 있다.</li>
 </ul>
 </li>
 </ul>
@@ -149,7 +149,7 @@
 <h2 id="74-최단-작업-우선" style="position:relative;"><a href="#74-%EC%B5%9C%EB%8B%A8-%EC%9E%91%EC%97%85-%EC%9A%B0%EC%84%A0" aria-label="74 최단 작업 우선 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7.4 최단 작업 우선</h2>
 <ul>
 <li>앞서 설명한 부분의 문제, <strong>convoy effect</strong>문제는 간단히 해결할 수 있다. 기본 아이디어는 오퍼레이션 리서치 분야에서 개발된 방식이다.</li>
-<li><strong>최단 작업 우선</strong><sup>Shortest Job First, SJF</sup> : 가장 짧은 실행 시간을 가진 작업을 먼저 실행 시킨다.</li>
+<li><strong>최단 작업 우선</strong> (Shortest Job First, SJF) : 가장 짧은 실행 시간을 가진 작업을 먼저 실행 시킨다.</li>
 </ul>
 <p><span
       class="gatsby-resp-image-wrapper"
@@ -220,7 +220,7 @@
 </blockquote>
 <ul>
 <li>진행 중이던 작업 A를 <strong>중지</strong>하고 새로이 도착한 B나 C를 실행하기로 결정할 수 있고, 이는 기존 SJF가 <strong>비선점형</strong> 스케줄러와 대비된다.</li>
-<li>이렇듯 SJF 방식에 선점 기능을 추가한 스케줄러가 <strong>최단 잔여시간 우선</strong><sup>Shortest Time-to-Completion First, STCF</sup> 또는 선점형 최단 작업 우선(PSJF) 라는 스케줄러이다.</li>
+<li>이렇듯 SJF 방식에 선점 기능을 추가한 스케줄러가 <strong>최단 잔여시간 우선</strong> (Shortest Time-to-Completion First, STCF) 또는 선점형 최단 작업 우선(PSJF) 라는 스케줄러이다.</li>
 <li>STCF는 현재 실행중인 작업의 잔여실행 시간과 새로운 작업의 잔여 실행시간을 비교한다. 잔여 실행 시간이 가장 작은 작업을 우선적으로 스케줄링하게 된다. 따라서 이러한 방식으로 된 그래프를 보면 다음처럼 보이게 된다.</li>
 </ul>
 <p><span
@@ -251,12 +251,12 @@
 <ul>
 <li>이러한 방식으로 개선이 되면 평균 반환시간이 단축되어 최대 50초로 변하게 된다. <code class="language-text">((120 - 0) + (20 - 10) + (30 - 10))/3 = 50</code></li>
 </ul>
-<h2 id="76-새로운-평가-기준--응답시간supresponse-timesup" style="position:relative;"><a href="#76-%EC%83%88%EB%A1%9C%EC%9A%B4-%ED%8F%89%EA%B0%80-%EA%B8%B0%EC%A4%80--%EC%9D%91%EB%8B%B5%EC%8B%9C%EA%B0%84supresponse-timesup" aria-label="76 새로운 평가 기준  응답시간supresponse timesup permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7.6 새로운 평가 기준 : 응답시간<sup>Response Time</sup></h2>
+<h2 id="76-새로운-평가-기준--응답시간-response-time" style="position:relative;"><a href="#76-%EC%83%88%EB%A1%9C%EC%9A%B4-%ED%8F%89%EA%B0%80-%EA%B8%B0%EC%A4%80--%EC%9D%91%EB%8B%B5%EC%8B%9C%EA%B0%84-response-time" aria-label="76 새로운 평가 기준  응답시간 response time permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7.6 새로운 평가 기준 : 응답시간 (Response Time)</h2>
 <ul>
 <li>지금까지 작업의 길이를 미리 알고, CPU에서만 작업이 진행되는 형태에서 평가기준인 반환시간이라는 기준에서 STCF 는 훌륭한 정책이다. (초기 일괄처리 방식의 시스템에서 최선)</li>
-<li>하지만 시분할컴퓨터의 등장으로 사용자는 터미널에서 작업하게 되고, 시스템에게 상호작용을 원할히 하는 것을 요구하게 되고 여기서 <strong>응답시간</strong><sup>Response Time</sup>라는 새로운 성능의 기준을 욕하게 되었다.</li>
+<li>하지만 시분할컴퓨터의 등장으로 사용자는 터미널에서 작업하게 되고, 시스템에게 상호작용을 원할히 하는 것을 요구하게 되고 여기서 <strong>응답시간</strong> (Response Time)라는 새로운 성능의 기준을 욕하게 되었다.</li>
 </ul>
-<div style="text-align:center">T<sub>response</sub> = T<sub>firstrun</sub> - T<sub>arrival</sub></div>
+<div style="text-align:center">Tresponse = Tfirstrun - Tarrival</div>
 <ul>
 <li>응답시간은 작업이 도착하는 시점부터 처음으로 스케줄 될 때가지의 시간으로 정의된다.</li>
 <li>예를 들어 7.5번의 예를 보게 되면 A는 0, B 도 0, C 가 10으로 평균 응답시간은 3.33 이 되게 된다.</li>
@@ -292,8 +292,8 @@
 </ul>
 <h2 id="77-라운드-로빈" style="position:relative;"><a href="#77-%EB%9D%BC%EC%9A%B4%EB%93%9C-%EB%A1%9C%EB%B9%88" aria-label="77 라운드 로빈 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7.7 라운드 로빈</h2>
 <ul>
-<li>라운드 로빈<sup>Round-Robin, RR</sup> : 응답시간 문제를 해결하기 위한 스케줄링 기법으로, 이 기법은 작업의 끝을 기다리는 것이 아니라, 일정 시간 동한 실행 후 실행 큐의 다음 작업으로 전환되어 진행하고, 그것이 반복되어 일을 마무리 짓는다.</li>
-<li>타임 슬라이스<sup>time slice</sup> / 스케줄링 퀀텁<sup>scheduling quantum</sup> : 작업이 실행되는 일정 시간 단위</li>
+<li>라운드 로빈 (Round-Robin, RR) : 응답시간 문제를 해결하기 위한 스케줄링 기법으로, 이 기법은 작업의 끝을 기다리는 것이 아니라, 일정 시간 동한 실행 후 실행 큐의 다음 작업으로 전환되어 진행하고, 그것이 반복되어 일을 마무리 짓는다.</li>
+<li>타임 슬라이스 (time slice) / 스케줄링 퀀텁 (scheduling quantum) : 작업이 실행되는 일정 시간 단위</li>
 <li>위 스케줄링 기법은 타임슬라이스의 길이를 아주 중요한 요소로 삼는다. 타임 슬라이스가 짧을 수록 응답시간은 훨씬 성능이 좋아진다. 이에 비해 짧게 지정하면 context switching 비용이 전체 성능에 큰 영향을 미치게 된다. -> 그렇기에 시스템 설계자에게 어떤 수준으로 최적의 상태로 작동할지를 결정하는 것이 중요해진다.</li>
 <li>단 타임슬라이스 형태를 가진 스케줄러 RR은 반환시간에서 보면 전체적으로 좋지 못한 성적을 낸다. 상당히 많은 케이스에서 RR이 FIFO의 단순한 스케줄러보다 반환시간 성능에선 지는 것을 보여준다.</li>
 </ul>
@@ -382,10 +382,10 @@
 <li>두 번째 종류는 모든 작업을 번갈아 실행하여 응답시간을 최소화하는 방식이다.</li>
 <li>이 두가지 기준에서 최적화를 하는 것에서 한쪽에 비중을 두면 한쪽이 좋지 않아지는 특성을 갖고 있어, 두가지의 절충이 중요하다.</li>
 <li>CPU 스케줄링에서 입출력과 같은 부분도 연산에서 중요한 부분이며, 정확한 스케줄링을 위해선 프로세스의 미래 동작을 예측해야 하는 어려움이 있다.</li>
-<li>프로세스 미래 동작을 예측함에 있어 과거 프로세스 동작 이력을 반영하는 방식으로 이 문제를 해결하고 이러한 스케줄러를 <strong>멀티 레벨 피드백 큐</strong><sup>multi-level feedback queue</sup></li>
+<li>프로세스 미래 동작을 예측함에 있어 과거 프로세스 동작 이력을 반영하는 방식으로 이 문제를 해결하고 이러한 스케줄러를 <strong>멀티 레벨 피드백 큐</strong> (multi-level feedback queue)</li>
 </ul>
-<h1 id="8-scheduling--multi-level-feedback-queuemlfq" style="position:relative;"><a href="#8-scheduling--multi-level-feedback-queuemlfq" aria-label="8 scheduling  multi level feedback queuemlfq permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8 Scheduling : Multi-level feedback queue(MLFQ)</h1>
-<p>MLFQ, 멀티 레벨 피드백 큐 스케줄러는 Compatible Time-Sharing System(CTSS)에 사용되며, Corbato 등에 의해 1962년 최초로 소개되었다. 지속적인 발전으로 현대 시스템에까지 발전되었다.</p>
+<h1 id="8-scheduling--mlfq" style="position:relative;"><a href="#8-scheduling--mlfq" aria-label="8 scheduling  mlfq permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8 Scheduling : MLFQ</h1>
+<p>MLFQ(Multi-level Feedback Queue), 멀티 레벨 피드백 큐 스케줄러는 Compatible Time-Sharing System(CTSS)에 사용되며, Corbato 등에 의해 1962년 최초로 소개되었다. 지속적인 발전으로 현대 시스템에까지 발전되었다.</p>
 <p>MLFQ가 해결하려는 문제는 두 가지로 정리된다.</p>
 <ul>
 <li>짧은 작업을 먼저 실행시켜 반환시간을 최적화한다. : 기존 SJF, STCF 같은 알고리즘은 실행시간 정보를 필요로 했으나, 이를 정확히 알 순 없기에 대안이 필요했다.</li>
@@ -393,8 +393,250 @@
 </ul>
 <p>따라서 MLFQ는 이러한 상황에서 보다 나은 스케줄링을 결정하기 위한 고민 가운데 있었다.</p>
 <blockquote>
-<p><strong>핵심 질문</strong></p>
+<p><strong>핵심 질문 : 정보 없이 스케줄하는 방법은 무엇인가?</strong>
+응답시간 최소화, 그리고 반환시간도 최소화하는 스케줄러를 설계하는 방법은?</p>
 </blockquote>
+<h2 id="81-mlfq-기본-규칙" style="position:relative;"><a href="#81-mlfq-%EA%B8%B0%EB%B3%B8-%EA%B7%9C%EC%B9%99" aria-label="81 mlfq 기본 규칙 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8.1 MLFQ: 기본 규칙</h2>
+<ul>
+<li>MLFQ는 여러 큐를 가지고 있고, 각각 <strong>다른 우선순위(priority level)</strong> 를 배정받는다. 실행 준비된 프로세스는 이러한 큐들 중 하나가 되는 것이다.</li>
+<li>MLFQ의 핵심은 이러한 큐들 가운데 <code class="language-text">우선순위</code>를 사용해 가장 높은 경우부터 큐에 존재하는 작업을 진행한다는 점이다.</li>
+<li>큐에 둘 이상의 작업이 존재할 수도 있는데, 이 경우 라운드 로빈(RR) 스케줄링 알고리즘을 따라 시분할로 관리된다.</li>
+<li>MLFQ는 각 작업의 고정된 우선순위 부여가 아닌 작업 특성에 따른 <code class="language-text">동적 우선순위</code>를 부여한다는 것이 핵심이 된다.
+<ul>
+<li>예를 들면, 작업이 키보드 입력을 기다리면서 반복적으로 CPU를 양보한다면 MLFQ는 해당 작업의 우선순위는 높게 유지, 한 작업이 긴 시간으로 CPU를 집중적으로 요구한다면, 우선순위를 낮추게 된다. 이러한 점에서 MLFQ의 작업의 진행되면서 얻은 정보를 토대로 <code class="language-text">미래의 행동을 예측</code>한다.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>규칙 1 : Priority(A) > Priority(B) 이면, A가 실행된다(B는 실행되지 않는다).</li>
+<li>규칙 2 : Priority(A) == Priority(B) 이면, A, B는 RR 방식으로 실행된다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 48.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA/ElEQVR42n1S25aDIAz0/3+yZx/a2uJyKXXFG7NJqKJWDWcOIjCZhCkQIxiRZ4phGNC2gdAKxnFE3/cIIQi6rkNomvl8/NwVGhqF/PxscNT1G+X9hrK84/Eo4ZyF1hpVVREUnLXyn5NMhFkQEcbFYiJdhvcv/NV1vryZtyi2BClhJvfe403I+99Jl0EKRxwhEToq21ArvHyfnWcUe7ITEiGrM9RDYzRezh2WulvyXjlM2NCrbttyUnJc9YytwmqUUlDPpzwKvzKvtf5dJT9VOPtQPNeI51gZ24O9yInYUisyTKabWY5LZoKKVFlrcLte8XO5yMzk+exEmQbHP0XiE60wgan0AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202212311535"
+        title="202212311535"
+        src="/static/6b94b005a3c7bb7ab895fc5f2ae5df93/37523/202212311535.png"
+        srcset="/static/6b94b005a3c7bb7ab895fc5f2ae5df93/e9ff0/202212311535.png 180w,
+/static/6b94b005a3c7bb7ab895fc5f2ae5df93/f21e7/202212311535.png 360w,
+/static/6b94b005a3c7bb7ab895fc5f2ae5df93/37523/202212311535.png 720w,
+/static/6b94b005a3c7bb7ab895fc5f2ae5df93/302a4/202212311535.png 1080w,
+/static/6b94b005a3c7bb7ab895fc5f2ae5df93/5bd27/202212311535.png 1432w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>이러한 방식으로 동작하는 모습은 다음과 같은 형태로 구현된다고 볼 수 있다.</li>
+<li>그러나 보면 알겠지만 우선순위가 낮은 작업 C, D는 A, B가 종료되지 않는 이상 작업이 진행되지 않을 것이다. 어떻게 이를 해결할까?</li>
+</ul>
+<h2 id="82-시도-1-우선순위-변경" style="position:relative;"><a href="#82-%EC%8B%9C%EB%8F%84-1-%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84-%EB%B3%80%EA%B2%BD" aria-label="82 시도 1 우선순위 변경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8.2 시도 1: 우선순위 변경</h2>
+<p>MLFQ가 작업 우선순위를 어떻게 바꿀 것인가 라는 표현은, 사실 우선순위 변경만큼 ‘작업이 존재할 큐’를 결정하는 것과 마찬가지의 의미를 가진다. 짧은 실행 시간을 갖는, CPU를 자주 양보하는 대화형 작업과 많은 시간을 요구하지만 응답시간이 중요하지 않은 긴 실행시간의 CPU 위주 작업이 혼재되는데, 그렇기에 다음과 같은 우선순위 조정 알고리즘을 위한 추가적인 룰을 지정하게 된다.</p>
+<ul>
+<li>규칙 3 : 작업이 시스템에 진입하면 가장 높은 우선순위에 모두 할당시킨다. </li>
+<li>규칙 4a : 주어진 타임 슬라이스를 모두 사용하면 우선순위는 낮아진다. 한단계 아래의 큐로 가게 된다.</li>
+<li>규칙 4b : 타임 슬라이스를 소진하기 전에 CPU를 양도한다면 같은 우선순위를 유지한다. </li>
+</ul>
+<h3 id="예시-1-한-개의-긴-실행시간을-가진-작업" style="position:relative;"><a href="#%EC%98%88%EC%8B%9C-1-%ED%95%9C-%EA%B0%9C%EC%9D%98-%EA%B8%B4-%EC%8B%A4%ED%96%89%EC%8B%9C%EA%B0%84%EC%9D%84-%EA%B0%80%EC%A7%84-%EC%9E%91%EC%97%85" aria-label="예시 1 한 개의 긴 실행시간을 가진 작업 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>예시 1) 한 개의 긴 실행시간을 가진 작업</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 41.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABA0lEQVR42n1Ry26DMBCEnmn6LUjNBdF8cp1jekz5A5prW2jCs8I5IMTbU9uKqSFNRxrter0ez9oGLmCMTRQIgwC+78t8HEf8BdWrw7gleDi84WW3k3nTNOj7fkZ1yVLU0K6bNodhkNwSwg8OuIV/HeqCdV3LSMgzAj76d54jTVNkWSYpcuH6V5TNBZWQiqqZbAlM08S9ZcG68GG1wh2vqecQk+hnr95Qd+h5HtbrR2yeNnAcB67rymjbNl73+0lQH91gC4eqoes6tG3L2ciacC1qVVXJdVmWcr38nJmgaKSU4nymPBZI4hin4xFRdAItCnyFIZIkRp5nvBbh8+N9mkZp/AA/fVAOO2O9kQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202212311540"
+        title="202212311540"
+        src="/static/b049b7b8f87fae2955e44f5c58847a41/37523/202212311540.png"
+        srcset="/static/b049b7b8f87fae2955e44f5c58847a41/e9ff0/202212311540.png 180w,
+/static/b049b7b8f87fae2955e44f5c58847a41/f21e7/202212311540.png 360w,
+/static/b049b7b8f87fae2955e44f5c58847a41/37523/202212311540.png 720w,
+/static/b049b7b8f87fae2955e44f5c58847a41/302a4/202212311540.png 1080w,
+/static/b049b7b8f87fae2955e44f5c58847a41/ccf0c/202212311540.png 1428w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>위의 예시는 하나의 작업이 타임 슬라이스를 지나서까지 사용이 되어야 하는 경우, 계속해서 Q의 레벨이 내려간다. 최종적으론 Q0이라는 가장 낮은 우선순위에서 작업을 마무리 짓게 된다.</li>
+</ul>
+<h3 id="예시-2-짧은-작업과-함께-작업" style="position:relative;"><a href="#%EC%98%88%EC%8B%9C-2-%EC%A7%A7%EC%9D%80-%EC%9E%91%EC%97%85%EA%B3%BC-%ED%95%A8%EA%BB%98-%EC%9E%91%EC%97%85" aria-label="예시 2 짧은 작업과 함께 작업 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>예시 2) 짧은 작업과 함께 작업</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 42.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABKklEQVR42nWRXU7CQBDH9xAmHMCo4V7ypOAN0AdCol6EtjwYYnjBQ8iz4QFBxJrYz21Lu9u/7bZs29VOMtmZ2cxvvggySdNUaGFzaR/lcIhgWT9Qpcqp8okaCIIAcRyDc44kKV5KKVzHKWMJGGMNWL0AKU35kSdJiOvC8zz4vo/d7gOObQs//1O7a+0wDEPRgSqU+q0j14X8VyUf+fHhHv3rK9wM+ri7HWK5fM3sAXq9S4zHI1lUhTaBmR1FkRir270AIURop3MCQ9ekf352CpbtshUINBfMWIKXxQK6PsF0qmM2e8Jq9QbD0KBpE8znz2I1Vc4RKo6iwlh2aSorcs5ELMoBtUP8Hbk8SsFv7s+2LTiOjf3+E5v3NbbbDb5NU1w6V9P8UoAV9BfMIJ+d44WlbQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202212311541"
+        title="202212311541"
+        src="/static/f963f09a08322efbc06fa6a10f5c3896/37523/202212311541.png"
+        srcset="/static/f963f09a08322efbc06fa6a10f5c3896/e9ff0/202212311541.png 180w,
+/static/f963f09a08322efbc06fa6a10f5c3896/f21e7/202212311541.png 360w,
+/static/f963f09a08322efbc06fa6a10f5c3896/37523/202212311541.png 720w,
+/static/f963f09a08322efbc06fa6a10f5c3896/302a4/202212311541.png 1080w,
+/static/f963f09a08322efbc06fa6a10f5c3896/52576/202212311541.png 1412w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>위의 예시의 경우 다른 오래 실행되는 CPU 위주 작업이 들어가다가, 새로운 회색의 작업이 <code class="language-text">T=100</code>에 시스템에 도착하고 가장 높은 우선순위를 얻게 된다.</li>
+<li>그리곤 우선순위가 여전히 높으니, Q0에 이미 있던 작업은 대기하게 되고, 회색 작업의 마무리에, 결국 검은색이 작업을 마무리 짓게 된다.</li>
+<li>이를 통해 이 MLFQ의 주요 목표를 알 수 있다. 이 스케줄러는 작업이 짧은 작업인지 긴 작업인지 알수 없다는 전제 하에, 일단 빨리 실행되고 종료될 것이라 <strong>가정</strong>을 하고 진행을 한다. 높은 우선순위를 주고, 우선적으로 실행을 시키며, 진자 빠르면 바로 실행된 뒤 종료 될 것이다. 하지만 그렇지 않은 작업이라면 점차 큐 아래로 이동하고, 스스로 긴 배치형 작업임을 증명하게 된다. 따라서 이러한 방식은 SJF의 성능에 근사한 수준을 달성하게 된다.</li>
+</ul>
+<h3 id="예시-3-입출력-작업에-대해선-어떻게-대응-할까" style="position:relative;"><a href="#%EC%98%88%EC%8B%9C-3-%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%9E%91%EC%97%85%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%A0-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8C%80%EC%9D%91-%ED%95%A0%EA%B9%8C" aria-label="예시 3 입출력 작업에 대해선 어떻게 대응 할까 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>예시 3) 입출력 작업에 대해선 어떻게 대응 할까?</h3>
+<ul>
+<li>규칙 4b가 말하는 것처럼 프로세스가 타임 슬라이스를 소진하기 전에 프로세서를 양도하면서 같은 우선순위를 유지하게 된다. 이러한 기준을 세운 이유는 대화형 작업, 즉 키보드나 마우스등의 사용자 입력을 대기하는 작업은 CPU 를 타임 슬라이스가 종료되기 전에 CPU를 양도할 것이고, (경향적)으로 그러한 작업은 <code class="language-text">반응성</code>을 중시한다. 따라서 높은 우선순위를 유지하게 되고, 작업이 빨리 실행된다는 목표에도 접근이 가능해지는 것이다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 43.888888888888886%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABOElEQVR42oVRa0vDQBDMTxeEUqxCKVQFP2hojRrBH6L4F7RtEk1E8rjL+zVuLq8mLbjccJu928nMnlSiBFCi3ikr+z3LsgYp8jwTaGv79+q85pDQFPoDIAgCJEkMzj0w5sKxf8GZR3DhuTbBIfJ8T0AjiJYkiDAkTNNUNIREHPg+/WAEnwuV+wpbSHUVA7uVws4ikffW+xEURTHoaYMUFhgABV2uZpTjvzjoJUjl0RnW1l6eVdyvZKgPCtbyHZ6UNdRHBSv5FpvPD3G3UnpgeaRaRBiGuLm+xGw6wdVygcnpCZaLOebnZ7iYTfH+9jqS21musyRJEMexeBDOGXzOj86ojercp8epnERR1M6gJ2SMwXUc8aq77Qa6rsGyTOiahu8vA6ZpwjB0/FiW+NZ2W7FbVHdsuyP8A4pOsk34WuNGAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202212311550"
+        title="202212311550"
+        src="/static/99e93dc53daafca32b9c0de35c20764a/37523/202212311550.png"
+        srcset="/static/99e93dc53daafca32b9c0de35c20764a/e9ff0/202212311550.png 180w,
+/static/99e93dc53daafca32b9c0de35c20764a/f21e7/202212311550.png 360w,
+/static/99e93dc53daafca32b9c0de35c20764a/37523/202212311550.png 720w,
+/static/99e93dc53daafca32b9c0de35c20764a/302a4/202212311550.png 1080w,
+/static/99e93dc53daafca32b9c0de35c20764a/07a9c/202212311550.png 1440w,
+/static/99e93dc53daafca32b9c0de35c20764a/bd9eb/202212311550.png 1442w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<h3 id="지금까지의-mlfq의-문제점" style="position:relative;"><a href="#%EC%A7%80%EA%B8%88%EA%B9%8C%EC%A7%80%EC%9D%98-mlfq%EC%9D%98-%EB%AC%B8%EC%A0%9C%EC%A0%90" aria-label="지금까지의 mlfq의 문제점 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>지금까지의 MLFQ의 문제점</h3>
+<ul>
+<li>기아상태 발생 가능성이 존재한다 : 현재의 방식은 단순하게 구성되어 있고, 혹여 시스템에 너무 많은 대화형 작업이 존재하면, 그들에 대한 처리에 따라 CPU 사용이 집중되고, 우선순위가 낮아진 긴 시간의 작업들은 CPU 할당을 받지 못해 작업 처리가 되지 않는 일이 발생할 수 있다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 42.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABb0lEQVR42nVSyU7DUAzMfwNHOAFH4AZ8QPkIBKciljYtdEmlZmtEk5Tse4c3riJxwZL1Xvzs8Xgcres67Pd7/DXGppMxpvoY+ngEx7Hxn31OJ7AtU+Xr2O1CaE3TIEkSrFYGeKdnWaYSdcy+ppjoI/jbb2kShiFs28ZWfXueB8NY4v31Bc9Pjxh9vCGJI2hkVxSFYuGgrmu5l8p7cMYOU3SI41iBbeG6jpzz+QxxFMFYLhWpGHmeQauqSqiv12thSmNx7wSjlWUp4Mwj4GIxF4CiyJGlKRr1FgYBtLZtpcD3fSnorW0bcbLkFARumhqByivyHIEq5jsJ9c2YKwzruhJBz85OcXJ8hMuLc2FbloVikUv3LEul0XA4xM31FR4GA9zf3YKEKMWBbQGtZ8QCikxdOE6qxkgVKAFjJXa/fTKjZhvXlZPsouhHwBIFrPW/DE92YQJ1MU1Tihy1VW+zgWVZslnGCcqNB4Ev7732tF8+RFzXUjEUAQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202212311553"
+        title="202212311553"
+        src="/static/358ae01740f628b95eeb63367843655a/37523/202212311553.png"
+        srcset="/static/358ae01740f628b95eeb63367843655a/e9ff0/202212311553.png 180w,
+/static/358ae01740f628b95eeb63367843655a/f21e7/202212311553.png 360w,
+/static/358ae01740f628b95eeb63367843655a/37523/202212311553.png 720w,
+/static/358ae01740f628b95eeb63367843655a/302a4/202212311553.png 1080w,
+/static/358ae01740f628b95eeb63367843655a/07a9c/202212311553.png 1440w,
+/static/358ae01740f628b95eeb63367843655a/bd9eb/202212311553.png 1442w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>
+<p>사용자가 임의로 프로그램을 변형해, CPU 작업 우선순위를 가로채갈 수 있다. : 만약 의미 없는 입출력을 통해 CPU 우선순위를 높이는 방식을 사용한다면, 해당 경우 작업을 의도적으로 CPU 우선순위에서 높은 곳에 두고 자원을 독점할 가능성이 생긴다.</p>
+</li>
+<li>
+<p>마지막으로 프로그램이 시간 흐름에 따라 특성이 변할 수도 있다. CPU 연산 위주 작업에서 대화형으로 작업이 바뀔 수 있는데, 현재의 구현 방식은 그런 작업에 대해 우선순위를 다시 <strong>높여</strong> 주지는 않는다. 따라서 낮은 우선순위로 내려가버린 이상, 우선순위가 높이 있을 때 얻는 이점이 없게 된다.</p>
+</li>
+</ul>
+<h2 id="83-시도-2-우선순위의-상향-조정" style="position:relative;"><a href="#83-%EC%8B%9C%EB%8F%84-2-%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%EC%9D%98-%EC%83%81%ED%96%A5-%EC%A1%B0%EC%A0%95" aria-label="83 시도 2 우선순위의 상향 조정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8.3 시도 2: 우선순위의 상향 조정</h2>
+<ul>
+<li>CPU 위주의 작업이 조금이라도 진행하는 것을 보장하기 위해서, 기본적으로 모든 작업의 우선순위를 <strong>상향조정(boost)</strong> 하는 것이 효과적이라 할 수 있다. 다양한 접근 법은 있겠지만 가장 간단하게는 모두 최상위 큐로 보내는 것이다.</li>
+</ul>
+<ul>
+<li>규칙 5 : 일정 기간 S가 지나면, 시스템의 모든 작업은 최상위 큐로 이동시킨다. </li>
+</ul>
+<ul>
+<li>
+<p>새로운 규칙은 두 가지 문제를 한 번에 해결한다. 우선 프로세스의 기아 상태를 해소하게 만든다. 최상위로 우선순위가 상향되는 순간 라운드 로빈 방식으로 우선 진행하게 되니, 기아를 해결할 수 있다. 동시에 CPU 위주 작업이 대화형으로 뒤에 바뀌는 특성이 있을 시, 이에 대해서도 우선순위 상향을 통해 변경된 특성에 적합한 스케줄링 방법을 적용한다.</p>
+</li>
+<li>
+<p>물론 <code class="language-text">S</code> 값의 결정이라는 것이 중요하고, 이것이 굉장히 중요하지만 동시에 쉽지 않은 결정을 해야하기에 <strong>부두상수(voo-doo constatns)</strong> 라고 불렀다. 이 상수가 자칫 크면 긴 실행 시간을 가진 작업은 기아가 될 수 있고, 짧으면 대화형 작업이 적절한 양의 CPU 시간을 사용할 수 없다.</p>
+</li>
+</ul>
+<h2 id="84-시도-3-더-나은-시간-측정" style="position:relative;"><a href="#84-%EC%8B%9C%EB%8F%84-3-%EB%8D%94-%EB%82%98%EC%9D%80-%EC%8B%9C%EA%B0%84-%EC%B8%A1%EC%A0%95" aria-label="84 시도 3 더 나은 시간 측정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8.4 시도 3: 더 나은 시간 측정</h2>
+<ul>
+<li>이번엔 스케줄러에 대해 자신 프로그램이 더 유리하게 동작하도록 하는 행위를 막는 것은 어떻게 하면 좋을까?</li>
+<li>이에 대한 해결책은 MLFQ의 각 단계에서 CPU의 총 사용 시간을 측정하는 것이다. 현재 프로세스가 소진한 CPU 사용시간을 저장하고, 만약 지정된 타임슬라이스에 해당하는 시간을 모두 소진시 다음 우선순위 큐로 강등되도록 해서, 방지책이 마련되면 프로세스의 입출력 행동과 무관하게 아래 단계 큐로 천천히 이동되어 자신의 몫 이상을 사용할 수 없게 만든다.</li>
+<li>그리하여 규칙 4a, 규칙 4b를 합쳐서 새로운 규칙으로 재정의한다.</li>
+</ul>
+<ul>
+<li>규칙 4 : 주어진 단계에서 시간 할당량을 소진하면(CPU 양도 횟수와 관계없이) 우선순위가 낮아진다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 38.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABQElEQVR42o2RWU/CUBCF+f8/RONCcIlLokHRZxOWghC1oLQg0JalLaXr8Z7BKvhAvMnpnaYzX2fOFNI0BbXrZFmG1SoQ7crhKSRJgiiKoL+9oFZ9QkurQWtURc/NOtqtBjzPVTmhAJn/V3lDhAowjmMs5nPYlgXHtrc0m00RhqEUOraloKstBUEg9T9APv4zMnN4J3Gk4LF6T5B9i/FGh7H8aTweweh/wDT6GJgmRp9DmKYBx7Hh+74ANa2O4uE+Ls5KOC0d4/ykiKODPWVPTYDMkQ7ZsmkY6Oo6el1d+fmqoAbeez0MhwOE6oc8nU4blbsyHh8qKN/e4F7F11eXaGrab4f5WKTTfPpF76zJBLbybOo44iM7pTzPkyUul0u4rovNetlyvu51ki/jc0TCPVXAmFoDFgIhlN8Zc/s5g/cXtt9jc63JaDMAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202301010102"
+        title="202301010102"
+        src="/static/1ca38781271f6a9860d0468789b72d45/37523/202301010102.png"
+        srcset="/static/1ca38781271f6a9860d0468789b72d45/e9ff0/202301010102.png 180w,
+/static/1ca38781271f6a9860d0468789b72d45/f21e7/202301010102.png 360w,
+/static/1ca38781271f6a9860d0468789b72d45/37523/202301010102.png 720w,
+/static/1ca38781271f6a9860d0468789b72d45/302a4/202301010102.png 1080w,
+/static/1ca38781271f6a9860d0468789b72d45/d4e7f/202301010102.png 1416w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<h2 id="85-mlfq-조정과-다른-쟁점들" style="position:relative;"><a href="#85-mlfq-%EC%A1%B0%EC%A0%95%EA%B3%BC-%EB%8B%A4%EB%A5%B8-%EC%9F%81%EC%A0%90%EB%93%A4" aria-label="85 mlfq 조정과 다른 쟁점들 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8.5 MLFQ 조정과 다른 쟁점들</h2>
+<ul>
+<li>지금까지를 통해 많은 문제들을 개선했지만, 여전히 여러 다른 쟁점들이 존재한다. 예를 들어 필요 변수들을 스케줄러가 어떻게 설정할 것인가? 몇 개의 큐가 존재할 것인가? 큐당 타임 슬라이스의 크기는 얼마나 해야 하는가? 결국 이러한 다양한 질문에 대해서는 쉽게 대답할 수 없고, 워크로드에 대해 충분히 경험하고 계속 조정해 나가면서 균형점을 찾아야 한다.</li>
+</ul>
+<h2 id="86-mlfq-요약" style="position:relative;"><a href="#86-mlfq-%EC%9A%94%EC%95%BD" aria-label="86 mlfq 요약 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8.6 MLFQ: 요약</h2>
+<ul>
+<li>지금까지의 MLFQ는 복수의 레벨의 큐를 갖고 있으며, 작업의 우선순위를 정하기 위해 ‘피드백’을 사용한다. 과거의 보여준 행동이 우선순위를 결정하며, 이를 통해 모르는 작업의 수준을 예상하고, 스케줄링을 진행한다.</li>
+<li>이 장 전체에 산재한 정교한 MLFQ 규칙의 집합을 다시 보면 다음과 같다.</li>
+</ul>
+<ul>
+<li>규칙 1 : 우선순위(A) > 우선순위(B) 일 경우, A가 실행되고 B는 실행되지 않는다.</li>
+<li>규칙 2 : 우선순위(A) == 우선순위(B) 일 경우 A, B 사이엔 RR 방식으로 실행된다. </li>
+<li>규칙 3 : 작업이 시스템에 들어가면 최상위 큐에 배치된다.</li>
+<li>규칙 4 : 작업이 지정된 단계에서 배정받은 시간을 소진하면(CPU를 포기한 횟수와 상관없이), 작업 우선순위는 감소한다.</li>
+<li>규칙 5 : 일정주기 S가 지난 후, 시스켐의 모든 작업을 최상위 큐로 이동시킨다. </li>
+</ul>
+<ul>
+<li>MLFQ는 작업 특성에 대한 정보가 없지만, 그럼에도 작업의 실행을 관찰하고, 그 에따른 우선 순위를 지정한다. MLFQ는 다양한 특성으로 반응시간과 응답시간을 모두 최적화하는데 성공했다. 대화형 작업에선 SJF, STCF와 유사한 성능을 주면서도 오래 실행되는 CPU-집중 워크로드에 대해서는 공정하게 실행하고 조금이라도 진행되도록 한다. 이러한 특징은 다양한 OS의 기본적인 근간이 되는 스케줄러로 MLFQ를 쓰는 이유를 보여준다고 할 수 있다.</li>
+</ul>
 <div class="table-of-contents">
 <ul>
 <li>
@@ -405,7 +647,7 @@
 <li><a href="#73-%EC%84%A0%EC%9E%85%EC%84%A0%EC%B6%9C">7.3 선입선출</a></li>
 <li><a href="#74-%EC%B5%9C%EB%8B%A8-%EC%9E%91%EC%97%85-%EC%9A%B0%EC%84%A0">7.4 최단 작업 우선</a></li>
 <li><a href="#75-%EC%B5%9C%EC%86%8C-%EC%9E%94%EC%97%AC%EC%8B%9C%EA%B0%84-%EC%9A%B0%EC%84%A0">7.5 최소 잔여시간 우선</a></li>
-<li><a href="#76-%EC%83%88%EB%A1%9C%EC%9A%B4-%ED%8F%89%EA%B0%80-%EA%B8%B0%EC%A4%80--%EC%9D%91%EB%8B%B5%EC%8B%9C%EA%B0%84supresponse-timesup">7.6 새로운 평가 기준 : 응답시간<sup>Response Time</sup></a></li>
+<li><a href="#76-%EC%83%88%EB%A1%9C%EC%9A%B4-%ED%8F%89%EA%B0%80-%EA%B8%B0%EC%A4%80--%EC%9D%91%EB%8B%B5%EC%8B%9C%EA%B0%84-response-time">7.6 새로운 평가 기준 : 응답시간 (Response Time)</a></li>
 <li><a href="#77-%EB%9D%BC%EC%9A%B4%EB%93%9C-%EB%A1%9C%EB%B9%88">7.7 라운드 로빈</a></li>
 <li><a href="#78-%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%97%B0%EC%82%B0%EC%9D%98-%EA%B3%A0%EB%A0%A4">7.8 입출력 연산의 고려</a></li>
 <li><a href="#79-%EB%A7%8C%EB%B3%91%ED%86%B5%EC%B9%98%EC%95%BD%EC%9D%80-%EC%97%86%EB%8B%A4no-more-oracle">7.9 만병통치약은 없다(No More Oracle)</a></li>
@@ -413,10 +655,36 @@
 </ul>
 </li>
 <li>
-<p><a href="#8-scheduling--multi-level-feedback-queuemlfq">8 Scheduling : Multi-level feedback queue(MLFQ)</a></p>
+<p><a href="#8-scheduling--mlfq">8 Scheduling : MLFQ</a></p>
+<ul>
+<li>
+<p><a href="#81-mlfq-%EA%B8%B0%EB%B3%B8-%EA%B7%9C%EC%B9%99">8.1 MLFQ: 기본 규칙</a></p>
+</li>
+<li>
+<p><a href="#82-%EC%8B%9C%EB%8F%84-1-%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84-%EB%B3%80%EA%B2%BD">8.2 시도 1: 우선순위 변경</a></p>
+<ul>
+<li><a href="#%EC%98%88%EC%8B%9C-1-%ED%95%9C-%EA%B0%9C%EC%9D%98-%EA%B8%B4-%EC%8B%A4%ED%96%89%EC%8B%9C%EA%B0%84%EC%9D%84-%EA%B0%80%EC%A7%84-%EC%9E%91%EC%97%85">예시 1) 한 개의 긴 실행시간을 가진 작업</a></li>
+<li><a href="#%EC%98%88%EC%8B%9C-2-%EC%A7%A7%EC%9D%80-%EC%9E%91%EC%97%85%EA%B3%BC-%ED%95%A8%EA%BB%98-%EC%9E%91%EC%97%85">예시 2) 짧은 작업과 함께 작업</a></li>
+<li><a href="#%EC%98%88%EC%8B%9C-3-%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%9E%91%EC%97%85%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%A0-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8C%80%EC%9D%91-%ED%95%A0%EA%B9%8C">예시 3) 입출력 작업에 대해선 어떻게 대응 할까?</a></li>
+<li><a href="#%EC%A7%80%EA%B8%88%EA%B9%8C%EC%A7%80%EC%9D%98-mlfq%EC%9D%98-%EB%AC%B8%EC%A0%9C%EC%A0%90">지금까지의 MLFQ의 문제점</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#83-%EC%8B%9C%EB%8F%84-2-%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%EC%9D%98-%EC%83%81%ED%96%A5-%EC%A1%B0%EC%A0%95">8.3 시도 2: 우선순위의 상향 조정</a></p>
+</li>
+<li>
+<p><a href="#84-%EC%8B%9C%EB%8F%84-3-%EB%8D%94-%EB%82%98%EC%9D%80-%EC%8B%9C%EA%B0%84-%EC%B8%A1%EC%A0%95">8.4 시도 3: 더 나은 시간 측정</a></p>
+</li>
+<li>
+<p><a href="#85-mlfq-%EC%A1%B0%EC%A0%95%EA%B3%BC-%EB%8B%A4%EB%A5%B8-%EC%9F%81%EC%A0%90%EB%93%A4">8.5 MLFQ 조정과 다른 쟁점들</a></p>
+</li>
+<li>
+<p><a href="#86-mlfq-%EC%9A%94%EC%95%BD">8.6 MLFQ: 요약</a></p>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/ostep/20220914_003/"><div class="direction">이전 글</div><div class="title">OSTEP - 03. Part 1 Virtualization</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/ostep/20220914_003/"><div class="direction">이전 글</div><div class="title">OSTEP - 03. Part 1 Virtualization - 3 ~ 6</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2023<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
