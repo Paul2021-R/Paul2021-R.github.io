@@ -340,8 +340,8 @@ PTE <span class="token operator">=</span> <span class="token function">AccessMem
 	offset <span class="token operator">=</span> VirtualAddress <span class="token operator">&amp;</span> OFFSET_MASK
 	PhysAddr <span class="token operator">=</span> <span class="token punctuation">(</span>PTE<span class="token punctuation">.</span>PFN <span class="token operator">&lt;&lt;</span> PFN_SHIFT<span class="token punctuation">)</span> <span class="token operator">|</span> offset
 	Register <span class="token operator">=</span> <span class="token function">AccessMemory</span><span class="token punctuation">(</span>PhysAddr<span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<p>모든 메모리 참조에 대해 먼저 페이지 테이블에서 변환정보를 반입해야하고, 따라서 반드시 한 번 추가적인 메모리 참조가 필요하다. 메모리의 참조는 비용이 비싸고 이 경우에 프로세스는 2배 이상 느려진다.</p>
-<p>이를 통해 하드웨어와 소프트웨어의 신중한 설계 없이는 페이징 테이블로 인해 시스템의 과다한 메모리 사용이 나타난다. 따라서 페이징이 메모리 가상화에 필요한 훌륭한 해결책이 되기 위해 두 분야에 대한 신중한 설계가 핵심적인 문제로 대두된다.</p>
+<p>모든 메모리 참조에 대해 먼저 페이지 테이블에서 변환정보를 반입해야하고, 따라서 반드시 한 번 추가적인 메모리 참조가 필요하다. <strong>메모리의 참조는 비용이 비싸고 이 경우에 프로세스는 2배 이상 느려진다.</strong></p>
+<p>이를 통해 하드웨어와 소프트웨어의 신중한 설계 없이는 <code class="language-text">페이징 테이블</code>로 인해 <code class="language-text">시스템의 과다한 메모리 사용</code>이 나타난다. 따라서 <code class="language-text">페이징</code>이 메모리 가상화에 필요한 훌륭한 해결책이 되기 위해 두 분야에 대한 신중한 설계가 핵심적인 문제로 대두된다.</p>
 <h2 id="185-메모리-트레이스" style="position:relative;"><a href="#185-%EB%A9%94%EB%AA%A8%EB%A6%AC-%ED%8A%B8%EB%A0%88%EC%9D%B4%EC%8A%A4" aria-label="185 메모리 트레이스 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>18.5 메모리 트레이스</h2>
 <p>모든 메모리 접근을 살펴보면 다음과 같은 형태가 된다.</p>
 <div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token comment">// 가상 주소에서 VPN 추출</span>
@@ -361,7 +361,7 @@ PTE <span class="token operator">=</span> <span class="token function">AccessMem
 	PhysAddr <span class="token operator">=</span> <span class="token punctuation">(</span>PTE<span class="token punctuation">.</span>PFN <span class="token operator">&lt;&lt;</span> PFN_SHIFT<span class="token punctuation">)</span> <span class="token operator">|</span> offset
 	Register <span class="token operator">=</span> <span class="token function">AccessMemory</span><span class="token punctuation">(</span>PhysAddr<span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
 <blockquote>
-<p>여담 : 자료구조 — 페이지 테이블
+<p>여담 : 자료구조 — 페이지 테이블<br/>
 현대 운영체제 메모리 관리 서브 시스템에서 가장 중요한 자료 구조 중 하나는 <strong>페이지 테이블</strong> 이다. 페이지 테이블은 가상-물리주소 변환(Virtual-to-Physical address translation)을 저장하여 주소 공간의 각 페이지의 물리 메모리 위치를 알 수 있게 한다. 현대의 시스템은 운영체제에 의해 관리된다.</p>
 </blockquote>
 <p><span
