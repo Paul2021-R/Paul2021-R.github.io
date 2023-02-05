@@ -7,7 +7,7 @@ tags: Electron JavaScript HTML CSS React Frameworks
 categories: study
 ---
 
-![electron](./study_electron/electron_banner.png)
+![electron](electron_banner.png)
 
 # 프롤로그
 

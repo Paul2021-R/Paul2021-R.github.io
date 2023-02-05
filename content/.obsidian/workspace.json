@@ -1,0 +1,169 @@
+{
+  "main": {
+    "id": "a6b884d3837e35ed",
+    "type": "split",
+    "children": [
+      {
+        "id": "dbf2fda0e64f07d6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "88236662fcb291db",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/ostep/20230205_013.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7441f42ac3d5ff94",
+    "type": "split",
+    "children": [
+      {
+        "id": "47e3da37a76877d7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b3ba29157a2787ec",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "18182ae0e5e47f97",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "eedcb2919badfc42",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "93a95e6312b918e8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/ostep/20230115_012.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b6a6c17943c2b9af",
+    "type": "split",
+    "children": [
+      {
+        "id": "4bacca91a226b62a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "39fb62ec8d7bc7e6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "STUDY/ostep/20230205_013.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "58c3b6ac2d86db02",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "STUDY/ostep/20230205_013.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "61d12ac229d8a26c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "375082450b77412e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "STUDY/ostep/20230205_013.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:퀵 스위처 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:오늘의 데일리 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false
+    }
+  },
+  "active": "88236662fcb291db",
+  "lastOpenFiles": [
+    "STUDY/ostep/20230115_012.md",
+    "STUDY/ostep/src/202302051630.png",
+    "STUDY/ostep/20230205_013.md",
+    "STUDY/ostep/src/202302051600.png",
+    "STUDY/ostep/src/스크린샷 2023-02-05 오후 3.29.33.png"
+  ]
+}
