@@ -4,35 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "cba1831c4e540992",
+        "id": "a95e93bfc50a1c0a",
         "type": "tabs",
         "children": [
           {
-            "id": "1fe8a2e7ad65c9bb",
+            "id": "ec1ac506c548b17f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/ostep/20230218_017.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "add287848732ac26",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/ostep/20230218_018.md",
+                "file": "STUDY/ostep/20230219_019.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -94,8 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 253.5,
-    "collapsed": true
+    "width": 253.5
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -111,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/ostep/20230218_018.md",
+                "file": "STUDY/ostep/20230219_019.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/ostep/20230218_018.md",
+                "file": "STUDY/ostep/20230219_019.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/ostep/20230218_018.md"
+                "file": "STUDY/ostep/20230219_019.md"
               }
             }
           }
@@ -172,17 +158,17 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "add287848732ac26",
+  "active": "ec1ac506c548b17f",
   "lastOpenFiles": [
-    "STUDY/ostep/20230218_017.md",
     "STUDY/ostep/20230218_018.md",
+    "STUDY/ostep/20230219_019.md",
+    "STUDY/ostep/20230218_017.md",
     "STUDY/ostep/20230214_016.md",
-    "STUDY/ostep/20221217_004.md",
-    "STUDY/ostep/20230108_005.md",
-    "STUDY/ostep/20230115_006.md",
-    "STUDY/ostep/20230115_007.md",
-    "STUDY/ostep/20230115_008.md",
-    "STUDY/ostep/20230115_009.md",
+    "STUDY/ostep/20230212_015.md",
+    "STUDY/ostep/20230212_014.md",
+    "STUDY/ostep/20230205_013.md",
+    "STUDY/ostep/20230128_012.md",
+    "STUDY/ostep/20230128_011.md",
     "STUDY/ostep/20230128_010.md"
   ]
 }
