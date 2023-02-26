@@ -50,7 +50,7 @@
     })
   </script><title data-react-helmet="true">OSTEP - Part 2. Concurrency - 28</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="OSTEP - Part 2. Concurrency - 28"/><meta data-react-helmet="true" property="og:site_title" content="OSTEP - Part 2. Concurrency - 28"/><meta data-react-helmet="true" name="description" content="본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
 전문은 이 곳을 방문하시면 보실 수 있습니다. 28  락 이 장에서는 앞서 다룬 락(lock) 을 이용하여 이 문제를 직접적으로 다루고자 한다. 프로그래머들은 소스 코드의 임계 영역을 락으로 둘러서 그 임계 영역이 마치 하나의 원자 단위 명령어인 것처럼 실행되도록 한다. 28.1 락: 기본 개념 락은 일종의 변수다. 락의 변수는 락의 상태를 나타낸다. 사용가능 상태(available) : unlocked 나 free 상태 사용중(acquired) : 점유 중 상태 락의 자료구조에 락을 보유한 쓰레드에 대한 정보나, 락을 대기하는 쓰레드들에 대한 정보 저장도 가능하다. lock() 과 unlock() : lock  루틴을 호출함으로써 락 획득을 시도한다. 락을 획득하면, 임계영역으로 진입이 된다. 이렇게 락을 획득한 쓰레드를 라고 부른다. lock의 소유자가 임계영역에 존재하는 상태에서는 다른 쓰레드들은 임계영역을 진입할 …"/><meta data-react-helmet="true" property="og:description" content="본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
-전문은 이 곳을 방문하시면 보실 수 있습니다. 28  락 이 장에서는 앞서 다룬 락(lock) 을 이용하여 이 문제를 직접적으로 다루고자 한다. 프로그래머들은 소스 코드의 임계 영역을 락으로 둘러서 그 임계 영역이 마치 하나의 원자 단위 명령어인 것처럼 실행되도록 한다. 28.1 락: 기본 개념 락은 일종의 변수다. 락의 변수는 락의 상태를 나타낸다. 사용가능 상태(available) : unlocked 나 free 상태 사용중(acquired) : 점유 중 상태 락의 자료구조에 락을 보유한 쓰레드에 대한 정보나, 락을 대기하는 쓰레드들에 대한 정보 저장도 가능하다. lock() 과 unlock() : lock  루틴을 호출함으로써 락 획득을 시도한다. 락을 획득하면, 임계영역으로 진입이 된다. 이렇게 락을 획득한 쓰레드를 라고 부른다. lock의 소유자가 임계영역에 존재하는 상태에서는 다른 쓰레드들은 임계영역을 진입할 …"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-ecb2a6acabf90f1a63aa.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/ostep/20230219_019/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🖥</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">OSTEP - Part 2. Concurrency - 28</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->February 19, 2023</div></header><div class="post-content"><div class="markdown"><blockquote>
+전문은 이 곳을 방문하시면 보실 수 있습니다. 28  락 이 장에서는 앞서 다룬 락(lock) 을 이용하여 이 문제를 직접적으로 다루고자 한다. 프로그래머들은 소스 코드의 임계 영역을 락으로 둘러서 그 임계 영역이 마치 하나의 원자 단위 명령어인 것처럼 실행되도록 한다. 28.1 락: 기본 개념 락은 일종의 변수다. 락의 변수는 락의 상태를 나타낸다. 사용가능 상태(available) : unlocked 나 free 상태 사용중(acquired) : 점유 중 상태 락의 자료구조에 락을 보유한 쓰레드에 대한 정보나, 락을 대기하는 쓰레드들에 대한 정보 저장도 가능하다. lock() 과 unlock() : lock  루틴을 호출함으로써 락 획득을 시도한다. 락을 획득하면, 임계영역으로 진입이 된다. 이렇게 락을 획득한 쓰레드를 라고 부른다. lock의 소유자가 임계영역에 존재하는 상태에서는 다른 쓰레드들은 임계영역을 진입할 …"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-ecb2a6acabf90f1a63aa.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/ostep/20230219_019/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🖥</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">OSTEP - Part 2. Concurrency - 28</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->February 26, 2023</div></header><div class="post-content"><div class="markdown"><blockquote>
 <p>본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
 전문은 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">이 곳</a>을 방문하시면 보실 수 있습니다.</p>
 </blockquote>
@@ -79,16 +79,385 @@
 <li>락은 쓰레드에 대한 제어권을 일부 이양 받는 역할을 하는 것이며, 락을 통해 프로세스 내의 쓰레드를의 혼란스러운 실행에 순서성을 부여할 수 있다.</li>
 </ul>
 <h2 id="282-pthread-락" style="position:relative;"><a href="#282-pthread-%EB%9D%BD" aria-label="282 pthread 락 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.2 Pthread 락</h2>
+<ul>
+<li>쓰레드 간에 <strong>상호 배제(mutual exclusion)</strong> 기능을 제공하기 때문에 POSIX 라이브러리는 락을 mutex 라고 부른다.</li>
+<li>기본적으로 상호배제는 위에서 배운 락의 개념이 그대로 적용된다고 볼 수 있다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token class-name">pthread_mutex_t</span> lock <span class="token operator">=</span> PTHREAD_MUTEX_INITIALIZER<span class="token punctuation">;</span>
+<span class="token function">Pthread_mutex_lock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// wrapper 함수 실행, 실패시 exit</span>
+balance <span class="token operator">=</span> balance <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token function">Pthread_mutex_unlock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token punctuation">)</span><span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>Posix에서는 락과 언락 함수에 락의 변수명을 인자로 전달한다. 다른 변수를 보호하기 위해 다른 락을 사용할 수도 있기 때문이다.</li>
+<li>이 말은 하나의 락으로 모든 임계영역들을 보호하는 것(coarse-grained 락 사용 전략)이 아니라 각 데이터와 자료 구조를 보호하는데 있어 여러 락을 사용한다. 즉, 다수의 쓰레드가 서로 다른 락으로 임계지점들에 대해 보호된 코드를 실행할 수 있다. (미세 락(fine-grained) 사용 전략)</li>
+</ul>
 <h2 id="283-락의-구현" style="position:relative;"><a href="#283-%EB%9D%BD%EC%9D%98-%EA%B5%AC%ED%98%84" aria-label="283 락의 구현 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.3 락의 구현</h2>
+<ul>
+<li>그렇다면 락은 어떻게 구현할 수 있을까? 어떻게 락을 만들며, 어떤 하드웨어 지원이 필요하고, OS는 무슨 일을 여기서 맡아서 해야할까? 이런 문제들을 이번 장에 다루고자 한다.</li>
+</ul>
+<div style=“margin:10px;”>
+<h3 style="display:inline-box; background-color:#666; padding:10px 10px 5px 10px; border-radius:10px 10px 0 0; margin: 0px; color:white;">🚩 핵심 질문: 락은 어떻게 만들까</h3>
+<div style="display:box; background-color:#808080; margin: 0px; padding: 10px; color:black; border-radius: 0 0 10px 10px; color:white">효율적인 락은 어떻게 만들어야 하는가?<br>
+효율적인 락은 낮은 비용으로 상호 배제 기법을 제공하고 다음에 다룰 몇가지 속성들을 추가로 가져야 한다. 어떤 하드웨어 지원이 필요한가?<br> 어떤 OS 지원이 필요한가?
+</div>
+</div>
+<ul>
+<li>사용 가능한 락을 만들기 위해선, HW와 OS의 도움을 받아야 한다. 락과 같은 상호 배제를 위한 기법을 만드는 데 어떻게 활용하는지 학습할 것이다. 락과 같은 상호 배제를 위한 기법을 만드는데 어떻게 활용하는지 학습할 것이다.</li>
+</ul>
 <h2 id="284-락의-평가" style="position:relative;"><a href="#284-%EB%9D%BD%EC%9D%98-%ED%8F%89%EA%B0%80" aria-label="284 락의 평가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.4 락의 평가</h2>
+<p>락 설계 시 락의 정상 동작 여부 판단 기준을 정해야 한다. 평가기준으로는 다음과 같다.</p>
+<ul>
+<li>상호 배제의 제대로된 지원여부<br>
+가장 기본적인 역할이자, 핵심.</li>
+<li>공정성<br>
+쓰레드들이 락 획득에 대한 공정한 기회가 제공 되는가?, 락을 전혀 얻지 못해 <strong>굶주리는(starve)</strong> 경우가 발생하는가?</li>
+<li>성능<br>
+락 사용 시간적 오버헤드를 평가해야 한다. 경쟁이 전혀 없는 경우의 성능, 하나의 쓰레드가 실행중에 락을 획득하고 해제하는 과정에서 발생하는 부하는 얼마나 되는가를 파악해야 하며, 단일 CPU 상의 락을 획득하려고 경쟁할 때의 성능이 중요하다. 더불어 멀티 CPU 상황에서 락 경쟁 시의 성능도 중요하다.</li>
+</ul>
 <h2 id="285-인터럽트-제어" style="position:relative;"><a href="#285-%EC%9D%B8%ED%84%B0%EB%9F%BD%ED%8A%B8-%EC%A0%9C%EC%96%B4" aria-label="285 인터럽트 제어 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.5 인터럽트 제어</h2>
+<p>초기 단일 프로세스 시스템에서는 상호배제 지원을 위해 다음과 같은 방식을 사용한다.</p>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">DisableInterrupts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">EnableInterrupts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>단일 프로세서 시스템을 가정하고, 거기서 임계 영역 진입 전에 특별한 하드웨어 명령어를 사용하여 인터럽트를 비활성화 시킨다면, 임계 영역 내의 코드에서는 인터럽트가 발생할 수 없게 바뀐다.</li>
+<li>장점
+<ul>
+<li>단순성 : 이 방식은 인터럽트 자체를 발생하지 않도록 하므로써, 코드가 실행중 다른 쓰레드의 끼어들기 보장한다.</li>
+</ul>
+</li>
+<li>단점
+<ul>
+<li>이 요청을 하는 쓰레드가 인터럽트를 활성/ 비활성화하는 특권 연산을 실행할수 있어야 하는데, 이는 신뢰할만한 프로그램이라면 문제가 없다 . 하지만 다른 목적으로 사용된다면 심각한 보안 문제, 자원의 과소비를 일으킬 수 있다.</li>
+<li>본 방식은 멀티프로세서에서는 적용할 수 없다. 여러 CPU에서 여러 쓰레드가 실행중이라면 각 쓰레드가 동일하게 임계영역을 진입하려고 할 수 있다. 이때 특정 프로세서에서의 인터럽트 비활성화는 다른 프로세서에서 실행중인 프로그램에서는 전혀 영향을 주지 못한다.(서로의 작업을 인지하고 하는 것이 아니니까) 결과적으로 멀티 프로세서가 흔해진 지금은 이렇게 해서는 해결되지 못한다.</li>
+<li>장시간의 인터럽트 중지는 중요한 인터럽트의 시점을 놓치게 만들 수 있다. 이는 시스템의 심각한 문제를 무시하는 결과로 이어질 수 있다.</li>
+<li>결론적으로 해당 방식의 락 구현은 비효율적이며 최신 CPU를 느리게 만드는 경향이 발생한다.</li>
+</ul>
+</li>
+<li>위의 이유로 상호 배제를 위하여 인터럽트를 비활성화 방식의 락은 제한된 범위에서 사용되어야 한다.</li>
+</ul>
 <h2 id="286-실패한-시도-오직-loadstore-명령어만-사용하기" style="position:relative;"><a href="#286-%EC%8B%A4%ED%8C%A8%ED%95%9C-%EC%8B%9C%EB%8F%84-%EC%98%A4%EC%A7%81-loadstore-%EB%AA%85%EB%A0%B9%EC%96%B4%EB%A7%8C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0" aria-label="286 실패한 시도 오직 loadstore 명령어만 사용하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.6 실패한 시도: 오직 load/store 명령어만 사용하기</h2>
+<p>인터럽트 활성화/ 비활성화 방법을 사용하지 않고 락을 구현하려면 CPU 하드웨어와 락 구현을 위한 명령어를 사용해야한다. 그러나 이번 부분에서는 기본 아이디어들을 위하여 일반적인 load와 store 명령으로만 락을 구현해보고, 왜 안되는지를 보자.</p>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">__lock_t</span> <span class="token punctuation">{</span>
+	<span class="token keyword">int</span> flag<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token class-name">lock_t</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span> <span class="token operator">*</span>mutex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 0 -> 락이 사용 가능함. 1 -> 락 사용중 </span>
+	mytex<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span> <span class="token operator">*</span>mytex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>mutex<span class="token operator">-></span>flag <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">//flag 변수를 검사</span>
+		<span class="token punctuation">;</span> <span class="token comment">// spin-wait, busy-wait</span>
+	mutex<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// set </span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">unlock</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span> <span class="token operator">*</span>mutex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	mutex<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>해당 방식은 임계 영역에 진입하는 첫 쓰레드가 lock()을 호출하여 플래그 값이 1인지 검사(test)를 진행한다.</li>
+<li>그러나 1이 아니라면 계속 spin-wait을진행하며, 해당 조건을 통과하게 되면(flag = 0) 다시 플래그 값을 1로 설정하고, 해당 쓰레드가 이 락을 보유(hold)하고 있다고 표시한다.</li>
+<li>임계 영역에서 나오게 되면, 이때 쓰레드는 unlock()을 호출하고 플래그 값을 초기화하여 락을 보유하지 않게 된다.</li>
+<li>본 코드는 두 가지 문제점이 있다.
+<ul>
+<li>제대로 작동하는가?(correctness)
+<ul>
+<li>적시에 인터럽트가 발생하면 두 쓰레드 모두 플래그를 1로 설정하는 경우가 생길수 있다. 이러면 쓰레드가 둘다 임계영역에 접근할 수 있고, 상호 배제 제공이라는 기본 요구 조건을 보장 할 수 없게 된다.</li>
+</ul>
+</li>
+<li>성능
+<ul>
+<li>spin-wait은 일종의 busy wait으로 무한하게 CPU가 플래그 값을 검사하게 되고, 이런 경우 CPU에 불필요한 수준의 자원을 소모하게 만들며, 단일 프로세서의 경우 매우 손해가 크다. 락을 소유한 쓰레드 조차 컨텍스트 스위칭이 발생하기 전까지 계속 멈춰있는 것이나 마찬가지이기 때문이다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="287-test-and-set을-사용하여-작동하는-스핀-락-구현하기" style="position:relative;"><a href="#287-test-and-set%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC-%EC%9E%91%EB%8F%99%ED%95%98%EB%8A%94-%EC%8A%A4%ED%95%80-%EB%9D%BD-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0" aria-label="287 test and set을 사용하여 작동하는 스핀 락 구현하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.7 Test-And-Set을 사용하여 작동하는 스핀 락 구현하기</h2>
+<p>시스템 설계자들은 락 지원을 위한 하드웨어 설계를 1960년대부터 고민해왔다. 1960년대 버로우 B5000과 같은 초기 멀티프로세서 시스템에서도 하드웨어 지원 기능을 갖고 있다.</p>
+<p>하드웨어 기법 중 가장 기본은 <code class="language-text">test-and-set</code> 명령어, 또는 <code class="language-text">원자적 교체(atomic exchange)</code>로 알려진 명령어 방식이다.</p>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token keyword">int</span> <span class="token function">TestAndSet</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>old_ptr<span class="token punctuation">,</span> <span class="token keyword">int</span> new<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">int</span> old <span class="token operator">=</span> <span class="token operator">*</span>old_ptr<span class="token punctuation">;</span>  <span class="token comment">// old_ptr의 이전 값을 가져온다.</span>
+	<span class="token operator">*</span>old_ptr <span class="token operator">=</span> new<span class="token punctuation">;</span>      <span class="token comment">// old_ptr에 new 값을 저장한다. </span>
+	<span class="token keyword">return</span> old<span class="token punctuation">;</span>          <span class="token comment">// old 값을 반환한다.</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 이미 임계 영역에 접근한 쓰레드를 제외하면, 결코 값을 수정할 수 없는 구조를 확실하게 보장한다. </span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token comment">// 28.3 TestAndSet을 이용한 간단한 스핀 락</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">__lock_t</span> <span class="token punctuation">{</span>
+	<span class="token keyword">int</span> flag<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token class-name">lock_t</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span> <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 0 은 획득 가능 상태, 1은 락을 획득 했음 </span>
+	lock<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span> <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">TestAndSet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token operator">-></span>flag<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+		<span class="token punctuation">;</span> <span class="token comment">// 스핀(아무 일도 하지 않음.</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">unlock</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span> <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	lock<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>이 락이 동작이 제대로 되는 이유를 보면, 처음 쓰레드가 lock()을 호출하고 다른 어떤 쓰레드도 현재 락을 보유하고 있지 않다고 생각해보자.
+<ul>
+<li>flag 값은 0이며, TestAndSet 함수를 호출하면, 루틴은 flag의 이전 값인 0을 반환한다.</li>
+<li>while 문을 돌지 않으며, 임계영역에 정상적으로 진입하며, unlock 호출과 함께 락을 반환한다.</li>
+</ul>
+</li>
+<li>반대의 경우 락을 획득하지 못하면,
+<ul>
+<li>TestAndSet(flag, 1)루틴을 실행한다. 이번에는 이미 락은 보유된 상태이며, 값을 계속 집어넣지만, 1로 설정이 되어가기 때문에 0이 들어갈 경우가 없어지고, while 문을 반복하게 된다.</li>
+<li>결국 락을 보유한  쓰레드가 이 값을 0으로 바꿀 때까지 원자적 연산이 보장된다.</li>
+</ul>
+</li>
+<li>본 방식은 락의 값을 검사(test)하고 새로운 값으로 (set)하는 동작을 원자적 연산으로 만들어서, 오직 하나의 쓰레드 만 락을 획득할 수 있도록 만들었다.</li>
+<li>이러한 방식을 보면서 <strong>스핀락</strong>이란 무엇인가를 이해할 수 있으며, 가장 기초적인 형태의 락이 어떤 형태인지를 알 수 있다.</li>
+<li>단일 프로세서에서 이 방식을 제대로 사용하려면 <strong>선점형 스케줄러</strong> 를 사용한다. 이러한 방식은 필요에 따라 다른 쓰레드가 실행되도록 인터럽트를 발생 시킬 수 있다. 선점형이 아닌 경우 단일 CPU에서 while 문을 회전하며 대기하는 쓰레드가 CPU를 영원히 독점해 버리기 때문이다.</li>
+</ul>
 <h2 id="288-스핀-락-평가" style="position:relative;"><a href="#288-%EC%8A%A4%ED%95%80-%EB%9D%BD-%ED%8F%89%EA%B0%80" aria-label="288 스핀 락 평가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.8 스핀 락 평가</h2>
+<p>스핀 락의 효율에 대해 평가해보자.</p>
+<ul>
+<li>락에서 가장 중요한 측면은 <strong>상호 배제의 정확성</strong> 이다. 스핀 락은 임의의 시간에 단 하나의 쓰레드 만이 임계영역에 진입할 수 있도록 한다.</li>
+<li>다음 중요 항목 공정성을 보자. 대기 중인 쓰레드들에 있어서 스핀 락은 얼마나 공정하게 기회를 제공하여, 경쟁 속에서 공정성이 제거되어, 쓰레드가 굶주린 상태가 되는 측정할 수 있다. 그러나 애석하게도 스핀 락의 구조는 공정성을 보장해줄 수 없다. while 문의 회전 중인 쓰레드는 경쟁에 밀려서 계속 그 상태를 유지할 수도 있다.</li>
+<li>마지막으로 성능 면에서 보면, busy wait 형태로 단일 CPU의 경우에 스핀락이 가지는 성능 오버헤드가 상당히 클 수 있다. 왜냐면 쓰레드가 할당 받은 기간 동안 CPU 사이클을 낭비하는 구조이기 때문이다.
+<ul>
+<li>그에 비해 멀티 프로세스 형태, CPU 개수나, 쓰레드 개수를 여러개를 지원하는 경우, 스핀 락은 합리적일 수 있다. 임계 영역의 구간이 매우 짧고, 한쪽에서 진행하는 동안 대기하고 있던 다른 쓰레드가 락이 풀리는 순간 락을 획득하게 된다.</li>
+</ul>
+</li>
+</ul>
 <h2 id="289-compare-and-swap" style="position:relative;"><a href="#289-compare-and-swap" aria-label="289 compare and swap permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.9 Compare-And-Swap</h2>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token comment">// 28.4 Compare-And-Swap</span>
+
+<span class="token keyword">int</span> <span class="token function">CompareAndSwap</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>ptr<span class="token punctuation">,</span> <span class="token keyword">int</span> expected<span class="token punctuation">,</span> <span class="token keyword">int</span> new<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">int</span> original <span class="token operator">=</span> <span class="token operator">*</span>ptr<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> <span class="token punctuation">(</span>original <span class="token operator">==</span> expected<span class="token punctuation">)</span>
+		<span class="token operator">*</span>ptr <span class="token operator">=</span> new<span class="token punctuation">;</span>
+	<span class="token keyword">return</span> original<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>하드웨어적 기법으로 SPARC의 Compare-And-Swap 의 방법이 존재한다. x86에서는 Comapre-And-Exchange 라고 불리는데, 의사코드는 위와 같다.</p>
+<p>이 방식은 ptr이 가리키고 있는 주소 값이 expected한 변수와 일찌하는 지를 검사하는 방식이다. 만약 일지 하면 주소 값을 새로운 값으로 변경하며, 불일치하면 아무 작업도 하지 않는다. 이 코드는 Test-And-Set에서 사용한 예제와 유사하게 동작하는 것을 볼 수 있다.</p>
+<p>그럼에도, CompareAndSwap 명령어는 TestAndSet 명령어보단 강력하다. <strong>대기 없는 동기화(wait-free synchronization)</strong> 와 같은 주제를 다룰 때 이 루틴의 특성과 능력을 알게 될 것이다. 단순히 스핀 락과 같은 식으로 만들어 사용시에는 이 명령어는 스핀락과 다를바 없는 동작을 한다.</p>
 <h2 id="2810-load-linked-그리고-store-conditional" style="position:relative;"><a href="#2810-load-linked-%EA%B7%B8%EB%A6%AC%EA%B3%A0-store-conditional" aria-label="2810 load linked 그리고 store conditional permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.10 Load-Linked 그리고 Store-Conditional</h2>
+<p>어떤 플랫폼에서는 임계 영역 진입 제어 함수를 제작하기 위해 명령어 쌍을 제공한다. MIPS 구조에서는 <strong>load-linked</strong> 와 <strong>store-conditional</strong> 명령를 앞 뒤로 사용하여 락이나 기타 병행 연산을 위한 자료구조를 만들 수 있다. 이를 C 의사 코드를 나타낸 것은 다음과 같으며, Alpha, PowerPC, ARM에서도 유사한 명령어를 지원한다.</p>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token comment">//28.5 Load-Linked, Sotre-Conditional</span>
+<span class="token keyword">int</span> <span class="token function">LoadLinked</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>ptr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token operator">*</span>ptr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">StoreConditional</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>ptr<span class="token punctuation">,</span> <span class="token keyword">int</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>no update to <span class="token operator">*</span>ptr since the LoadLinked to this address<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token operator">*</span>ptr <span class="token operator">=</span> value<span class="token punctuation">;</span>
+			<span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>   <span class="token comment">// 성공</span>
+	<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>       <span class="token comment">// 갱신 실패</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>load-linked 는 일반 로드 명령어와 같이 메모리 값을 레지스터에 저장한다. 실제 차이는 store-conditional 명령어에서 나타난다. store-conditional 명령어는 동일한 주소에 다른 스토어가 없었던 경우에만 저장을 성공한다.</li>
+<li>저장이 성공 시 load-linked 가 탑재 했던 값을 갱신하고, 성공시 store-conditional 은 1을 반환하고 ptr이 가리키는 value 의 값을 갱신한다. 실패한 경우엔 ptr 이 가리키는 value 값이 갱신되지 않고, 0을 반환한다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token comment">// 28.6 Load-Linked 와 Store-COndtional 을 사용하여 락 만들기 </span>
+<span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span> <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>true<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">LoadLinked</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token operator">-></span>flag<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token punctuation">;</span> <span class="token comment">// 0이 될 때까지 스핀 </span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">StoreCondtional</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token operator">-></span>flag<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token punctuation">;</span> <span class="token comment">// 1로 변경하는 것이 성공하였다면 : 완료 </span>
+				         <span class="token comment">// 아니라면 : 처음부터 다시 시도 </span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>lock() 부분의 코드를 보자. 쓰레드가 while 문을 돌면서 flag = 0이 되기를 기다린다. 락 획득이 가능해 졌을 때, 락 획득을 시도하고, 성공하면 쓰레드는 flag 값을 1로 변경한다. 그리곤 임계 영역에 진입한다.</li>
+<li>하지만 실패할 수도 있다. 쓰레드가 lock() 을 호출하여 load-linked 를 실행하고, 락이 가능한 상태이므로 0을 반환한다. store-conditional 명령어를 시도하기 전에, 이쓰레드는 인터럽트에 걸렸고, 다른 쓰레드가 락 코드를 호출하고, load-linked 명령어는 실행하여 0을 반환, 이에 이번 쓰레드가 진행했다고 하자.</li>
+<li>이 시점에 두 쓰레드는 모두 load-linked 명령어를 실행해 각자 store-conditional 을 부르려는 상황이다.</li>
+<li>이 상황에서 오직 하나의 쓰레드만 flag 값을 1로 설정한 후, 락을 획득할 수 있고, 다시 복귀한 쓰레드는 store-conditional 에서 락 획득을 실패하고, flag그 값이 갱신된것을 파악, return 0을 하고 만다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token comment">// 좀더 짧게 축소한 코드 </span>
+<span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span> <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">LoadLinked</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token operator">-></span>flag<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">StoreConditional</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token operator">-></span>flag<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token punctuation">;</span> <span class="token comment">// 회전 </span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span></span></pre></div>
 <h2 id="2811-fetch-and-add" style="position:relative;"><a href="#2811-fetch-and-add" aria-label="2811 fetch and add permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.11 Fetch-And-Add</h2>
+<p>마지막 하드웨어 기반의 기법은 Fetch-And-Add 명령어 형태가 있다. C언어로 된 의사 코드는 다음과 같다.</p>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token keyword">int</span> <span class="token function">FetchAndAdd</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>ptr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">int</span> old <span class="token operator">=</span> <span class="token operator">*</span>ptr<span class="token punctuation">;</span>
+	<span class="token operator">*</span>ptr <span class="token operator">=</span> old <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">__lock_t</span> <span class="token punctuation">{</span>
+	<span class="token keyword">int</span> ticket<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> turn<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token class-name">lock_t</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">lock_init</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span> <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	lock<span class="token operator">-></span>ticket <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	lock<span class="token operator">-></span>turn <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span> <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">int</span> myturn <span class="token operator">=</span> <span class="token function">FetchAndAdd</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token operator">-></span>ticket<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>lock<span class="token operator">-></span>turn <span class="token operator">!=</span> myturn<span class="token punctuation">)</span> 
+		<span class="token punctuation">;</span> <span class="token comment">// 회전</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">unlock</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span> <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">FetchAndAdd</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token operator">-></span>turn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>본 방식은 <strong>티켓 락</strong> 이라는 재미있는 것을 만들었다.  하나의 쓰레드가 락 획득을 원하면, 티켓 변수에 원자적 동작인 fetch-and-add 명령어를 실행한다. 그리고 이는 자신의 턴(myturn)을 나타낸다.</li>
+<li>전역 공유 변수인 lock->turn 을 사용하여 어느 쓰레드 차례인지를 판단한다. 만약 한 쓰레드가 myurn == turn 상황이라는 조건에 부합한다면, 이는 그 쓰레드가 임계 영역에 진입할 차례라는 것을 보여준다. 언락 동작은 차례 변수의 값을 증가시켜, 대기중인 다음 쓰레드에게 임계 영역 진입 차례를 넘겨준다.</li>
+<li>이러한 방식은 이전까지와는 다른 점이 순서에 따라 진행되도록 되어 있다는 점이다. 기존의 해법은 기아와 관련하여 해결을 제대로 해주지 못하고, 기아 상태가 발생할 수 있다.</li>
+</ul>
 <h2 id="2812-요약-과도한-스핀" style="position:relative;"><a href="#2812-%EC%9A%94%EC%95%BD-%EA%B3%BC%EB%8F%84%ED%95%9C-%EC%8A%A4%ED%95%80" aria-label="2812 요약 과도한 스핀 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.12 요약: 과도한 스핀</h2>
+<p>지금까지 소개한 하드웨어 기반의 락은 간단하면서도, 제대로 동작했다. 하지만 이러한 해법은 효율적이라고 말할 수는 없다. 예를 들어 두개의 쓰레드가 존재하고, 쓰레드 0, 1은 경쟁관계이며, 쓰레드 0이 임계 영역 내에 있다고 보자. 그 순간 인터럽트가 발생해, 컨텍스트 스위칭이 발생하고 쓰레드 1은 락을 획득하려고 하나 이미 다른 쓰레드가 획득하고 있다. 그렇다면 인터럽트가 다음 발생하기 전까지 쓰레드 1은 계속 대기만을 하게 되고, 쓰레드 0도 작업은 그 다음 스위칭이 된 이후에야 된다. 즉 스핀락의 형태는 시간낭비가 태생적으로 발생할 수 밖에 없으며, 경쟁할 쓰레드가 늘어나면 늘어날 수록 낭비가 발생한다. 그렇기에 구현을 위해 우리는 다음 질문에 대한 고민이 필요해질 것이다.</p>
+<div style=“margin:10px;”>
+<h3 style="display:inline-box; background-color:#666; padding:10px 10px 5px 10px; border-radius:10px 10px 0 0; margin: 0px; color:white;">🚩 핵심 질문: 회전을 피하는 방법</h3>
+<div style="display:box; background-color:#808080; margin: 0px; padding: 10px; color:black; border-radius: 0 0 10px 10px; color:white">어떻게 하면 스핀에 CPU 시간을 낭비하지 않는 락을 만들 수 있을까?
+</div>
+</div>
+<h2 id="2813-간단한-접근법--조건-없는-양보" style="position:relative;"><a href="#2813-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%A0%91%EA%B7%BC%EB%B2%95--%EC%A1%B0%EA%B1%B4-%EC%97%86%EB%8A%94-%EC%96%91%EB%B3%B4" aria-label="2813 간단한 접근법  조건 없는 양보 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.13 간단한 접근법 : 조건 없는 양보!</h2>
+<p>지금까지 하드웨어 지원으로 간단하게 구현된 내용은 동작은 검증되고, 락 획득의 공정성 까지도 어떻게든 해결 했다. 하지만 밝혀진 것처럼 컨텍스트 스위칭에서는 무력한 모습이 발생했고, 스핀만 무한하게 발생하는 경우가 발견되었다. 이를 개선하기 위해 가장 먼저 해볼 시도는 락이 해제 되기를 기다리며 스핀해야 하는 경우 자신에게 할당된 CPU를 다른 쓰레드에게 양보하는 것이다.</p>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token comment">// 28.8 Test-And-Set 와 양보를 이용한 락 </span>
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">TestAndSet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>flag<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">yield</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// CPU 를 양보해버림</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>이는 가정이지만, 어쨌든 시스템 내부에 yield() 기법이 있다고 가정한다. 하나의 쓰레드는 실행중, 준비, 막힘의 프로세스 상태에서 양보(yield)라는 시스템콜은 호출 쓰레드 상태를 실행중(running)에서 준비(ready) 상태로 변환하고, 이를 통해 다른 쓰레드가 실행되도록 유도한다. 즉, 양보 동작은 OS의 CPU 작업 스케쥴링에서 자신을 빼는 것(deschedule)하는 것이다.</p>
+<p>이러한 방식은 단일 CPU 에서는 양보기법을 통해 락을 보유한 쓰레드가 임계영역을 넘어가기 좋도록 아주 적절하게 대응 되는 것을 볼 수 있다.</p>
+<p>하지만 멀티 쓰레드의 개수가 많아진다면 어떨까? 라운드 로빈스케줄러인 경우를 고려해보자. 만약 이런 경우 100개의 쓰레드가 있다면, 1개의 락을 보유한 쓰레드를 위해 99개가 양보를 하는 패턴으로 동작할 가능성이 발생하고 만다. 즉, 컨텍스트 스위칭(문맥교환)의 비용이 여전히 상당한 경우가 발생하는 것이다.</p>
+<p>이러한 점에서 굶주림 문제는 더더욱 개선이 되지 않았기에 어떤 쓰레드가 무한히 양보만 하는 경우가 발생할 수 있다.</p>
+<h2 id="2814-큐의-사용--스핀-대신-잠자기" style="position:relative;"><a href="#2814-%ED%81%90%EC%9D%98-%EC%82%AC%EC%9A%A9--%EC%8A%A4%ED%95%80-%EB%8C%80%EC%8B%A0-%EC%9E%A0%EC%9E%90%EA%B8%B0" aria-label="2814 큐의 사용  스핀 대신 잠자기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.14 큐의 사용 : 스핀 대신 잠자기</h2>
+<p>지금까지의 방법들에서 근본적인 문제는 너무나많은 부분을 운에 맡기고 있다는 점이다. 스케줄러가 유기적으로 실행될 쓰레드를 잘 고르면 좋지만, 그렇지 않은 경우 CPU를 다시 반납해야 할 수가 있고, 이런 경우 당연히 문제는 발생하기 마련이다.</p>
+<p>따라서 다수의 쓰레드가 락으로 대기할 때, 다음으로 락을 획득할 쓰레드를 명시해주는 방식으로 관리하는 방법의 필요성이 대두 된다. 이러한 예로써 Solaris의 방식을 설명해보고자 한다.</p>
+<p>쓰레드를 잠재우는 park() 함수와 쓰레드 ID 로 명시된 특정 쓰레드를 깨우는 unpack(threadID) 함수가 있다. 이 예제를 살펴 보자.</p>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token comment">//28.9 큐, Test-And-Set 양보와 깨우기를 사용한 락 </span>
+<span class="token keyword">typedef</span> strcut __lock_t <span class="token punctuation">{</span>
+	<span class="token keyword">int</span> flag<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> guard<span class="token punctuation">;</span>
+	<span class="token class-name">queue_t</span> <span class="token operator">*</span>q<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token class-name">lock_t</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">lock_init</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span><span class="token operator">*</span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	m<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	m<span class="token operator">-></span>guard <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token function">queue_init</span><span class="token punctuation">(</span>m<span class="token operator">-></span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span><span class="token operator">*</span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">TestAndSet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token operator">-></span>guard<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>m<span class="token operator">-></span>flag <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		m<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 락을 획득</span>
+		m<span class="token operator">-></span>guard <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+		<span class="token function">queue_add</span><span class="token punctuation">(</span>m<span class="token operator">-></span>q<span class="token punctuation">,</span> <span class="token function">gettid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		m<span class="token operator">-></span>guard <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token function">park</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">unlock</span><span class="token punctuation">(</span><span class="token class-name">lock_t</span> <span class="token operator">*</span>m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">TestAndSet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token operator">-></span>guard<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+		<span class="token punctuation">;</span> <span class="token comment">// 회전하면서 guard 락을 획득 </span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">queue_empty</span><span class="token punctuation">(</span>m<span class="token operator">-></span>q<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		m<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 락을 포기 -> 누구도 락을 원치 않음이라고 적혀 있으나, 한마디로 큐에 아무도 없는 경우 </span>
+	<span class="token keyword">else</span> 
+		<span class="token function">unpark</span><span class="token punctuation">(</span><span class="token function">queue_remove</span><span class="token punctuation">(</span>m<span class="token operator">-></span>q<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 락을 다음 쓰레드를 위해 전달,</span>
+	m<span class="token operator">-></span>guard <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>이 예제에서 흥미로운 점은 두가지 정도다.
+<ul>
+<li>앞 서 배운 Test-And-Set 의 개념을 락 대기자 전용 큐와 함께 사용하여 좀더 효율적인 락을 만든다.</li>
+<li>큐를 사용하여 다음으로 락을 획득할 대상을 제어하여 기아 현상을 피할 수 있도록 한다.</li>
+</ul>
+</li>
+<li>guard 변수를 이용한 스핀락으로 큐와 flag 변수를 보호한다. 이 방법이 스핀락을 활용하긴 하지만, 오버헤드 자체는 적다. 변수를 획득하거나 해제하는 과정에서 인터럽트도 될 수는 있다. lock()에서 쓰레드가 자신을 얻을 수 없을 때는 gettid() 함수를 통해 자신의 쓰레드 ID를 큐에 추가한다. 그리곤 양보하게 되는데, 이후 이 중간에 인터럽트가 발생한다면 park() 실행 후 guard 락이 해제되면 어떤일이 발생할까? -> 사실 이러면 쓰레드가 깨어났을 때, flag = 0 으로 리셋되지 않을 수 있다.</li>
+<li>그러나 이런 경우 쓰레드가 깨어나는 시점은 park()에서 리턴된 시점이다. 해당 시점에서 쓰레드는 guard 를 보유하지 않았고, 따라서 flag = 1로 설정 조차 할 수 없다. 락을 해제하는 쓰레드는 락을 다음 쓰레드에게 직접 넘겨주게 된다. 따라서 이 과정에서 flag = 0으로 리셋이 될 필요는 없는 것이다.</li>
+<li>이 코드는 그러나 경쟁조건이 발생할 수도 있다. 쓰레드가 park()를 호출하기 직전에 락을 소유한 쓰레드가 락을 해제하면, 락 소유 쓰레드는 락을 해제하면서 깨울 쓰레드 존재 여부를 검사한다. 하지만 이땐 대기중인, 큐에 등록된 쓰레드가 없으니, 쓰레드 락을 해제하고 계속 실행된다. park() 된 쓰레드는 block 된 상태 그대로이며 깨어나지 않는다. 왜냐면 unpark() 해줄 쓰레드가 없는 것이다.</li>
+<li>이러한 문제를 <strong>wakeup/ waiting race</strong> 라고 부른다.</li>
+<li>이에 대해 Solaris 는 setpark() 라는 함수를 추가하여 이를 해결하였다. park() 전에 미리 준비를 해둠으로써 park() 호출 시 다른 쓰레드가 unpark() 를 먼저 호출한다면 추후 park() 호출 시 이를 호출한 쓰레드를 블럭이 아닌 리턴으로 바꿔 멈추지 않도록 조치를 취하는 것이다.</li>
+</ul>
+<h2 id="2815-다른-운영체제-다른-지원" style="position:relative;"><a href="#2815-%EB%8B%A4%EB%A5%B8-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EB%8B%A4%EB%A5%B8-%EC%A7%80%EC%9B%90" aria-label="2815 다른 운영체제 다른 지원 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.15 다른 운영체제, 다른 지원</h2>
+<p>효율적인 락을 만들기 위한 노력들을 살펴보았다. 세부적으로 차이는 있겠지만 다른 OS들도 유사한 기능을 제공한다.</p>
+<ul>
+<li>
+<p>Linux 의 경우 <code class="language-text">futex</code>라는 것을 지원한다.  보다 커널에 밀착되어 있으며, 특정 물리 메모리 주소, 그리고 커널이 정의한 큐를 갖고 있다. 호출자는 futex 관련 함수를 호출하여 잠을 자거나 잠에서 깨어난다.</p>
+<ul>
+<li>
+<p><code class="language-text">futex_wait(address, expected)</code> 명령어는 주소와 expected 값이 동일한 경우 쓰레드를 블럭 시킨다. 같지 않으면 리턴한다.</p>
+</li>
+<li>
+<p><code class="language-text">futex_wake(address)</code> 는 큐에서 대기하던 쓰레드 하를 깨우게 된다.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>nptl 라이브러리의 <code class="language-text">lowlevellock.h</code>에서  발췌한 예시로 Linux 사용법은 그림 28.10(351페이지)는 흥미로운 방식으로 락을 지원한다.</p>
+<ul>
+<li>락의 사용중 여부, 대기자 수를 동시에 사용하며, 따라서 락이 음수이면 락이 사용중인 것으로 표현한다.</li>
+<li>이 코드는 경쟁이 없는 경우에 대해 최적화되어 있다.</li>
+</ul>
+</li>
+<li>
+<p>결론적으로 실제 사용되는 락의 동작 메커니즘의 이해는 직접 찾아보길 바란다.</p>
+</li>
+</ul>
+<div class="gatsby-highlight" data-language="c"><pre style="counter-reset: linenumber NaN" class="language-c line-numbers"><code class="language-c"><span class="token keyword">void</span> <span class="token function">mutex_lock</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> mutex<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">int</span> v<span class="token punctuation">;</span>
+		<span class="token comment">// 31번째 비트가 이미 초기화 되어 있다. mutex를 이미 획득했다. 바로 리턴한다.(빠르게 실행하는 방법)</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">atomic_bit_test_set</span><span class="token punctuation">(</span>mutex<span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span><span class="token punctuation">;</span>
+	<span class="token function">atomic_increment</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">atomic_bit_test_set</span><span class="token punctuation">(</span>mutex<span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token function">atomic_decrement</span> <span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">return</span> <span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token comment">// 이제 대기해야 함. 관찰중인 futex 값이 실제 음수인지 확인한다.(잠김 된 것인지)</span>
+		v <span class="token operator">=</span> <span class="token operator">*</span>mutex<span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>v <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+			<span class="token keyword">continue</span> <span class="token punctuation">;</span>
+		<span class="token function">futex_wait</span><span class="token punctuation">(</span>mutex<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">mutex_unlock</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> mutex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 필요 충분 조건으로 관심 대상의 다른 쓰레드가 없는 경우 한해서 0x80000000를 카운터에 더하면 0을 얻는다.</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">atomic_add_zero</span><span class="token punctuation">(</span>mutex<span class="token punctuation">,</span> <span class="token number">0x80000000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token punctuation">;</span>
+	<span class="token comment">// 이 mutex를 기다리는 다른 쓰레드가 있다면, 그 쓰레드를 깨운다.</span>
+	<span class="token function">futex_wake</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h2 id="2816-2단계-락" style="position:relative;"><a href="#2816-2%EB%8B%A8%EA%B3%84-%EB%9D%BD" aria-label="2816 2단계 락 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.16 2단계 락</h2>
+<p>고전적 락의 특성을 가진 락들은 19060년 대 초에 사용된 것이며, 요즘은 <strong>2단계 락(two-phase lock)</strong> 이라고 불린다. 이는 락이 곧 해제될 것 같으면, 회전 대기가 더 유용하다는 점에 착안하였다. 첫 스텝에선 회전 대기르 하며, 빠른 시간 내에 해제 될거라 생각한다. 하지만 락을 획득하지 못하면, 호출자는 차단 되고 락 해제 시 블럭된 쓰레드를 깨운다. 이러한 형태로 두개의 개념이 하이브리드 된 특성을 만드는 것이다.</p>
+<p>하지만 이는 우수한 만큼 하드웨어 환경, 쓰레드의 개서, 그리고 세부 작업량 등과 같은 많은 것들에 의해 결정된다.</p>
+<h2 id="2817-요약" style="position:relative;"><a href="#2817-%EC%9A%94%EC%95%BD" aria-label="2817 요약 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>28.17 요약</h2>
+<p>실제 구현된 락의 코드는 하드웨어 환경에 적합하게 최적화 되어 있어서, 이 부분은 직접 더 찾아봐야 한다.</p>
 <div class="table-of-contents">
 <ul>
 <li>
@@ -106,6 +475,11 @@
 <li><a href="#2810-load-linked-%EA%B7%B8%EB%A6%AC%EA%B3%A0-store-conditional">28.10 Load-Linked 그리고 Store-Conditional</a></li>
 <li><a href="#2811-fetch-and-add">28.11 Fetch-And-Add</a></li>
 <li><a href="#2812-%EC%9A%94%EC%95%BD-%EA%B3%BC%EB%8F%84%ED%95%9C-%EC%8A%A4%ED%95%80">28.12 요약: 과도한 스핀</a></li>
+<li><a href="#2813-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%A0%91%EA%B7%BC%EB%B2%95--%EC%A1%B0%EA%B1%B4-%EC%97%86%EB%8A%94-%EC%96%91%EB%B3%B4">28.13 간단한 접근법 : 조건 없는 양보!</a></li>
+<li><a href="#2814-%ED%81%90%EC%9D%98-%EC%82%AC%EC%9A%A9--%EC%8A%A4%ED%95%80-%EB%8C%80%EC%8B%A0-%EC%9E%A0%EC%9E%90%EA%B8%B0">28.14 큐의 사용 : 스핀 대신 잠자기</a></li>
+<li><a href="#2815-%EB%8B%A4%EB%A5%B8-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EB%8B%A4%EB%A5%B8-%EC%A7%80%EC%9B%90">28.15 다른 운영체제, 다른 지원</a></li>
+<li><a href="#2816-2%EB%8B%A8%EA%B3%84-%EB%9D%BD">28.16 2단계 락</a></li>
+<li><a href="#2817-%EC%9A%94%EC%95%BD">28.17 요약</a></li>
 </ul>
 </li>
 </ul>
