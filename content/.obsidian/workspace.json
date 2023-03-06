@@ -4,35 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "a95e93bfc50a1c0a",
+        "id": "9379284e6784ac06",
         "type": "tabs",
         "children": [
           {
-            "id": "ec1ac506c548b17f",
+            "id": "fdb886f2fa18176f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/ostep/20230219_019.md",
+                "file": "STUDY/ostep/20230219_020.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "c953371631b07037",
+            "id": "5fbca4088612099a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/ostep/20230218_018.md",
+                "file": "STUDY/ostep/20230219_020.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "f21844391cb486ec",
+            "id": "872ce910ae9b3c2c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -43,7 +43,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -121,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/ostep/20230219_019.md",
+                "file": "STUDY/ostep/20230219_020.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/ostep/20230219_019.md",
+                "file": "STUDY/ostep/20230219_020.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -161,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/ostep/20230219_019.md"
+                "file": "STUDY/ostep/20230219_020.md"
               }
             }
           }
@@ -182,13 +183,25 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "ec1ac506c548b17f",
+  "active": "5fbca4088612099a",
   "lastOpenFiles": [
-    "STUDY/ostep/20230218_018.md",
+    "STUDY/ostep/20230219_021.md",
+    "STUDY/ostep/20230219_024.md",
+    "STUDY/ostep/20230219_023.md",
+    "STUDY/ostep/20230219_022.md",
+    "STUDY/ostep/20230219_020.md",
     "STUDY/ostep/20230219_019.md",
+    "STUDY/ostep/20230218_018.md",
     "STUDY/ostep/20230218_017.md",
+    "STUDY/ostep/src/202303051942.png",
+    "STUDY/ostep/src/202303051923.png",
     "STUDY/ostep/20230214_016.md",
     "STUDY/ostep/20230212_015.md",
+    "STUDY/ostep/src/202303051443.png",
+    "STUDY/ostep/src/202303051442.png",
+    "STUDY/ostep/src/202303051425.png",
+    "무제 폴더",
+    "무제 파일.canvas",
     "STUDY/ostep/20230212_014.md",
     "STUDY/ostep/20230205_013.md",
     "STUDY/ostep/20230128_012.md",

@@ -2,5 +2,6 @@
   "newLinkFormat": "relative",
   "attachmentFolderPath": "./src",
   "useMarkdownLinks": true,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "promptDelete": false
 }
