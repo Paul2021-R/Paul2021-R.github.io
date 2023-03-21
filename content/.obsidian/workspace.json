@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/ostep/20230219_020.md",
+                "file": "STUDY/ostep/20230219_024.md",
                 "mode": "source",
                 "source": false
               }
@@ -67,8 +67,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -130,7 +129,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 253.5
+    "width": 253.5,
+    "collapsed": true
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -146,7 +146,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/ostep/20230219_023.md",
+                "file": "STUDY/ostep/20230219_024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -163,7 +163,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/ostep/20230219_023.md",
+                "file": "STUDY/ostep/20230219_024.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -186,7 +186,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/ostep/20230219_023.md"
+                "file": "STUDY/ostep/20230219_024.md"
               }
             }
           }
@@ -207,18 +207,21 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "5fbca4088612099a",
+  "active": "fdb886f2fa18176f",
   "lastOpenFiles": [
+    "STUDY/ostep/20230219_023.md",
     "STUDY/ostep/20230219_022.md",
-    "STUDY/ostep/20230219_020.md",
-    "STUDY/ostep/src/202303121619.png",
     "STUDY/ostep/20230219_021.md",
+    "STUDY/ostep/20230219_020.md",
+    "STUDY/ostep/20230219_019.md",
+    "STUDY/ostep/20230219_024.md",
+    "STUDY/ostep/src/202303150224.png",
+    "STUDY/ostep/src/202303150223.png",
+    "STUDY/ostep/src/202303130856.png",
+    "STUDY/ostep/src/202303121619.png",
     "STUDY/ostep/src/202303120220.png",
     "STUDY/ostep/src/202303120208.png",
     "STUDY/ostep/src/202303111849.png",
-    "STUDY/ostep/20230219_024.md",
-    "STUDY/ostep/20230219_023.md",
-    "STUDY/ostep/20230219_019.md",
     "STUDY/ostep/20230218_018.md",
     "STUDY/ostep/20230218_017.md",
     "STUDY/ostep/src/202303051942.png",
@@ -226,8 +229,6 @@
     "STUDY/ostep/20230214_016.md",
     "STUDY/ostep/20230212_015.md",
     "STUDY/ostep/src/202303051443.png",
-    "STUDY/ostep/src/202303051442.png",
-    "STUDY/ostep/src/202303051425.png",
     "무제 폴더",
     "무제 파일.canvas",
     "STUDY/ostep/20230212_014.md",
