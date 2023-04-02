@@ -11,8 +11,12 @@
             "id": "b835063f5456f57a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/ostep/20230402_027.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -93,6 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "STUDY/ostep/20230402_027.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,6 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "STUDY/ostep/20230402_027.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -130,7 +136,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "STUDY/ostep/20230402_027.md"
+              }
             }
           }
         ]
@@ -152,7 +160,34 @@
   },
   "active": "b835063f5456f57a",
   "lastOpenFiles": [
-    "STUDY/ostep/20230402_027.md",
+    "Untitled.md",
+    "algorithm/20220411_03.md",
+    "algorithm/20220411_02.md",
+    "algorithm/20220411_01.md",
+    "algorithm/20220411_00.md",
+    "20220314_42_so_long_minilibX/index_9.md",
+    "20220314_42_so_long_minilibX/index_8.md",
+    "20220314_42_so_long_minilibX/index_7.md",
+    "20220314_42_so_long_minilibX/index_6.md",
+    "20220314_42_so_long_minilibX/index_4.md",
+    "20220314_42_so_long_minilibX/index_5.md",
+    "20220314_42_so_long_minilibX/index_3.md",
+    "20220314_42_so_long_minilibX/index_2.md",
+    "20220314_42_so_long_minilibX/index_0.md",
+    "20220312_first_doc/index.md",
+    "42 seoul/push_swap/20220423_push_swap_4 copy.md",
+    "42 seoul/push_swap/20220420_push_swap_3.md",
+    "42 seoul/push_swap/20220416_push_swap_2.md",
+    "42 seoul/push_swap/20220413_push_swap.md",
+    "42 seoul/push_swap/001_pushswap.png",
+    "42 seoul/Minitalk/20220423_minitalk.md",
+    "STUDY/cpp/20220908_cpp_objective_language.md",
+    "STUDY/cpp/20220908_cpp_destructor.md",
+    "STUDY/cpp/20220908_cpp_constructor.md",
+    "STUDY/cpp/20220903_cpp_00_UpperCamelCase.md",
+    "STUDY/cpp/20220903_cpp_00_namspace.md",
+    "STUDY/cpp/20220902_cpp_00_stl.md",
+    "STUDY/study_electron/electron_banner.png",
     "STUDY/ostep/src/202304030356.png",
     "STUDY/ostep/src/202304030330.png",
     "STUDY/ostep/src/202304030308.png",
@@ -161,27 +196,7 @@
     "STUDY/ostep/src/202304030159.png",
     "STUDY/ostep/src/202304030150.png",
     "STUDY/ostep/src/202303280311.png",
-    "STUDY/ostep/src/202304030106.png",
-    "STUDY/ostep/src/202304022300.png",
-    "STUDY/ostep/20230128_012.md",
-    "STUDY/ostep/20230326_025.md",
-    "STUDY/ostep/20230326_026.md",
-    "Untitled.md",
-    "STUDY/ostep/20230219_024.md",
-    "STUDY/ostep/20230218_018.md",
-    "STUDY/ostep/20230219_020.md",
-    "STUDY/ostep/20230219_021.md",
-    "STUDY/ostep/20230219_023.md",
-    "STUDY/ostep/20230219_022.md",
-    "STUDY/ostep/20230219_019.md",
-    "STUDY/ostep/20230218_017.md",
-    "STUDY/ostep/20230214_016.md",
-    "STUDY/ostep/20230212_015.md",
     "무제 폴더",
-    "무제 파일.canvas",
-    "STUDY/ostep/20230212_014.md",
-    "STUDY/ostep/20230205_013.md",
-    "STUDY/ostep/20230128_011.md",
-    "STUDY/ostep/20230128_010.md"
+    "무제 파일.canvas"
   ]
 }
