@@ -105,6 +105,42 @@ module.exports = {
           demo: '',
         },
       },
+	  {
+        title: 'Minishell',
+        description:
+          '최초 팀 프로젝트입니다. Terminal 시스템을 이해하고 Bash 구조를 모사하여 간단한 쉘을 구현하였습니다.',
+        techStack: ['C', 'pipe', 'fork', 'execve', 'readline'],
+        thumbnailUrl: 'ftshell.png',
+        links: {
+          post: '',
+          github: 'https://github.com/Eingerjar/Minishell',
+          demo: '',
+        },
+      },
+	  {
+        title: 'cub3D',
+        description:
+          '2D 구조를 3D로 변환하여, DOOM과 같은 게임을 구현하는 프로젝트입니다. Raycasting을 이용하여 구현하였습니다.',
+        techStack: ['C', 'MinilibX', 'Raycasting', 'BMP'],
+        thumbnailUrl: 'cub3d.png',
+        links: {
+          post: '',
+          github: 'https://github.com/SeongMinJin/cub3D',
+          demo: '',
+        },
+      },	
+	  {
+        title: 'webserv',
+        description:
+          'HTTP/1.1 기반의 웹서버를 구현하는 프로젝트입니다. CGI, Static Web Page, GET, POST, DELETE 의 메서드를 구현하고, HTTP 통신이 가능한 멀티 포트 서버를 구축하였습니다.',
+        techStack: ['C++', 'Socket Programming', 'Kevent', 'CGI', 'HTTP'],
+        thumbnailUrl: 'webserv.png',
+        links: {
+          post: '',
+          github: 'https://github.com/webservVer2-0/webServ',
+          demo: '',
+        },
+      },		
     ],
   },
 };
