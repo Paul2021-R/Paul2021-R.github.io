@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/ostep/20230402_027.md",
+                "file": "ETC/202304100516.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/ostep/20230402_027.md",
+                "file": "ETC/202304100516.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/ostep/20230402_027.md",
+                "file": "ETC/202304100516.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,11 +137,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/ostep/20230402_027.md"
+                "file": "ETC/202304100516.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -160,6 +161,32 @@
   },
   "active": "b835063f5456f57a",
   "lastOpenFiles": [
+    "ETC/202304100314.md",
+    "ETC/202304100516.md",
+    "ETC/202304092350.md",
+    "ETC/202304042017.md",
+    "ETC/202304042006.md",
+    "ETC/20220320_auto_deploy.md",
+    "STUDY/ostep/20230402_027.md",
+    "00_daily note/src/202304092103.png.md",
+    "ETC/src/72A1A073-0182-4CCD-AAB5-D42C1E33E08C.jpeg",
+    "ETC/src/Pasted image 20230410023626.png",
+    "ETC/src/Pasted image 20230409230435.png",
+    "ETC/src/565C58FD-624F-4345-8F10-138556B02732.jpeg",
+    "ETC/src/BAA51218-475A-4130-B8C0-F43CC549B091.jpeg",
+    "ETC/src/202301221210.png",
+    "ETC/src/Pasted image 20230410020833.png",
+    "ETC/src/202304100222.png",
+    "ETC/src/Pasted image 20230410002642.png",
+    "ETC/src/19081A1D-AC84-4922-A182-BD19D25E1EE0.jpeg",
+    "ETC/src",
+    "STUDY/ostep/20230128_011.md",
+    "00_daily note/src/202304092100.png.md",
+    "00_daily note/src",
+    "00_daily note",
+    "STUDY/ostep/20230128_010.md",
+    "STUDY/ostep/20230205_013.md",
+    "STUDY/ostep/20230409_028.md",
     "Untitled.md",
     "algorithm/20220411_03.md",
     "algorithm/20220411_02.md",
@@ -173,29 +200,6 @@
     "20220314_42_so_long_minilibX/index_5.md",
     "20220314_42_so_long_minilibX/index_3.md",
     "20220314_42_so_long_minilibX/index_2.md",
-    "20220314_42_so_long_minilibX/index_0.md",
-    "20220312_first_doc/index.md",
-    "42 seoul/push_swap/20220423_push_swap_4 copy.md",
-    "42 seoul/push_swap/20220420_push_swap_3.md",
-    "42 seoul/push_swap/20220416_push_swap_2.md",
-    "42 seoul/push_swap/20220413_push_swap.md",
-    "42 seoul/push_swap/001_pushswap.png",
-    "42 seoul/Minitalk/20220423_minitalk.md",
-    "STUDY/cpp/20220908_cpp_objective_language.md",
-    "STUDY/cpp/20220908_cpp_destructor.md",
-    "STUDY/cpp/20220908_cpp_constructor.md",
-    "STUDY/cpp/20220903_cpp_00_UpperCamelCase.md",
-    "STUDY/cpp/20220903_cpp_00_namspace.md",
-    "STUDY/cpp/20220902_cpp_00_stl.md",
-    "STUDY/study_electron/electron_banner.png",
-    "STUDY/ostep/src/202304030356.png",
-    "STUDY/ostep/src/202304030330.png",
-    "STUDY/ostep/src/202304030308.png",
-    "STUDY/ostep/src/202304030236.png",
-    "STUDY/ostep/src/202304030207.png",
-    "STUDY/ostep/src/202304030159.png",
-    "STUDY/ostep/src/202304030150.png",
-    "STUDY/ostep/src/202303280311.png",
     "무제 폴더",
     "무제 파일.canvas"
   ]
