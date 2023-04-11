@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ETC/202304100516.md",
+                "file": "ETC/202304042017.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ETC/202304100516.md",
+                "file": "ETC/202304042017.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ETC/202304100516.md",
+                "file": "ETC/202304042017.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ETC/202304100516.md"
+                "file": "ETC/202304042017.md"
               }
             }
           }
@@ -159,25 +159,25 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b835063f5456f57a",
+  "active": "b3ba29157a2787ec",
   "lastOpenFiles": [
+    "ETC/202304092350.md",
     "ETC/202304100314.md",
     "ETC/202304100516.md",
-    "ETC/202304092350.md",
     "ETC/202304042017.md",
     "ETC/202304042006.md",
     "ETC/20220320_auto_deploy.md",
     "STUDY/ostep/20230402_027.md",
     "00_daily note/src/202304092103.png.md",
     "ETC/src/72A1A073-0182-4CCD-AAB5-D42C1E33E08C.jpeg",
-    "ETC/src/Pasted image 20230410023626.png",
-    "ETC/src/Pasted image 20230409230435.png",
+    "ETC/src/20230410023626.png",
+    "ETC/src/20230409230435.png",
     "ETC/src/565C58FD-624F-4345-8F10-138556B02732.jpeg",
     "ETC/src/BAA51218-475A-4130-B8C0-F43CC549B091.jpeg",
     "ETC/src/202301221210.png",
-    "ETC/src/Pasted image 20230410020833.png",
+    "ETC/src/20230410020833.png",
     "ETC/src/202304100222.png",
-    "ETC/src/Pasted image 20230410002642.png",
+    "ETC/src/20230410002642.png",
     "ETC/src/19081A1D-AC84-4922-A182-BD19D25E1EE0.jpeg",
     "ETC/src",
     "STUDY/ostep/20230128_011.md",
