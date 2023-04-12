@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "e92b99be595f8d41",
+        "id": "ec1927ca66f92445",
         "type": "tabs",
         "children": [
           {
-            "id": "b835063f5456f57a",
+            "id": "59467c1454d7ab8b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ETC/202304042017.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -97,7 +93,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ETC/202304042017.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +109,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ETC/202304042017.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,9 +130,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "ETC/202304042017.md"
-              }
+              "state": {}
             }
           }
         ],
@@ -159,12 +151,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b3ba29157a2787ec",
+  "active": "59467c1454d7ab8b",
   "lastOpenFiles": [
+    "algorithm/20220602_41.md",
+    "algorithm/20220411_00.md",
+    "algorithm/20230412.md",
+    "ETC/202304042017.md",
     "ETC/202304092350.md",
     "ETC/202304100314.md",
     "ETC/202304100516.md",
-    "ETC/202304042017.md",
     "ETC/202304042006.md",
     "ETC/20220320_auto_deploy.md",
     "STUDY/ostep/20230402_027.md",
@@ -191,15 +186,12 @@
     "algorithm/20220411_03.md",
     "algorithm/20220411_02.md",
     "algorithm/20220411_01.md",
-    "algorithm/20220411_00.md",
     "20220314_42_so_long_minilibX/index_9.md",
     "20220314_42_so_long_minilibX/index_8.md",
     "20220314_42_so_long_minilibX/index_7.md",
     "20220314_42_so_long_minilibX/index_6.md",
     "20220314_42_so_long_minilibX/index_4.md",
     "20220314_42_so_long_minilibX/index_5.md",
-    "20220314_42_so_long_minilibX/index_3.md",
-    "20220314_42_so_long_minilibX/index_2.md",
     "무제 폴더",
     "무제 파일.canvas"
   ]
