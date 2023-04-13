@@ -11,11 +11,40 @@
             "id": "59467c1454d7ab8b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "algorithm/20230412.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c7900d24d7fc15dd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "algorithm/20230413.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "126227ff3202c7cb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/JAVA/20230413.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -93,6 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "STUDY/JAVA/20230413.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,6 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "STUDY/JAVA/20230413.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -130,7 +161,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "STUDY/JAVA/20230413.md"
+              }
             }
           }
         ],
@@ -151,11 +184,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "59467c1454d7ab8b",
+  "active": "b3ba29157a2787ec",
   "lastOpenFiles": [
+    "STUDY/JAVA/src/2023041329.png",
+    "STUDY/JAVA/src/202304131626.png",
+    "STUDY/JAVA/src/202304131624.png",
+    "STUDY/JAVA/src/202304131621.png",
+    "STUDY/JAVA/src/202304131619.png",
+    "STUDY/JAVA/20230413.md",
+    "STUDY/JAVA/src/202304131617.png",
+    "STUDY/JAVA/src/202304131542.png",
+    "STUDY/JAVA/src",
+    "algorithm/20230413.md",
+    "STUDY/JAVA",
+    "algorithm/20230412.md",
     "algorithm/20220602_41.md",
     "algorithm/20220411_00.md",
-    "algorithm/20230412.md",
     "ETC/202304042017.md",
     "ETC/202304092350.md",
     "ETC/202304100314.md",
@@ -168,12 +212,6 @@
     "ETC/src/20230410023626.png",
     "ETC/src/20230409230435.png",
     "ETC/src/565C58FD-624F-4345-8F10-138556B02732.jpeg",
-    "ETC/src/BAA51218-475A-4130-B8C0-F43CC549B091.jpeg",
-    "ETC/src/202301221210.png",
-    "ETC/src/20230410020833.png",
-    "ETC/src/202304100222.png",
-    "ETC/src/20230410002642.png",
-    "ETC/src/19081A1D-AC84-4922-A182-BD19D25E1EE0.jpeg",
     "ETC/src",
     "STUDY/ostep/20230128_011.md",
     "00_daily note/src/202304092100.png.md",
@@ -189,9 +227,6 @@
     "20220314_42_so_long_minilibX/index_9.md",
     "20220314_42_so_long_minilibX/index_8.md",
     "20220314_42_so_long_minilibX/index_7.md",
-    "20220314_42_so_long_minilibX/index_6.md",
-    "20220314_42_so_long_minilibX/index_4.md",
-    "20220314_42_so_long_minilibX/index_5.md",
     "무제 폴더",
     "무제 파일.canvas"
   ]
