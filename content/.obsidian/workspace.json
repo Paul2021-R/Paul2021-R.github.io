@@ -4,35 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "ec1927ca66f92445",
+        "id": "60c3e041b71beb60",
         "type": "tabs",
         "children": [
           {
-            "id": "6c977718345536a8",
+            "id": "5488ffb1961d6e42",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "algorithm/20230413.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "948cf08a6de38772",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "algorithm/20230417.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +93,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "algorithm/20230417.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +109,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "algorithm/20230417.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,9 +130,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "algorithm/20230417.md"
-              }
+              "state": {}
             }
           }
         ],
@@ -171,16 +150,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "948cf08a6de38772",
+  "active": "5488ffb1961d6e42",
   "lastOpenFiles": [
     "algorithm/20230413.md",
+    "algorithm/20220602_41.md",
+    "algorithm/20230412.md",
     "algorithm/20230417.md",
     "STUDY/JAVA/20230417.md",
     "STUDY/JAVA/src/202304172039.png",
     "STUDY/JAVA/src/202304172015.png",
     "STUDY/JAVA/20230413.md",
     "ETC/202304100516.md",
-    "algorithm/20230412.md",
     "STUDY/JAVA/src/202304171950.png",
     "STUDY/JAVA/src/202304171940.png",
     "STUDY/JAVA/src/202304171935.png",
@@ -194,7 +174,6 @@
     "ETC/202304151926.md",
     "STUDY/JAVA/src",
     "STUDY/JAVA",
-    "algorithm/20220602_41.md",
     "algorithm/20220411_00.md",
     "ETC/202304042017.md",
     "ETC/202304092350.md",
