@@ -11,8 +11,12 @@
             "id": "5488ffb1961d6e42",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "algorithm/20230417.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -93,6 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "algorithm/20230417.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,6 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "algorithm/20230417.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -130,7 +136,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "algorithm/20230417.md"
+              }
             }
           }
         ],
@@ -153,9 +161,9 @@
   "active": "5488ffb1961d6e42",
   "lastOpenFiles": [
     "algorithm/20230413.md",
-    "algorithm/20220602_41.md",
     "algorithm/20230412.md",
     "algorithm/20230417.md",
+    "algorithm/20220602_41.md",
     "STUDY/JAVA/20230417.md",
     "STUDY/JAVA/src/202304172039.png",
     "STUDY/JAVA/src/202304172015.png",
