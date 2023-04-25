@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-category-template-js",
     "path": "/posts/All",
-    "result": {"pageContext":{"currentCategory":"All","categories":["All","study","til","etc","42_seoul","algorithm"],"edges":[]}},
+    "result": {"pageContext":{"currentCategory":"All","categories":["All","til","study","etc","42_seoul","algorithm"],"edges":[]}},
     "staticQueryHashes": ["1073350324","1956554647","2938748437"]}
