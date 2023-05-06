@@ -13,19 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/JAVA/20230424.md",
+                "file": "STUDY/ostep/20230219_021.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "e6ecb3926a9146a5",
+            "id": "ca200621690d3ccf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/JAVA/20230425.md",
+                "file": "STUDY/ostep/20230424_025.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 253.5
+    "width": 278.5
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/JAVA/20230425.md",
+                "file": "STUDY/ostep/20230424_025.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/JAVA/20230425.md",
+                "file": "STUDY/ostep/20230424_025.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/JAVA/20230425.md"
+                "file": "STUDY/ostep/20230424_025.md"
               }
             }
           }
@@ -159,7 +159,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 232.5
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -171,48 +172,48 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b3ba29157a2787ec",
+  "active": "ca200621690d3ccf",
   "lastOpenFiles": [
-    "STUDY/JAVA/src/202304252155.png",
-    "STUDY/JAVA/src/202304252152.png",
-    "STUDY/JAVA/20230424.md",
-    "STUDY/JAVA/20230425.md",
+    "STUDY/ostep/20230424_026.md",
+    "STUDY/ostep/20230424_025.md",
     "STUDY/ostep/20230409_028.md",
+    "STUDY/ostep/20230423_023.md",
+    "STUDY/ostep/20230424_027.md",
+    "STUDY/ostep/20230128_012.md",
+    "STUDY/ostep/20230218_017.md",
+    "STUDY/ostep/src/202304302101.png",
+    "STUDY/ostep/src/202304302059.png",
+    "STUDY/ostep/src/202304302058.png",
+    "STUDY/ostep/20230424_024.md",
+    "STUDY/ostep/20230219_021.md",
+    "STUDY/ostep/src/202304301639.png",
+    "STUDY/ostep/src/202304309163.png",
+    "STUDY/JAVA/20230424.md",
+    "STUDY/ostep/20230424_028.md",
+    "STUDY/ostep/20230424_029.md",
+    "STUDY/ostep/20230424_030.md",
+    "STUDY/ostep/20230424_031.md",
+    "STUDY/ostep/src/202304300251.png",
+    "STUDY/ostep/src/202304300241.png",
+    "STUDY/ostep/src/202304300237.png",
+    "STUDY/ostep/src/202304300236.png",
+    "STUDY/ostep/src/202304300158.png",
+    "STUDY/JAVA/20230425.md",
     "42 seoul/webserv/202304100314.md",
     "42 seoul/webserv/202304100516.md",
-    "42 seoul/webserv/src/202304092304.png",
-    "ETC/src/202301221210.png",
-    "42 seoul/webserv/src/202304100512.png",
-    "ETC/src/202304151937.png",
     "42 seoul/webserv/src",
     "42 seoul/webserv",
     "ETC/202304151926.md",
-    "ETC/src/20230409230435.png",
     "42 seoul/webserv/202304042017.md",
     "42 seoul/webserv/202304092350.md",
     "42 seoul/Minishell/202304042006.md",
     "42 seoul/Minishell/src",
-    "42 seoul/Minishell/src/202304092110.png",
     "42 seoul/Minishell",
     "STUDY/20220521_.md",
-    "STUDY/JAVA/src/202304241401.png",
-    "STUDY/JAVA/src/202304241359.png",
-    "STUDY/JAVA/src/202304241312.png",
     "STUDY/JAVA/20230419.md",
     "STUDY/JAVA/20230417.md",
-    "STUDY/ostep/20230424_024.md",
-    "STUDY/ostep/20230423_023.md",
-    "STUDY/ostep/20230424_025.md",
-    "STUDY/ostep/20230424_026.md",
-    "STUDY/ostep/20230424_030.md",
-    "STUDY/ostep/20230424_029.md",
-    "STUDY/ostep/20230424_028.md",
-    "STUDY/ostep/20230424_027.md",
     "algorithm/20230419.md",
     "algorithm/20230417.md",
-    "algorithm/20230413.md",
-    "algorithm/20230412.md",
-    "algorithm/20220602_41.md",
     "STUDY/JAVA/src",
     "STUDY/JAVA",
     "ETC/src",
