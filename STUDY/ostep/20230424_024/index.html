@@ -49,17 +49,414 @@
       }
     })
   </script><title data-react-helmet="true">OSTEP - Part 3. Persistency - 41</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="OSTEP - Part 3. Persistency - 41"/><meta data-react-helmet="true" property="og:site_title" content="OSTEP - Part 3. Persistency - 41"/><meta data-react-helmet="true" name="description" content="본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
-전문은 이 곳을 방문하시면 보실 수 있습니다. 41. 지역성과 Fast File System 41. 지역성과 Fast File System"/><meta data-react-helmet="true" property="og:description" content="본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
-전문은 이 곳을 방문하시면 보실 수 있습니다. 41. 지역성과 Fast File System 41. 지역성과 Fast File System"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-738d0eea53999bb4e338.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/ostep/20230424_024/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🖥</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">OSTEP - Part 3. Persistency - 41</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->April 24, 2023</div></header><div class="post-content"><div class="markdown"><blockquote>
+전문은 이 곳을 방문하시면 보실 수 있습니다. 41. 지역성과 Fast File System 처음 Unix가 등장시 가장 기본적인 파일 시스템이 생기고, 이를 “오래된 UNIX 파일 시스템” 이라고 부른다.  이 구형 파일 시스템의 장점은 단순하다는 것이며, 파일 시스템의 가장 기본적인 개념인 파일과 디렉터리만을 제공한다. 가장 기본적인 개념인 파일과 디랙토라먼울 제공하며, 그 이전시기 사용되던 레코드 기반의 저장장소시스템과 비고하면 큰 발전을 이룩했다. 특히 유닉스 파일 시스템이 가지게 된 계층 구조의 디렉터리는 이전 시스템들이 사용했던 단일 계층 디렉터리 구조와 굉장한 차이를 보였다. 41.1 문제 : 낮은 성능 혁신적인 시스템을 구축하였으나 성능이 매우 안좋았고, 최초 시스템에 대한 측정 결과는 파일 시스템이 디스크의 대역폭에 2%밖에 활용하지못하는 결과를 보였다. 이렇게 느린 이유는 디스크를 시스템이 RAM 을 대…"/><meta data-react-helmet="true" property="og:description" content="본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
+전문은 이 곳을 방문하시면 보실 수 있습니다. 41. 지역성과 Fast File System 처음 Unix가 등장시 가장 기본적인 파일 시스템이 생기고, 이를 “오래된 UNIX 파일 시스템” 이라고 부른다.  이 구형 파일 시스템의 장점은 단순하다는 것이며, 파일 시스템의 가장 기본적인 개념인 파일과 디렉터리만을 제공한다. 가장 기본적인 개념인 파일과 디랙토라먼울 제공하며, 그 이전시기 사용되던 레코드 기반의 저장장소시스템과 비고하면 큰 발전을 이룩했다. 특히 유닉스 파일 시스템이 가지게 된 계층 구조의 디렉터리는 이전 시스템들이 사용했던 단일 계층 디렉터리 구조와 굉장한 차이를 보였다. 41.1 문제 : 낮은 성능 혁신적인 시스템을 구축하였으나 성능이 매우 안좋았고, 최초 시스템에 대한 측정 결과는 파일 시스템이 디스크의 대역폭에 2%밖에 활용하지못하는 결과를 보였다. 이렇게 느린 이유는 디스크를 시스템이 RAM 을 대…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-738d0eea53999bb4e338.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-79d732fed22ff3d3f034.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-8627ac72906ecd219f86.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/ostep/20230424_024/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Coder</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🖥</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">OSTEP - Part 3. Persistency - 41</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->April 29, 2023</div></header><div class="post-content"><div class="markdown"><blockquote>
 <p>본 내용은 OSTEP 의 내용을 정리 및 요약한 내용입니다.
 전문은 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">이 곳</a>을 방문하시면 보실 수 있습니다.</p>
 </blockquote>
 <h1 id="41-지역성과-fast-file-system" style="position:relative;"><a href="#41-%EC%A7%80%EC%97%AD%EC%84%B1%EA%B3%BC-fast-file-system" aria-label="41 지역성과 fast file system permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>41. 지역성과 Fast File System</h1>
+<p>처음 Unix가 등장시 가장 기본적인 파일 시스템이 생기고, 이를 “오래된 UNIX 파일 시스템” 이라고 부른다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 16.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABYlAAAWJQFJUiTwAAAArUlEQVQI102PawqCUBBGXWf0r2gVEUWhFASRmqIEhb0fVkb78adL6F4fJ+6tqIEzMzAfB8YAKIqCNE3ptNvUazVajSZD02QeBgS+pwl9D3PQZ9Dr4rk2M8fGtac40wlh4COeT6XCUK0sS7IsI1osGFoW49GIzSricU9IrjG3i+LMdh2xjpbEpwPn45vjfqfvUsqfsKoqhBBa/K08z3XoH/WJQu0qL6X4TKkdSvgCFOXJRSoJeK0AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202304291745"
+        title="202304291745"
+        src="/static/3d27d85cc35df128d0996f20840c8146/37523/202304291745.png"
+        srcset="/static/3d27d85cc35df128d0996f20840c8146/e9ff0/202304291745.png 180w,
+/static/3d27d85cc35df128d0996f20840c8146/f21e7/202304291745.png 360w,
+/static/3d27d85cc35df128d0996f20840c8146/37523/202304291745.png 720w,
+/static/3d27d85cc35df128d0996f20840c8146/302a4/202304291745.png 1080w,
+/static/3d27d85cc35df128d0996f20840c8146/07a9c/202304291745.png 1440w,
+/static/3d27d85cc35df128d0996f20840c8146/536c7/202304291745.png 1480w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>이 구형 파일 시스템의 장점은 단순하다는 것이며, 파일 시스템의 가장 기본적인 개념인 파일과 디렉터리만을 제공한다. 가장 기본적인 개념인 파일과 디랙토라먼울 제공하며, 그 이전시기 사용되던 레코드 기반의 저장장소시스템과 비고하면 큰 발전을 이룩했다.</p>
+<p>특히 유닉스 파일 시스템이 가지게 된 계층 구조의 디렉터리는 이전 시스템들이 사용했던 단일 계층 디렉터리 구조와 굉장한 차이를 보였다.</p>
+<h2 id="411-문제--낮은-성능" style="position:relative;"><a href="#411-%EB%AC%B8%EC%A0%9C--%EB%82%AE%EC%9D%80-%EC%84%B1%EB%8A%A5" aria-label="411 문제  낮은 성능 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>41.1 문제 : 낮은 성능</h2>
+<ul>
+<li>혁신적인 시스템을 구축하였으나 성능이 매우 안좋았고, 최초 시스템에 대한 측정 결과는 파일 시스템이 디스크의 대역폭에 2%밖에 활용하지못하는 결과를 보였다.</li>
+<li>이렇게 느린 이유는 디스크를 시스템이 RAM 을 대하듯 사용했기 때문이다. 데이터를 저장하는 매체가 디스크라는 사실을 무시하고 그 특성을 무시했기 때문이다.</li>
+<li>더 나아가서 파일 시스템이 빈공간을 효율적으로 관리하지 않아서, 공간의 단편화(fragment)가 발생하게 된거고, 결과적으로 파일을 순차적으로 읽더라도 실제로는 디스크 전역을 오가며 블럭을 접근하기 때문에 성능이 심각하게 나빠진다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 61.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAACWklEQVQoz3WSWU9TURDH+7UUUBaxIQYtokQ/gQYkIEVF4wOJDZhIEAp8A8OLISaSkAgP8qJYNbGQstVauq90L72368/MwcuicW5Ocu45c2b+85sxQYNGo4HYYTLJ6uoH1tZWWV//yM62C5dri60tJw7HBhufP/H921eSyQTpdJpUKkWtVlNvJYZ8JtkYhw7HF1qaL9J6uYUeSzdzc9PMzk7xcvIFVusQA/33ePb0Ebs7LoIBP+79XarV6vmAnLF8Po/T+UOt7W0X4XCIUChIMBjA4/mJ272H1+vhqFhEK5UolY6o108VSrUmXddJpQ7JZjLkclnKuka9XkfXNTRNo1gsUCzkqVQq/M8MZCqgPBZnKVsyRqMRYrGoWqI4l8upRMJNEmcyaeV3rLCkkp9TKD/G4eamk7t3bnOr18LIyBC6ppHP5/D7Dhgff87Y2Cg22zjxeIxsNkM6naJc1k8ZNv40xTBhtbBgx25/zeLiGzStpEpOJOIsv3/H0tJbVlaWVTA5LxTyJw01TCkUXrKqf3GS7MKxUimfVHF8Xlb+ZV1XdxJY/ASDSdgE/D5CwQCRcIhwWLrqx3fgJRwKkojH1J3P51Wj4vG48R38UnexaIRIJKzYCldRbRJGshHAku14LqtqHIxyatWq2svMiTLDT1QLln9KNszt3sc6MszYk8cMPuin80o7l1qauNlzg+npV8zZZ5iYsNHVZaa56QJXOzuIx+MYjT1pijGce3u7DA8PMmp9yED/fczmTtrbWunr62VmZor5+VkmJ21YLN10dLRxvfuaGq+zAX8DzR9SdJHJB/cAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202304300047"
+        title="202304300047"
+        src="/static/81e59582e5bd72424a66d7bc87afddae/37523/202304300047.png"
+        srcset="/static/81e59582e5bd72424a66d7bc87afddae/e9ff0/202304300047.png 180w,
+/static/81e59582e5bd72424a66d7bc87afddae/f21e7/202304300047.png 360w,
+/static/81e59582e5bd72424a66d7bc87afddae/37523/202304300047.png 720w,
+/static/81e59582e5bd72424a66d7bc87afddae/302a4/202304300047.png 1080w,
+/static/81e59582e5bd72424a66d7bc87afddae/07a9c/202304300047.png 1440w,
+/static/81e59582e5bd72424a66d7bc87afddae/a8a6f/202304300047.png 1516w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>위와 같은 상황이 된다면 E 블럭들은 디스크 상에 흩어지게 되는데, 이때 E를 읽거나 쓸 경우 디스크의 순차 최대 성능을 얻을 수 없는 것이다.</li>
+<li>이러다보니 과거에는 조각모음 도구가 바로 이런 문제를 해결하기 위한 도구라고 보면 된다. 이를 통해 조각난 데이터들을 모으고 변경사항을 아이노드 등에 반영한다. 이를 통해 순차읽기 가능한 구조로 만들어줌으로써 성능 향상을 꾀할 수 있는 것이다.</li>
+<li>그러나 여전히 새로운 문제가 있는데, 입출력 단위가 너무 작아, 데이터를 전송하는 것자체의 근본적인 비효율성이 있다는 점이다.
+<ul>
+<li>작은 크기의 블럭은 <code class="language-text">내부 단편화</code>를 줄인다는 장점은 있다.</li>
+<li>하지만 디스크 헤드의 이동시간에 비해 데이터 블럭의 크기가 작기 때문에 입출력이 상대적으로 비효율적이 된다.</li>
+</ul>
+</li>
+</ul>
+<div style=“margin:10px;”>
+<h3 style="display:inline-box; background-color:#666; padding:10px 10px 5px 10px; border-radius:10px 10px 0 0; margin: 0px; color:white;">🚩 핵심 질문: 성능 개선을 위해 어떻게 디스크 상의 데이터를 구성해야 할까?</h3>
+<div style="display:box; background-color:#808080; margin: 0px; padding: 10px; color:black; border-radius: 0 0 10px 10px; color:white">성능을 위해 파일 시스템의 자료 구조를 어떻게 구성해야 할까? 이러한 자료구조에는 어떤 종류의 할당정책이 필요할까? 어떻게 파일 시스템에 디스크 특성을 반영할까?
+</div>
+</div>
+<h2 id="412-ffs-디스크에-대한-이해가-해답이다" style="position:relative;"><a href="#412-ffs-%EB%94%94%EC%8A%A4%ED%81%AC%EC%97%90-%EB%8C%80%ED%95%9C-%EC%9D%B4%ED%95%B4%EA%B0%80-%ED%95%B4%EB%8B%B5%EC%9D%B4%EB%8B%A4" aria-label="412 ffs 디스크에 대한 이해가 해답이다 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>41.2 FFS: 디스크에 대한 이해가 해답이다</h2>
+<ul>
+<li>Berkeley 의 한 그룹이 이에 대해 <code class="language-text">Fast File System, FFS</code> 라는 파일 시스템의 자료구조와 할당 정책을 디스크에 적합하게 설계했다.</li>
+<li>하드 디스크에 적합한 구조를 만듦으로써 성능을 개선했으며, 기존의 파일 시스템 인터페이스는 그대로 유지하면서 내부를 구현해냈다.</li>
+<li>결과적으로 거의 모든 현대의 파일 시스템은 기존의 인터페이스를 그대로 사용하면서 성능과 신뢰성, 또는 기타 다른 목적으로 내부 최적화를 진행하는 방식을 사용하게 되었다.</li>
+</ul>
+<h2 id="413-파일-시스템-구조--실린더-그룹" style="position:relative;"><a href="#413-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%A1%B0--%EC%8B%A4%EB%A6%B0%EB%8D%94-%EA%B7%B8%EB%A3%B9" aria-label="413 파일 시스템 구조  실린더 그룹 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>41.3 파일 시스템 구조 : 실린더 그룹</h2>
+<ul>
+<li>첫 번째 FFS 의 작업은 디스크에 적합한 파일 시스템으로의 수정을 진행한다. 이를 위해 여러개의 디스크를 <strong>실린더 그룹(cylinder group)</strong> 으로 나눈다.</li>
+<li><code class="language-text">실린더(cylinder)</code>란 서로 다른 표면에 동일한 길이의 반경을 갖는 트랙의 집합들이다. 이러한 이름의 유래는 아래의 이미지를 보면 충분히 납득이 갈 것이다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 66.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAACMklEQVQ4y21T2XLaQBDk/78hecBJTALBxs5lsMEEMEYcJk5hLiFc2ByS0M0pUdCpGSKMj6ma0u5qtrd7tjew2WxAQV9/bJoGZHmIZrMOqdOCbZlwHAvz+QzD4QCGoWMyceB5LvzY7t0g8DTBM2BFkVGv/0X+Ko3CdZbHyeQZspkk7mq3mE4nnBSr1Wq3N+CD0eJg8MhjKqzXaxCELKLREE5iEWSzKRwE3yHz+wL5qwwf6LkuK2m3G7xvvV4/Ac5mU1SrJZa3XC5wf9+FIOTwNfIJv36eMNPPh0FcnP9ApSzAsky4rgux3eC2vAJUlBES8e/8kxh2pQ6EQg6R8EfEz07xp1pE6DDINeXSNUxDhzZWuUZ8i6Gmqcxi0H+A49jodNqolAuIxcIsOZ1OIBQKIp0+R6UiwNA1LBcL1O9u0etJ/3u4B0gym40ayyD5othCuZTHUTSE46MvSKXi+HDwHunLBMrlAnRd41vu9x/eZkgT6guDLxaQJBHVmyK+nUaRy11CklqIHYeRy6ZwUykyQwIkImSh3S2Td17ahoKYUl8lqY1uV+QUxQZ6vS5MU8fL8PcF9r1HSUwp9wvJ0LP5DKuVt1v36yj3H8cOkIrpOxoNoKoyF3redm047O/a4df1H3swDA0rz9sReAY4mTp806qqwLIMjFWZTWuZBlRF5n9kFXk0gKaN+XlSS6iGevhKMsnS9THGY4XNrWsq+8y2LV6jS7Btczs2NGZMSuggcoUP+A85iciAJhzGSgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202304300143"
+        title="202304300143"
+        src="/static/07e7386c1c553026da72d431dd143891/37523/202304300143.png"
+        srcset="/static/07e7386c1c553026da72d431dd143891/e9ff0/202304300143.png 180w,
+/static/07e7386c1c553026da72d431dd143891/f21e7/202304300143.png 360w,
+/static/07e7386c1c553026da72d431dd143891/37523/202304300143.png 720w,
+/static/07e7386c1c553026da72d431dd143891/302a4/202304300143.png 1080w,
+/static/07e7386c1c553026da72d431dd143891/07a9c/202304300143.png 1440w,
+/static/07e7386c1c553026da72d431dd143891/c8ad9/202304300143.png 1564w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>현대의 드라이브는 사용 중인 실린더를 구분하기 위한 충분한 정보를 파일 시스템에게 제공하진 않는다. 그저 논리 주소 공간을 제공한다.</li>
+<li>그러므로 현대의 파일 시스템은 드라이브를 디스크의 연속적인 주소 공간의 조각을 나타내는 <strong>블럭 그룹(block group)</strong> 으로 구성한다.</li>
+<li>이러한 형태의 그룹을 뭐라 부르든 FFS는 같은 그룹에 두 개의 파일을 배치 함으로 FFS는 한 파일을 먼저 읽고 그 다음 파일을 읽는다 하더라도 디스크 전역에 걸친 긴 탐색을 발생하지 않도록 만든다.
+<ul>
+<li>이러한 파일과 디렉터리를 저장하기 위해 FFS는 그룹에 파일과 디렉터리를 넣을 방법, 정보 관리 방법이 필요했고, 이를 가능케 하기 위해 FFS는 파일 시스템에 필요시 되는 모든 구조를 각 그룹에 넣기로 한다.</li>
+<li>그래서 나온 실린더 그룹의 구조가 다음과 같다.</li>
+</ul>
+</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 14.444444444444443%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAwUlEQVQI1z2OUWqDQABE93T9yWUCjeAJ+pVCEBqsYFftMSr5KoRoaqtVd9UDNMkZXF9xAw4MzMzH8MQ0TRgzkucZcRyRph8UxRd5fqKuK7RqadsapRqa5tduc57dqpqq+uFy+WPW/CXGcbRls1kjhGC1esB1H3GcNb7vkSQhURSQvId43jPb7RMyCniTr0gZ8LLfcTx+2g9jDOJOaMiyE3EsORxSyvKbojijdcMwdIu7TtH32ua+VwyDtqS323Uh/AeEf8cSP2CNEQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202304300147"
+        title="202304300147"
+        src="/static/2b29128bb66897423045a98e1c1e43a1/37523/202304300147.png"
+        srcset="/static/2b29128bb66897423045a98e1c1e43a1/e9ff0/202304300147.png 180w,
+/static/2b29128bb66897423045a98e1c1e43a1/f21e7/202304300147.png 360w,
+/static/2b29128bb66897423045a98e1c1e43a1/37523/202304300147.png 720w,
+/static/2b29128bb66897423045a98e1c1e43a1/302a4/202304300147.png 1080w,
+/static/2b29128bb66897423045a98e1c1e43a1/07a9c/202304300147.png 1440w,
+/static/2b29128bb66897423045a98e1c1e43a1/61946/202304300147.png 1546w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>각 그룹에는 신뢰성을 위해 <code class="language-text">슈퍼 블럭(S)</code>를 배치한다.
+<ul>
+<li>슈퍼 블럭 : 파일 시스템을 마운트 할 때, 여러 사본을 유지하며 그 중 하나가 깨져도 최신 사본을 사용해 파일 시스템을 마운트하여 접근할 수 있다.</li>
+</ul>
+</li>
+<li>그리곤 아이노드와 데이터 블럭들의 할당 여부를 알 수 있어야 하므로, <strong>아이노드 비트맵(ib)</strong> 과 <strong>데이터 비트맵(db)</strong> 이 존재한다.
+<ul>
+<li>비트맵을 통해 파일 시스템의 빈 영역을 나타내는 방식으로 사용되어, 연속된 빈공간 찾기 및 빈 블럭 리스트를 만드는데 사용하면 단편화 문제도 개선할 수 있다.</li>
+</ul>
+</li>
+<li>위의 데이터들 뒤에 드디어 아이노드와 데이터 블럭은 아주 단순한 파일 시스템(VSFS)에서 봤던 것과 동일한 구조로 존재한다.</li>
+</ul>
+<h2 id="414-파일과-디렉터리-할당-정책" style="position:relative;"><a href="#414-%ED%8C%8C%EC%9D%BC%EA%B3%BC-%EB%94%94%EB%A0%89%ED%84%B0%EB%A6%AC-%ED%95%A0%EB%8B%B9-%EC%A0%95%EC%B1%85" aria-label="414 파일과 디렉터리 할당 정책 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>41.4 파일과 디렉터리 할당 정책</h2>
+<ul>
+<li>그룹 구조가 결정 되었으니, 이제 성능 개선을 위한 파일과 디렉터리, 메타 데이터까지 어떻게 배치해서 성능을 개선할지 고민해야 한다.</li>
+<li>FFS는 여기서 기본적으로 아주 간단한 원칙을 갖고 있다.</li>
+</ul>
+<blockquote>
+<p>“관련 있는 것 끼리 모아라”</p>
+</blockquote>
+<ul>
+<li>이 원칙을 위해선 우선 관련이라는 것을 어떻게 확인하는지? 에 대한 질문에 답이 되어야 할 것이다. 여기서 FFS는 할당된 디렉터리의 수가 적고, 사용할 수 있는 아이노드의 수가 많은 실린더 그룹을 선택해, 최대한 많은 파일들을 할당할 수 있기 위해 디렉터리 데이터와 아이노드를 해당 그룹에 저장했다.</li>
+<li>파일의 경우 2가지 방법이 있다.
+<ul>
+<li>아이노드와 파일 데이터 블럭을 같은 그룹에 할당하여, 가능하면 아이노드 탐색 + 데이터 탐색 의 시간을 최소화 시킨다.</li>
+<li>동일한 디렉터리 내의 모든 파일들은 해당 디렉터리가 존재하는 실린더 그룹에 함께 저장한다. 이는 Namespace 기반의 지역성을 살리는 것인데, 다음과 같은 파일이 존재한다고 하자.
+<ul>
+<li>/a/b, /a/c, /a/d, /k/f</li>
+<li>위의 파일 형태라고 한다면 가능하면 디렉터리가 동일한 것들은 <strong>상식적</strong>으로 함께 호출될 가능성이 높으니 같은 실린더 그룹에 놓는 것이다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>이러한 Namespace 기반 지역성으로 인해 FFS는 좋은 성능을 얻었고, 연관 파일 사이의 탐색 시간을 줄일 수 있었다.</li>
+</ul>
+<h2 id="415-파일-접근의-지역성-측정" style="position:relative;"><a href="#415-%ED%8C%8C%EC%9D%BC-%EC%A0%91%EA%B7%BC%EC%9D%98-%EC%A7%80%EC%97%AD%EC%84%B1-%EC%B8%A1%EC%A0%95" aria-label="415 파일 접근의 지역성 측정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>41.5 파일 접근의 지역성 측정</h2>
+<ul>
+<li>그렇다면 지금까지 namespace에 근거한 지역성이 실제로 존재하는지를 판단해보자.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 78.88888888888889%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABq0lEQVQ4y4WU6XKDMAyE8/7v1vZ3J2m4gyEYm9MECNuRGAhHaDXjmDH4s1Yr5wQMGAcwDOM8xfP55LWyLJFlGlIm6Pse23jtG3CiH1qYFrVWcB17tVEmCW63AK7roG1bPB4P5HnGB1RVNUNp7IBd10GpFEmSwLEtXH8u87vGGMRxBNe1cT5/Iwg8NI35G9g0DWeilILj2Pj6/GC593uMJLnzYXVd/S15glKQVMqiKIp5QxQJPohAxtQzZKrxC7rLcIAxBp7rcI0oKDOCDcMTWqcredu9KyAFZXaPY4aQTIrlTPVdApegGbisn+97LE+IEEWRo+87zrhr2xm8lbgDLjMc61QjCHyUZcFQqiXBSPJW7iFweTLJCnyfa0hwcpUO2kpdyz40Bdy4YXjjBqdngv4Xh20zvUilhGVZuFzO3OB09fI834wMWZatjHrbh/RBmkq+VmEYsvMECEXImUs5vpOpZBN3wH0d9kFuW9YVtn1F17UHkg8ypHl0djTF81z+cxBCQKUp4ni8gpEQ3FJb50/v3KqqklvG1DWiKGKDqJZaa36mEmildu4T8Bfk/eEXDeYK6wAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202304300158"
+        title="202304300158"
+        src="/static/908cbcba9f9d16fa6c6f65edab8f5747/37523/202304300158.png"
+        srcset="/static/908cbcba9f9d16fa6c6f65edab8f5747/e9ff0/202304300158.png 180w,
+/static/908cbcba9f9d16fa6c6f65edab8f5747/f21e7/202304300158.png 360w,
+/static/908cbcba9f9d16fa6c6f65edab8f5747/37523/202304300158.png 720w,
+/static/908cbcba9f9d16fa6c6f65edab8f5747/302a4/202304300158.png 1080w,
+/static/908cbcba9f9d16fa6c6f65edab8f5747/07a9c/202304300158.png 1440w,
+/static/908cbcba9f9d16fa6c6f65edab8f5747/d0ab7/202304300158.png 1532w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>위의 예시는 디렉터리 트리 내에서 파일 간의 접근이 얼마나 멀리 떨어져 있는지를 분석한 것이다.</li>
+<li>예를 들어 파일 f가 열렸고, 다시 그 파일이 열린거라면 두번의 open() 거리는 0이 된다. 즉, 특정 디렉터리에 다른 파일 두개를 열었다면, 파일 open 간의 거리는 같은 디렉터리지만 다른 파일이므로 1이 된다.</li>
+<li>그렇다면 이런 기준 아래에 SEER 트레이스 탐색 결과를 보자.
+<ul>
+<li>본 그래프는 전체 트레이스를 합하여 지역성을 나타낸 것이며, 경로 간 거리를 x축에, 이에 대한 누적 빈도를 y 축에 표현한 것이다.</li>
+<li>여기서 거의 40%의 경우가 같은 디렉터리 내에 파일 또는 닽은 파일을 열었다. (파일 거리 1)</li>
+<li>흥미로운 점은 25% 정도는 경로가 2만큼 떨어져 있는데, 이는 디렉터리 내에 추가로 만든 디렉터리로 묶어서 이 디렉터리에 존재하는 파일들을 번갈아 접근하는 경향이 있음을 나타낸다.
+<ul>
+<li>단, 이러한 지점에서 FFS는 이런 지역성을 고려하진 않아서 탐색시 기존과 유사한 탐색이 발생할 수 밖에 없는 것이다.</li>
+</ul>
+</li>
+<li>그 외에도 랜덤 트레이스에 대해서도 지역성이 어떻게 되는지를 살펴본 그래프가 보일 것이다. 여기서 임의의 경우는 이름 공간의 지역성이 낮은 것을 보이지만, 결국 모든 파일은 동일한 조상(루트) 를 갖기 때문에 다소 지역성은 보이며, 랜덤 트레이스는 비교 목적으로 유용하다는 정도의 의미를 얻을 수 있었다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="416-대용량-파일-예외-상황" style="position:relative;"><a href="#416-%EB%8C%80%EC%9A%A9%EB%9F%89-%ED%8C%8C%EC%9D%BC-%EC%98%88%EC%99%B8-%EC%83%81%ED%99%A9" aria-label="416 대용량 파일 예외 상황 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>41.6 대용량 파일 예외 상황</h2>
+<ul>
+<li>단, 파일 배치시 예외적 상황으로 크기가 매우 큰 대용량 파일인 경우를 들수 있다. 왜냐면 그 뒤의 관련있는 파일들은 이미 너무 커서 다른 블럭 그룹에 저장되도록 만들어 파일 접근 지역성이 떨어지기 대문이다.</li>
+<li>이에 FFS 는 대용량 파일은 다른 방식으로 처리하도록 했다.
+<ul>
+<li>첫 번째, 블럭 그룹에 일정한 수의 블럭을 할당한 후에 FFS는 파일의 ‘큰 청크’를 다른 블럭 그룹에 저장한다. 그리고 파일의 다음 청크는 마찬가지로 또 다른 블럭 그룹에 저장한다.</li>
+</ul>
+</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 17.22222222222222%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAfUlEQVQI11WPiQrEIAxE+//f2UIXTLreJ0wZxYUNJL4YMqNHSgliDFQFn/tGrRUxRlzXOU/OmSH4Pw4hoJSC1hp67xhjgHGw8NL7tZAzM+N5dJo4Z2HtFyIGzpItVASqOneWuJ/iP0E6bPcYlzNF2ZN3v7mUxfwNmTM+ioIv9eLoajvhERUAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202304300236"
+        title="202304300236"
+        src="/static/cb15e898c901a3e40f3660ed08894afc/37523/202304300236.png"
+        srcset="/static/cb15e898c901a3e40f3660ed08894afc/e9ff0/202304300236.png 180w,
+/static/cb15e898c901a3e40f3660ed08894afc/f21e7/202304300236.png 360w,
+/static/cb15e898c901a3e40f3660ed08894afc/37523/202304300236.png 720w,
+/static/cb15e898c901a3e40f3660ed08894afc/302a4/202304300236.png 1080w,
+/static/cb15e898c901a3e40f3660ed08894afc/07a9c/202304300236.png 1440w,
+/static/cb15e898c901a3e40f3660ed08894afc/1e5d2/202304300236.png 1630w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<blockquote>
+<p>FFS의 예외처리가 되지 않은 경우</p>
+</blockquote>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 30.555555555555554%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAw0lEQVQY041RywqEMBDz/79S0GoRV/uuijVLBiq6pz2EeWUyqTbbtmFdVzhnMU0TUooopWCeZ+SccV2X1P+A3OY8T1mk6LJ8EGPAvu8YhgFaa/Aga3JqzvismRPHcaABIMrOOYQQJHrv0HcdlFJ331oLYwy899Jj7qx9zSgqgnRJYoxRkFKCHkf5BNUJe5xVN5X3nN0OKWiNkWsheHl227ZQqkfO6RbgnMsE83qgzvh8ESzlfJGfVxm5xJ9F/DqsOUHBL5s40NsfRTKZAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202304300237"
+        title="202304300237"
+        src="/static/21728ee772c72ef62db59b9a0a0c07d6/37523/202304300237.png"
+        srcset="/static/21728ee772c72ef62db59b9a0a0c07d6/e9ff0/202304300237.png 180w,
+/static/21728ee772c72ef62db59b9a0a0c07d6/f21e7/202304300237.png 360w,
+/static/21728ee772c72ef62db59b9a0a0c07d6/37523/202304300237.png 720w,
+/static/21728ee772c72ef62db59b9a0a0c07d6/302a4/202304300237.png 1080w,
+/static/21728ee772c72ef62db59b9a0a0c07d6/07a9c/202304300237.png 1440w,
+/static/21728ee772c72ef62db59b9a0a0c07d6/7be33/202304300237.png 1558w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<blockquote>
+<p>대용량 파일로 예외처리가 들어간 파일 구조</p>
+</blockquote>
+<ul>
+<li>
+<p>이러한 구조로 데이터를 예외처리 하는 경우 기본적으로 여러 그룹에 흩어서 저장하기 때문에 그룹들의 사용률을 너무 높지 않게 유지할 수 있다.</p>
+</li>
+<li>
+<p>하지만 당연히 성능이 절대적으로 좋지는 않을 것을 볼 수 있다.</p>
+</li>
+<li>
+<p>그러나 청크 크기가 충분히 크다면, 파일 시스템은 디스크에서 데이터를 전송하는데 대부분의 시간을 사용하고, 상대적으로 적은 시간을 블럭 청크들을 탐색하는데 사용하게 된다. 즉, 오버헤드 비용 당 더 많은 작업을 처리하면서 오버헤드를 줄일 수 있고 이를 <strong>점진적 경감(amortization)</strong> 이라고 부른다.</p>
+</li>
+<li>
+<p>예를 들어서 디스크 평균 위치 잡기 시간(탐색, 회전 시간)이 10 msec 이고, 디스크 데이터를 40MB/s 속도로 전송할 수 있다고 생각해보자. 전체 시간 중 탐색에 시간을 반을 사용하고 , 나머지를 데이터 전송에 쓰는 것이 우리의 목표라면, 10msec를 쓰고 데이터를 전송하는데 10msec 를 사용해야한다. 그렇다면 이렇게 하기 위해 청크는 얼마나 큰 사이즈면 될 것인가?</p>
+</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 8.88888888888889%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAb0lEQVQI1zWNzQrEIBCD+/5Pt9vL9lahP7KjYB0RR1zM4oAf5JKEZOm9YyAiuO8L3nvVeRwIIaD9Gp4nYPRqrRApaK2hlIKcs2oy8mUOjpLZd6SUdGh9v8DMMMZg2z6w1oI5guirvnMORKTnE44Rf7JPmTiDRE7AAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202304300241"
+        title="202304300241"
+        src="/static/a9af439c9f8097d85b9a9df1c45f2a14/37523/202304300241.png"
+        srcset="/static/a9af439c9f8097d85b9a9df1c45f2a14/e9ff0/202304300241.png 180w,
+/static/a9af439c9f8097d85b9a9df1c45f2a14/f21e7/202304300241.png 360w,
+/static/a9af439c9f8097d85b9a9df1c45f2a14/37523/202304300241.png 720w,
+/static/a9af439c9f8097d85b9a9df1c45f2a14/302a4/202304300241.png 1080w,
+/static/a9af439c9f8097d85b9a9df1c45f2a14/07a9c/202304300241.png 1440w,
+/static/a9af439c9f8097d85b9a9df1c45f2a14/d0ab7/202304300241.png 1532w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>
+<p>보이는 바 처럼 40MB 를 전달한다고 할 때, 반은 전송, 반은 탐색을 한다면 청크가 매 탐색마다 409.6KB 데이터 크기가 된다면 위의구조를 갖추고 느려보이지만, 결국 상당한 속도로 데이터 전송이 가능하다는 소리가 된다.</p>
+</li>
+<li>
+<p>단, FFS는 큰 파일을 그룹들 간에 분산하느데 있어 이런 계산을 사용하진 않는다. 대신 아이노드 자체의 구조를 기반으로 한 간단한 방법을 썼다.</p>
+<ul>
+<li>첫 번째 12개의 직접블럭은 아이노드와 같은 그룹에 배치하며, 각 간접 블럭과 그걸 가리키는 모든 블럭은 다른 그룹에 배치한다.</li>
+<li>블럭 크기가 4KB이고 32비트 디스크 주소를 사용한다고 하면, 이 전략은 직접 포인터가 가리키는 파일의 첫 48KB 만 예외로 할당되고 파일의 매 1024개의 블럭(4MB)마다 다른 그룹에 배치 시킨다. 어쨌든 위에서 언급한  탐색과 전달의 비용을 점진적 경감 구조를 구현하게 되는 것이다.</li>
+</ul>
+</li>
+<li>
+<p>디스크 드라이브의 전송 속도는 빠르게 증가하는 중이다. 제조사가 같은 면적에 더 많은 비트를 저장하고 있다. 기계적 성능의 향상은 크지 않은 편이다.</p>
+</li>
+<li>
+<p>하지만 또 한 편으로 점차 SSD와 같은 도구들의 사용이 커지고 있고, 새로운 시스템 아키텍쳐의 제안으로 점차 저장 장치에 대한 부분도 변화를 겪고 있다.</p>
+</li>
+</ul>
+<h2 id="417-ffs에-대한-기타사항" style="position:relative;"><a href="#417-ffs%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B8%B0%ED%83%80%EC%82%AC%ED%95%AD" aria-label="417 ffs에 대한 기타사항 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>41.7 FFS에 대한 기타사항</h2>
+<ul>
+<li>FFS는 혁신적인 기법 개발하여 적용하고, 특히 작은 파일의 효율적 저장을 위해 노력했다. 그래서 당시 2KB 크기의 파일들이 많다 보니 4KB 블럭을 사용하는 것은 내부 단편화를 야기했다. 이에, <code class="language-text">서브 블럭(sub-block)</code>을 도입하여서 블럭 낭비를 최소화 하려고 노력했다.</li>
+<li>파일이 커져서 4KB가 되면 512byte 크기의 블럭을 할당하고 옮겼으며, 서브 블럭들의 합이 4KB이 되면FFS는 해당 시점에 4KB 블럭을 찾아 서브 블럭을 다시 재 사용 가능하도록 만드는 구조를 짰다.</li>
+<li>물론 이러한 행동은 추가 동작으로 비효율적 오버헤드가 발생할 것이다. 그렇기에 FFS는이를 개선하고자 성능에 최적화된 디스크 배치의 아이디어를 제시한다.</li>
+<li>예를들어 아래와 같은 이미지를 생각해보자.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 32.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAAA6UlEQVQoz32Q6U7EMAyE+/5vuPyBShvokTvpJm3azMqGrAoLOBo5h/xl7K7WClqgXCsoKC/Lghgj1nVFC9qHEJBSetzVr7qmDr/AgveQ8wxjNMZhwLZtyDlBzhO0UlBSIsbwDcgcVHTNYQOWssE5y4V9/4bgHbyz/Amp719htIZWEqWUJ5ddI5+BSkl452CMQQieZa2BNQZKKT6T+zPw4fAMbFCaExU7hmrs+85ta614fs5aLDE+wf4E0vC9d5+urEXOmUUtT9PIztPthuM4/nfYHlt7BHsXgiFCCIzDB14uF4jrlUWufwLvlIYhb26aHbsAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="202304300251"
+        title="202304300251"
+        src="/static/30977866501337fb74dadd2aa086f195/37523/202304300251.png"
+        srcset="/static/30977866501337fb74dadd2aa086f195/e9ff0/202304300251.png 180w,
+/static/30977866501337fb74dadd2aa086f195/f21e7/202304300251.png 360w,
+/static/30977866501337fb74dadd2aa086f195/37523/202304300251.png 720w,
+/static/30977866501337fb74dadd2aa086f195/302a4/202304300251.png 1080w,
+/static/30977866501337fb74dadd2aa086f195/07a9c/202304300251.png 1440w,
+/static/30977866501337fb74dadd2aa086f195/9f9a4/202304300251.png 1560w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>예를 들어 왼편은 연속적으로 되어 있다. 이떄 0을 찾아 전송하고, 다음 1 블럭에 대한 읽기 요청을 한다면? <strong>이미 늦었다</strong> 디스크는 한바퀴를 돌고 이에 접근이 가능해질 것이다.</li>
+<li>하지만 FFS는 아예 블럭 형태르 하나 건너 하나 입력하는 식으로 해서, 헤드 아래로 순차 읽기 등에서 데이터를 읽기 전에 디스크가 돌아가지 않도록 충분한 시간을 벌어주었다. FFS는 이를 <code class="language-text">매개화(parameterization)</code> 이라고 불렀다.</li>
+<li>물론, 이러한 구조는 반대로 말하면, 다 읽는데 1바퀴가 아니라 2바퀴가 필요하단 소리가 된다. 그래서, 현대의 디스크는 최대 대역폭을 얻어낼 목적으로 내부적으로 한 트랙을 모두 내부 디스크 캐시에 버퍼링한다(트랙버퍼). 그렇게 하여 트랙의 연달아 들어온 요청은 캐시에서 원하는 값을 리턴해준다.(하드디스크 상에 메모리가 있는 것이 바로 그런 이유 때문이다.)</li>
+<li>추가적으로 FFS는 <strong>긴 파일 이름</strong>을 지원하는 최초의 시스템이 되었으며, <strong>심볼릭 링크</strong>도 최초로 도입했다. 하드링크의 위험성에 만들어진 것이며, 가명(alias) 구조를 통해 훨씬 융통성있고 안전한 구조를 도입한 최초의 파일 시스템이었던 것이다.</li>
+</ul>
 <div class="table-of-contents">
 <ul>
-<li><a href="#41-%EC%A7%80%EC%97%AD%EC%84%B1%EA%B3%BC-fast-file-system">41. 지역성과 Fast File System</a></li>
+<li>
+<p><a href="#41-%EC%A7%80%EC%97%AD%EC%84%B1%EA%B3%BC-fast-file-system">41. 지역성과 Fast File System</a></p>
+<ul>
+<li><a href="#411-%EB%AC%B8%EC%A0%9C--%EB%82%AE%EC%9D%80-%EC%84%B1%EB%8A%A5">41.1 문제 : 낮은 성능</a></li>
+<li><a href="#412-ffs-%EB%94%94%EC%8A%A4%ED%81%AC%EC%97%90-%EB%8C%80%ED%95%9C-%EC%9D%B4%ED%95%B4%EA%B0%80-%ED%95%B4%EB%8B%B5%EC%9D%B4%EB%8B%A4">41.2 FFS: 디스크에 대한 이해가 해답이다</a></li>
+<li><a href="#413-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%A1%B0--%EC%8B%A4%EB%A6%B0%EB%8D%94-%EA%B7%B8%EB%A3%B9">41.3 파일 시스템 구조 : 실린더 그룹</a></li>
+<li><a href="#414-%ED%8C%8C%EC%9D%BC%EA%B3%BC-%EB%94%94%EB%A0%89%ED%84%B0%EB%A6%AC-%ED%95%A0%EB%8B%B9-%EC%A0%95%EC%B1%85">41.4 파일과 디렉터리 할당 정책</a></li>
+<li><a href="#415-%ED%8C%8C%EC%9D%BC-%EC%A0%91%EA%B7%BC%EC%9D%98-%EC%A7%80%EC%97%AD%EC%84%B1-%EC%B8%A1%EC%A0%95">41.5 파일 접근의 지역성 측정</a></li>
+<li><a href="#416-%EB%8C%80%EC%9A%A9%EB%9F%89-%ED%8C%8C%EC%9D%BC-%EC%98%88%EC%99%B8-%EC%83%81%ED%99%A9">41.6 대용량 파일 예외 상황</a></li>
+<li><a href="#417-ffs%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B8%B0%ED%83%80%EC%82%AC%ED%95%AD">41.7 FFS에 대한 기타사항</a></li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/ostep/20230423_023/"><div class="direction">이전 글</div><div class="title">OSTEP - Part 3. Persistency - 40</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/STUDY/ostep/20230424_025/"><div class="direction">다음 글</div><div class="title">OSTEP - Part 3. Persistency - 42</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2023<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/JAVA/20230425/"><div class="direction">이전 글</div><div class="title">TIL_of_Spring_230425</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/STUDY/ostep/20230424_026/"><div class="direction">다음 글</div><div class="title">OSTEP - Part 3. Persistency - 43</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2023<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
