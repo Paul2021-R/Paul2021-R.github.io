@@ -8,31 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f4aac5e97d9590ff",
+            "id": "26e8b8a7c1e3033e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/ostep/20230219_021.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ca200621690d3ccf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/ostep/20230424_025.md",
+                "file": "STUDY/JAVA/20230507.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -89,12 +76,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "ab280537dfa82a03",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 278.5
+    "width": 278.5,
+    "collapsed": true
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -110,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/ostep/20230424_025.md",
+                "file": "STUDY/JAVA/20230507.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/ostep/20230424_025.md",
+                "file": "STUDY/JAVA/20230507.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/ostep/20230424_025.md"
+                "file": "STUDY/JAVA/20230507.md"
               }
             }
           }
@@ -172,8 +168,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ca200621690d3ccf",
+  "active": "26e8b8a7c1e3033e",
   "lastOpenFiles": [
+    "Projects/202305071839.md",
+    "STUDY/20220521_.md",
+    "STUDY/20220318_markdown.md",
+    "STUDY/JAVA/20230507.md",
+    "Projects",
+    "STUDY/JAVA/20230425.md",
+    "STUDY/JAVA/src/202304252155.png",
     "STUDY/ostep/20230424_026.md",
     "STUDY/ostep/20230424_025.md",
     "STUDY/ostep/20230409_028.md",
@@ -197,8 +200,6 @@
     "STUDY/ostep/src/202304300241.png",
     "STUDY/ostep/src/202304300237.png",
     "STUDY/ostep/src/202304300236.png",
-    "STUDY/ostep/src/202304300158.png",
-    "STUDY/JAVA/20230425.md",
     "42 seoul/webserv/202304100314.md",
     "42 seoul/webserv/202304100516.md",
     "42 seoul/webserv/src",
@@ -209,17 +210,12 @@
     "42 seoul/Minishell/202304042006.md",
     "42 seoul/Minishell/src",
     "42 seoul/Minishell",
-    "STUDY/20220521_.md",
     "STUDY/JAVA/20230419.md",
-    "STUDY/JAVA/20230417.md",
-    "algorithm/20230419.md",
-    "algorithm/20230417.md",
     "STUDY/JAVA/src",
     "STUDY/JAVA",
     "ETC/src",
     "00_daily note/src",
     "00_daily note",
-    "무제 폴더",
     "무제 파일.canvas"
   ]
 }
