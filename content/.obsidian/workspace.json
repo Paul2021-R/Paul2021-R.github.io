@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "8c75076790c5af4b",
+        "id": "1b3b66388221a213",
         "type": "tabs",
         "children": [
           {
-            "id": "26e8b8a7c1e3033e",
+            "id": "c3ae4c65c74e4589",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/JAVA/20230507.md",
+                "file": "STUDY/ostep/20230514_027.md",
                 "mode": "source",
                 "source": false
               }
@@ -89,8 +89,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.5,
-    "collapsed": true
+    "width": 278.5
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -106,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/JAVA/20230507.md",
+                "file": "STUDY/ostep/20230514_027.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/JAVA/20230507.md",
+                "file": "STUDY/ostep/20230514_027.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -146,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/JAVA/20230507.md"
+                "file": "STUDY/ostep/20230514_027.md"
               }
             }
           }
@@ -168,49 +167,48 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "26e8b8a7c1e3033e",
+  "active": "c3ae4c65c74e4589",
   "lastOpenFiles": [
+    "STUDY/ostep/20230514_026.md",
+    "STUDY/ostep/20230514_027.md",
+    "STUDY/ostep/20230514_028.md",
+    "STUDY/ostep/20230514_029.md",
+    "STUDY/ostep/20230514_030.md",
+    "STUDY/ostep/20230514_031.md",
+    "STUDY/ostep/src/202307012258.png",
+    "STUDY/ostep/src/202307012218.png",
+    "STUDY/ostep/src/202307012053.png",
+    "STUDY/ostep/src/202307011645.png",
+    "STUDY/ostep/src/202307011643.png",
+    "STUDY/ostep/src/202307011642.png",
+    "STUDY/ostep/src/202305281559.png",
+    "STUDY/ostep/20230424_025.md",
+    "STUDY/ostep/20230212_015.md",
+    "STUDY/ostep/20230212_014.md",
+    "STUDY/ostep/20230205_013.md",
+    "STUDY/ostep/20230128_012.md",
+    "STUDY/ostep/20230214_016.md",
+    "STUDY/ostep/20230218_017.md",
+    "STUDY/ostep/20230219_020.md",
+    "STUDY/ostep/20230219_019.md",
+    "STUDY/ostep/20230219_021.md",
+    "STUDY/ostep/20230219_024.md",
+    "STUDY/ostep/20230326_026.md",
+    "STUDY/ostep/src/202305141951.png",
+    "STUDY/ostep/src/202305141630.png",
     "Projects/202305071839.md",
     "STUDY/20220521_.md",
-    "STUDY/20220318_markdown.md",
     "STUDY/JAVA/20230507.md",
+    "STUDY/20220318_markdown.md",
     "Projects",
     "STUDY/JAVA/20230425.md",
     "STUDY/JAVA/src/202304252155.png",
-    "STUDY/ostep/20230424_026.md",
-    "STUDY/ostep/20230424_025.md",
     "STUDY/ostep/20230409_028.md",
     "STUDY/ostep/20230423_023.md",
-    "STUDY/ostep/20230424_027.md",
-    "STUDY/ostep/20230128_012.md",
-    "STUDY/ostep/20230218_017.md",
-    "STUDY/ostep/src/202304302101.png",
-    "STUDY/ostep/src/202304302059.png",
-    "STUDY/ostep/src/202304302058.png",
-    "STUDY/ostep/20230424_024.md",
-    "STUDY/ostep/20230219_021.md",
-    "STUDY/ostep/src/202304301639.png",
-    "STUDY/ostep/src/202304309163.png",
-    "STUDY/JAVA/20230424.md",
-    "STUDY/ostep/20230424_028.md",
-    "STUDY/ostep/20230424_029.md",
-    "STUDY/ostep/20230424_030.md",
-    "STUDY/ostep/20230424_031.md",
-    "STUDY/ostep/src/202304300251.png",
-    "STUDY/ostep/src/202304300241.png",
-    "STUDY/ostep/src/202304300237.png",
-    "STUDY/ostep/src/202304300236.png",
-    "42 seoul/webserv/202304100314.md",
-    "42 seoul/webserv/202304100516.md",
     "42 seoul/webserv/src",
     "42 seoul/webserv",
-    "ETC/202304151926.md",
-    "42 seoul/webserv/202304042017.md",
-    "42 seoul/webserv/202304092350.md",
-    "42 seoul/Minishell/202304042006.md",
     "42 seoul/Minishell/src",
     "42 seoul/Minishell",
-    "STUDY/JAVA/20230419.md",
     "STUDY/JAVA/src",
     "STUDY/JAVA",
     "ETC/src",
