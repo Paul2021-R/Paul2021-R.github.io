@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/ostep/20230514_027.md",
+                "file": "ETC/20231017/202304151926 1.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "하이브리드",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/ostep/20230514_027.md",
+                "file": "ETC/20231017/202304151926 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/ostep/20230514_027.md",
+                "file": "ETC/20231017/202304151926 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/ostep/20230514_027.md"
+                "file": "ETC/20231017/202304151926 1.md"
               }
             }
           }
@@ -159,18 +159,29 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:퀵 스위처 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 데일리 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false
     }
   },
   "active": "c3ae4c65c74e4589",
   "lastOpenFiles": [
-    "STUDY/ostep/20230514_026.md",
+    "ETC/20231017/src/IMG_0060.jpg",
+    "ETC/20231017/src/IMG_0063.jpg",
+    "ETC/20231017/src/IMG_0064.jpg",
+    "ETC/202304151926.md",
+    "ETC/20231017/202304151926 1.md",
+    "ETC/20231017/src/001.png",
+    "ETC/20231017/src",
+    "ETC/20220320_auto_deploy.md",
+    "STUDY/20220318_markdown.md",
+    "ETC/20231017",
+    "STUDY/20220521_.md",
     "STUDY/ostep/20230514_027.md",
+    "STUDY/ostep/20230514_026.md",
     "STUDY/ostep/20230514_028.md",
     "STUDY/ostep/20230514_029.md",
     "STUDY/ostep/20230514_030.md",
@@ -194,17 +205,9 @@
     "STUDY/ostep/20230219_021.md",
     "STUDY/ostep/20230219_024.md",
     "STUDY/ostep/20230326_026.md",
-    "STUDY/ostep/src/202305141951.png",
-    "STUDY/ostep/src/202305141630.png",
     "Projects/202305071839.md",
-    "STUDY/20220521_.md",
     "STUDY/JAVA/20230507.md",
-    "STUDY/20220318_markdown.md",
     "Projects",
-    "STUDY/JAVA/20230425.md",
-    "STUDY/JAVA/src/202304252155.png",
-    "STUDY/ostep/20230409_028.md",
-    "STUDY/ostep/20230423_023.md",
     "42 seoul/webserv/src",
     "42 seoul/webserv",
     "42 seoul/Minishell/src",
@@ -212,8 +215,6 @@
     "STUDY/JAVA/src",
     "STUDY/JAVA",
     "ETC/src",
-    "00_daily note/src",
-    "00_daily note",
     "무제 파일.canvas"
   ]
 }
