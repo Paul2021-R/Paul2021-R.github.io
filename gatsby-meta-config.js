@@ -73,6 +73,28 @@ module.exports = {
           demo: '',
         },
       },
+	  {
+        date: '2022.05.06 ~',
+        activity: 'Project peer 진행 중',
+        links: {
+          github: '',
+          post: '',
+          googlePlay: '',
+          appStore: '',
+          demo: '',
+        },
+      },
+	  {
+        date: '2022.10.05',
+        activity: '42 Seoul 공통과정 돌파',
+        links: {
+          github: '',
+          post: '',
+          googlePlay: '',
+          appStore: '',
+          demo: '',
+        },
+      },
     ],
 
     projects: [
@@ -138,6 +160,30 @@ module.exports = {
         links: {
           post: '',
           github: 'https://github.com/webservVer2-0/webServ',
+          demo: '',
+        },
+      },
+	  {
+        title: 'ft_transcendence',
+        description:
+          'TypeScript, React, NextJs, NestJS 를 활용하여 구축한 SPA. 웹개발 기초 레퍼런스를 제작해보았으며 OAuth를 비롯한 JWT 인증 방식, 채팅 서버, Socket.io를 활용한 실시간 게임 서버 구축 등을 경험하였습니다. ',
+        techStack: ['TypeScript', 'NextJs', 'NestJS', 'React', 'PostgressDB', 'Docker-compose'],
+        thumbnailUrl: 'fttranscendence.png',
+        links: {
+          post: '',
+          github: 'https://github.com/orgs/Gaepo-transcendance-fighters/repositories',
+          demo: '',
+        },
+      },
+	{
+        title: 'Project peer-web-application',
+        description:
+          '동료학습을 위한 기능들과 인공지능을 활용한 개인의 성향-업무성향의 정량 평가 알고리즘을 구축하여 협업 스터디, 협업 프로젝트를 위한 Progressive Web Application 구축을 진행하고 있습니다.',
+        techStack: ['TypeScript', 'NextJs', 'Java', 'Spring', 'Boot', 'Redis', 'MySQL', 'MongoDB', 'NHN Cloud'],
+        thumbnailUrl: 'peer2.png',
+        links: {
+          post: '',
+          github: 'https://github.com/peer-42seoul',
           demo: '',
         },
       },		

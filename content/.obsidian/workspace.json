@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "1b3b66388221a213",
+        "id": "a0a217c32f1e04c5",
         "type": "tabs",
         "children": [
           {
-            "id": "c3ae4c65c74e4589",
+            "id": "a8e055d15c4d346a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ETC/20231017/202304151926 1.md",
+                "file": "42 seoul/Transcendence/20231018.md",
                 "mode": "source",
                 "source": false
               }
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ETC/20231017/202304151926 1.md",
+                "file": "42 seoul/Transcendence/20231018.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ETC/20231017/202304151926 1.md",
+                "file": "42 seoul/Transcendence/20231018.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ETC/20231017/202304151926 1.md"
+                "file": "42 seoul/Transcendence/20231018.md"
               }
             }
           }
@@ -167,13 +167,19 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "c3ae4c65c74e4589",
+  "active": "a8e055d15c4d346a",
   "lastOpenFiles": [
+    "42 seoul/Transcendence/src/001.png",
+    "42 seoul/Transcendence/20231018.md",
+    "42 seoul/webserv/202304042017.md",
+    "42 seoul/Transcendence/src",
+    "ETC/20231017/202304151926 1.md",
+    "42 seoul/Transcendence/무제 파일.md",
+    "42 seoul/Transcendence",
     "ETC/20231017/src/IMG_0060.jpg",
     "ETC/20231017/src/IMG_0063.jpg",
     "ETC/20231017/src/IMG_0064.jpg",
     "ETC/202304151926.md",
-    "ETC/20231017/202304151926 1.md",
     "ETC/20231017/src/001.png",
     "ETC/20231017/src",
     "ETC/20220320_auto_deploy.md",
@@ -191,8 +197,6 @@
     "STUDY/ostep/src/202307012053.png",
     "STUDY/ostep/src/202307011645.png",
     "STUDY/ostep/src/202307011643.png",
-    "STUDY/ostep/src/202307011642.png",
-    "STUDY/ostep/src/202305281559.png",
     "STUDY/ostep/20230424_025.md",
     "STUDY/ostep/20230212_015.md",
     "STUDY/ostep/20230212_014.md",
@@ -204,17 +208,12 @@
     "STUDY/ostep/20230219_019.md",
     "STUDY/ostep/20230219_021.md",
     "STUDY/ostep/20230219_024.md",
-    "STUDY/ostep/20230326_026.md",
-    "Projects/202305071839.md",
-    "STUDY/JAVA/20230507.md",
     "Projects",
     "42 seoul/webserv/src",
     "42 seoul/webserv",
     "42 seoul/Minishell/src",
     "42 seoul/Minishell",
     "STUDY/JAVA/src",
-    "STUDY/JAVA",
-    "ETC/src",
     "무제 파일.canvas"
   ]
 }

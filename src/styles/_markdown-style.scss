@@ -100,7 +100,19 @@
 
 .markdown img {
   border-style: none;
+  border-radius: 10px;
+  object-fit: contain;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.5);
 }
+
+// .markdown img::after {
+//   content: "Your Watermark";
+//   position: absolute;
+//   bottom: 0;
+//   right: 0;
+//   opacity: 0.5;
+//   pointer-events: none; /* 마우스 이벤트 무시 */
+// }
 
 .markdown code,
 .markdown kbd,
@@ -802,7 +814,8 @@
   margin: 0;
   max-width: 1024px;
   box-sizing: border-box;
-  background-color: transparent;
+//   background-color: transparent;
+//   box-shadow: #1b1f23;
 }
 
 .markdown img[align='right'] {
@@ -1077,6 +1090,7 @@
   justify-content: center !important;
   width: 100% !important;
   max-height: $content-image-max-height !important;
+  
 
   img {
     max-width: 100% !important;
@@ -1084,7 +1098,20 @@
     width: auto !important;
     height: auto !important;
     position: relative !important;
-  }
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3) !important;
+  } 
+}
+
+.markdown .gatsby-resp-image-wrapper::after {
+  content: "Haryu's blog";
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 // caption

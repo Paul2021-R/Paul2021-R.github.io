@@ -6,21 +6,11 @@ import { getValueFromLocalStorage, setValueToLocalStorage } from '../../utils/lo
 import './style.scss';
 
 function ThemeSwitch() {
-  const initialSystemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const [isDarkMode, setIsDarkMode] = useState(getValueFromLocalStorage('isDarkMode') ?? initialSystemDarkMode);
+  const [isDarkMode, setIsDarkMode] = useState(getValueFromLocalStorage('isDarkMode'));
 
   useEffect(() => {
-    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const changeHandler = () => setIsDarkMode(darkModeMediaQuery.matches);
-
-    darkModeMediaQuery.addListener(changeHandler);
-
     setValueToLocalStorage('isDarkMode', isDarkMode);
     document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-
-    return () => {
-      darkModeMediaQuery.removeListener(changeHandler);
-    };
   }, [isDarkMode]);
 
   return (
