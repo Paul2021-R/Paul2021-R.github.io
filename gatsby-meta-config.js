@@ -1,6 +1,6 @@
 module.exports = {
-  title: `Be.Insight.Coder`,
-  description: `인문학적, 소통을 중시하는 개발자 류한솔의 기술 블로그입니다.`,
+  title: `Be.Insight.Programmer`,
+  description: `소통과 문제해결에 특화된 성장형 개발자 류한솔의 기술 블로그입니다.`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://paul2021-r.github.io/`,
   ogImage: `og-image.png`, // Path to your in the 'static' folder
