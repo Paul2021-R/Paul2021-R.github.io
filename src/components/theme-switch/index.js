@@ -6,22 +6,27 @@ import { getValueFromLocalStorage, setValueToLocalStorage } from '../../utils/lo
 import './style.scss';
 
 function ThemeSwitch() {
-  const initialSystemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isClient = typeof window !== 'undefined';
+  const initialSystemDarkMode = isClient ? window.matchMedia('(prefers-color-scheme: dark)').matches : false;
   const [isDarkMode, setIsDarkMode] = useState(getValueFromLocalStorage('isDarkMode') ?? initialSystemDarkMode);
 
   useEffect(() => {
+    if (!isClient) return;
     const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const changeHandler = () => setIsDarkMode(darkModeMediaQuery.matches);
 
     darkModeMediaQuery.addListener(changeHandler);
 
+
     setValueToLocalStorage('isDarkMode', isDarkMode);
     document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
 
-    return () => {
+        return () => {
       darkModeMediaQuery.removeListener(changeHandler);
     };
-  }, [isDarkMode]);
+  }, [isDarkMode, isClient]);  // isClient 추가
+
+  if (!isClient) return null;
 
   return (
     <div className="dark-mode-button-wrapper">

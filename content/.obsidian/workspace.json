@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "42 seoul/Transcendence/20231018.md",
+                "file": "STUDY/ostep/20230219_024.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "```while",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -85,7 +85,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -105,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "42 seoul/Transcendence/20231018.md",
+                "file": "STUDY/ostep/20230219_024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "42 seoul/Transcendence/20231018.md",
+                "file": "STUDY/ostep/20230219_024.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "42 seoul/Transcendence/20231018.md"
+                "file": "STUDY/ostep/20230219_024.md"
               }
             }
           }
@@ -169,8 +170,9 @@
   },
   "active": "a8e055d15c4d346a",
   "lastOpenFiles": [
-    "42 seoul/Transcendence/src/001.png",
+    "algorithm/20220411_00.md",
     "42 seoul/Transcendence/20231018.md",
+    "42 seoul/Transcendence/src/001.png",
     "42 seoul/webserv/202304042017.md",
     "42 seoul/Transcendence/src",
     "ETC/20231017/202304151926 1.md",
