@@ -161,13 +161,21 @@
                 "file": "42 seoul/Transcendence/20231023.md"
               }
             }
+          },
+          {
+            "id": "f5076e4cf16ee38f",
+            "type": "leaf",
+            "state": {
+              "type": "copilot-chat-view",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 398.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -180,17 +188,17 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "9dfaac9b96252d6a",
+  "active": "f5076e4cf16ee38f",
   "lastOpenFiles": [
+    "42 seoul/Transcendence/20231018.md",
+    "42 seoul/Transcendence/20231023.md",
     "42 seoul/Transcendence/src/webserv.png",
     "42 seoul/Transcendence/src/webserc.png",
     "42 seoul/Transcendence/src/Pasted image 20231023134437.png",
     "42 seoul/Transcendence/src/Pasted image 20231023134041.png",
     "42 seoul/Transcendence/src/project-peer.png",
-    "42 seoul/Transcendence/20231023.md",
     "42 seoul/Transcendence/src/Pasted image 20231023131700.png",
     "42 seoul/Transcendence/src/Pasted image 20231023131527.png",
-    "42 seoul/Transcendence/20231018.md",
     "42 seoul/Transcendence/20231023(2).md",
     "42 seoul/webserv/202304100516.md",
     "42 seoul/Minishell/202304042006.md",
@@ -208,7 +216,6 @@
     "42 seoul/Transcendence",
     "ETC/20231017/src/IMG_0060.jpg",
     "ETC/20231017/src/IMG_0063.jpg",
-    "ETC/20231017/src/IMG_0064.jpg",
     "ETC/202304151926.md",
     "ETC/20231017/src",
     "ETC/20220320_auto_deploy.md",
