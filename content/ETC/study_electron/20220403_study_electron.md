@@ -1,13 +1,19 @@
 ---
 emoji: 🛠
 title: Electron을 알아보자
-date: '2022-04-03 21:54:00'
+date: 2022-04-03 21:54:00
 author: Paul
-tags: Electron JavaScript HTML CSS React Frameworks
-categories: study
+tags:
+  - Electron
+  - JavaScript
+  - HTML
+  - CSS
+  - React
+  - Frameworks
+categories: ETC
 ---
 
-![electron](./study_electron/electron_banner.png)
+![electron](electron_banner.png)
 
 # 프롤로그
 

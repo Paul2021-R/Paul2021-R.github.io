@@ -1,10 +1,15 @@
 ---
 emoji: 😂
 title: push swap 정복기(4) - push_swap의 함정...
-date: '2022-04-23 17:39:00'
+date: 2022-04-23 17:39:00
 author: Paul
-tags: 42Seoul study pushswap 푸시스왑 push_swap
-categories: 42_seoul
+tags:
+  - 42Seoul
+  - study
+  - pushswap
+  - 푸시스왑
+  - push_swap
+categories: 42seoul
 ---
 
 # Prologue

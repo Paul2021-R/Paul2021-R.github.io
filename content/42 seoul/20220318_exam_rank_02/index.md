@@ -1,10 +1,12 @@
 ---
 emoji: 📄
 title: 42서울 exam rank 02 후기
-date: '2022-03-18 14:28:00'
+date: 2022-03-18 14:28:00
 author: Paul
-tags: 42Seoul study
-categories: 42_seoul
+tags:
+  - 42Seoul
+  - study
+categories: 42seoul
 ---
 
 # RANK_02 Study

@@ -1,10 +1,13 @@
 ---
 emoji: 🖥
 title: MinilibX_07_Images(완료)
-date: '2022-03-14 01:40:00'
+date: 2022-03-14 01:40:00
 author: Paul
-tags: 42seoul so_long MiniLibX
-categories: 42_seoul
+tags:
+  - 42seoul
+  - so_long
+  - MiniLibX
+categories: 42seoul
 ---
 
 ### Images
@@ -18,7 +21,7 @@ categories: 42_seoul
     파일부터 이미지 객체까지 읽어 들이기 위하여, 우리는 XMP 혹은 PNG 포맷을 필요로 합니다. XPM 파일의 경우 온라인 상의 변환 웹 페이지를 활용하시면, PNG 파일을 사용하여 쉽게 제작이 가능하며, 추천하는 이미지 포맷입니다. 이미지 파일들을 읽기 위해, 우리는 `mlx_xpm_file_to_image` 와 `mlx_png_file_to_image` 라는 함수 호출이 필요합니다. 주의사항은 `mlx_png_file_to_image`는 현재 메모리 누수가 존재 한다는 점입니다. 두 함수들은 모두 동일한 인자들과 동일한 사용성을 제공한다는 점을 알아 주십시오.
 
     더불어, 현재 알려진 바, mlx 라이브러리 mms 버전은 렌더링 과정에서의 문제로 검은색 십자가 특정 숫자 이상의 타일의 불러오기 시 타일과 타일 사이 발생하는 문제가 있습니다. 아래 이미지를 참고 하시면, 다른 주변 타일과는 다르게, 검은 줄이 보일 것입니다.
-    ![graphic_issue](./mlx_library_graphic_issue.png)
+    ![graphic_issue](mlx_library_graphic_issue.png)
     이는 그래픽 렌더링 과정에서 메탈 라이브러리와의 전송 과정이라고 추정되나, 어쨌든 라이브러리 문제이므로 타일을 반복적으로 출력시 생기는 문제라고 알고 계시면 되며, 과제자의 해결 범위에서 벗어나는 것으로 보여집니다.
 
     이에대한 해결 방법으로는

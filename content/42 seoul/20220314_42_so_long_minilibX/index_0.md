@@ -1,10 +1,13 @@
 ---
 emoji: 🖥
 title: MinilibX_라이브러리 가이드 문서 번역(완료)
-date: '2022-03-14 01:05:00'
+date: 2022-03-14 01:05:00
 author: Paul
-tags: 42seoul so_long MiniLibX
-categories: 42_seoul
+tags:
+  - 42seoul
+  - so_long
+  - MiniLibX
+categories: 42seoul
 ---
 
 # Prologue

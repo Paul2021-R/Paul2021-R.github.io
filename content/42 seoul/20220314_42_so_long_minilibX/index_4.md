@@ -1,10 +1,13 @@
 ---
 emoji: 🖥
 title: MinilibX_04_Hooks(완료)
-date: '2022-03-14 01:20:00'
+date: 2022-03-14 01:20:00
 author: Paul
-tags: 42seoul so_long MiniLibX
-categories: 42_seoul
+tags:
+  - 42seoul
+  - so_long
+  - MiniLibX
+categories: 42seoul
 ---
 
 ### Hooks
@@ -51,7 +54,7 @@ categories: 42_seoul
 
     마우스 이벤트 역시 hooking 이 가능합니다.
 
-    ![mouse](./mouse_button.png)
+    ![mouse](mouse_button.png)
 
     Mac OS 상에 마우스 코드는 다음과 같습니다.
 

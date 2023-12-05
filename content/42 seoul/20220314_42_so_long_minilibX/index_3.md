@@ -1,10 +1,13 @@
 ---
 emoji: 🖥
 title: MinilibX_03_colors(완료)
-date: '2022-03-14 01:15:00'
+date: 2022-03-14 01:15:00
 author: Paul
-tags: 42seoul so_long MiniLibX
-categories: 42_seoul
+tags:
+  - 42seoul
+  - so_long
+  - MiniLibX
+categories: 42seoul
 ---
 
 ### 들어가기 앞서
