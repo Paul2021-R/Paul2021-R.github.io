@@ -3,7 +3,7 @@ emoji: 😁
 title: CPP 스터디 00 - Orthodox Canonical Form
 date: '2022-09-04 14:00:00'
 author: Paul
-tags: CPP 42seoul
+tags: [CPP 42seoul]
 categories: study
 ---
 

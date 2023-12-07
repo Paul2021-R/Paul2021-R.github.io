@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "42 seoul/Minishell/202304042006.md",
+                "file": "42 seoul/Transcendence/20231205.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "42_seoul",
+                "query": "algorithm python 코딩테스트  ",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -85,8 +85,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -106,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "42 seoul/Minishell/202304042006.md",
+                "file": "42 seoul/Transcendence/20231205.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "42 seoul/Minishell/202304042006.md",
+                "file": "42 seoul/Transcendence/20231205.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -146,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "42 seoul/Minishell/202304042006.md"
+                "file": "42 seoul/Transcendence/20231205.md"
               }
             }
           },
@@ -156,6 +155,16 @@
             "state": {
               "type": "copilot-chat-view",
               "state": {}
+            }
+          },
+          {
+            "id": "ed7b65ed1e7f49d4",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
+              }
             }
           }
         ],
@@ -178,33 +187,34 @@
   },
   "active": "d37bc2bfa9025637",
   "lastOpenFiles": [
+    "42 seoul/Transcendence/src/20231206115429.png",
     "42 seoul/Transcendence/20231205.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_9.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_8.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_7.md",
+    "42 seoul/Transcendence/src/20231206114009.png",
+    "algorithm/20220416_09.md",
+    "algorithm/20220415_08.md",
+    "algorithm/20220414_07.md",
+    "algorithm/20220413_06.md",
+    "algorithm/20220419_13.md",
+    "algorithm/20220411_01.md",
+    "algorithm/20220429_20.md",
+    "algorithm/20220509_24.md",
+    "algorithm/20220513_29_2.md",
+    "algorithm/20230413.md",
+    "algorithm/20220601_39.md",
+    "algorithm/20220602_41.md",
+    "algorithm/20220411_00.md",
     "ETC/202312051101.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_6.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_5.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_3.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_4.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_2.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_0.md",
-    "42 seoul/20220318_exam_rank_02/index.md",
+    "ETC/20231017/202304151926 1.md",
     "42 seoul/webserv/202304100516.md",
     "42 seoul/webserv/202304100314.md",
     "42 seoul/webserv/202304092350.md",
     "42 seoul/webserv/202304042017.md",
     "42 seoul/Minishell/202304042006.md",
-    "42 seoul/push_swap/20220423_push_swap_4 copy.md",
-    "42 seoul/Minitalk/20220423_minitalk.md",
-    "42 seoul/push_swap/20220420_push_swap_3.md",
-    "42 seoul/push_swap/20220416_push_swap_2.md",
-    "42 seoul/push_swap/20220413_push_swap.md",
-    "STUDY/20220318_markdown.md",
+    "42 seoul/20220314_42_so_long_minilibX/index_9.md",
+    "42 seoul/20220314_42_so_long_minilibX/index_8.md",
+    "42 seoul/20220314_42_so_long_minilibX/index_7.md",
+    "42 seoul/20220314_42_so_long_minilibX/index_6.md",
     "42 seoul/Transcendence/src/20231205105352.png",
-    "STUDY/git_memo/20220726_git_memo_2.md",
-    "STUDY/git_memo/20220713_git_memo.md",
-    "STUDY/20220521_.md",
     "42 seoul/Transcendence/src/webserv.png",
     "42 seoul/Transcendence/src/webserc.png",
     "42 seoul/Transcendence/src/Pasted image 20231023134437.png",
@@ -212,10 +222,8 @@
     "42 seoul/Transcendence/src/project-peer.png",
     "42 seoul/Transcendence/src/20231023131700.png",
     "42 seoul/Transcendence/src/2023102313152.png",
-    "42 seoul/Transcendence/src/001.png",
     "42 seoul/Transcendence/src",
     "42 seoul/Transcendence",
-    "ETC/20231017/src/IMG_0060.jpg",
     "ETC/20231017/src",
     "ETC/20231017",
     "Projects",

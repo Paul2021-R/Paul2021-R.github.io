@@ -3,7 +3,7 @@ emoji: 🙋🏻
 title: 여는 글
 date: '2022-03-12 23:03:00'
 author: Paul
-tags: 블로그 github-pages gatsby new
+tags: [블로그 github-pages gatsby new]
 categories: etc
 ---
 

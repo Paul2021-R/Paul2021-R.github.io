@@ -19,6 +19,7 @@ module.exports = {
       options: {
         name: `assets`,
         path: `${__dirname}/assets`,
+      ignore: [`**/\.*`, '**/workspace.json'],
       },
     },
     {
@@ -26,6 +27,7 @@ module.exports = {
       options: {
         name: `content`,
         path: `${__dirname}/content`,
+        ignore: [`**/\.*`, '**/workspace.json'],
       },
     },
     {

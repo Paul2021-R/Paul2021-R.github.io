@@ -3,10 +3,7 @@ emoji: 🖥
 title: So_Long을 마치면서
 date: 2022-04-03 20:18:00
 author: Paul
-tags:
-  - 42seoul
-  - so_long
-  - MiniLibX
+tags: ['42seoul', 'so_long', 'MiniLibX']
 categories: 42seoul
 ---
 

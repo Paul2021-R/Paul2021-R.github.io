@@ -3,7 +3,7 @@ emoji: 🇱🇷🇮🇸
 title: 17_Lemon-sized luxury boxes
 date: '2022-06-23 13:20:00'
 author: Paul
-tags: 42Seoul study english business_english
+tags: [42Seoul study english business_english]
 categories: study
 ---
 

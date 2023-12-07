@@ -3,10 +3,7 @@ emoji: 🖥
 title: MinilibX_08_Sync(완료)
 date: 2022-03-14 01:50:00
 author: Paul
-tags:
-  - 42seoul
-  - so_long
-  - MiniLibX
+tags: ['42seoul', 'so_long', 'MiniLibX']
 categories: 42seoul
 ---
 

@@ -3,7 +3,7 @@ emoji: 🥲
 title: 42에서의 첫 팀 스터디를 마치면서...
 date: '2022-03-24 11:50:00'
 author: Paul
-tags: etc gitblog study
+tags: [etc gitblog study]
 categories: etc
 ---
 

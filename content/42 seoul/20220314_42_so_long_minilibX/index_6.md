@@ -3,10 +3,7 @@ emoji: 🖥
 title: MinilibX_06_Loops(완료)
 date: 2022-03-14 01:35:00
 author: Paul
-tags:
-  - 42seoul
-  - so_long
-  - MiniLibX
+tags: ['42seoul', 'so_long', 'MiniLibX']
 categories: 42seoul
 ---
 

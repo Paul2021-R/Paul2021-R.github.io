@@ -3,7 +3,7 @@ emoji: 🇱🇷🇮🇸
 title: 10_The brainstorm
 date: '2022-06-14 08:30:00'
 author: Paul
-tags: 42Seoul study english business_english
+tags: [42Seoul study english business_english]
 categories: study
 ---
 

@@ -3,7 +3,7 @@ emoji: 🇱🇷🇮🇸
 title: 13_The Imperial Lemon
 date: '2022-06-20 15:00:00'
 author: Paul
-tags: 42Seoul study english business_english
+tags: [42Seoul study english business_english]
 categories: study
 ---
 

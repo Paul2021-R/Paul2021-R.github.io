@@ -1,5 +1,7 @@
 {
-  "accentColor": "",
+  "accentColor": "#3fcab3",
   "baseFontSize": 15,
-  "theme": "system"
+  "theme": "system",
+  "interfaceFontFamily": "D2Coding",
+  "textFontFamily": "D2Coding"
 }

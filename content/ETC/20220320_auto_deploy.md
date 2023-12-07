@@ -3,7 +3,7 @@ emoji: 🤣
 title: 깃 블로그 활용을 위한 자동 deploy 스크립트
 date: '2022-03-20 03:02:00'
 author: Paul
-tags: etc linux shell gitblog
+tags: ['etc', 'linux', 'shell', 'gitblog']
 categories: etc
 ---
 

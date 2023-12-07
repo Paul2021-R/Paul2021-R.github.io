@@ -3,7 +3,7 @@ emoji: 🇱🇷🇮🇸
 title: 09_The Warehouse
 date: '2022-06-13 06:30:00'
 author: Paul
-tags: 42Seoul study english business_english
+tags: [42Seoul study english business_english]
 categories: study
 ---
 

@@ -3,10 +3,7 @@ emoji: 🖥
 title: MinilibX_05_Events(완료)
 date: 2022-03-14 01:30:00
 author: Paul
-tags:
-  - 42seoul
-  - so_long
-  - MiniLibX
+tags: ['42seoul', 'so_long', 'MiniLibX']
 categories: 42seoul
 ---
 

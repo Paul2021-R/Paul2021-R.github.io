@@ -3,7 +3,7 @@ emoji: 😁
 title: CPP 스터디 00 - destructor
 date: '2022-09-08 21:30:00'
 author: Paul
-tags: CPP 42seoul
+tags: [CPP 42seoul]
 categories: study
 ---
 
