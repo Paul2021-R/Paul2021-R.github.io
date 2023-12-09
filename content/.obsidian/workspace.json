@@ -13,13 +13,38 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "ETC/202312090749.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "617b173e39b7462a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ETC/202312051101.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "47fa981957543b7a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "42 seoul/Transcendence/20231205.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -185,11 +210,19 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "b3ba29157a2787ec",
+  "active": "47fa981957543b7a",
   "lastOpenFiles": [
+    "ETC/202312051101.md",
+    "42 seoul/Transcendence/20231205.md",
+    "ETC/202312090749.md",
+    "ETC/src/202312090644.png",
+    "ETC/src/2023-12-09-7.31.18.png",
+    "ETC/src/2023-12-09-7.30.19.png",
+    "ETC/src/2023-12-09-7.26.24.png",
+    "ETC/src/2023-12-09-06-36-51.png",
+    "ETC/20231209074922.md",
     "42 seoul/Transcendence/src/20231207132434.png",
     "42 seoul/Transcendence/src/20231206115429.png",
-    "42 seoul/Transcendence/20231205.md",
     "42 seoul/Transcendence/src/20231206114009.png",
     "algorithm/20220416_09.md",
     "algorithm/20220415_08.md",
@@ -204,7 +237,6 @@
     "algorithm/20220601_39.md",
     "algorithm/20220602_41.md",
     "algorithm/20220411_00.md",
-    "ETC/202312051101.md",
     "ETC/20231017/202304151926 1.md",
     "42 seoul/webserv/202304100516.md",
     "42 seoul/webserv/202304100314.md",
@@ -213,16 +245,8 @@
     "42 seoul/Minishell/202304042006.md",
     "42 seoul/20220314_42_so_long_minilibX/index_9.md",
     "42 seoul/20220314_42_so_long_minilibX/index_8.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_7.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_6.md",
     "42 seoul/Transcendence/src/20231205105352.png",
     "42 seoul/Transcendence/src/webserv.png",
-    "42 seoul/Transcendence/src/webserc.png",
-    "42 seoul/Transcendence/src/Pasted image 20231023134437.png",
-    "42 seoul/Transcendence/src/Pasted image 20231023134041.png",
-    "42 seoul/Transcendence/src/project-peer.png",
-    "42 seoul/Transcendence/src/20231023131700.png",
-    "42 seoul/Transcendence/src/2023102313152.png",
     "42 seoul/Transcendence/src",
     "42 seoul/Transcendence",
     "ETC/20231017/src",
