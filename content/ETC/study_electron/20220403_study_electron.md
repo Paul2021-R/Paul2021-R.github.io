@@ -10,7 +10,7 @@ tags:
   - CSS
   - React
   - Frameworks
-categories: ETC
+categories: etc
 ---
 
 ![electron](electron_banner.png)
