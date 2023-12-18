@@ -31,19 +31,19 @@ echo "----------------------------------------"
 echo "깃 커밋을 진행합니다." 
 echo "----------------------------------------"
 sleep 1 & clear 
-git add .
-git commit -m "$today : $comment"
+sudo git add .
+sudo git commit -m "$today : $comment"
 echo "----------------------------------------"
 sleep 1 && clear
 echo "----------------------------------------"
 echo "깃 푸쉬를 진행합니다."
 echo "----------------------------------------"
-git push -u origin main
+sudo git push -u origin main
 sleep 1 && clear
 echo "----------------------------------------"
 echo "디플로이를 실행합니다."
 echo "----------------------------------------"
-npm run deploy
+sudo npm run deploy
 echo "----------------------------------------"
 sleep 1 && echo "모든 작업이 마무리 되었습니다."
 echo "블로그 게시글을 확인하십시오."
