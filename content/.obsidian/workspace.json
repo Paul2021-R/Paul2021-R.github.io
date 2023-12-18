@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ETC/202312090749.md",
+                "file": "STUDY/Network/20230413 1.md",
                 "mode": "source",
                 "source": false
               }
@@ -43,8 +43,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -130,7 +129,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "42 seoul/Transcendence/20231205.md",
+                "file": "STUDY/Network/20230413 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +146,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "42 seoul/Transcendence/20231205.md",
+                "file": "STUDY/Network/20230413 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -170,7 +169,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "42 seoul/Transcendence/20231205.md"
+                "file": "STUDY/Network/20230413 1.md"
               }
             }
           },
@@ -210,11 +209,16 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "47fa981957543b7a",
+  "active": "b3ba29157a2787ec",
   "lastOpenFiles": [
+    "STUDY/Network/src/20231218225122.png",
+    "STUDY/Network/src",
+    "STUDY/JAVA/20230413.md",
+    "STUDY/Network/20230413 1.md",
+    "ETC/202312090749.md",
+    "STUDY/Network",
     "ETC/202312051101.md",
     "42 seoul/Transcendence/20231205.md",
-    "ETC/202312090749.md",
     "ETC/src/202312090644.png",
     "ETC/src/2023-12-09-7.31.18.png",
     "ETC/src/2023-12-09-7.30.19.png",
@@ -243,8 +247,6 @@
     "42 seoul/webserv/202304092350.md",
     "42 seoul/webserv/202304042017.md",
     "42 seoul/Minishell/202304042006.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_9.md",
-    "42 seoul/20220314_42_so_long_minilibX/index_8.md",
     "42 seoul/Transcendence/src/20231205105352.png",
     "42 seoul/Transcendence/src/webserv.png",
     "42 seoul/Transcendence/src",
@@ -255,8 +257,6 @@
     "42 seoul/webserv/src",
     "42 seoul/webserv",
     "42 seoul/Minishell/src",
-    "42 seoul/Minishell",
-    "STUDY/JAVA/src",
     "무제 파일.canvas"
   ]
 }
