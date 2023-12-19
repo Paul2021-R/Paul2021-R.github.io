@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/Network/20230413 1.md",
+                "file": "ETC/202312090749.md",
                 "mode": "source",
                 "source": false
               }
@@ -37,13 +37,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "42 seoul/Transcendence/20231205.md",
+                "file": "STUDY/Network/20230413 1.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -113,7 +114,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.50390243530273
+    "width": 278.50390243530273,
+    "collapsed": true
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -206,19 +208,20 @@
       "canvas:새 캔버스 만들기": false,
       "daily-notes:오늘의 데일리 노트 열기": false,
       "templates:템플릿 삽입": false,
-      "command-palette:명령어 팔레트 열기": false
+      "command-palette:명령어 팔레트 열기": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
   "active": "b3ba29157a2787ec",
   "lastOpenFiles": [
+    "STUDY/Network/src/스크린샷 2023-12-19 오전 8.59.39.png",
+    "42 seoul/Transcendence/20231205.md",
     "STUDY/Network/src/20231218225122.png",
     "STUDY/Network/src",
-    "STUDY/JAVA/20230413.md",
     "STUDY/Network/20230413 1.md",
-    "ETC/202312090749.md",
     "STUDY/Network",
     "ETC/202312051101.md",
-    "42 seoul/Transcendence/20231205.md",
+    "ETC/202312090749.md",
     "ETC/src/202312090644.png",
     "ETC/src/2023-12-09-7.31.18.png",
     "ETC/src/2023-12-09-7.30.19.png",
@@ -247,8 +250,8 @@
     "42 seoul/webserv/202304092350.md",
     "42 seoul/webserv/202304042017.md",
     "42 seoul/Minishell/202304042006.md",
+    "42 seoul/20220314_42_so_long_minilibX/index_9.md",
     "42 seoul/Transcendence/src/20231205105352.png",
-    "42 seoul/Transcendence/src/webserv.png",
     "42 seoul/Transcendence/src",
     "42 seoul/Transcendence",
     "ETC/20231017/src",
