@@ -25,3 +25,4 @@ jobs:
             cd /home/hansol/workspace/Paul2021-R.github.io
             git pull
             npm run deploy
+            exit
