@@ -18,9 +18,9 @@ jobs:
           token: ${{secrets.TOKEN}}
 
       - name: Set up Git Config
-      run: |
-        git config --global user.email "ryu.axel@gmail.com"
-        git config --global user.name "hansol"
+        run: |
+          git config --global user.email "ryu.axel@gmail.com"
+          git config --global user.name "hansol"
 
       - name: Install dependency
         run: npm install 
