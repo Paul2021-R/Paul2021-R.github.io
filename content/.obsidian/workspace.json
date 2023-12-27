@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/Network/20230413 1.md",
+                "file": "ETC/202312270048.md",
                 "mode": "source",
                 "source": false
               }
@@ -114,8 +114,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.50390243530273,
-    "collapsed": true
+    "width": 278.50390243530273
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -131,7 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/Network/20230413 1.md",
+                "file": "ETC/202312270048.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -148,7 +147,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/Network/20230413 1.md",
+                "file": "ETC/202312270048.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,7 +170,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/Network/20230413 1.md"
+                "file": "ETC/202312270048.md"
               }
             }
           },
@@ -214,13 +213,13 @@
   },
   "active": "47fa981957543b7a",
   "lastOpenFiles": [
+    "STUDY/Network/20230413 1.md",
     "ETC/202312270048.md",
     "ETC/202312090749.md",
     "STUDY/Network/src/스크린샷 2023-12-19 오전 8.59.39.png",
     "42 seoul/Transcendence/20231205.md",
     "STUDY/Network/src/20231218225122.png",
     "STUDY/Network/src",
-    "STUDY/Network/20230413 1.md",
     "STUDY/Network",
     "ETC/202312051101.md",
     "ETC/src/202312090644.png",
