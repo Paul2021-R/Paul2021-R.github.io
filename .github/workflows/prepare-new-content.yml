@@ -18,11 +18,8 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           token: ${{secrets.TOKEN}}
 
-      - name: Install dependency
-        run: npm install 
-
       - name: Deploy
         run: npm run deploy
-        env:
+        with:
           GITHUB_ID: ${{ secrets.ID }}
           GITHUB_PASSWORD: ${{ secrets.TOKEN }}
