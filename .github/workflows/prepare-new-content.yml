@@ -17,8 +17,11 @@ jobs:
         with:
           token: ${{secrets.TOKEN}}
 
+      - name: Install dependency
+        run: npm install 
+
       - name: Deploy
         run: npm run deploy
-        with:
+        env:
           GITHUB_ID: ${{ secrets.ID }}
           GITHUB_PASSWORD: ${{ secrets.TOKEN }}
