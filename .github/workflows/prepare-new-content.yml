@@ -23,4 +23,4 @@ jobs:
           key: ${{ secrets.DEBIAN_PRIVATE_KEY }}
           script: |
             cd /home/hansol/workspace/Paul2021-R.github.io
-            echo "HELLO WORLD!?"
+            npm run deploy
