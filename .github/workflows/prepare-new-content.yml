@@ -9,17 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           token: ${{secrets.TOKEN}}
 
-    - name: Deploy
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.DEBIAN_PRIVATE }}
-        port: 22
-        username: ${{ secrets.DEBIAN_USER }}
-        key: ${{ secrets.DEBIAN_PRIVATE_KEY }}
-        script: |
-          cd /home/hansol/workspace/Paul2021-R.github.io
-          echo "HELLO WORLD!?"
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.DEBIAN_PRIVATE }}
+          port: 22  
+          username: ${{ secrets.DEBIAN_USER }}
+          key: ${{ secrets.DEBIAN_PRIVATE_KEY }}
+          script: |
+            cd /home/hansol/workspace/Paul2021-R.github.io
+            echo "HELLO WORLD!?"
