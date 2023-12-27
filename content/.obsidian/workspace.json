@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ETC/202312250936.md",
+                "file": "ETC/202312090749.md",
                 "mode": "source",
                 "source": false
               }
@@ -115,7 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ETC/202312250936.md",
+                "file": "ETC/202312090749.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,7 +132,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ETC/202312250936.md",
+                "file": "ETC/202312090749.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -155,7 +155,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ETC/202312250936.md"
+                "file": "ETC/202312090749.md"
               }
             }
           },
@@ -196,11 +196,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "b3ba29157a2787ec",
+  "active": "d37bc2bfa9025637",
   "lastOpenFiles": [
-    "ETC/src/202312250950.png",
-    "ETC/202312270048.md",
+    "ETC/202312250936.md",
     "ETC/202312090749.md",
+    "ETC/202312270048.md",
+    "ETC/src/202312250950.png",
     "ETC/src/202312090644.png",
     "ETC/src/202312251048.png",
     "ETC/src/20230409230435.png",
@@ -210,8 +211,6 @@
     "ETC/src/20231225095907.png",
     "ETC/src/20231225095348.png",
     "ETC/src/20230410011834.png",
-    "ETC/src/20230410011207.png",
-    "ETC/202312250936.md",
     "src/202312250950.png.md",
     "ETC/202312051101.md",
     "ETC/20220320_auto_deploy.md",
