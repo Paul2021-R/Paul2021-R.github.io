@@ -13,19 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ETC/202312051101.md",
+                "file": "ETC/202401022247.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "617b173e39b7462a",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "ETC/src/202312090644.png"
               }
             }
           }
@@ -115,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ETC/202312051101.md",
+                "file": "ETC/202401022247.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ETC/202312051101.md",
+                "file": "ETC/202401022247.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -155,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ETC/202312051101.md"
+                "file": "ETC/202401022247.md"
               }
             }
           },
@@ -173,7 +163,9 @@
             "state": {
               "type": "all-properties",
               "state": {
-                "sortOrder": "frequency"
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
               }
             }
           }
@@ -198,9 +190,14 @@
   },
   "active": "d37bc2bfa9025637",
   "lastOpenFiles": [
-    "ETC/202312090749.md",
+    "ETC/src/202401030251.png",
+    "ETC/202401022247.md",
     "ETC/202312270048.md",
-    "ETC/202312051101.md",
+    "ETC/src/20240103065926.png",
+    "ETC/src/202312090644.png",
+    "ETC/src/Peer_mockup-mobile-haryu.png",
+    "ETC/src/20240103024600.png",
+    "ETC/202312090749.md",
     "ETC/202304151926.md",
     "ETC/20231225.md",
     "ETC/20220320_auto_deploy.md",
@@ -230,10 +227,6 @@
     "algorithm/20220509_24.md",
     "algorithm/20220513_29_2.md",
     "algorithm/20230413.md",
-    "algorithm/20220601_39.md",
-    "algorithm/20220602_41.md",
-    "algorithm/20220411_00.md",
-    "ETC/20231017/202304151926 1.md",
     "42 seoul/Transcendence/src",
     "42 seoul/Transcendence",
     "ETC/20231017/src",
@@ -241,7 +234,6 @@
     "Projects",
     "42 seoul/webserv/src",
     "42 seoul/webserv",
-    "42 seoul/Minishell/src",
     "무제 파일.canvas"
   ]
 }
