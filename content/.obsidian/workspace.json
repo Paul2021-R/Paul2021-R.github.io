@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ETC/202401022247.md",
+                "file": "STUDY/Development English/202401041006.md",
                 "mode": "source",
                 "source": false
               }
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ETC/202401022247.md",
+                "file": "STUDY/Development English/202401041006.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ETC/202401022247.md",
+                "file": "STUDY/Development English/202401041006.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ETC/202401022247.md"
+                "file": "STUDY/Development English/202401041006.md"
               }
             }
           },
@@ -190,8 +190,10 @@
   },
   "active": "d37bc2bfa9025637",
   "lastOpenFiles": [
-    "ETC/src/202401030251.png",
+    "STUDY/Development English/202401020842.md",
+    "STUDY/Development English/202401041006.md",
     "ETC/202401022247.md",
+    "ETC/src/202401030251.png",
     "ETC/202312270048.md",
     "ETC/src/20240103065926.png",
     "ETC/src/202312090644.png",
@@ -226,7 +228,6 @@
     "algorithm/20220429_20.md",
     "algorithm/20220509_24.md",
     "algorithm/20220513_29_2.md",
-    "algorithm/20230413.md",
     "42 seoul/Transcendence/src",
     "42 seoul/Transcendence",
     "ETC/20231017/src",
