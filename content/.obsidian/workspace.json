@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/Development English/202401041006.md",
+                "file": "Projects/202402010049.md",
                 "mode": "source",
                 "source": false
               }
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/Development English/202401041006.md",
+                "file": "Projects/202402010049.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/Development English/202401041006.md",
+                "file": "Projects/202402010049.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/Development English/202401041006.md"
+                "file": "Projects/202402010049.md"
               }
             }
           },
@@ -179,19 +179,21 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:퀵 스위처 열기": false,
-      "graph:그래프 뷰 열기": false,
-      "canvas:새 캔버스 만들기": false,
-      "daily-notes:오늘의 데일리 노트 열기": false,
-      "templates:템플릿 삽입": false,
-      "command-palette:명령어 팔레트 열기": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
   "active": "d37bc2bfa9025637",
   "lastOpenFiles": [
-    "2024-01-11.md",
+    "Projects/202305071839.md",
+    "Projects/202402010049.md",
     "STUDY/Development English/202401041006.md",
+    "2024-01-11.md",
     "STUDY/Development English/202401020842.md",
     "ETC/202401022247.md",
     "ETC/src/202401030251.png",
@@ -211,7 +213,6 @@
     "STUDY/Network/20230413 1.md",
     "STUDY/20220318_markdown.md",
     "STUDY/Network/20231218.md",
-    "Projects/202305071839.md",
     "STUDY/Network/src/스크린샷 2023-12-19 오전 8.59.39.png",
     "42 seoul/Transcendence/20231205.md",
     "STUDY/Network/src",
@@ -227,7 +228,6 @@
     "algorithm/20220419_13.md",
     "algorithm/20220411_01.md",
     "algorithm/20220429_20.md",
-    "algorithm/20220509_24.md",
     "42 seoul/Transcendence/src",
     "42 seoul/Transcendence",
     "ETC/20231017/src",
