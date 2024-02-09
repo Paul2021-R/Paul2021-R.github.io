@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/202402010049.md",
+                "file": "Projects/202402091238.md",
                 "mode": "source",
                 "source": false
               }
@@ -58,26 +58,6 @@
             }
           },
           {
-            "id": "eedcb2919badfc42",
-            "type": "leaf",
-            "state": {
-              "type": "starred",
-              "state": {}
-            }
-          },
-          {
-            "id": "93a95e6312b918e8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/ostep/20230128_012.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "ab280537dfa82a03",
             "type": "leaf",
             "state": {
@@ -89,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.50390243530273
+    "width": 278.50390243530273,
+    "collapsed": true
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -105,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Projects/202402010049.md",
+                "file": "Projects/202402091238.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Projects/202402010049.md",
+                "file": "Projects/202402091238.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Projects/202402010049.md"
+                "file": "Projects/202402091238.md"
               }
             }
           },
@@ -188,13 +169,17 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "b3ba29157a2787ec",
+  "active": "d37bc2bfa9025637",
   "lastOpenFiles": [
+    "Projects/src/new-logic-notification.png",
+    "Projects/src/old-logic-notification.png",
+    "STUDY/ostep/20230128_012.md",
+    "Projects/202402091238.md",
+    "Projects/202402010049.md",
     "Projects/src/20240205160944.png",
     "Projects/src/20240205143716.png",
     "Projects/src",
     "Projects/202305071839.md",
-    "Projects/202402010049.md",
     "STUDY/Development English/202401041006.md",
     "2024-01-11.md",
     "STUDY/Development English/202401020842.md",
@@ -222,14 +207,10 @@
     "STUDY/Network",
     "ETC/20231209074922.md",
     "42 seoul/Transcendence/src/20231207132434.png",
-    "42 seoul/Transcendence/src/20231206115429.png",
-    "42 seoul/Transcendence/src/20231206114009.png",
     "algorithm/20220416_09.md",
     "algorithm/20220415_08.md",
     "algorithm/20220414_07.md",
     "algorithm/20220413_06.md",
-    "algorithm/20220419_13.md",
-    "algorithm/20220411_01.md",
     "42 seoul/Transcendence/src",
     "42 seoul/Transcendence",
     "ETC/20231017/src",
