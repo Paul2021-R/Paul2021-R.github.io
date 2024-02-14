@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/202402091238.md",
+                "file": "20240213115618.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.50390243530273,
-    "collapsed": true
+    "width": 278.50390243530273
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Projects/202402091238.md",
+                "file": "20240213115618.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Projects/202402091238.md",
+                "file": "20240213115618.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Projects/202402091238.md"
+                "file": "20240213115618.md"
               }
             }
           },
@@ -149,9 +148,17 @@
                 "searchQuery": ""
               }
             }
+          },
+          {
+            "id": "d97eca6a2a3413f1",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -171,10 +178,22 @@
   },
   "active": "d37bc2bfa9025637",
   "lastOpenFiles": [
+    "src/Pasted image 20240213121342.png",
+    "src",
+    "ETC/202401022247.md",
+    "20240213115618.md",
+    "20240213115555.md",
+    "20240213110258.md",
+    "20240213110000.md",
+    "202402131149.md",
+    "202402116790.md",
+    "ETC/template.md",
+    "2024021111.md",
+    "2024021142.md",
+    "Projects/202402091238.md",
     "Projects/src/new-logic-notification.png",
     "Projects/src/old-logic-notification.png",
     "STUDY/ostep/20230128_012.md",
-    "Projects/202402091238.md",
     "Projects/202402010049.md",
     "Projects/src/20240205160944.png",
     "Projects/src/20240205143716.png",
@@ -183,7 +202,6 @@
     "STUDY/Development English/202401041006.md",
     "2024-01-11.md",
     "STUDY/Development English/202401020842.md",
-    "ETC/202401022247.md",
     "ETC/src/202401030251.png",
     "ETC/202312270048.md",
     "ETC/src/20240103065926.png",
@@ -196,21 +214,10 @@
     "ETC/20220320_auto_deploy.md",
     "src/20231225095907.png.md",
     "src/20231225095348.png.md",
-    "src",
     "ETC/202304151926.md",
-    "STUDY/Network/20230413 1.md",
-    "STUDY/20220318_markdown.md",
-    "STUDY/Network/20231218.md",
     "STUDY/Network/src/스크린샷 2023-12-19 오전 8.59.39.png",
-    "42 seoul/Transcendence/20231205.md",
     "STUDY/Network/src",
     "STUDY/Network",
-    "ETC/20231209074922.md",
-    "42 seoul/Transcendence/src/20231207132434.png",
-    "algorithm/20220416_09.md",
-    "algorithm/20220415_08.md",
-    "algorithm/20220414_07.md",
-    "algorithm/20220413_06.md",
     "42 seoul/Transcendence/src",
     "42 seoul/Transcendence",
     "ETC/20231017/src",

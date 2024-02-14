@@ -1,3 +1,6 @@
 {
-  "autorun": false
+  "autorun": false,
+  "format": "YYYYMMDDhhmmss",
+  "folder": "/",
+  "template": "ETC/template"
 }
