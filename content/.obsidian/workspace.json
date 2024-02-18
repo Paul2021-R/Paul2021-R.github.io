@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "20240213115618.md",
+                "file": "ETC/20240213115618.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.50390243530273,
-    "collapsed": true
+    "width": 278.50390243530273
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "20240213115618.md",
+                "file": "ETC/20240213115618.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "20240213115618.md",
+                "file": "ETC/20240213115618.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "20240213115618.md"
+                "file": "ETC/20240213115618.md"
               }
             }
           },
@@ -179,10 +178,11 @@
   },
   "active": "d37bc2bfa9025637",
   "lastOpenFiles": [
+    "20240215115500.md",
+    "ETC/20240213115618.md",
     "src/Pasted image 20240213121342.png",
     "src",
     "ETC/202401022247.md",
-    "20240213115618.md",
     "20240213115555.md",
     "20240213110258.md",
     "20240213110000.md",
@@ -216,7 +216,6 @@
     "src/20231225095907.png.md",
     "src/20231225095348.png.md",
     "ETC/202304151926.md",
-    "STUDY/Network/src/스크린샷 2023-12-19 오전 8.59.39.png",
     "STUDY/Network/src",
     "STUDY/Network",
     "42 seoul/Transcendence/src",
