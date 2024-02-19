@@ -67,29 +67,40 @@ module.exports = {
         activity: '실전 기술블로그 런칭',
         links: {
           github: '',
-          post: '',
+          post: 'https://paul2021-r.github.io/',
           googlePlay: '',
           appStore: '',
           demo: '',
         },
       },
 	  {
-        date: '2022.05.06 ~',
-        activity: 'Project peer 진행 중',
+        date: '2023.05.06 ~ 2024.02.14',
+        activity: 'Project peer Beta Launching',
         links: {
-          github: '',
-          post: '',
+          github: 'https://github.com/peer-42seoul',
+          post: 'https://www.peer-study.co.kr/login?redirect=/',
           googlePlay: '',
           appStore: '',
           demo: '',
         },
       },
 	  {
-        date: '2022.10.05',
+        date: '2023.10.05',
         activity: '42 Seoul 공통과정 돌파',
         links: {
           github: '',
           post: '',
+          googlePlay: '',
+          appStore: '',
+          demo: '',
+        },
+      },
+      {
+        date: '2024.03.01 ~ ',
+        activity: 'Project peer 2nd Step Developping',
+        links: {
+          github: 'https://github.com/peer-42seoul',
+          post: 'https://www.peer-study.co.kr/login?redirect=/',
           googlePlay: '',
           appStore: '',
           demo: '',
@@ -178,8 +189,8 @@ module.exports = {
 	{
         title: 'Project peer-web-application',
         description:
-          '동료학습을 위한 기능들과 인공지능을 활용한 개인의 성향-업무성향의 정량 평가 알고리즘을 구축하여 협업 스터디, 협업 프로젝트를 위한 Progressive Web Application 구축을 진행하고 있습니다.',
-        techStack: ['TypeScript', 'NextJs', 'Java', 'Spring', 'Boot', 'Redis', 'MySQL', 'MongoDB', 'NHN Cloud'],
+          '동료학습을 위한 기능들과 인공지능을 활용한 개인의 성향-업무성향의 정량 평가 알고리즘을 구축하여 협업 스터디, 협업 프로젝트를 위한 Progressive Web Application 개발을 진행하고 있습니다. 1차 베타 런칭 이후 다음 개발 목표를 향해 함께 개발중입니다!',
+        techStack: ['NextJs', 'SpringBoot', 'Redis', 'MySQL', 'MongoDB', 'NHN Cloud', 'On-Promise Server'],
         thumbnailUrl: 'peer2.png',
         links: {
           post: '',
