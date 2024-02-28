@@ -13,25 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/20240223020331.md",
+                "file": "STUDY/CSAPP/20240229121940.md",
                 "mode": "source",
                 "source": false
               }
             }
-          }
-        ]
-      },
-      {
-        "id": "2c094b3dc9440133",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "6eb245d6d17bfe9f",
+            "id": "9d7a017f04415fd5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/20240223080156.md",
+                "file": "STUDY/CSAPP/20240229121939.md",
                 "mode": "source",
                 "source": false
               }
@@ -66,7 +60,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "algorithm python 코딩테스트  ",
+                "query": "tag:영어",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -103,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Projects/20240223020331.md",
+                "file": "STUDY/CSAPP/20240229121940.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Projects/20240223020331.md",
+                "file": "STUDY/CSAPP/20240229121940.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Projects/20240223020331.md"
+                "file": "STUDY/CSAPP/20240229121940.md"
               }
             }
           },
@@ -194,12 +188,23 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d37bc2bfa9025637",
+  "active": "b3ba29157a2787ec",
   "lastOpenFiles": [
+    "STUDY/CSAPP/src/20240229013520.png",
+    "STUDY/CSAPP/20240229121939.md",
+    "STUDY/CSAPP/20240229121940.md",
+    "STUDY/CSAPP/20240228110608.md",
+    "STUDY/CSAPP/src/20240228234753.png",
+    "STUDY/CSAPP",
+    "STUDY/20220318_markdown.md",
+    "ETC/template.md",
+    "STUDY/src/20240228233349.png",
+    "STUDY/src/20240228233134.png",
+    "STUDY/CSAPP/src",
+    "Projects/20240223020331.md",
     "Projects/src/Pasted image 20240223204304.png",
     "Projects/src/Pasted image 20240223202503.png",
     "Projects/20240223080156.md",
-    "Projects/20240223020331.md",
     "Projects/src/스크린샷 2024-02-23 185630.png",
     "Projects/src/스크린샷 2024-02-23 185641.png",
     "ETC/20240213115618.md",
@@ -217,7 +222,6 @@
     "20240213110000.md",
     "202402131149.md",
     "202402116790.md",
-    "ETC/template.md",
     "2024021111.md",
     "2024021142.md",
     "Projects/202402091238.md",
@@ -225,23 +229,13 @@
     "Projects/src/old-logic-notification.png",
     "STUDY/ostep/20230128_012.md",
     "Projects/202402010049.md",
-    "Projects/src/20240205160944.png",
-    "Projects/src/20240205143716.png",
     "Projects/src",
     "Projects/202305071839.md",
     "STUDY/Development English/202401041006.md",
     "2024-01-11.md",
     "STUDY/Development English/202401020842.md",
-    "ETC/src/202401030251.png",
-    "ETC/202312270048.md",
-    "ETC/src/20240103065926.png",
-    "ETC/202312090749.md",
-    "ETC/202304151926.md",
-    "ETC/20231225.md",
     "STUDY/Network/src",
     "STUDY/Network",
-    "42 seoul/Transcendence/src",
-    "42 seoul/Transcendence",
     "무제 파일.canvas"
   ]
 }

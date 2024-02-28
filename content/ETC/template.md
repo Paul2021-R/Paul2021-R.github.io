@@ -12,8 +12,6 @@ categories: etc
 
 본문
 
----
-
 ```toc
 
 ```
