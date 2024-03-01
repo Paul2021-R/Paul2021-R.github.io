@@ -13,6 +13,18 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Projects/20240223020331.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "532137bc621b86d8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "STUDY/CSAPP/20240229121940.md",
                 "mode": "source",
                 "source": false
@@ -31,7 +43,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -188,25 +201,28 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d37bc2bfa9025637",
+  "active": "532137bc621b86d8",
   "lastOpenFiles": [
+    "STUDY/CSAPP/src/20240301_161041.png",
+    "STUDY/CSAPP/src/20240301_155546.png",
+    "STUDY/CSAPP/src/20240301_152606.png",
+    "STUDY/CSAPP/src/20240301_092050.png",
+    "STUDY/CSAPP/src/20240301_090046.png",
+    "STUDY/CSAPP/src/20240301_090039.png",
+    "STUDY/CSAPP/src/20240301_090028.png",
+    "STUDY/CSAPP/src/20240301_085900.png",
+    "STUDY/CSAPP/src/20240301_085849.png",
+    "STUDY/CSAPP/src/Pasted image 20240301083312.png",
+    "STUDY/CSAPP/src/20240301082950.png",
     "STUDY/CSAPP/20240229121939.md",
     "STUDY/CSAPP/20240229121940.md",
-    "STUDY/CSAPP/src/20240229013520.png",
+    "Projects/20240223020331.md",
     "STUDY/CSAPP/20240228110608.md",
-    "STUDY/CSAPP/src/20240228234753.png",
     "STUDY/CSAPP",
     "STUDY/20220318_markdown.md",
     "ETC/template.md",
-    "STUDY/src/20240228233349.png",
-    "STUDY/src/20240228233134.png",
     "STUDY/CSAPP/src",
-    "Projects/20240223020331.md",
-    "Projects/src/Pasted image 20240223204304.png",
-    "Projects/src/Pasted image 20240223202503.png",
     "Projects/20240223080156.md",
-    "Projects/src/스크린샷 2024-02-23 185630.png",
-    "Projects/src/스크린샷 2024-02-23 185641.png",
     "ETC/20240213115618.md",
     "resume/20240219112702.md",
     "resume/src/20240201_gemgem_resume_blank - Google Docs.pdf",
@@ -214,7 +230,6 @@
     "무제 폴더 1",
     "resume",
     "20240215115500.md",
-    "src/Pasted image 20240213121342.png",
     "src",
     "ETC/202401022247.md",
     "20240213115555.md",
@@ -225,7 +240,6 @@
     "2024021111.md",
     "2024021142.md",
     "Projects/202402091238.md",
-    "Projects/src/new-logic-notification.png",
     "STUDY/ostep/20230128_012.md",
     "Projects/202402010049.md",
     "Projects/src",
