@@ -30,7 +30,14 @@
                 "source": false
               }
             }
-          },
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "9dccf9abdd39674b",
+        "type": "tabs",
+        "children": [
           {
             "id": "9d7a017f04415fd5",
             "type": "leaf",
@@ -43,8 +50,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -94,7 +100,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.50390243530273
+    "width": 278.50390243530273,
+    "collapsed": true
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -203,6 +210,9 @@
   },
   "active": "532137bc621b86d8",
   "lastOpenFiles": [
+    "STUDY/CSAPP/20240229121939.md",
+    "STUDY/CSAPP/20240229121940.md",
+    "STUDY/CSAPP/src/20240302_112414.png",
     "STUDY/CSAPP/src/20240301_161041.png",
     "STUDY/CSAPP/src/20240301_155546.png",
     "STUDY/CSAPP/src/20240301_152606.png",
@@ -212,10 +222,6 @@
     "STUDY/CSAPP/src/20240301_090028.png",
     "STUDY/CSAPP/src/20240301_085900.png",
     "STUDY/CSAPP/src/20240301_085849.png",
-    "STUDY/CSAPP/src/Pasted image 20240301083312.png",
-    "STUDY/CSAPP/src/20240301082950.png",
-    "STUDY/CSAPP/20240229121939.md",
-    "STUDY/CSAPP/20240229121940.md",
     "Projects/20240223020331.md",
     "STUDY/CSAPP/20240228110608.md",
     "STUDY/CSAPP",
