@@ -619,26 +619,49 @@ CPU 에는 몇 가지 매우 심플한 작업을 갖고 있으며, 이는 메인
 <li>예시 4코어 8스레드 형태가 되면서, 하나의 코어 내에서도 두개의 스레드를 스위칭해가면서 작업이 가능함 -> 스레드의 작업을 기다리거나 하는 것이 아닌 바꿔가며 효과적으로 처리가 가능함</li>
 </ul>
 </li>
-<li>
-<table>
-<thead>
-<tr>
-<th>Instruction-Level Parallelism</th>
-</tr>
-</thead>
-</table>
+<li>Instruction-Level Parallelism
+<ul>
+<li>현대 프로세서들은 다중 명령어를 한번에 수행이 가능하며, 이러한 특성을 instruction-level parallelism 이라 부른다.</li>
+<li>챕터 4에서, 파이프라이닝이라는 것을 탐색할 것인데, 이는 다른 스텝이 수행될 필요가 있거나, 프로세서 하드웨어가 이러한 스텝으로 수행되는 일련의 스테이지들로 구성되어진다.</li>
+<li>사이클 당 명령어가 1회보다 이상으로 수행하는 비율을 가진 프로세서를 superscalar processor 라고 부른다. 챕터 5에서는 이러한 프로세서들의 고수준 모델에 대해 설명을 할 것이다. 우리는 여기서 프로그래머들이 이 모델을 그들의 프로그램의 성능을 이해하기 위해 사용하는 것을 배울 수 있을 것이다.</li>
+</ul>
 </li>
-<li>
-<table>
-<thead>
-<tr>
-<th>Single-Instruction, Multiple-Data(SIMD) Parallelism</th>
-</tr>
-</thead>
-</table>
+<li>Single-Instruction, Multiple-Data(SIMD) Parallelism
+<ul>
+<li>가장 낮은 단계의 수준에서 많은 현대적 프로세서들은 특수한 하드웨어를 내부에 내장한다. 해당 하드웨어는 단일 명령에 대해 병렬로 수행되는 다중 작업을 가능케 한다. 이를 single-instruction , multiple-data(SIMD) 라고 부른다.</li>
+<li>이러한 SIMD 명령어는 대부분 이미지, 소리, 비디오 데이터의 처리를 더욱 빠르게 하는 기능을 제공한다.</li>
+</ul>
 </li>
 </ul>
-<h4 id="193-the-importance-of-abstraction-in-computer-systems" style="position:relative;"><a href="#193-the-importance-of-abstraction-in-computer-systems" aria-label="193 the importance of abstraction in computer systems permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.9.3 The Importance of Abstraction in Computer Systems</h4>
+<h3 id="193-the-importance-of-abstraction-in-computer-systems" style="position:relative;"><a href="#193-the-importance-of-abstraction-in-computer-systems" aria-label="193 the importance of abstraction in computer systems permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.9.3 The Importance of Abstraction in Computer Systems</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 29.444444444444446%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAB2HAAAdhwGP5fFlAAABAUlEQVQY0z2PbW+DIBRG/f9/bR+2phmmbtWoIC1c3tS2AhdY7Nadr09Ocp6K35PYktuw5FSepJTiC0Rc1+V6vQIAPvmfcs7Vx2f99n44HI81IZTSlBIiphe5lJxzjHGeZyml9z7njIghBESs+q47N83Q983pNE1TKQUj/ibEGPk0DcOwLKsP3j253W4hBL9tu6yVouM4DiNjE6ZdQ/yTEdEYLYR4PB77HURrjAJw87zXIVbn7/NX03RtSyldlrWUYq2VQgCAFMJZ66xVSikArdQ+STn0/YVz733VtW1dE0JITQjnvJTinGOUMsakkEprRqkxRgjBGAMpjdYXzgEgxvgDFcxSP17noL8AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240302 195419"
+        title="20240302 195419"
+        src="/static/1f0e47e500e012292f19745df9aca6e0/37523/20240302_195419.png"
+        srcset="/static/1f0e47e500e012292f19745df9aca6e0/e9ff0/20240302_195419.png 180w,
+/static/1f0e47e500e012292f19745df9aca6e0/f21e7/20240302_195419.png 360w,
+/static/1f0e47e500e012292f19745df9aca6e0/37523/20240302_195419.png 720w,
+/static/1f0e47e500e012292f19745df9aca6e0/d26aa/20240302_195419.png 839w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>대부분의 언어와 형태에서는 다양한 추상화를 제공한다.</li>
+<li>컴퓨터 시스템에서 볼 수 있는 여러 추상화에 대해 이미 소개되었습니다. 그림 1.18에서 언급된 것처럼, 프로세서 측면에서 명령 세트 아키텍처는 실제 프로세서 하드웨어의 추상화를 제공합니다. 이 추상화를 통해, 머신 코드 프로그램은 한 번에 하나의 명령을 수행하는 프로세서에서 실행되는 것처럼 동작합니다. 그러나 기저 하드웨어는 훨씬 더 복잡하게, 여러 명령을 병렬로 실행하지만, 항상 단순하고 순차적인 모델과 일관된 방식으로 실행됩니다. 같은 실행 모델을 유지함으로써, 다른 프로세서 구현은 같은 머신 코드를 실행하면서도 비용과 성능의 범위를 제공할 수 있습니다.</li>
+<li>운영 시스템 측면에서는 세 가지 추상화를 소개했습니다: I/O 장치의 추상화로서의 <code class="language-text">파일</code>, 프로그램 메모리의 추상화로서의 <code class="language-text">가상 메모리</code>, 실행 중인 프로그램의 추상화로서의 <code class="language-text">프로세스</code>입니다. 이러한 추상화에 새로운 것을 추가합니다: 전체 컴퓨터의 추상화를 제공하는 <code class="language-text">가상 머신</code>으로, 운영 시스템, 프로세서, 프로그램을 포함합니다. 이 책의 후속 섹션에서 이러한 추상화에 대해 다시 언급할 것입니다.</li>
+</ul>
 <h3 id="110-summary" style="position:relative;"><a href="#110-summary" aria-label="110 summary permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.10 Summary</h3>
 <div class="table-of-contents">
 <ul>
@@ -702,8 +725,10 @@ CPU 에는 몇 가지 매우 심플한 작업을 갖고 있으며, 이는 메인
 <ul>
 <li><a href="#191-amdahls-law">1.9.1 Amdahl’s Law</a></li>
 <li><a href="#192-concurrency-and-parallelism">1.9.2 Concurrency and Parallelism</a></li>
-<li><a href="#193-the-importance-of-abstraction-in-computer-systems">1.9.3 The Importance of Abstraction in Computer Systems</a></li>
 </ul>
+</li>
+<li>
+<p><a href="#193-the-importance-of-abstraction-in-computer-systems">1.9.3 The Importance of Abstraction in Computer Systems</a></p>
 </li>
 <li>
 <p><a href="#110-summary">1.10 Summary</a></p>
