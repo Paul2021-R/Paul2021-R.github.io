@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/20240223020331.md",
+                "file": "STUDY/CSAPP/20240229121940.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/CSAPP/20240229121940.md",
+                "file": "STUDY/JAVA/20240304024643.md",
                 "mode": "source",
                 "source": false
               }
@@ -40,6 +40,18 @@
         "children": [
           {
             "id": "9d7a017f04415fd5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/CSAPP/20240304013822.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "fa554a8ce1bec2d0",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -100,8 +112,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.50390243530273,
-    "collapsed": true
+    "width": 278.50390243530273
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -117,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/CSAPP/20240229121940.md",
+                "file": "STUDY/JAVA/20240304024643.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,7 +145,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/CSAPP/20240229121940.md",
+                "file": "STUDY/JAVA/20240304024643.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -157,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/CSAPP/20240229121940.md"
+                "file": "STUDY/JAVA/20240304024643.md"
               }
             }
           },
@@ -210,9 +221,17 @@
   },
   "active": "532137bc621b86d8",
   "lastOpenFiles": [
-    "STUDY/CSAPP/src/20240302_195419.png",
+    "STUDY/JAVA/202401020948.md",
+    "STUDY/JAVA/20240304024643.md",
+    "STUDY/CSAPP/20240304013645.md",
+    "STUDY/CSAPP/20240304013822.md",
     "STUDY/CSAPP/20240229121939.md",
+    "STUDY/CSAPP/20240228110608.md",
     "STUDY/CSAPP/20240229121940.md",
+    "STUDY/CSAPP/src/20240301082950.png",
+    "STUDY/CSAPP/src/20240301081234.png",
+    "Projects/20240223020331.md",
+    "STUDY/CSAPP/src/20240302_195419.png",
     "STUDY/CSAPP/src/20240302_112414.png",
     "STUDY/CSAPP/src/20240301_161041.png",
     "STUDY/CSAPP/src/20240301_155546.png",
@@ -220,11 +239,6 @@
     "STUDY/CSAPP/src/20240301_092050.png",
     "STUDY/CSAPP/src/20240301_090046.png",
     "STUDY/CSAPP/src/20240301_090039.png",
-    "STUDY/CSAPP/src/20240301_090028.png",
-    "STUDY/CSAPP/src/20240301_085900.png",
-    "STUDY/CSAPP/src/20240301_085849.png",
-    "Projects/20240223020331.md",
-    "STUDY/CSAPP/20240228110608.md",
     "STUDY/CSAPP",
     "STUDY/20220318_markdown.md",
     "ETC/template.md",
@@ -251,9 +265,6 @@
     "Projects/202402010049.md",
     "Projects/src",
     "Projects/202305071839.md",
-    "STUDY/Development English/202401041006.md",
-    "2024-01-11.md",
-    "STUDY/Development English/202401020842.md",
     "STUDY/Network/src",
     "STUDY/Network",
     "무제 파일.canvas"
