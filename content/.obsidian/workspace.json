@@ -6,6 +6,7 @@
       {
         "id": "2338a081c4fa35e8",
         "type": "tabs",
+        "dimension": 50,
         "children": [
           {
             "id": "d37bc2bfa9025637",
@@ -30,13 +31,26 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "ce63180760ad113b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/CSAPP/20240304013645.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       },
       {
         "id": "2083f2eb6effd7c9",
         "type": "tabs",
+        "dimension": 50,
         "children": [
           {
             "id": "fa554a8ce1bec2d0",
@@ -44,7 +58,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/CSAPP/20240229121939.md",
+                "file": "ETC/20240313075259.md",
                 "mode": "source",
                 "source": false
               }
@@ -62,8 +76,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -129,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240312092035.md",
+                "file": "ETC/20240313075259.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -146,7 +159,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240312092035.md",
+                "file": "ETC/20240313075259.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,7 +182,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240312092035.md"
+                "file": "ETC/20240313075259.md"
               }
             }
           },
@@ -220,19 +233,20 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "532137bc621b86d8",
+  "active": "fa554a8ce1bec2d0",
   "lastOpenFiles": [
-    "STUDY/coding-test/20240312075753.md",
-    "STUDY/docker-kubernetes/20240312092035.md",
     "STUDY/CSAPP/20240304013645.md",
+    "ETC/20240313075259.md",
+    "STUDY/CSAPP/20240304013822.md",
+    "STUDY/CSAPP/20240229121939.md",
+    "STUDY/docker-kubernetes/20240312092035.md",
+    "STUDY/coding-test/20240312075753.md",
     "STUDY/docker-kubernetes",
     "STUDY/coding-test/src/20240312084450.png",
     "STUDY/coding-test/src",
-    "STUDY/CSAPP/20240304013822.md",
     "STUDY/coding-test",
     "STUDY/JAVA/20240304024643.md",
     "STUDY/JAVA/202401020948.md",
-    "STUDY/CSAPP/20240229121939.md",
     "STUDY/CSAPP/20240228110608.md",
     "STUDY/CSAPP/20240229121940.md",
     "STUDY/CSAPP/src/20240301082950.png",
@@ -267,7 +281,6 @@
     "2024021111.md",
     "2024021142.md",
     "Projects/202402091238.md",
-    "STUDY/ostep/20230128_012.md",
     "무제 파일.canvas"
   ]
 }
