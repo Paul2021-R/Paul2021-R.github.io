@@ -53,18 +53,6 @@
         "dimension": 50,
         "children": [
           {
-            "id": "fa554a8ce1bec2d0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ETC/20240313075259.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "29527bb9b9e1405d",
             "type": "leaf",
             "state": {
@@ -142,7 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ETC/20240313075259.md",
+                "file": "STUDY/CSAPP/20240304013645.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,7 +147,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ETC/20240313075259.md",
+                "file": "STUDY/CSAPP/20240304013645.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -182,7 +170,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ETC/20240313075259.md"
+                "file": "STUDY/CSAPP/20240304013645.md"
               }
             }
           },
@@ -233,32 +221,32 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "fa554a8ce1bec2d0",
+  "active": "ce63180760ad113b",
   "lastOpenFiles": [
-    "STUDY/CSAPP/20240304013645.md",
     "ETC/20240313075259.md",
+    "ETC/src/20240313085318.png",
+    "ETC/src/20240313084941.png",
+    "ETC/src/20240313082945.png",
+    "ETC/src/20240313082700.png",
+    "ETC/src/20240313082205.png",
+    "ETC/src/20240313082428.png",
+    "ETC/src/20240313082356.png",
+    "ETC/src/20240313082257.png",
+    "STUDY/CSAPP/20240304013645.md",
+    "ETC/src/20240313081203.png",
+    "ETC/src/20240313080756.png",
     "STUDY/CSAPP/20240304013822.md",
     "STUDY/CSAPP/20240229121939.md",
     "STUDY/docker-kubernetes/20240312092035.md",
     "STUDY/coding-test/20240312075753.md",
     "STUDY/docker-kubernetes",
-    "STUDY/coding-test/src/20240312084450.png",
     "STUDY/coding-test/src",
     "STUDY/coding-test",
     "STUDY/JAVA/20240304024643.md",
     "STUDY/JAVA/202401020948.md",
     "STUDY/CSAPP/20240228110608.md",
     "STUDY/CSAPP/20240229121940.md",
-    "STUDY/CSAPP/src/20240301082950.png",
-    "STUDY/CSAPP/src/20240301081234.png",
     "Projects/20240223020331.md",
-    "STUDY/CSAPP/src/20240302_195419.png",
-    "STUDY/CSAPP/src/20240302_112414.png",
-    "STUDY/CSAPP/src/20240301_161041.png",
-    "STUDY/CSAPP/src/20240301_155546.png",
-    "STUDY/CSAPP/src/20240301_152606.png",
-    "STUDY/CSAPP/src/20240301_092050.png",
-    "STUDY/CSAPP/src/20240301_090046.png",
     "STUDY/CSAPP",
     "STUDY/20220318_markdown.md",
     "ETC/template.md",
@@ -280,7 +268,6 @@
     "202402116790.md",
     "2024021111.md",
     "2024021142.md",
-    "Projects/202402091238.md",
     "무제 파일.canvas"
   ]
 }
