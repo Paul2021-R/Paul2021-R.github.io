@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/JAVA/20240304024643.md",
+                "file": "STUDY/docker-kubernetes/20240312092035.md",
                 "mode": "source",
                 "source": false
               }
@@ -39,18 +39,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "9d7a017f04415fd5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/CSAPP/20240304013822.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "fa554a8ce1bec2d0",
             "type": "leaf",
             "state": {
@@ -61,8 +49,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "29527bb9b9e1405d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/coding-test/20240312075753.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -128,7 +129,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/JAVA/20240304024643.md",
+                "file": "STUDY/docker-kubernetes/20240312092035.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +146,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/JAVA/20240304024643.md",
+                "file": "STUDY/docker-kubernetes/20240312092035.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -168,7 +169,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/JAVA/20240304024643.md"
+                "file": "STUDY/docker-kubernetes/20240312092035.md"
               }
             }
           },
@@ -221,10 +222,16 @@
   },
   "active": "532137bc621b86d8",
   "lastOpenFiles": [
-    "STUDY/JAVA/202401020948.md",
-    "STUDY/JAVA/20240304024643.md",
+    "STUDY/coding-test/20240312075753.md",
+    "STUDY/docker-kubernetes/20240312092035.md",
     "STUDY/CSAPP/20240304013645.md",
+    "STUDY/docker-kubernetes",
+    "STUDY/coding-test/src/20240312084450.png",
+    "STUDY/coding-test/src",
     "STUDY/CSAPP/20240304013822.md",
+    "STUDY/coding-test",
+    "STUDY/JAVA/20240304024643.md",
+    "STUDY/JAVA/202401020948.md",
     "STUDY/CSAPP/20240229121939.md",
     "STUDY/CSAPP/20240228110608.md",
     "STUDY/CSAPP/20240229121940.md",
@@ -238,7 +245,6 @@
     "STUDY/CSAPP/src/20240301_152606.png",
     "STUDY/CSAPP/src/20240301_092050.png",
     "STUDY/CSAPP/src/20240301_090046.png",
-    "STUDY/CSAPP/src/20240301_090039.png",
     "STUDY/CSAPP",
     "STUDY/20220318_markdown.md",
     "ETC/template.md",
@@ -262,11 +268,6 @@
     "2024021142.md",
     "Projects/202402091238.md",
     "STUDY/ostep/20230128_012.md",
-    "Projects/202402010049.md",
-    "Projects/src",
-    "Projects/202305071839.md",
-    "STUDY/Network/src",
-    "STUDY/Network",
     "무제 파일.canvas"
   ]
 }
