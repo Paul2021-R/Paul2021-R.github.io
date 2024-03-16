@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/coding-test/20240312075753.md",
+                "file": "STUDY/CSAPP/20240304013645.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240315043632.md",
+                "file": "STUDY/CSAPP/20240304013645.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240315043632.md",
+                "file": "STUDY/CSAPP/20240304013645.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240315043632.md"
+                "file": "STUDY/CSAPP/20240304013645.md"
               }
             }
           },
@@ -188,45 +188,9 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "floating": {
-    "id": "7bedf2f88c6ac0dc",
-    "type": "floating",
-    "children": [
-      {
-        "id": "d4d08c786c0e1b8a",
-        "type": "window",
-        "children": [
-          {
-            "id": "e7c5a021ce6c0ed0",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "f287710acc31c8e4",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "STUDY/docker-kubernetes/20240315043632.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 1005,
-        "y": 75,
-        "width": 601,
-        "height": 931,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
-  },
-  "active": "f287710acc31c8e4",
+  "active": "09cacacab7590dd0",
   "lastOpenFiles": [
+    "STUDY/CSAPP/20240304013822.md",
     "STUDY/coding-test/20240312075753.md",
     "STUDY/docker-kubernetes/20240315043632.md",
     "STUDY/docker-kubernetes/src/20240315165528.png",
@@ -239,7 +203,6 @@
     "STUDY/JAVA/20240304024643.md",
     "STUDY/JAVA/202401020948.md",
     "STUDY/JAVA/src/20240315130750.png",
-    "STUDY/CSAPP/20240304013822.md",
     "STUDY/CSAPP/20240304013645.md",
     "STUDY/cpp/20220908_cpp_reference.md",
     "STUDY/coding-test/src/20240314010910.png",
