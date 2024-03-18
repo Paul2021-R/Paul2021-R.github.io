@@ -1,0 +1,645 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.61a0edc5f76534a9ea34.css" data-identity="gatsby-global-css">@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:100;src:local("Montserrat Thin "),local("Montserrat-Thin"),url(/static/montserrat-latin-100-8d7d79679b70dbe27172b6460e7a7910.woff2) format("woff2"),url(/static/montserrat-latin-100-ec38980a9e0119a379e2a9b3dbb1901a.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:100;src:local("Montserrat Thin italic"),local("Montserrat-Thinitalic"),url(/static/montserrat-latin-100italic-e279051046ba1286706adc886cf1c96b.woff2) format("woff2"),url(/static/montserrat-latin-100italic-3b325a3173c8207435cd1b76e19bf501.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:200;src:local("Montserrat Extra Light "),local("Montserrat-Extra Light"),url(/static/montserrat-latin-200-9d266fbbfa6cab7009bd56003b1eeb67.woff2) format("woff2"),url(/static/montserrat-latin-200-2d8ba08717110d27122e54c34b8a5798.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:200;src:local("Montserrat Extra Light italic"),local("Montserrat-Extra Lightitalic"),url(/static/montserrat-latin-200italic-6e5b3756583bb2263eb062eae992735e.woff2) format("woff2"),url(/static/montserrat-latin-200italic-a0d6f343e4b536c582926255367a57da.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:300;src:local("Montserrat Light "),local("Montserrat-Light"),url(/static/montserrat-latin-300-00b3e893aab5a8fd632d6342eb72551a.woff2) format("woff2"),url(/static/montserrat-latin-300-ea303695ceab35f17e7d062f30e0173b.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:300;src:local("Montserrat Light italic"),local("Montserrat-Lightitalic"),url(/static/montserrat-latin-300italic-56f34ea368f6aedf89583d444bbcb227.woff2) format("woff2"),url(/static/montserrat-latin-300italic-54b0bf2c8c4c12ffafd803be2466a790.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:400;src:local("Montserrat Regular "),local("Montserrat-Regular"),url(/static/montserrat-latin-400-b71748ae4f80ec8c014def4c5fa8688b.woff2) format("woff2"),url(/static/montserrat-latin-400-0659a9f4e90db5cf51b50d005bff1e41.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:400;src:local("Montserrat Regular italic"),local("Montserrat-Regularitalic"),url(/static/montserrat-latin-400italic-6eed6b4cbb809c6efc7aa7ddad6dbe3e.woff2) format("woff2"),url(/static/montserrat-latin-400italic-7583622cfde30ae49086d18447ab28e7.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:500;src:local("Montserrat Medium "),local("Montserrat-Medium"),url(/static/montserrat-latin-500-091b209546e16313fd4f4fc36090c757.woff2) format("woff2"),url(/static/montserrat-latin-500-edd311588712a96bbf435fad264fff62.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:500;src:local("Montserrat Medium italic"),local("Montserrat-Mediumitalic"),url(/static/montserrat-latin-500italic-c90ced68b46050061d1a41842d6dfb43.woff2) format("woff2"),url(/static/montserrat-latin-500italic-5146cbfe02b1deea5dffea27a5f2f998.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:600;src:local("Montserrat SemiBold "),local("Montserrat-SemiBold"),url(/static/montserrat-latin-600-0480d2f8a71f38db8633b84d8722e0c2.woff2) format("woff2"),url(/static/montserrat-latin-600-b77863a375260a05dd13f86a1cee598f.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:600;src:local("Montserrat SemiBold italic"),local("Montserrat-SemiBolditalic"),url(/static/montserrat-latin-600italic-cf46ffb11f3a60d7df0567f8851a1d00.woff2) format("woff2"),url(/static/montserrat-latin-600italic-c4fcfeeb057724724097167e57bd7801.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:700;src:local("Montserrat Bold "),local("Montserrat-Bold"),url(/static/montserrat-latin-700-7dbcc8a5ea2289d83f657c25b4be6193.woff2) format("woff2"),url(/static/montserrat-latin-700-99271a835e1cae8c76ef8bba99a8cc4e.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:700;src:local("Montserrat Bold italic"),local("Montserrat-Bolditalic"),url(/static/montserrat-latin-700italic-c41ad6bdb4bd504a843d546d0a47958d.woff2) format("woff2"),url(/static/montserrat-latin-700italic-6779372f04095051c62ed36bc1dcc142.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:800;src:local("Montserrat ExtraBold "),local("Montserrat-ExtraBold"),url(/static/montserrat-latin-800-db9a3e0ba7eaea32e5f55328ace6cf23.woff2) format("woff2"),url(/static/montserrat-latin-800-4e3c615967a2360f5db87d2f0fd2456f.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:800;src:local("Montserrat ExtraBold italic"),local("Montserrat-ExtraBolditalic"),url(/static/montserrat-latin-800italic-bf45bfa14805969eda318973947bc42b.woff2) format("woff2"),url(/static/montserrat-latin-800italic-fe82abb0bcede51bf724254878e0c374.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:900;src:local("Montserrat Black "),local("Montserrat-Black"),url(/static/montserrat-latin-900-e66c7edc609e24bacbb705175669d814.woff2) format("woff2"),url(/static/montserrat-latin-900-8211f418baeb8ec880b80ba3c682f957.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:900;src:local("Montserrat Black italic"),local("Montserrat-Blackitalic"),url(/static/montserrat-latin-900italic-4454c775e48152c1a72510ceed3603e2.woff2) format("woff2"),url(/static/montserrat-latin-900italic-efcaa0f6a82ee0640b83a0916e6e8d68.woff) format("woff")}pre[class*=language-].line-numbers{counter-reset:linenumber;padding-left:3.8em;position:relative}pre[class*=language-].line-numbers>code{position:relative;white-space:inherit}.line-numbers .line-numbers-rows{border-right:1px solid #999;font-size:100%;left:-3.8em;letter-spacing:-1px;pointer-events:none;position:absolute;top:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;width:3em}.line-numbers-rows>span{counter-increment:linenumber;display:block}.line-numbers-rows>span:before{color:#999;content:counter(linenumber);display:block;padding-right:.8em;text-align:right}.search-input-wrapper{align-items:center;display:none;margin-top:3px;width:180px}@media(min-width:768px){.search-input-wrapper{display:flex}}.search-icon{color:var(--primary-text-color);margin-right:2px}.search-input{height:100%;width:100%}.search-input .MuiAutocomplete-inputRoot{padding-right:0!important}.search-input .MuiInputBase-input{color:var(--primary-text-color)!important;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;font-weight:500;padding-bottom:2px!important}.search-input .MuiInput-underline:before{border-bottom-width:1px}.search-input .MuiInput-underline:after,.search-input .MuiInput-underline:before{border-bottom-color:var(--primary-text-color)}.page-header-wrapper{display:flex;height:60px;justify-content:center;width:100%}.page-header-wrapper .page-header{align-items:center;display:flex;justify-content:space-between;max-width:720px;width:100%}.page-header-wrapper .page-header .link{color:var(--primary-text-color);font-size:17px;font-weight:700}@media(min-width:768px){.page-header-wrapper .page-header .link{font-size:20px;font-weight:700}}.page-header-wrapper .page-header .trailing-section{align-items:center;display:flex}.page-header-wrapper .page-header .trailing-section .link{margin-right:10px}@media(min-width:768px){.page-header-wrapper .page-header .trailing-section .link{margin-right:20px}}.page-footer-wrapper{align-items:center;display:flex;height:62px;justify-content:center;margin-top:auto;width:100%}.page-footer-wrapper .page-footer{max-width:720px;text-align:center;width:100%}.page-footer-wrapper .page-footer .link{color:var(--primary-text-color);font-size:20px;font-weight:700;margin-right:20px}.page-footer-wrapper .page-footer a{color:#3a95ff}.dark-mode-button-wrapper{align-items:center;bottom:20px;display:flex;justify-content:center;position:fixed;right:20px}.dark-mode-button{-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);background-color:#363f47!important;border-radius:50px;box-shadow:0 5px 25px rgba(0,0,0,.12);cursor:pointer;height:50px;width:50px;z-index:3}.dark-mode-icon{color:#fff}a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{border:0;font-size:100%;font:inherit;margin:0;padding:0;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}table{border-collapse:collapse;border-spacing:0}a{outline:none;text-decoration:none}html{--background-color:#fff;--primary-text-color:#000;--secondary-text-color:#9e9e9e;--content-text-color:#37352f;--button-background-color:#f3f3f4;--button-text-color:#363f47;--tab-text-color:#6e6d7a;--tab-hover-text-color:#0d0c22;--tab-selected-background-color:rgba(13,12,34,.05);--bio-link-icon-color:rgba(0,0,0,.54);--about-link-icon-color:#a8a8a8;--chip-background-color:#f3f3f4;--link-text-color:rgba(55,53,47,.7);--post-card-border-color:rgba(0,0,0,.12);--markdown-table-even-cell-background-color:#f6f8fa;--markdown-table-border-color:#dfe2e5;--markdown-blockquote-border-color:#dfe2e5;--markdown-border-color:#e1e4e8}html[data-theme=dark]{--background-color:#232326;--primary-text-color:#e6e6e6;--secondary-text-color:#768390;--content-text-color:#e6e6e6;--button-background-color:#444c56;--button-text-color:#363f47;--tab-text-color:#768390;--tab-hover-text-color:#acbac7;--tab-selected-background-color:#373e47;--chip-background-color:#323a42;--bio-link-icon-color:#e6e6e6;--about-link-icon-color:#a8a8a8;--link-text-color:#90b0ec;--post-card-border-color:#363f47;--markdown-table-even-cell-background-color:#2d333b;--markdown-table-border-color:#444c56;--markdown-blockquote-border-color:#4f5864;--markdown-border-color:#e1e4e8}*{-webkit-appearance:none;appearance:none;box-sizing:border-box}html{font-size:14px;height:100%;overflow-y:scroll;width:100%}body{background-color:var(--background-color)!important}a{color:var(--link-text-color)}.page-wrapper{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--primary-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;justify-content:center;min-height:100vh;padding-left:15px;padding-right:15px;word-break:keep-all}.page-wrapper,.page-wrapper .page-content{align-items:center;display:flex;flex-direction:column;width:100%}.page-wrapper .page-content{max-width:720px}.icon{color:var(--about-link-icon-color);font-size:20px}.social-links .icon{color:var(--bio-link-icon-color);font-size:30px}@-webkit-keyframes blinking-cursor{0%{opacity:0}50%{opacity:1}to{opacity:0}}@keyframes blinking-cursor{0%{opacity:0}50%{opacity:1}to{opacity:0}}.bio{color:var(--primary-text-color);display:flex;flex-direction:column;justify-content:space-between;margin-bottom:120px;margin-top:120px;width:100%}@media(min-width:768px){.bio{align-items:center;flex-direction:row}}.bio .introduction{display:flex;flex-direction:column;word-break:keep-all}.bio .introduction .react-rotating-text-cursor{-webkit-animation:blinking-cursor .8s cubic-bezier(.68,.01,.01,.99) 0s infinite;animation:blinking-cursor .8s cubic-bezier(.68,.01,.01,.99) 0s infinite}.bio .introduction strong{display:inline-block;font-weight:600}.bio .introduction.korean{font-size:32px;font-weight:100;line-height:1.2}.bio .introduction.korean .title .react-rotating-text-cursor{font-size:35px;line-height:35px}@media(min-width:768px){.bio .introduction.korean{font-size:40px}.bio .introduction.korean .title .react-rotating-text-cursor{font-size:45px;line-height:45px}}.bio .introduction.english{font-family:montserrat;font-size:25px;line-height:1.2}@media(min-width:768px){.bio .introduction.english{font-size:45px}}.bio .introduction.english .name{font-size:35px;font-weight:600}.bio .introduction.english .job{font-size:35px}.bio .introduction.english .description{font-size:20px;font-weight:200;margin-top:8px}.bio .introduction.english .social-links{display:flex;margin-top:20px}.bio .thumbnail-wrapper{display:none;width:250px}@media(min-width:768px){.bio .thumbnail-wrapper{display:block}}.section-header-wrapper{display:flex;justify-content:center;margin-bottom:32px;width:100%}.section-header-wrapper .section-header{border-bottom:4px solid var(--primary-text-color);color:var(--primary-text-color);font-size:30px;font-weight:700;padding-bottom:5px}.timestamp-section{align-items:center;display:flex;flex-direction:column;justify-content:center;margin-bottom:50px;width:100%;word-break:keep-all}.timestamp-section .body{padding:0 10px;width:100%}.timestamp-section .body .timestamp{border-left:2px solid #bdbdbd;display:flex;font-size:18px;font-weight:400;justify-items:center;margin-left:5px;padding:10px 0;width:100%}.timestamp-section .body .timestamp:first-child{padding-top:7px}.timestamp-section .body .timestamp:last-child{padding-bottom:7px}.timestamp-section .body .timestamp:before{align-self:center;background-color:var(--background-color);border:2px solid #828282;border-radius:10px;content:"";height:10px;left:-1px;position:relative;-webkit-transform:translatex(-50%);transform:translatex(-50%);width:10px}.timestamp-section .body .timestamp .date{align-self:center;color:#828282;margin-left:5px;margin-right:5px;min-width:115px;width:115px}@media(min-width:768px){.timestamp-section .body .timestamp .date{min-width:200px;width:200px}}.timestamp-section .body .timestamp .activity{line-height:23px;width:100%}.project-section{align-items:center;justify-content:center}.project-section,.project-section .project{display:flex;flex-direction:column;width:100%}.project-section .project{margin-bottom:30px;padding:15px}.project-section .project .head{font-size:20px;font-weight:700;line-height:30px;margin-bottom:10px}.project-section .project .body{display:flex;flex-direction:column;width:100%}.project-section .project .body .thumbnail{margin-bottom:10px;width:100%}.project-section .project .body .tech-stack{display:flex;margin-bottom:10px}.project-section .project .body .tech-stack .tech{background-color:var(--chip-background-color);border-radius:10px;font-size:15px;font-weight:500;margin-right:5px;padding:5px 7px}.project-section .project .body .description{font-size:16px;font-weight:400;line-height:1.4}@media(min-width:768px){.project-section .project .body{flex-direction:column}.project-section .project .body .content{margin-top:0}}.post-header{border-bottom:1px solid var(--post-card-border-color);display:flex;flex-direction:column;justify-content:center;margin-bottom:40px;margin-top:20px;padding-bottom:10px;width:100%;word-break:keep-all}.post-header .emoji{font-size:78px;margin-bottom:20px}.post-header .categories{margin-bottom:5px}.post-header .categories .category{color:var(--primary-text-color);font-weight:600;margin-right:4px}.post-header .categories .category:hover{text-decoration:underline}.post-header .title{color:var(--primary-text-color);font-size:32px;font-weight:600;line-height:1.3;margin-bottom:6px}.post-header .info{color:var(--secondary-text-color);display:flex;flex-wrap:wrap;font-size:16px;font-weight:500;line-height:1.5;width:100%}.post-header .info .author{margin-right:4px}.post-header .info strong{color:var(--primary-text-color);font-weight:600}.post-navigator{-webkit-column-gap:1.4%;column-gap:1.4%;display:grid;grid-template-columns:49.3% 49.3%;width:100%}.post-navigator .post-card{border:1px solid var(--post-card-border-color);border-radius:6px;color:var(--primary-text-color);cursor:pointer;display:flex;flex-direction:column;padding:15px;transition:-webkit-transform .2s;transition:transform .2s;transition:transform .2s,-webkit-transform .2s;width:100%}.post-navigator .post-card:hover .title{text-decoration:underline}.post-navigator .post-card.prev{margin-right:auto}.post-navigator .post-card.next{margin-left:auto}.post-navigator .post-card .direction{color:gray;font-size:14px;font-weight:500;margin-bottom:5px}.post-navigator .post-card .title{font-size:16px;font-weight:600;line-height:1.4;margin-bottom:7px}.markdown .octicon{fill:currentColor;display:inline-block;vertical-align:text-bottom}.markdown .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown .anchor:focus{outline:none}.markdown h1 .octicon-link,.markdown h2 .octicon-link,.markdown h3 .octicon-link,.markdown h4 .octicon-link,.markdown h5 .octicon-link,.markdown h6 .octicon-link{color:#1b1f23;vertical-align:middle;visibility:hidden}.markdown h1:hover .anchor,.markdown h2:hover .anchor,.markdown h3:hover .anchor,.markdown h4:hover .anchor,.markdown h5:hover .anchor,.markdown h6:hover .anchor{text-decoration:none}.markdown h1:hover .anchor .octicon-link,.markdown h2:hover .anchor .octicon-link,.markdown h3:hover .anchor .octicon-link,.markdown h4:hover .anchor .octicon-link,.markdown h5:hover .anchor .octicon-link,.markdown h6:hover .anchor .octicon-link{visibility:visible}.markdown h1:hover .anchor .octicon-link:before,.markdown h2:hover .anchor .octicon-link:before,.markdown h3:hover .anchor .octicon-link:before,.markdown h4:hover .anchor .octicon-link:before,.markdown h5:hover .anchor .octicon-link:before,.markdown h6:hover .anchor .octicon-link:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' aria-hidden='true' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'/%3E%3C/svg%3E");content:" ";display:inline-block;height:16px;width:16px}.markdown{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-wrap:break-word;color:var(--content-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;font-weight:500;line-height:1.5}.markdown details{display:block}.markdown summary{display:list-item}.markdown a{background-color:initial}.markdown a:active,.markdown a:hover{outline-width:0}.markdown strong{font-weight:inherit;font-weight:bolder}.markdown h1{margin:.67em 0}.markdown img{border-radius:10px;border-style:none;box-shadow:20px 20px 30px rgba(0,0,0,.5);-o-object-fit:contain;object-fit:contain}.markdown code,.markdown kbd,.markdown pre{font-family:monospace,monospace;font-size:1em}.markdown hr{box-sizing:initial;overflow:visible}.markdown input{font:inherit;margin:0;overflow:visible}.markdown [type=checkbox]{box-sizing:border-box;padding:0}.markdown *{box-sizing:border-box}.markdown input{font-family:inherit;font-size:inherit;line-height:inherit}.markdown a{border-bottom:.05em solid;border-bottom-color:var(--link-text-color);border-left-color:var(--link-text-color);border-right-color:var(--link-text-color);border-top-color:var(--link-text-color);color:var(--link-text-color);text-decoration:none}.markdown a.anchor{border-bottom:none}.markdown strong{font-weight:700}.markdown hr{background:transparent;border-bottom:1px solid var(--markdown-blockquote-border-color);height:0;margin:15px 0;overflow:hidden}.markdown hr:after,.markdown hr:before{content:"";display:table}.markdown hr:after{clear:both}.markdown table{border-collapse:collapse;border-spacing:0}.markdown td,.markdown th{padding:0}.markdown details summary{cursor:pointer}.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{margin-bottom:0;margin-top:0}.markdown h1{font-size:32px}.markdown h1,.markdown h2{font-weight:600}.markdown h2{font-size:24px}.markdown h3{font-size:20px}.markdown h3,.markdown h4{font-weight:600}.markdown h4{font-size:16px}.markdown h5{font-size:14px}.markdown h5,.markdown h6{font-weight:600}.markdown h6{font-size:12px}.markdown p{margin-bottom:10px;margin-top:0}.markdown blockquote{margin:0}.markdown ol,.markdown ul{margin-bottom:0;margin-top:0;padding-left:0}.markdown ol ol,.markdown ul ol{list-style-type:lower-roman}.markdown ol ol ol,.markdown ol ul ol,.markdown ul ol ol,.markdown ul ul ol{list-style-type:lower-alpha}.markdown dd{margin-left:0}.markdown code,.markdown pre{font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px}.markdown code.language-text{border-radius:3px;font-size:85%;padding:.2em .4em}.markdown :not(pre)>code.language-text{background:hsla(44,6%,50%,.15);color:#eb5757;overflow-wrap:break-word}.markdown pre{margin-bottom:0;margin-top:0}.markdown input::-webkit-inner-spin-button,.markdown input::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}.markdown :checked+.radio-label{border-color:#0366d6;position:relative;z-index:1}.markdown .border{border:1px solid var(--markdown-border-color)!important}.markdown .border-0{border:0!important}.markdown .border-bottom{border-bottom:1px solid var(--markdown-border-color)!important}.markdown .rounded-1{border-radius:3px!important}.markdown .bg-white{background-color:transparent!important}.markdown .bg-gray-light{background-color:#fafbfc!important}.markdown .text-gray-light{color:#6a737d!important}.markdown .pl-3,.markdown .px-3{padding-left:16px!important}.markdown .px-3{padding-right:16px!important}.markdown .f6{font-size:12px!important}.markdown .lh-condensed{line-height:1.25!important}.markdown .text-bold{font-weight:600!important}.markdown .pl-c{color:#6a737d}.markdown .pl-c1,.markdown .pl-s .pl-v{color:#005cc5}.markdown .pl-e,.markdown .pl-en{color:#6f42c1}.markdown .pl-s .pl-s1,.markdown .pl-smi{color:#24292e}.markdown .pl-ent{color:#22863a}.markdown .pl-k{color:#d73a49}.markdown .pl-pds,.markdown .pl-s,.markdown .pl-s .pl-pse .pl-s1,.markdown .pl-sr,.markdown .pl-sr .pl-cce,.markdown .pl-sr .pl-sra,.markdown .pl-sr .pl-sre{color:#032f62}.markdown .pl-smw,.markdown .pl-v{color:#e36209}.markdown .pl-bu{color:#b31d28}.markdown .pl-ii{background-color:#b31d28;color:#fafbfc}.markdown .pl-c2{background-color:#d73a49;color:#fafbfc}.markdown .pl-c2:before{content:"^M"}.markdown .pl-sr .pl-cce{color:#22863a;font-weight:700}.markdown .pl-ml{color:#735c0f}.markdown .pl-mh,.markdown .pl-mh .pl-en,.markdown .pl-ms{color:#005cc5;font-weight:700}.markdown .pl-mi{color:#24292e;font-style:italic}.markdown .pl-mb{color:#24292e;font-weight:700}.markdown .pl-md{background-color:#ffeef0;color:#b31d28}.markdown .pl-mi1{background-color:#f0fff4;color:#22863a}.markdown .pl-mc{background-color:#ffebda;color:#e36209}.markdown .pl-mi2{background-color:#005cc5;color:#f6f8fa}.markdown .pl-mdr{color:#6f42c1;font-weight:700}.markdown .pl-ba{color:#586069}.markdown .pl-sg{color:#959da5}.markdown .pl-corl{color:#032f62;text-decoration:underline}.markdown .mb-0{margin-bottom:0!important}.markdown .my-2{margin-bottom:8px!important;margin-top:8px!important}.markdown .pl-0{padding-left:0!important}.markdown .py-0{padding-bottom:0!important;padding-top:0!important}.markdown .pl-1{padding-left:4px!important}.markdown .pl-2{padding-left:8px!important}.markdown .py-2{padding-bottom:8px!important;padding-top:8px!important}.markdown .pl-3{padding-left:16px!important}.markdown .pl-4{padding-left:24px!important}.markdown .pl-5{padding-left:32px!important}.markdown .pl-6{padding-left:40px!important}.markdown .pl-7{padding-left:48px!important}.markdown .pl-8{padding-left:64px!important}.markdown .pl-9{padding-left:80px!important}.markdown .pl-10{padding-left:96px!important}.markdown .pl-11{padding-left:112px!important}.markdown .pl-12{padding-left:128px!important}.markdown hr{border-bottom-color:#eee}.markdown kbd{background-color:#fafbfc;border:1px solid #d1d5da;border-radius:3px;box-shadow:inset 0 -1px 0 #d1d5da;color:#444d56;display:inline-block;font:11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown:after,.markdown:before{content:"";display:table}.markdown:after{clear:both}.markdown>:first-child{margin-top:0!important}.markdown>:last-child{margin-bottom:0!important}.markdown a:not([href]){color:inherit;text-decoration:none}.markdown blockquote,.markdown details,.markdown dl,.markdown ol,.markdown p,.markdown pre,.markdown table,.markdown ul{margin-bottom:16px;margin-top:0}.markdown hr{background-color:var(--markdown-border-color);border:0;height:.25em;margin:24px 0;padding:0}.markdown blockquote{border-left:.25em solid var(--markdown-blockquote-border-color);color:#6a737d;padding:0 1em}.markdown blockquote>:first-child{margin-top:0}.markdown blockquote>:last-child{margin-bottom:0}.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown h1{font-size:2em}.markdown h2{font-size:1.5em}.markdown h3{font-size:1.25em}.markdown h4{font-size:1em}.markdown h5{font-size:.875em}.markdown h6{color:#6a737d;font-size:.85em}.markdown ol,.markdown ul{padding-left:2em}.markdown ol ol,.markdown ol ul,.markdown ul ol,.markdown ul ul{margin-bottom:0;margin-top:0}.markdown ol{list-style-type:decimal}.markdown ul{list-style-type:disc}.markdown li{word-wrap:break-all;display:list-item;text-align:-webkit-match-parent}.markdown li>p{margin-top:16px}.markdown li+li{margin-top:.25em}.markdown dl{padding:0}.markdown dl dt{font-size:1em;font-style:italic;font-weight:600;margin-top:16px;padding:0}.markdown dl dd{margin-bottom:16px;padding:0 16px}.markdown table{display:table;margin-left:auto;margin-right:auto;max-width:1920px;overflow:auto;width:auto}.markdown table th{font-weight:600}.markdown table td,.markdown table th{border:1px solid var(--markdown-table-border-color);padding:6px 13px}.markdown table tr{border-top:1px solid var(--markdown-table-border-color)}.markdown table tr:nth-child(2n){background-color:var(--markdown-table-even-cell-background-color)}.markdown img{box-sizing:border-box;display:inline-block;margin:0;max-width:1024px}.markdown img[align=right]{padding-left:20px}.markdown img[align=left]{padding-right:20px}.markdown code{background-color:rgba(66,68,69,.05);border-radius:3px;font-size:85%;margin:0;padding:.2em .4em}.markdown pre{word-wrap:normal}.gatsby-highlight pre[class*=language-].line-numbers{overflow:auto;padding:0 0 0 3em}.gatsby-highlight{background-color:#f5f2f0;border-radius:.3em;margin:.5em 0;overflow:auto;padding:.5em 1em}.markdown pre>code{background:transparent;border:0;font-size:100%;margin:0;padding:2.8em;white-space:pre;word-break:normal}.markdown .highlight{margin-bottom:16px}.markdown .highlight pre{margin-bottom:0;word-break:normal}.markdown .highlight pre,.markdown pre{background-color:#f6f8fa;border-radius:3px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}.markdown pre code{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown .commit-tease-sha{color:#444d56;display:inline-block;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:90%}.markdown .full-commit .btn-outline:not(:disabled):hover{border-color:#005cc5;color:#005cc5}.markdown .blob-wrapper{overflow-x:auto;overflow-y:hidden}.markdown .blob-wrapper-embedded{max-height:240px;overflow-y:auto}.markdown .blob-num{color:rgba(27,31,35,.3);cursor:pointer;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;line-height:20px;min-width:50px;padding-left:10px;padding-right:10px;text-align:right;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:top;white-space:nowrap;width:1%}.markdown .blob-num:hover{color:rgba(27,31,35,.6)}.markdown .blob-num:before{content:attr(data-line-number)}.markdown .blob-code{line-height:20px;padding-left:10px;padding-right:10px;position:relative;vertical-align:top}.markdown .blob-code-inner{word-wrap:normal;color:#24292e;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;overflow:visible;white-space:pre}.markdown .pl-token.active,.markdown .pl-token:hover{background:#ffea7f;cursor:pointer}.markdown .tab-size[data-tab-size="1"]{-o-tab-size:1;tab-size:1}.markdown .tab-size[data-tab-size="2"]{-o-tab-size:2;tab-size:2}.markdown .tab-size[data-tab-size="3"]{-o-tab-size:3;tab-size:3}.markdown .tab-size[data-tab-size="4"]{-o-tab-size:4;tab-size:4}.markdown .tab-size[data-tab-size="5"]{-o-tab-size:5;tab-size:5}.markdown .tab-size[data-tab-size="6"]{-o-tab-size:6;tab-size:6}.markdown .tab-size[data-tab-size="7"]{-o-tab-size:7;tab-size:7}.markdown .tab-size[data-tab-size="8"]{-o-tab-size:8;tab-size:8}.markdown .tab-size[data-tab-size="9"]{-o-tab-size:9;tab-size:9}.markdown .tab-size[data-tab-size="10"]{-o-tab-size:10;tab-size:10}.markdown .tab-size[data-tab-size="11"]{-o-tab-size:11;tab-size:11}.markdown .tab-size[data-tab-size="12"]{-o-tab-size:12;tab-size:12}.markdown .task-list-item{list-style-type:none}.markdown .task-list-item+.task-list-item{margin-top:3px}.markdown .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown .table-of-contents{align-items:flex-start;display:flex;flex-direction:column;justify-content:center;position:fixed;right:0;top:75px;width:340px}@media(max-width:1300px){.markdown .table-of-contents{display:none}}.markdown .table-of-contents ul{cursor:pointer;list-style-type:none}.markdown .table-of-contents ul li a{border-bottom:none;color:var(--secondary-text-color);font-size:14px;height:30px;padding:6px 2px;width:100%}.markdown .table-of-contents ul p{margin:0}.markdown .gatsby-resp-image-wrapper{display:flex!important;justify-content:center!important;margin-bottom:10px;margin-top:25px;max-height:560px!important;width:100%!important}.markdown .gatsby-resp-image-wrapper img{box-shadow:5px 5px 15px rgba(0,0,0,.3)!important;height:auto!important;max-height:560px!important;max-width:100%!important;position:relative!important;width:auto!important}.markdown .gatsby-resp-image-wrapper:after{background-color:rgba(0,0,0,.5);border-radius:3px;bottom:0;color:#fff;content:"Haryu's blog";opacity:.5;pointer-events:none;position:absolute;right:0}.markdown .gatsby-resp-image-wrapper+em{color:#6a737d;display:block;font-size:15px;font-style:italic;text-align:center}code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#000;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;text-shadow:0 1px #fff;white-space:pre;word-break:normal;word-spacing:normal}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{background:#b3d4fc;text-shadow:none}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{background:hsla(0,0%,100%,.5);color:#9a6e3a}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.post-content{margin-bottom:20px;text-align:justify;width:100%}.category-page-header-wrapper,.post-content{display:flex;flex-direction:column;justify-content:center}.category-page-header-wrapper{align-items:center;margin-bottom:30px;margin-top:30px}.category-page-header-wrapper .category-page-title{border-bottom:3px solid var(--primary-text-color);font-size:40px;font-weight:700;margin-bottom:15px;padding-bottom:7px;text-align:center;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.category-page-header-wrapper .category-page-subtitle{font-size:20px;font-weight:500;padding-bottom:10px;text-align:center}.post-card-wrapper{display:flex;justify-content:center;min-height:150px;width:100%}.post-card-wrapper .post-card{border:1px solid var(--post-card-border-color);border-radius:6px;color:var(--primary-text-color);cursor:pointer;display:flex;flex-direction:column;height:100%;margin-bottom:15px;max-width:720px;padding:15px;transition:-webkit-transform .2s;transition:transform .2s;transition:transform .2s,-webkit-transform .2s;width:100%}.post-card-wrapper .post-card:hover .title{text-decoration:underline}@media(min-width:768px){.post-card-wrapper .post-card{margin-bottom:0}}.post-card-wrapper .post-card .title{font-size:18px;font-weight:600;line-height:1.4;margin-bottom:7px}.post-card-wrapper .post-card .description{-webkit-line-clamp:3;-webkit-box-orient:vertical;color:var(--primary-text-color);display:-webkit-box;font-size:13px;line-height:20px;margin-bottom:10px;overflow:hidden;text-overflow:ellipsis}.post-card-wrapper .post-card .info{color:var(--about-link-icon-color);display:flex;font-size:14px;justify-content:space-between;margin-top:auto}.post-card-wrapper .post-card .info .categories{display:flex}.post-card-wrapper .post-card .info .categories .category{margin-left:4px}.post-card-wrapper .post-card .info .categories .category:hover{text-decoration:underline}.post-card-column-wrapper{display:flex;justify-content:center;width:100%}.post-card-column-wrapper .post-card-column{align-items:center;display:flex;flex-direction:column;width:100%}.post-card-column-wrapper .post-card-column .post-card-wrapper{margin-bottom:10px}.post-card-column-wrapper .post-card-column .more-post-card-button{background-color:var(--button-background-color);color:var(--tab-hover-text-color);font-size:15px;font-weight:500;height:40px}.post-tabs-wrapper{align-self:flex-start;display:flex;flex-direction:column;justify-content:center;top:0;width:100%}.post-tabs-wrapper .post-tabs{display:flex;height:40px;justify-content:center;margin-bottom:12px;max-width:760px;width:100%}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root{color:var(--tab-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:17px;font-weight:500;height:40px;min-height:auto;min-width:auto;padding:10px 12px;transition:all .2s ease}.post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected,.post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root :hover{color:var(--tab-hover-text-color);transition:all .2s ease}.post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected{background-color:var(--tab-selected-background-color);border-radius:8px;font-weight:600}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabScrollButton-root{height:40px;width:20px}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabs-scrollable{height:40px}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabs-indicator{display:none}</style><meta name="generator" content="Gatsby 3.14.6"/><style data-emotion="css-global o6gwfi">html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;-webkit-text-size-adjust:100%;}*,*::before,*::after{box-sizing:inherit;}strong,b{font-weight:700;}body{margin:0;color:rgba(0, 0, 0, 0.87);font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;background-color:#fff;}@media print{body{background-color:#fff;}}body::backdrop{background-color:#fff;}</style><style data-emotion="css-global 1prfaxn">@-webkit-keyframes mui-auto-fill{from{display:block;}}@keyframes mui-auto-fill{from{display:block;}}@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css 1l6di18 feqhe6 11tfndm mnn31 vubbuv">.css-1l6di18.Mui-focused .MuiAutocomplete-clearIndicator{visibility:visible;}@media (pointer: fine){.css-1l6di18:hover .MuiAutocomplete-clearIndicator{visibility:visible;}}.css-1l6di18 .MuiAutocomplete-tag{margin:3px;max-width:calc(100% - 6px);}.css-1l6di18 .MuiAutocomplete-inputRoot{-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiAutocomplete-inputRoot,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiAutocomplete-inputRoot{padding-right:30px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiAutocomplete-inputRoot{padding-right:56px;}.css-1l6di18 .MuiAutocomplete-inputRoot .MuiAutocomplete-input{width:0;min-width:30px;}.css-1l6di18 .MuiInput-root{padding-bottom:1px;}.css-1l6di18 .MuiInput-root .MuiInput-input{padding:4px 4px 4px 0px;}.css-1l6di18 .MuiInput-root.MuiInputBase-sizeSmall .MuiInput-input{padding:2px 4px 3px 0;}.css-1l6di18 .MuiOutlinedInput-root{padding:9px;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiOutlinedInput-root,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiOutlinedInput-root{padding-right:39px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiOutlinedInput-root{padding-right:65px;}.css-1l6di18 .MuiOutlinedInput-root .MuiAutocomplete-input{padding:7.5px 4px 7.5px 6px;}.css-1l6di18 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment{right:9px;}.css-1l6di18 .MuiOutlinedInput-root.MuiInputBase-sizeSmall{padding:6px;}.css-1l6di18 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input{padding:2.5px 4px 2.5px 6px;}.css-1l6di18 .MuiFilledInput-root{padding-top:19px;padding-left:8px;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiFilledInput-root,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiFilledInput-root{padding-right:39px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiFilledInput-root{padding-right:65px;}.css-1l6di18 .MuiFilledInput-root .MuiFilledInput-input{padding:7px 4px;}.css-1l6di18 .MuiFilledInput-root .MuiAutocomplete-endAdornment{right:9px;}.css-1l6di18 .MuiFilledInput-root.MuiInputBase-sizeSmall{padding-bottom:1px;}.css-1l6di18 .MuiFilledInput-root.MuiInputBase-sizeSmall .MuiFilledInput-input{padding:2.5px 4px;}.css-1l6di18 .MuiInputBase-hiddenLabel{padding-top:8px;}.css-1l6di18 .MuiAutocomplete-input{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;text-overflow:ellipsis;opacity:1;}.css-feqhe6{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;position:relative;min-width:0;padding:0;margin:0;border:0;vertical-align:top;width:100%;}.css-11tfndm{font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.4375em;letter-spacing:0.00938em;color:rgba(0, 0, 0, 0.87);box-sizing:border-box;position:relative;cursor:text;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:100%;position:relative;}.css-11tfndm.Mui-disabled{color:rgba(0, 0, 0, 0.38);cursor:default;}label+.css-11tfndm{margin-top:16px;}.css-11tfndm:after{border-bottom:2px solid #1976d2;left:0;bottom:0;content:"";position:absolute;right:0;-webkit-transform:scaleX(0);-moz-transform:scaleX(0);-ms-transform:scaleX(0);transform:scaleX(0);-webkit-transition:-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;transition:transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;pointer-events:none;}.css-11tfndm.Mui-focused:after{-webkit-transform:scaleX(1);-moz-transform:scaleX(1);-ms-transform:scaleX(1);transform:scaleX(1);}.css-11tfndm.Mui-error:after{border-bottom-color:#d32f2f;-webkit-transform:scaleX(1);-moz-transform:scaleX(1);-ms-transform:scaleX(1);transform:scaleX(1);}.css-11tfndm:before{border-bottom:1px solid rgba(0, 0, 0, 0.42);left:0;bottom:0;content:"\00a0";position:absolute;right:0;-webkit-transition:border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;pointer-events:none;}.css-11tfndm:hover:not(.Mui-disabled):before{border-bottom:2px solid rgba(0, 0, 0, 0.87);}@media (hover: none){.css-11tfndm:hover:not(.Mui-disabled):before{border-bottom:1px solid rgba(0, 0, 0, 0.42);}}.css-11tfndm.Mui-disabled:before{border-bottom-style:dotted;}.css-mnn31{font:inherit;letter-spacing:inherit;color:currentColor;padding:4px 0 5px;border:0;box-sizing:content-box;background:none;height:1.4375em;margin:0;-webkit-tap-highlight-color:transparent;display:block;min-width:0;width:100%;-webkit-animation-name:mui-auto-fill-cancel;animation-name:mui-auto-fill-cancel;-webkit-animation-duration:10ms;animation-duration:10ms;}.css-mnn31::-webkit-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31::-moz-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31:-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31::-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31:focus{outline:0;}.css-mnn31:invalid{box-shadow:none;}.css-mnn31::-webkit-search-decoration{-webkit-appearance:none;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-webkit-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-moz-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:-ms-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-ms-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-webkit-input-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-moz-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus:-ms-input-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-ms-input-placeholder{opacity:0.42;}.css-mnn31.Mui-disabled{opacity:1;-webkit-text-fill-color:rgba(0, 0, 0, 0.38);}.css-mnn31:-webkit-autofill{-webkit-animation-duration:5000s;animation-duration:5000s;-webkit-animation-name:mui-auto-fill;animation-name:mui-auto-fill;}.css-vubbuv{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:1.5rem;}</style><link rel="icon" href="/favicon-32x32.png?v=1636e78735380d9e7701b94fcd1cda32" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=1636e78735380d9e7701b94fcd1cda32"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><title data-react-helmet="true">cote) til - 20240318</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="cote) til - 20240318"/><meta data-react-helmet="true" property="og:site_title" content="cote) til - 20240318"/><meta data-react-helmet="true" name="description" content="part2. 알고리즘 유형 분석 - DFS, BFS, 백트레킹 그래프 자료구조 Graph Vertex(= node) edge 방향성 무방향 그래프 (= 양방향 그래프) 방향 그래프 순환 여부 순환 그래프(Cyclic Graph) 비순환 그래프(Acyclic Graph)  연결요소 Connected Component 정점 연결선(간선) 트리 자료구조(tree) 순환성이 없는 무방향 그래프 형태 트리는 특정하지 않는 한 어떤 노드이든 루트root 가 될 수 있다. 가장 바깥쪽 노드는 리프 노드 leaf node 라고 한다. node A에서 B로 가는 경로는 반드시 존재 하며 유일하다. (반드시 1개 존재) 노드개수  = 간선 개수 + 1  전산적으로 사용되는 구조에서는 이런 특징을 가진다. 자료구조에서의 트리는 부모 -&gt; 자식 관계가 있는 방향 그래프이다. 루트 root 는 하나다 코드로 그래프를 나타내는 방법 1. 인접행렬  방향성이 있는 경우 같은 짝일 때 비대칭 구조가 되지만, …"/><meta data-react-helmet="true" property="og:description" content="part2. 알고리즘 유형 분석 - DFS, BFS, 백트레킹 그래프 자료구조 Graph Vertex(= node) edge 방향성 무방향 그래프 (= 양방향 그래프) 방향 그래프 순환 여부 순환 그래프(Cyclic Graph) 비순환 그래프(Acyclic Graph)  연결요소 Connected Component 정점 연결선(간선) 트리 자료구조(tree) 순환성이 없는 무방향 그래프 형태 트리는 특정하지 않는 한 어떤 노드이든 루트root 가 될 수 있다. 가장 바깥쪽 노드는 리프 노드 leaf node 라고 한다. node A에서 B로 가는 경로는 반드시 존재 하며 유일하다. (반드시 1개 존재) 노드개수  = 간선 개수 + 1  전산적으로 사용되는 구조에서는 이런 특징을 가진다. 자료구조에서의 트리는 부모 -&gt; 자식 관계가 있는 방향 그래프이다. 루트 root 는 하나다 코드로 그래프를 나타내는 방법 1. 인접행렬  방향성이 있는 경우 같은 짝일 때 비대칭 구조가 되지만, …"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/l/font) format("woff"),url(/static/webfonts/l/font) format("woff"),url(/static/webfonts/l/font) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-62b18b028769ec5545fd.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/coding-test/20240318083025/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🚩</div><div class="info"><div class="categories"><a class="category" href="/posts/til">til</a><a class="category" href="/posts/algorithm">algorithm</a></div></div><h1 class="title">cote) til - 20240318</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->March 18, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="part2-알고리즘-유형-분석---dfs-bfs-백트레킹" style="position:relative;"><a href="#part2-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9C%A0%ED%98%95-%EB%B6%84%EC%84%9D---dfs-bfs-%EB%B0%B1%ED%8A%B8%EB%A0%88%ED%82%B9" aria-label="part2 알고리즘 유형 분석   dfs bfs 백트레킹 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>part2. 알고리즘 유형 분석 - DFS, BFS, 백트레킹</h1>
+<h2 id="그래프-자료구조-graph" style="position:relative;"><a href="#%EA%B7%B8%EB%9E%98%ED%94%84-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-graph" aria-label="그래프 자료구조 graph permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>그래프 자료구조 Graph</h2>
+<ul>
+<li>Vertex(= node)</li>
+<li>edge</li>
+<li>방향성
+<ul>
+<li>무방향 그래프 (= 양방향 그래프)</li>
+<li>방향 그래프</li>
+</ul>
+</li>
+<li>순환 여부
+<ul>
+<li>순환 그래프(Cyclic Graph)</li>
+<li>비순환 그래프(Acyclic Graph)</li>
+</ul>
+</li>
+<li><code class="language-text">방향성 비순환 그래프(DAG, dircted Acyclic Graph)</code></li>
+<li>연결요소 Connected Component
+<ul>
+<li>정점</li>
+<li>연결선(간선)</li>
+</ul>
+</li>
+</ul>
+<h2 id="트리-자료구조tree" style="position:relative;"><a href="#%ED%8A%B8%EB%A6%AC-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0tree" aria-label="트리 자료구조tree permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>트리 자료구조(tree)</h2>
+<ul>
+<li>순환성이 없는 무방향 그래프 형태</li>
+<li>트리는 특정하지 않는 한 어떤 노드이든 <mark style="background: #BBFABBA6;">루트root</mark> 가 될 수 있다.</li>
+<li>가장 바깥쪽 노드는 <mark style="background: #ABF7F7A6;">리프 노드 leaf node</mark> 라고 한다.</li>
+<li>node A에서 B로 가는 경로는 반드시 존재 하며 유일하다. (반드시 1개 존재)</li>
+<li>노드개수  = 간선 개수 + 1</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 456px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 122.77777777777779%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAYAAAAxFw7TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFPklEQVQ4y5WVaWxUVRTHz5tBEhSMREQTEWMwEMUaQjQhMX4hauISUQmxgO2009k3ukBbdgFFIBgQNMSAlSCCXWbeve+9OwulZbGpAhGliIBrhCjIZilS23nvnmPuVCAmgnKT82nu+81Z/ud/Af7jRCwbqjIEfkYQttD11AeXYWE7aSFTqoCoQLipUy8cSAiCmIUQsRBmfHzBVZktwCFiSe2mgdXCVlm41IcRgVNiQn4dFZiMWDgiaqH6TbspYMyytbjZD0vb+ob6DTy5fp9Di9qRvAzf8qQKQPf/hnHOIaZKtvpg076ewV5OX675zKElu5FKdaopThKEBLnVvRueqCUhlrHBlyEIC9JiwhlUK3pgpfnDyxGB2+ZYPRs+NDuHNxk7oM7qdocEqXZARMjrTFYQlDGEMk7a5BaC+uTP0MzTo/foDfevEj8BbQG3wdmjq1NfwbQWgnGbCYIWQsC8AdCjo+ZhBFOb6c6Spt5Hsrzx4bIlBPMz3W5qngJ7+eb71qX2j3u+icYubzmkhW4EVFP1cQQflxOqsvjrvFaHIpazqpJfgmqr1+1nefAyeW9NJv9j/U5JUYEfERFMXNf374NQjZ6pE3g5rV20S5L+jY0BA7trs/mRC/kpKGMEPo7h2lYk8W2+tzqHVJpyxpWkECBsOTBH5CEuCJJcAOcMFpun3dX6WYiwy9MXtEla2SEpYCAv2lBovsvLCSo4TqzOYv/yvZISaTxY3CiHFDcRXJ1OVMhCZoutU4MyrBFSzBjezreOnc0vvBLnl2qmt9KtFRlSCtC8nLSAgRAwcIKXSX85l3erFvkN1AoSqcxImJ1zQJVZxc6DruvDGOeP/77jTaAMDKJzoL0jjsFyccKt/rxUVxmS5ucIJSkCryFVCzS/gQXNaQpY2+rc5mXkD7D81KzRXKQnmwevSh2GauPijDj/Y5E3R7f7M6pkqSnDiFsqW3RFBLojArWBShEglCZtSiOpdLctaEda2OaQjznRYOpPqGDOdNX4N/Y6FDQwC6UExZ8rkA0JK/939BcWIJAmiAobIMj6YE1H75AKjidajti04YBDJSnc/lIjgYfR2qV7HDKO2+Qz6Gx9Lj9iwGVQY4xdX3Mhq2BHiVkZlFVZeTpoyidq+Xl4nZ98pjpj/6KyrDEvrU8YvfBamrT1xiHwpAliwi4M9B8rF7Yk1OQkDEhBPlCazI9cyY9CCxMPdrBNo1boR8bWJU9Mamdb7jJYcrxgzZAQ/a65ubwWFeQKmQ6oiFjyihEgVKZRS6QRXk0SVPKLIFjTKJ2bRY08C9Q8bSilnh32vnEAkswcwxh7aL71G8zQCYImQWXOgUTGhrC4CpSuuECICVnkM4jFrHxDg9H52HzzDEzW6ZaqdP7dWcJuD1s4abVxDHaxzaPrrAsRv0m5kCXjZTrCi5/QNeDs5Dmg/uOaj+N+5XVLd0sqZ7TCoyuhyrlzd0pqOOhQyMTvd33R5So3aUw8LXH7YZvqdiJ5Uvh0yYDRugrAgH4Z9nzX7a7g2LW1y6a3Ox0q1/G9mcnCvi6pb5W04lNJQRNPth094/ZxOX5WBsk8btO8NkmlSXxB3b0KVOIMmwghC5+Mp7EzlsaWoCHvUatVzvGORAa3RAQeCFn4nPK8GCclm2gijV1RgcsSGwmC2f5rk1YvWYCjFjQRNh4mqG0nCBoSAoZ0qVWqayPwZAcM1G+SFtxhg5KZsqtYGguvn1JK5Mrrp8zUy9TE0KUuLetQiy9VKLBW20ZaD5GqwFXBFdgZKG/EaajMostvSNXrgrmo8xdam7JVnp+1CwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240318104616"
+        title="20240318104616"
+        src="/static/68b4e8e92af61b2b5482dbf99c50ea58/7f664/20240318104616.png"
+        srcset="/static/68b4e8e92af61b2b5482dbf99c50ea58/e9ff0/20240318104616.png 180w,
+/static/68b4e8e92af61b2b5482dbf99c50ea58/f21e7/20240318104616.png 360w,
+/static/68b4e8e92af61b2b5482dbf99c50ea58/7f664/20240318104616.png 456w"
+        sizes="(max-width: 456px) 100vw, 456px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>전산적으로 사용되는 구조에서는 이런 특징을 가진다.
+<ul>
+<li>자료구조에서의 트리는 부모 -> 자식 관계가 있는 방향 그래프이다.</li>
+<li>루트 root 는 하나다</li>
+</ul>
+</li>
+</ul>
+<h2 id="코드로-그래프를-나타내는-방법" style="position:relative;"><a href="#%EC%BD%94%EB%93%9C%EB%A1%9C-%EA%B7%B8%EB%9E%98%ED%94%84%EB%A5%BC-%EB%82%98%ED%83%80%EB%82%B4%EB%8A%94-%EB%B0%A9%EB%B2%95" aria-label="코드로 그래프를 나타내는 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>코드로 그래프를 나타내는 방법</h2>
+<h3 id="1-인접행렬" style="position:relative;"><a href="#1-%EC%9D%B8%EC%A0%91%ED%96%89%EB%A0%AC" aria-label="1 인접행렬 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 인접행렬</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 41.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAACR0lEQVQozzWR20uTYRzHf+9eqQkdrruIIKiLiK77I7qIboKoq+iiLsQwtEVDiZg2PFy4ZSI1rKQY7vBubnuduBPt4DbdpsLOarotnKw97/Ns7zQPTzxDv/Dle/fl8/39wJOp8+613Q4hlAVbOHdVTFZOnCvbXxfWq+DJIt6TlXgxWeFOSnEY1g7C8OgoV6vV3tTrdQNCaALV65OSJLWNMZ6ExfRfWFjfg8HhMR4AOJMvdeWz0XnpxdPHvDeHWSmIyTJE0iXuy3cjjOt0CoRQmhBCZVmmjdNkbrVaFFyJUu9cdKPvGgAfKMocpRR6up7z0SqFH2L4lmtlZ8IR37pji21D6oByH7RaBSEk0mw2KcH4oNlsHu7v7x+ylGX5EMRE+ciVKFV7e7rPvX71kh+f+nbxo+Hn5dgeBWsw/URMlqlzebvbsbwDvoLMa4aGFJIkxRihJElHZ6QsG40GBSGUvWmLFG4I4Sw8e3QfIn8o5CkF1dt+GNFNXhBC2btCKNM5tZgHTddDMExPs8lRjDFFCP3DGB8jhI4JIW2DfakAc7FNRgOBjRZYg5l7xsXl22z6u/casEXyYI8WIZHZ5LQjY9CnUikIxqvtyadU7HYsGSnYl4qcI77V4Yj/ZsXXxVSFulZ2nPOpCnsGL4RzCla4W9qCmZkZMFutjNBCCCkjhHINQgqyLBcIIW0DkxDOgTdPoEgpZ/KvfjIH1h7M+pIw600q+gcGQK1Wg16vhzP5/P7z8253p8frVZotFqXNbleazGblr2BQ+R8uz62ggcSLUQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240318105934"
+        title="20240318105934"
+        src="/static/363925fed90048857ced049dc81d6b29/37523/20240318105934.png"
+        srcset="/static/363925fed90048857ced049dc81d6b29/e9ff0/20240318105934.png 180w,
+/static/363925fed90048857ced049dc81d6b29/f21e7/20240318105934.png 360w,
+/static/363925fed90048857ced049dc81d6b29/37523/20240318105934.png 720w,
+/static/363925fed90048857ced049dc81d6b29/ef3e1/20240318105934.png 759w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>방향성이 있는 경우 같은 짝일 때 비대칭 구조가 되지만, 방향성이 없는(무방향, 양방향) 경우에는 대칭형태로 표가 나오게 된다.</li>
+</ul>
+<h2 id="2-인접-리스트" style="position:relative;"><a href="#2-%EC%9D%B8%EC%A0%91-%EB%A6%AC%EC%8A%A4%ED%8A%B8" aria-label="2 인접 리스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 인접 리스트</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 28.888888888888886%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAqUlEQVQY022O0Q6DIAxF/f9v3B7m1E1BBVGBtpQFmWaZnofb0PTkUsQN5pSdWoVa85OZiYg5WI+AZD36LQFD3Cl2OdnDtI7G5g0AjKNiwlvdN71ppOnUUrZaanuUFXk8hamEyVrZqkrOkYPSOjLdm+E1LEfBL99mD0SBrQPrwAMCBSKapgk3Ttb/t1NWwtRyzhtE1FoHwsdbNf1y3FzIZ5g5JMg6dECXzR8S22BNZv9M7gAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240318110756"
+        title="20240318110756"
+        src="/static/e0c5e02633bd668229dce0fcdb2fc042/37523/20240318110756.png"
+        srcset="/static/e0c5e02633bd668229dce0fcdb2fc042/e9ff0/20240318110756.png 180w,
+/static/e0c5e02633bd668229dce0fcdb2fc042/f21e7/20240318110756.png 360w,
+/static/e0c5e02633bd668229dce0fcdb2fc042/37523/20240318110756.png 720w,
+/static/e0c5e02633bd668229dce0fcdb2fc042/302a4/20240318110756.png 1080w,
+/static/e0c5e02633bd668229dce0fcdb2fc042/07a9c/20240318110756.png 1440w,
+/static/e0c5e02633bd668229dce0fcdb2fc042/4a70a/20240318110756.png 2390w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>C++ 에서는 벡터, python 에서는 리스트, 배열로 구현하는 경우가 많다.</li>
+</ul>
+<h2 id="3-인접행렬-vs-인접-리스트-비교" style="position:relative;"><a href="#3-%EC%9D%B8%EC%A0%91%ED%96%89%EB%A0%AC-vs-%EC%9D%B8%EC%A0%91-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%B9%84%EA%B5%90" aria-label="3 인접행렬 vs 인접 리스트 비교 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 인접행렬 vs 인접 리스트 비교</h2>
+<ul>
+<li>비교
+<ul>
+<li>간선 개수에 따라 행렬은 개수의 제곱 만큼 공간을 할당해야함. 그러나 인접리스트는 표현해야할 양에서 적기에 메모리 공간에서 절약이 된다.</li>
+<li>인접행렬은 공간을 많이 쓰는 만큼, 시간적으로 탐색 속도가 매우 빠를 수 있다.
+예) 위의 예시의 경우 인접 행렬은 <code class="language-text">G[0][3]</code>을 접근하면 시간복잡도 O(1)로 탐색이 끝난다.</li>
+<li>반대로 인접 리스트는 시간적으로 탐색에서 분리한 면이 있다.</li>
+<li>결과적으로 간선이 적으면 적을 수록 인접리스트가 좋아지고, 간선이 많아지면 많아질 수록 인접 리스트의 공간적 메리트가 소멸되므로, 차라리 인접 행렬이 낫다.
+예 ) 정점과 간선의 개수로 파악하면 된다.
+정점이 100개 간선이 최대 N²개까지 나온다면 -> 공간적으로 메리트 희석될 수 있음, 인접 행렬로 푸는게 접근성이 좋음
+정점은 N개이고 간선이 2N 정도라면? 인접 리스트가 효과적이다.</li>
+<li>단, 알고리즘 문제에서 문제에 따라 어느 쪽을 써도 기본적으로 크게 상관은 없다(극한의 조건이 아닌 이상)</li>
+</ul>
+</li>
+</ul>
+<h2 id="깊이-우선-탐색-dfs-depth-first-search" style="position:relative;"><a href="#%EA%B9%8A%EC%9D%B4-%EC%9A%B0%EC%84%A0-%ED%83%90%EC%83%89-dfs-depth-first-search" aria-label="깊이 우선 탐색 dfs depth first search permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>깊이 우선 탐색 DFS (Depth First Search)</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 33.888888888888886%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABRklEQVQoz22Q3UrDQBCF8xxSTbKb/ck2TZrfLUixTbW2YAXxTgR9Ay/EO30HLwUf9shMWUHw4jCzszNnv53IaAOtNMtoi1TGSOQZnHEQOsGdf8Lb5hPWWlhjoTONTGaguTAbclIUClbnEDLFOD9g19/D5gbOObTOYznbwuUOUzdFPa/RtR1Upv41jY4FxVTSpHg8f8Hz8pXplFDIMgmRJUxF8oPHerVmczoHsxAjozWcLnAYHlAXLWJxyqqrGn3XQ6vjy5QTHX1bCsnEflggt/kf0ygWE7SzAe/bL3TFAlJKGGVQzkqM6/G3eTNuuCZSwaak/W6Ppm5+6Znwsrllw0l8gqqs0DYt74e+RM1hV0RFJkRaTAv43vMDdEczoTf6uPrGWN0gETG6pmMqGqbFUx4MKVblHNfbHed0R+ZJnPBeVxcrpvwB/LjWmd2f8I8AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240318112057"
+        title="20240318112057"
+        src="/static/0ed94d860aa8247ffec20b8798b62ab6/37523/20240318112057.png"
+        srcset="/static/0ed94d860aa8247ffec20b8798b62ab6/e9ff0/20240318112057.png 180w,
+/static/0ed94d860aa8247ffec20b8798b62ab6/f21e7/20240318112057.png 360w,
+/static/0ed94d860aa8247ffec20b8798b62ab6/37523/20240318112057.png 720w,
+/static/0ed94d860aa8247ffec20b8798b62ab6/302a4/20240318112057.png 1080w,
+/static/0ed94d860aa8247ffec20b8798b62ab6/07a9c/20240318112057.png 1440w,
+/static/0ed94d860aa8247ffec20b8798b62ab6/b54cd/20240318112057.png 1662w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>스택, 재귀를 사용해서 구현한다.</li>
+<li>참고로 완전탐색 방식이다. 가볼 수 있는 노드에서 갈 수 없을 때까지 내려갔다 올라오기를 반복한다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python">adj <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">13</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> ragnge<span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+adj<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> adj<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span>  <span class="token operator">=</span> <span class="token number">1</span>
+adj<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> adj<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment"># ... </span>
+
+<span class="token keyword">def</span> <span class="token function">dfs</span><span class="token punctuation">(</span>now<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">for</span> nxt <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+		<span class="token keyword">if</span> adj<span class="token punctuation">[</span>now<span class="token punctuation">]</span><span class="token punctuation">[</span>nxt<span class="token punctuation">]</span><span class="token punctuation">:</span>
+			dfs<span class="token punctuation">(</span>nxt<span class="token punctuation">)</span>
+
+dfs<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h2 id="너비-우선-탐색-bfs-breadth-first-search" style="position:relative;"><a href="#%EB%84%88%EB%B9%84-%EC%9A%B0%EC%84%A0-%ED%83%90%EC%83%89-bfs-breadth-first-search" aria-label="너비 우선 탐색 bfs breadth first search permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>너비 우선 탐색 BFS (Breadth First Search)</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 35.55555555555556%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABWUlEQVQoz1VRuU7DQBT0P9BQQLD3ju31kQ25D8dxRBISGiSEqGmoEeIHaBEFf8CPDtqHkojiacZPmtmZ50ArDT9KqiNyxom3TRtJnGDVrDDoD2C0oRFcQAr5T3eY4LA0yhB6k+FgBJtapImlb2stGSdxStjv9ZFnBZl6nZYn4+BAIn4FITlc6bCsl8iznHZcMCihCEPeImG9qDEajqG1QsgvodSpHSWUQmBerDEuKwgpqLKv1nT36MYjMBGhE/fRuD0lp7NwBmd72LgHaGmOpoGPLZXA2+oLj8MXtNgF2rpNgtf6E/fXzzgPz7BzT3hvvo/3E5Jhmjf4uPuBNTk459QkSJMUZVGCcQatNTplh9L5FFlmYcwfl1KCsYhuWOQFvK7rHJSRiOOYdH4XLKoFJuPJseZ2s0WRFZRkfbOG6zji9HeZQDWvsKhqemR3u4NNM0RhBO8zm87wCwxy1zpOQhz9AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240318112744"
+        title="20240318112744"
+        src="/static/9420c58d00e0e168e52d1d42e292d631/37523/20240318112744.png"
+        srcset="/static/9420c58d00e0e168e52d1d42e292d631/e9ff0/20240318112744.png 180w,
+/static/9420c58d00e0e168e52d1d42e292d631/f21e7/20240318112744.png 360w,
+/static/9420c58d00e0e168e52d1d42e292d631/37523/20240318112744.png 720w,
+/static/9420c58d00e0e168e52d1d42e292d631/302a4/20240318112744.png 1080w,
+/static/9420c58d00e0e168e52d1d42e292d631/07a9c/20240318112744.png 1440w,
+/static/9420c58d00e0e168e52d1d42e292d631/a655e/20240318112744.png 1563w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>큐를 사용해서 구현한다.</li>
+<li>완전 탐색 방식인 것은 동일하다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 53.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABK0lEQVQoz22SiWrEMAxE8/8fWkrZtXUfPjZtnDYLJQ9hZPAw1thb67P10frMo8baTs/28fnF6mzB6urZ+sjWs49VRyOe237HGKMiFcBnrRXpUeH1ev07k2PciDMzIixc1IhFzJE5IlSVFyJyrGqHeM6ZmZfY3T1CzFgVECsiELm7qJ6yUy/m23m6lDLGuJw9glVJ5FnLo5ZKFBEiQheIJLohIjPv+17KUyOpzchsrZm7mtcKyEwskakLETkb9dgQgZlba4hIxPO1Z7a3M8CzVvib+c157at3dyKac7q7rbHNj6iQDmdVBYBaazmrFGS9Sbv3nq2dzoAEzEDUe4+F/2G37xwRmWl+OBOzmrOIr8B+H2mhFjdiP6IyJF7/BCogIJ1DrZiRiADgJ+1vkSV82+Qh0+QAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240318114611"
+        title="20240318114611"
+        src="/static/6587737b0cecba81a9ae017b6b5dc5d1/37523/20240318114611.png"
+        srcset="/static/6587737b0cecba81a9ae017b6b5dc5d1/e9ff0/20240318114611.png 180w,
+/static/6587737b0cecba81a9ae017b6b5dc5d1/f21e7/20240318114611.png 360w,
+/static/6587737b0cecba81a9ae017b6b5dc5d1/37523/20240318114611.png 720w,
+/static/6587737b0cecba81a9ae017b6b5dc5d1/90712/20240318114611.png 882w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">from</span> collections <span class="token keyword">import</span> dequeue 
+adj <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">13</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> ragnge<span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+adj<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> adj<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>  <span class="token operator">=</span> <span class="token number">1</span>
+adj<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> adj<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment"># ... </span>
+
+<span class="token keyword">def</span> <span class="token function">bfs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	dq <span class="token operator">=</span> dequeue<span class="token punctuation">(</span><span class="token punctuation">)</span>
+	dq<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+	<span class="token keyword">while</span> dq<span class="token punctuation">:</span>
+		now <span class="token operator">=</span> dq<span class="token punctuation">.</span>popleft<span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token keyword">for</span> nxt <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+			<span class="token keyword">if</span> adj<span class="token punctuation">[</span>now<span class="token punctuation">]</span><span class="token punctuation">[</span>nxt<span class="token punctuation">]</span><span class="token punctuation">:</span>
+				dp<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nxt<span class="token punctuation">)</span>
+
+bfs<span class="token punctuation">(</span><span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h2 id="dfs--bfs" style="position:relative;"><a href="#dfs--bfs" aria-label="dfs  bfs permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DFS &#x26; BFS</h2>
+<ul>
+<li>공통점
+<ul>
+<li>완전탐색 구조를 갖고 있으므로 장단점이 그대로 나온다.</li>
+<li>모든 경우의 수를 다 보는 방식이며 그렇기에 확실하나, 반대로 결과 도출까지 연산량이 많다.</li>
+</ul>
+</li>
+<li>차이점
+<ul>
+<li>특정 목표 노드까지 최단으로 탐색하는 경우 두 방법 모두 탐색이 가능하다. 하지만 DFS의 경우 최단거리 탐색에서 끝까지 탐색을 마쳐야 결과를 알 수 있다. 이에 비해 <mark style="background: #FFB8EBA6;">BFS 는 처음 만난 경우가 최단거리임을 보장해줄 수 있어서</mark> 그 상황에서 탐색이 종료 시킬 수 있다.</li>
+</ul>
+</li>
+<li>인접행렬 vs 인접리스트
+<ul>
+<li>정점 V, 간선 E</li>
+<li>인접행렬 : O(V²)</li>
+<li>인접리스트 : O(V+E) ≑ O(max(V, E))</li>
+<li>식으로 봐도 알 수 있듯이 V, E의 값 자체가 크지 않다면 유의미 하지 않는다. 인접리스트를 구현시에는 그 값의 규모를 파악하고 적용하는게 낫고, 간선이 너무 많다면 굳이 리스트 형태로 하느니 인접 행렬로 하는게 나을 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="예제문제-1" style="position:relative;"><a href="#%EC%98%88%EC%A0%9C%EB%AC%B8%EC%A0%9C-1" aria-label="예제문제 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>예제문제 (1)</h2>
+<h3 id="길찾기-문제" style="position:relative;"><a href="#%EA%B8%B8%EC%B0%BE%EA%B8%B0-%EB%AC%B8%EC%A0%9C" aria-label="길찾기 문제 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>길찾기 문제</h3>
+<ul>
+<li>보통 4방향이 많다(dy, dx 구조로 짜면 좋다)</li>
+<li>방향값을 미리 코드에 짜두고 for문으로 순회하는 기법을 익혀둘 것</li>
+<li>dy, dx를 쓰지 않아도 구현은 가능하다 그러나..
+<ul>
+<li>코드가 길어진다</li>
+<li>길어진다 = 실수 가능성이 발생한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="백트래킹-backtracking" style="position:relative;"><a href="#%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9-backtracking" aria-label="백트래킹 backtracking permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>백트래킹 Backtracking</h2>
+<ul>
+<li>기본적으로 모든 경우를 탐색하며 DFS/BFS와 유사하다.</li>
+<li>단, <mark style="background: #FF5582A6;">가지치기</mark> 를 통해 탐색의 경우의 수를 줄인다는 차이가 있다.</li>
+</ul>
+<h2 id="bojkr11724" style="position:relative;"><a href="#bojkr11724" aria-label="bojkr11724 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>boj.kr/11724</h2>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">import</span> sys
+
+sys<span class="token punctuation">.</span>setrecursionlimit<span class="token punctuation">(</span> <span class="token number">10</span> <span class="token operator">**</span> <span class="token number">6</span><span class="token punctuation">)</span>
+<span class="token builtin">input</span> <span class="token operator">=</span> sys<span class="token punctuation">.</span>stdin<span class="token punctuation">.</span>readline <span class="token comment"># 입력이 들어오는 줄이 많아서 빠른 입력을 넣어줌 </span>
+N<span class="token punctuation">,</span> M <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">)</span>
+adj <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> N <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>M<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span>lamda x<span class="token punctuation">:</span> x <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	adj<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> adj<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+
+ans <span class="token operator">=</span> <span class="token number">0</span>
+chk <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">False</span><span class="token punctuation">]</span> <span class="token operator">*</span> N
+
+<span class="token keyword">def</span> <span class="token function">dfs</span><span class="token punctuation">(</span>now<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">for</span> nxt <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
+		<span class="token keyword">if</span> adj<span class="token punctuation">[</span>now<span class="token punctuation">]</span><span class="token punctuation">[</span>nxt<span class="token punctuation">]</span> <span class="token keyword">and</span> <span class="token keyword">not</span> chk<span class="token punctuation">[</span>nxt<span class="token punctuation">]</span><span class="token punctuation">:</span>
+			chk<span class="token punctuation">[</span>nxt<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+			dfs<span class="token punctuation">(</span>nxt<span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">if</span> <span class="token keyword">not</span> chk<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+		ans <span class="token operator">+=</span> <span class="token number">1</span>
+		chk<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+		dfs<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span>
+</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h2 id="bojkr2178" style="position:relative;"><a href="#bojkr2178" aria-label="bojkr2178 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>boj.kr/2178</h2>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python">
+dy <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+dx <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+N<span class="token punctuation">,</span> M <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">)</span>
+board <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+<span class="token keyword">def</span> <span class="token function">is_valid_coord</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">return</span> <span class="token operator">&lt;=</span> <span class="token number">0</span> y <span class="token operator">&lt;</span> N <span class="token keyword">and</span> <span class="token number">0</span> <span class="token operator">&lt;=</span> x <span class="token operator">&lt;</span>M M
+
+<span class="token keyword">def</span> <span class="token function">bfs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	chk <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token boolean">False</span><span class="token punctuation">]</span> <span class="token operator">*</span> M <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">]</span>
+	chk<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+	dq<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token keyword">while</span> dq<span class="token punctuation">:</span>
+		y<span class="token punctuation">,</span> x<span class="token punctuation">,</span> d <span class="token operator">=</span> dq<span class="token punctuation">.</span>popleft<span class="token punctuation">(</span><span class="token punctuation">)</span>
+		nd <span class="token operator">=</span> d <span class="token operator">+</span> <span class="token number">1</span>
+
+		<span class="token keyword">if</span> y <span class="token operator">==</span> N <span class="token operator">-</span> <span class="token number">1</span> <span class="token keyword">and</span> x <span class="token operator">==</span> M <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span>
+			<span class="token keyword">return</span> d
+
+		<span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+			ny <span class="token operator">=</span> y <span class="token operator">+</span> dy<span class="token punctuation">[</span>k<span class="token punctuation">]</span>
+			nx <span class="token operator">=</span> x <span class="token operator">+</span> dx<span class="token punctuation">[</span>k<span class="token punctuation">]</span>
+			<span class="token keyword">if</span> is_valid_cood<span class="token punctuation">(</span>nx<span class="token punctuation">,</span> ny<span class="token punctuation">)</span> <span class="token keyword">and</span> board<span class="token punctuation">[</span>ny<span class="token punctuation">]</span><span class="token punctuation">[</span>nxy <span class="token operator">==</span> <span class="token string">'1'</span><span class="token keyword">and</span> <span class="token keyword">not</span> chk<span class="token punctuation">[</span>ny<span class="token punctuation">]</span><span class="token punctuation">[</span>nx<span class="token punctuation">]</span><span class="token punctuation">:</span>
+				chk<span class="token punctuation">[</span>ny<span class="token punctuation">]</span><span class="token punctuation">[</span>nx<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+				dq<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>ny<span class="token punctuation">,</span> nx<span class="token punctuation">,</span> nd<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>bfs<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h1 id="part2-알고리즘-유형-분석---이분-탐색-binary-search" style="position:relative;"><a href="#part2-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9C%A0%ED%98%95-%EB%B6%84%EC%84%9D---%EC%9D%B4%EB%B6%84-%ED%83%90%EC%83%89-binary-search" aria-label="part2 알고리즘 유형 분석   이분 탐색 binary search permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>part2. 알고리즘 유형 분석 - 이분 탐색 Binary Search</h1>
+<h2 id="이진탐색-binary-search" style="position:relative;"><a href="#%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89-binary-search" aria-label="이진탐색 binary search permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>이진탐색 Binary Search</h2>
+<ul>
+<li>탐색 전에 반드시 정렬 되어 있어야 한다.</li>
+<li>살펴보는 범위를 절반씩 줄여가면서 답을 찾는다.</li>
+<li>정렬 O(NlogN) +  이진탐색 O(logN) -> 결과적으로 <mark style="background: #FFB8EBA6;">O(N log N)</mark></li>
+<li>미리 정렬 되어있다면 <mark style="background: #FFB8EBA6;">O(log N)</mark></li>
+<li>선형 탐색이 빠르다고 느껴지지 않는가?O(N) -> 탐색을 여러번 해야 한다고 하면? 탐색을 여러번 하는 경우 최대 O(N²) 까지도 탐색이 늘어날 수도 있다. 따라서 시간을 좀 소모하더라도 정렬 이후 진행하면 여전히 <mark style="background: #FFB8EBA6;">O(N log N)</mark> 정도이므로 여러번의 탐색시 이진탐색은 장점을 가진다.</li>
+</ul>
+<h2 id="라이브러리" style="position:relative;"><a href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC" aria-label="라이브러리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>라이브러리</h2>
+<h3 id="c-lowerupper_bound" style="position:relative;"><a href="#c-lowerupper_bound" aria-label="c lowerupper_bound permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[C++] lower/upper_bound</h3>
+<ul>
+<li>C++에서 바이너리 탐색을 쉽게 해주는 도구, 특정 값이 존재하는 위치 내지는 그것보다 큰 값이 가리키는 위치를 파악하는 용도.</li>
+</ul>
+<h3 id="python-bisect_leftright" style="position:relative;"><a href="#python-bisect_leftright" aria-label="python bisect_leftright permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[Python] bisect_left/right</h3>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">from</span> bisect <span class="token keyword">import</span> bisect_left<span class="token punctuation">,</span> bisect_right
+v <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span>
+three <span class="token operator">=</span> bisect_right<span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">-</span> bisect_left<span class="token punctuation">(</span>v<span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+four <span class="token operator">=</span> bisect_right<span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">-</span> bisect_left<span class="token punctuation">(</span>v<span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>
+six <span class="token operator">=</span> bisect_right<span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token operator">-</span> bisect_left<span class="token punctuation">(</span>v<span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f' number of 3: </span><span class="token interpolation"><span class="token punctuation">{</span>three<span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span> <span class="token comment"># 2</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f' number of 4: </span><span class="token interpolation"><span class="token punctuation">{</span>four<span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span> <span class="token comment"># 0</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f' number of 6: </span><span class="token interpolation"><span class="token punctuation">{</span>six<span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span> <span class="token comment"># 3</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h2 id="parametric-search-매개변수-탐색" style="position:relative;"><a href="#parametric-search-%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98-%ED%83%90%EC%83%89" aria-label="parametric search 매개변수 탐색 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parametric Search 매개변수 탐색</h2>
+<h3 id="파라메트릭-서치" style="position:relative;"><a href="#%ED%8C%8C%EB%9D%BC%EB%A9%94%ED%8A%B8%EB%A6%AD-%EC%84%9C%EC%B9%98" aria-label="파라메트릭 서치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>파라메트릭 서치</h3>
+<ul>
+<li>최적화 문제를 결정 문제로 바꿔서 이진탐색으로 푸는 방법이다.</li>
+<li>최적화 문제 Optimization Problem
+<ul>
+<li>문제 상황을 만족하는 변수의 최솟값, 최댓값을 구하는 문제</li>
+</ul>
+</li>
+<li>결정 문제
+<ul>
+<li>Yes/No 문제</li>
+</ul>
+</li>
+<li>유데미 수강생들의 외모값과 커플/솔로 여부가 주어진다. 커플들의 솔로들 보다 외모값이 높다. 외모값이 최소 몇 이상일 때부터 커플인가?</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 18.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAzElEQVQY0z2N226DMBBE+Y+mhKoPwVAu3l0bO2Do///UqSBVHkZnRjPSVM29oW0dZT9IKbNt+5vbVljzk7Ju/O4Heylsz5Wj7KQlUdb13eUlc5RCdfu48d18sYoQRHl6T/RC9p6syqQR0UCIGbEFCwtyerGrC/9ZNeBtoao/a5r6TuodfhiIvUOHgdB3hJ8eNynd6BlmoZuUYfS42RjHmcekjNP8yicno2ofLZ3rrgfxillE1VALF4Mq6oWgRlTDRDER9OJL8dyKkkLkD9/sfz2JVloPAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240318211156"
+        title="20240318211156"
+        src="/static/c4ca71598bf3956c6a79f14f2e35e167/37523/20240318211156.png"
+        srcset="/static/c4ca71598bf3956c6a79f14f2e35e167/e9ff0/20240318211156.png 180w,
+/static/c4ca71598bf3956c6a79f14f2e35e167/f21e7/20240318211156.png 360w,
+/static/c4ca71598bf3956c6a79f14f2e35e167/37523/20240318211156.png 720w,
+/static/c4ca71598bf3956c6a79f14f2e35e167/302a4/20240318211156.png 1080w,
+/static/c4ca71598bf3956c6a79f14f2e35e167/07a9c/20240318211156.png 1440w,
+/static/c4ca71598bf3956c6a79f14f2e35e167/2f183/20240318211156.png 1589w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>기준선 보다 왼쪽 오른쪽을 구분지어버림으로써 수치로의 값이 아닌, Yes, No 로 만든다.</li>
+<li>선형 탐색 시 전체 요소를 확인해봐야 한다. -> 이분 탐색으로 하면 더 빠르게 탐색이 가능하다.</li>
+</ul>
+<h2 id="bojkr2512" style="position:relative;"><a href="#bojkr2512" aria-label="bojkr2512 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>boj.kr/2512</h2>
+<h2 id="bojkr10815" style="position:relative;"><a href="#bojkr10815" aria-label="bojkr10815 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>boj.kr/10815</h2>
+<h1 id="part2-알고리즘-유형-분석---동적계획법-dynamic-programming" style="position:relative;"><a href="#part2-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9C%A0%ED%98%95-%EB%B6%84%EC%84%9D---%EB%8F%99%EC%A0%81%EA%B3%84%ED%9A%8D%EB%B2%95-dynamic-programming" aria-label="part2 알고리즘 유형 분석   동적계획법 dynamic programming permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>part2. 알고리즘 유형 분석 - 동적계획법 Dynamic Programming</h1>
+<h2 id="동적-계획법" style="position:relative;"><a href="#%EB%8F%99%EC%A0%81-%EA%B3%84%ED%9A%8D%EB%B2%95" aria-label="동적 계획법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>동적 계획법</h2>
+<h3 id="개요" style="position:relative;"><a href="#%EA%B0%9C%EC%9A%94" aria-label="개요 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>개요</h3>
+<ul>
+<li>문제를 쪼개서 <mark style="background: #FFB86CA6;">작은 문제의 답</mark>을 구하고, 그걸로<mark style="background: #FF5582A6;"> 더 큰 문제의 답을 구하는 것</mark>을 반복</li>
+<li>분할 정복과 비슷한 느낌</li>
+</ul>
+<h3 id="dp-구현-2가지" style="position:relative;"><a href="#dp-%EA%B5%AC%ED%98%84-2%EA%B0%80%EC%A7%80" aria-label="dp 구현 2가지 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DP 구현 2가지</h3>
+<ul>
+<li>Top-down :
+<ul>
+<li>구현 : 재귀</li>
+<li>저장 방식 : 메모이제이션Memoization</li>
+</ul>
+</li>
+<li>Bottom-up
+<ul>
+<li>구현 : 반복문</li>
+<li>저장방식 : 타뷸레이션 Tabulation</li>
+</ul>
+</li>
+</ul>
+<h2 id="메모이제이션-타뷸레이션" style="position:relative;"><a href="#%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98-%ED%83%80%EB%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98" aria-label="메모이제이션 타뷸레이션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>메모이제이션, 타뷸레이션</h2>
+<h3 id="메모이제이션" style="position:relative;"><a href="#%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98" aria-label="메모이제이션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>메모이제이션</h3>
+<ul>
+<li>부분 문제들의 답을 구하고, 중복 연산을 방지하여 cache 에 저장하고 다음 번엔 그대로 사용하는 구조다.</li>
+<li>필요한 부분들만 구한다 Lazy-Evaluation</li>
+<li>top-down 방식에서 사용</li>
+</ul>
+<h3 id="타뷸레이션" style="position:relative;"><a href="#%ED%83%80%EB%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98" aria-label="타뷸레이션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>타뷸레이션</h3>
+<ul>
+<li>부분 문제들의 답을 미리 다 구해두면 편하다.</li>
+<li>테이블을 채워 나간다는 의미라서 Tabulation 이라고 부른다.</li>
+<li>필요 없는 부분도 일단 다 구한다. Eager-Evaluation</li>
+<li>Bottom-up 방식에서 사용</li>
+</ul>
+<h2 id="피보나치-수열-fibonacci" style="position:relative;"><a href="#%ED%94%BC%EB%B3%B4%EB%82%98%EC%B9%98-%EC%88%98%EC%97%B4-fibonacci" aria-label="피보나치 수열 fibonacci permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>피보나치 수열 Fibonacci</h2>
+<ul>
+<li>f(0) = 0</li>
+<li>f(1) = 1</li>
+<li>f(i + 2) = f(i+1) + f(i)</li>
+<li>중복 되는 경우는 찾아서 저장해두면 효과적으로 빠르게 구할 수 있다.</li>
+</ul>
+<h3 id="bojkr2748" style="position:relative;"><a href="#bojkr2748" aria-label="bojkr2748 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>boj.kr/2748</h3>
+<h2 id="이항-계수" style="position:relative;"><a href="#%EC%9D%B4%ED%95%AD-%EA%B3%84%EC%88%98" aria-label="이항 계수 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>이항 계수</h2>
+<ul>
+<li>bino(n, 0) = 1</li>
+<li>bino(n, n) = 1</li>
+<li>bino(n, r) = bino(n-1, r-1) + bino(n -1, r)</li>
+</ul>
+<h3 id="bojkr11051" style="position:relative;"><a href="#bojkr11051" aria-label="bojkr11051 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>boj.kr/11051</h3>
+<ul>
+<li>이항계수 2</li>
+</ul>
+<h3 id="삼각수" style="position:relative;"><a href="#%EC%82%BC%EA%B0%81%EC%88%98" aria-label="삼각수 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>삼각수</h3>
+<div class="table-of-contents">
+<ul>
+<li>
+<p><a href="#part2-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9C%A0%ED%98%95-%EB%B6%84%EC%84%9D---dfs-bfs-%EB%B0%B1%ED%8A%B8%EB%A0%88%ED%82%B9">part2. 알고리즘 유형 분석 - DFS, BFS, 백트레킹</a></p>
+<ul>
+<li>
+<p><a href="#%EA%B7%B8%EB%9E%98%ED%94%84-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-graph">그래프 자료구조 Graph</a></p>
+</li>
+<li>
+<p><a href="#%ED%8A%B8%EB%A6%AC-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0tree">트리 자료구조(tree)</a></p>
+</li>
+<li>
+<p><a href="#%EC%BD%94%EB%93%9C%EB%A1%9C-%EA%B7%B8%EB%9E%98%ED%94%84%EB%A5%BC-%EB%82%98%ED%83%80%EB%82%B4%EB%8A%94-%EB%B0%A9%EB%B2%95">코드로 그래프를 나타내는 방법</a></p>
+<ul>
+<li><a href="#1-%EC%9D%B8%EC%A0%91%ED%96%89%EB%A0%AC">1. 인접행렬</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#2-%EC%9D%B8%EC%A0%91-%EB%A6%AC%EC%8A%A4%ED%8A%B8">2. 인접 리스트</a></p>
+</li>
+<li>
+<p><a href="#3-%EC%9D%B8%EC%A0%91%ED%96%89%EB%A0%AC-vs-%EC%9D%B8%EC%A0%91-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%B9%84%EA%B5%90">3. 인접행렬 vs 인접 리스트 비교</a></p>
+</li>
+<li>
+<p><a href="#%EA%B9%8A%EC%9D%B4-%EC%9A%B0%EC%84%A0-%ED%83%90%EC%83%89-dfs-depth-first-search">깊이 우선 탐색 DFS (Depth First Search)</a></p>
+</li>
+<li>
+<p><a href="#%EB%84%88%EB%B9%84-%EC%9A%B0%EC%84%A0-%ED%83%90%EC%83%89-bfs-breadth-first-search">너비 우선 탐색 BFS (Breadth First Search)</a></p>
+</li>
+<li>
+<p><a href="#dfs--bfs">DFS &#x26; BFS</a></p>
+</li>
+<li>
+<p><a href="#%EC%98%88%EC%A0%9C%EB%AC%B8%EC%A0%9C-1">예제문제 (1)</a></p>
+<ul>
+<li><a href="#%EA%B8%B8%EC%B0%BE%EA%B8%B0-%EB%AC%B8%EC%A0%9C">길찾기 문제</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9-backtracking">백트래킹 Backtracking</a></p>
+</li>
+<li>
+<p><a href="#bojkr11724">boj.kr/11724</a></p>
+</li>
+<li>
+<p><a href="#bojkr2178">boj.kr/2178</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#part2-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9C%A0%ED%98%95-%EB%B6%84%EC%84%9D---%EC%9D%B4%EB%B6%84-%ED%83%90%EC%83%89-binary-search">part2. 알고리즘 유형 분석 - 이분 탐색 Binary Search</a></p>
+<ul>
+<li>
+<p><a href="#%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89-binary-search">이진탐색 Binary Search</a></p>
+</li>
+<li>
+<p><a href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">라이브러리</a></p>
+<ul>
+<li><a href="#c-lowerupper_bound">[C++] lower/upper_bound</a></li>
+<li><a href="#python-bisect_leftright">[Python] bisect_left/right</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#parametric-search-%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98-%ED%83%90%EC%83%89">Parametric Search 매개변수 탐색</a></p>
+<ul>
+<li><a href="#%ED%8C%8C%EB%9D%BC%EB%A9%94%ED%8A%B8%EB%A6%AD-%EC%84%9C%EC%B9%98">파라메트릭 서치</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#bojkr2512">boj.kr/2512</a></p>
+</li>
+<li>
+<p><a href="#bojkr10815">boj.kr/10815</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#part2-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9C%A0%ED%98%95-%EB%B6%84%EC%84%9D---%EB%8F%99%EC%A0%81%EA%B3%84%ED%9A%8D%EB%B2%95-dynamic-programming">part2. 알고리즘 유형 분석 - 동적계획법 Dynamic Programming</a></p>
+<ul>
+<li>
+<p><a href="#%EB%8F%99%EC%A0%81-%EA%B3%84%ED%9A%8D%EB%B2%95">동적 계획법</a></p>
+<ul>
+<li><a href="#%EA%B0%9C%EC%9A%94">개요</a></li>
+<li><a href="#dp-%EA%B5%AC%ED%98%84-2%EA%B0%80%EC%A7%80">DP 구현 2가지</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98-%ED%83%80%EB%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98">메모이제이션, 타뷸레이션</a></p>
+<ul>
+<li><a href="#%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98">메모이제이션</a></li>
+<li><a href="#%ED%83%80%EB%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98">타뷸레이션</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%ED%94%BC%EB%B3%B4%EB%82%98%EC%B9%98-%EC%88%98%EC%97%B4-fibonacci">피보나치 수열 Fibonacci</a></p>
+<ul>
+<li><a href="#bojkr2748">boj.kr/2748</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%EC%9D%B4%ED%95%AD-%EA%B3%84%EC%88%98">이항 계수</a></p>
+<ul>
+<li><a href="#bojkr11051">boj.kr/11051</a></li>
+<li><a href="#%EC%82%BC%EA%B0%81%EC%88%98">삼각수</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/JS/20240318000923/"><div class="direction">이전 글</div><div class="title">JavaScript 컴파일 과정을 알아보자</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/STUDY/coding-test/20240318125734/"><div class="direction">다음 글</div><div class="title">cote ) til - 20240318</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+    window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
+      'G-YDPMMYNR6Y'
+    );
+    window.GATSBY_GTAG_PLUGIN_ANONYMIZE = true;
+
+    var options = {
+      send_page_view: false
+    };
+    if (true) {
+      options.anonymize_ip = true;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-YDPMMYNR6Y', options);
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/coding-test/20240318083025/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-c638078fc4709f33b879.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js" async=""></script><script src="/app-c638078fc4709f33b879.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-62b18b028769ec5545fd.js" async=""></script></body></html>
