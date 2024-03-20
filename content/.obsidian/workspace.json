@@ -4,16 +4,28 @@
     "type": "split",
     "children": [
       {
-        "id": "fa99244999c81d76",
+        "id": "8714793418502c6b",
         "type": "tabs",
         "children": [
           {
-            "id": "1b47b9f4dc401955",
+            "id": "187a1c1a7c876f4c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/JAVA/20240318000922.md",
+                "file": "STUDY/coding-test/20240320010052.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "976d036081bcae2e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/coding-test/20240319013020.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/JAVA/20240318000922.md",
+                "file": "STUDY/coding-test/20240320010052.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/JAVA/20240318000922.md",
+                "file": "STUDY/coding-test/20240320010052.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/JAVA/20240318000922.md"
+                "file": "STUDY/coding-test/20240320010052.md"
               }
             }
           },
@@ -176,27 +188,35 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "1b47b9f4dc401955",
+  "active": "187a1c1a7c876f4c",
   "lastOpenFiles": [
-    "STUDY/CSAPP/20240319065835.md",
+    "STUDY/coding-test/src/Pasted image 20240320234355.png",
+    "STUDY/coding-test/src/20240320234337.png",
+    "STUDY/coding-test/src/20240320234317.png",
+    "STUDY/coding-test/src/20240320234236.png",
+    "STUDY/coding-test/src/20240320234156.png",
+    "STUDY/coding-test/20240319013020.md",
+    "STUDY/coding-test/20240318125734.md",
+    "STUDY/coding-test/20240320010052.md",
+    "STUDY/JAVA/20240315121428.md",
+    "20240320010055.md",
+    "STUDY/docker-kubernetes/20240320111443.md",
+    "STUDY/docker-kubernetes/20240312092035.md",
+    "STUDY/docker-kubernetes/20240315043632.md",
+    "STUDY/JAVA/20240320102457.md",
+    "STUDY/JAVA/src/20240320105619.png",
+    "STUDY/JAVA/src/20240320105550.png",
+    "STUDY/JAVA/src/20240320105400.png",
+    "STUDY/JAVA/src/20240320103309.png",
     "STUDY/JAVA/20240318000922.md",
     "STUDY/JAVA/20240320070614.md",
+    "STUDY/CSAPP/20240319065835.md",
     "STUDY/JAVA/src/20240320082105.png",
     "STUDY/JAVA/src/20240320074318.png",
-    "STUDY/coding-test/20240318125734.md",
-    "20240319013020.md",
     "STUDY/coding-test/무제 파일.md",
     "STUDY/JS/20240318000923.md",
-    "STUDY/CSAPP/src/20240319121134.png",
-    "STUDY/CSAPP/src/20240319121009.png",
     "STUDY/CSAPP/20240319065900.md",
     "STUDY/CSAPP/20240304013822.md",
-    "STUDY/JS/src/20240319074717.png",
-    "STUDY/JS/src/20240319075650.png",
-    "STUDY/JS/src/20240319075633.png",
-    "STUDY/JS/src/20240319074714.png",
-    "STUDY/JS/src/20240319073606.png",
-    "STUDY/JS/src/20240319072559.png",
     "STUDY/JS/src",
     "STUDY/CSAPP/20240304013645.md",
     "STUDY/coding-test/20240318083025.md",
@@ -207,13 +227,6 @@
     "algorithm/20220413_06.md",
     "STUDY/coding-test/20240315025202.md",
     "algorithm/20220427_18.md",
-    "algorithm/20220426_17.md",
-    "algorithm/20220426_16-2.md",
-    "algorithm/20220425_16.md",
-    "algorithm/20220421_15.md",
-    "algorithm/20220420_14.md",
-    "algorithm/20220419_13.md",
-    "algorithm/20220419_12.md",
     "src",
     "무제 파일.canvas",
     "STUDY/JAVA/src/java_compilation.canvas",
