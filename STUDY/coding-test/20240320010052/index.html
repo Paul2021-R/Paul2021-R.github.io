@@ -1,0 +1,1933 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.61a0edc5f76534a9ea34.css" data-identity="gatsby-global-css">@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:100;src:local("Montserrat Thin "),local("Montserrat-Thin"),url(/static/montserrat-latin-100-8d7d79679b70dbe27172b6460e7a7910.woff2) format("woff2"),url(/static/montserrat-latin-100-ec38980a9e0119a379e2a9b3dbb1901a.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:100;src:local("Montserrat Thin italic"),local("Montserrat-Thinitalic"),url(/static/montserrat-latin-100italic-e279051046ba1286706adc886cf1c96b.woff2) format("woff2"),url(/static/montserrat-latin-100italic-3b325a3173c8207435cd1b76e19bf501.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:200;src:local("Montserrat Extra Light "),local("Montserrat-Extra Light"),url(/static/montserrat-latin-200-9d266fbbfa6cab7009bd56003b1eeb67.woff2) format("woff2"),url(/static/montserrat-latin-200-2d8ba08717110d27122e54c34b8a5798.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:200;src:local("Montserrat Extra Light italic"),local("Montserrat-Extra Lightitalic"),url(/static/montserrat-latin-200italic-6e5b3756583bb2263eb062eae992735e.woff2) format("woff2"),url(/static/montserrat-latin-200italic-a0d6f343e4b536c582926255367a57da.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:300;src:local("Montserrat Light "),local("Montserrat-Light"),url(/static/montserrat-latin-300-00b3e893aab5a8fd632d6342eb72551a.woff2) format("woff2"),url(/static/montserrat-latin-300-ea303695ceab35f17e7d062f30e0173b.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:300;src:local("Montserrat Light italic"),local("Montserrat-Lightitalic"),url(/static/montserrat-latin-300italic-56f34ea368f6aedf89583d444bbcb227.woff2) format("woff2"),url(/static/montserrat-latin-300italic-54b0bf2c8c4c12ffafd803be2466a790.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:400;src:local("Montserrat Regular "),local("Montserrat-Regular"),url(/static/montserrat-latin-400-b71748ae4f80ec8c014def4c5fa8688b.woff2) format("woff2"),url(/static/montserrat-latin-400-0659a9f4e90db5cf51b50d005bff1e41.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:400;src:local("Montserrat Regular italic"),local("Montserrat-Regularitalic"),url(/static/montserrat-latin-400italic-6eed6b4cbb809c6efc7aa7ddad6dbe3e.woff2) format("woff2"),url(/static/montserrat-latin-400italic-7583622cfde30ae49086d18447ab28e7.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:500;src:local("Montserrat Medium "),local("Montserrat-Medium"),url(/static/montserrat-latin-500-091b209546e16313fd4f4fc36090c757.woff2) format("woff2"),url(/static/montserrat-latin-500-edd311588712a96bbf435fad264fff62.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:500;src:local("Montserrat Medium italic"),local("Montserrat-Mediumitalic"),url(/static/montserrat-latin-500italic-c90ced68b46050061d1a41842d6dfb43.woff2) format("woff2"),url(/static/montserrat-latin-500italic-5146cbfe02b1deea5dffea27a5f2f998.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:600;src:local("Montserrat SemiBold "),local("Montserrat-SemiBold"),url(/static/montserrat-latin-600-0480d2f8a71f38db8633b84d8722e0c2.woff2) format("woff2"),url(/static/montserrat-latin-600-b77863a375260a05dd13f86a1cee598f.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:600;src:local("Montserrat SemiBold italic"),local("Montserrat-SemiBolditalic"),url(/static/montserrat-latin-600italic-cf46ffb11f3a60d7df0567f8851a1d00.woff2) format("woff2"),url(/static/montserrat-latin-600italic-c4fcfeeb057724724097167e57bd7801.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:700;src:local("Montserrat Bold "),local("Montserrat-Bold"),url(/static/montserrat-latin-700-7dbcc8a5ea2289d83f657c25b4be6193.woff2) format("woff2"),url(/static/montserrat-latin-700-99271a835e1cae8c76ef8bba99a8cc4e.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:700;src:local("Montserrat Bold italic"),local("Montserrat-Bolditalic"),url(/static/montserrat-latin-700italic-c41ad6bdb4bd504a843d546d0a47958d.woff2) format("woff2"),url(/static/montserrat-latin-700italic-6779372f04095051c62ed36bc1dcc142.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:800;src:local("Montserrat ExtraBold "),local("Montserrat-ExtraBold"),url(/static/montserrat-latin-800-db9a3e0ba7eaea32e5f55328ace6cf23.woff2) format("woff2"),url(/static/montserrat-latin-800-4e3c615967a2360f5db87d2f0fd2456f.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:800;src:local("Montserrat ExtraBold italic"),local("Montserrat-ExtraBolditalic"),url(/static/montserrat-latin-800italic-bf45bfa14805969eda318973947bc42b.woff2) format("woff2"),url(/static/montserrat-latin-800italic-fe82abb0bcede51bf724254878e0c374.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:900;src:local("Montserrat Black "),local("Montserrat-Black"),url(/static/montserrat-latin-900-e66c7edc609e24bacbb705175669d814.woff2) format("woff2"),url(/static/montserrat-latin-900-8211f418baeb8ec880b80ba3c682f957.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:900;src:local("Montserrat Black italic"),local("Montserrat-Blackitalic"),url(/static/montserrat-latin-900italic-4454c775e48152c1a72510ceed3603e2.woff2) format("woff2"),url(/static/montserrat-latin-900italic-efcaa0f6a82ee0640b83a0916e6e8d68.woff) format("woff")}pre[class*=language-].line-numbers{counter-reset:linenumber;padding-left:3.8em;position:relative}pre[class*=language-].line-numbers>code{position:relative;white-space:inherit}.line-numbers .line-numbers-rows{border-right:1px solid #999;font-size:100%;left:-3.8em;letter-spacing:-1px;pointer-events:none;position:absolute;top:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;width:3em}.line-numbers-rows>span{counter-increment:linenumber;display:block}.line-numbers-rows>span:before{color:#999;content:counter(linenumber);display:block;padding-right:.8em;text-align:right}.search-input-wrapper{align-items:center;display:none;margin-top:3px;width:180px}@media(min-width:768px){.search-input-wrapper{display:flex}}.search-icon{color:var(--primary-text-color);margin-right:2px}.search-input{height:100%;width:100%}.search-input .MuiAutocomplete-inputRoot{padding-right:0!important}.search-input .MuiInputBase-input{color:var(--primary-text-color)!important;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;font-weight:500;padding-bottom:2px!important}.search-input .MuiInput-underline:before{border-bottom-width:1px}.search-input .MuiInput-underline:after,.search-input .MuiInput-underline:before{border-bottom-color:var(--primary-text-color)}.page-header-wrapper{display:flex;height:60px;justify-content:center;width:100%}.page-header-wrapper .page-header{align-items:center;display:flex;justify-content:space-between;max-width:720px;width:100%}.page-header-wrapper .page-header .link{color:var(--primary-text-color);font-size:17px;font-weight:700}@media(min-width:768px){.page-header-wrapper .page-header .link{font-size:20px;font-weight:700}}.page-header-wrapper .page-header .trailing-section{align-items:center;display:flex}.page-header-wrapper .page-header .trailing-section .link{margin-right:10px}@media(min-width:768px){.page-header-wrapper .page-header .trailing-section .link{margin-right:20px}}.page-footer-wrapper{align-items:center;display:flex;height:62px;justify-content:center;margin-top:auto;width:100%}.page-footer-wrapper .page-footer{max-width:720px;text-align:center;width:100%}.page-footer-wrapper .page-footer .link{color:var(--primary-text-color);font-size:20px;font-weight:700;margin-right:20px}.page-footer-wrapper .page-footer a{color:#3a95ff}.dark-mode-button-wrapper{align-items:center;bottom:20px;display:flex;justify-content:center;position:fixed;right:20px}.dark-mode-button{-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);background-color:#363f47!important;border-radius:50px;box-shadow:0 5px 25px rgba(0,0,0,.12);cursor:pointer;height:50px;width:50px;z-index:3}.dark-mode-icon{color:#fff}a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{border:0;font-size:100%;font:inherit;margin:0;padding:0;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}table{border-collapse:collapse;border-spacing:0}a{outline:none;text-decoration:none}html{--background-color:#fff;--primary-text-color:#000;--secondary-text-color:#9e9e9e;--content-text-color:#37352f;--button-background-color:#f3f3f4;--button-text-color:#363f47;--tab-text-color:#6e6d7a;--tab-hover-text-color:#0d0c22;--tab-selected-background-color:rgba(13,12,34,.05);--bio-link-icon-color:rgba(0,0,0,.54);--about-link-icon-color:#a8a8a8;--chip-background-color:#f3f3f4;--link-text-color:rgba(55,53,47,.7);--post-card-border-color:rgba(0,0,0,.12);--markdown-table-even-cell-background-color:#f6f8fa;--markdown-table-border-color:#dfe2e5;--markdown-blockquote-border-color:#dfe2e5;--markdown-border-color:#e1e4e8}html[data-theme=dark]{--background-color:#232326;--primary-text-color:#e6e6e6;--secondary-text-color:#768390;--content-text-color:#e6e6e6;--button-background-color:#444c56;--button-text-color:#363f47;--tab-text-color:#768390;--tab-hover-text-color:#acbac7;--tab-selected-background-color:#373e47;--chip-background-color:#323a42;--bio-link-icon-color:#e6e6e6;--about-link-icon-color:#a8a8a8;--link-text-color:#90b0ec;--post-card-border-color:#363f47;--markdown-table-even-cell-background-color:#2d333b;--markdown-table-border-color:#444c56;--markdown-blockquote-border-color:#4f5864;--markdown-border-color:#e1e4e8}*{-webkit-appearance:none;appearance:none;box-sizing:border-box}html{font-size:14px;height:100%;overflow-y:scroll;width:100%}body{background-color:var(--background-color)!important}a{color:var(--link-text-color)}.page-wrapper{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--primary-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;justify-content:center;min-height:100vh;padding-left:15px;padding-right:15px;word-break:keep-all}.page-wrapper,.page-wrapper .page-content{align-items:center;display:flex;flex-direction:column;width:100%}.page-wrapper .page-content{max-width:720px}.icon{color:var(--about-link-icon-color);font-size:20px}.social-links .icon{color:var(--bio-link-icon-color);font-size:30px}@-webkit-keyframes blinking-cursor{0%{opacity:0}50%{opacity:1}to{opacity:0}}@keyframes blinking-cursor{0%{opacity:0}50%{opacity:1}to{opacity:0}}.bio{color:var(--primary-text-color);display:flex;flex-direction:column;justify-content:space-between;margin-bottom:120px;margin-top:120px;width:100%}@media(min-width:768px){.bio{align-items:center;flex-direction:row}}.bio .introduction{display:flex;flex-direction:column;word-break:keep-all}.bio .introduction .react-rotating-text-cursor{-webkit-animation:blinking-cursor .8s cubic-bezier(.68,.01,.01,.99) 0s infinite;animation:blinking-cursor .8s cubic-bezier(.68,.01,.01,.99) 0s infinite}.bio .introduction strong{display:inline-block;font-weight:600}.bio .introduction.korean{font-size:32px;font-weight:100;line-height:1.2}.bio .introduction.korean .title .react-rotating-text-cursor{font-size:35px;line-height:35px}@media(min-width:768px){.bio .introduction.korean{font-size:40px}.bio .introduction.korean .title .react-rotating-text-cursor{font-size:45px;line-height:45px}}.bio .introduction.english{font-family:montserrat;font-size:25px;line-height:1.2}@media(min-width:768px){.bio .introduction.english{font-size:45px}}.bio .introduction.english .name{font-size:35px;font-weight:600}.bio .introduction.english .job{font-size:35px}.bio .introduction.english .description{font-size:20px;font-weight:200;margin-top:8px}.bio .introduction.english .social-links{display:flex;margin-top:20px}.bio .thumbnail-wrapper{display:none;width:250px}@media(min-width:768px){.bio .thumbnail-wrapper{display:block}}.section-header-wrapper{display:flex;justify-content:center;margin-bottom:32px;width:100%}.section-header-wrapper .section-header{border-bottom:4px solid var(--primary-text-color);color:var(--primary-text-color);font-size:30px;font-weight:700;padding-bottom:5px}.timestamp-section{align-items:center;display:flex;flex-direction:column;justify-content:center;margin-bottom:50px;width:100%;word-break:keep-all}.timestamp-section .body{padding:0 10px;width:100%}.timestamp-section .body .timestamp{border-left:2px solid #bdbdbd;display:flex;font-size:18px;font-weight:400;justify-items:center;margin-left:5px;padding:10px 0;width:100%}.timestamp-section .body .timestamp:first-child{padding-top:7px}.timestamp-section .body .timestamp:last-child{padding-bottom:7px}.timestamp-section .body .timestamp:before{align-self:center;background-color:var(--background-color);border:2px solid #828282;border-radius:10px;content:"";height:10px;left:-1px;position:relative;-webkit-transform:translatex(-50%);transform:translatex(-50%);width:10px}.timestamp-section .body .timestamp .date{align-self:center;color:#828282;margin-left:5px;margin-right:5px;min-width:115px;width:115px}@media(min-width:768px){.timestamp-section .body .timestamp .date{min-width:200px;width:200px}}.timestamp-section .body .timestamp .activity{line-height:23px;width:100%}.project-section{align-items:center;justify-content:center}.project-section,.project-section .project{display:flex;flex-direction:column;width:100%}.project-section .project{margin-bottom:30px;padding:15px}.project-section .project .head{font-size:20px;font-weight:700;line-height:30px;margin-bottom:10px}.project-section .project .body{display:flex;flex-direction:column;width:100%}.project-section .project .body .thumbnail{margin-bottom:10px;width:100%}.project-section .project .body .tech-stack{display:flex;margin-bottom:10px}.project-section .project .body .tech-stack .tech{background-color:var(--chip-background-color);border-radius:10px;font-size:15px;font-weight:500;margin-right:5px;padding:5px 7px}.project-section .project .body .description{font-size:16px;font-weight:400;line-height:1.4}@media(min-width:768px){.project-section .project .body{flex-direction:column}.project-section .project .body .content{margin-top:0}}.post-header{border-bottom:1px solid var(--post-card-border-color);display:flex;flex-direction:column;justify-content:center;margin-bottom:40px;margin-top:20px;padding-bottom:10px;width:100%;word-break:keep-all}.post-header .emoji{font-size:78px;margin-bottom:20px}.post-header .categories{margin-bottom:5px}.post-header .categories .category{color:var(--primary-text-color);font-weight:600;margin-right:4px}.post-header .categories .category:hover{text-decoration:underline}.post-header .title{color:var(--primary-text-color);font-size:32px;font-weight:600;line-height:1.3;margin-bottom:6px}.post-header .info{color:var(--secondary-text-color);display:flex;flex-wrap:wrap;font-size:16px;font-weight:500;line-height:1.5;width:100%}.post-header .info .author{margin-right:4px}.post-header .info strong{color:var(--primary-text-color);font-weight:600}.post-navigator{-webkit-column-gap:1.4%;column-gap:1.4%;display:grid;grid-template-columns:49.3% 49.3%;width:100%}.post-navigator .post-card{border:1px solid var(--post-card-border-color);border-radius:6px;color:var(--primary-text-color);cursor:pointer;display:flex;flex-direction:column;padding:15px;transition:-webkit-transform .2s;transition:transform .2s;transition:transform .2s,-webkit-transform .2s;width:100%}.post-navigator .post-card:hover .title{text-decoration:underline}.post-navigator .post-card.prev{margin-right:auto}.post-navigator .post-card.next{margin-left:auto}.post-navigator .post-card .direction{color:gray;font-size:14px;font-weight:500;margin-bottom:5px}.post-navigator .post-card .title{font-size:16px;font-weight:600;line-height:1.4;margin-bottom:7px}.markdown .octicon{fill:currentColor;display:inline-block;vertical-align:text-bottom}.markdown .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown .anchor:focus{outline:none}.markdown h1 .octicon-link,.markdown h2 .octicon-link,.markdown h3 .octicon-link,.markdown h4 .octicon-link,.markdown h5 .octicon-link,.markdown h6 .octicon-link{color:#1b1f23;vertical-align:middle;visibility:hidden}.markdown h1:hover .anchor,.markdown h2:hover .anchor,.markdown h3:hover .anchor,.markdown h4:hover .anchor,.markdown h5:hover .anchor,.markdown h6:hover .anchor{text-decoration:none}.markdown h1:hover .anchor .octicon-link,.markdown h2:hover .anchor .octicon-link,.markdown h3:hover .anchor .octicon-link,.markdown h4:hover .anchor .octicon-link,.markdown h5:hover .anchor .octicon-link,.markdown h6:hover .anchor .octicon-link{visibility:visible}.markdown h1:hover .anchor .octicon-link:before,.markdown h2:hover .anchor .octicon-link:before,.markdown h3:hover .anchor .octicon-link:before,.markdown h4:hover .anchor .octicon-link:before,.markdown h5:hover .anchor .octicon-link:before,.markdown h6:hover .anchor .octicon-link:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' aria-hidden='true' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'/%3E%3C/svg%3E");content:" ";display:inline-block;height:16px;width:16px}.markdown{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-wrap:break-word;color:var(--content-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;font-weight:500;line-height:1.5}.markdown details{display:block}.markdown summary{display:list-item}.markdown a{background-color:initial}.markdown a:active,.markdown a:hover{outline-width:0}.markdown strong{font-weight:inherit;font-weight:bolder}.markdown h1{margin:.67em 0}.markdown img{border-radius:10px;border-style:none;box-shadow:20px 20px 30px rgba(0,0,0,.5);-o-object-fit:contain;object-fit:contain}.markdown code,.markdown kbd,.markdown pre{font-family:monospace,monospace;font-size:1em}.markdown hr{box-sizing:initial;overflow:visible}.markdown input{font:inherit;margin:0;overflow:visible}.markdown [type=checkbox]{box-sizing:border-box;padding:0}.markdown *{box-sizing:border-box}.markdown input{font-family:inherit;font-size:inherit;line-height:inherit}.markdown a{border-bottom:.05em solid;border-bottom-color:var(--link-text-color);border-left-color:var(--link-text-color);border-right-color:var(--link-text-color);border-top-color:var(--link-text-color);color:var(--link-text-color);text-decoration:none}.markdown a.anchor{border-bottom:none}.markdown strong{font-weight:700}.markdown hr{background:transparent;border-bottom:1px solid var(--markdown-blockquote-border-color);height:0;margin:15px 0;overflow:hidden}.markdown hr:after,.markdown hr:before{content:"";display:table}.markdown hr:after{clear:both}.markdown table{border-collapse:collapse;border-spacing:0}.markdown td,.markdown th{padding:0}.markdown details summary{cursor:pointer}.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{margin-bottom:0;margin-top:0}.markdown h1{font-size:32px}.markdown h1,.markdown h2{font-weight:600}.markdown h2{font-size:24px}.markdown h3{font-size:20px}.markdown h3,.markdown h4{font-weight:600}.markdown h4{font-size:16px}.markdown h5{font-size:14px}.markdown h5,.markdown h6{font-weight:600}.markdown h6{font-size:12px}.markdown p{margin-bottom:10px;margin-top:0}.markdown blockquote{margin:0}.markdown ol,.markdown ul{margin-bottom:0;margin-top:0;padding-left:0}.markdown ol ol,.markdown ul ol{list-style-type:lower-roman}.markdown ol ol ol,.markdown ol ul ol,.markdown ul ol ol,.markdown ul ul ol{list-style-type:lower-alpha}.markdown dd{margin-left:0}.markdown code,.markdown pre{font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px}.markdown code.language-text{border-radius:3px;font-size:85%;padding:.2em .4em}.markdown :not(pre)>code.language-text{background:hsla(44,6%,50%,.15);color:#eb5757;overflow-wrap:break-word}.markdown pre{margin-bottom:0;margin-top:0}.markdown input::-webkit-inner-spin-button,.markdown input::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}.markdown :checked+.radio-label{border-color:#0366d6;position:relative;z-index:1}.markdown .border{border:1px solid var(--markdown-border-color)!important}.markdown .border-0{border:0!important}.markdown .border-bottom{border-bottom:1px solid var(--markdown-border-color)!important}.markdown .rounded-1{border-radius:3px!important}.markdown .bg-white{background-color:transparent!important}.markdown .bg-gray-light{background-color:#fafbfc!important}.markdown .text-gray-light{color:#6a737d!important}.markdown .pl-3,.markdown .px-3{padding-left:16px!important}.markdown .px-3{padding-right:16px!important}.markdown .f6{font-size:12px!important}.markdown .lh-condensed{line-height:1.25!important}.markdown .text-bold{font-weight:600!important}.markdown .pl-c{color:#6a737d}.markdown .pl-c1,.markdown .pl-s .pl-v{color:#005cc5}.markdown .pl-e,.markdown .pl-en{color:#6f42c1}.markdown .pl-s .pl-s1,.markdown .pl-smi{color:#24292e}.markdown .pl-ent{color:#22863a}.markdown .pl-k{color:#d73a49}.markdown .pl-pds,.markdown .pl-s,.markdown .pl-s .pl-pse .pl-s1,.markdown .pl-sr,.markdown .pl-sr .pl-cce,.markdown .pl-sr .pl-sra,.markdown .pl-sr .pl-sre{color:#032f62}.markdown .pl-smw,.markdown .pl-v{color:#e36209}.markdown .pl-bu{color:#b31d28}.markdown .pl-ii{background-color:#b31d28;color:#fafbfc}.markdown .pl-c2{background-color:#d73a49;color:#fafbfc}.markdown .pl-c2:before{content:"^M"}.markdown .pl-sr .pl-cce{color:#22863a;font-weight:700}.markdown .pl-ml{color:#735c0f}.markdown .pl-mh,.markdown .pl-mh .pl-en,.markdown .pl-ms{color:#005cc5;font-weight:700}.markdown .pl-mi{color:#24292e;font-style:italic}.markdown .pl-mb{color:#24292e;font-weight:700}.markdown .pl-md{background-color:#ffeef0;color:#b31d28}.markdown .pl-mi1{background-color:#f0fff4;color:#22863a}.markdown .pl-mc{background-color:#ffebda;color:#e36209}.markdown .pl-mi2{background-color:#005cc5;color:#f6f8fa}.markdown .pl-mdr{color:#6f42c1;font-weight:700}.markdown .pl-ba{color:#586069}.markdown .pl-sg{color:#959da5}.markdown .pl-corl{color:#032f62;text-decoration:underline}.markdown .mb-0{margin-bottom:0!important}.markdown .my-2{margin-bottom:8px!important;margin-top:8px!important}.markdown .pl-0{padding-left:0!important}.markdown .py-0{padding-bottom:0!important;padding-top:0!important}.markdown .pl-1{padding-left:4px!important}.markdown .pl-2{padding-left:8px!important}.markdown .py-2{padding-bottom:8px!important;padding-top:8px!important}.markdown .pl-3{padding-left:16px!important}.markdown .pl-4{padding-left:24px!important}.markdown .pl-5{padding-left:32px!important}.markdown .pl-6{padding-left:40px!important}.markdown .pl-7{padding-left:48px!important}.markdown .pl-8{padding-left:64px!important}.markdown .pl-9{padding-left:80px!important}.markdown .pl-10{padding-left:96px!important}.markdown .pl-11{padding-left:112px!important}.markdown .pl-12{padding-left:128px!important}.markdown hr{border-bottom-color:#eee}.markdown kbd{background-color:#fafbfc;border:1px solid #d1d5da;border-radius:3px;box-shadow:inset 0 -1px 0 #d1d5da;color:#444d56;display:inline-block;font:11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown:after,.markdown:before{content:"";display:table}.markdown:after{clear:both}.markdown>:first-child{margin-top:0!important}.markdown>:last-child{margin-bottom:0!important}.markdown a:not([href]){color:inherit;text-decoration:none}.markdown blockquote,.markdown details,.markdown dl,.markdown ol,.markdown p,.markdown pre,.markdown table,.markdown ul{margin-bottom:16px;margin-top:0}.markdown hr{background-color:var(--markdown-border-color);border:0;height:.25em;margin:24px 0;padding:0}.markdown blockquote{border-left:.25em solid var(--markdown-blockquote-border-color);color:#6a737d;padding:0 1em}.markdown blockquote>:first-child{margin-top:0}.markdown blockquote>:last-child{margin-bottom:0}.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown h1{font-size:2em}.markdown h2{font-size:1.5em}.markdown h3{font-size:1.25em}.markdown h4{font-size:1em}.markdown h5{font-size:.875em}.markdown h6{color:#6a737d;font-size:.85em}.markdown ol,.markdown ul{padding-left:2em}.markdown ol ol,.markdown ol ul,.markdown ul ol,.markdown ul ul{margin-bottom:0;margin-top:0}.markdown ol{list-style-type:decimal}.markdown ul{list-style-type:disc}.markdown li{word-wrap:break-all;display:list-item;text-align:-webkit-match-parent}.markdown li>p{margin-top:16px}.markdown li+li{margin-top:.25em}.markdown dl{padding:0}.markdown dl dt{font-size:1em;font-style:italic;font-weight:600;margin-top:16px;padding:0}.markdown dl dd{margin-bottom:16px;padding:0 16px}.markdown table{display:table;margin-left:auto;margin-right:auto;max-width:1920px;overflow:auto;width:auto}.markdown table th{font-weight:600}.markdown table td,.markdown table th{border:1px solid var(--markdown-table-border-color);padding:6px 13px}.markdown table tr{border-top:1px solid var(--markdown-table-border-color)}.markdown table tr:nth-child(2n){background-color:var(--markdown-table-even-cell-background-color)}.markdown img{box-sizing:border-box;display:inline-block;margin:0;max-width:1024px}.markdown img[align=right]{padding-left:20px}.markdown img[align=left]{padding-right:20px}.markdown code{background-color:rgba(66,68,69,.05);border-radius:3px;font-size:85%;margin:0;padding:.2em .4em}.markdown pre{word-wrap:normal}.gatsby-highlight pre[class*=language-].line-numbers{overflow:auto;padding:0 0 0 3em}.gatsby-highlight{background-color:#f5f2f0;border-radius:.3em;margin:.5em 0;overflow:auto;padding:.5em 1em}.markdown pre>code{background:transparent;border:0;font-size:100%;margin:0;padding:2.8em;white-space:pre;word-break:normal}.markdown .highlight{margin-bottom:16px}.markdown .highlight pre{margin-bottom:0;word-break:normal}.markdown .highlight pre,.markdown pre{background-color:#f6f8fa;border-radius:3px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}.markdown pre code{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown .commit-tease-sha{color:#444d56;display:inline-block;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:90%}.markdown .full-commit .btn-outline:not(:disabled):hover{border-color:#005cc5;color:#005cc5}.markdown .blob-wrapper{overflow-x:auto;overflow-y:hidden}.markdown .blob-wrapper-embedded{max-height:240px;overflow-y:auto}.markdown .blob-num{color:rgba(27,31,35,.3);cursor:pointer;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;line-height:20px;min-width:50px;padding-left:10px;padding-right:10px;text-align:right;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:top;white-space:nowrap;width:1%}.markdown .blob-num:hover{color:rgba(27,31,35,.6)}.markdown .blob-num:before{content:attr(data-line-number)}.markdown .blob-code{line-height:20px;padding-left:10px;padding-right:10px;position:relative;vertical-align:top}.markdown .blob-code-inner{word-wrap:normal;color:#24292e;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;overflow:visible;white-space:pre}.markdown .pl-token.active,.markdown .pl-token:hover{background:#ffea7f;cursor:pointer}.markdown .tab-size[data-tab-size="1"]{-o-tab-size:1;tab-size:1}.markdown .tab-size[data-tab-size="2"]{-o-tab-size:2;tab-size:2}.markdown .tab-size[data-tab-size="3"]{-o-tab-size:3;tab-size:3}.markdown .tab-size[data-tab-size="4"]{-o-tab-size:4;tab-size:4}.markdown .tab-size[data-tab-size="5"]{-o-tab-size:5;tab-size:5}.markdown .tab-size[data-tab-size="6"]{-o-tab-size:6;tab-size:6}.markdown .tab-size[data-tab-size="7"]{-o-tab-size:7;tab-size:7}.markdown .tab-size[data-tab-size="8"]{-o-tab-size:8;tab-size:8}.markdown .tab-size[data-tab-size="9"]{-o-tab-size:9;tab-size:9}.markdown .tab-size[data-tab-size="10"]{-o-tab-size:10;tab-size:10}.markdown .tab-size[data-tab-size="11"]{-o-tab-size:11;tab-size:11}.markdown .tab-size[data-tab-size="12"]{-o-tab-size:12;tab-size:12}.markdown .task-list-item{list-style-type:none}.markdown .task-list-item+.task-list-item{margin-top:3px}.markdown .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown .table-of-contents{align-items:flex-start;display:flex;flex-direction:column;justify-content:center;position:fixed;right:0;top:75px;width:340px}@media(max-width:1300px){.markdown .table-of-contents{display:none}}.markdown .table-of-contents ul{cursor:pointer;list-style-type:none}.markdown .table-of-contents ul li a{border-bottom:none;color:var(--secondary-text-color);font-size:14px;height:30px;padding:6px 2px;width:100%}.markdown .table-of-contents ul p{margin:0}.markdown .gatsby-resp-image-wrapper{display:flex!important;justify-content:center!important;margin-bottom:10px;margin-top:25px;max-height:560px!important;width:100%!important}.markdown .gatsby-resp-image-wrapper img{box-shadow:5px 5px 15px rgba(0,0,0,.3)!important;height:auto!important;max-height:560px!important;max-width:100%!important;position:relative!important;width:auto!important}.markdown .gatsby-resp-image-wrapper:after{background-color:rgba(0,0,0,.5);border-radius:3px;bottom:0;color:#fff;content:"Haryu's blog";opacity:.5;pointer-events:none;position:absolute;right:0}.markdown .gatsby-resp-image-wrapper+em{color:#6a737d;display:block;font-size:15px;font-style:italic;text-align:center}code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#000;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;text-shadow:0 1px #fff;white-space:pre;word-break:normal;word-spacing:normal}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{background:#b3d4fc;text-shadow:none}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{background:hsla(0,0%,100%,.5);color:#9a6e3a}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.post-content{margin-bottom:20px;text-align:justify;width:100%}.category-page-header-wrapper,.post-content{display:flex;flex-direction:column;justify-content:center}.category-page-header-wrapper{align-items:center;margin-bottom:30px;margin-top:30px}.category-page-header-wrapper .category-page-title{border-bottom:3px solid var(--primary-text-color);font-size:40px;font-weight:700;margin-bottom:15px;padding-bottom:7px;text-align:center;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.category-page-header-wrapper .category-page-subtitle{font-size:20px;font-weight:500;padding-bottom:10px;text-align:center}.post-card-wrapper{display:flex;justify-content:center;min-height:150px;width:100%}.post-card-wrapper .post-card{border:1px solid var(--post-card-border-color);border-radius:6px;color:var(--primary-text-color);cursor:pointer;display:flex;flex-direction:column;height:100%;margin-bottom:15px;max-width:720px;padding:15px;transition:-webkit-transform .2s;transition:transform .2s;transition:transform .2s,-webkit-transform .2s;width:100%}.post-card-wrapper .post-card:hover .title{text-decoration:underline}@media(min-width:768px){.post-card-wrapper .post-card{margin-bottom:0}}.post-card-wrapper .post-card .title{font-size:18px;font-weight:600;line-height:1.4;margin-bottom:7px}.post-card-wrapper .post-card .description{-webkit-line-clamp:3;-webkit-box-orient:vertical;color:var(--primary-text-color);display:-webkit-box;font-size:13px;line-height:20px;margin-bottom:10px;overflow:hidden;text-overflow:ellipsis}.post-card-wrapper .post-card .info{color:var(--about-link-icon-color);display:flex;font-size:14px;justify-content:space-between;margin-top:auto}.post-card-wrapper .post-card .info .categories{display:flex}.post-card-wrapper .post-card .info .categories .category{margin-left:4px}.post-card-wrapper .post-card .info .categories .category:hover{text-decoration:underline}.post-card-column-wrapper{display:flex;justify-content:center;width:100%}.post-card-column-wrapper .post-card-column{align-items:center;display:flex;flex-direction:column;width:100%}.post-card-column-wrapper .post-card-column .post-card-wrapper{margin-bottom:10px}.post-card-column-wrapper .post-card-column .more-post-card-button{background-color:var(--button-background-color);color:var(--tab-hover-text-color);font-size:15px;font-weight:500;height:40px}.post-tabs-wrapper{align-self:flex-start;display:flex;flex-direction:column;justify-content:center;top:0;width:100%}.post-tabs-wrapper .post-tabs{display:flex;height:40px;justify-content:center;margin-bottom:12px;max-width:760px;width:100%}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root{color:var(--tab-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:17px;font-weight:500;height:40px;min-height:auto;min-width:auto;padding:10px 12px;transition:all .2s ease}.post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected,.post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root :hover{color:var(--tab-hover-text-color);transition:all .2s ease}.post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected{background-color:var(--tab-selected-background-color);border-radius:8px;font-weight:600}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabScrollButton-root{height:40px;width:20px}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabs-scrollable{height:40px}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabs-indicator{display:none}</style><meta name="generator" content="Gatsby 3.14.6"/><style data-emotion="css-global o6gwfi">html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;-webkit-text-size-adjust:100%;}*,*::before,*::after{box-sizing:inherit;}strong,b{font-weight:700;}body{margin:0;color:rgba(0, 0, 0, 0.87);font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;background-color:#fff;}@media print{body{background-color:#fff;}}body::backdrop{background-color:#fff;}</style><style data-emotion="css-global 1prfaxn">@-webkit-keyframes mui-auto-fill{from{display:block;}}@keyframes mui-auto-fill{from{display:block;}}@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css 1l6di18 feqhe6 11tfndm mnn31 vubbuv">.css-1l6di18.Mui-focused .MuiAutocomplete-clearIndicator{visibility:visible;}@media (pointer: fine){.css-1l6di18:hover .MuiAutocomplete-clearIndicator{visibility:visible;}}.css-1l6di18 .MuiAutocomplete-tag{margin:3px;max-width:calc(100% - 6px);}.css-1l6di18 .MuiAutocomplete-inputRoot{-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiAutocomplete-inputRoot,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiAutocomplete-inputRoot{padding-right:30px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiAutocomplete-inputRoot{padding-right:56px;}.css-1l6di18 .MuiAutocomplete-inputRoot .MuiAutocomplete-input{width:0;min-width:30px;}.css-1l6di18 .MuiInput-root{padding-bottom:1px;}.css-1l6di18 .MuiInput-root .MuiInput-input{padding:4px 4px 4px 0px;}.css-1l6di18 .MuiInput-root.MuiInputBase-sizeSmall .MuiInput-input{padding:2px 4px 3px 0;}.css-1l6di18 .MuiOutlinedInput-root{padding:9px;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiOutlinedInput-root,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiOutlinedInput-root{padding-right:39px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiOutlinedInput-root{padding-right:65px;}.css-1l6di18 .MuiOutlinedInput-root .MuiAutocomplete-input{padding:7.5px 4px 7.5px 6px;}.css-1l6di18 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment{right:9px;}.css-1l6di18 .MuiOutlinedInput-root.MuiInputBase-sizeSmall{padding:6px;}.css-1l6di18 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input{padding:2.5px 4px 2.5px 6px;}.css-1l6di18 .MuiFilledInput-root{padding-top:19px;padding-left:8px;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiFilledInput-root,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiFilledInput-root{padding-right:39px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiFilledInput-root{padding-right:65px;}.css-1l6di18 .MuiFilledInput-root .MuiFilledInput-input{padding:7px 4px;}.css-1l6di18 .MuiFilledInput-root .MuiAutocomplete-endAdornment{right:9px;}.css-1l6di18 .MuiFilledInput-root.MuiInputBase-sizeSmall{padding-bottom:1px;}.css-1l6di18 .MuiFilledInput-root.MuiInputBase-sizeSmall .MuiFilledInput-input{padding:2.5px 4px;}.css-1l6di18 .MuiInputBase-hiddenLabel{padding-top:8px;}.css-1l6di18 .MuiAutocomplete-input{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;text-overflow:ellipsis;opacity:1;}.css-feqhe6{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;position:relative;min-width:0;padding:0;margin:0;border:0;vertical-align:top;width:100%;}.css-11tfndm{font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.4375em;letter-spacing:0.00938em;color:rgba(0, 0, 0, 0.87);box-sizing:border-box;position:relative;cursor:text;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:100%;position:relative;}.css-11tfndm.Mui-disabled{color:rgba(0, 0, 0, 0.38);cursor:default;}label+.css-11tfndm{margin-top:16px;}.css-11tfndm:after{border-bottom:2px solid #1976d2;left:0;bottom:0;content:"";position:absolute;right:0;-webkit-transform:scaleX(0);-moz-transform:scaleX(0);-ms-transform:scaleX(0);transform:scaleX(0);-webkit-transition:-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;transition:transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;pointer-events:none;}.css-11tfndm.Mui-focused:after{-webkit-transform:scaleX(1);-moz-transform:scaleX(1);-ms-transform:scaleX(1);transform:scaleX(1);}.css-11tfndm.Mui-error:after{border-bottom-color:#d32f2f;-webkit-transform:scaleX(1);-moz-transform:scaleX(1);-ms-transform:scaleX(1);transform:scaleX(1);}.css-11tfndm:before{border-bottom:1px solid rgba(0, 0, 0, 0.42);left:0;bottom:0;content:"\00a0";position:absolute;right:0;-webkit-transition:border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;pointer-events:none;}.css-11tfndm:hover:not(.Mui-disabled):before{border-bottom:2px solid rgba(0, 0, 0, 0.87);}@media (hover: none){.css-11tfndm:hover:not(.Mui-disabled):before{border-bottom:1px solid rgba(0, 0, 0, 0.42);}}.css-11tfndm.Mui-disabled:before{border-bottom-style:dotted;}.css-mnn31{font:inherit;letter-spacing:inherit;color:currentColor;padding:4px 0 5px;border:0;box-sizing:content-box;background:none;height:1.4375em;margin:0;-webkit-tap-highlight-color:transparent;display:block;min-width:0;width:100%;-webkit-animation-name:mui-auto-fill-cancel;animation-name:mui-auto-fill-cancel;-webkit-animation-duration:10ms;animation-duration:10ms;}.css-mnn31::-webkit-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31::-moz-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31:-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31::-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31:focus{outline:0;}.css-mnn31:invalid{box-shadow:none;}.css-mnn31::-webkit-search-decoration{-webkit-appearance:none;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-webkit-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-moz-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:-ms-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-ms-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-webkit-input-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-moz-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus:-ms-input-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-ms-input-placeholder{opacity:0.42;}.css-mnn31.Mui-disabled{opacity:1;-webkit-text-fill-color:rgba(0, 0, 0, 0.38);}.css-mnn31:-webkit-autofill{-webkit-animation-duration:5000s;animation-duration:5000s;-webkit-animation-name:mui-auto-fill;animation-name:mui-auto-fill;}.css-vubbuv{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:1.5rem;}</style><link rel="icon" href="/favicon-32x32.png?v=1636e78735380d9e7701b94fcd1cda32" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=1636e78735380d9e7701b94fcd1cda32"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=1636e78735380d9e7701b94fcd1cda32"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><title data-react-helmet="true">cote ) til - 20240320</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="cote ) til - 20240320"/><meta data-react-helmet="true" property="og:site_title" content="cote ) til - 20240320"/><meta data-react-helmet="true" name="description" content="크레인 인형뽑기 게임 문제 설명 게임개발자인 “죠르디”는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다. “죠르디”는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다. crane_game_101.png 게임 화면은 “1 x 1” 크기의 칸들로 이루어진 “N x N” 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 “5 x 5” 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다. 모든 인형은 “1 x 1” 크기의 격자 한 칸을 차지하며 격자의 가장 아래 칸부터 차곡차곡 쌓여 있습니다. 게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다. 다음 그림은 [1번, 5번, 3번] 위치에서 순서대로 인형을…"/><meta data-react-helmet="true" property="og:description" content="크레인 인형뽑기 게임 문제 설명 게임개발자인 “죠르디”는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다. “죠르디”는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다. crane_game_101.png 게임 화면은 “1 x 1” 크기의 칸들로 이루어진 “N x N” 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 “5 x 5” 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다. 모든 인형은 “1 x 1” 크기의 격자 한 칸을 차지하며 격자의 가장 아래 칸부터 차곡차곡 쌓여 있습니다. 게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다. 다음 그림은 [1번, 5번, 3번] 위치에서 순서대로 인형을…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/l/font) format("woff"),url(/static/webfonts/l/font) format("woff"),url(/static/webfonts/l/font) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-62b18b028769ec5545fd.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/coding-test/20240320010052/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🧐</div><div class="info"><div class="categories"><a class="category" href="/posts/til">til</a><a class="category" href="/posts/algorithm">algorithm</a></div></div><h1 class="title">cote ) til - 20240320</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->March 20, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="크레인-인형뽑기-게임" style="position:relative;"><a href="#%ED%81%AC%EB%A0%88%EC%9D%B8-%EC%9D%B8%ED%98%95%EB%BD%91%EA%B8%B0-%EA%B2%8C%EC%9E%84" aria-label="크레인 인형뽑기 게임 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>크레인 인형뽑기 게임</h1>
+<h6 id="문제-설명" style="position:relative;"><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85" aria-label="문제 설명 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문제 설명</h6>
+<p>게임개발자인 “죠르디”는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다.<br>
+“죠르디”는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다.</p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/69f1cd36-09f4-4435-8363-b71a650f7448/crane_game_101.png" alt="crane_game_101.png"></p>
+<p>게임 화면은 <strong>“1 x 1”</strong> 크기의 칸들로 이루어진 <strong>“N x N”</strong> 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 “5 x 5” 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다. 모든 인형은 “1 x 1” 크기의 격자 한 칸을 차지하며 <strong>격자의 가장 아래 칸부터 차곡차곡 쌓여 있습니다.</strong> 게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다. 다음 그림은 [1번, 5번, 3번] 위치에서 순서대로 인형을 집어 올려 바구니에 담은 모습입니다.</p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/638e2162-b1e4-4bbb-b0d7-62d31e97d75c/crane_game_102.png" alt="crane_game_102.png"></p>
+<p>만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형은 터뜨려지면서 바구니에서 사라지게 됩니다. 위 상태에서 이어서 [5번] 위치에서 인형을 집어 바구니에 쌓으면 같은 모양 인형 <strong>두 개</strong>가 없어집니다.</p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/8569d736-091e-4771-b2d3-7a6e95a20c22/crane_game_103.gif" alt="crane_game_103.gif"></p>
+<p>크레인 작동 시 인형이 집어지지 않는 경우는 없으나 만약 인형이 없는 곳에서 크레인을 작동시키는 경우에는 아무런 일도 일어나지 않습니다. 또한 바구니는 모든 인형이 들어갈 수 있을 만큼 충분히 크다고 가정합니다. (그림에서는 화면표시 제약으로 5칸만으로 표현하였음)</p>
+<p>게임 화면의 격자의 상태가 담긴 2차원 배열 board와 인형을 집기 위해 크레인을 작동시킨 위치가 담긴 배열 moves가 매개변수로 주어질 때, 크레인을 모두 작동시킨 후 터트려져 사라진 인형의 개수를 return 하도록 solution 함수를 완성해주세요.</p>
+<h5 id="제한사항" style="position:relative;"><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD" aria-label="제한사항 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[제한사항]</h5>
+<ul>
+<li>board 배열은 2차원 배열로 크기는 “5 x 5” 이상 “30 x 30” 이하입니다.</li>
+<li>board의 각 칸에는 0 이상 100 이하인 정수가 담겨있습니다.
+<ul>
+<li>0은 빈 칸을 나타냅니다.</li>
+<li>1 ~ 100의 각 숫자는 각기 다른 인형의 모양을 의미하며 같은 숫자는 같은 모양의 인형을 나타냅니다.</li>
+</ul>
+</li>
+<li>moves 배열의 크기는 1 이상 1,000 이하입니다.</li>
+<li>moves 배열 각 원소들의 값은 1 이상이며 board 배열의 가로 크기 이하인 자연수입니다.</li>
+</ul>
+<h5 id="입출력-예" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88" aria-label="입출력 예 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예</h5>
+<table>
+<thead>
+<tr>
+<th>board</th>
+<th>moves</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]</td>
+<td>[1,5,3,5,1,2,1,4]</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h5 id="입출력-예에-대한-설명" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88%EC%97%90-%EB%8C%80%ED%95%9C-%EC%84%A4%EB%AA%85" aria-label="입출력 예에 대한 설명 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예에 대한 설명</h5>
+<p>입출력 예 #1</p>
+<p>인형의 처음 상태는 문제에 주어진 예시와 같습니다. 크레인이 [1, 5, 3, 5, 1, 2, 1, 4] 번 위치에서 차례대로 인형을 집어서 바구니에 옮겨 담은 후, 상태는 아래 그림과 같으며 바구니에 담는 과정에서 터트려져 사라진 인형은 4개 입니다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAADDklEQVQ4y5WUW28bVRDH8zFAINTY2T2XObdd73ovdtbrtUuc2N7U9l689sYtdQuikRAUqBQpojEIKoEElDd445FXPiGyN0nzABKVRqNzdPSb/8xo5uwBcERYOuqEraaOAYDT/217nPP37qk/XrxTjuof1CTjbwNrWAxCbfNV6/mac04IFW8DI3E60G1XDo9w06aI/DsMTNz6NzAFjgmTAgRnhP6nCCZAKMOYVle0O+xhAo7nm40mJsC4pMArfyvCuMQE/HYgDbPVDqqn9mFnC+s6HsanQSfUdCyVSSjjQt1ND5jQdDxLc9dv54tlFa5Ynu1gRI6H4zDqE8rMhs24VEZDKlNIQ0iDC1VFnKW54/rZvBDSMEwrL5akgk9G4yCMEKaGaQETO1IxLncmuFAI01maOV4rmxeMS6nMrFjSN3CnizBVRoMCF9LQsNAJZ1wAE4xLhOk0SXfwAhGgTNxVjrtRnwK3bIcLpQwrG/uDbhO4EtLYRqQszeaO10qyeXAYRt1ekhc3NY/G7aCj6VhIBUAIiF+fR+dz794BBcaBcYT1ySzx/PZ4Mv1ls/n5ajNJM2DiRrnXp8DspifUoVB232+0bIMJY9sA0ybUSfPS8fx0Ph8PpvFJki8W1/DxtmHd/Rrq91p//3l0MvC/u/j20/XHGkIEuNW0//o9enn5RJluPF18fxn+eBWdzs4Yv2lYGPWQTq3I/emVffKh9+XT80dZriEGuhRu49UP5sXXZ6blx8ny6Wfm5RfOJF1dw8dbONIQ3O96F+vAc633saoh6R0ZbO1i1Xi3bsazwvNbD5I0Hk4fjNNZnm/T1nQyiuMoCg80fdC1X38etJp8UHzi35/EMZQvGtSxhuWzxeO163qzLP1t8/L11Tf5otjVjFk3bDwpUZnUVmn9YVJfpbXHS/KowKt0/6Nkf5XV1yVZl4pxo8yMZyt0/hAvUhMRsQeM64hKwzItR0O0HXQpk5btWrZLmQzC3oFOgyCiIAgFHQMiXCcMYbheSWDbSao+ICFVNfrVbnGhKn+7z3Bn4f4B6nIIreQ4uKoAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240320234317"
+        title="20240320234317"
+        src="/static/d35536790f47abe6679b9afcaed203b6/0b533/20240320234317.png"
+        srcset="/static/d35536790f47abe6679b9afcaed203b6/e9ff0/20240320234317.png 180w,
+/static/d35536790f47abe6679b9afcaed203b6/f21e7/20240320234317.png 360w,
+/static/d35536790f47abe6679b9afcaed203b6/0b533/20240320234317.png 500w"
+        sizes="(max-width: 500px) 100vw, 500px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># 내가 푼 방식 </span>
+<span class="token keyword">def</span> <span class="token function">solution</span><span class="token punctuation">(</span>board<span class="token punctuation">,</span> moves<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    answer <span class="token operator">=</span> <span class="token number">0</span>
+    stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    
+    <span class="token comment"># board 2차원 기준 반복 작업</span>
+    <span class="token comment"># moves에 따라서 크래인 이동</span>
+    <span class="token comment"># board 에 moves 한 위치에서 인형을 stack</span>
+    <span class="token comment"># stack 은 쌓아올린 것과 그 아래를 조사, 같은 인형 -> 두개 소실 </span>
+    <span class="token comment"># 소실 시 answer에 + 2 추가해주기</span>
+    
+    <span class="token comment"># print("인형 통의 크기 : ", len(board))</span>
+    
+    <span class="token comment"># for i in range(len(board)):</span>
+    <span class="token comment">#     print(board[i])</span>
+    
+    <span class="token keyword">for</span> crane <span class="token keyword">in</span> moves<span class="token punctuation">:</span>
+        pos <span class="token operator">=</span> crane <span class="token operator">-</span> <span class="token number">1</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>board<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> board<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                <span class="token keyword">continue</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                stack<span class="token punctuation">.</span>insert<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> board<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token comment"># print("현재 스텍 상황: ", stack)</span>
+                board<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+                <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>stack<span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">2</span> <span class="token keyword">and</span> stack<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> stack<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                    <span class="token comment"># print("조건 확정")</span>
+                    answer <span class="token operator">+=</span> <span class="token number">2</span>
+                    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>stack<span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">3</span><span class="token punctuation">:</span>
+                        stack <span class="token operator">=</span> stack<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+                        <span class="token comment"># print("정리 후: ", stack)</span>
+                <span class="token keyword">break</span>
+    <span class="token comment"># print(stack)</span>
+
+    <span class="token keyword">return</span> answer</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h1 id="키패드-누르기" style="position:relative;"><a href="#%ED%82%A4%ED%8C%A8%EB%93%9C-%EB%88%84%EB%A5%B4%EA%B8%B0" aria-label="키패드 누르기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>키패드 누르기</h1>
+<h6 id="문제-설명-1" style="position:relative;"><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85-1" aria-label="문제 설명 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문제 설명</h6>
+<p>스마트폰 전화 키패드의 각 칸에 다음과 같이 숫자들이 적혀 있습니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC6ElEQVQ4y43SW08aQRQHcL9IU19sNUU0IoIRlMteYC8sSF9qWhOjtt+i6Xfomy8mGo1aVpHWKLqsws4uILorKwhoFzXapI9VENGiNhTbqFTr5P8wmZlfzknO1MwGwJ3Q/hXPwnI5/hXPnz3tX6l+WVN9FJHTUiYrppW1rZ21rR0xrUiZbHQz8xD2sTztD8oZJciB0fGJKXp6ZGx8ZGx8ip4em5j0Ly2JyW16Mehj76k8w3CZ7D5KUE/qGp41NldSp2qurX+hM3StyclZlr+37RmGSyl7uNPd1NauNXS1dnRW0tLeYbTAUSnuY4WH8S7Z/dJswyx2HCEplHRCuAMhqU4IiUryf3Ba2cNd7g4LbLQiZhtmQu2dMGpC7YZy5cdhK0YgpBMlnQhBoY7yxvh43AmjFhteiRnFzDb8UTil7BEutwnFrHbC5nChpBMmHAjpNFjgyMN4luG+Zndxl9sIoV2IHcYdEEZabDiEEQYLvL4R/8wK3mrsY4FnkYvH5bwiwwRVaRgmHDBOQhgJEw6d0XQohiQ54VkM/f0n19jLgPllcJyO5dIxhKCsGGG1E1YEhxACwSmEpHRG07fI4vG2+IXlvDcr+wLAswSkCH+ZAscHOwjVrdJo1a1684ce/Xu3WqNTa3V6M3Qgr15lhJjAe5bK5BbeiPKXKf5oNwWRLpVG26jRocPv0OG3jZq2Jq2+1WjeF/mr7XBMAP/AYpgvpYV8KkJSzqf1qoYmTV1T8/Pmlga1pra+0UFRRzL3Mx1eFQB9B9MMiPDgNMlfKWuTQx+7X/X29g++6Rt43TfQ2z/o7umdGx26yq4XkoDj+GnmBv49YbCwDHIJoZgE53ubpfK6uM7FRalUOlekYhL8SAhzLPBWz9kbAN/jwnlKON0Kn+2Ip0m+mIoWt2NninSWjRe2yleHkjDD3J6zLwCmGRDkQCEBTjdDJ1Igvzqf4+hc6FOOn8mHfSex+cIGW0yE8psgECy3WWn7F88E86uRBxZUAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240320234156"
+        title="20240320234156"
+        src="/static/a0680df20cfe5a104f12be21cd542c93/37523/20240320234156.png"
+        srcset="/static/a0680df20cfe5a104f12be21cd542c93/e9ff0/20240320234156.png 180w,
+/static/a0680df20cfe5a104f12be21cd542c93/f21e7/20240320234156.png 360w,
+/static/a0680df20cfe5a104f12be21cd542c93/37523/20240320234156.png 720w,
+/static/a0680df20cfe5a104f12be21cd542c93/00d43/20240320234156.png 1000w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>이 전화 키패드에서 왼손과 오른손의 엄지손가락만을 이용해서 숫자만을 입력하려고 합니다.<br>
+맨 처음 왼손 엄지손가락은 <code class="language-text">*</code> 키패드에 오른손 엄지손가락은 <code class="language-text">#</code> 키패드 위치에서 시작하며, 엄지손가락을 사용하는 규칙은 다음과 같습니다.</p>
+<ol>
+<li>엄지손가락은 상하좌우 4가지 방향으로만 이동할 수 있으며 키패드 이동 한 칸은 거리로 1에 해당합니다.</li>
+<li>왼쪽 열의 3개의 숫자 <code class="language-text">1</code>, <code class="language-text">4</code>, <code class="language-text">7</code>을 입력할 때는 왼손 엄지손가락을 사용합니다.</li>
+<li>오른쪽 열의 3개의 숫자 <code class="language-text">3</code>, <code class="language-text">6</code>, <code class="language-text">9</code>를 입력할 때는 오른손 엄지손가락을 사용합니다.</li>
+<li>가운데 열의 4개의 숫자 <code class="language-text">2</code>, <code class="language-text">5</code>, <code class="language-text">8</code>, <code class="language-text">0</code>을 입력할 때는 두 엄지손가락의 현재 키패드의 위치에서 더 가까운 엄지손가락을 사용합니다.<br>
+4-1. 만약 두 엄지손가락의 거리가 같다면, 오른손잡이는 오른손 엄지손가락, 왼손잡이는 왼손 엄지손가락을 사용합니다.</li>
+</ol>
+<p>순서대로 누를 번호가 담긴 배열 numbers, 왼손잡이인지 오른손잡이인 지를 나타내는 문자열 hand가 매개변수로 주어질 때, 각 번호를 누른 엄지손가락이 왼손인 지 오른손인 지를 나타내는 연속된 문자열 형태로 return 하도록 solution 함수를 완성해주세요.</p>
+<h5 id="제한사항-1" style="position:relative;"><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD-1" aria-label="제한사항 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[제한사항]</h5>
+<ul>
+<li>numbers 배열의 크기는 1 이상 1,000 이하입니다.</li>
+<li>numbers 배열 원소의 값은 0 이상 9 이하인 정수입니다.</li>
+<li>hand는 <code class="language-text">"left"</code> 또는 <code class="language-text">"right"</code> 입니다.
+<ul>
+<li><code class="language-text">"left"</code>는 왼손잡이, <code class="language-text">"right"</code>는 오른손잡이를 의미합니다.</li>
+</ul>
+</li>
+<li>왼손 엄지손가락을 사용한 경우는 <code class="language-text">L</code>, 오른손 엄지손가락을 사용한 경우는 <code class="language-text">R</code>을 순서대로 이어붙여 문자열 형태로 return 해주세요.</li>
+</ul>
+<hr>
+<h5 id="입출력-예-1" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-1" aria-label="입출력 예 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예</h5>
+<table>
+<thead>
+<tr>
+<th>numbers</th>
+<th>hand</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5]</td>
+<td><code class="language-text">"right"</code></td>
+<td><code class="language-text">"LRLLLRLLRRL"</code></td>
+</tr>
+<tr>
+<td>[7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2]</td>
+<td><code class="language-text">"left"</code></td>
+<td><code class="language-text">"LRLLRRLLLRR"</code></td>
+</tr>
+<tr>
+<td>[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]</td>
+<td><code class="language-text">"right"</code></td>
+<td><code class="language-text">"LLRLLRLLRL"</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="입출력-예에-대한-설명-1" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88%EC%97%90-%EB%8C%80%ED%95%9C-%EC%84%A4%EB%AA%85-1" aria-label="입출력 예에 대한 설명 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예에 대한 설명</h5>
+<p><strong>입출력 예 #1</strong></p>
+<p>순서대로 눌러야 할 번호가 [1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5]이고, 오른손잡이입니다.</p>
+<table>
+<thead>
+<tr>
+<th>왼손 위치</th>
+<th>오른손 위치</th>
+<th>눌러야 할 숫자</th>
+<th>사용한 손</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>#</td>
+<td>1</td>
+<td>L</td>
+<td>1은 왼손으로 누릅니다.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>#</td>
+<td>3</td>
+<td>R</td>
+<td>3은 오른손으로 누릅니다.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+<td>L</td>
+<td>4는 왼손으로 누릅니다.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+<td>5</td>
+<td>L</td>
+<td>왼손 거리는 1, 오른손 거리는 2이므로 왼손으로 5를 누릅니다.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>3</td>
+<td>8</td>
+<td>L</td>
+<td>왼손 거리는 1, 오른손 거리는 3이므로 왼손으로 8을 누릅니다.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>3</td>
+<td>2</td>
+<td>R</td>
+<td>왼손 거리는 2, 오른손 거리는 1이므로 오른손으로 2를 누릅니다.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2</td>
+<td>1</td>
+<td>L</td>
+<td>1은 왼손으로 누릅니다.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>L</td>
+<td>4는 왼손으로 누릅니다.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>5</td>
+<td>R</td>
+<td>왼손 거리와 오른손 거리가 1로 같으므로, 오른손으로 5를 누릅니다.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5</td>
+<td>9</td>
+<td>R</td>
+<td>9는 오른손으로 누릅니다.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>9</td>
+<td>5</td>
+<td>L</td>
+<td>왼손 거리는 1, 오른손 거리는 2이므로 왼손으로 5를 누릅니다.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>9</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>따라서 <code class="language-text">"LRLLLRLLRRL"</code>를 return 합니다.</p>
+<p><strong>입출력 예 #2</strong></p>
+<p>왼손잡이가 [7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2]를 순서대로 누르면 사용한 손은 <code class="language-text">"LRLLRRLLLRR"</code>이 됩니다.</p>
+<p><strong>입출력 예 #3</strong></p>
+<p>오른손잡이가 [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]를 순서대로 누르면 사용한 손은 <code class="language-text">"LLRLLRLLRL"</code>이 됩니다.</p>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># 내가 푼 방식</span>
+<span class="token keyword">def</span> <span class="token function">solution</span><span class="token punctuation">(</span>numbers<span class="token punctuation">,</span> hand<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    answer <span class="token operator">=</span> <span class="token string">''</span>
+    left <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">}</span>
+    right <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">}</span>
+    middle <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">}</span>
+    LH <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span>
+    RH <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+    
+    <span class="token keyword">def</span> <span class="token function">cordChange</span><span class="token punctuation">(</span>height<span class="token punctuation">,</span> width<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>height<span class="token punctuation">,</span> width<span class="token punctuation">]</span>
+    
+    <span class="token keyword">for</span> number <span class="token keyword">in</span> numbers<span class="token punctuation">:</span>
+        <span class="token comment"># print("현재 손 위치: L: ", LH, " / R: ",RH )</span>
+        <span class="token keyword">if</span> number <span class="token keyword">in</span> left<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            LH <span class="token operator">=</span> cordChange<span class="token punctuation">(</span>left<span class="token punctuation">[</span>number<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            answer <span class="token operator">+=</span> <span class="token string">'L'</span>
+        <span class="token keyword">elif</span> number <span class="token keyword">in</span> right<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            RH <span class="token operator">=</span> cordChange<span class="token punctuation">(</span>right<span class="token punctuation">[</span>number<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+            answer <span class="token operator">+=</span> <span class="token string">'R'</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span> 
+            lLength <span class="token operator">=</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>middle<span class="token punctuation">[</span>number<span class="token punctuation">]</span> <span class="token operator">-</span> LH<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">-</span> LH<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+            rLength <span class="token operator">=</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>middle<span class="token punctuation">[</span>number<span class="token punctuation">]</span> <span class="token operator">-</span> RH<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token builtin">abs</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> RH<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> lLength <span class="token operator">&lt;</span> rLength<span class="token punctuation">:</span>
+                LH <span class="token operator">=</span> cordChange<span class="token punctuation">(</span>middle<span class="token punctuation">[</span>number<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                answer <span class="token operator">+=</span> <span class="token string">'L'</span>
+            <span class="token keyword">elif</span> lLength <span class="token operator">></span> rLength<span class="token punctuation">:</span>
+                RH <span class="token operator">=</span> cordChange<span class="token punctuation">(</span>middle<span class="token punctuation">[</span>number<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                answer <span class="token operator">+=</span> <span class="token string">'R'</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> hand <span class="token operator">==</span> <span class="token string">'left'</span><span class="token punctuation">:</span>
+                    LH <span class="token operator">=</span> cordChange<span class="token punctuation">(</span>middle<span class="token punctuation">[</span>number<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                    answer <span class="token operator">+=</span> <span class="token string">'L'</span>
+                <span class="token keyword">else</span> <span class="token punctuation">:</span>
+                    RH <span class="token operator">=</span> cordChange<span class="token punctuation">(</span>middle<span class="token punctuation">[</span>number<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                    answer <span class="token operator">+=</span> <span class="token string">'R'</span>
+    <span class="token keyword">return</span> answer</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h1 id="성격-유형-검사하기" style="position:relative;"><a href="#%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC%ED%95%98%EA%B8%B0" aria-label="성격 유형 검사하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>성격 유형 검사하기</h1>
+<h6 id="문제-설명-2" style="position:relative;"><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85-2" aria-label="문제 설명 2 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문제 설명</h6>
+<p>나만의 카카오 성격 유형 검사지를 만들려고 합니다.<br>
+성격 유형 검사는 다음과 같은 4개 지표로 성격 유형을 구분합니다. 성격은 각 지표에서 두 유형 중 하나로 결정됩니다.</p>
+<table>
+<thead>
+<tr>
+<th>지표 번호</th>
+<th>성격 유형</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1번 지표</td>
+<td>라이언형(R), 튜브형(T)</td>
+</tr>
+<tr>
+<td>2번 지표</td>
+<td>콘형(C), 프로도형(F)</td>
+</tr>
+<tr>
+<td>3번 지표</td>
+<td>제이지형(J), 무지형(M)</td>
+</tr>
+<tr>
+<td>4번 지표</td>
+<td>어피치형(A), 네오형(N)</td>
+</tr>
+</tbody>
+</table>
+<p>4개의 지표가 있으므로 성격 유형은 총 16(=2 x 2 x 2 x 2)가지가 나올 수 있습니다. 예를 들어, “RFMN”이나 “TCMA”와 같은 성격 유형이 있습니다.</p>
+<p>검사지에는 총 <code class="language-text">n</code>개의 질문이 있고, 각 질문에는 아래와 같은 7개의 선택지가 있습니다.</p>
+<ul>
+<li><code class="language-text">매우 비동의</code></li>
+<li><code class="language-text">비동의</code></li>
+<li><code class="language-text">약간 비동의</code></li>
+<li><code class="language-text">모르겠음</code></li>
+<li><code class="language-text">약간 동의</code></li>
+<li><code class="language-text">동의</code></li>
+<li><code class="language-text">매우 동의</code></li>
+</ul>
+<p>각 질문은 1가지 지표로 성격 유형 점수를 판단합니다.</p>
+<p>예를 들어, 어떤 한 질문에서 4번 지표로 아래 표처럼 점수를 매길 수 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th>선택지</th>
+<th>성격 유형 점수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">매우 비동의</code></td>
+<td>네오형 3점</td>
+</tr>
+<tr>
+<td><code class="language-text">비동의</code></td>
+<td>네오형 2점</td>
+</tr>
+<tr>
+<td><code class="language-text">약간 비동의</code></td>
+<td>네오형 1점</td>
+</tr>
+<tr>
+<td><code class="language-text">모르겠음</code></td>
+<td>어떤 성격 유형도 점수를 얻지 않습니다</td>
+</tr>
+<tr>
+<td><code class="language-text">약간 동의</code></td>
+<td>어피치형 1점</td>
+</tr>
+<tr>
+<td><code class="language-text">동의</code></td>
+<td>어피치형 2점</td>
+</tr>
+<tr>
+<td><code class="language-text">매우 동의</code></td>
+<td>어피치형 3점</td>
+</tr>
+</tbody>
+</table>
+<p>이때 검사자가 질문에서 <code class="language-text">약간 동의</code> 선택지를 선택할 경우 어피치형(A) 성격 유형 1점을 받게 됩니다. 만약 검사자가 <code class="language-text">매우 비동의</code> 선택지를 선택할 경우 네오형(N) 성격 유형 3점을 받게 됩니다.</p>
+<p><strong>위 예시처럼 네오형이 비동의, 어피치형이 동의인 경우만 주어지지 않고, 질문에 따라 네오형이 동의, 어피치형이 비동의인 경우도 주어질 수 있습니다.</strong><br>
+하지만 각 선택지는 고정적인 크기의 점수를 가지고 있습니다.</p>
+<ul>
+<li><code class="language-text">매우 동의</code>나 <code class="language-text">매우 비동의</code> 선택지를 선택하면 3점을 얻습니다.</li>
+<li><code class="language-text">동의</code>나 <code class="language-text">비동의</code> 선택지를 선택하면 2점을 얻습니다.</li>
+<li><code class="language-text">약간 동의</code>나 <code class="language-text">약간 비동의</code> 선택지를 선택하면 1점을 얻습니다.</li>
+<li><code class="language-text">모르겠음</code> 선택지를 선택하면 점수를 얻지 않습니다.</li>
+</ul>
+<p>검사 결과는 모든 질문의 성격 유형 점수를 더하여 각 지표에서 더 높은 점수를 받은 성격 유형이 검사자의 성격 유형이라고 판단합니다. 단, 하나의 지표에서 각 성격 유형 점수가 같으면, 두 성격 유형 중 사전 순으로 빠른 성격 유형을 검사자의 성격 유형이라고 판단합니다.</p>
+<p>질문마다 판단하는 지표를 담은 1차원 문자열 배열 <code class="language-text">survey</code>와 검사자가 각 질문마다 선택한 선택지를 담은 1차원 정수 배열 <code class="language-text">choices</code>가 매개변수로 주어집니다. 이때, 검사자의 성격 유형 검사 결과를 지표 번호 순서대로 return 하도록 solution 함수를 완성해주세요.</p>
+<hr>
+<h5 id="제한사항-2" style="position:relative;"><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD-2" aria-label="제한사항 2 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>제한사항</h5>
+<ul>
+<li>
+<p>1 ≤ <code class="language-text">survey</code>의 길이 ( = <code class="language-text">n</code>) ≤ 1,000</p>
+<ul>
+<li><code class="language-text">survey</code>의 원소는 <code class="language-text">"RT", "TR", "FC", "CF", "MJ", "JM", "AN", "NA"</code> 중 하나입니다.</li>
+<li><code class="language-text">survey[i]</code>의 첫 번째 캐릭터는 i+1번 질문의 비동의 관련 선택지를 선택하면 받는 성격 유형을 의미합니다.</li>
+<li><code class="language-text">survey[i]</code>의 두 번째 캐릭터는 i+1번 질문의 동의 관련 선택지를 선택하면 받는 성격 유형을 의미합니다.</li>
+</ul>
+</li>
+<li>
+<p><code class="language-text">choices</code>의 길이 = <code class="language-text">survey</code>의 길이</p>
+<ul>
+<li><code class="language-text">choices[i]</code>는 검사자가 선택한 i+1번째 질문의 선택지를 의미합니다.</li>
+<li>1 ≤ <code class="language-text">choices</code>의 원소 ≤ 7</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><code class="language-text">choices</code></th>
+<th>뜻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>매우 비동의</td>
+</tr>
+<tr>
+<td>2</td>
+<td>비동의</td>
+</tr>
+<tr>
+<td>3</td>
+<td>약간 비동의</td>
+</tr>
+<tr>
+<td>4</td>
+<td>모르겠음</td>
+</tr>
+<tr>
+<td>5</td>
+<td>약간 동의</td>
+</tr>
+<tr>
+<td>6</td>
+<td>동의</td>
+</tr>
+<tr>
+<td>7</td>
+<td>매우 동의</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<hr>
+<h5 id="입출력-예-2" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-2" aria-label="입출력 예 2 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예</h5>
+<table>
+<thead>
+<tr>
+<th>survey</th>
+<th>choices</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">["AN", "CF", "MJ", "RT", "NA"]</code></td>
+<td>[5, 3, 2, 7, 5]</td>
+<td><code class="language-text">"TCMA"</code></td>
+</tr>
+<tr>
+<td><code class="language-text">["TR", "RT", "TR"]</code></td>
+<td>[7, 1, 3]</td>
+<td><code class="language-text">"RCJA"</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5 id="입출력-예-설명" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-%EC%84%A4%EB%AA%85" aria-label="입출력 예 설명 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예 설명</h5>
+<p><strong>입출력 예 #1</strong></p>
+<p>1번 질문의 점수 배치는 아래 표와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>선택지</th>
+<th>성격 유형 점수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매우 비동의</td>
+<td>어피치형 3점</td>
+</tr>
+<tr>
+<td>비동의</td>
+<td>어피치형 2점</td>
+</tr>
+<tr>
+<td>약간 비동의</td>
+<td>어피치형 1점</td>
+</tr>
+<tr>
+<td>모르겠음</td>
+<td>어떤 성격 유형도 점수를 얻지 않습니다</td>
+</tr>
+<tr>
+<td><strong>약간 동의</strong></td>
+<td><strong>네오형 1점</strong></td>
+</tr>
+<tr>
+<td>동의</td>
+<td>네오형 2점</td>
+</tr>
+<tr>
+<td>매우 동의</td>
+<td>네오형 3점</td>
+</tr>
+</tbody>
+</table>
+<p>1번 질문에서는 지문의 예시와 다르게 비동의 관련 선택지를 선택하면 어피치형(A) 성격 유형의 점수를 얻고, 동의 관련 선택지를 선택하면 네오형(N) 성격 유형의 점수를 얻습니다.<br>
+1번 질문에서 검사자는 <code class="language-text">약간 동의</code> 선택지를 선택했으므로 네오형(N) 성격 유형 점수 1점을 얻게 됩니다.</p>
+<p>2번 질문의 점수 배치는 아래 표와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>선택지</th>
+<th>성격 유형 점수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매우 비동의</td>
+<td>콘형 3점</td>
+</tr>
+<tr>
+<td>비동의</td>
+<td>콘형 2점</td>
+</tr>
+<tr>
+<td><strong>약간 비동의</strong></td>
+<td><strong>콘형 1점</strong></td>
+</tr>
+<tr>
+<td>모르겠음</td>
+<td>어떤 성격 유형도 점수를 얻지 않습니다</td>
+</tr>
+<tr>
+<td>약간 동의</td>
+<td>프로도형 1점</td>
+</tr>
+<tr>
+<td>동의</td>
+<td>프로도형 2점</td>
+</tr>
+<tr>
+<td>매우 동의</td>
+<td>프로도형 3점</td>
+</tr>
+</tbody>
+</table>
+<p>2번 질문에서 검사자는 <code class="language-text">약간 비동의</code> 선택지를 선택했으므로 콘형(C) 성격 유형 점수 1점을 얻게 됩니다.</p>
+<p>3번 질문의 점수 배치는 아래 표와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>선택지</th>
+<th>성격 유형 점수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매우 비동의</td>
+<td>무지형 3점</td>
+</tr>
+<tr>
+<td><strong>비동의</strong></td>
+<td><strong>무지형 2점</strong></td>
+</tr>
+<tr>
+<td>약간 비동의</td>
+<td>무지형 1점</td>
+</tr>
+<tr>
+<td>모르겠음</td>
+<td>어떤 성격 유형도 점수를 얻지 않습니다</td>
+</tr>
+<tr>
+<td>약간 동의</td>
+<td>제이지형 1점</td>
+</tr>
+<tr>
+<td>동의</td>
+<td>제이지형 2점</td>
+</tr>
+<tr>
+<td>매우 동의</td>
+<td>제이지형 3점</td>
+</tr>
+</tbody>
+</table>
+<p>3번 질문에서 검사자는 <code class="language-text">비동의</code> 선택지를 선택했으므로 무지형(M) 성격 유형 점수 2점을 얻게 됩니다.</p>
+<p>4번 질문의 점수 배치는 아래 표와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>선택지</th>
+<th>성격 유형 점수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매우 비동의</td>
+<td>라이언형 3점</td>
+</tr>
+<tr>
+<td>비동의</td>
+<td>라이언형 2점</td>
+</tr>
+<tr>
+<td>약간 비동의</td>
+<td>라이언형 1점</td>
+</tr>
+<tr>
+<td>모르겠음</td>
+<td>어떤 성격 유형도 점수를 얻지 않습니다</td>
+</tr>
+<tr>
+<td>약간 동의</td>
+<td>튜브형 1점</td>
+</tr>
+<tr>
+<td>동의</td>
+<td>튜브형 2점</td>
+</tr>
+<tr>
+<td><strong>매우 동의</strong></td>
+<td><strong>튜브형 3점</strong></td>
+</tr>
+</tbody>
+</table>
+<p>4번 질문에서 검사자는 <code class="language-text">매우 동의</code> 선택지를 선택했으므로 튜브형(T) 성격 유형 점수 3점을 얻게 됩니다.</p>
+<p>5번 질문의 점수 배치는 아래 표와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>선택지</th>
+<th>성격 유형 점수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매우 비동의</td>
+<td>네오형 3점</td>
+</tr>
+<tr>
+<td>비동의</td>
+<td>네오형 2점</td>
+</tr>
+<tr>
+<td>약간 비동의</td>
+<td>네오형 1점</td>
+</tr>
+<tr>
+<td>모르겠음</td>
+<td>어떤 성격 유형도 점수를 얻지 않습니다</td>
+</tr>
+<tr>
+<td><strong>약간 동의</strong></td>
+<td><strong>어피치형 1점</strong></td>
+</tr>
+<tr>
+<td>동의</td>
+<td>어피치형 2점</td>
+</tr>
+<tr>
+<td>매우 동의</td>
+<td>어피치형 3점</td>
+</tr>
+</tbody>
+</table>
+<p>5번 질문에서 검사자는 <code class="language-text">약간 동의</code> 선택지를 선택했으므로 어피치형(A) 성격 유형 점수 1점을 얻게 됩니다.</p>
+<p>1번부터 5번까지 질문의 성격 유형 점수를 합치면 아래 표와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>지표 번호</th>
+<th>성격 유형</th>
+<th>점수</th>
+<th>성격 유형</th>
+<th>점수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1번 지표</td>
+<td>라이언형(R)</td>
+<td>0</td>
+<td>튜브형(T)</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2번 지표</td>
+<td>콘형(C)</td>
+<td>1</td>
+<td>프로도형(F)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3번 지표</td>
+<td>제이지형(J)</td>
+<td>0</td>
+<td>무지형(M)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4번 지표</td>
+<td>어피치형(A)</td>
+<td>1</td>
+<td>네오형(N)</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>각 지표에서 더 점수가 높은 <code class="language-text">T</code>,<code class="language-text">C</code>,<code class="language-text">M</code>이 성격 유형입니다.<br>
+하지만, 4번 지표는 1점으로 동일한 점수입니다. 따라서, 4번 지표의 성격 유형은 사전순으로 빠른 <code class="language-text">A</code>입니다.</p>
+<p>따라서 <code class="language-text">"TCMA"</code>를 return 해야 합니다.</p>
+<p><strong>입출력 예 #2</strong></p>
+<p>1번부터 3번까지 질문의 성격 유형 점수를 합치면 아래 표와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>지표 번호</th>
+<th>성격 유형</th>
+<th>점수</th>
+<th>성격 유형</th>
+<th>점수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1번 지표</td>
+<td>라이언형(R)</td>
+<td>6</td>
+<td>튜브형(T)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2번 지표</td>
+<td>콘형(C)</td>
+<td>0</td>
+<td>프로도형(F)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3번 지표</td>
+<td>제이지형(J)</td>
+<td>0</td>
+<td>무지형(M)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4번 지표</td>
+<td>어피치형(A)</td>
+<td>0</td>
+<td>네오형(N)</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>1번 지표는 튜브형(T)보다 라이언형(R)의 점수가 더 높습니다. 따라서 첫 번째 지표의 성격 유형은 <code class="language-text">R</code>입니다.<br>
+하지만, 2, 3, 4번 지표는 모두 0점으로 동일한 점수입니다. 따라서 2, 3, 4번 지표의 성격 유형은 사전순으로 빠른 <code class="language-text">C</code>, <code class="language-text">J</code>, <code class="language-text">A</code>입니다.</p>
+<p>따라서 <code class="language-text">"RCJA"</code>를 return 해야 합니다.</p>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># 내 스타일로 풀기 </span>
+<span class="token keyword">def</span> <span class="token function">solution</span><span class="token punctuation">(</span>survey<span class="token punctuation">,</span> choices<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    answer <span class="token operator">=</span> <span class="token string">''</span>
+    pointList <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'R'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'T'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'C'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'F'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'J'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'M'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'A'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">'N'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">}</span>
+    <span class="token keyword">for</span> chars<span class="token punctuation">,</span> choice <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>survey<span class="token punctuation">,</span> choices<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> choice <span class="token keyword">in</span> <span class="token punctuation">{</span> x <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">:</span>
+            pointList<span class="token punctuation">[</span>chars<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">4</span> <span class="token operator">-</span> choice 
+        <span class="token keyword">elif</span> choice <span class="token keyword">in</span> <span class="token punctuation">{</span> x <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">:</span>
+            pointList<span class="token punctuation">[</span>chars<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+=</span> choice <span class="token operator">-</span> <span class="token number">4</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">continue</span>
+            
+    <span class="token keyword">def</span> <span class="token function">compareSurvey</span><span class="token punctuation">(</span>var1<span class="token punctuation">,</span> var2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> pointList<span class="token punctuation">[</span>var1<span class="token punctuation">]</span> <span class="token operator">></span> pointList<span class="token punctuation">[</span>var2<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> var1
+        <span class="token keyword">elif</span> pointList<span class="token punctuation">[</span>var1<span class="token punctuation">]</span> <span class="token operator">&lt;</span> pointList<span class="token punctuation">[</span>var2<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> var2
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> var1
+
+    answer <span class="token operator">+=</span> compareSurvey<span class="token punctuation">(</span><span class="token string">'R'</span><span class="token punctuation">,</span> <span class="token string">'T'</span><span class="token punctuation">)</span>
+    answer <span class="token operator">+=</span> compareSurvey<span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">,</span> <span class="token string">'F'</span><span class="token punctuation">)</span>
+    answer <span class="token operator">+=</span> compareSurvey<span class="token punctuation">(</span><span class="token string">'J'</span><span class="token punctuation">,</span> <span class="token string">'M'</span><span class="token punctuation">)</span>
+    answer <span class="token operator">+=</span> compareSurvey<span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'N'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> answer</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># 남이 푼 방식 </span>
+<span class="token comment"># 깔끔해서 가져와봄 </span>
+<span class="token keyword">def</span> <span class="token function">solution</span><span class="token punctuation">(</span>survey<span class="token punctuation">,</span> choices<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    my_dict <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"RT"</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">"CF"</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">"JM"</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">"AN"</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">}</span>
+    <span class="token keyword">for</span> A<span class="token punctuation">,</span>B <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>survey<span class="token punctuation">,</span>choices<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> A <span class="token keyword">not</span> <span class="token keyword">in</span> my_dict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            A <span class="token operator">=</span> A<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+            my_dict<span class="token punctuation">[</span>A<span class="token punctuation">]</span> <span class="token operator">-=</span> B<span class="token operator">-</span><span class="token number">4</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            my_dict<span class="token punctuation">[</span>A<span class="token punctuation">]</span> <span class="token operator">+=</span> B<span class="token operator">-</span><span class="token number">4</span>
+
+    result <span class="token operator">=</span> <span class="token string">""</span>
+    <span class="token keyword">for</span> name <span class="token keyword">in</span> my_dict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> my_dict<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+            result <span class="token operator">+=</span> name<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token keyword">elif</span> my_dict<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            result <span class="token operator">+=</span> name<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            result <span class="token operator">+=</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">return</span> result</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h1 id="개인정보-수집-유효기간" style="position:relative;"><a href="#%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4-%EC%88%98%EC%A7%91-%EC%9C%A0%ED%9A%A8%EA%B8%B0%EA%B0%84" aria-label="개인정보 수집 유효기간 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>개인정보 수집 유효기간</h1>
+<h6 id="문제-설명-3" style="position:relative;"><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85-3" aria-label="문제 설명 3 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문제 설명</h6>
+<p>고객의 약관 동의를 얻어서 수집된 1~<code class="language-text">n</code>번으로 분류되는 개인정보 <code class="language-text">n</code>개가 있습니다. 약관 종류는 여러 가지 있으며 각 약관마다 개인정보 보관 유효기간이 정해져 있습니다. 당신은 각 개인정보가 어떤 약관으로 수집됐는지 알고 있습니다. 수집된 개인정보는 유효기간 전까지만 보관 가능하며, 유효기간이 지났다면 반드시 파기해야 합니다.</p>
+<p>예를 들어, A라는 약관의 유효기간이 12 달이고, 2021년 1월 5일에 수집된 개인정보가 A약관으로 수집되었다면 해당 개인정보는 2022년 1월 4일까지 보관 가능하며 2022년 1월 5일부터 파기해야 할 개인정보입니다.<br>
+당신은 오늘 날짜로 파기해야 할 개인정보 번호들을 구하려 합니다.</p>
+<p><strong>모든 달은 28일까지 있다고 가정합니다.</strong></p>
+<p>다음은 오늘 날짜가 <code class="language-text">2022.05.19</code>일 때의 예시입니다.</p>
+<table>
+<thead>
+<tr>
+<th>약관 종류</th>
+<th>유효기간</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>6 달</td>
+</tr>
+<tr>
+<td>B</td>
+<td>12 달</td>
+</tr>
+<tr>
+<td>C</td>
+<td>3 달</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>번호</th>
+<th>개인정보 수집 일자</th>
+<th>약관 종류</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code class="language-text">2021.05.02</code></td>
+<td>A</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code class="language-text">2021.07.01</code></td>
+<td>B</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code class="language-text">2022.02.19</code></td>
+<td>C</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code class="language-text">2022.02.20</code></td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>첫 번째 개인정보는 A약관에 의해 2021년 11월 1일까지 보관 가능하며, 유효기간이 지났으므로 파기해야 할 개인정보입니다.</li>
+<li>두 번째 개인정보는 B약관에 의해 2022년 6월 28일까지 보관 가능하며, 유효기간이 지나지 않았으므로 아직 보관 가능합니다.</li>
+<li>세 번째 개인정보는 C약관에 의해 2022년 5월 18일까지 보관 가능하며, 유효기간이 지났으므로 파기해야 할 개인정보입니다.</li>
+<li>네 번째 개인정보는 C약관에 의해 2022년 5월 19일까지 보관 가능하며, 유효기간이 지나지 않았으므로 아직 보관 가능합니다.</li>
+</ul>
+<p>따라서 파기해야 할 개인정보 번호는 [1, 3]입니다.</p>
+<p>오늘 날짜를 의미하는 문자열 <code class="language-text">today</code>, 약관의 유효기간을 담은 1차원 문자열 배열 <code class="language-text">terms</code>와 수집된 개인정보의 정보를 담은 1차원 문자열 배열 <code class="language-text">privacies</code>가 매개변수로 주어집니다. 이때 파기해야 할 개인정보의 번호를 오름차순으로 1차원 정수 배열에 담아 return 하도록 solution 함수를 완성해 주세요.</p>
+<hr>
+<h5 id="제한사항-3" style="position:relative;"><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD-3" aria-label="제한사항 3 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>제한사항</h5>
+<ul>
+<li><code class="language-text">today</code>는 ”<code class="language-text">YYYY</code>.<code class="language-text">MM</code>.<code class="language-text">DD</code>” 형태로 오늘 날짜를 나타냅니다.</li>
+<li>1 ≤ <code class="language-text">terms</code>의 길이 ≤ 20
+<ul>
+<li><code class="language-text">terms</code>의 원소는 ”<code class="language-text">약관 종류</code> <code class="language-text">유효기간</code>” 형태의 <code class="language-text">약관 종류</code>와 <code class="language-text">유효기간</code>을 공백 하나로 구분한 문자열입니다.</li>
+<li><code class="language-text">약관 종류</code>는 <code class="language-text">A</code>~<code class="language-text">Z</code>중 알파벳 대문자 하나이며, <code class="language-text">terms</code> 배열에서 <code class="language-text">약관 종류</code>는 중복되지 않습니다.</li>
+<li><code class="language-text">유효기간</code>은 개인정보를 보관할 수 있는 달 수를 나타내는 정수이며, 1 이상 100 이하입니다.</li>
+</ul>
+</li>
+<li>1 ≤ <code class="language-text">privacies</code>의 길이 ≤ 100
+<ul>
+<li><code class="language-text">privacies[i]</code>는 <code class="language-text">i+1</code>번 개인정보의 수집 일자와 약관 종류를 나타냅니다.</li>
+<li><code class="language-text">privacies</code>의 원소는 ”<code class="language-text">날짜</code> <code class="language-text">약관 종류</code>” 형태의 <code class="language-text">날짜</code>와 <code class="language-text">약관 종류</code>를 공백 하나로 구분한 문자열입니다.</li>
+<li><code class="language-text">날짜</code>는 ”<code class="language-text">YYYY</code>.<code class="language-text">MM</code>.<code class="language-text">DD</code>” 형태의 개인정보가 수집된 날짜를 나타내며, <code class="language-text">today</code> 이전의 날짜만 주어집니다.</li>
+<li><code class="language-text">privacies</code>의 <code class="language-text">약관 종류</code>는 항상 <code class="language-text">terms</code>에 나타난 <code class="language-text">약관 종류</code>만 주어집니다.</li>
+</ul>
+</li>
+<li><code class="language-text">today</code>와 <code class="language-text">privacies</code>에 등장하는 <code class="language-text">날짜</code>의 <code class="language-text">YYYY</code>는 연도, <code class="language-text">MM</code>은 월, <code class="language-text">DD</code>는 일을 나타내며 점(<code class="language-text">.</code>) 하나로 구분되어 있습니다.
+<ul>
+<li>2000 ≤ <code class="language-text">YYYY</code> ≤ 2022</li>
+<li>1 ≤ <code class="language-text">MM</code> ≤ 12</li>
+<li><code class="language-text">MM</code>이 한 자릿수인 경우 앞에 0이 붙습니다.</li>
+<li>1 ≤ <code class="language-text">DD</code> ≤ 28</li>
+<li><code class="language-text">DD</code>가 한 자릿수인 경우 앞에 0이 붙습니다.</li>
+</ul>
+</li>
+<li>파기해야 할 개인정보가 하나 이상 존재하는 입력만 주어집니다.</li>
+</ul>
+<hr>
+<h5 id="입출력-예-3" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-3" aria-label="입출력 예 3 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예</h5>
+<table>
+<thead>
+<tr>
+<th>today</th>
+<th>terms</th>
+<th>privacies</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">"2022.05.19"</code></td>
+<td><code class="language-text">["A 6", "B 12", "C 3"]</code></td>
+<td><code class="language-text">["2021.05.02 A", "2021.07.01 B", "2022.02.19 C", "2022.02.20 C"]</code></td>
+<td>[1, 3]</td>
+</tr>
+<tr>
+<td><code class="language-text">"2020.01.01"</code></td>
+<td><code class="language-text">["Z 3", "D 5"]</code></td>
+<td><code class="language-text">["2019.01.01 D", "2019.11.15 Z", "2019.08.02 D", "2019.07.01 D", "2018.12.28 Z"]</code></td>
+<td>[1, 4, 5]</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5 id="입출력-예-설명-1" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-%EC%84%A4%EB%AA%85-1" aria-label="입출력 예 설명 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예 설명</h5>
+<p><strong>입출력 예 #1</strong></p>
+<ul>
+<li>문제 예시와 같습니다.</li>
+</ul>
+<p><strong>입출력 예 #2</strong></p>
+<table>
+<thead>
+<tr>
+<th>약관 종류</th>
+<th>유효기간</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Z</td>
+<td>3 달</td>
+</tr>
+<tr>
+<td>D</td>
+<td>5 달</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>번호</th>
+<th>개인정보 수집 일자</th>
+<th>약관 종류</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code class="language-text">2019.01.01</code></td>
+<td>D</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code class="language-text">2019.11.15</code></td>
+<td>Z</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code class="language-text">2019.08.02</code></td>
+<td>D</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code class="language-text">2019.07.01</code></td>
+<td>D</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code class="language-text">2018.12.28</code></td>
+<td>Z</td>
+</tr>
+</tbody>
+</table>
+<p>오늘 날짜는 2020년 1월 1일입니다.</p>
+<ul>
+<li>첫 번째 개인정보는 D약관에 의해 2019년 5월 28일까지 보관 가능하며, 유효기간이 지났으므로 파기해야 할 개인정보입니다.</li>
+<li>두 번째 개인정보는 Z약관에 의해 2020년 2월 14일까지 보관 가능하며, 유효기간이 지나지 않았으므로 아직 보관 가능합니다.</li>
+<li>세 번째 개인정보는 D약관에 의해 2020년 1월 1일까지 보관 가능하며, 유효기간이 지나지 않았으므로 아직 보관 가능합니다.</li>
+<li>네 번째 개인정보는 D약관에 의해 2019년 11월 28일까지 보관 가능하며, 유효기간이 지났으므로 파기해야 할 개인정보입니다.</li>
+<li>다섯 번째 개인정보는 Z약관에 의해 2019년 3월 27일까지 보관 가능하며, 유효기간이 지났으므로 파기해야 할 개인정보입니다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># 내 스타일로 풀기 </span>
+<span class="token comment"># 정규식을 활용해서 최대한 풀어본 방법그러나.. 너무 복잡했고, month 가 배수인경우 0이 되는 케이스를 못찾았었다. </span>
+<span class="token keyword">import</span> re
+
+<span class="token keyword">def</span> <span class="token function">solution</span><span class="token punctuation">(</span>today<span class="token punctuation">,</span> terms<span class="token punctuation">,</span> privacies<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    answer <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    
+    conditionDate <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>today<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">(</span>today<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">:</span><span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">(</span>today<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    termsDict <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    dateDict <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    typeDict <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    deleteList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">for</span> term <span class="token keyword">in</span> terms<span class="token punctuation">:</span>
+        <span class="token keyword">match</span> <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token keyword">match</span><span class="token punctuation">(</span><span class="token string">r'([A-Z])\s(\d+)'</span><span class="token punctuation">,</span> term<span class="token punctuation">)</span>
+        termsDict<span class="token punctuation">[</span><span class="token keyword">match</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token keyword">match</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+    i <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">for</span> privacy <span class="token keyword">in</span> privacies<span class="token punctuation">:</span>
+        target <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token keyword">match</span><span class="token punctuation">(</span><span class="token string">r'(\d{4})\.(\d{2})\.(\d{2})\s([A-Z])'</span><span class="token punctuation">,</span> privacy<span class="token punctuation">)</span>
+        dateDict<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        typeDict<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> target<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+        
+    <span class="token keyword">def</span> <span class="token function">findDeleteTarget</span><span class="token punctuation">(</span>limit<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>limit<span class="token punctuation">,</span> <span class="token string">" vs "</span><span class="token punctuation">,</span> target<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>limit<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">></span> target<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>limit<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>limit<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">></span> target<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>limit<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>limit<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>limit<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">></span> target<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> <span class="token boolean">True</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
+    
+    <span class="token keyword">for</span> key <span class="token keyword">in</span> dateDict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        limit <span class="token operator">=</span> termsDict<span class="token punctuation">[</span>typeDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span>
+        day <span class="token operator">=</span> dateDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span>
+        month <span class="token operator">=</span> dateDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> limit
+        <span class="token keyword">if</span> day <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            day <span class="token operator">=</span> <span class="token number">28</span>
+            month <span class="token operator">-=</span> <span class="token number">1</span>
+        addOn <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">if</span> month <span class="token operator">></span> <span class="token number">12</span><span class="token punctuation">:</span>
+            addOn <span class="token operator">=</span> month <span class="token operator">//</span> <span class="token number">12</span>
+            month <span class="token operator">=</span> month <span class="token operator">%</span> <span class="token number">12</span>
+            <span class="token keyword">if</span> month <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                month <span class="token operator">=</span> <span class="token number">12</span>
+                addOn <span class="token operator">-=</span> <span class="token number">1</span>
+        year <span class="token operator">=</span> dateDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> addOn 
+        <span class="token keyword">if</span> findDeleteTarget<span class="token punctuation">(</span>conditionDate<span class="token punctuation">,</span> <span class="token punctuation">[</span>year<span class="token punctuation">,</span> month<span class="token punctuation">,</span> day<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            answer<span class="token punctuation">.</span>append<span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"오늘: "</span><span class="token punctuation">,</span>conditionDate<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"만료 기간: "</span><span class="token punctuation">,</span> termsDict<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"각 문서 날짜: "</span><span class="token punctuation">,</span>dateDict<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"각 문서 타입: "</span><span class="token punctuation">,</span> typeDict<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> answer
+</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># 남들꺼 </span>
+<span class="token comment"># 최고의 케이스라고 본다. 걍 이렇게 일수로 환산해서 계산하면 될 것을 너무 고생했다...</span>
+<span class="token comment"># 리스트 컴프리헨션의 기본구조 </span>
+<span class="token comment"># [expression for item in iterable if condition]</span>
+<span class="token comment"># 를 기억하라...! </span>
+<span class="token comment"># enumrate(iterable object) 이 표현을 사용하면 </span>
+<span class="token comment"># 숫자 인덱스와 값을 동시에 한꺼번에 출력이 가능해진다. </span>
+<span class="token keyword">def</span> <span class="token function">to_days</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    year<span class="token punctuation">,</span> month<span class="token punctuation">,</span> day <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> date<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> year <span class="token operator">*</span> <span class="token number">28</span> <span class="token operator">*</span> <span class="token number">12</span> <span class="token operator">+</span> month <span class="token operator">*</span> <span class="token number">28</span> <span class="token operator">+</span> day
+
+<span class="token keyword">def</span> <span class="token function">solution</span><span class="token punctuation">(</span>today<span class="token punctuation">,</span> terms<span class="token punctuation">,</span> privacies<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    months <span class="token operator">=</span> <span class="token punctuation">{</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">28</span> <span class="token keyword">for</span> v <span class="token keyword">in</span> terms<span class="token punctuation">}</span>
+    today <span class="token operator">=</span> to_days<span class="token punctuation">(</span>today<span class="token punctuation">)</span>
+    expire <span class="token operator">=</span> <span class="token punctuation">[</span>
+        i <span class="token operator">+</span> <span class="token number">1</span> <span class="token keyword">for</span> i<span class="token punctuation">,</span> privacy <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>privacies<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> to_days<span class="token punctuation">(</span>privacy<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> months<span class="token punctuation">[</span>privacy<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> today
+    <span class="token punctuation">]</span>
+    <span class="token keyword">return</span> expire</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h1 id="신고-결과-받기" style="position:relative;"><a href="#%EC%8B%A0%EA%B3%A0-%EA%B2%B0%EA%B3%BC-%EB%B0%9B%EA%B8%B0" aria-label="신고 결과 받기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>신고 결과 받기</h1>
+<h6 id="문제-설명-4" style="position:relative;"><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85-4" aria-label="문제 설명 4 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문제 설명</h6>
+<h5 id="문제-설명-5" style="position:relative;"><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85-5" aria-label="문제 설명 5 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문제 설명</h5>
+<p>신입사원 무지는 게시판 불량 이용자를 신고하고 처리 결과를 메일로 발송하는 시스템을 개발하려 합니다. 무지가 개발하려는 시스템은 다음과 같습니다.</p>
+<ul>
+<li>각 유저는 한 번에 한 명의 유저를 신고할 수 있습니다.
+<ul>
+<li>신고 횟수에 제한은 없습니다. 서로 다른 유저를 계속해서 신고할 수 있습니다.</li>
+<li>한 유저를 여러 번 신고할 수도 있지만, 동일한 유저에 대한 신고 횟수는 1회로 처리됩니다.</li>
+</ul>
+</li>
+<li>k번 이상 신고된 유저는 게시판 이용이 정지되며, 해당 유저를 신고한 모든 유저에게 정지 사실을 메일로 발송합니다.
+<ul>
+<li>유저가 신고한 모든 내용을 취합하여 마지막에 한꺼번에 게시판 이용 정지를 시키면서 정지 메일을 발송합니다.</li>
+</ul>
+</li>
+</ul>
+<p>다음은 전체 유저 목록이 [“muzi”, “frodo”, “apeach”, “neo”]이고, k = 2(즉, 2번 이상 신고당하면 이용 정지)인 경우의 예시입니다.</p>
+<table>
+<thead>
+<tr>
+<th>유저 ID</th>
+<th>유저가 신고한 ID</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“muzi”</td>
+<td>“frodo”</td>
+<td>“muzi”가 “frodo”를 신고했습니다.</td>
+</tr>
+<tr>
+<td>“apeach”</td>
+<td>“frodo”</td>
+<td>“apeach”가 “frodo”를 신고했습니다.</td>
+</tr>
+<tr>
+<td>“frodo”</td>
+<td>“neo”</td>
+<td>“frodo”가 “neo”를 신고했습니다.</td>
+</tr>
+<tr>
+<td>“muzi”</td>
+<td>“neo”</td>
+<td>“muzi”가 “neo”를 신고했습니다.</td>
+</tr>
+<tr>
+<td>“apeach”</td>
+<td>“muzi”</td>
+<td>“apeach”가 “muzi”를 신고했습니다.</td>
+</tr>
+</tbody>
+</table>
+<p>각 유저별로 신고당한 횟수는 다음과 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>유저 ID</th>
+<th>신고당한 횟수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“muzi”</td>
+<td>1</td>
+</tr>
+<tr>
+<td>“frodo”</td>
+<td>2</td>
+</tr>
+<tr>
+<td>“apeach”</td>
+<td>0</td>
+</tr>
+<tr>
+<td>“neo”</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>위 예시에서는 2번 이상 신고당한 “frodo”와 “neo”의 게시판 이용이 정지됩니다. 이때, 각 유저별로 신고한 아이디와 정지된 아이디를 정리하면 다음과 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>유저 ID</th>
+<th>유저가 신고한 ID</th>
+<th>정지된 ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“muzi”</td>
+<td>[“frodo”, “neo”]</td>
+<td>[“frodo”, “neo”]</td>
+</tr>
+<tr>
+<td>“frodo”</td>
+<td>[“neo”]</td>
+<td>[“neo”]</td>
+</tr>
+<tr>
+<td>“apeach”</td>
+<td>[“muzi”, “frodo”]</td>
+<td>[“frodo”]</td>
+</tr>
+<tr>
+<td>“neo”</td>
+<td>없음</td>
+<td>없음</td>
+</tr>
+</tbody>
+</table>
+<p>따라서 “muzi”는 처리 결과 메일을 2회, “frodo”와 “apeach”는 각각 처리 결과 메일을 1회 받게 됩니다.</p>
+<p>이용자의 ID가 담긴 문자열 배열 <code class="language-text">id_list</code>, 각 이용자가 신고한 이용자의 ID 정보가 담긴 문자열 배열 <code class="language-text">report</code>, 정지 기준이 되는 신고 횟수 <code class="language-text">k</code>가 매개변수로 주어질 때, 각 유저별로 처리 결과 메일을 받은 횟수를 배열에 담아 return 하도록 solution 함수를 완성해주세요.</p>
+<hr>
+<h5 id="제한사항-4" style="position:relative;"><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD-4" aria-label="제한사항 4 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>제한사항</h5>
+<ul>
+<li>2 ≤ <code class="language-text">id_list</code>의 길이 ≤ 1,000
+<ul>
+<li>1 ≤ <code class="language-text">id_list</code>의 원소 길이 ≤ 10</li>
+<li><code class="language-text">id_list</code>의 원소는 이용자의 id를 나타내는 문자열이며 알파벳 소문자로만 이루어져 있습니다.</li>
+<li><code class="language-text">id_list</code>에는 같은 아이디가 중복해서 들어있지 않습니다.</li>
+</ul>
+</li>
+<li>1 ≤ <code class="language-text">report</code>의 길이 ≤ 200,000
+<ul>
+<li>3 ≤ <code class="language-text">report</code>의 원소 길이 ≤ 21</li>
+<li><code class="language-text">report</code>의 원소는 “이용자id 신고한id”형태의 문자열입니다.</li>
+<li>예를 들어 “muzi frodo”의 경우 “muzi”가 “frodo”를 신고했다는 의미입니다.</li>
+<li>id는 알파벳 소문자로만 이루어져 있습니다.</li>
+<li>이용자id와 신고한id는 공백(스페이스)하나로 구분되어 있습니다.</li>
+<li>자기 자신을 신고하는 경우는 없습니다.</li>
+</ul>
+</li>
+<li>1 ≤ <code class="language-text">k</code> ≤ 200, <code class="language-text">k</code>는 자연수입니다.</li>
+<li>return 하는 배열은 <code class="language-text">id_list</code>에 담긴 id 순서대로 각 유저가 받은 결과 메일 수를 담으면 됩니다.</li>
+</ul>
+<hr>
+<h5 id="입출력-예-4" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-4" aria-label="입출력 예 4 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예</h5>
+<table>
+<thead>
+<tr>
+<th>id_list</th>
+<th>report</th>
+<th>k</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">["muzi", "frodo", "apeach", "neo"]</code></td>
+<td><code class="language-text">["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]</code></td>
+<td>2</td>
+<td>[2,1,1,0]</td>
+</tr>
+<tr>
+<td><code class="language-text">["con", "ryan"]</code></td>
+<td><code class="language-text">["ryan con", "ryan con", "ryan con", "ryan con"]</code></td>
+<td>3</td>
+<td>[0,0]</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5 id="입출력-예-설명-2" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-%EC%84%A4%EB%AA%85-2" aria-label="입출력 예 설명 2 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예 설명</h5>
+<p><strong>입출력 예 #1</strong></p>
+<p>문제의 예시와 같습니다.</p>
+<p><strong>입출력 예 #2</strong></p>
+<p>“ryan”이 “con”을 4번 신고했으나, 주어진 조건에 따라 한 유저가 같은 유저를 여러 번 신고한 경우는 신고 횟수 1회로 처리합니다. 따라서 “con”은 1회 신고당했습니다. 3번 이상 신고당한 이용자는 없으며, “con”과 “ryan”은 결과 메일을 받지 않습니다. 따라서 [0, 0]을 return 합니다.</p>
+<hr>
+<h5 id="제한시간-안내" style="position:relative;"><a href="#%EC%A0%9C%ED%95%9C%EC%8B%9C%EA%B0%84-%EC%95%88%EB%82%B4" aria-label="제한시간 안내 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>제한시간 안내</h5>
+<ul>
+<li>정확성 테스트 : 10초</li>
+</ul>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># 내가 한 것 </span>
+<span class="token comment"># 생각보다 set을 사용한다고 획기적으로 값이 줄진 않더라</span>
+<span class="token comment"># 컴프리헨션 잘 써서 사전형 만드는게 중요 </span>
+<span class="token keyword">import</span> re
+
+<span class="token keyword">def</span> <span class="token function">solution</span><span class="token punctuation">(</span>id_list<span class="token punctuation">,</span> report<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    id_count <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token builtin">id</span><span class="token punctuation">:</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> <span class="token builtin">id</span> <span class="token keyword">in</span> id_list<span class="token punctuation">}</span>
+    mail_list <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token builtin">id</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token keyword">for</span> <span class="token builtin">id</span> <span class="token keyword">in</span> id_list<span class="token punctuation">}</span>
+    <span class="token comment"># 바로 진행</span>
+    <span class="token keyword">for</span> data <span class="token keyword">in</span> report<span class="token punctuation">:</span>
+        reporter<span class="token punctuation">,</span> target <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        id_count<span class="token punctuation">[</span>target<span class="token punctuation">]</span><span class="token punctuation">.</span>add<span class="token punctuation">(</span>reporter<span class="token punctuation">)</span>
+        
+    <span class="token keyword">for</span> key <span class="token keyword">in</span> id_count<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>id_count<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">>=</span> k<span class="token punctuation">:</span>
+            <span class="token keyword">for</span> target <span class="token keyword">in</span> id_count<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                mail_list<span class="token punctuation">[</span>target<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+                
+    <span class="token keyword">return</span> <span class="token builtin">list</span><span class="token punctuation">(</span>mail_list<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h1 id="붕대감기" style="position:relative;"><a href="#%EB%B6%95%EB%8C%80%EA%B0%90%EA%B8%B0" aria-label="붕대감기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>붕대감기</h1>
+<h6 id="문제-설명-6" style="position:relative;"><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85-6" aria-label="문제 설명 6 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문제 설명</h6>
+<p>어떤 게임에는 <code class="language-text">붕대 감기</code>라는 기술이 있습니다.</p>
+<p><code class="language-text">붕대 감기</code>는 <code class="language-text">t</code>초 동안 붕대를 감으면서 1초마다 <code class="language-text">x</code>만큼의 체력을 회복합니다. <code class="language-text">t</code>초 연속으로 붕대를 감는 데 성공한다면 <code class="language-text">y</code>만큼의 체력을 추가로 회복합니다. 게임 캐릭터에는 최대 체력이 존재해 현재 체력이 최대 체력보다 커지는 것은 불가능합니다.</p>
+<p>기술을 쓰는 도중 몬스터에게 공격을 당하면 기술이 취소되고, 공격을 당하는 순간에는 체력을 회복할 수 없습니다. 몬스터에게 공격당해 기술이 취소당하거나 기술이 끝나면 그 즉시 <code class="language-text">붕대 감기</code>를 다시 사용하며, 연속 성공 시간이 0으로 초기화됩니다.</p>
+<p>몬스터의 공격을 받으면 정해진 피해량만큼 현재 체력이 줄어듭니다. 이때, 현재 체력이 0 이하가 되면 캐릭터가 죽으며 더 이상 체력을 회복할 수 없습니다.</p>
+<p>당신은 <code class="language-text">붕대감기</code> 기술의 정보, 캐릭터가 가진 최대 체력과 몬스터의 공격 패턴이 주어질 때 캐릭터가 끝까지 생존할 수 있는지 궁금합니다.</p>
+<p><code class="language-text">붕대 감기</code> 기술의 시전 시간, 1초당 회복량, 추가 회복량을 담은 1차원 정수 배열 <code class="language-text">bandage</code>와 최대 체력을 의미하는 정수 <code class="language-text">health</code>, 몬스터의 공격 시간과 피해량을 담은 2차원 정수 배열 <code class="language-text">attacks</code>가 매개변수로 주어집니다. 모든 공격이 끝난 직후 남은 체력을 return 하도록 solution 함수를 완성해 주세요. <strong>만약 몬스터의 공격을 받고 캐릭터의 체력이 0 이하가 되어 죽는다면 -1을 return 해주세요.</strong></p>
+<hr>
+<h5 id="제한사항-5" style="position:relative;"><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD-5" aria-label="제한사항 5 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>제한사항</h5>
+<ul>
+<li><code class="language-text">bandage</code>는 [<code class="language-text">시전 시간</code>, <code class="language-text">초당 회복량</code>, <code class="language-text">추가 회복량</code>] 형태의 길이가 3인 정수 배열입니다.
+<ul>
+<li>1 ≤ <code class="language-text">시전 시간</code> = <code class="language-text">t</code> ≤ 50</li>
+<li>1 ≤ <code class="language-text">초당 회복량</code> = <code class="language-text">x</code> ≤ 100</li>
+<li>1 ≤ <code class="language-text">추가 회복량</code> = <code class="language-text">y</code> ≤ 100</li>
+</ul>
+</li>
+<li>1 ≤ <code class="language-text">health</code> ≤ 1,000</li>
+<li>1 ≤ <code class="language-text">attacks</code>의 길이 ≤ 100
+<ul>
+<li><code class="language-text">attacks[i]</code>는 [<code class="language-text">공격 시간</code>, <code class="language-text">피해량</code>] 형태의 길이가 2인 정수 배열입니다.</li>
+<li><code class="language-text">attacks</code>는 <code class="language-text">공격 시간</code>을 기준으로 오름차순 정렬된 상태입니다.</li>
+<li><code class="language-text">attacks</code>의 <code class="language-text">공격 시간</code>은 모두 다릅니다.</li>
+<li>1 ≤ <code class="language-text">공격 시간</code> ≤ 1,000</li>
+<li>1 ≤ <code class="language-text">피해량</code> ≤ 100</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5 id="입출력-예-5" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-5" aria-label="입출력 예 5 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예</h5>
+<table>
+<thead>
+<tr>
+<th>bandage</th>
+<th>health</th>
+<th>attacks</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[5, 1, 5]</td>
+<td>30</td>
+<td>[[2, 10], [9, 15], [10, 5], [11, 5]]</td>
+<td>5</td>
+</tr>
+<tr>
+<td>[3, 2, 7]</td>
+<td>20</td>
+<td>[[1, 15], [5, 16], [8, 6]]</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>[4, 2, 7]</td>
+<td>20</td>
+<td>[[1, 15], [5, 16], [8, 6]]</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>[1, 1, 1]</td>
+<td>5</td>
+<td>[[1, 2], [3, 2]]</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5 id="입출력-예-설명-3" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-%EC%84%A4%EB%AA%85-3" aria-label="입출력 예 설명 3 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예 설명</h5>
+<p><strong>입출력 예 #1</strong></p>
+<p>몬스터의 마지막 공격은 11초에 이루어집니다. 0초부터 11초까지 캐릭터의 상태는 아래 표와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>시간</th>
+<th>현재 체력(변화량)</th>
+<th>연속 성공</th>
+<th>공격</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>30</td>
+<td>0</td>
+<td>X</td>
+<td>초기 상태</td>
+</tr>
+<tr>
+<td>1</td>
+<td>30(+0)</td>
+<td>1</td>
+<td>X</td>
+<td>최대 체력 이상의 체력을 가질 수 없습니다.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20(-10)</td>
+<td>0</td>
+<td>O</td>
+<td>몬스터의 공격으로 연속 성공이 초기화됩니다.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>21(+1)</td>
+<td>1</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>22(+1)</td>
+<td>2</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>23(+1)</td>
+<td>3</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>24(+1)</td>
+<td>4</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>30(+6)</td>
+<td>5 → 0</td>
+<td>X</td>
+<td>5초 연속 성공해 체력을 5만큼 추가 회복하고 연속 성공이 초기화됩니다.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>30(+0)</td>
+<td>1</td>
+<td>X</td>
+<td>최대 체력 이상의 체력을 가질 수 없습니다.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>15(-15)</td>
+<td>0</td>
+<td>O</td>
+<td>몬스터의 공격으로 연속 성공이 초기화됩니다.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10(-5)</td>
+<td>0</td>
+<td>O</td>
+<td>몬스터의 공격으로 연속 성공이 초기화됩니다.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>5(-5)</td>
+<td>0</td>
+<td>O</td>
+<td>몬스터의 마지막 공격입니다.</td>
+</tr>
+</tbody>
+</table>
+<p>몬스터의 마지막 공격 직후 캐릭터의 체력은 5입니다. 따라서 <code class="language-text">5</code>을 return 해야 합니다.</p>
+<p><strong>입출력 예 #2</strong></p>
+<p>몬스터의 마지막 공격은 8초에 이루어집니다. 0초부터 8초까지 캐릭터의 상태는 아래 표와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>시간</th>
+<th>현재 체력(변화량)</th>
+<th>연속 성공</th>
+<th>공격</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>20</td>
+<td>0</td>
+<td>X</td>
+<td>초기 상태</td>
+</tr>
+<tr>
+<td>1</td>
+<td>5(-15)</td>
+<td>0</td>
+<td>O</td>
+<td>몬스터의 공격으로 연속 성공이 초기화됩니다.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>7(+2)</td>
+<td>1</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>9(+2)</td>
+<td>2</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>18(+9)</td>
+<td>3 → 0</td>
+<td>X</td>
+<td>3초 연속 성공해 체력을 7만큼 추가 회복하고 연속 성공이 초기화됩니다.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2(-16)</td>
+<td>0</td>
+<td>O</td>
+<td>몬스터의 공격으로 연속 성공이 초기화됩니다.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>4(+2)</td>
+<td>1</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>6(+2)</td>
+<td>2</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>0(-6)</td>
+<td>0</td>
+<td>O</td>
+<td>몬스터의 마지막 공격을 받아 캐릭터의 체력이 0 이하가 됩니다.</td>
+</tr>
+</tbody>
+</table>
+<p>몬스터의 공격을 받아 캐릭터의 체력이 0 이하가 됩니다. 따라서 <code class="language-text">-1</code>을 return 해야 합니다.</p>
+<p><strong>입출력 예 #3</strong></p>
+<p>몬스터의 마지막 공격은 8초에 이루어집니다. 0초부터 5초까지 캐릭터의 상태는 아래 표와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>시간</th>
+<th>현재 체력(변화량)</th>
+<th>연속 성공</th>
+<th>공격</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>20</td>
+<td>0</td>
+<td>X</td>
+<td>초기 상태</td>
+</tr>
+<tr>
+<td>1</td>
+<td>5(-15)</td>
+<td>0</td>
+<td>O</td>
+<td>몬스터의 공격으로 연속 성공이 초기화됩니다.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>7(+2)</td>
+<td>1</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>9(+2)</td>
+<td>2</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>11(+2)</td>
+<td>3</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>-5(-16)</td>
+<td>0</td>
+<td>O</td>
+<td>몬스터의 공격을 받아 캐릭터의 체력이 0 이하가 됩니다.</td>
+</tr>
+</tbody>
+</table>
+<p>몬스터의 공격을 받아 캐릭터의 체력이 0 이하가 됩니다. 따라서 <code class="language-text">-1</code>을 return 해야 합니다.</p>
+<p><strong>입출력 예 #4</strong></p>
+<p>몬스터의 마지막 공격은 3초에 이루어집니다. 0초부터 3초까지 캐릭터의 상태는 아래 표와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>시간</th>
+<th>현재 체력(변화량)</th>
+<th>연속 성공</th>
+<th>공격</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>5</td>
+<td>0</td>
+<td>X</td>
+<td>초기 상태</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3(-2)</td>
+<td>0</td>
+<td>O</td>
+<td>몬스터의 공격으로 연속 성공이 초기화됩니다.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5(+2)</td>
+<td>1 → 0</td>
+<td>X</td>
+<td>1초 연속 성공해 체력을 1만큼 추가 회복하고 연속 성공이 초기화됩니다.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3(-2)</td>
+<td>0</td>
+<td>O</td>
+<td>몬스터의 마지막 공격입니다.</td>
+</tr>
+</tbody>
+</table>
+<p>몬스터의 마지막 공격 직후 캐릭터의 체력은 3입니다. 따라서 <code class="language-text">3</code>을 return 해야 합니다.</p>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># 내가 푼 것</span>
+<span class="token comment"># 사소한 조건 에러는 항상 찾기 어렵다. </span>
+<span class="token comment"># 만약 가능하다면 글자를 적어서 조건을 기록해놓고화는게 중요할 것으로 보인다.</span>
+<span class="token comment"># 다른 사람들도 거의 비슷하게 사용한 것이 보인다. </span>
+<span class="token keyword">def</span> <span class="token function">solution</span><span class="token punctuation">(</span>bandage<span class="token punctuation">,</span> health<span class="token punctuation">,</span> attacks<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    answer <span class="token operator">=</span> health
+    attackTime <span class="token operator">=</span> <span class="token punctuation">{</span> s <span class="token punctuation">:</span> d <span class="token keyword">for</span> s<span class="token punctuation">,</span> d <span class="token keyword">in</span> attacks<span class="token punctuation">}</span>
+    healCount <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>attacks<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> i <span class="token keyword">in</span> attackTime<span class="token punctuation">:</span>
+            healCount <span class="token operator">=</span> <span class="token number">0</span>
+            answer <span class="token operator">-=</span> attackTime<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            healCount <span class="token operator">+=</span> <span class="token number">1</span>
+            <span class="token keyword">if</span> healCount <span class="token operator">==</span> bandage<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                answer <span class="token operator">+=</span> bandage<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> 
+                healCount <span class="token operator">=</span> <span class="token number">0</span>
+            answer <span class="token operator">+=</span> bandage<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> 
+        <span class="token keyword">if</span> answer <span class="token operator">></span> health<span class="token punctuation">:</span>
+            answer <span class="token operator">=</span> health
+        <span class="token keyword">if</span> answer <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span> 
+    <span class="token keyword">return</span> answer</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<div class="table-of-contents">
+<ul>
+<li>
+<p><a href="#%ED%81%AC%EB%A0%88%EC%9D%B8-%EC%9D%B8%ED%98%95%EB%BD%91%EA%B8%B0-%EA%B2%8C%EC%9E%84">크레인 인형뽑기 게임</a></p>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85">문제 설명</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD">[제한사항]</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88">입출력 예</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88%EC%97%90-%EB%8C%80%ED%95%9C-%EC%84%A4%EB%AA%85">입출력 예에 대한 설명</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#%ED%82%A4%ED%8C%A8%EB%93%9C-%EB%88%84%EB%A5%B4%EA%B8%B0">키패드 누르기</a></p>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85-1">문제 설명</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD-1">[제한사항]</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-1">입출력 예</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88%EC%97%90-%EB%8C%80%ED%95%9C-%EC%84%A4%EB%AA%85-1">입출력 예에 대한 설명</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC%ED%95%98%EA%B8%B0">성격 유형 검사하기</a></p>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85-2">문제 설명</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD-2">제한사항</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-2">입출력 예</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-%EC%84%A4%EB%AA%85">입출력 예 설명</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4-%EC%88%98%EC%A7%91-%EC%9C%A0%ED%9A%A8%EA%B8%B0%EA%B0%84">개인정보 수집 유효기간</a></p>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85-3">문제 설명</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD-3">제한사항</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-3">입출력 예</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-%EC%84%A4%EB%AA%85-1">입출력 예 설명</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#%EC%8B%A0%EA%B3%A0-%EA%B2%B0%EA%B3%BC-%EB%B0%9B%EA%B8%B0">신고 결과 받기</a></p>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85-4">문제 설명</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85-5">문제 설명</a></p>
+</li>
+<li>
+<p><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD-4">제한사항</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-4">입출력 예</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-%EC%84%A4%EB%AA%85-2">입출력 예 설명</a></p>
+</li>
+<li>
+<p><a href="#%EC%A0%9C%ED%95%9C%EC%8B%9C%EA%B0%84-%EC%95%88%EB%82%B4">제한시간 안내</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#%EB%B6%95%EB%8C%80%EA%B0%90%EA%B8%B0">붕대감기</a></p>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85-6">문제 설명</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD-5">제한사항</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-5">입출력 예</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-%EC%84%A4%EB%AA%85-3">입출력 예 설명</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/docker-kubernetes/20240320111443/"><div class="direction">이전 글</div><div class="title">docker-kubernetes ) til - 20240320</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+    window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
+      'G-YDPMMYNR6Y'
+    );
+    window.GATSBY_GTAG_PLUGIN_ANONYMIZE = true;
+
+    var options = {
+      send_page_view: false
+    };
+    if (true) {
+      options.anonymize_ip = true;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-YDPMMYNR6Y', options);
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/coding-test/20240320010052/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-c638078fc4709f33b879.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js" async=""></script><script src="/app-c638078fc4709f33b879.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-62b18b028769ec5545fd.js" async=""></script></body></html>
