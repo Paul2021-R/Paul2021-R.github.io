@@ -122,21 +122,69 @@
 <li>그러나 단순히 숫자 해석 없이 비트의 집합으로 생각하는 방식은 꽤나 쓸모는 있다.</li>
 </ul>
 <h2 id="23-integer-arithmetic" style="position:relative;"><a href="#23-integer-arithmetic" aria-label="23 integer arithmetic permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.3 Integer Arithmetic</h2>
+<p>컴퓨터 연산의 유한성으로 발생하는 문제를 이해하는 것은 프로그래머가 더 신뢰성있는 코드 작성을 가능케 한다.</p>
+<ul>
+<li>문제 1오버플로 : 고정된 크기의 메모리에 저장되고, 그렇기에 값이 오버플로가 발생하면 예상치 못한 음수 결과가 나올 수 있다.</li>
+<li>문제 2 정밀도의 한계 : 부동소수점 수는 실수를 근사하는 구조고, 여기서 정밀도의 손실이 있다. 따라서 연산 면에서 <code class="language-text">x &lt; y 와 x - y &lt; 0</code>이 다른 결과가 나온다는 점이 문제다.</li>
+<li>문제 3 산술 연산의 안전성 : 산술 연산의 안전성이 위 두 문제로 발생을 하고, 이러한 부분들을 고려하는 개발자가 되어야 한다. 보다 안정적인 코드 작성 방식을 이해할 필요가 대두된다.</li>
+</ul>
 <h3 id="231-unsigned-addition" style="position:relative;"><a href="#231-unsigned-addition" aria-label="231 unsigned addition permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.3.1 Unsigned Addition</h3>
+<ul>
+<li>부호없는 덧셈은 두 unsigned 정수의 합을 계산하며, 오버플로가 발생하면 합의 크기를 2^w를 모듈로 한 값이 된다.</li>
+</ul>
 <h3 id="232-twos-complement-addtion" style="position:relative;"><a href="#232-twos-complement-addtion" aria-label="232 twos complement addtion permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.3.2 Two’s-Complement Addtion</h3>
+<ul>
+<li>2의 보수 덧셈은 signed 정수의 덧셈이며, 결과 표현 범위를 벗어나면 양, 음의 오버플로가 발생하고, 이때 값은 당연히 자동으로 조정되어진다.</li>
+</ul>
 <h3 id="233-twos-complement-negation" style="position:relative;"><a href="#233-twos-complement-negation" aria-label="233 twos complement negation permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.3.3 Two’s-Complement Negation</h3>
+<ul>
+<li>2의 보수의 부정은 정수의 부호를 반전시키는 방법이며, 핵심은 모든 비트를 반전 시킨 후 1을 더함으로써 수를 표현하는 방식이다.</li>
+</ul>
 <h3 id="234-unsigned-multiplication" style="position:relative;"><a href="#234-unsigned-multiplication" aria-label="234 unsigned multiplication permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.3.4 Unsigned Multiplication</h3>
+<ul>
+<li>부호 없는 곱셈은 두 unsigned 정수의 곱셈으로 w 비트를 초과할 수 있고, 당연히 그에 맞춰 절삭된다.</li>
+</ul>
 <h3 id="235-twos-complement-multiplication" style="position:relative;"><a href="#235-twos-complement-multiplication" aria-label="235 twos complement multiplication permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.3.5 Two’s-Complement Multiplication</h3>
+<ul>
+<li>2의 보수의 곱셈은 부호 있는 정수의 곱셈으로 보수의 덧셈과 같이 자동으로 오버플로에 대응을 하는 구조로 되어 있다.</li>
+</ul>
 <h3 id="236-multiplying-by-constants" style="position:relative;"><a href="#236-multiplying-by-constants" aria-label="236 multiplying by constants permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.3.6 Multiplying by Constants</h3>
+<ul>
+<li>본 파트에서는 상수에 의한 곱셈에 대해 곱셈을 최적화하는 기법을 설명하며, 프로그램의 효율성 개선을 위해 쉬프트 연산과 덧셈으로 대체될 수 있음을 보여준다.</li>
+</ul>
 <h3 id="237-dividing-by-powers-of-2" style="position:relative;"><a href="#237-dividing-by-powers-of-2" aria-label="237 dividing by powers of 2 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.3.7 Dividing by Powers of 2</h3>
+<ul>
+<li>2의 거듭제곱으로 나누는 것은 쉬프트 연산 방식을 활용한다. 이를 통해 거듭 제곱으로 나누는 과정을 단순화 시킬 수 있음을 보여준다.</li>
+</ul>
 <h3 id="238-final-thoughts-on-integer-arithmetic" style="position:relative;"><a href="#238-final-thoughts-on-integer-arithmetic" aria-label="238 final thoughts on integer arithmetic permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.3.8 Final Thoughts on Integer Arithmetic</h3>
+<ul>
+<li>총정리</li>
+</ul>
 <h2 id="24-floating-point" style="position:relative;"><a href="#24-floating-point" aria-label="24 floating point permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.4 Floating Point</h2>
 <h3 id="241-fractional-binary-numbers" style="position:relative;"><a href="#241-fractional-binary-numbers" aria-label="241 fractional binary numbers permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.4.1 Fractional Binary Numbers</h3>
+<ul>
+<li>소수점을 포함한 이진수의 표현방식을 설명해준다. 실수를 컴퓨터에서 표현하기 위한 기본적인 개념으로, 고정소수점과 비교하여 더 넓은 범위의 수를 표현할 수 있는 방법을 제공한다.</li>
+</ul>
 <h3 id="242-ieee-floating-point-representation" style="position:relative;"><a href="#242-ieee-floating-point-representation" aria-label="242 ieee floating point representation permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.4.2 IEEE Floating-Point Representation</h3>
+<ul>
+<li>IEEE 부동 소수점 표준은 실수를 컴퓨터 메모리에 저장하고 계산하는 방법을 보여주는데, 정밀도를 최대화 하면서도 표현할 수 있는 수의 범위를 극대화하는 방법을 제공한다.</li>
+</ul>
 <h3 id="243-example-numbers" style="position:relative;"><a href="#243-example-numbers" aria-label="243 example numbers permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.4.3 Example Numbers</h3>
+<ul>
+<li>예시 케이스들 제공</li>
+</ul>
 <h3 id="244-rounding" style="position:relative;"><a href="#244-rounding" aria-label="244 rounding permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.4.4 Rounding</h3>
+<ul>
+<li>부동 소수점 수를 표현할 때 제한된 수의 비트를 사용해야 하기 때문에 반올림의 기술이 있어야 한다. 반올림의 방법과 사용시 생기는 오차에 대해 강조한다.</li>
+</ul>
 <h3 id="245-floating-point-operations" style="position:relative;"><a href="#245-floating-point-operations" aria-label="245 floating point operations permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.4.5 Floating-Point Operations</h3>
+<ul>
+<li>부동 소수점 연산과 그 특징 설명</li>
+</ul>
 <h3 id="246-floating-point-in-c" style="position:relative;"><a href="#246-floating-point-in-c" aria-label="246 floating point in c permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.4.6 Floating Point in C</h3>
+<ul>
+<li>C 언어에서 부동 소수점 수를 어떻게 사용하고, 표현하는지에 대한 지침을 제공하고 부동 소수점 리터럴, 변수 유형 및 표준 수학 함수의 사용에 대한 정보를 포함한다.</li>
+</ul>
 <h2 id="25-summary" style="position:relative;"><a href="#25-summary" aria-label="25 summary permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.5 Summary</h2>
 <div class="table-of-contents">
 <ul>
