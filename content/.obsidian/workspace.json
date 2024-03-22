@@ -4,6 +4,36 @@
     "type": "split",
     "children": [
       {
+        "id": "b3beac625898b88d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fc4a8d29a5654174",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/coding-test/20240322142654.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "69e945e0b6694029",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/coding-test/20240321083437.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
         "id": "8714793418502c6b",
         "type": "tabs",
         "children": [
@@ -25,7 +55,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/coding-test/20240320010052.md",
+                "file": "STUDY/coding-test/20240322122952.md",
                 "mode": "source",
                 "source": false
               }
@@ -82,7 +112,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.50390243530273
+    "width": 278.50390243530273,
+    "collapsed": true
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -98,7 +129,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/coding-test/20240321083437.md",
+                "file": "STUDY/coding-test/20240322122952.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +146,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/coding-test/20240321083437.md",
+                "file": "STUDY/coding-test/20240322122952.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +169,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/coding-test/20240321083437.md"
+                "file": "STUDY/coding-test/20240322122952.md"
               }
             }
           },
@@ -189,56 +220,27 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "floating": {
-    "id": "2599130d59c97325",
-    "type": "floating",
-    "children": [
-      {
-        "id": "996522d33ebf5d2d",
-        "type": "window",
-        "children": [
-          {
-            "id": "a87bcbdcfc760ac2",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "9aac3f56927993ff",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "STUDY/coding-test/20240321083437.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 794,
-        "y": 0,
-        "width": 812,
-        "height": 1006,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
-  },
-  "active": "9aac3f56927993ff",
+  "active": "976d036081bcae2e",
   "lastOpenFiles": [
-    "STUDY/coding-test/20240320010052.md",
+    "STUDY/coding-test/20240322142654.md",
+    "STUDY/coding-test/20240322122952.md",
     "STUDY/coding-test/20240321083437.md",
+    "STUDY/coding-test/20240318125734.md",
+    "STUDY/coding-test/20240318083025.md",
+    "STUDY/coding-test/20240319013020.md",
+    "STUDY/coding-test/20240315025202.md",
+    "STUDY/coding-test/20240314105900.md",
+    "STUDY/coding-test/20240313023806.md",
+    "STUDY/coding-test/20240312075753.md",
+    "STUDY/coding-test/src/20240322123248.png",
+    "STUDY/coding-test/20240320010052.md",
     "STUDY/CSAPP/20240319065835.md",
     "STUDY/CSAPP/20240319065900.md",
-    "STUDY/coding-test/20240319013020.md",
     "STUDY/coding-test/src/Pasted image 20240320234355.png",
     "STUDY/coding-test/src/20240320234337.png",
     "STUDY/coding-test/src/20240320234317.png",
     "STUDY/coding-test/src/20240320234236.png",
     "STUDY/coding-test/src/20240320234156.png",
-    "STUDY/coding-test/20240318125734.md",
     "STUDY/JAVA/20240315121428.md",
     "20240320010055.md",
     "STUDY/docker-kubernetes/20240320111443.md",
@@ -251,20 +253,12 @@
     "STUDY/JAVA/src/20240320103309.png",
     "STUDY/JAVA/20240318000922.md",
     "STUDY/JAVA/20240320070614.md",
-    "STUDY/JAVA/src/20240320082105.png",
     "STUDY/coding-test/무제 파일.md",
     "STUDY/JS/20240318000923.md",
     "STUDY/CSAPP/20240304013822.md",
     "STUDY/JS/src",
     "STUDY/CSAPP/20240304013645.md",
-    "STUDY/coding-test/20240318083025.md",
     "algorithm/20220411_00.md",
-    "algorithm/20220414_07.md",
-    "algorithm/20220411_04.md",
-    "algorithm/20220411_05.md",
-    "algorithm/20220413_06.md",
-    "STUDY/coding-test/20240315025202.md",
-    "algorithm/20220427_18.md",
     "src",
     "무제 파일.canvas",
     "STUDY/JAVA/src/java_compilation.canvas",
