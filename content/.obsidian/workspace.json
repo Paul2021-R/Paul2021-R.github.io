@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ETC/20240324085132.md",
+                "file": "ETC/20240313075259.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ETC/20240324085132.md",
+                "file": "ETC/20240313075259.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ETC/20240324085132.md",
+                "file": "ETC/20240313075259.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ETC/20240324085132.md"
+                "file": "ETC/20240313075259.md"
               }
             }
           },
@@ -176,21 +176,29 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "b3ba29157a2787ec",
+  "active": "187a1c1a7c876f4c",
   "lastOpenFiles": [
+    "ETC/20240213115618.md",
+    "ETC/20240313075259.md",
+    "ETC/20240324085132.md",
+    "Projects/202305071839.md",
+    "Projects/202402010049.md",
+    "Projects/202402091238.md",
+    "Projects/20240223020331.md",
+    "Projects/20240223080156.md",
+    "Projects/BTBProject/20240325020721.md",
+    "Projects/BTBProject/src/20240325014534.png",
+    "Projects/BTBProject/src/20240325005955.png",
+    "Projects/BTBProject/src/20240325014116.png",
+    "Projects/BTBProject/src/20240313080756.png",
+    "Projects/BTBProject/src/20240313081203.png",
+    "Projects/BTBProject/src",
+    "Projects/BTBProject",
     "ETC/src/20240324235842.png",
     "ETC/src/20240324225942.png",
     "ETC/src/20240324224525.png",
     "ETC/src/20240324224407.png",
     "ETC/src/20240324224031.png",
-    "ETC/src/20240324222403.png",
-    "ETC/src/20240324222134.png",
-    "ETC/src/20240324214416.png",
-    "ETC/src/Peer_mockup-mobile-haryu.png",
-    "ETC/20240324085132.md",
-    "ETC/20240313075259.md",
-    "ETC/src/20240324213417.png",
-    "ETC/src/20240324213208.png",
     "STUDY/CSAPP/20240319065835.md",
     "STUDY/CSAPP/20240304013822.md",
     "STUDY/CSAPP/20240304013645.md",
@@ -208,12 +216,6 @@
     "STUDY/coding-test/20240312075753.md",
     "STUDY/JAVA/20240315121428.md",
     "20240320010055.md",
-    "STUDY/docker-kubernetes/20240320111443.md",
-    "STUDY/docker-kubernetes/20240312092035.md",
-    "STUDY/docker-kubernetes/20240315043632.md",
-    "STUDY/JAVA/20240320102457.md",
-    "STUDY/JAVA/20240318000922.md",
-    "STUDY/JAVA/20240320070614.md",
     "STUDY/JS/src",
     "src",
     "무제 파일.canvas",
@@ -223,8 +225,6 @@
     "STUDY/docker-kubernetes",
     "STUDY/coding-test/src",
     "STUDY/coding-test",
-    "STUDY/CSAPP",
-    "STUDY/CSAPP/src",
-    "resume/src/20240201_gemgem_resume_blank - Google Docs.pdf"
+    "STUDY/CSAPP"
   ]
 }
