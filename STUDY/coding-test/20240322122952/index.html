@@ -195,6 +195,121 @@
 </ul>
 <div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">if</span> <span class="token builtin">id</span> <span class="token keyword">in</span> thisIterableList<span class="token punctuation">:</span>
 	<span class="token keyword">break</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span></span></pre></div>
+<ul>
+<li>popLeft 를 활용해서 들어온 출구에서 값을 빼면서 지우는거, 잘 활용하면 코드 2줄 정도 줄인다.</li>
+<li>람다 함수를 사용하는 것과, 함수 자체를 사용하여 key 등의 조건으로 넣는 것이 가능하다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python">array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'홍길동'</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'이순신'</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'아무개'</span><span class="token punctuation">,</span> <span class="token number">74</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+<span class="token keyword">def</span> <span class="token function">my_key</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">return</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">sorted</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> key<span class="token operator">=</span>my_key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">sorted</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 실행결과</span>
+<span class="token comment"># [('이순신', 32), ('홍길동', 50), ('아무개', 74)]</span>
+<span class="token comment"># [('이순신', 32), ('홍길동', 50), ('아무개', 74)]</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># 람다 표현식의 예시 : 여러 개의 리스트에 적용</span>
+list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
+list2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span>
+
+result <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> a<span class="token punctuation">,</span> b<span class="token punctuation">:</span> a <span class="token operator">+</span> b<span class="token punctuation">,</span> list1<span class="token punctuation">,</span> list2<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 실행 결과</span>
+<span class="token comment"># [7, 9, 11, 13, 15]</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li><code class="language-text">eval</code> = 문자열 형변환 없이 알아서 수식을 계산해주는 고마운 친구…!</li>
+<li>sorted 메서드를 통해 정렬시 key는 람다로 하면 편리하다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python">array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'홍길동'</span><span class="token punctuation">,</span> <span class="token number">35</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'이순신'</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'아무개'</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+result <span class="token operator">=</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>순열과 조합..!!! 이거라도 기억해두자
+<ul>
+<li>순열 서로 다른 n 개에서 r개를 선택해 일렬로 나열하는 것</li>
+<li>조합 : 서로 다른 n 개에서 순서 상관없이 서로 다른 r개를 선택하는 것</li>
+</ul>
+</li>
+</ul>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">from</span> itertools <span class="token keyword">import</span> permutations
+<span class="token comment"># 순열에서 이용 가능한 라이브러리</span>
+
+data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token string">'C'</span><span class="token punctuation">]</span> <span class="token comment"># 데이터 준비</span>
+result <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>permutations<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment"># 모든 순열 구하기</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+
+<span class="token comment"># 실행결과</span>
+<span class="token comment"># [('A', 'B', 'C'), ('A', 'C', 'B'), ('B', 'A', 'C'), ('B', 'C', 'A'), ('C', 'A', 'B'), ('C', 'B', 'A')]</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">from</span> itertools <span class="token keyword">import</span> combinations
+<span class="token comment"># 기억해!!!itertools!!!!</span>
+
+data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">,</span><span class="token string">'B'</span><span class="token punctuation">,</span><span class="token string">'C'</span><span class="token punctuation">]</span> <span class="token comment"># 데이터 준비</span>
+
+result <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>combinations<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+
+<span class="token comment"># 실행 결과</span>
+<span class="token comment"># [('A', 'B'), ('A', 'C'), ('B', 'C')]</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>Counter 기능
+<ul>
+<li>iuterable 한 객체를 넣고, 값으로 찾으면 내부 원소에서 몇 번째에 있는지를 알려준다. <code class="language-text">dict</code> 짱 유용함</li>
+</ul>
+</li>
+</ul>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">from</span> collections <span class="token keyword">import</span> Counter
+
+counter <span class="token operator">=</span> Counter<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'red'</span><span class="token punctuation">,</span> <span class="token string">'blue'</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">,</span> <span class="token string">'gree'</span><span class="token punctuation">,</span> <span class="token string">'blue'</span><span class="token punctuation">,</span> <span class="token string">'blue'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>counter<span class="token punctuation">[</span><span class="token string">'blue'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>counter<span class="token punctuation">[</span><span class="token string">'green'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">dict</span><span class="token punctuation">(</span>counter<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 실행 결과</span>
+<span class="token comment"># 3</span>
+<span class="token comment"># 1</span>
+<span class="token comment"># ('red': 2, 'blue': 3, 'green',: 1)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>최대 공약수와 최소 공배수, 항상 구현하기 빡센데 한번에 끝내자…!
+<ul>
+<li><code class="language-text">math</code> 라이브러리를 참고하자</li>
+</ul>
+</li>
+</ul>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">import</span> math
+
+<span class="token keyword">def</span> <span class="token function">lcm</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> a <span class="token operator">*</span> b <span class="token operator">//</span> math<span class="token punctuation">.</span>gcd<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+
+a <span class="token operator">=</span> <span class="token number">21</span>
+b <span class="token operator">=</span> <span class="token number">14</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>math<span class="token punctuation">.</span>gcd<span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 최대 공약수(GCD) 계산</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>lcm<span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 최소 공약수(LCM) 계산</span>
+
+<span class="token comment"># 실행 결과</span>
+<span class="token comment"># 7</span>
+<span class="token comment"># 42</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>유클리드 호제법 최대 공약수 계산 방식</li>
+</ul>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">def</span> <span class="token function">gcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	get <span class="token operator">=</span> a <span class="token operator">%</span> b
+	<span class="token keyword">if</span> get <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">:</span>
+		<span class="token keyword">return</span> b
+	<span class="token keyword">return</span> gcd<span class="token punctuation">(</span>b<span class="token punctuation">,</span> get<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>gcd<span class="token punctuation">(</span><span class="token number">192</span><span class="token punctuation">,</span> <span class="token number">162</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>DFS 는 재귀 + 방문 여부를 통해 확실하게 방문 안한 곳에 대해서 방문하는 구조면 된다. 대신 방향성이 없어야 가능하니 주의
+<ul>
+<li>BFS와 차이점, 우선 가능한 기준 루트 노드에서 1차 뎁스를 다보고 다음으로 가냐, 반대로 1차 뎁스에서, 2, 3차까지 깊게 들어갔다 나오냐.</li>
+</ul>
+</li>
+</ul>
 <hr>
 <p>일단 프로그래머스 가장 난이도 높은 카카오 LV1~2 몇 문제까진 풀수 있었다.
 파이썬이고, 그래도 강의를 좀 보면서 문법에  빨리 적응이 되서 다행이다. 새벽에 일어나서 추가적으로 방법론좀 더 머리속에 넣고 딱 2문제만 제대로 풀었으면…!</p>
