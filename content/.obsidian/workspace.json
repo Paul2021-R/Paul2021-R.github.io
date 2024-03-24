@@ -4,36 +4,6 @@
     "type": "split",
     "children": [
       {
-        "id": "b3beac625898b88d",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "fc4a8d29a5654174",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/coding-test/20240322142654.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "69e945e0b6694029",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/coding-test/20240321083437.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
         "id": "8714793418502c6b",
         "type": "tabs",
         "children": [
@@ -43,26 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/coding-test/20240320010052.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "976d036081bcae2e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/coding-test/20240322122952.md",
+                "file": "ETC/20240324085132.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -112,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.50390243530273,
-    "collapsed": true
+    "width": 278.50390243530273
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -129,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/coding-test/20240322122952.md",
+                "file": "ETC/20240324085132.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -146,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/coding-test/20240322122952.md",
+                "file": "ETC/20240324085132.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/coding-test/20240322122952.md"
+                "file": "ETC/20240324085132.md"
               }
             }
           },
@@ -220,10 +176,28 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "976d036081bcae2e",
+  "active": "b3ba29157a2787ec",
   "lastOpenFiles": [
-    "STUDY/coding-test/20240322142654.md",
+    "ETC/src/20240324235842.png",
+    "ETC/src/20240324225942.png",
+    "ETC/src/20240324224525.png",
+    "ETC/src/20240324224407.png",
+    "ETC/src/20240324224031.png",
+    "ETC/src/20240324222403.png",
+    "ETC/src/20240324222134.png",
+    "ETC/src/20240324214416.png",
+    "ETC/src/Peer_mockup-mobile-haryu.png",
+    "ETC/20240324085132.md",
+    "ETC/20240313075259.md",
+    "ETC/src/20240324213417.png",
+    "ETC/src/20240324213208.png",
+    "STUDY/CSAPP/20240319065835.md",
+    "STUDY/CSAPP/20240304013822.md",
+    "STUDY/CSAPP/20240304013645.md",
+    "STUDY/CSAPP/20240319065900.md",
     "STUDY/coding-test/20240322122952.md",
+    "STUDY/coding-test/20240322142654.md",
+    "STUDY/coding-test/20240320010052.md",
     "STUDY/coding-test/20240321083437.md",
     "STUDY/coding-test/20240318125734.md",
     "STUDY/coding-test/20240318083025.md",
@@ -232,33 +206,15 @@
     "STUDY/coding-test/20240314105900.md",
     "STUDY/coding-test/20240313023806.md",
     "STUDY/coding-test/20240312075753.md",
-    "STUDY/coding-test/src/20240322123248.png",
-    "STUDY/coding-test/20240320010052.md",
-    "STUDY/CSAPP/20240319065835.md",
-    "STUDY/CSAPP/20240319065900.md",
-    "STUDY/coding-test/src/Pasted image 20240320234355.png",
-    "STUDY/coding-test/src/20240320234337.png",
-    "STUDY/coding-test/src/20240320234317.png",
-    "STUDY/coding-test/src/20240320234236.png",
-    "STUDY/coding-test/src/20240320234156.png",
     "STUDY/JAVA/20240315121428.md",
     "20240320010055.md",
     "STUDY/docker-kubernetes/20240320111443.md",
     "STUDY/docker-kubernetes/20240312092035.md",
     "STUDY/docker-kubernetes/20240315043632.md",
     "STUDY/JAVA/20240320102457.md",
-    "STUDY/JAVA/src/20240320105619.png",
-    "STUDY/JAVA/src/20240320105550.png",
-    "STUDY/JAVA/src/20240320105400.png",
-    "STUDY/JAVA/src/20240320103309.png",
     "STUDY/JAVA/20240318000922.md",
     "STUDY/JAVA/20240320070614.md",
-    "STUDY/coding-test/무제 파일.md",
-    "STUDY/JS/20240318000923.md",
-    "STUDY/CSAPP/20240304013822.md",
     "STUDY/JS/src",
-    "STUDY/CSAPP/20240304013645.md",
-    "algorithm/20220411_00.md",
     "src",
     "무제 파일.canvas",
     "STUDY/JAVA/src/java_compilation.canvas",
