@@ -4,11 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "126fa024fcb10138",
+        "id": "a540cf97df29bb4d",
         "type": "tabs",
         "children": [
           {
-            "id": "2aecedbfc4f6f71c",
+            "id": "e6cebdd1d939fe14",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/coding-test/20240326075623.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f846bc575e45108c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -19,7 +31,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -69,8 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.50390243530273,
-    "collapsed": true
+    "width": 278.50390243530273
   },
   "right": {
     "id": "b6a6c17943c2b9af",
@@ -179,10 +191,27 @@
   },
   "active": "b3ba29157a2787ec",
   "lastOpenFiles": [
-    "STUDY/CSAPP/20240319065835.md",
+    "STUDY/CSAPP/src/20240328173743.png",
+    "STUDY/CSAPP/20240326145800.md",
+    "STUDY/CSAPP/20240228110608.md",
     "STUDY/CSAPP/20240325204649.md",
-    "STUDY/CSAPP/20240319065900.md",
+    "STUDY/CSAPP/src/20240328173153.png",
+    "ETC/20240313075259.md",
+    "STUDY/coding-test/20240326075623.md",
+    "ETC/20240324085132.md",
     "ETC/20240325202620.md",
+    "Projects/202305071839.md",
+    "Projects/202402010049.md",
+    "Projects/202402091238.md",
+    "Projects/20240223020331.md",
+    "Projects/20240223080156.md",
+    "Projects/BTBProject/20240325020721.md",
+    "STUDY/coding-test/20240321083437.md",
+    "STUDY/coding-test/20240322122952.md",
+    "STUDY/coding-test/20240322142654.md",
+    "STUDY/CSAPP/20240319065900.md",
+    "STUDY/CSAPP/src/20240326145821.png",
+    "STUDY/CSAPP/20240319065835.md",
     "STUDY/docker-kubernetes/20240320111443.md",
     "STUDY/docker-kubernetes/src/20240325160217.png",
     "STUDY/docker-kubernetes/src/20240325155856.png",
@@ -194,29 +223,12 @@
     "STUDY/JAVA/src/20240325114239.png",
     "STUDY/JAVA/src/20240325112219.png",
     "STUDY/JAVA/src/20240325112008.png",
-    "ETC/20240313075259.md",
     "ETC/20240213115618.md",
-    "ETC/20240324085132.md",
-    "Projects/202305071839.md",
-    "Projects/202402010049.md",
-    "Projects/202402091238.md",
-    "Projects/20240223020331.md",
-    "Projects/20240223080156.md",
-    "Projects/BTBProject/20240325020721.md",
     "Projects/BTBProject/src/20240325014534.png",
-    "Projects/BTBProject/src/20240325005955.png",
-    "Projects/BTBProject/src/20240325014116.png",
     "Projects/BTBProject/src",
     "Projects/BTBProject",
     "STUDY/CSAPP/20240304013822.md",
     "STUDY/CSAPP/20240304013645.md",
-    "STUDY/coding-test/20240322122952.md",
-    "STUDY/coding-test/20240322142654.md",
-    "STUDY/coding-test/20240320010052.md",
-    "STUDY/coding-test/20240321083437.md",
-    "STUDY/coding-test/20240318125734.md",
-    "STUDY/coding-test/20240318083025.md",
-    "STUDY/coding-test/20240319013020.md",
     "STUDY/JS/src",
     "src",
     "무제 파일.canvas",
