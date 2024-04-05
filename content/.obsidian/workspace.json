@@ -21,7 +21,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/BTBProject/20240406013846.md",
+                "file": "STUDY/Lua Script/20240406024425.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Projects/BTBProject/20240406013846.md",
+                "file": "STUDY/Lua Script/20240406024425.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Projects/BTBProject/20240406013846.md",
+                "file": "STUDY/Lua Script/20240406024425.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Projects/BTBProject/20240406013846.md"
+                "file": "STUDY/Lua Script/20240406024425.md"
               }
             }
           },
@@ -185,10 +185,17 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "58bff65ef115eb9c",
+  "active": "b3ba29157a2787ec",
   "lastOpenFiles": [
-    "Projects/BTBProject/20240328104040.md",
+    "STUDY/Lua Script/src/20240406031802.png",
+    "STUDY/Lua Script/src/20240406031413.png",
+    "STUDY/Lua Script/src/20240406030506.png",
+    "STUDY/Lua Script/src",
     "Projects/BTBProject/20240406013846.md",
+    "STUDY/Lua Script/20240406024425.md",
+    "STUDY/Lua Script/무제 파일.md",
+    "STUDY/Lua Script",
+    "Projects/BTBProject/20240328104040.md",
     "ETC/src/20240404215240.png",
     "ETC/src/20240404214952.png",
     "STUDY/CSAPP/20240402021138.md",
@@ -200,8 +207,6 @@
     "ETC/20240213115618.md",
     "ETC/src/20240404211349.png",
     "ETC/src/20240404211230.png",
-    "ETC/src/20240404211206.png",
-    "ETC/src/20240404194536.png",
     "ETC/20240324085132.md",
     "STUDY/CSAPP/20240402021132.md",
     "STUDY/JAVA/20240325102040.md",
@@ -220,9 +225,6 @@
     "STUDY/coding-test/20240326075623.md",
     "STUDY/coding-test/20240328075504.md",
     "STUDY/CSAPP/20240228110608.md",
-    "ETC/20240313075259.md",
-    "Projects/202305071839.md",
-    "Projects/202402010049.md",
     "Projects/BTBProject/src",
     "Projects/BTBProject",
     "STUDY/JS/src",
@@ -232,8 +234,6 @@
     "STUDY/JS",
     "STUDY/docker-kubernetes/src",
     "STUDY/docker-kubernetes",
-    "STUDY/coding-test/src",
-    "STUDY/coding-test",
-    "STUDY/CSAPP"
+    "STUDY/coding-test/src"
   ]
 }
