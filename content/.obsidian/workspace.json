@@ -8,27 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "3683bdf99bd72412",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
             "id": "58bff65ef115eb9c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/Lua Script/20240406024425.md",
+                "file": "Projects/BTBProject/20240328104040.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -94,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/Lua Script/20240406024425.md",
+                "file": "Projects/BTBProject/20240328104040.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/Lua Script/20240406024425.md",
+                "file": "Projects/BTBProject/20240328104040.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/Lua Script/20240406024425.md"
+                "file": "Projects/BTBProject/20240328104040.md"
               }
             }
           },
@@ -185,14 +176,19 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "b3ba29157a2787ec",
+  "active": "58bff65ef115eb9c",
   "lastOpenFiles": [
+    "Projects/BTBProject/src/background-change-demo.jpg",
+    "Projects/BTBProject/src/main-board-comment.png",
+    "Projects/BTBProject/src/main-profile.png",
+    "Projects/BTBProject/src/background-change-demo.png",
+    "Projects/BTBProject/src/Pasted image 20240407222722.png",
+    "Projects/BTBProject/20240406013846.md",
+    "STUDY/Lua Script/20240406024425.md",
     "STUDY/Lua Script/src/20240406031802.png",
     "STUDY/Lua Script/src/20240406031413.png",
     "STUDY/Lua Script/src/20240406030506.png",
     "STUDY/Lua Script/src",
-    "Projects/BTBProject/20240406013846.md",
-    "STUDY/Lua Script/20240406024425.md",
     "STUDY/Lua Script/무제 파일.md",
     "STUDY/Lua Script",
     "Projects/BTBProject/20240328104040.md",
@@ -201,12 +197,7 @@
     "STUDY/CSAPP/20240402021138.md",
     "ETC/20240325202620.md",
     "ETC/src/20240404214427.png",
-    "ETC/src/20240404213957.png",
-    "ETC/src/HJwFxTucSYPhFSXVe_ODk8EGyYklrmhQNVJsUF9eHPnWyfvpABpMHEnmqZPUkEv9AJkl12KO_CNiy8b5tu3vyI_-wbuUUTP2h5fS3C_6P2ETpW_lOK5idslgS0ZOCT04tIP3-CdC74sCH4NejnxRNw.webp",
-    "ETC/src/20240404213447.png",
     "ETC/20240213115618.md",
-    "ETC/src/20240404211349.png",
-    "ETC/src/20240404211230.png",
     "ETC/20240324085132.md",
     "STUDY/CSAPP/20240402021132.md",
     "STUDY/JAVA/20240325102040.md",
