@@ -13,7 +13,31 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "ETC/20240408222022.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f56858cb74e8f996",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "ETC/20240408071348.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "060c0c7a5cbbe723",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ETC/20240408222308.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ETC/20240408071348.md",
+                "file": "ETC/20240408222022.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ETC/20240408071348.md",
+                "file": "ETC/20240408222022.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ETC/20240408071348.md"
+                "file": "ETC/20240408222022.md"
               }
             }
           },
@@ -178,27 +202,29 @@
   },
   "active": "b3ba29157a2787ec",
   "lastOpenFiles": [
+    "ETC/src/20240409015044.png",
+    "ETC/src/20240409015024.png",
+    "ETC/src/20240409005017.png",
+    "ETC/src/20240409003053.png",
+    "ETC/src/20240409002925.png",
+    "ETC/src/20240409002657.png",
+    "ETC/20240408222308.md",
+    "ETC/20240408222022.md",
+    "ETC/20240325202620.md",
+    "ETC/20240408071348.md",
     "ETC/src/20240408073121.png",
     "ETC/src/20240408071517.png",
     "Projects/BTBProject/20240328104040.md",
-    "ETC/20240408071348.md",
     "ETC/무제 파일.md",
     "Projects/BTBProject/src/background-change-demo.jpg",
     "Projects/BTBProject/src/main-board-comment.png",
     "Projects/BTBProject/src/main-profile.png",
-    "Projects/BTBProject/src/background-change-demo.png",
-    "Projects/BTBProject/src/Pasted image 20240407222722.png",
     "Projects/BTBProject/20240406013846.md",
     "STUDY/Lua Script/20240406024425.md",
-    "STUDY/Lua Script/src/20240406031802.png",
-    "STUDY/Lua Script/src/20240406031413.png",
-    "STUDY/Lua Script/src/20240406030506.png",
     "STUDY/Lua Script/src",
     "STUDY/Lua Script/무제 파일.md",
     "STUDY/Lua Script",
-    "ETC/src/20240404215240.png",
     "STUDY/CSAPP/20240402021138.md",
-    "ETC/20240325202620.md",
     "ETC/20240213115618.md",
     "ETC/20240324085132.md",
     "STUDY/CSAPP/20240402021132.md",
@@ -214,8 +240,6 @@
     "STUDY/docker-kubernetes/20240320111443.md",
     "STUDY/CSAPP/20240326145800.md",
     "STUDY/CSAPP/20240325204649.md",
-    "Projects/BTBProject/20240325020721.md",
-    "STUDY/coding-test/20240326075623.md",
     "Projects/BTBProject/src",
     "Projects/BTBProject",
     "STUDY/JS/src",
