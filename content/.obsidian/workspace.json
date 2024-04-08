@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/BTBProject/20240328104040.md",
+                "file": "ETC/20240408071348.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Projects/BTBProject/20240328104040.md",
+                "file": "ETC/20240408071348.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Projects/BTBProject/20240328104040.md",
+                "file": "ETC/20240408071348.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Projects/BTBProject/20240328104040.md"
+                "file": "ETC/20240408071348.md"
               }
             }
           },
@@ -176,8 +176,13 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "58bff65ef115eb9c",
+  "active": "b3ba29157a2787ec",
   "lastOpenFiles": [
+    "ETC/src/20240408073121.png",
+    "ETC/src/20240408071517.png",
+    "Projects/BTBProject/20240328104040.md",
+    "ETC/20240408071348.md",
+    "ETC/무제 파일.md",
     "Projects/BTBProject/src/background-change-demo.jpg",
     "Projects/BTBProject/src/main-board-comment.png",
     "Projects/BTBProject/src/main-profile.png",
@@ -191,12 +196,9 @@
     "STUDY/Lua Script/src",
     "STUDY/Lua Script/무제 파일.md",
     "STUDY/Lua Script",
-    "Projects/BTBProject/20240328104040.md",
     "ETC/src/20240404215240.png",
-    "ETC/src/20240404214952.png",
     "STUDY/CSAPP/20240402021138.md",
     "ETC/20240325202620.md",
-    "ETC/src/20240404214427.png",
     "ETC/20240213115618.md",
     "ETC/20240324085132.md",
     "STUDY/CSAPP/20240402021132.md",
@@ -214,8 +216,6 @@
     "STUDY/CSAPP/20240325204649.md",
     "Projects/BTBProject/20240325020721.md",
     "STUDY/coding-test/20240326075623.md",
-    "STUDY/coding-test/20240328075504.md",
-    "STUDY/CSAPP/20240228110608.md",
     "Projects/BTBProject/src",
     "Projects/BTBProject",
     "STUDY/JS/src",
