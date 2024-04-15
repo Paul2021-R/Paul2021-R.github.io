@@ -4,40 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "e1f9ce62fa5869f1",
+        "id": "548c41fbdc9238fb",
         "type": "tabs",
         "children": [
           {
-            "id": "40d12c212b2a121e",
+            "id": "fc7f91c3bf4ccc35",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ETC/20240408222022.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "58bff65ef115eb9c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/CSAPP/20240402021132.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "060c0c7a5cbbe723",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ETC/20240408222308.md",
+                "file": "STUDY/CSAPP/20240415110026.md",
                 "mode": "source",
                 "source": false
               }
@@ -109,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ETC/20240408222022.md",
+                "file": "STUDY/CSAPP/20240415110026.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ETC/20240408222022.md",
+                "file": "STUDY/CSAPP/20240415110026.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ETC/20240408222022.md"
+                "file": "STUDY/CSAPP/20240415110026.md"
               }
             }
           },
@@ -200,10 +176,13 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "40d12c212b2a121e",
+  "active": "b3ba29157a2787ec",
   "lastOpenFiles": [
-    "ETC/20240408222308.md",
+    "STUDY/CSAPP/src/20240415112228.png",
     "STUDY/CSAPP/20240409213823.md",
+    "STUDY/CSAPP/20240415110026.md",
+    "ETC/20240408222022.md",
+    "ETC/20240408222308.md",
     "STUDY/CSAPP/src/20240412021432.png",
     "STUDY/CSAPP/src/20240412013347.png",
     "STUDY/CSAPP/src/20240412000136.png",
@@ -219,7 +198,6 @@
     "STUDY/CSAPP/20240402021132.md",
     "ETC/20240408071348.md",
     "STUDY/CSAPP/20240402021138.md",
-    "ETC/20240408222022.md",
     "ETC/20240325202620.md",
     "Projects/BTBProject/20240328104040.md",
     "ETC/무제 파일.md",
@@ -239,7 +217,6 @@
     "STUDY/JAVA/202401020948.md",
     "STUDY/docker-kubernetes/20240325014749.md",
     "STUDY/docker-kubernetes/20240315043632.md",
-    "STUDY/docker-kubernetes/20240320111443.md",
     "Projects/BTBProject/src",
     "Projects/BTBProject",
     "STUDY/JS/src",
