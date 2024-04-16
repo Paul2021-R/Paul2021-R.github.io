@@ -4,75 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "548c41fbdc9238fb",
+        "id": "ca8abd25b8481862",
         "type": "tabs",
         "children": [
           {
-            "id": "fc7f91c3bf4ccc35",
+            "id": "5f1fcfce6e4e1771",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/JAVA/20240416132638.md",
+                "file": "STUDY/coding-test/20240416221753.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "a7d7f6304da7a3e7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/docker-kubernetes/20240416203739.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4d084a6311df632e",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "STUDY/JAVA/src/20240403214330.png"
-              }
-            }
-          },
-          {
-            "id": "b1e40274dbd2ab11",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "STUDY/JAVA/src/20240403214330.png"
-              }
-            }
-          },
-          {
-            "id": "775231ee6769259b",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "STUDY/JAVA/src/20240403213641.png"
-              }
-            }
-          },
-          {
-            "id": "c542b3952ec1fa8c",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "STUDY/JAVA/src/20240403213641.png"
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -139,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240416203739.md",
+                "file": "STUDY/coding-test/20240416221753.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -156,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240416203739.md",
+                "file": "STUDY/coding-test/20240416221753.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -179,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240416203739.md"
+                "file": "STUDY/coding-test/20240416221753.md"
               }
             }
           },
@@ -230,19 +177,21 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "b3ba29157a2787ec",
+  "active": "5f1fcfce6e4e1771",
   "lastOpenFiles": [
+    "STUDY/coding-test/20240328075504.md",
+    "STUDY/coding-test/20240416221753.md",
+    "STUDY/JAVA/src/20240403213641.png",
+    "STUDY/JAVA/src/20240403214330.png",
+    "STUDY/docker-kubernetes/20240416203739.md",
     "STUDY/docker-kubernetes/src/20240416215827.png",
     "STUDY/docker-kubernetes/src/Group_11.png",
     "STUDY/docker-kubernetes/src/20240416211915.png",
     "STUDY/docker-kubernetes/src/20240416211201.png",
     "STUDY/docker-kubernetes/20240325014749.md",
-    "STUDY/docker-kubernetes/20240416203739.md",
     "STUDY/JAVA/20240416132638.md",
     "STUDY/JAVA/src/20240416132847.png",
     "STUDY/JAVA/20240403091151.md",
-    "STUDY/JAVA/src/20240403214330.png",
-    "STUDY/JAVA/src/20240403213641.png",
     "STUDY/JAVA/src/20240325132406.png",
     "STUDY/JAVA/20240325102040.md",
     "STUDY/JAVA/src/java_compilation_2.png",
@@ -251,7 +200,6 @@
     "STUDY/CSAPP/20240409213823.md",
     "ETC/20240408222022.md",
     "ETC/20240408222308.md",
-    "STUDY/CSAPP/src/20240412021432.png",
     "ETC/20240410093309.md",
     "src",
     "STUDY/CSAPP/20240402021132.md",
@@ -270,7 +218,6 @@
     "STUDY/JAVA/20240304024643.md",
     "STUDY/JAVA/20240318000922.md",
     "STUDY/JAVA/20240320070614.md",
-    "STUDY/JAVA/20240315121428.md",
     "Projects/BTBProject/src",
     "Projects/BTBProject",
     "STUDY/JS/src",
