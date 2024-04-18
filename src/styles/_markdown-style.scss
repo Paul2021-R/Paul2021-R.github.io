@@ -102,7 +102,7 @@
   border-style: none;
   border-radius: 10px;
   object-fit: contain;
-  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.5);
+  // box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.5);
 }
 
 // .markdown img::after {
@@ -1098,12 +1098,12 @@
     width: auto !important;
     height: auto !important;
     position: relative !important;
-	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3) !important;
+	// box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3) !important;
   } 
 }
 
 .markdown .gatsby-resp-image-wrapper::after {
-  content: "Haryu's blog";
+  content: "Hansol Ryu";
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 3px;
   color: #ffffff;

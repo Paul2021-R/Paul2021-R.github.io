@@ -1,22 +1,18 @@
 {
   "main": {
-    "id": "a6b884d3837e35ed",
+    "id": "178bf2dd5eab2778",
     "type": "split",
     "children": [
       {
-        "id": "ca8abd25b8481862",
+        "id": "b6e439aa87107d9c",
         "type": "tabs",
         "children": [
           {
-            "id": "5f1fcfce6e4e1771",
+            "id": "f4c053c313061276",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/coding-test/20240416221753.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -25,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "7441f42ac3d5ff94",
+    "id": "403d3efeacc5a17e",
     "type": "split",
     "children": [
       {
-        "id": "47e3da37a76877d7",
+        "id": "83c88345072a7cfe",
         "type": "tabs",
         "children": [
           {
-            "id": "b3ba29157a2787ec",
+            "id": "799749a987e50230",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,12 +39,12 @@
             }
           },
           {
-            "id": "18182ae0e5e47f97",
+            "id": "c88cd54611af3a02",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "20240403213641",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -58,7 +54,7 @@
             }
           },
           {
-            "id": "ab280537dfa82a03",
+            "id": "c0dcdcfbacfb7264",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -69,24 +65,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.50390243530273,
-    "collapsed": true
+    "width": 300
   },
   "right": {
-    "id": "b6a6c17943c2b9af",
+    "id": "02d5a075cc6688b0",
     "type": "split",
     "children": [
       {
-        "id": "4bacca91a226b62a",
+        "id": "351487c17463981f",
         "type": "tabs",
         "children": [
           {
-            "id": "39fb62ec8d7bc7e6",
+            "id": "d072e1009a74852d",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/coding-test/20240416221753.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,19 +92,18 @@
             }
           },
           {
-            "id": "58c3b6ac2d86db02",
+            "id": "fb309fe5d353798b",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/coding-test/20240416221753.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "61d12ac229d8a26c",
+            "id": "bf7135e6777ae186",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -121,49 +114,18 @@
             }
           },
           {
-            "id": "375082450b77412e",
+            "id": "8d29762cb8455381",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "STUDY/coding-test/20240416221753.md"
-              }
-            }
-          },
-          {
-            "id": "f5076e4cf16ee38f",
-            "type": "leaf",
-            "state": {
-              "type": "copilot-chat-view",
-              "state": {}
-            }
-          },
-          {
-            "id": "ed7b65ed1e7f49d4",
-            "type": "leaf",
-            "state": {
-              "type": "all-properties",
-              "state": {
-                "sortOrder": "frequency",
-                "showSearch": false,
-                "searchQuery": ""
-              }
-            }
-          },
-          {
-            "id": "d97eca6a2a3413f1",
-            "type": "leaf",
-            "state": {
-              "type": "advanced-tables-toolbar",
               "state": {}
             }
           }
-        ],
-        "currentTab": 6
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 398.5,
+    "width": 300,
     "collapsed": true
   },
   "left-ribbon": {
@@ -173,59 +135,9 @@
       "canvas:새 캔버스 만들기": false,
       "daily-notes:오늘의 데일리 노트 열기": false,
       "templates:템플릿 삽입": false,
-      "command-palette:명령어 팔레트 열기": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false
+      "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "5f1fcfce6e4e1771",
-  "lastOpenFiles": [
-    "STUDY/coding-test/20240328075504.md",
-    "STUDY/coding-test/20240416221753.md",
-    "STUDY/JAVA/src/20240403213641.png",
-    "STUDY/JAVA/src/20240403214330.png",
-    "STUDY/docker-kubernetes/20240416203739.md",
-    "STUDY/docker-kubernetes/src/20240416215827.png",
-    "STUDY/docker-kubernetes/src/Group_11.png",
-    "STUDY/docker-kubernetes/src/20240416211915.png",
-    "STUDY/docker-kubernetes/src/20240416211201.png",
-    "STUDY/docker-kubernetes/20240325014749.md",
-    "STUDY/JAVA/20240416132638.md",
-    "STUDY/JAVA/src/20240416132847.png",
-    "STUDY/JAVA/20240403091151.md",
-    "STUDY/JAVA/src/20240325132406.png",
-    "STUDY/JAVA/20240325102040.md",
-    "STUDY/JAVA/src/java_compilation_2.png",
-    "STUDY/CSAPP/20240415110026.md",
-    "STUDY/CSAPP/src/20240415112228.png",
-    "STUDY/CSAPP/20240409213823.md",
-    "ETC/20240408222022.md",
-    "ETC/20240408222308.md",
-    "ETC/20240410093309.md",
-    "src",
-    "STUDY/CSAPP/20240402021132.md",
-    "ETC/20240408071348.md",
-    "STUDY/CSAPP/20240402021138.md",
-    "ETC/20240325202620.md",
-    "Projects/BTBProject/20240328104040.md",
-    "ETC/무제 파일.md",
-    "Projects/BTBProject/20240406013846.md",
-    "STUDY/Lua Script/20240406024425.md",
-    "STUDY/Lua Script/src",
-    "STUDY/Lua Script/무제 파일.md",
-    "STUDY/Lua Script",
-    "ETC/20240213115618.md",
-    "ETC/20240324085132.md",
-    "STUDY/JAVA/20240304024643.md",
-    "STUDY/JAVA/20240318000922.md",
-    "STUDY/JAVA/20240320070614.md",
-    "Projects/BTBProject/src",
-    "Projects/BTBProject",
-    "STUDY/JS/src",
-    "무제 파일.canvas",
-    "STUDY/JAVA/src/java_compilation.canvas",
-    "STUDY/JS",
-    "STUDY/docker-kubernetes/src",
-    "STUDY/docker-kubernetes",
-    "STUDY/coding-test/src"
-  ]
+  "active": "f4c053c313061276",
+  "lastOpenFiles": []
 }
