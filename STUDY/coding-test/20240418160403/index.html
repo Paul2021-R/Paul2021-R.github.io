@@ -48,42 +48,425 @@
         }
       }
     })
-  </script><title data-react-helmet="true">CSAPP-2024-03-2주차-정리</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="CSAPP-2024-03-2주차-정리"/><meta data-react-helmet="true" property="og:site_title" content="CSAPP-2024-03-2주차-정리"/><meta data-react-helmet="true" name="description" content="2024년 3월 2주차 Chapter 2 Representing and Manipulating Information 현대 컴퓨터는 이진 신호를 사용해 정보를 저장하고 처리한다. 이진수, 또는 비트는 디지털 혁명의 기반이며, 십진법에 비해 기계 설계에 더 적합하다. 단일 비트는 제한된 정보만을 표현하지만, 비트를 그룹화하고 의미를 부여함으로써 다양한 데이터를 인코딩할 수 있다. 이 장에서는 이진수 시스템, 표준 문자 코드, 음수 및 실수 표현을 포함한 여러 인코딩 방식을 다룬다. 이를 통해 컴퓨터는 숫자, 문자, 실수 등을 효율적으로 표현할 수 있다. 숫자의 컴퓨터 표현에는 부호 없는 인코딩, 2의 보수 인코딩, 부동 소수점 인코딩 등 세 가지 주요 방식이 있다. 이들은 각각 0 이상의 수, 정수, 실수를 표현하는 데 사용된다. 컴퓨터는 제한된 비트 수를 사용해 숫자를 인코딩하기 때문에, 일부 연산 결과는 오버플로우를 경험할 수 있다. 현대 컴퓨터는 예상과 다른 결과를 낼 수 있지만…"/><meta data-react-helmet="true" property="og:description" content="2024년 3월 2주차 Chapter 2 Representing and Manipulating Information 현대 컴퓨터는 이진 신호를 사용해 정보를 저장하고 처리한다. 이진수, 또는 비트는 디지털 혁명의 기반이며, 십진법에 비해 기계 설계에 더 적합하다. 단일 비트는 제한된 정보만을 표현하지만, 비트를 그룹화하고 의미를 부여함으로써 다양한 데이터를 인코딩할 수 있다. 이 장에서는 이진수 시스템, 표준 문자 코드, 음수 및 실수 표현을 포함한 여러 인코딩 방식을 다룬다. 이를 통해 컴퓨터는 숫자, 문자, 실수 등을 효율적으로 표현할 수 있다. 숫자의 컴퓨터 표현에는 부호 없는 인코딩, 2의 보수 인코딩, 부동 소수점 인코딩 등 세 가지 주요 방식이 있다. 이들은 각각 0 이상의 수, 정수, 실수를 표현하는 데 사용된다. 컴퓨터는 제한된 비트 수를 사용해 숫자를 인코딩하기 때문에, 일부 연산 결과는 오버플로우를 경험할 수 있다. 현대 컴퓨터는 예상과 다른 결과를 낼 수 있지만…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/CSAPP/20240229121939/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🔖</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">영어 단어 모음 - 2024.02 - 4th</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->February 29, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="2024년-2월-4주차" style="position:relative;"><a href="#2024%EB%85%84-2%EC%9B%94-4%EC%A3%BC%EC%B0%A8" aria-label="2024년 2월 4주차 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2024년 2월 4주차</h1>
-<h3 id="2024-02-29" style="position:relative;"><a href="#2024-02-29" aria-label="2024 02 29 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2024-02-29</h3>
+  </script><title data-react-helmet="true">cote) til - 20240418</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="cote) til - 20240418"/><meta data-react-helmet="true" property="og:site_title" content="cote) til - 20240418"/><meta data-react-helmet="true" name="description" content="괄호 회전하기 리벤지 기존의 풀었던 방식은 테스트 코드에선 성공적이었으나, 실제 체점에서 엣지케이스를 잡지 못하여 다시 도전한다. 문제 설명 다음 규칙을 지키는 문자열을 올바른 괄호 문자열이라고 정의합니다. , ,  는 모두 올바른 괄호 문자열입니다. 만약 가 올바른 괄호 문자열이라면, , ,  도 올바른 괄호 문자열입니다. 예를 들어,  가 올바른 괄호 문자열이므로,  도 올바른 괄호 문자열입니다. 만약 , 가 올바른 괄호 문자열이라면,  도 올바른 괄호 문자열입니다. 예를 들어,  와  가 올바른 괄호 문자열이므로,  도 올바른 괄호 문자열입니다. 대괄호, 중괄호, 그리고 소괄호로 이루어진 문자열 가 매개변수로 주어집니다. 이 를 왼쪽으로 x (0 ≤ x &lt; (의 길이)) 칸만큼 회전시켰을 때 가 올바른 괄호 문자열이 되게 하는 x의 개수를 return 하도록 solution 함수를 완성해주세요. 제한사항 s의 길이는 1 이상 1,000 이하입니다. 입출력 예 s result …"/><meta data-react-helmet="true" property="og:description" content="괄호 회전하기 리벤지 기존의 풀었던 방식은 테스트 코드에선 성공적이었으나, 실제 체점에서 엣지케이스를 잡지 못하여 다시 도전한다. 문제 설명 다음 규칙을 지키는 문자열을 올바른 괄호 문자열이라고 정의합니다. , ,  는 모두 올바른 괄호 문자열입니다. 만약 가 올바른 괄호 문자열이라면, , ,  도 올바른 괄호 문자열입니다. 예를 들어,  가 올바른 괄호 문자열이므로,  도 올바른 괄호 문자열입니다. 만약 , 가 올바른 괄호 문자열이라면,  도 올바른 괄호 문자열입니다. 예를 들어,  와  가 올바른 괄호 문자열이므로,  도 올바른 괄호 문자열입니다. 대괄호, 중괄호, 그리고 소괄호로 이루어진 문자열 가 매개변수로 주어집니다. 이 를 왼쪽으로 x (0 ≤ x &lt; (의 길이)) 칸만큼 회전시켰을 때 가 올바른 괄호 문자열이 되게 하는 x의 개수를 return 하도록 solution 함수를 완성해주세요. 제한사항 s의 길이는 1 이상 1,000 이하입니다. 입출력 예 s result …"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/coding-test/20240418160403/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🧐</div><div class="info"><div class="categories"><a class="category" href="/posts/til">til</a><a class="category" href="/posts/algorithm">algorithm</a></div></div><h1 class="title">cote) til - 20240418</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->April 18, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="괄호-회전하기-리벤지" style="position:relative;"><a href="#%EA%B4%84%ED%98%B8-%ED%9A%8C%EC%A0%84%ED%95%98%EA%B8%B0-%EB%A6%AC%EB%B2%A4%EC%A7%80" aria-label="괄호 회전하기 리벤지 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>괄호 회전하기 리벤지</h1>
+<p>기존의 풀었던 방식은 테스트 코드에선 성공적이었으나, 실제 체점에서 엣지케이스를 잡지 못하여 다시 도전한다.</p>
+<h6 id="문제-설명" style="position:relative;"><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85" aria-label="문제 설명 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문제 설명</h6>
+<p>다음 규칙을 지키는 문자열을 올바른 괄호 문자열이라고 정의합니다.</p>
 <ul>
-<li>delve into : to search in order to find a thing or information:</li>
-<li>colloquially : informally and in a way that is more suitable for use in speech than in writing:
+<li><code class="language-text">()</code>, <code class="language-text">[]</code>, <code class="language-text">{}</code> 는 모두 올바른 괄호 문자열입니다.</li>
+<li>만약 <code class="language-text">A</code>가 올바른 괄호 문자열이라면, <code class="language-text">(A)</code>, <code class="language-text">[A]</code>, <code class="language-text">{A}</code> 도 올바른 괄호 문자열입니다. 예를 들어, <code class="language-text">[]</code> 가 올바른 괄호 문자열이므로, <code class="language-text">([])</code> 도 올바른 괄호 문자열입니다.</li>
+<li>만약 <code class="language-text">A</code>, <code class="language-text">B</code>가 올바른 괄호 문자열이라면, <code class="language-text">AB</code> 도 올바른 괄호 문자열입니다. 예를 들어, <code class="language-text">{}</code> 와 <code class="language-text">([])</code> 가 올바른 괄호 문자열이므로, <code class="language-text">{}([])</code> 도 올바른 괄호 문자열입니다.</li>
+</ul>
+<p>대괄호, 중괄호, 그리고 소괄호로 이루어진 문자열 <code class="language-text">s</code>가 매개변수로 주어집니다. 이 <code class="language-text">s</code>를 왼쪽으로 x (<em>0 ≤ x &#x3C; (<code class="language-text">s</code>의 길이)</em>) 칸만큼 회전시켰을 때 <code class="language-text">s</code>가 올바른 괄호 문자열이 되게 하는 x의 개수를 return 하도록 solution 함수를 완성해주세요.</p>
+<hr>
+<h5 id="제한사항" style="position:relative;"><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD" aria-label="제한사항 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>제한사항</h5>
 <ul>
-<li>Colloquially referred to as a “brain attack”, a stroke occurs when the flow of blood to the brain is interrupted.</li>
-<li>Jardine writes clearly and colloquially for the non-academic reader.</li>
+<li>s의 길이는 1 이상 1,000 이하입니다.</li>
 </ul>
-</li>
-<li>pervade : When qualities, characteristics, or smells pervade a place or thing, they spread through it and are present in every part of it:</li>
-<li>algebra(대수) : a part of mathematics in which signs and letters represent numbers</li>
-<li>encompass : to include different types of things:
+<hr>
+<h5 id="입출력-예" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88" aria-label="입출력 예 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예</h5>
+<table>
+<thead>
+<tr>
+<th>s</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">"[](){}"</code></td>
+<td>3</td>
+</tr>
+<tr>
+<td><code class="language-text">"}]()[{"</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td><code class="language-text">"[)(]"</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td><code class="language-text">"}}}"</code></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5 id="입출력-예-설명" style="position:relative;"><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-%EC%84%A4%EB%AA%85" aria-label="입출력 예 설명 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입출력 예 설명</h5>
+<p><strong>입출력 예 #1</strong></p>
 <ul>
-<li>The festival is to encompass everything from music, theatre, and ballet to literature, cinema, and the visual arts.</li>
+<li>다음 표는 <code class="language-text">"[](){}"</code> 를 회전시킨 모습을 나타낸 것입니다.</li>
 </ul>
-</li>
-<li>acknowledgments : a short text at the beginning or end of a book where the writer names people or other works that have helped in writing the book</li>
-<li>finite : having a limit or end</li>
-<li>gibberish : spoken or written words that have no meaning</li>
-<li>intertwined : twisted together or closely connected so as to be difficult to separate</li>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>s를 왼쪽으로 x칸만큼 회전</th>
+<th>올바른 괄호 문자열?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code class="language-text">"[](){}"</code></td>
+<td>O</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code class="language-text">"](){}["</code></td>
+<td>X</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code class="language-text">"(){}[]"</code></td>
+<td>O</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code class="language-text">"){}[]("</code></td>
+<td>X</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code class="language-text">"{}[]()"</code></td>
+<td>O</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code class="language-text">"}[](){"</code></td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>올바른 괄호 문자열이 되는 x가 3개이므로, 3을 return 해야 합니다.</li>
 </ul>
+<p><strong>입출력 예 #2</strong></p>
+<ul>
+<li>다음 표는 <code class="language-text">"}]()[{"</code> 를 회전시킨 모습을 나타낸 것입니다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>s를 왼쪽으로 x칸만큼 회전</th>
+<th>올바른 괄호 문자열?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code class="language-text">"}]()[{"</code></td>
+<td>X</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code class="language-text">"]()[{}"</code></td>
+<td>X</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code class="language-text">"()[{}]"</code></td>
+<td>O</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code class="language-text">")[{}]("</code></td>
+<td>X</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code class="language-text">"[{}]()"</code></td>
+<td>O</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code class="language-text">"{}]()["</code></td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>올바른 괄호 문자열이 되는 x가 2개이므로, 2를 return 해야 합니다.</li>
+</ul>
+<p><strong>입출력 예 #3</strong></p>
+<ul>
+<li>s를 어떻게 회전하더라도 올바른 괄호 문자열을 만들 수 없으므로, 0을 return 해야 합니다.</li>
+</ul>
+<p><strong>입출력 예 #4</strong></p>
+<ul>
+<li>s를 어떻게 회전하더라도 올바른 괄호 문자열을 만들 수 없으므로, 0을 return 해야 합니다.</li>
+</ul>
+<hr>
+<h2 id="문제-해석" style="position:relative;"><a href="#%EB%AC%B8%EC%A0%9C-%ED%95%B4%EC%84%9D" aria-label="문제 해석 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문제 해석</h2>
+<h3 id="최초-오답" style="position:relative;"><a href="#%EC%B5%9C%EC%B4%88-%EC%98%A4%EB%8B%B5" aria-label="최초 오답 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>최초 오답</h3>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">def</span> <span class="token function">solution</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 특정 괄호 모양이 나오면, 해당하는 것의 반쪽이 반드시 존재해야한다. </span>
+    <span class="token comment"># 그 상태에서 전체를 돌리면서, 조건에 부합하는 경우 개수를 샌다 </span>
+    <span class="token comment"># target 은 enumerate 되면서 복사 된듯 </span>
+    target <span class="token operator">=</span> s 
+    answer <span class="token operator">=</span> <span class="token number">0</span>    
+    loop <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment"># 1차 loop 로 감쌈. </span>
+    <span class="token comment"># 2차 전체 검사 및 문제 없을시 answer += 1</span>
+    <span class="token comment"># while loop &lt; len(s):</span>
+    <span class="token comment">#     answer += checker(target)</span>
+    <span class="token comment">#     target = target[1:] + target[0]</span>
+    <span class="token comment">#     loop += 1</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        answer <span class="token operator">+=</span> checker<span class="token punctuation">(</span>target<span class="token punctuation">)</span>
+        target <span class="token operator">=</span> target<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">+</span> target<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> answer
+
+<span class="token keyword">def</span> <span class="token function">checker</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    origin <span class="token operator">=</span> <span class="token string">"{[("</span>
+    opposite <span class="token operator">=</span> <span class="token string">"}])"</span>
+    <span class="token keyword">for</span> i<span class="token punctuation">,</span> word <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> word <span class="token keyword">in</span> origin<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> opposite<span class="token punctuation">[</span>origin<span class="token punctuation">.</span>index<span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token keyword">not</span> <span class="token keyword">in</span> string<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> <span class="token number">0</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    j <span class="token operator">+=</span> i
+                    <span class="token keyword">if</span> string<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> opposite<span class="token punctuation">[</span>origin<span class="token punctuation">.</span>index<span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                            <span class="token keyword">return</span> <span class="token number">0</span>
+                        <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> origin<span class="token punctuation">[</span>opposite<span class="token punctuation">.</span>index<span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token keyword">not</span> <span class="token keyword">in</span> string<span class="token punctuation">[</span><span class="token punctuation">:</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token keyword">return</span> <span class="token number">1</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h3 id="해결-답안" style="position:relative;"><a href="#%ED%95%B4%EA%B2%B0-%EB%8B%B5%EC%95%88" aria-label="해결 답안 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>해결 답안</h3>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># 해결 방법...! </span>
+<span class="token keyword">def</span> <span class="token function">solution</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    answer <span class="token operator">=</span> <span class="token number">0</span>
+    
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span> 
+        <span class="token keyword">if</span> checkBracket<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            answer <span class="token operator">+=</span> <span class="token number">1</span>
+        s <span class="token operator">=</span> s<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">+</span> s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        
+    <span class="token keyword">return</span> answer
+
+<span class="token keyword">def</span> <span class="token function">checkBracket</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    bracketMap <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'}'</span><span class="token punctuation">:</span> <span class="token string">'{'</span><span class="token punctuation">,</span> <span class="token string">']'</span><span class="token punctuation">:</span> <span class="token string">'['</span><span class="token punctuation">,</span> <span class="token string">')'</span><span class="token punctuation">:</span> <span class="token string">'('</span><span class="token punctuation">}</span>
+    
+    <span class="token keyword">for</span> char <span class="token keyword">in</span> target<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> char <span class="token keyword">in</span> bracketMap<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>char<span class="token punctuation">)</span>
+        <span class="token keyword">else</span> <span class="token punctuation">:</span>
+            <span class="token keyword">if</span> stack<span class="token punctuation">:</span>
+                <span class="token keyword">if</span> stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> bracketMap<span class="token punctuation">[</span>char<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                    stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    <span class="token keyword">return</span> <span class="token boolean">False</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> <span class="token boolean">False</span>
+    <span class="token keyword">return</span> <span class="token keyword">not</span> stack</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>가장 정공법으로 생각한 것은 역시나 짝 맞추기의 방식이다.</li>
+<li>그러나 기존에는 수학적으로 계산하고 조건을 구하려고 했으나 이는 시간 복잡도를 포함하여 효율적이지 못했으며, 엣지 케이스가 너무 많았다.</li>
+<li>이에 stack 자료구조를 활용하여 짝이 맞을 때 지우는 구조를 했을 때, 효과적으로이를 해결 할 수 있었다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>테스트 1 〉</td>
+<td>통과 (12.86ms, 10.3MB)</td>
+</tr>
+<tr>
+<td>테스트 2 〉</td>
+<td>통과 (6.71ms, 10.2MB)</td>
+</tr>
+<tr>
+<td>테스트 3 〉</td>
+<td>통과 (7.98ms, 10.3MB)</td>
+</tr>
+<tr>
+<td>테스트 4 〉</td>
+<td>통과 (10.09ms, 10.2MB)</td>
+</tr>
+<tr>
+<td>테스트 5 〉</td>
+<td>통과 (37.26ms, 10.2MB)</td>
+</tr>
+<tr>
+<td>테스트 6 〉</td>
+<td>통과 (13.55ms, 10.2MB)</td>
+</tr>
+<tr>
+<td>테스트 7 〉</td>
+<td>통과 (18.85ms, 10.2MB)</td>
+</tr>
+<tr>
+<td>테스트 8 〉</td>
+<td>통과 (25.89ms, 10.3MB)</td>
+</tr>
+<tr>
+<td>테스트 9 〉</td>
+<td>통과 (52.62ms, 10.2MB)</td>
+</tr>
+<tr>
+<td>테스트 10 〉</td>
+<td>통과 (77.32ms, 10.2MB)</td>
+</tr>
+<tr>
+<td>테스트 11 〉</td>
+<td>통과 (119.04ms, 10.2MB)</td>
+</tr>
+<tr>
+<td>테스트 12 〉</td>
+<td>통과 (0.00ms, 10.3MB)</td>
+</tr>
+<tr>
+<td>테스트 13 〉</td>
+<td>통과 (0.01ms, 10.2MB)</td>
+</tr>
+<tr>
+<td>테스트 14 〉</td>
+<td>통과 (0.01ms, 10.4MB)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="다른-사람-풀이-방식" style="position:relative;"><a href="#%EB%8B%A4%EB%A5%B8-%EC%82%AC%EB%9E%8C-%ED%92%80%EC%9D%B4-%EB%B0%A9%EC%8B%9D" aria-label="다른 사람 풀이 방식 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>다른 사람 풀이 방식</h3>
+<div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token keyword">from</span> collections <span class="token keyword">import</span> deque
+
+<span class="token keyword">def</span> <span class="token function">check</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token string">"()"</span> <span class="token keyword">in</span> s<span class="token punctuation">:</span> s<span class="token operator">=</span>s<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"()"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> <span class="token string">"{}"</span> <span class="token keyword">in</span> s<span class="token punctuation">:</span> s<span class="token operator">=</span>s<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> <span class="token string">"[]"</span> <span class="token keyword">in</span> s<span class="token punctuation">:</span> s<span class="token operator">=</span>s<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"[]"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span> <span class="token keyword">return</span> <span class="token boolean">False</span> <span class="token keyword">if</span> s <span class="token keyword">else</span> <span class="token boolean">True</span>       
+
+<span class="token keyword">def</span> <span class="token function">solution</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ans <span class="token operator">=</span> <span class="token number">0</span>
+    que <span class="token operator">=</span> deque<span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> check<span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>que<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span> ans<span class="token operator">+=</span><span class="token number">1</span>
+        que<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> ans</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>핵심은 온전한 괄호가 나타나면, 그 괄호는 탐색 되며 지울 수 있다는 것이다.</li>
+<li>엣지케이스가 될만한 중첩된 괄호가 나온다고 하더라도, 결국 안 쪽 괄호가 정확하게 괄호로 묶이지 않는다면 정상 케이스가 아닌 것이니 문제가 없다.</li>
+<li>그러나 이 경우의 문제점은 replace를 활용해서 제거해나가는 것이지만, 이때 문자열 탐색을 전체를 도는 조건이 두개나 들어있다는 점이다(최초 조건, 이후 replace를 하는 과정) 그렇기에 최종 결과를 보면 테스트 결과1만 봐도 stack을 활용한 방법이 13ms 정도인데 비해 540ms 로 상당히 오래 걸리는 것을 볼 수 있다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">테스트 1 〉</td>
+<td align="center">통과 (540.39ms, 10.3MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 2 〉</td>
+<td align="center">통과 (198.98ms, 10.2MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 3 〉</td>
+<td align="center">통과 (138.11ms, 10MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 4 〉</td>
+<td align="center">통과 (70.93ms, 10MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 5 〉</td>
+<td align="center">통과 (60.71ms, 10.2MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 6 〉</td>
+<td align="center">통과 (182.23ms, 10.2MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 7 〉</td>
+<td align="center">통과 (122.82ms, 10.3MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 8 〉</td>
+<td align="center">통과 (74.52ms, 10.1MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 9 〉</td>
+<td align="center">통과 (70.00ms, 10.2MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 10 〉</td>
+<td align="center">통과 (57.02ms, 10MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 11 〉</td>
+<td align="center">통과 (18.16ms, 10.3MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 12 〉</td>
+<td align="center">통과 (0.01ms, 10.2MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 13 〉</td>
+<td align="center">통과 (0.01ms, 10.1MB)</td>
+</tr>
+<tr>
+<td align="center">테스트 14 〉</td>
+<td align="center">통과 (0.01ms, 10.2MB)</td>
+</tr>
+</tbody>
+</table>
 <div class="table-of-contents">
 <ul>
 <li>
-<p><a href="#2024%EB%85%84-2%EC%9B%94-4%EC%A3%BC%EC%B0%A8">2024년 2월 4주차</a></p>
+<p><a href="#%EA%B4%84%ED%98%B8-%ED%9A%8C%EC%A0%84%ED%95%98%EA%B8%B0-%EB%A6%AC%EB%B2%A4%EC%A7%80">괄호 회전하기 리벤지</a></p>
 <ul>
 <li>
 <ul>
-<li><a href="#2024-02-29">2024-02-29</a></li>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85">문제 설명</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD">제한사항</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88">입출력 예</a></p>
+</li>
+<li>
+<p><a href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-%EC%84%A4%EB%AA%85">입출력 예 설명</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#%EB%AC%B8%EC%A0%9C-%ED%95%B4%EC%84%9D">문제 해석</a></p>
+<ul>
+<li><a href="#%EC%B5%9C%EC%B4%88-%EC%98%A4%EB%8B%B5">최초 오답</a></li>
+<li><a href="#%ED%95%B4%EA%B2%B0-%EB%8B%B5%EC%95%88">해결 답안</a></li>
+<li><a href="#%EB%8B%A4%EB%A5%B8-%EC%82%AC%EB%9E%8C-%ED%92%80%EC%9D%B4-%EB%B0%A9%EC%8B%9D">다른 사람 풀이 방식</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/CSAPP/20240229121940/"><div class="direction">이전 글</div><div class="title">CSAPP-2024-02-4주차-정리</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/STUDY/CSAPP/20240304013645/"><div class="direction">다음 글</div><div class="title">CSAPP-2024-03-2주차-정리</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/JAVA/20240418141138/"><div class="direction">이전 글</div><div class="title">java) til - 20240416</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
@@ -101,4 +484,4 @@
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', 'G-YDPMMYNR6Y', options);
-  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/CSAPP/20240229121939/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-c638078fc4709f33b879.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js" async=""></script><script src="/app-c638078fc4709f33b879.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-55cbc9fb510ae844c257.js" async=""></script></body></html>
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/coding-test/20240418160403/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-c638078fc4709f33b879.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js" async=""></script><script src="/app-c638078fc4709f33b879.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-55cbc9fb510ae844c257.js" async=""></script></body></html>
