@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "b6e439aa87107d9c",
+        "id": "729ef284bec4e1fa",
         "type": "tabs",
         "children": [
           {
-            "id": "f4c053c313061276",
+            "id": "520547d097e18992",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/coding-test/20240418160403.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -65,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "02d5a075cc6688b0",
@@ -81,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "STUDY/coding-test/20240418160403.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "STUDY/coding-test/20240418160403.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +125,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "STUDY/coding-test/20240418160403.md"
+              }
             }
           }
         ]
@@ -138,6 +147,17 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "f4c053c313061276",
-  "lastOpenFiles": []
+  "active": "799749a987e50230",
+  "lastOpenFiles": [
+    "STUDY/coding-test/20240416221753.md",
+    "STUDY/coding-test/20240418160403.md",
+    "ETC/template.md",
+    "STUDY/coding-test/20240322142654.md",
+    "STUDY/20220318_markdown.md",
+    "STUDY/coding-test/20240322122952.md",
+    "STUDY/coding-test/20240321083437.md",
+    "STUDY/coding-test/20240326075623.md",
+    "20240418160424.md",
+    "2024-04-18.md"
+  ]
 }
