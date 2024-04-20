@@ -4,16 +4,28 @@
     "type": "split",
     "children": [
       {
-        "id": "729ef284bec4e1fa",
+        "id": "db06f70022317f8d",
         "type": "tabs",
         "children": [
           {
-            "id": "520547d097e18992",
+            "id": "bfe8f4be7c24a1d1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/coding-test/20240418160403.md",
+                "file": "STUDY/docker-kubernetes/20240420150435.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5ecb4ab5352854fb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/docker-kubernetes/20240416203739.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/coding-test/20240418160403.md",
+                "file": "STUDY/docker-kubernetes/20240420150435.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/coding-test/20240418160403.md",
+                "file": "STUDY/docker-kubernetes/20240420150435.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,11 +138,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/coding-test/20240418160403.md"
+                "file": "STUDY/docker-kubernetes/20240420150435.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -144,13 +157,35 @@
       "canvas:새 캔버스 만들기": false,
       "daily-notes:오늘의 데일리 노트 열기": false,
       "templates:템플릿 삽입": false,
-      "command-palette:명령어 팔레트 열기": false
+      "command-palette:명령어 팔레트 열기": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "799749a987e50230",
+  "active": "bfe8f4be7c24a1d1",
   "lastOpenFiles": [
-    "STUDY/coding-test/20240416221753.md",
+    "desktop.ini",
+    "STUDY/docker-kubernetes/src/20240421005755.png",
+    "STUDY/docker-kubernetes/20240416203739.md",
+    "STUDY/docker-kubernetes/20240420150435.md",
+    "STUDY/docker-kubernetes/src/20240421003036.png",
+    "STUDY/docker-kubernetes/src/20240421000546.png",
+    "STUDY/docker-kubernetes/src/20240421000437.png",
+    "Pasted image 20240419142911.png",
+    "STUDY/docker-kubernetes/무제 파일.md",
+    "STUDY/JAVA/20240420090423.md",
+    "STUDY/JAVA/src/20240420134921.png",
+    "STUDY/JAVA/src/20240420134748.png",
+    "STUDY/JAVA/src/20240420134658.png",
+    "ETC/20240408222022.md",
+    "ETC/20240408222308.md",
+    "STUDY/JAVA/20240419160433.md",
+    "STUDY/JAVA/20240418141138.md",
+    "STUDY/JAVA/20230413.md",
+    "STUDY/CSAPP/20240415110026.md",
+    "STUDY/CSAPP/src/20240419143240.png",
+    "STUDY/CSAPP/src/20240419143016.png",
     "STUDY/coding-test/20240418160403.md",
+    "STUDY/coding-test/20240416221753.md",
     "ETC/template.md",
     "STUDY/coding-test/20240322142654.md",
     "STUDY/20220318_markdown.md",
