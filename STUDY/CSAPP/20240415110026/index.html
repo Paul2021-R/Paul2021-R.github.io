@@ -147,7 +147,7 @@
 <ul>
 <li>C 상에서 조건문을 번역하는 가장 일반적인 방법은 조건, 비조건 점프 구문의 조합을 사용하는 것이다. (대체적 방법으론 3.6.6 에서 배울 것으로 조건부 데이터 이동을 활용해 구현하는 것도 있다.)</li>
 <li>예시가 위의 3.16 이며, 여기서 한가지 알아두면 좋은 것이 (b)의 goto 문을 사용하는 것은 일반적으로 좋지 않은 프로그래밍 스타일이고, 이는 사용 코드의 가독성과 디버깅의 어려움을 야기하기 때문이다.</li>
-<li>C언어에서 일반적으로 if-else는 다음 템프릿 형태로 제공해도니다.</li>
+<li>C언어에서 일반적으로 if-else는 다음 템플릿 형태로 제공해도니다.</li>
 </ul>
 <div class="gatsby-highlight" data-language="plain"><pre style="counter-reset: linenumber NaN" class="language-plain line-numbers"><code class="language-plain">t = test-expr;
 if (!t)
@@ -158,6 +158,70 @@ false:
 	else-statement
 done</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
 <h3 id="366-implementing-condtional-branches-with-condtional-moves" style="position:relative;"><a href="#366-implementing-condtional-branches-with-condtional-moves" aria-label="366 implementing condtional branches with condtional moves permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.6.6 Implementing Condtional Branches with Condtional Moves</h3>
+<ul>
+<li>조건부 브랜치를 조건부 이동 명령어로 구현하기</li>
+<li>전통적인 방법을 활용한 조건문 구현은 심플하고 일반적이나, 현대 프로세서에서 비효율적일 수 있다.</li>
+<li>그렇기에 대안으로 나온 전략은 조건부 데이터 이동을 활용하는 방법이다.</li>
+<li>이 방식은 양쪽 조건 연산의 결과를 연산하고, 조건에 기반하거나 혹은 그에 반대로 그 결과를 취하는 방식이다. 이는 제한적인 영역에서 사용이 가능하긴 하나, 사용한다고 하면 현대적 프로세서의 성능 특성에 훨씬 부합한다는 점에서 이점이 있다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 78.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAACB0lEQVQ4y41Uia6bMBDk/7+PpoQcL4EEQjjNDT6m2iVG5L20qqWRF7Mezx62MwwD6rpG13UgezsMwRgIIVCWJYN8m6Zhu6oqRlEUkFLyHuf5fCIIAjweD0bf9+xEB9DQxqDrByRJAvIlxHGMPM/ZpnUSorVeCOd5XhXQyfSDTlNKvQiBSQNSzqyEiMivbVtWb4nwisYhg8Kg02gmB/rx8mCFUi/f9/ud1ZEA62uJ7J6VME1TDpcwjuMb4cyEhqOg9BApgWybd0vqUGgUShRFaw5tuESijMGgFsI0y+B53ppzUkxi3gi3OXir8CsEEtdLDSUlF4qwRvDB3yGHsihQ2TYoy7XC21yu9oZgi7Uocp6QNj2+yg430TOKfkKrtht+knwvxltRqqZFXAgMSqNX4Kp+UvSm+i/Dka8qR/c7urZFHEXcrFQYyT24FOZ/SZ0ZQNO0CIIQoq5xOp9xuVwg55nVilkz6ae8fYJDKvquQ3C9cp+FYcjtYLSCkEA0aNTSYNQG+t/RLgonAKNUKCvBTUp9OE0TtFZoJoV8VBCTwqg0lF6uGqWDUyLlerPs7PhJCT/OcI0THPZ77HY7nI4neL89uO4vHI5HXvP3Hnzfh+u6OB4O+Dqfsfc83MIQt9uN05SlKZxGCGTPJ4o85xtDoGtoH4IsyxY7y/i+00wRkBqrlB4Y+6D8AfsI2ZGeFvJWAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240424114824"
+        title="20240424114824"
+        src="/static/1d7aa7f29855194d30cb07fa26fda7c9/37523/20240424114824.png"
+        srcset="/static/1d7aa7f29855194d30cb07fa26fda7c9/e9ff0/20240424114824.png 180w,
+/static/1d7aa7f29855194d30cb07fa26fda7c9/f21e7/20240424114824.png 360w,
+/static/1d7aa7f29855194d30cb07fa26fda7c9/37523/20240424114824.png 720w,
+/static/1d7aa7f29855194d30cb07fa26fda7c9/a016c/20240424114824.png 762w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>위의 3.17을 보면 cmovdiff 함수를 c번에서 어셈블리 코드로 만들며, 여기서는 연산과 데이터 이동이 주로 되어 있으며, 비교 연산을 한 번 하는 것으로 되어 있다.</li>
+<li>여기서 조건적 제어 이동 기반을 한 코드의 성능이 왜 뛰어난가를 이해하기 위해선, 반드시 현대적 프로세서 어떤 식으로 동작하는지를 이해할 필요가 있다.</li>
+<li>기본적으로 이후 Chapter4, 5 에서 배울 것이겠지만 pipelining 이라는 것을 통해 현대의 프로세서는 기본적으로 높은 성능을 얻게 되었다.</li>
+<li>이 접근 방식은 파이프라인닝을 통해 연속적으로 명령어의 단계를 오버랩(overlap)시켜서 연속적으로 진행시킨다. 예를 들어 이전 명령에서 숫자 연산이 수행중이라면, 이때 다른 명령어를 붙여두는 것이다.</li>
+<li>그리고 이러한 방법으로 인해 프로세서는 매우 섬세하고 정교하게 <code class="language-text">분기 예상 로직(branch prediction logic)</code>을 갖추고 있고, 이를 통해 분기에서 어떻게 해야 할 지를 정한다. 더불어 현대 프로세서는 대략 90% 전후로 이러한 분기를 맞출 만큼 성능은 좋으나, 문제는 그럼에도 발생하는 잘못된 분기예측 한 번이 상당한 성능적 손실을 야기한다.</li>
+<li>이러한 점에서 원본의 a번 코드를 사용한다고 하면 분기에 따라, 값을 넣어야 하고 일단 비교를 해보고 결과를 봐야한다. 하지만 <code class="language-text">cmovdiff</code>의 경우 그렇게 분기를 예측하는 구조가 아니라, 이미 값을 담아두고, 또한 분기 예측이 쉬운 구조로 조건을 구성함으로써 성능적 향상(CPU 의 연산 사이클 감소)을 달성할 수 있는 것이다.</li>
+<li>뿐만 아니라 조건에 대한 예상 로직이 안쓰이는 만큼 파이프 라인을 계속해서 명령어로 채울 수 있다는 점도 이점이 있는 것이다.</li>
+</ul>
+<blockquote>
+<p>absdiff 에서는 x &#x3C; y 를 예측하기란 쉽지 않다. 하지만 이에 비해 ntest가 존재하냐 아니냐는 앞전 연산으로 이미 알기 쉬울 수있고, 그만큼 CPU 의 잘못된 예상으로 작업 클럭 사이클을 소비하는 것을 최소화 한다.</p>
+</blockquote>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 70.55555555555556%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB30lEQVQ4y02Ti46rMAxE8/9f2LK82hJeAUp5lMK29er43iAiWZDEMx6PFfN8PqVtW+m6TtZ1lWmadP94PGSe5/2urmvdc87+fr/Lsizyer32+Hw+YrgMw1DyPJemacTvnXP6f7lclCzLMi12u93kfD5LmqZaACKICSWkIpcoBQgoiiJNRHHf93JcRVFoEYirqlLF3+93DwMR8rdtU0XHRdVxHPWf6ixyIKKgP/dkLIOisizFEx8XIE/oF4TX61UxvshxGQAkoAYPIaadYRjk/X6LtVbDqyKHPZ5iFUMDgz3aMkA8wWA85DJJEvUGGyCHxKthWOQjgkGiGFIEKSFAQBCRzJcp0z5VuQPghwM5Z3Ecq1IwR1sMzH4oXhUgklDlFdA+ixzIOWfiYLnzwzFcRnEs4//hMKQgCDQRz1BAom8Z77CEOJ1Ou78UeP/+ipnHQUqbyes5S9c2sm6bJtE6alF3nCa+oYxgKPiOajrVlptpkVPRStZPYmsnhbUSnANNBnxJU/WMIv7FsPeDQSl+coZNxg2zRFUrtu3laguJfn4kTRIlSuJYQZATURgqUAtkVsqiFJtlUuS55NZq22ZdFql5x3Ul967TpMa5f2+5bbVl/hvXqEJX17vX/qX4YCh/2EgoLIYmKqkAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240424121339"
+        title="20240424121339"
+        src="/static/f4b59c2926bec80f549022a3c1559dd4/37523/20240424121339.png"
+        srcset="/static/f4b59c2926bec80f549022a3c1559dd4/e9ff0/20240424121339.png 180w,
+/static/f4b59c2926bec80f549022a3c1559dd4/f21e7/20240424121339.png 360w,
+/static/f4b59c2926bec80f549022a3c1559dd4/37523/20240424121339.png 720w,
+/static/f4b59c2926bec80f549022a3c1559dd4/66caf/20240424121339.png 853w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
 <h3 id="367-loops" style="position:relative;"><a href="#367-loops" aria-label="367 loops permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.6.7 Loops</h3>
 <h3 id="368-switch-statements" style="position:relative;"><a href="#368-switch-statements" aria-label="368 switch statements permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.6.8 Switch Statements</h3>
 <hr>
