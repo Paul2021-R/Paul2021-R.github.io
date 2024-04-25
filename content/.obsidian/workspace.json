@@ -13,25 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/JAVA/20240424130441.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "08ea535f72a295e7",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "8b6427f54c5a7a1c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/JAVA/20240424130441.md",
+                "file": "STUDY/JAVA/20240425190450.md",
                 "mode": "source",
                 "source": false
               }
@@ -103,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/JAVA/20240424130441.md",
+                "file": "STUDY/JAVA/20240425190450.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/JAVA/20240424130441.md",
+                "file": "STUDY/JAVA/20240425190450.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/JAVA/20240424130441.md"
+                "file": "STUDY/JAVA/20240425190450.md"
               }
             }
           }
@@ -166,12 +148,13 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "8b6427f54c5a7a1c",
+  "active": "799749a987e50230",
   "lastOpenFiles": [
+    "STUDY/JAVA/20240424130441.md",
+    "STUDY/JAVA/20240425190450.md",
     "STUDY/JAVA/src/20240424152047.png",
     "STUDY/JAVA/src/20240424151914.png",
     "STUDY/JAVA/src/20240424151931.png",
-    "STUDY/JAVA/20240424130441.md",
     "STUDY/JAVA/src/20240424152000.png",
     "STUDY/JAVA/src/20240424150336.png",
     "STUDY/JAVA/src/20240424150050.png",
@@ -179,7 +162,6 @@
     "STUDY/JAVA/src/20240424145251.png",
     "STUDY/JAVA/src/Pasted image 20240424145246.png",
     "STUDY/JAVA/src/20240424143324.png",
-    "STUDY/JAVA/src/20240424143149.png",
     "src",
     "STUDY/JAVA/20240423130499.md",
     "STUDY/docker-kubernetes/20240423160450.md",
