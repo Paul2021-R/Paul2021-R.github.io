@@ -99,7 +99,7 @@
 <li>어셈블리 코드를 보는 방법은 <code class="language-text">-S</code> 옵션을 붙이는 것이다.</li>
 </ul>
 <div class="gatsby-highlight" data-language="shell"><pre style="counter-reset: linenumber NaN" class="language-shell line-numbers"><code class="language-shell">linux<span class="token operator">></span> gcc -Og -S mstore.c</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span></span></pre></div>
-<div class="gatsby-highlight" data-language="assembly"><pre style="counter-reset: linenumber NaN" class="language-assembly line-numbers"><code class="language-assembly">multstore: 
+<div class="gatsby-highlight" data-language="plain"><pre style="counter-reset: linenumber NaN" class="language-plain line-numbers"><code class="language-plain">multstore: 
   pushq  %rbx
   movq    %rdx, %rbx 
   call    mult2

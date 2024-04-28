@@ -207,11 +207,11 @@
 <li>스택은 절차 호출 처리에서 기본적으로 후입선출의 원칙을 지키며, 그렇기에 push 를 하면 top에 붙고, pop을 하면 bottom의 것이 빠져나가게 된다.</li>
 <li>스택 포인터 <code class="language-text">%rsp</code>는 스택 top의 주소를 보유한 상태이다.</li>
 <li>스택에 쿼드 워드 값을 푸시하는 것은, 스택 포인터를 8 만큼 감소 시킨 후 새로운 top 주소값을 쓰는 것까지가 루틴이다. 따라서 <code class="language-text">push %rbp</code> 명령은 다음 두 쌍의 명령어와 동일하다.
-<div class="gatsby-highlight" data-language="assembly"><pre style="counter-reset: linenumber NaN" class="language-assembly line-numbers"><code class="language-assembly">subq $8, %rsp // 스택 포인터 감소
+<div class="gatsby-highlight" data-language="plain"><pre style="counter-reset: linenumber NaN" class="language-plain line-numbers"><code class="language-plain">subq $8, %rsp // 스택 포인터 감소
 movq $rdp, (%rsp) // 새로운 위치에 %rbp 값을 저장</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span></span></pre></div>
 </li>
 <li><code class="language-text">popq %rax</code> 명령에 대해서는 다음처럼 되는 것과 동일한 효과가 있다.
-<div class="gatsby-highlight" data-language="assembly"><pre style="counter-reset: linenumber NaN" class="language-assembly line-numbers"><code class="language-assembly">movq (%rsp), %rax // 스택에서 %rax 읽기 
+<div class="gatsby-highlight" data-language="plain"><pre style="counter-reset: linenumber NaN" class="language-plain line-numbers"><code class="language-plain">movq (%rsp), %rax // 스택에서 %rax 읽기 
 addq $8, %rsp // 스택 포인터 증가</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span></span></pre></div>
 </li>
 </ul>
@@ -341,7 +341,7 @@ addq $8, %rsp // 스택 포인터 증가</code><span aria-hidden="true" class="l
 <span class="token keyword">void</span> <span class="token function">store_uprod</span><span class="token punctuation">(</span><span class="token class-name">uint128_t</span> <span class="token operator">*</span>dest<span class="token punctuation">,</span> <span class="token class-name">uint64_t</span> x<span class="token punctuation">,</span> <span class="token class-name">uint64_t</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
 <span class="token operator">*</span>dest<span class="token operator">=</span>x<span class="token operator">*</span><span class="token punctuation">(</span><span class="token class-name">uint128_t</span><span class="token punctuation">)</span> y<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<div class="gatsby-highlight" data-language="assembly"><pre style="counter-reset: linenumber NaN" class="language-assembly line-numbers"><code class="language-assembly">// void store_uprod(uint128_t *dest, uint64_t x, uint64_t y)
+<div class="gatsby-highlight" data-language="plain"><pre style="counter-reset: linenumber NaN" class="language-plain line-numbers"><code class="language-plain">// void store_uprod(uint128_t *dest, uint64_t x, uint64_t y)
 //dest in %rdi, x in %rsi, y in %rdx
 store_uproad:
 	movq    %rsi, %rax // copy x to multiplicand

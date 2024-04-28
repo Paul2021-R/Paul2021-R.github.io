@@ -270,15 +270,15 @@ heapq<span class="token punctuation">.</span>heappush<span class="token punctuat
 </ul>
 </li>
 </ul>
-<div class="gatsby-highlight" data-language="c++"><pre style="counter-reset: linenumber NaN" class="language-c++ line-numbers"><code class="language-c++">// C++
-// RB 트리로 구현되어 있음
-map&lt;string, int&gt; m;
-m[&quot;Yoondy&quot;] = 40;
-m[&quot;sky&quot;] = 100;
-m[&quot;Jerry&quot;] = 50;
-printf(&quot;size: %d\n&quot;, m.size());
-for(auto p : m)
-	printf(&quot;%d, %d\n&quot;, p.first, p.second);</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<div class="gatsby-highlight" data-language="cpp"><pre style="counter-reset: linenumber NaN" class="language-cpp line-numbers"><code class="language-cpp"><span class="token comment">// C++</span>
+<span class="token comment">// RB 트리로 구현되어 있음</span>
+map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> m<span class="token punctuation">;</span>
+m<span class="token punctuation">[</span><span class="token string">"Yoondy"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">40</span><span class="token punctuation">;</span>
+m<span class="token punctuation">[</span><span class="token string">"sky"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+m<span class="token punctuation">[</span><span class="token string">"Jerry"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"size: %d\n"</span><span class="token punctuation">,</span> m<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> p <span class="token operator">:</span> m<span class="token punctuation">)</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d, %d\n"</span><span class="token punctuation">,</span> p<span class="token punctuation">.</span>first<span class="token punctuation">,</span> p<span class="token punctuation">.</span>second<span class="token punctuation">)</span><span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
 <div class="gatsby-highlight" data-language="python"><pre style="counter-reset: linenumber NaN" class="language-python line-numbers"><code class="language-python"><span class="token comment"># Python</span>
 <span class="token comment"># hash 구조로 되어 있음 </span>
 m <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
