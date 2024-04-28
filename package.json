@@ -54,7 +54,7 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby clean && gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "deploy": "gatsby clean && gatsby build && gh-pages -d public -b gh-pages",
     "start": "npm run develop",

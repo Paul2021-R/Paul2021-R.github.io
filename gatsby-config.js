@@ -46,7 +46,7 @@ module.exports = {
           'deploy-preview': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
             sitemap: null,
-            host: null,
+            host: "0.0.0.0",
           },
         },
       },
@@ -110,7 +110,7 @@ module.exports = {
               ],
               prompt: {
                 user: 'root',
-                host: 'localhost',
+                host: '0.0.0.0',
                 global: false,
               },
               escapeEntities: {},
