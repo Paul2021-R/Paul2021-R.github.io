@@ -4,24 +4,6 @@
     "type": "split",
     "children": [
       {
-        "id": "379ef6aba3c3f7e5",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "79be8c50ac23855a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ETC/20240429200451.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
         "id": "742b2b6c7e3d881f",
         "type": "tabs",
         "children": [
@@ -31,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/20240430020435.md",
+                "file": "STUDY/interview/20240430100401.md",
                 "mode": "source",
                 "source": false
               }
@@ -103,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/20240430020435.md",
+                "file": "STUDY/interview/20240430100401.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/20240430020435.md",
+                "file": "STUDY/interview/20240430100401.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/20240430020435.md"
+                "file": "STUDY/interview/20240430100401.md"
               }
             }
           }
@@ -152,8 +134,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -168,8 +149,11 @@
   },
   "active": "f0d28926fc06ecd4",
   "lastOpenFiles": [
+    "STUDY/interview/20240430020435.md",
+    "STUDY/interview/20240430100401.md",
     "ETC/20240429200451.md",
-    "STUDY/20240430020435.md",
+    "ETC/20240423170432.md",
+    "STUDY/interview",
     "ETC/src/20240430044935.png",
     "ETC/src/20240430041442.png",
     "ETC/src/20240430040349.png",
@@ -189,7 +173,6 @@
     "src",
     "STUDY/JAVA/20240423130499.md",
     "STUDY/docker-kubernetes/20240423160450.md",
-    "ETC/20240423170432.md",
     "ETC/20240408222022.md",
     "STUDY/JAVA/20240422110467.md",
     "ETC/20240408222308.md",
