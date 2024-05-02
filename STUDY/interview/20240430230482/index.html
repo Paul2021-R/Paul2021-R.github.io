@@ -49,13 +49,13 @@
       }
     })
   </script><title data-react-helmet="true">신입 개발자 인터뷰 대비 - 2. 알고리즘</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="신입 개발자 인터뷰 대비 - 2. 알고리즘"/><meta data-react-helmet="true" property="og:site_title" content="신입 개발자 인터뷰 대비 - 2. 알고리즘"/><meta data-react-helmet="true" name="description" content="신입 개발자 인터뷰 대비 : 2. 알고리즘 알고리즘 시간 복잡도 O(N^2)의 정렬 알고리즘과 O(NlogN)의 정렬 알고리즘을 직무 언어로 모듈 없이 구현할수 있는가? 기본적으로 시간 복잡도 N^2, NlogN인 정렬 알고리즘은 각각 버블 정렬 알고리즘, 퀵 정렬 알고리즘이다. 버블 정렬은 각 순회에서 가장 큰 요소를 배열 끝으로 이동시키는 방식으로 동작하고, 인접 요소를 계속 비교 및 스왑한다. 퀵 정렬은 분할 정복 전략을 사용하여 배열을 정렬한다. 기준점(피봇)을 선택하고 이 기준점 대비 작은 요소와 큰 요소를 좌우로 분할하고 각 부분을 재귀적으로 정렬한다.
-- 버블 정렬 구현 퀵 정렬 구현 각 정렬 알고리즘의 Best와 Worst case 시간복잡도에 대해 알고, 각 특성을 설명할 수 있다.
- 버블 정렬 특성 : 매우 직관적이고 간단한 정렬 방법 인접한 두 원소 사이 검사를 통해 정렬을 진행하며, 정렬된 데이터를 다시 정렬 시 효과적이라는 장점이 있다. 그러나 대부분의 경우…"/><meta data-react-helmet="true" property="og:description" content="신입 개발자 인터뷰 대비 : 2. 알고리즘 알고리즘 시간 복잡도 O(N^2)의 정렬 알고리즘과 O(NlogN)의 정렬 알고리즘을 직무 언어로 모듈 없이 구현할수 있는가? 기본적으로 시간 복잡도 N^2, NlogN인 정렬 알고리즘은 각각 버블 정렬 알고리즘, 퀵 정렬 알고리즘이다. 버블 정렬은 각 순회에서 가장 큰 요소를 배열 끝으로 이동시키는 방식으로 동작하고, 인접 요소를 계속 비교 및 스왑한다. 퀵 정렬은 분할 정복 전략을 사용하여 배열을 정렬한다. 기준점(피봇)을 선택하고 이 기준점 대비 작은 요소와 큰 요소를 좌우로 분할하고 각 부분을 재귀적으로 정렬한다.
-- 버블 정렬 구현 퀵 정렬 구현 각 정렬 알고리즘의 Best와 Worst case 시간복잡도에 대해 알고, 각 특성을 설명할 수 있다.
- 버블 정렬 특성 : 매우 직관적이고 간단한 정렬 방법 인접한 두 원소 사이 검사를 통해 정렬을 진행하며, 정렬된 데이터를 다시 정렬 시 효과적이라는 장점이 있다. 그러나 대부분의 경우…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/interview/20240430230482/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">💻</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">신입 개발자 인터뷰 대비 - 2. 알고리즘</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->April 30, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="신입-개발자-인터뷰-대비--2-알고리즘" style="position:relative;"><a href="#%EC%8B%A0%EC%9E%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%9D%B8%ED%84%B0%EB%B7%B0-%EB%8C%80%EB%B9%84--2-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98" aria-label="신입 개발자 인터뷰 대비  2 알고리즘 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>신입 개발자 인터뷰 대비 : 2. 알고리즘</h1>
+- 버블 정렬 구현 퀵 정렬 구현 각 정렬 알고리즘의 Best와 Worst case 시간복잡도에 대해 알고, 각 특성을 설명할 수 있다. 
+ 버블 정렬 특성 : 매우 직관적이고 간단한 정렬 방법 인접한 두 원소 사이 검사를 통해 정렬을 진행하며, 정렬된 데이터를 다시 정렬 시 효과적이라는 장점이 있다. 그러나 대부분의 경…"/><meta data-react-helmet="true" property="og:description" content="신입 개발자 인터뷰 대비 : 2. 알고리즘 알고리즘 시간 복잡도 O(N^2)의 정렬 알고리즘과 O(NlogN)의 정렬 알고리즘을 직무 언어로 모듈 없이 구현할수 있는가? 기본적으로 시간 복잡도 N^2, NlogN인 정렬 알고리즘은 각각 버블 정렬 알고리즘, 퀵 정렬 알고리즘이다. 버블 정렬은 각 순회에서 가장 큰 요소를 배열 끝으로 이동시키는 방식으로 동작하고, 인접 요소를 계속 비교 및 스왑한다. 퀵 정렬은 분할 정복 전략을 사용하여 배열을 정렬한다. 기준점(피봇)을 선택하고 이 기준점 대비 작은 요소와 큰 요소를 좌우로 분할하고 각 부분을 재귀적으로 정렬한다.
+- 버블 정렬 구현 퀵 정렬 구현 각 정렬 알고리즘의 Best와 Worst case 시간복잡도에 대해 알고, 각 특성을 설명할 수 있다. 
+ 버블 정렬 특성 : 매우 직관적이고 간단한 정렬 방법 인접한 두 원소 사이 검사를 통해 정렬을 진행하며, 정렬된 데이터를 다시 정렬 시 효과적이라는 장점이 있다. 그러나 대부분의 경…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/interview/20240430230482/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">💻</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">신입 개발자 인터뷰 대비 - 2. 알고리즘</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->April 30, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="신입-개발자-인터뷰-대비--2-알고리즘" style="position:relative;"><a href="#%EC%8B%A0%EC%9E%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%9D%B8%ED%84%B0%EB%B7%B0-%EB%8C%80%EB%B9%84--2-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98" aria-label="신입 개발자 인터뷰 대비  2 알고리즘 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>신입 개발자 인터뷰 대비 : 2. 알고리즘</h1>
 <h2 id="알고리즘" style="position:relative;"><a href="#%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98" aria-label="알고리즘 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>알고리즘</h2>
 <ul>
-<li>시간 복잡도 O(N^2)의 정렬 알고리즘과 O(NlogN)의 정렬 알고리즘을 직무 언어로 모듈 없이 구현할수 있는가?
+<li><mark style="background: #FF5582A6;"><strong>시간 복잡도 O(N^2)의 정렬 알고리즘과 O(NlogN)의 정렬 알고리즘을 직무 언어로 모듈 없이 구현할수 있는가?</strong></mark>
 <ul>
 <li>기본적으로 시간 복잡도 N^2, NlogN인 정렬 알고리즘은 각각 버블 정렬 알고리즘, 퀵 정렬 알고리즘이다.</li>
 <li>버블 정렬은 각 순회에서 가장 큰 요소를 배열 끝으로 이동시키는 방식으로 동작하고, 인접 요소를 계속 비교 및 스왑한다.</li>
@@ -140,7 +140,7 @@
 </li>
 </ul>
 </li>
-<li>각 정렬 알고리즘의 Best와 Worst case 시간복잡도에 대해 알고, 각 특성을 설명할 수 있다.
+<li><mark style="background: #FF5582A6;"><strong>각 정렬 알고리즘의 Best와 Worst case 시간복잡도에 대해 알고, 각 특성을 설명할 수 있다.</strong> </mark>
 <span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
@@ -377,10 +377,200 @@
 </li>
 </ul>
 </li>
-<li>재귀에 대해 설명할 수 있다.</li>
-<li>BFS/ DFS에 대해 설명할 수 있다. 직무 언어로 해당 알고리즘을 구현할 수 있다.</li>
-<li>다익스트라, 프림, 플로이드-워셜, 벨만포드, 크루스칼 알고리즘 등 그래프에서 사용하는 알고리즘에 대해 알고 있는가?</li>
-<li>코드를 보고 시간 복잡도를 계산할 수 있다.</li>
+<li><mark style="background: #FF5582A6;"><strong>재귀에 대해 설명할 수 있다.</strong></mark>
+<ul>
+<li>우리가 아는 그 재귀, 일괄로 리턴값을 받는 그 재귀를 좀더 멋지게 표현하면 어떻게 표현하면 좋은가?</li>
+<li>재귀는 수학에서부터 빌려온 개념으로 반복되는 코드를 작성하기 보다 함수를 호출하는 방식으로 루프를 돌고, 목적이나 조건에 귀결되는 상황이 되었을 때 작업을 리턴하고 값을 반환하는 방식이다.</li>
+<li>재귀는 호출 될 때마다 스택프레임 구조가 호출되어, 함수 자신의 복사본이 메모리에 연거푸 구현된다.</li>
+<li>반복에 비해 코드가 단순해질 수 있으며, 무한 루프 발생 시 재귀의 경우 스택 오버플로우를 초래하여, 일정 면에서 종료 된다는 이점이 있다. 반복은 이에 비해 메모리에서 효율적이다보니 무한하게 반복에 들어가게 되는 경우, 인지하기 전까지 모르며, 시스템을 강제 종료 시키지 않으면안된다. 이러한 점 때문에 반복과 재귀는 알고리즘이나 특성을 고려하여 적절하게 사용하는게 중요하다.</li>
+</ul>
+</li>
+<li><mark style="background: #FF5582A6;"><strong>BFS/ DFS에 대해 설명할 수 있다. 직무 언어로 해당 알고리즘을 구현할 수 있다.</strong></mark>
+<ul>
+<li>BFS(Breadth-First Search) :
+<ul>
+<li>특성 BFS는 가장 가까운 노드부터 시작하여 점차 멀리 있는 노드를 탐색하며, 주변부를 완벽하게 확인, 이후 다음 깊이로 넘어가는 구조를 가진다.</li>
+<li>큐를 사용하여 구현하고, 각 노드를 방문 시 인접한 노드를 큐에 추가한다.</li>
+<li>BFS 는 최단경로를 찾는 알고리즘에 사용되며 레밸별로 탐색이 되므로, 계층적 그래프 탐색에 적합하다.</li>
+<li>구현 예시</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token operator">*</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> BFS <span class="token punctuation">{</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token class-name">V</span><span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> adj<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	
+	<span class="token keyword">public</span> <span class="token function">BFS</span><span class="token punctuation">(</span><span class="token keyword">int</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name"><span class="token namespace">this<span class="token punctuation">.</span></span>V</span> <span class="token operator">=</span> v<span class="token punctuation">;</span>
+		adj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token class-name"><span class="token namespace">this<span class="token punctuation">.</span></span>V</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			adj<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">void</span> <span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token keyword">int</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> w<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		adj<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 노드 v에 인접한 노드 w 추가</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">void</span> <span class="token function">BFS</span><span class="token punctuation">(</span><span class="token keyword">int</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">boolean</span> visited<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token class-name"><span class="token namespace">this<span class="token punctuation">.</span></span>V</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> queue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		visited<span class="token punctuation">[</span>s<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+		queue<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token keyword">while</span><span class="token punctuation">(</span>queue<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			s <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 원소 하나 제거하고 반환</span>
+			<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>s <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+			<span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> i <span class="token operator">=</span> adj<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">listIterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">while</span> <span class="token punctuation">(</span>i<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">int</span> n <span class="token operator">=</span> i<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					visited<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+					queue<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">BFS</span> g <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">BFS</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        g<span class="token punctuation">.</span><span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        g<span class="token punctuation">.</span><span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        g<span class="token punctuation">.</span><span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        g<span class="token punctuation">.</span><span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        g<span class="token punctuation">.</span><span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        g<span class="token punctuation">.</span><span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Breadth First Traversal (starting from vertex 2)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        g<span class="token punctuation">.</span><span class="token function">BFS</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+</li>
+<li>DFS(Depth-First Search)
+<ul>
+<li>우선적으로 노드의 깊이로 들어가서 탐색하는 구조로 탐색하는 알고리즘이다. 스택을 사용하거나 재귀 호출 등으로 구현이 가능하다.</li>
+<li>사이클 감지, 경로 탐색, 그래프의 후위 순회 등에 유용한 알고리즘이다.</li>
+<li>구현</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token operator">*</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> DFS <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token class-name">V</span><span class="token punctuation">;</span>   <span class="token comment">// 노드의 개수</span>
+    <span class="token keyword">private</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> adj<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 인접 리스트</span>
+
+    <span class="token function">DFS</span><span class="token punctuation">(</span><span class="token keyword">int</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">V</span> <span class="token operator">=</span> v<span class="token punctuation">;</span>
+        adj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>v<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            adj<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token keyword">int</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> w<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        adj<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// v에 인접한 노드 w 추가</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token class-name">DFSUtil</span><span class="token punctuation">(</span><span class="token keyword">int</span> v<span class="token punctuation">,</span> <span class="token keyword">boolean</span> visited<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        visited<span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>v <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> i <span class="token operator">=</span> adj<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">listIterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>i<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> i<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token class-name">DFSUtil</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> visited<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">DFS</span><span class="token punctuation">(</span><span class="token keyword">int</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> visited<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token class-name">V</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token class-name">DFSUtil</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> visited<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">DFS</span> g <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">DFS</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        g<span class="token punctuation">.</span><span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        g<span class="token punctuation">.</span><span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        g<span class="token punctuation">.</span><span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        g<span class="token punctuation">.</span><span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        g<span class="token punctuation">.</span><span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        g<span class="token punctuation">.</span><span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Depth First Traversal (starting from vertex 2)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        g<span class="token punctuation">.</span><span class="token function">DFS</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+</li>
+</ul>
+</li>
+<li><mark style="background: #FF5582A6;"><strong>다익스트라, 프림, 플로이드-워셜, 벨만포드, 크루스칼 알고리즘 등 그래프에서 사용하는 알고리즘에 대해 알고 있는가?</strong></mark>
+<ul>
+<li>다익스트라 알고리즘
+<ul>
+<li>목적 : 하나의 정점에서 다른 모든 정점까지의 최단 경로 탐색</li>
+<li>특성 : 가중치가 있는 그래프에서 사용되며, 음의 가중치르 가진 간선이 있을 경우 사용할 수 없다.</li>
+<li>방법 : 현재 정점에서 가장 가까운 정점을 우선적으로 선택하고 해당 정점에서 다른 정점으로의 거리를 갱신한다.</li>
+</ul>
+</li>
+<li>프림 알고리즘
+<ul>
+<li>목적 : 주어진 그래프의 최소 스패닝 트리(Minimum Spanning Tree)를 찾는다.</li>
+<li>특성 : 가중치가 있는 연결 그래프에서 사용되며, 크루스칼 알고리즘과 유사하다.</li>
+<li>방법 : 특정 정점에서 시작하여 선택된 정점 집합에 인접한 정점 중 최 가중치의 간선을 선택하여 트리를 확장한다.</li>
+</ul>
+</li>
+<li>크루스칼 알고리즘(Kruskal’s Algorithm)
+<ul>
+<li>목적 : 주어진 그래프의 MST 를 찾는다.</li>
+<li>특성 : 가중치가 있는 그래프에서 간섭을 가중치 순으로 정렬한 뒤, 순차적으로 선택하여 스패닝 트리를 구성한다.</li>
+<li>방법 : 유니온 파인드(Union-Find) 자료구조를 사용하고, 사이클이 형성되지 않는 선에서 간선을 추가한다.</li>
+</ul>
+</li>
+<li>플루이드-워셜 알고리즘(Floyd-Warshall)
+<ul>
+<li>목적 : 모든 쌍의 정점 간 최단 경로를 찾는다.</li>
+<li>특성 : 가중치 있는 그래프에서 음의 가중치가 있어도 사용 가능하다.</li>
+<li>방법 : 동적 프로그래밍 방식으로 각 정점 쌍 간의 최단 경로를 점진적으로 갱신한다.</li>
+</ul>
+</li>
+<li>벨만-포드 알고리즘(Bellman-Ford)
+<ul>
+<li>목적 : 하나의 정점에서 다른 모든 정점까지의 최단 경로를 찾으며, 음의 가중치가 있는 경우에도 사용이 가능하다.</li>
+<li>특성 : 음의 가중치가 있는 경로를 포함하여 음의 순환을 감지할 수 있다.</li>
+<li>방법 : 반복적으로 모든 간선을 검사하고, 최단 경로를 찾고, 음의 순환 존재 유무를 확인한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><mark style="background: #FF5582A6;"><strong>코드를 보고 시간 복잡도를 계산할 수 있다.</strong></mark>
+<ul>
+<li>코드의 시간 복잡도를 계산하는 것은 알고리즘의 성능에 대한 이해, 특정 입력 크기에 대해 얼마나 빨리 실행되는지 예측하는 데 중요한 역할을 한다.</li>
+</ul>
+<ol>
+<li>코드의 기본 연산 이해하기
+코드에서 가장 많이 일어날 영역을 파악한다. 반복문, 재귀 호출, 조건문 등 이러한 부분에서 실행시간이 가장 큰 영향을 준다.</li>
+<li>반복문 문석
+반복문이 얼마나 자주 일어나며, 그 대상의 범위가 어느정도 될지를 보면 된다. 복잡도는 배열 크기에 비례하여 해당 부분에서 O(N)이 된다.</li>
+<li>중첩 반복문 확인
+외부, 내부의 반복은 각각의 실행회수를 곱한 만큼 기본 연산이 수행되므로 O(NM)의 복잡도를 보여준다. 따라서 내외부가 동일한 경우 제곱이 되고, 중첩이 몇번 되냐에 따라 더 시간복잡도가 올라갈 수 있다.</li>
+<li>재귀 함수 분석
+각 호출에서 재귀가 호출되는 수준을 체크해야 하며 보통 O(NlogN) 내지는 O(logN) 정도의 복잡도를 추산할 수 있다.</li>
+<li>Worst, Average, Best 케이스 고려
+알고리즘은 항상 최악-평균-최대 경우를 고려하여 시간복잡도를 판단해야 한다. 단 이때, 성능적인 지표는 최선 내지는 평균 보단 최악을 기준으로 고려하면 된다.</li>
+<li>최대 차수를 확인하라
+전체 코드의 양을 통해 시간 복잡도를 예상할 수 있게 되는데, 이때 일종의 방정식 형태가 된다. 그리고 거기서 대용량 처리에 가까운 입력을 받고, 반복문이 돌아간다고 하면 실질적으로 <mark style="background: #ABF7F7A6;">가장 높은 차수의 변수의 시간복잡도에 가깝고, 그 하위 변들은 실질적으로 의미가 없어진다(값의 크기 폭이 커서).</mark>
+<blockquote>
+<p>O(N^3 + 4N + 15) 라는 시간복잡도가 있다고 할 때, 실질적으로 시간 복잡도는 O(N^3) 이다. 왜냐하면 N이 100을 기준으로 삼더라도 시간 복잡도는 <mark style="background: #FF5582A6;">O(1000000 + 400 + 15)</mark> 로 실질적으로 <mark style="background: #FF5582A6;">O(1000000)</mark>와 큰 차이가 없는 것이다.</p>
+</blockquote>
+</li>
+</ol>
+</li>
 </ul>
 <div class="table-of-contents">
 <ul>
@@ -391,7 +581,7 @@
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/interview/20240430150404/"><div class="direction">이전 글</div><div class="title">신입 개발자 인터뷰 대비 - 1. 자료구조</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/interview/20240430150404/"><div class="direction">이전 글</div><div class="title">신입 개발자 인터뷰 대비 - 1. 자료구조</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/STUDY/interview/20240502150598/"><div class="direction">다음 글</div><div class="title">신입 개발자 인터뷰 대비 - 3. 데이터베이스</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
