@@ -48,48 +48,350 @@
         }
       }
     })
-  </script><title data-react-helmet="true">java) til - 20240320</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="java) til - 20240320"/><meta data-react-helmet="true" property="og:site_title" content="java) til - 20240320"/><meta data-react-helmet="true" name="description" content="TIL of Java Spring 본 내용은 Udemy를 통한 학습 내용이다.
-복습 및 완벽 정리가 아닌, 핵심이나 놓치지 말 것들 위주의 정리인 만큼, 내용이 온전히 담기진 않는다. 12강. 실수 연산에서의 자동 타입 변환, + 연산에서의 문자열 자동 타입 변환, 문자열을 기본 타입으로 강제 타입 변환 1. 실수 연산에서의 자동 타입 변환 실수 타입의 기본형은 double 이다. 따라서 산술 연산식에서 실수 연산이 이루어지면 double 타입으로 자동 타입 변환되어 사용된다. (설령 int 타입 등과 혼합으로 계산이 되어도) 만약 정수 타입으로 연산이 반드시 필요하면, double 타입을 강제로 int로 변환해야 한다. 자바에서 소문자 또는 대문자 F가 없는 실수 리터럴을 double 타입으로 해석한다. 따라서 실수 리터럴 등을 연산한 뒤에 float 타입에 저장하면 컴파일 에러가 발생한다.  위 사진을 보면 중요한 부분을 시사 한다. 방법 1 의 경우 0을 얻는다. 왜냐면 서순…"/><meta data-react-helmet="true" property="og:description" content="TIL of Java Spring 본 내용은 Udemy를 통한 학습 내용이다.
-복습 및 완벽 정리가 아닌, 핵심이나 놓치지 말 것들 위주의 정리인 만큼, 내용이 온전히 담기진 않는다. 12강. 실수 연산에서의 자동 타입 변환, + 연산에서의 문자열 자동 타입 변환, 문자열을 기본 타입으로 강제 타입 변환 1. 실수 연산에서의 자동 타입 변환 실수 타입의 기본형은 double 이다. 따라서 산술 연산식에서 실수 연산이 이루어지면 double 타입으로 자동 타입 변환되어 사용된다. (설령 int 타입 등과 혼합으로 계산이 되어도) 만약 정수 타입으로 연산이 반드시 필요하면, double 타입을 강제로 int로 변환해야 한다. 자바에서 소문자 또는 대문자 F가 없는 실수 리터럴을 double 타입으로 해석한다. 따라서 실수 리터럴 등을 연산한 뒤에 float 타입에 저장하면 컴파일 에러가 발생한다.  위 사진을 보면 중요한 부분을 시사 한다. 방법 1 의 경우 0을 얻는다. 왜냐면 서순…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/docker-kubernetes/20240320111443/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🐋</div><div class="info"><div class="categories"><a class="category" href="/posts/til">til</a><a class="category" href="/posts/backend">backend</a></div></div><h1 class="title">docker-kubernetes ) til - 20240320</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->March 20, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="색션-12-실전-kubernetes---핵심-개념-자세히-알아보기" style="position:relative;"><a href="#%EC%83%89%EC%85%98-12-%EC%8B%A4%EC%A0%84-kubernetes---%ED%95%B5%EC%8B%AC-%EA%B0%9C%EB%85%90-%EC%9E%90%EC%84%B8%ED%9E%88-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0" aria-label="색션 12 실전 kubernetes   핵심 개념 자세히 알아보기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>색션 12. 실전 Kubernetes - 핵심 개념 자세히 알아보기</h1>
-<h2 id="181-모듈-소개" style="position:relative;"><a href="#181-%EB%AA%A8%EB%93%88-%EC%86%8C%EA%B0%9C" aria-label="181 모듈 소개 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>181. 모듈 소개</h2>
+  </script><title data-react-helmet="true">신입 개발자 인터뷰 대비 - 2. 알고리즘</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="신입 개발자 인터뷰 대비 - 2. 알고리즘"/><meta data-react-helmet="true" property="og:site_title" content="신입 개발자 인터뷰 대비 - 2. 알고리즘"/><meta data-react-helmet="true" name="description" content="신입 개발자 인터뷰 대비 : 2. 알고리즘 알고리즘 시간 복잡도 O(N^2)의 정렬 알고리즘과 O(NlogN)의 정렬 알고리즘을 직무 언어로 모듈 없이 구현할수 있는가? 기본적으로 시간 복잡도 N^2, NlogN인 정렬 알고리즘은 각각 버블 정렬 알고리즘, 퀵 정렬 알고리즘이다. 버블 정렬은 각 순회에서 가장 큰 요소를 배열 끝으로 이동시키는 방식으로 동작하고, 인접 요소를 계속 비교 및 스왑한다. 퀵 정렬은 분할 정복 전략을 사용하여 배열을 정렬한다. 기준점(피봇)을 선택하고 이 기준점 대비 작은 요소와 큰 요소를 좌우로 분할하고 각 부분을 재귀적으로 정렬한다.
+- 버블 정렬 구현 퀵 정렬 구현 각 정렬 알고리즘의 Best와 Worst case 시간복잡도에 대해 알고, 각 특성을 설명할 수 있다.
+ 버블 정렬 특성 : 매우 직관적이고 간단한 정렬 방법 인접한 두 원소 사이 검사를 통해 정렬을 진행하며, 정렬된 데이터를 다시 정렬 시 효과적이라는 장점이 있다. 그러나 대부분의 경우…"/><meta data-react-helmet="true" property="og:description" content="신입 개발자 인터뷰 대비 : 2. 알고리즘 알고리즘 시간 복잡도 O(N^2)의 정렬 알고리즘과 O(NlogN)의 정렬 알고리즘을 직무 언어로 모듈 없이 구현할수 있는가? 기본적으로 시간 복잡도 N^2, NlogN인 정렬 알고리즘은 각각 버블 정렬 알고리즘, 퀵 정렬 알고리즘이다. 버블 정렬은 각 순회에서 가장 큰 요소를 배열 끝으로 이동시키는 방식으로 동작하고, 인접 요소를 계속 비교 및 스왑한다. 퀵 정렬은 분할 정복 전략을 사용하여 배열을 정렬한다. 기준점(피봇)을 선택하고 이 기준점 대비 작은 요소와 큰 요소를 좌우로 분할하고 각 부분을 재귀적으로 정렬한다.
+- 버블 정렬 구현 퀵 정렬 구현 각 정렬 알고리즘의 Best와 Worst case 시간복잡도에 대해 알고, 각 특성을 설명할 수 있다.
+ 버블 정렬 특성 : 매우 직관적이고 간단한 정렬 방법 인접한 두 원소 사이 검사를 통해 정렬을 진행하며, 정렬된 데이터를 다시 정렬 시 효과적이라는 장점이 있다. 그러나 대부분의 경우…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/interview/20240430230482/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">💻</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">신입 개발자 인터뷰 대비 - 2. 알고리즘</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->April 30, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="신입-개발자-인터뷰-대비--2-알고리즘" style="position:relative;"><a href="#%EC%8B%A0%EC%9E%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%9D%B8%ED%84%B0%EB%B7%B0-%EB%8C%80%EB%B9%84--2-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98" aria-label="신입 개발자 인터뷰 대비  2 알고리즘 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>신입 개발자 인터뷰 대비 : 2. 알고리즘</h1>
+<h2 id="알고리즘" style="position:relative;"><a href="#%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98" aria-label="알고리즘 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>알고리즘</h2>
 <ul>
-<li>본 모듈에서 진행할 학습 내용은 총 3단계
-<ol>
-<li>Kubernetes, 테스팅 환경 구축해보기</li>
-<li>Kubernetes 객체들과 작업 진행해보기</li>
-<li>실제로 예제를 통해 배포를 진행해보기(local 환경으로)</li>
-</ol>
+<li>시간 복잡도 O(N^2)의 정렬 알고리즘과 O(NlogN)의 정렬 알고리즘을 직무 언어로 모듈 없이 구현할수 있는가?
+<ul>
+<li>기본적으로 시간 복잡도 N^2, NlogN인 정렬 알고리즘은 각각 버블 정렬 알고리즘, 퀵 정렬 알고리즘이다.</li>
+<li>버블 정렬은 각 순회에서 가장 큰 요소를 배열 끝으로 이동시키는 방식으로 동작하고, 인접 요소를 계속 비교 및 스왑한다.</li>
+<li>퀵 정렬은 분할 정복 전략을 사용하여 배열을 정렬한다. 기준점(피봇)을 선택하고 이 기준점 대비 작은 요소와 큰 요소를 좌우로 분할하고 각 부분을 재귀적으로 정렬한다.
+- 버블 정렬 구현
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java">	<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BubleSort</span> <span class="token punctuation">{</span>
+		<span class="token keyword">void</span> <span class="token function">bubleSort</span><span class="token punctuation">(</span><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">int</span> n <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+			<span class="token comment">// 핵심적인 N^2 의 시간 복잡도는 이중 루프에서 발생한다. </span>
+			<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> arr<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">int</span> temp <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+						arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+						arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+					<span class="token punctuation">}</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+
+		<span class="token keyword">void</span> <span class="token function">printArray</span><span class="token punctuation">(</span><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+				<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+
+		<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token class-name">BubleSort</span> ob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BubbleSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">90</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+			ob<span class="token punctuation">.</span><span class="token function">bubbleSort</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Sorted array"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			ob<span class="token punctuation">.</span><span class="token function">printArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+</li>
+<li>퀵 정렬 구현
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java">	  <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">QuickSort</span> <span class="token punctuation">{</span>
+		  <span class="token keyword">int</span> <span class="token function">partition</span><span class="token punctuation">(</span><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			  <span class="token keyword">int</span> pivot <span class="token operator">=</span> arr<span class="token punctuation">[</span>high<span class="token punctuation">]</span><span class="token punctuation">;</span>
+			  <span class="token keyword">int</span> i <span class="token operator">=</span> low <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+			  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> low<span class="token punctuation">;</span> j <span class="token operator">&lt;</span> high<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				  <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> pivot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					  i<span class="token operator">++</span><span class="token punctuation">;</span>
+					  <span class="token keyword">int</span> temp <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+					  arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+					  arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+				  <span class="token punctuation">}</span>
+			  <span class="token punctuation">}</span>
+			  <span class="token keyword">int</span> temp <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+			  arr<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>high<span class="token punctuation">]</span><span class="token punctuation">;</span>
+			  arr<span class="token punctuation">[</span>high<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+			  
+			  <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+		  <span class="token punctuation">}</span>
+		  
+		  <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			  <span class="token keyword">if</span> <span class="token punctuation">(</span>low <span class="token operator">&lt;</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				  <span class="token keyword">int</span> pi <span class="token operator">=</span> <span class="token function">partition</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> low<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				  <span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> low<span class="token punctuation">,</span> pi <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				  <span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> pi <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			  <span class="token punctuation">}</span>
+		  <span class="token punctuation">}</span>
+		  
+		  <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">printArray</span><span class="token punctuation">(</span><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">int</span> n <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+			<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+				<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		  <span class="token punctuation">}</span>
+		  
+		  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			  <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+			  <span class="token keyword">int</span> n <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+			  
+			  <span class="token class-name">QuickSort</span> ob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QuickSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			  ob<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			  
+			  <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"sorted array"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			  <span class="token function">printArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		  <span class="token punctuation">}</span>
+	  <span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
 </li>
 </ul>
-<h2 id="182-kubernetes-는-인프라를-관리하지-않습니다" style="position:relative;"><a href="#182-kubernetes-%EB%8A%94-%EC%9D%B8%ED%94%84%EB%9D%BC%EB%A5%BC-%EA%B4%80%EB%A6%AC%ED%95%98%EC%A7%80-%EC%95%8A%EC%8A%B5%EB%8B%88%EB%8B%A4" aria-label="182 kubernetes 는 인프라를 관리하지 않습니다 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>182. Kubernetes 는 인프라를 관리하지 않습니다.</h2>
+</li>
+<li>각 정렬 알고리즘의 Best와 Worst case 시간복잡도에 대해 알고, 각 특성을 설명할 수 있다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA+klEQVQoz3WS647EIAiF+/4P2sTq1I71AkhhM9LLzibrDzXmfBwOcVLV9H7P8xxCUNU+FhEhoqoiIhGJyHEcqkqIpRRVlbEmEUEA51ytVeSEjf+oiXrvBosqM0MDI4/jGDBC8B4AbjUzG2P3Ex67vT/OvffX+qJL/Z+zhTKPB661LMuSS74z3zAA/Mmc9/wFE6L3vo2S1ichmkNr7TcMANsWv2DmHkIgekK2Wg3OOSPiA7e2ruudf7Ij7alzH4XYpmJREfEemNXy3pvzCTNzjNFE5oxX2zlnuJxFZNs259zdywNbNoMBwD7JFmPes4joZ67Vh1BKSSkZ/AOpP0q/G6V4eQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240502100628"
+        title="20240502100628"
+        src="/static/50ffbb006594807c21291216d02546e6/37523/20240502100628.png"
+        srcset="/static/50ffbb006594807c21291216d02546e6/e9ff0/20240502100628.png 180w,
+/static/50ffbb006594807c21291216d02546e6/f21e7/20240502100628.png 360w,
+/static/50ffbb006594807c21291216d02546e6/37523/20240502100628.png 720w,
+/static/50ffbb006594807c21291216d02546e6/b2982/20240502100628.png 729w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
 <ul>
-<li>쿠버네티스가 해주는 작업과 아닌 작업을 구분을 명확하게 하는 것이 해당 도구를 효과적으로 사용하는 가장 핵심 중에 핵심이다.</li>
-<li>쿠버네티스가 할 수 없는 것은
+<li>버블 정렬
 <ul>
-<li>머신의 구체적인 가상 인스턴스나 컴퓨터에 대해 전혀 모르며</li>
-<li>쿠버네티스  API 서버, Kublet 및 다양한 서비스는 매뉴얼하게 스스로 설정해줘야 한다.</li>
-<li>인스턴스나 시스템을 업데이트 하고, 운영체제 업데이트를 유지하며, 전체 네트워크 보안 그룹 항목의 관리 등은 결국 개발자의 몫이다.</li>
+<li>특성 :
+<ul>
+<li>매우 직관적이고 간단한 정렬 방법</li>
+<li>인접한 두 원소 사이 검사를 통해 정렬을 진행하며, 정렬된 데이터를 다시 정렬 시 효과적이라는 장점이 있다.</li>
+<li>그러나 대부분의 경우 다른 정렬에 비해 비효율적이다.</li>
 </ul>
 </li>
-<li>쿠버네티스가 관심 가지는 영역은
+<li>Best Case 시간복잡도 : O(N)
 <ul>
-<li>실패한 컨테이너에 대해선 관심을 가진다.</li>
-<li>포드를 생성, 포드에서 컨테이너를 실행하는데 도움이 되며, 모니터링 및 교체에 도움이 되며, 스케일링의 영역에서도 도움이 된다.</li>
+<li>이미 정렬되어 있을 때, 버블 정렬은 최고의 속도를 낸다.</li>
+<li>이 때는 내부 루프에서 스왑이 일어나지 않으므로, 각 요소는 한 번씩만 확인하면 되기 때문이다.</li>
+<li>이때 중요한 것은 단순히 숫자 변화가 되어 있다! 가 아니라 정확하게 flag를 통해 변화 여부를 파악하는 기믹을 넣었을 때에 해당한다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OptimizedBubbleSort</span> <span class="token punctuation">{</span>
+	<span class="token keyword">void</span> <span class="token function">bubbleSort</span><span class="token punctuation">(</span><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">int</span> n <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+		<span class="token keyword">boolean</span> swapped<span class="token punctuation">;</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			swapped <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+			<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> arr<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">int</span> temp <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+					arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+					arr<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+					swapped <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// swap 발생 시 플래그 설정</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">// 한번 패스에서 스왑이 없었다면, 배열은 이미 정렬 된거</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>swapped<span class="token punctuation">)</span>
+				<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	
+	<span class="token comment">// 나머지 부분은 기존의 버블 정렬과 동일하게 가져가도 된다. </span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+</li>
+<li>Worst Case 시간복잡도 : O(N^2)
+<ul>
+<li>배열이 역순으로 정렬된 경우 최악의 시간복잡도를 보여준다.</li>
+<li>각 요소가 다음 요소와 무조건 비교 및 스왑을 해야하기 때문이다.</li>
 </ul>
 </li>
-<li>AWS 등에서 사용시에는 EKS와 같이 쿠버네티스 구성에 대한 탄력적인 서비스를 활용함으로써 ECS를 쓰지 않고, 또한 쿠버네티스 설정들만 가지고도 서비스에 관련된 관리와 모니터링, 리소스를 활용하는 것이 가능하다.</li>
+</ul>
+</li>
+<li>퀵정렬
+<ul>
+<li>특성
+<ul>
+<li>분할 정복 전략을 사용하는 만큼, 높은 효율의 정렬 알고리즘이다.</li>
+<li>전반적인 면에서 빠른 속도를 유지하고, 대규모 데이터 셋에서도 효과적이다.</li>
+<li>하지만 피벗의 선택에 따라 성능이 크게 달라지고, 최악의 케이스도 생긴다는 점을 이해하고 있어야 한다.</li>
+</ul>
+</li>
+<li>Best Case 시간복잡도 : O(NlogN)
+<ul>
+<li>퀵 정렬은 각 분할이 균등하게 이루어진 경우에 효과적이다.</li>
+<li>매번 피벗이 중앙값 근처로 선택되어 전체 배열을 균등하게 두 부분으로 나눌 때 최적의 성능을 보인다.</li>
+</ul>
+</li>
+<li>Worst Case 시간복잡도 : O(N^2)
+<ul>
+<li>피벗이 최솟값이나 최댓값으로 선택될 때 발생한다. 이러한 경우 분할 과정이 한 쪽에 치우쳐지고, 모든 요소를 바꿔야 하므로, 최악의 시간복잡도를 야기한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>선택 정렬
+<ul>
+<li>특성
+<ul>
+<li>배열 전체의 가장 작은 요소를 찾아서 맨 앞으로 이동 시키고, 그 다음으로 작은 요소를 찾는 방식으로 정렬을 진행한다.</li>
+<li>매우 직관적이며, 추가적인 메모리가 복잡하게 필요하지 않다.</li>
+<li>그러나 대용량 데이터 양이 많아 질 수록 성능의 급격한 하락이 발생한다.</li>
+</ul>
+</li>
+<li>Best Case 시간복잡도 : O(N^2)
+<ul>
+<li>입력 데이터의 정렬 상태와 무관하게 항상 모든 요소를 검사, 최선, 평균, 최악 모두 동일한 시간복잡도를 가진다.</li>
+</ul>
+</li>
+<li>Worst Case 시간복잡도 : O(N^2)
+<ul>
+<li>입력 데이터의 정렬 상태와 무관하게 항상 모든 요소를 검사, 최선, 평균, 최악 모두 동일한 시간복잡도를 가진다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>삽입 정렬
+<ul>
+<li>특성
+<ul>
+<li>각 반복에서 하나의 입력 요소를 적절한 위치에 삽입하여, 배열을 부분적으로 정렬한다.</li>
+<li>작은 데이터의 세트나 정령이 어느 정도 된 데이터에 대해서 빠르고, 안정적이게 정렬한다.</li>
+</ul>
+</li>
+<li>Best Case 시간복잡도 : O(N)
+<ul>
+<li>배열이 이미 정렬 되어 있을 때, 전체 배열을</li>
+</ul>
+</li>
+<li>Worst Case 시간복잡도 : O(N^2)
+<ul>
+<li>배열이 역순으로 정렬되어 있어서, 각 요소를 배열의 처음부터 그 위치까지 이동시켜야 하여서 최악의 케이스이다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>병합 정렬
+<ul>
+<li>특성
+<ul>
+<li>분할정복알고리즘을 사용하여 배열을 절반으로 나누고, 각 부분을 재귀적으로 정렬하고 다시 병합하는 구조를 가진다.</li>
+<li>대규모 데이터 셋에 효과적이며, 안정적이다.</li>
+<li>그러나 이러한 구조가 추가적인 메모리를 필요로 한다.</li>
+</ul>
+</li>
+<li>Best Case 시간복잡도 : O(NlogN)
+<ul>
+<li>배열을 분할하고 각 부분을 분할 및 병합하는데 필요한 로그 스케일의 단계를 거치다보니 일정한 시간복잡도를 요한다 .</li>
+</ul>
+</li>
+<li>Worst Case 시간복잡도 : O(NlogN)
+<ul>
+<li>병합 정렬은 배열 초기 상태와 무관하게, Best와 동일하게 분할 및 병합 과정에서 필요한 시간으로 로그 스케일이 필요로 한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>힙 정렬
+<ul>
+<li>특성
+<ul>
+<li>힙 정렬은 이진 힙 자료구조를 사용하여 정렬을 수행하는 알고리즘이다.</li>
+<li>배열 내의 모든 요소를 힙으로 구성, 가장 큰 요소를 제거하고, 나머지 요소로 힙을 다시 구성하는 과정을 반복한다.</li>
+<li>이때 추가 메모리 사용이 거의 없고, 최악에도 시간복잡도 로그 스케일을 유지한다.</li>
+</ul>
+</li>
+<li>Best Case 시간복잡도 : O(NlogN)</li>
+<li>Worst Case 시간복잡도 : O(NlogN)</li>
+</ul>
+</li>
+<li>카운팅 정렬
+<ul>
+<li>특성
+<ul>
+<li>정렬할 요소의 범위가 제한적일때 사용하는 비교 기반 정렬 알고리즘이 아닌 방식이다.</li>
+<li>각 숫자의 출현 횟수를 계산하고, 이를 바탕으로 각 숫자의 위치를 배열에 직접 배치한다.</li>
+<li>정수나 일정 범위의 작은 숫자를 정렬할 때 매우 빠르고 효과적이다.</li>
+</ul>
+</li>
+<li>Best Case 시간복잡도 : O(n + k) k는 숫자 범위다.</li>
+<li>Worst Case 시간복잡도 : O(n + k)</li>
+</ul>
+</li>
+<li>기수 정렬
+<ul>
+<li>특성
+<ul>
+<li>각 자리수를 개별적으로 정렬하는 방식으로, 보통 최하위 자릿수부터 시작하여 최상위 자리수까지 차례로 정렬한다.</li>
+<li>카운팅 정렬과 같은 안정적인 정렬을 사용하여 각 자릿수를 정렬한다.</li>
+<li>기수 정렬은 숫자 범위가 클 때 카운팅 정렬 보단 효율적이다.</li>
+</ul>
+</li>
+<li>Best Case 시간복잡도 : O(n * k)</li>
+<li>Worst Case 시간복잡도 : O(n * k)</li>
+</ul>
+</li>
+<li>버킷 정렬
+<ul>
+<li>특성
+<ul>
+<li>여러 버킷(또는 버블)을 분배하고, 각 버킷을 개별적으로 정렬한 후, 결과를 하나로 병합하는 방식이다.</li>
+<li>데이터가 균등하게 분포된 경우 가장 잘 작동하고, 부동소수점 수를 정렬할 때 유용하다.</li>
+</ul>
+</li>
+<li>Best Case 시간복잡도 : O(N + K)</li>
+<li>Worst Case 시간복잡도 : O(N^2)
+<ul>
+<li>버킷 내의 요소가 균등하게 분배되지 않은 경우</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>LIS 알고리즘(Longest Increasing Subsequence)
+<ul>
+<li>특성
+<ul>
+<li>최장 증가 부분 수열을 발견하는 알고리즘이다</li>
+<li>이 수열은 연속적일 필요는 없으며, 순서만 유지하면 된다.</li>
+<li>동적 프로그래밍 방식 : 각 원소를 끝으로 하는 최장 증가 부분 수열의 길이를 찾는 방식</li>
+<li>이진 검색 방식 : 각 원소를 적절한 위치에 삽입하여 가장 긴 증가 부분 수열을 동적으로 구성한다.</li>
+<li>LIS 자체는 부분을 구하는 공식이므로, 다른 알고리즘과 효과적으로 조합하면 배열을 위한 알고리즘 등으로 활용이 가능하다.</li>
+</ul>
+</li>
+<li>동적 프로그래밍
+<ul>
+<li>Best Case : O(N^2)</li>
+<li>Worst Case : O(N^2)</li>
+</ul>
+</li>
+<li>이진 검색
+<ul>
+<li>Best Case : O(NlogN)</li>
+<li>Worst Case : O(NlogN)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>재귀에 대해 설명할 수 있다.</li>
+<li>BFS/ DFS에 대해 설명할 수 있다. 직무 언어로 해당 알고리즘을 구현할 수 있다.</li>
+<li>다익스트라, 프림, 플로이드-워셜, 벨만포드, 크루스칼 알고리즘 등 그래프에서 사용하는 알고리즘에 대해 알고 있는가?</li>
+<li>코드를 보고 시간 복잡도를 계산할 수 있다.</li>
 </ul>
 <div class="table-of-contents">
 <ul>
 <li>
-<p><a href="#%EC%83%89%EC%85%98-12-%EC%8B%A4%EC%A0%84-kubernetes---%ED%95%B5%EC%8B%AC-%EA%B0%9C%EB%85%90-%EC%9E%90%EC%84%B8%ED%9E%88-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0">색션 12. 실전 Kubernetes - 핵심 개념 자세히 알아보기</a></p>
+<p><a href="#%EC%8B%A0%EC%9E%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%9D%B8%ED%84%B0%EB%B7%B0-%EB%8C%80%EB%B9%84--2-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98">신입 개발자 인터뷰 대비 : 2. 알고리즘</a></p>
 <ul>
-<li><a href="#181-%EB%AA%A8%EB%93%88-%EC%86%8C%EA%B0%9C">181. 모듈 소개</a></li>
-<li><a href="#182-kubernetes-%EB%8A%94-%EC%9D%B8%ED%94%84%EB%9D%BC%EB%A5%BC-%EA%B4%80%EB%A6%AC%ED%95%98%EC%A7%80-%EC%95%8A%EC%8A%B5%EB%8B%88%EB%8B%A4">182. Kubernetes 는 인프라를 관리하지 않습니다.</a></li>
+<li><a href="#%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98">알고리즘</a></li>
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/JAVA/20240320102457/"><div class="direction">이전 글</div><div class="title">java) til - 20240320</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/STUDY/coding-test/20240320010052/"><div class="direction">다음 글</div><div class="title">cote ) til - 20240320</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/interview/20240430150404/"><div class="direction">이전 글</div><div class="title">신입 개발자 인터뷰 대비 - 1. 자료구조</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
@@ -107,4 +409,4 @@
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', 'G-YDPMMYNR6Y', options);
-  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/docker-kubernetes/20240320111443/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-c638078fc4709f33b879.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js" async=""></script><script src="/app-c638078fc4709f33b879.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-55cbc9fb510ae844c257.js" async=""></script></body></html>
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/interview/20240430230482/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-c638078fc4709f33b879.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js" async=""></script><script src="/app-c638078fc4709f33b879.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-55cbc9fb510ae844c257.js" async=""></script></body></html>
