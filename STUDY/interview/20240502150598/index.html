@@ -541,14 +541,137 @@
 </ol>
 <p>대표적인 ORM 프레임워크로는 Java의 Hibernate, 이에서 파생되는 JPA, Python의 SQLAlchemy, NestJS의 TypeORM 등이 있다.</p>
 <h3 id="자주-사용하는-명령어들에-대해-설명할-수-있다select-join-where-delete-group-by-etc" style="position:relative;"><a href="#%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%AA%85%EB%A0%B9%EC%96%B4%EB%93%A4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8B%A4select-join-where-delete-group-by-etc" aria-label="자주 사용하는 명령어들에 대해 설명할 수 있다select join where delete group by etc permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>자주 사용하는 명령어들에 대해 설명할 수 있다.(SELECT, JOIN, WHERE, DELETE, GROUP BY… etc)</h3>
+<ol>
+<li><strong>SELECT</strong>: 데이터베이스에서 특정 데이터를 조회하는 데 사용된다. 특정 열이나 모든 열을 선택할 수 있다.</li>
+<li><strong>JOIN</strong>: 두 개 이상의 테이블을 연결하여 데이터를 결합할 때 사용된다. 이를 통해 관련된 데이터를 여러 테이블에서 동시에 조회할 수 있다.</li>
+<li><strong>WHERE</strong>: 특정 조건을 만족하는 데이터만을 선택하고자 할 때 사용된다. 이 명령어는 SELECT, UPDATE, DELETE 등과 함께 사용되어 결과를 필터링한다.</li>
+<li><strong>DELETE</strong>: 데이터베이스에서 특정 데이터를 제거하는 데 사용된다. WHERE 절과 함께 사용되어, 특정 조건을 만족하는 데이터만을 삭제할 수 있다.</li>
+<li><strong>GROUP BY</strong>: 집계 함수와 함께 사용되어, 특정 열의 값에 따라 결과 집합을 그룹화한다. 이를 통해 각 그룹에 대한 통계를 쉽게 계산할 수 있다.</li>
+</ol>
+<p>이 명령어들은 데이터베이스 관리 및 데이터 조작의 기본적인 구성 요소이며, 백엔드 개발자로서 효율적인 데이터 처리를 위해 필수적으로 숙지해야 한다.</p>
 <h3 id="db-키의-종류와-기능을-설명해보시오" style="position:relative;"><a href="#db-%ED%82%A4%EC%9D%98-%EC%A2%85%EB%A5%98%EC%99%80-%EA%B8%B0%EB%8A%A5%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%B4%EB%B3%B4%EC%8B%9C%EC%98%A4" aria-label="db 키의 종류와 기능을 설명해보시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DB 키의 종류와 기능을 설명해보시오.</h3>
+<ol>
+<li><strong>기본 키(Primary Key)</strong>: 테이블 내에서 각 행의 고유 식별자로 사용된다. 중복되거나 NULL 값을 가질 수 없어 테이블의 각 행을 명확히 식별하는 데 중요한 역할을 한다.</li>
+<li><strong>외래 키(Foreign Key)</strong>: 다른 테이블의 기본 키를 참조하는 키로, 두 테이블 간의 관계를 정의하는 데 사용된다. 데이터의 무결성을 유지하는 데 핵심적인 역할을 한다.</li>
+<li><strong>대체 키(Alternate Key)</strong>: 기본 키로 사용할 수 있지만 사용되지 않는 키를 말한다. 이 키들은 유일성을 보장하지만, 기본 키로 선택되지 않은 다른 후보 키들이다.</li>
+<li><strong>슈퍼 키(Super Key)</strong>: 테이블 내의 한 행을 유일하게 식별할 수 있는 하나 이상의 속성(열)의 집합이다. 슈퍼 키는 필요 이상의 속성을 포함할 수 있으며, 기본 키는 슈퍼 키의 최소 집합이다.</li>
+<li><strong>복합 키(Composite Key)</strong>: 두 개 이상의 열을 결합하여 테이블의 행을 유일하게 식별하는 키를 말한다. 개별적으로는 유일성을 보장하지 못할 수 있지만 조합했을 때 유일성을 보장한다.</li>
+<li><strong>인조 키(Artificial Key)</strong>: 테이블에 자연적으로 존재하는 데이터로 키를 구성할 수 없을 때 생성하는 인공적인 키다. 주로 일련번호나 특수 생성된 코드가 이에 해당한다.</li>
+</ol>
 <h3 id="redis-에-대해서-간단히-설명해보시오" style="position:relative;"><a href="#redis-%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EA%B0%84%EB%8B%A8%ED%9E%88-%EC%84%A4%EB%AA%85%ED%95%B4%EB%B3%B4%EC%8B%9C%EC%98%A4" aria-label="redis 에 대해서 간단히 설명해보시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Redis 에 대해서 간단히 설명해보시오</h3>
+<p>Redis는 고성능 키-값(key-value) 형태의 인메모리 데이터 구조 저장소이다. 주로 데이터베이스, 캐시, 메시지 브로커로 사용된다. Redis의 주요 특징은 다음과 같다.</p>
+<ol>
+<li><strong>빠른 성능</strong>: 모든 데이터가 메모리 내에 저장되므로, 읽기 및 쓰기 작업이 매우 빠르다.</li>
+<li><strong>다양한 데이터 구조 지원</strong>: 문자열, 리스트, 세트, 해시, 정렬된 세트, 비트맵 등 다양한 종류의 데이터 구조를 지원한다.</li>
+<li><strong>지속성 옵션</strong>: Redis는 메모리 내 데이터를 디스크에 저장하는 두 가지 방식(RDB와 AOF)을 제공하여, 시스템 장애 발생 시 데이터 복구가 가능하다.</li>
+<li><strong>거래 처리</strong>: Redis는 명령어들을 원자적으로 실행하는 간단한 트랜잭션을 지원한다.</li>
+<li><strong>레플리케이션 및 확장성</strong>: 데이터의 안정성과 가용성을 위해 마스터-슬레이브 레플리케이션을 지원하며, 여러 서버에 데이터를 분산시키는 클러스터 모드도 제공한다.</li>
+</ol>
+<p>Redis는 이러한 특성으로 인해 실시간 애플리케이션에서 매우 유용하게 사용되며, 대량의 데이터를 빠르게 처리하고, 접근해야 하는 다양한 시나리오에 적합하다.</p>
 <h3 id="redis와-memcached의-차이에-대해-설명하시오" style="position:relative;"><a href="#redis%EC%99%80-memcached%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="redis와 memcached의 차이에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Redis와 Memcached의 차이에 대해 설명하시오.</h3>
+<p>Redis와 Memcached는 모두 인기 있는 인메모리 데이터 스토어로, 주로 캐싱과 같은 고성능 작업에 사용된다. 이 두 시스템의 주요 차이점을 설명하겠다.</p>
+<ol>
+<li><strong>데이터 구조</strong>: Redis는 문자열, 해시, 리스트, 세트, 정렬된 세트 등 다양한 데이터 구조를 지원한다. 반면, Memcached는 주로 간단한 키-값 구조만을 지원하여, 사용범위가 비교적 제한적이다.</li>
+<li><strong>지속성</strong>: Redis는 데이터를 디스크에 저장할 수 있는 옵션(RDB, AOF)을 제공하여 지속성을 지원한다. Memcached는 주로 순수한 캐시로 사용되며, 기본적으로 데이터 지속성을 제공하지 않는다.</li>
+<li><strong>트랜잭션과 스크립팅</strong>: Redis는 간단한 트랜잭션 기능을 지원하며, Lua 스크립팅을 통해 서버 측에서 복잡한 연산을 수행할 수 있다. Memcached는 이러한 기능을 지원하지 않는다.</li>
+<li><strong>복제 및 클러스터링</strong>: Redis는 내장된 복제, 센티넬(Sentinel), 클러스터링 기능을 통해 고가용성과 데이터 무결성을 보장한다. Memcached는 멀티코어 아키텍처를 활용한 간단한 복제는 가능하지만, Redis만큼의 고급 기능을 제공하지는 않는다.</li>
+<li><strong>사용 사례</strong>: Redis의 다양한 데이터 구조와 기능은 메시징, 세션 관리, 실시간 애플리케이션 등 다양한 사용 사례에 적합하다. Memcached는 주로 간단한 캐싱 목적으로 사용되며, 대규모 웹 사이트에서 데이터베이스 부하를 줄이는 데 효과적이다.</li>
+</ol>
 <h3 id="elastic-search에-대해-간단히-설명하시오" style="position:relative;"><a href="#elastic-search%EC%97%90-%EB%8C%80%ED%95%B4-%EA%B0%84%EB%8B%A8%ED%9E%88-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="elastic search에 대해 간단히 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Elastic Search에 대해 간단히 설명하시오.</h3>
+<p>Elasticsearch는 Apache Lucene(아파치 루)을 기반으로 하는 오픈 소스 검색 및 분석 엔진이다. 텍스트, 숫자, 위치 데이터 등 다양한 유형의 데이터에 대해 빠르고 확장 가능한 검색 기능을 제공한다. Elasticsearch의 주요 특징은 다음과 같다.</p>
+<ol>
+<li><strong>분산 시스템</strong>: Elasticsearch는 자동으로 데이터를 여러 노드에 분산시켜 저장하고, 이를 통해 높은 가용성과 확장성을 제공한다.</li>
+<li><strong>실시간 검색</strong>: 데이터가 인덱싱되는 즉시 검색이 가능하므로, 거의 실시간으로 데이터를 조회하고 분석할 수 있다.</li>
+<li><strong>다양한 인덱싱 옵션</strong>: 복합적인 데이터 구조도 색인화할 수 있으며, 사용자는 필요에 따라 인덱싱 방법을 세부적으로 조정할 수 있다.</li>
+<li><strong>RESTful API</strong>: 데이터 색인, 검색, 업데이트, 관리 작업을 위해 HTTP와 JSON을 사용하는 RESTful API를 제공한다. 이로 인해 다양한 프로그래밍 언어와 쉽게 통합될 수 있다.</li>
+<li><strong>강력한 분석 기능</strong>: Elasticsearch는 집계 기능을 통해 복잡한 데이터 집계 및 분석을 수행할 수 있어, 대규모 데이터에 대한 인사이트를 얻는 데 유용하다.</li>
+</ol>
+<p>이러한 특성으로 인해 Elasticsearch는 로그 분석, 전체 텍스트 검색, 보안 인텔리전스, 비즈니스 분석 등 다양한 분야에서 널리 사용된다.</p>
 <h3 id="elastic-search-의-인덱스-구조와-rdbms의-인덱스-구조의-차이에-대해-설명하시오" style="position:relative;"><a href="#elastic-search-%EC%9D%98-%EC%9D%B8%EB%8D%B1%EC%8A%A4-%EA%B5%AC%EC%A1%B0%EC%99%80-rdbms%EC%9D%98-%EC%9D%B8%EB%8D%B1%EC%8A%A4-%EA%B5%AC%EC%A1%B0%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="elastic search 의 인덱스 구조와 rdbms의 인덱스 구조의 차이에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Elastic Search 의 인덱스 구조와 RDBMS의 인덱스 구조의 차이에 대해 설명하시오</h3>
+<p>Elasticsearch의 인덱스 구조와 전통적인 관계형 데이터베이스(RDBMS)의 인덱스 구조는 데이터 저장, 관리, 검색 방식에서 상당한 차이를 보인다.</p>
+<ol>
+<li><strong>인덱스 구조</strong>:
+<ul>
+<li><strong>Elasticsearch</strong>: Elasticsearch에서는 ‘인덱스’가 하나의 데이터베이스처럼 작동하며, 이 안에 여러 ‘타입’이 존재할 수 있다. 하지만 Elasticsearch 7.x 이후부터는 단일 인덱스 내에서 다중 타입을 지원하지 않는다. 각 문서는 JSON 형식으로 저장되며, 인덱스 내에서 자동으로 풀 텍스트 검색을 위한 역색인이 생성된다. 역색인 구조는 검색 속도를 최적화하기 위해 설계되었다.</li>
+<li><strong>RDBMS</strong>: RDBMS에서 인덱스는 데이터베이스 테이블의 열(컬럼)에 대해 생성되며, 주로 B-트리 구조를 사용한다. 이 구조는 CRUD(Create, Read, Update, Delete) 작업의 균형을 맞추어 효율적으로 데이터를 관리하며, 주로 특정 값의 빠른 조회를 목적으로 한다.</li>
+</ul>
+</li>
+<li><strong>데이터 처리 방식</strong>:
+<ul>
+<li><strong>Elasticsearch</strong>: 데이터는 비정형이거나 반정형일 수 있으며, 모든 필드는 인덱싱되어 빠른 검색을 지원한다. 동적 인덱싱을 통해 새로운 데이터 타입과 필드를 쉽게 추가할 수 있다.</li>
+<li><strong>RDBMS</strong>: 엄격한 스키마에 따라 데이터가 저장되며, 인덱스를 생성하지 않은 필드는 검색 성능이 낮다. 데이터는 주로 정형화된 형태이며, 스키마 변경은 상대적으로 복잡할 수 있다.</li>
+</ul>
+</li>
+<li><strong>검색 및 분석 기능</strong>:
+<ul>
+<li><strong>Elasticsearch</strong>: 복잡한 텍스트 검색, 데이터 집계 및 분석이 강점이다. 다양한 검색 쿼리와 실시간 분석을 지원하며, 대규모 데이터셋에 대한 빠른 응답을 제공한다.</li>
+<li><strong>RDBMS</strong>: 주로 정확한 값의 조회에 최적화되어 있으며, 전체 텍스트 검색이나 복잡한 분석은 별도의 솔루션을 필요로 할 수 있다. 또한, 대량의 데이터에 대한 집계 및 분석 쿼리는 성능 저하를 일으킬 수 있다.</li>
+</ul>
+</li>
+</ol>
+<p>이러한 차이는 각 시스템의 설계 목적과 사용 케이스에 기인한다. Elasticsearch는 대량의 데이터를 신속하게 검색하고 분석하는 데 적합하며, RDBMS는 데이터의 무결성과 정확한 트랜잭션 처리에 강점을 가진다.</p>
 <h3 id="elastic-search의-키워드-검색과-rdbms의-like의-차이점에-대해-설명하시오" style="position:relative;"><a href="#elastic-search%EC%9D%98-%ED%82%A4%EC%9B%8C%EB%93%9C-%EA%B2%80%EC%83%89%EA%B3%BC-rdbms%EC%9D%98-like%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="elastic search의 키워드 검색과 rdbms의 like의 차이점에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Elastic Search의 키워드 검색과 RDBMS의 LIKE의 차이점에 대해 설명하시오.</h3>
+<p>Elasticsearch의 키워드 검색과 RDBMS의 <code class="language-text">LIKE</code> 연산자 사용은 두 시스템이 데이터를 어떻게 색인화하고 검색하는지의 차이에서 기인한다.</p>
+<ol>
+<li><strong>색인화와 검색 속도</strong>:
+<ul>
+<li><strong>Elasticsearch</strong>: 데이터가 저장될 때, Elasticsearch는 데이터를 자동으로 색인화하며 특히 풀 텍스트 검색에 최적화된 역색인을 생성한다. 이러한 색인 구조 덕분에 매우 빠른 검색 성능을 제공한다. 키워드 검색은 정확한 일치 뿐만 아니라, 부분 일치, 유사어 검색, 스펠링 오류를 용인하는 검색 등 복잡한 쿼리에도 빠르게 대응할 수 있다.</li>
+<li><strong>RDBMS</strong>: <code class="language-text">LIKE</code> 연산자는 보통 전체 테이블 스캔을 필요로 하므로, 대량의 데이터에 대해서는 성능이 상대적으로 떨어진다. 인덱스를 사용하지 않는 경우가 많으며, 특히 문자열의 일부를 검색하는 <code class="language-text">%keyword%</code> 형식의 쿼리는 매우 느릴 수 있다. 인덱스를 사용할 수 있는 경우는 <code class="language-text">keyword%</code>와 같이 접두사 검색일 때이다.</li>
+</ul>
+</li>
+<li><strong>기능성</strong>:
+<ul>
+<li><strong>Elasticsearch</strong>: 다양한 검색 옵션을 제공하여, 텍스트 분석기를 활용한 복잡한 검색이 가능하다. 예를 들어, 동의어 처리, 토크나이저 설정, 텍스트 필터링 등을 통해 검색 엔진처럼 다양한 요구 사항에 맞춰 검색할 수 있다.</li>
+<li><strong>RDBMS</strong>: <code class="language-text">LIKE</code> 연산은 기본적인 패턴 매칭 기능을 제공하지만, 대소문자 구분, 정확한 문자 일치 등의 제한된 기능을 가진다. 복잡한 텍스트 처리나 분석 기능은 제공하지 않는다.</li>
+</ul>
+</li>
+<li><strong>사용 사례</strong>:
+<ul>
+<li><strong>Elasticsearch</strong>: 대규모 로그 데이터, 소셜 미디어 데이터, 웹 콘텐츠 등 비정형 데이터에 대한 풍부한 텍스트 검색 요구에 적합하다.</li>
+<li><strong>RDBMS</strong>: 트랜잭션 데이터, 고객 정보, 재고 정보 등 정형 데이터의 구조적 조회에 강점을 가진다. <code class="language-text">LIKE</code> 연산자는 주로 간단한 문자열 검색에 사용된다.</li>
+</ul>
+</li>
+</ol>
+<p>종합적으로, Elasticsearch는 풍부한 텍스트 기반 검색 기능과 빠른 성능으로 복잡한 검색 요구를 충족시키는 반면, RDBMS는 전통적인 데이터 관리에 더 적합하며, <code class="language-text">LIKE</code> 연산자를 사용한 검색은 상대적으로 단순하고 제한적이다.</p>
 <h3 id="mongdb-의-개념과-그-특징을-설명하시오" style="position:relative;"><a href="#mongdb-%EC%9D%98-%EA%B0%9C%EB%85%90%EA%B3%BC-%EA%B7%B8-%ED%8A%B9%EC%A7%95%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="mongdb 의 개념과 그 특징을 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MongDB 의 개념과 그 특징을 설명하시오</h3>
+<ol>
+<li><strong>문서 지향적 저장 구조</strong>:
+<ul>
+<li>MongoDB는 데이터를 JSON과 유사한 BSON(Binary JSON) 형식의 ‘문서’로 저장한다. 이 문서들은 유연한 스키마를 가지며, 각 문서는 다양한 필드를 포함할 수 있다. 필드 값으로는 배열이나 다른 문서도 올 수 있어 복잡한 데이터 구조를 자연스럽게 표현할 수 있다.</li>
+</ul>
+</li>
+<li><strong>스키마리스(schema-less)</strong>:
+<ul>
+<li>MongoDB 문서는 고정된 스키마를 요구하지 않는다. 즉, 동일한 컬렉션(관계형 데이터베이스의 테이블에 해당) 내의 문서들이 서로 다른 구조를 가질 수 있다. 이로 인해 개발 과정이 유연해지고, 다양한 형태의 데이터를 쉽게 저장하고 관리할 수 있다.</li>
+</ul>
+</li>
+<li><strong>확장성</strong>:
+<ul>
+<li>MongoDB는 수평적 확장성을 지원한다. 샤딩을 통해 데이터를 여러 서버에 분산시키며, 이를 통해 데이터베이스의 부하를 분산시키고, 대용량 데이터를 효과적으로 처리할 수 있다.</li>
+</ul>
+</li>
+<li><strong>고가용성</strong>:
+<ul>
+<li>자동 복제 및 장애 조치 기능을 제공하는 복제 세트를 지원한다. 이는 데이터의 안전성을 보장하고, 서버가 다운되더라도 데이터 접근성을 유지하게 해 준다.</li>
+</ul>
+</li>
+<li><strong>강력한 쿼리 언어</strong>:
+<ul>
+<li>MongoDB는 강력한 쿼리 언어를 지원하여, 복잡한 검색, 데이터 집계 및 분석이 가능하다. SQL과 유사한 쿼리를 사용할 수 있으며, 인덱스를 활용한 빠른 데이터 검색을 지원한다.</li>
+</ul>
+</li>
+</ol>
+<p>MongoDB는 이러한 특징들로 인해 대규모, 고성능, 유연한 데이터 저장 요구가 있는 애플리케이션 개발에 적합하다. 주로 실시간 분석, 사물 인터넷(IoT), 모바일 애플리케이션 등 다양한 분야에서 활용된다.</p>
 <h3 id="cap-이론과-eventual-consistency-에-대해서-설명하시오" style="position:relative;"><a href="#cap-%EC%9D%B4%EB%A1%A0%EA%B3%BC-eventual-consistency-%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="cap 이론과 eventual consistency 에 대해서 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CAP 이론과 Eventual Consistency 에 대해서 설명하시오</h3>
+<p>CAP 이론과 Eventual Consistency는 분산 시스템 설계의 핵심 개념이다.</p>
+<p><strong>CAP 이론</strong>은 2000년 Eric Brewer가 제안한 이론으로, 분산 컴퓨팅 시스템이 일관성(Consistency), 가용성(Availability), 분할 내구성(Partition Tolerance) 이 세 가지 특성 중 최대 두 가지만을 동시에 보장할 수 있다고 설명한다.</p>
+<ul>
+<li><strong>일관성(Consistency)</strong> 은 모든 노드가 최신 상태의 데이터를 가지고 있어야 함을 의미한다.</li>
+<li><strong>가용성(Availability)</strong> 은 모든 요청에 대해 항상 응답을 해야 함을 의미한다.</li>
+<li><strong>분할 내구성(Partition Tolerance)</strong> 은 네트워크 분할이 발생해도 시스템이 정상적으로 동작해야 함을 의미한다.</li>
+</ul>
+<p><strong>Eventual Consistency</strong>는 일관성과 가용성을 모두 추구하면서 발생하는 문제를 해결하기 위한 접근법이다. 모든 업데이트가 결국에는 모든 노드에 전파되어 시스템이 일관된 상태가 되지만, 업데이트가 전파되는 동안 일시적으로 데이터 불일치가 발생할 수 있다. 이는 분산 시스템에서 네트워크 지연과 파티션 문제를 다룰 때 특히 유용하다.</p>
+<p>이 두 개념은 분산 데이터베이스 설계에 중요한 영향을 미치며, 시스템의 필요에 따라 적절한 일관성 모델을 선택하는 데 도움을 준다.</p>
 <div class="table-of-contents">
 <ul>
 <li>
@@ -626,7 +749,7 @@
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/interview/20240430230482/"><div class="direction">이전 글</div><div class="title">신입 개발자 인터뷰 대비 - 2. 알고리즘</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/interview/20240430230482/"><div class="direction">이전 글</div><div class="title">신입 개발자 인터뷰 대비 - 2. 알고리즘</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/STUDY/interview/20240503010579/"><div class="direction">다음 글</div><div class="title">신입 개발자 인터뷰 대비 - 4. 네트워크 / 보안</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
