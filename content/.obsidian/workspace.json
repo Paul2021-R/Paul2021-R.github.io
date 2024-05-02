@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f0d28926fc06ecd4",
+            "id": "2e494e9d24bf45f4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/interview/20240430100401.md",
+                "file": "STUDY/interview/20240430230482.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/interview/20240430100401.md",
+                "file": "STUDY/interview/20240430230482.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/interview/20240430100401.md",
+                "file": "STUDY/interview/20240430230482.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/interview/20240430100401.md"
+                "file": "STUDY/interview/20240430230482.md"
               }
             }
           }
@@ -134,7 +134,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -147,10 +148,15 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "f0d28926fc06ecd4",
+  "active": "799749a987e50230",
   "lastOpenFiles": [
-    "STUDY/interview/20240430020435.md",
+    "STUDY/interview/src/20240502100628.png",
+    "STUDY/interview/src",
+    "desktop.ini",
+    "STUDY/interview/20240430150404.md",
     "STUDY/interview/20240430100401.md",
+    "STUDY/interview/20240430230482.md",
+    "STUDY/interview/20240430020435.md",
     "ETC/20240429200451.md",
     "ETC/20240423170432.md",
     "STUDY/interview",
@@ -183,10 +189,6 @@
     "STUDY/coding-test/20240418160403.md",
     "STUDY/docker-kubernetes/20240416203739.md",
     "STUDY/JAVA/20240420090423.md",
-    "STUDY/docker-kubernetes/20240420150435.md",
-    "STUDY/docker-kubernetes/20240325014749.md",
-    "20240421090475.md",
-    "desktop.ini",
-    "STUDY/docker-kubernetes/무제 파일.md"
+    "STUDY/docker-kubernetes/20240420150435.md"
   ]
 }
