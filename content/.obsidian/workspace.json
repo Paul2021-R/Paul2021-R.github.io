@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/interview/20240430230482.md",
+                "file": "STUDY/interview/20240502150598.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "02d5a075cc6688b0",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/interview/20240430230482.md",
+                "file": "STUDY/interview/20240502150598.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/interview/20240430230482.md",
+                "file": "STUDY/interview/20240502150598.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/interview/20240430230482.md"
+                "file": "STUDY/interview/20240502150598.md"
               }
             }
           }
@@ -148,14 +149,15 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "799749a987e50230",
+  "active": "2e494e9d24bf45f4",
   "lastOpenFiles": [
+    "STUDY/interview/20240430230482.md",
+    "STUDY/interview/20240502150598.md",
+    "STUDY/interview/20240430150404.md",
     "STUDY/interview/src/20240502100628.png",
     "STUDY/interview/src",
     "desktop.ini",
-    "STUDY/interview/20240430150404.md",
     "STUDY/interview/20240430100401.md",
-    "STUDY/interview/20240430230482.md",
     "STUDY/interview/20240430020435.md",
     "ETC/20240429200451.md",
     "ETC/20240423170432.md",
@@ -171,7 +173,6 @@
     "STUDY/JAVA/src/20240428220637.png",
     "STUDY/JAVA/src/20240427193055.png",
     "STUDY/JAVA/src/20240427191459.png",
-    "STUDY/JAVA/src/20240427080412.png",
     "STUDY/JAVA/20240424130441.md",
     "STUDY/docker-kubernetes/20240426160434.md",
     "STUDY/docker-kubernetes/20240424100414.md",
