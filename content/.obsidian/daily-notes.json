@@ -1,4 +1,4 @@
 {
-  "format": "YYYYMMDDHHMMSS",
+  "format": "YYYYMMDDHHmmss",
   "template": "ETC/template"
 }

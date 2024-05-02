@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "742b2b6c7e3d881f",
+        "id": "98c9a3d63b1ce660",
         "type": "tabs",
         "children": [
           {
-            "id": "2e494e9d24bf45f4",
+            "id": "cd0ea02965d451ae",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/interview/20240502150598.md",
+                "file": "STUDY/interview/20240503024540.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "02d5a075cc6688b0",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/interview/20240502150598.md",
+                "file": "STUDY/interview/20240503024540.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/interview/20240502150598.md",
+                "file": "STUDY/interview/20240503024540.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/interview/20240502150598.md"
+                "file": "STUDY/interview/20240503024540.md"
               }
             }
           }
@@ -149,15 +148,25 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "2e494e9d24bf45f4",
+  "active": "cd0ea02965d451ae",
   "lastOpenFiles": [
-    "STUDY/interview/20240430230482.md",
+    "STUDY/interview/20240503024436.md",
+    "STUDY/interview/20240503024313.md",
+    "STUDY/interview/20240503020582.md",
+    "STUDY/interview/20240503020528.md",
+    "STUDY/interview/20240503010579.md",
     "STUDY/interview/20240502150598.md",
+    "STUDY/interview/20240430100401.md",
     "STUDY/interview/20240430150404.md",
+    "STUDY/interview/20240503024540.md",
+    "STUDY/interview/20240503020579.md",
+    "20240503020583.md",
+    "STUDY/interview/20240503020502.md",
+    "STUDY/interview/20240503020523.md",
+    "STUDY/interview/20240430230482.md",
     "STUDY/interview/src/20240502100628.png",
     "STUDY/interview/src",
     "desktop.ini",
-    "STUDY/interview/20240430100401.md",
     "STUDY/interview/20240430020435.md",
     "ETC/20240429200451.md",
     "ETC/20240423170432.md",
@@ -180,16 +189,6 @@
     "src",
     "STUDY/JAVA/20240423130499.md",
     "STUDY/docker-kubernetes/20240423160450.md",
-    "ETC/20240408222022.md",
-    "STUDY/JAVA/20240422110467.md",
-    "ETC/20240408222308.md",
-    "STUDY/docker-kubernetes/20240421090494.md",
-    "STUDY/CSAPP/20240415110026.md",
-    "STUDY/JAVA/20240421200409.md",
-    "STUDY/coding-test/20240422060464.md",
-    "STUDY/coding-test/20240418160403.md",
-    "STUDY/docker-kubernetes/20240416203739.md",
-    "STUDY/JAVA/20240420090423.md",
-    "STUDY/docker-kubernetes/20240420150435.md"
+    "ETC/20240408222022.md"
   ]
 }
