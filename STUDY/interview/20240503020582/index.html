@@ -48,47 +48,792 @@
         }
       }
     })
-  </script><title data-react-helmet="true">신입 개발자 인터뷰 대비 - 6. Java &amp; 객체 지향 언어</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="신입 개발자 인터뷰 대비 - 6. Java &amp; 객체 지향 언어"/><meta data-react-helmet="true" property="og:site_title" content="신입 개발자 인터뷰 대비 - 6. Java &amp; 객체 지향 언어"/><meta data-react-helmet="true" name="description" content="신입 개발자 인터뷰 대비 : 6. JAVA &amp; 객체지향언어 JAVA &amp; 객체지향언어 JVM의 역할과, JVM의 구조에 대해 설명할 수 있다. Java로 원시 타입, 참조 타입의 변수를 생성했을 때, 메모리의 어느 영역에 할당되는지 설명할 수 있다. Java의 컴파일 과정에 대해 설명할 수 있다. Garbage Collect가 무엇인지 설명할 수 있다. 오버라이딩과 오버로딩이 각각 무엇인지 설명할 수 있다. 래퍼클래스가 무엇인지 설명할 수 있다. 추상클래스와 interface에 대해 설명할 수 있다. 클래스와 인스턴스의 차이에 대해 설명할 수 있다. 제네릭에 대해 설명할 수 있다. 함수형 프로그래밍과 Stream API에 대해 설명할 수 있다. 어노테이션에 대해 설명할 수 있다. 자바의 원시타입과 각각 몇 바이트의 값을 표현하는 가
-SOLID 5대 원칙에 대해 설명하시오 동일성과 동등성에 대해 설명하시오. String, StringBuilder, String Buffer 에 대해 각…"/><meta data-react-helmet="true" property="og:description" content="신입 개발자 인터뷰 대비 : 6. JAVA &amp; 객체지향언어 JAVA &amp; 객체지향언어 JVM의 역할과, JVM의 구조에 대해 설명할 수 있다. Java로 원시 타입, 참조 타입의 변수를 생성했을 때, 메모리의 어느 영역에 할당되는지 설명할 수 있다. Java의 컴파일 과정에 대해 설명할 수 있다. Garbage Collect가 무엇인지 설명할 수 있다. 오버라이딩과 오버로딩이 각각 무엇인지 설명할 수 있다. 래퍼클래스가 무엇인지 설명할 수 있다. 추상클래스와 interface에 대해 설명할 수 있다. 클래스와 인스턴스의 차이에 대해 설명할 수 있다. 제네릭에 대해 설명할 수 있다. 함수형 프로그래밍과 Stream API에 대해 설명할 수 있다. 어노테이션에 대해 설명할 수 있다. 자바의 원시타입과 각각 몇 바이트의 값을 표현하는 가
-SOLID 5대 원칙에 대해 설명하시오 동일성과 동등성에 대해 설명하시오. String, StringBuilder, String Buffer 에 대해 각…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/interview/20240503020582/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">💻</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">신입 개발자 인터뷰 대비 - 6. Java &amp; 객체 지향 언어</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->May 03, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="신입-개발자-인터뷰-대비--6-java--객체지향언어" style="position:relative;"><a href="#%EC%8B%A0%EC%9E%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%9D%B8%ED%84%B0%EB%B7%B0-%EB%8C%80%EB%B9%84--6-java--%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4" aria-label="신입 개발자 인터뷰 대비  6 java  객체지향언어 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>신입 개발자 인터뷰 대비 : 6. JAVA &#x26; 객체지향언어</h1>
+  </script><title data-react-helmet="true">신입 개발자 인터뷰 대비 - 6. Java &amp; 객체 지향 언어</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="신입 개발자 인터뷰 대비 - 6. Java &amp; 객체 지향 언어"/><meta data-react-helmet="true" property="og:site_title" content="신입 개발자 인터뷰 대비 - 6. Java &amp; 객체 지향 언어"/><meta data-react-helmet="true" name="description" content="신입 개발자 인터뷰 대비 : 6. JAVA &amp; 객체지향언어 JAVA &amp; 객체지향언어 JVM의 역할과, JVM의 구조에 대해 설명하시오 JVM(Java Virtual Machine)은 자바 프로그램이 다양한 플랫폼에서 동일하게 실행될 수 있도록 해주는 가상 머신이다. 이는 자바의 핵심 원리인 “한 번 작성하면 어디서나 실행된다(Write Once, Run Anywhere)“를 가능하게 하는 중요한 요소이다. JVM의 주요 역할: 플랫폼 독립성 제공: 자바 애플리케이션을 컴파일하면 플랫폼에 독립적인 바이트코드가 생성되고, JVM은 이 바이트코드를 해당 플랫폼의 기계어로 변환하여 실행한다. 메모리 관리: JVM은 실행 중인 프로그램의 메모리 할당 및 관리를 담당한다. 이는 가비지 컬렉션을 포함하며, 사용되지 않는 객체를 자동으로 정리하여 메모리 누수를 방지한다. 보안: 클래스 로더와 바이트코드 검증기를 통해 코드를 로드하기 전에 이를 검증하여 시스템의 보안을 유지한다. 실행 환경 제공:…"/><meta data-react-helmet="true" property="og:description" content="신입 개발자 인터뷰 대비 : 6. JAVA &amp; 객체지향언어 JAVA &amp; 객체지향언어 JVM의 역할과, JVM의 구조에 대해 설명하시오 JVM(Java Virtual Machine)은 자바 프로그램이 다양한 플랫폼에서 동일하게 실행될 수 있도록 해주는 가상 머신이다. 이는 자바의 핵심 원리인 “한 번 작성하면 어디서나 실행된다(Write Once, Run Anywhere)“를 가능하게 하는 중요한 요소이다. JVM의 주요 역할: 플랫폼 독립성 제공: 자바 애플리케이션을 컴파일하면 플랫폼에 독립적인 바이트코드가 생성되고, JVM은 이 바이트코드를 해당 플랫폼의 기계어로 변환하여 실행한다. 메모리 관리: JVM은 실행 중인 프로그램의 메모리 할당 및 관리를 담당한다. 이는 가비지 컬렉션을 포함하며, 사용되지 않는 객체를 자동으로 정리하여 메모리 누수를 방지한다. 보안: 클래스 로더와 바이트코드 검증기를 통해 코드를 로드하기 전에 이를 검증하여 시스템의 보안을 유지한다. 실행 환경 제공:…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/interview/20240503020582/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">💻</div><div class="info"><div class="categories"><a class="category" href="/posts/study">study</a></div></div><h1 class="title">신입 개발자 인터뷰 대비 - 6. Java &amp; 객체 지향 언어</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->May 03, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="신입-개발자-인터뷰-대비--6-java--객체지향언어" style="position:relative;"><a href="#%EC%8B%A0%EC%9E%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%9D%B8%ED%84%B0%EB%B7%B0-%EB%8C%80%EB%B9%84--6-java--%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4" aria-label="신입 개발자 인터뷰 대비  6 java  객체지향언어 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>신입 개발자 인터뷰 대비 : 6. JAVA &#x26; 객체지향언어</h1>
 <h2 id="java--객체지향언어" style="position:relative;"><a href="#java--%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4" aria-label="java  객체지향언어 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JAVA &#x26; 객체지향언어</h2>
-<p>JVM의 역할과, JVM의 구조에 대해 설명할 수 있다.</p>
-<p>Java로 원시 타입, 참조 타입의 변수를 생성했을 때, 메모리의 어느 영역에 할당되는지 설명할 수 있다.</p>
-<p>Java의 컴파일 과정에 대해 설명할 수 있다.</p>
-<p>Garbage Collect가 무엇인지 설명할 수 있다.</p>
-<p>오버라이딩과 오버로딩이 각각 무엇인지 설명할 수 있다.</p>
-<p>래퍼클래스가 무엇인지 설명할 수 있다.</p>
-<p>추상클래스와 interface에 대해 설명할 수 있다.</p>
-<p>클래스와 인스턴스의 차이에 대해 설명할 수 있다.</p>
-<p>제네릭에 대해 설명할 수 있다.</p>
-<p>함수형 프로그래밍과 Stream API에 대해 설명할 수 있다.</p>
-<p>어노테이션에 대해 설명할 수 있다.</p>
-<p>자바의 원시타입과 각각 몇 바이트의 값을 표현하는 가
-SOLID 5대 원칙에 대해 설명하시오</p>
-<p>동일성과 동등성에 대해 설명하시오.</p>
-<p>String, StringBuilder, String Buffer 에 대해 각각의 클래스를 설명하고 차이를 설명하시오</p>
-<p>JAVA 8에서 추가된 내용은?</p>
-<p>강한 결합과 느슨한 결합에 대해 설명하시오</p>
-<p>자바의 동시성 이슈(공유 자원 접근)에 대해 설명보시오.</p>
-<p>Mutable 객체와 Immutable 객체의 개념과 그 차이점을 설명하시오.</p>
-<p>자바에서 null을 안전하게 다루는 방법을 설명하시오.</p>
-<p>JDK, JRE의 차이점을 설명해보시오.</p>
-<p>자바의 메모리 영역에 대해 설명할 수 있고, 각 메모리 영역이 할당되는 시점을 알고 있다.</p>
-<p>Synchronized에 대해 설명할 수 있다.</p>
-<p>new String()과 ""의 차이에 대해 설명할 수 있다.</p>
-<p>접근 제한자별 차이에 대해 알고 있다.</p>
-<p>static과 final에 대해 알고 있고, 메모리 측면에서도 설명이 가능하다.</p>
-<p>Collections 프레임워크를 사용할 줄 안다.</p>
-<p>직렬화(Serialize)에 대해 설명할 수 있다.</p>
-<p>메모리의 상수 풀 영역이 무엇인지 알고 있다.</p>
-<p>SerialVersionUID를 선언해야 하는 이유를 설명할 수 있다.</p>
-<p>객체지향 개념의 특징을 모두 Java 코드와 함께 설명할 수 있다.</p>
+<h3 id="jvm의-역할과-jvm의-구조에-대해-설명하시오" style="position:relative;"><a href="#jvm%EC%9D%98-%EC%97%AD%ED%95%A0%EA%B3%BC-jvm%EC%9D%98-%EA%B5%AC%EC%A1%B0%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="jvm의 역할과 jvm의 구조에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JVM의 역할과, JVM의 구조에 대해 설명하시오</h3>
+<p>JVM(Java Virtual Machine)은 자바 프로그램이 다양한 플랫폼에서 동일하게 실행될 수 있도록 해주는 가상 머신이다. 이는 자바의 핵심 원리인 “한 번 작성하면 어디서나 실행된다(Write Once, Run Anywhere)“를 가능하게 하는 중요한 요소이다.</p>
+<p><strong>JVM의 주요 역할</strong>:</p>
+<ol>
+<li><strong>플랫폼 독립성 제공</strong>: 자바 애플리케이션을 컴파일하면 플랫폼에 독립적인 바이트코드가 생성되고, JVM은 이 바이트코드를 해당 플랫폼의 기계어로 변환하여 실행한다.</li>
+<li><strong>메모리 관리</strong>: JVM은 실행 중인 프로그램의 메모리 할당 및 관리를 담당한다. 이는 가비지 컬렉션을 포함하며, 사용되지 않는 객체를 자동으로 정리하여 메모리 누수를 방지한다.</li>
+<li><strong>보안</strong>: 클래스 로더와 바이트코드 검증기를 통해 코드를 로드하기 전에 이를 검증하여 시스템의 보안을 유지한다.</li>
+<li><strong>실행 환경 제공</strong>: 자바 API와 실행 시 필요한 기본 기능들을 제공하여 자바 애플리케이션이 실행될 수 있는 환경을 구축한다.</li>
+</ol>
+<p><strong>JVM의 구조</strong>:</p>
+<ol>
+<li><strong>클래스 로더(Class Loader)</strong>:
+<ul>
+<li>자바 클래스(.class 파일)를 로드하고, 링크를 통해 참조하는 클래스들을 함께 불러오는 역할을 한다.</li>
+<li>로딩, 링킹, 초기화 단계로 구성된다.</li>
+</ul>
+</li>
+<li><strong>런타임 데이터 영역(Runtime Data Areas)</strong>:
+<ul>
+<li>프로그램 실행 중에 사용되는 다양한 데이터를 저장하는 영역으로, 힙(Heap), 스택(Stack), 메소드(Method) 영역, 프로그램 카운터(Program Counter) 등이 있다.</li>
+</ul>
+</li>
+<li><strong>실행 엔진(Execution Engine)</strong>:
+<ul>
+<li>바이트코드를 실제로 실행하는 역할을 한다. 이는 인터프리터와 JIT 컴파일러로 구성되어 있다.
+<ul>
+<li><strong>인터프리터</strong>: 바이트코드를 한 줄씩 읽어서 실행한다.</li>
+<li><strong>JIT 컴파일러</strong>: 바이트코드 전체를 컴파일하여 네이티브 코드로 변환함으로써 실행 속도를 높인다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>네이티브 메소드 인터페이스(Native Method Interface)</strong>:
+<ul>
+<li>자바가 아닌 언어로 작성된 애플리케이션(예: C, C++)과 상호 작용할 수 있도록 도와주는 인터페이스이다.</li>
+</ul>
+</li>
+<li><strong>가비지 컬렉터(Garbage Collector)</strong>:
+<ul>
+<li>힙 영역에서 사용되지 않는 객체를 자동으로 검출하고 제거하여 메모리를 관리하는 역할을 한다.</li>
+</ul>
+</li>
+</ol>
+<p>JVM은 이러한 구조적 요소를 통해 자바 애플리케이션의 실행, 메모리 관리, 최적화, 보안 등을 효과적으로 수행한다. 이로 인해 자바는 다양한 환경에서 안정적으로 실행될 수 있는 강력한 플랫폼을 제공받게 된다.</p>
+<h3 id="java로-원시-타입-참조-타입의-변수를-생성했을-때-메모리의-어느-영역에-할당되는지-설명하시오" style="position:relative;"><a href="#java%EB%A1%9C-%EC%9B%90%EC%8B%9C-%ED%83%80%EC%9E%85-%EC%B0%B8%EC%A1%B0-%ED%83%80%EC%9E%85%EC%9D%98-%EB%B3%80%EC%88%98%EB%A5%BC-%EC%83%9D%EC%84%B1%ED%96%88%EC%9D%84-%EB%95%8C-%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%9D%98-%EC%96%B4%EB%8A%90-%EC%98%81%EC%97%AD%EC%97%90-%ED%95%A0%EB%8B%B9%EB%90%98%EB%8A%94%EC%A7%80-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="java로 원시 타입 참조 타입의 변수를 생성했을 때 메모리의 어느 영역에 할당되는지 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Java로 원시 타입, 참조 타입의 변수를 생성했을 때, 메모리의 어느 영역에 할당되는지 설명하시오</h3>
+<p>Java에서 변수의 메모리 할당은 변수의 타입(원시 타입 또는 참조 타입)에 따라 다르게 이루어진다. 이는 JVM의 런타임 데이터 영역 중 스택(Stack)과 힙(Heap)에 관련이 깊다.</p>
+<ol>
+<li>
+<p><strong>원시 타입 (Primitive Type)</strong>:</p>
+<ul>
+<li>원시 타입 변수들은 <code class="language-text">int</code>, <code class="language-text">double</code>, <code class="language-text">boolean</code> 등이며, 이들은 스택 메모리 영역에 직접 값을 저장한다.</li>
+<li>함수 호출 시 생성되는 각 메소드의 스택 프레임 내에 위치한다.</li>
+<li>메소드 실행이 완료되면 스택 프레임은 스택에서 제거되고, 이와 함께 원시 타입 변수도 메모리에서 제거된다.</li>
+</ul>
+</li>
+<li>
+<p><strong>참조 타입 (Reference Type)</strong>:</p>
+<ul>
+<li>참조 타입 변수들은 객체의 참조를 저장하며, 예로는 <code class="language-text">String</code>, 배열, 클래스 인스턴스 등이 있다.</li>
+<li>참조 값 자체는 스택 메모리에 저장되지만, 참조하는 객체의 실제 데이터는 힙 메모리 영역에 저장된다.</li>
+<li>이 참조 변수는 메소드의 스택 프레임 내에 위치하며, 메소드 실행이 완료되면 스택에서 제거되지만, 힙에 있는 실제 객체는 가비지 컬렉터에 의해 관리된다.</li>
+<li>가비지 컬렉터는 더 이상 참조되지 않는 객체를 힙에서 정리하여 메모리를 확보한다.</li>
+</ul>
+</li>
+</ol>
+<p><strong>요약</strong>:</p>
+<ul>
+<li>원시 타입 변수는 값이 스택에 직접 저장된다.</li>
+<li>참조 타입 변수는 참조(주소)는 스택에, 참조하는 객체의 실제 데이터는 힙에 저장된다.</li>
+</ul>
+<p>이러한 메모리 할당 방식은 Java의 메모리 관리와 성능 최적화에 중요한 역할을 한다. 스택은 간단한 할당과 회수 과정으로 빠른 접근을 제공하며, 힙은 복잡한 생명주기를 가진 객체들을 효율적으로 관리한다.</p>
+<h3 id="java의-컴파일-과정에-대해-설명하시오" style="position:relative;"><a href="#java%EC%9D%98-%EC%BB%B4%ED%8C%8C%EC%9D%BC-%EA%B3%BC%EC%A0%95%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="java의 컴파일 과정에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Java의 컴파일 과정에 대해 설명하시오</h3>
+<ol>
+<li>
+<p>개발자가 자바 소스 코드(.java)를 작성한다.</p>
+</li>
+<li>
+<p><strong>자바 컴파일러</strong>가 자바 <strong>소스 코드(.java)파일</strong>을 읽어 <strong>바이트 코드(.class)로</strong> 컴파일한다.<br>
+바이트 코드 파일은 아직 컴퓨터가 읽을 수 없고, JVM이 읽을 수 있는 코드이다.<br>
+(java -> class)</p>
+</li>
+<li>
+<p>컴파일 된 바이트 코드(.class)를 <strong>JVM의 클래스 로더에게 전달</strong>한다.</p>
+</li>
+<li>
+<p><strong>클래스 로더</strong>는 <strong>동적로딩을 통해 필요한 클래스들을</strong> 로딩 및 링크하여 <strong>런타임 데이터 영역</strong>, 즉 <strong>JVM의 메모리에 올린다</strong>.<br>
+(클래스 로더는 .class 파일을 묶어서 JVM이 운영체제로부터 할당받은 메모리 영역인 Runtime Data Area=JVM 메모리 영역으로 적재한다.)</p>
+</li>
+<li>
+<p>런타임 테이터 영역에 배치 된 이후 <strong>JVM이 바이트 코드를 실행 엔진에게 제공</strong>, 실행 엔진은 JVM 메모리에 올라온 <strong>바이트 코드들을 명령어 단위로 하나 씩 가져와서 실행</strong>한다.<br>
+이 때 실행 엔진은 두 가지 방식으로 변경한다.</p>
+<p><strong>1) 인터프리터</strong>: 바이크 코드 명령어를 하나 씩 읽어서 해석하고 실행한다. 하나하나의 실행은 빠르나, 전체적인 실행 속도가 느리다는 단점을 가진다.
+<strong>2) JIT 컴파일러</strong>: 인터프리터의 단점을 보완하기 위해 도입된 방식으로 바이트 코드 전체를 컴파일하여 바이너리 코드로 변경하고 이후에는 해당 메서드를 더이상 인터프리팅 하지 않고, 바이너리 코드로 직접 실행하는 방식이다. 하나씩 인터프리팅 하여 실행하는 것이 아니라 바이트 코드 전체가 컴파일 된 바이너리 코드를 실행하는 것이기 때문에 전체적인 실행 속도는 인터프리팅 방식보다 빠르다.</p>
+</li>
+</ol>
+<h3 id="garbage-collect가-무엇인지-설명하시오" style="position:relative;"><a href="#garbage-collect%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EC%A7%80-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="garbage collect가 무엇인지 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Garbage Collect가 무엇인지 설명하시오</h3>
+<p>가비지 컬렉터(Garbage Collector, 이하 GC)는 프로그래밍 언어에서 사용되지 않는 메모리를 자동으로 정리하는 시스템이다. GC는 프로그램이 실행되는 동안 생성되는 가비지(쓰레기)라고 불리는 사용되지 않는 메모리를 찾아내어 삭제하여 메모리 누수를 방지해준다.</p>
+<p>GC는 다음과 같은 기능을 수행한다.</p>
+<ol>
+<li><strong>가비지 탐지</strong>: GC는 프로그램에서 사용되지 않는 메모리를 찾아낸다. 이러한 메모리는 더 이상 사용되지 않는 객체나 변수들이 차지하고 있는 메모리이다.</li>
+<li><strong>가비지 수집</strong>: GC는 찾은 가비지를 삭제하여 메모리를 회수한다. 이렇게 회수된 메모리는 다시 프로그램에서 사용할 수 있다.</li>
+<li><strong>메모리 압축</strong>: GC는 메모리 공간을 압축하여 메모리 낭비를 방지한다</li>
+</ol>
+<p>GC의 이점은 다음과 같다.</p>
+<ul>
+<li><strong>메모리 누수 방지</strong>: GC는 메모리 누수를 방지하여 프로그램의 안정성을 향상시킨다.</li>
+<li><strong>프로그램 속도 향상</strong>: GC는 메모리 관리를 자동화하여 프로그램의 속도를 향상시킨다.</li>
+<li><strong>개발자 생산성 향상</strong>: GC는 개발자가 메모리 관리에 대한 걱정을 줄여줌으로써 개발 생산성을 향상시킨다.</li>
+</ul>
+<p>그러나 GC도 다음과 같은 단점이 있다.</p>
+<ul>
+<li><strong>성능 저하</strong>: GC는 프로그램의 실행 속도를 저하할 수 있다.</li>
+<li><strong>지연 시간</strong>: GC는 프로그램의 실행을 일시 중지하여 메모리 관리를 수행할 수 있다.</li>
+</ul>
+<p>따라서, GC는 프로그래밍 언어에서 중요한 구성 요소다. 그러나 GC의 설정과 튜닝은 프로그래머의 주의를 요구한다.</p>
+<h3 id="오버라이딩과-오버로딩이-각각-무엇인지-설명하시오" style="position:relative;"><a href="#%EC%98%A4%EB%B2%84%EB%9D%BC%EC%9D%B4%EB%94%A9%EA%B3%BC-%EC%98%A4%EB%B2%84%EB%A1%9C%EB%94%A9%EC%9D%B4-%EA%B0%81%EA%B0%81-%EB%AC%B4%EC%97%87%EC%9D%B8%EC%A7%80-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="오버라이딩과 오버로딩이 각각 무엇인지 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>오버라이딩과 오버로딩이 각각 무엇인지 설명하시오</h3>
+<p>오버라이딩(Overriding)과 오버로딩(Overloading)은 객체 지향 프로그래밍(OOP)에서 사용되는 두 가지 중요한 개념이다.</p>
+<p><strong>오버라이딩(Overriding)</strong>
+<mark style="background: #FFB86CA6;">오버라이딩은 부모 클래스에 정의된 메서드를 자식 클래스에서 재정의하는 것을 의미한다.</mark> 자식 클래스는 부모 클래스의 메서드를 동일한 이름과 매개변수로 재정의할 수 있다. 이렇게 하면 자식 클래스는 부모 클래스의 메서드를 새로운 구현으로 대체할 수 있다.</p>
+<p><strong>오버로딩(Overloading)</strong>
+<mark style="background: #FFB86CA6;">오버로딩은 동일한 이름의 메서드를 여러 개 정의하는 것을 의미한다.</mark> 그러나 이 메서드들은 서로 다른 매개변수를 가질 수 있다. 이렇게 하면 동일한 이름의 메서드가 다양한 상황에 따라 다른 동작을 수행할 수 있다.</p>
+<p><strong>요약</strong></p>
+<ul>
+<li>오버라이딩: 부모 클래스의 메서드를 자식 클래스에서 재정의하는 것</li>
+<li>오버로딩: 동일한 이름의 메서드를 다양한 매개변수에 따라 정의하는 것</li>
+</ul>
+<p>이 두 가지 개념은 객체 지향 프로그래밍에서 코드의 재사용성과 유연성을 높이는 데 사용된다.</p>
+<h3 id="래퍼클래스가-무엇인지-설명하시오" style="position:relative;"><a href="#%EB%9E%98%ED%8D%BC%ED%81%B4%EB%9E%98%EC%8A%A4%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EC%A7%80-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="래퍼클래스가 무엇인지 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>래퍼클래스가 무엇인지 설명하시오</h3>
+<p>래퍼클래스(Wrapper Class)는 프로그래밍 언어에서 기본 자료형을 객체로 감싸는 클래스를 의미한다. 래퍼클래스는 기본 자료형을 객체로 변환하여, 객체 지향 프로그래밍(OOP)에서 사용할 수 있도록 만든다.</p>
+<p>래퍼클래스의 주요 기능은 다음과 같다.</p>
+<ol>
+<li><strong>기본 자료형을 객체로 변환</strong>: 래퍼클래스는 기본 자료형을 객체로 변환하여, 객체 지향 프로그래밍에서 사용할 수 있도록 한다.</li>
+<li><strong>메서드 추가</strong>: 래퍼클래스는 기본 자료형에 추가적인 메서드를 제공하여, 더 많은 기능을 제공할 수 있다.</li>
+<li><strong>NULL 처리</strong>: 래퍼클래스는 NULL 값을 처리할 수 있다.</li>
+</ol>
+<p>래퍼클래스의 예로는 Java의 <code class="language-text">Integer</code>, <code class="language-text">Double</code>, <code class="language-text">Boolean</code> 등이 있다. 이러한 클래스들은 기본 자료형을 객체로 감싸는 데 사용된다.</p>
+<p>그러나 래퍼클래스도 다음과 같은 단점이 있습니다.</p>
+<ul>
+<li><strong>성능 저하</strong>: 래퍼클래스는 기본 자료형보다 더 많은 메모리를 사용하여, 성능이 저하될 수 있다.</li>
+<li><strong>복잡도 증가</strong>: 래퍼클래스는 코드의 복잡도를 증가시킬 수 있다.</li>
+</ul>
+<h3 id="추상클래스와-interface에-대해-설명하시오" style="position:relative;"><a href="#%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80-interface%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="추상클래스와 interface에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>추상클래스와 interface에 대해 설명하시오</h3>
+<p>추상클래스(Abstract Class)와 인터페이스(Interface)는 객체 지향 프로그래밍(OOP)에서 사용되는 두 가지 중요한 개념이다.</p>
+<p><strong>추상클래스(Abstract Class)</strong>
+추상클래스는 부분적으로 구현된 클래스를 의미한다. 추상클래스는 추상 메서드(abstract method)와 구현된 메서드를 함께 포함할 수 있다. 추상클래스는 상속을 통해 자식 클래스에서 구현을 완성할 수 있다.</p>
+<p>추상클래스의 특징은 다음과 같다.</p>
+<ul>
+<li>추상 메서드: 추상클래스는 추상 메서드를 포함할 수 있다. 추상 메서드는 선언만 되어 있고, 구현은 없다.</li>
+<li>구현된 메서드: 추상클래스는 구현된 메서드를 포함할 수 있다.</li>
+<li>상속: 추상클래스는 상속을 통해 자식 클래스에서 구현을 완성할 수 있습니다.</li>
+</ul>
+<p><strong>인터페이스(Interface)</strong>
+인터페이스는 완전히 추상적인 클래스를 의미한다. 인터페이스는 추상 메서드만을 포함하며, 구현은 없다. 인터페이스는 구현 클래스가 반드시 구현해야 하는 메서드를 정의한다.</p>
+<p>인터페이스의 특징은 다음과 같다.</p>
+<ul>
+<li>추상 메서드: 인터페이스는 추상 메서드만을 포함한다.</li>
+<li>구현 없음: 인터페이스는 구현이 없다.</li>
+<li>구현 클래스: 인터페이스를 구현하는 클래스는 인터페이스에 정의된 모든 메서드를 구현해야 한다.</li>
+</ul>
+<h3 id="클래스와-인스턴스의-차이에-대해-설명할하시오" style="position:relative;"><a href="#%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%A0%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="클래스와 인스턴스의 차이에 대해 설명할하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>클래스와 인스턴스의 차이에 대해 설명할하시오</h3>
+<p><strong>클래스(Class)</strong>
+클래스는 객체의 설계도 또는 청사진이다. 클래스는 속성과 메서드를 정의하여, 객체의 구조와 동작을 정의한다. 클래스는 추상적인 개념으로, 실제로는 존재하지 않는다.</p>
+<p><strong>인스턴스(Instance)</strong>
+인스턴스는 클래스의 실제 구현체다. 인스턴스는 클래스의 속성과 메서드를 실제로 구현하여, 실제 객체를 생성한다. 인스턴스는 실제로 존재하는 객체다.</p>
+<p>인스턴스의 특징은 다음과 같다.</p>
+<ul>
+<li>실제 객체: 인스턴스는 실제로 존재하는 객체다.</li>
+<li>클래스의 구현체: 인스턴스는 클래스의 속성과 메서드를 실제로 구현한다.</li>
+<li>독립적인 존재: 인스턴스는 독립적인 존재로, 클래스와는 별개의 존재다.</li>
+</ul>
+<h3 id="제네릭에-대해-설명하시오" style="position:relative;"><a href="#%EC%A0%9C%EB%84%A4%EB%A6%AD%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="제네릭에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>제네릭에 대해 설명하시오</h3>
+<p>자바 언어에서 제네릭(Generic)은 클래스, 인터페이스, 메서드에 대한 형식 안전성을 제공하는 기능이다. 제네릭을 사용하면, 클래스, 인터페이스, 메서드에 대한 형식 파라미터를 정의할 수 있다. 이렇게 하면, 컴파일 타임에 형식 체크를 수행할 수 있다.</p>
+<p>제네릭의 주요 기능은 다음과 같다.</p>
+<ol>
+<li><strong>형식 안전성</strong>: 제네릭을 사용하면, 클래스, 인터페이스, 메서드에 대한 형식 파라미터를 정의할 수 있다. 이렇게 하면, 컴파일 타임에 형식 체크를 수행할 수 있다.</li>
+<li><strong>타입 추론</strong>: 제네릭을 사용하면, 타입 추론을 수행할 수 있다. 이렇게 하면, 형식 파라미터를 명시적으로 지정하지 않아도 된다.</li>
+<li><strong>다중 형식 지원</strong>: 제네릭을 사용하면, 다중 형식 지원을 제공할 수 있다. 이렇게 하면, 하나의 클래스, 인터페이스, 메서드에 여러 형식을 지원할 수 있다.</li>
+</ol>
+<p>제네릭의 문법은 다음과 같다.</p>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyClass</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">T</span> value<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token class-name">T</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">T</span> <span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>제네릭의 단점은 다음과 같습니다.</p>
+<ul>
+<li><strong>복잡도 증가</strong>: 제네릭을 사용하면, 코드의 복잡도가 증가할 수 있다.</li>
+<li><strong>학습 곡선</strong>: 제네릭을 사용하려면, 새로운 문법과 개념을 학습해야 한다.</li>
+</ul>
+<h3 id="함수형-프로그래밍과-stream-api에-대해-설명하시오" style="position:relative;"><a href="#%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EA%B3%BC-stream-api%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="함수형 프로그래밍과 stream api에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>함수형 프로그래밍과 Stream API에 대해 설명하시오</h3>
+<p>자바에서 함수형 프로그래밍(Functional Programming)과 Stream API는 자바 8에서 도입된 새로운 프로그래밍 패러다임이다.</p>
+<p><strong>함수형 프로그래밍(Functional Programming)</strong>
+함수형 프로그래밍은 프로그래밍 패러다임의 하나로, 함수를 일급 시민(first-class citizen)으로 취급한다. 즉, 함수를 변수에 할당하거나, 함수를 인자로 전달하거나, 함수를 반환하는 것이 가능하다.</p>
+<p>자바 8에서는 람다 표현식(Lambda Expression)과 메서드 참조(Method Reference)를 도입하여 함수형 프로그래밍을 지원한다. 람다 표현식은 함수를 정의하는 새로운 방법으로, 함수의 구현을 간소화 한다. 메서드 참조는 기존의 메서드를 참조하여, 함수형 프로그래밍을 지원한다.</p>
+<p><strong>Stream API</strong>
+Stream API는 자바 8에서 도입된 새로운 API로, 데이터 처리를 위한 함수형 프로그래밍을 지원한다. Stream API는 데이터를 처리하는 데 사용되는 일련의 연산을 정의한다.</p>
+<p>Stream API의 주요 기능은 다음과 같다.</p>
+<ul>
+<li><strong>Stream 생성</strong>: Stream을 생성하는 방법으로, 배열, 컬렉션, 파일 등 다양한 데이터 소스를 지원한다.</li>
+<li><strong>중간 연산</strong>: Stream에 대한 중간 연산을 정의할 수 있습니다. 예를 들어, 필터링, 매핑, 정렬 등이 있다.</li>
+<li><strong>최종 연산</strong>: Stream에 대한 최종 연산을 정의할 수 있습니다. 예를 들어, 합계, 평균, 최대값 등이 있다.</li>
+</ul>
+<p>Stream API의 이점은 다음과 같다.</p>
+<ul>
+<li><strong>병렬 처리</strong>: Stream API는 병렬 처리를 지원하여, 데이터 처리 속도를 향상시킬 수 있다.</li>
+<li><strong>가독성</strong>: Stream API는 코드의 가독성을 향상시킬 수 있다.</li>
+<li><strong>유연성</strong>: Stream API는 다양한 데이터 소스를 지원하여, 유연성을 향상시킬 수 있다.</li>
+</ul>
+<p>예를 들어, 다음은 Stream API를 사용하여 숫자의 합계를 구하는 예다.</p>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> numbers <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> sum <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>n <span class="token operator">-></span> n <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">mapToInt</span><span class="token punctuation">(</span>n <span class="token operator">-></span> n <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>이 예에서는, 숫자의 합계를 구하는 데 Stream API를 사용한다. 먼저, 숫자의 목록을 생성하고, Stream을 생성한다. 그리고, 필터링을 통해 짝수만을 선택하고, 매핑을 통해 숫자를 두 배로 증가시킨다. 마지막으로, 합계를 구한다.</p>
+<h3 id="어노테이션에-대해-설명하시오" style="position:relative;"><a href="#%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="어노테이션에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>어노테이션에 대해 설명하시오</h3>
+<p><strong>어노테이션이란?</strong>
+어노테이션은 자바 5에서 도입된 새로운 기능으로, 클래스, 메서드, 필드 등에 추가 정보를 제공하는 데 사용된다. 어노테이션은 @ 기호로 시작하며, 클래스, 메서드, 필드 등에 추가 정보를 제공하는 데 사용된다.</p>
+<p><strong>용도</strong>
+어노테이션은 다음과 같은 용도로 사용된다.</p>
+<ul>
+<li>문서화: 어노테이션을 사용하여 클래스, 메서드, 필드 등에 대한 문서화를 할 수 있다.</li>
+<li>컴파일 체크: 어노테이션을 사용하여 컴파일 타임에 체크를 수행할 수 있다.</li>
+<li>런타임 체크: 어노테이션을 사용하여 런타임에 체크를 수행할 수 있다.</li>
+<li>프레임워크 통합: 어노테이션을 사용하여 프레임워크와 통합할 수 있다.</li>
+</ul>
+<p><strong>커스텀 어노테이션</strong>
+자바에서는 커스텀 어노테이션을 정의할 수도 있다. 커스텀 어노테이션을 정의하려면 <code class="language-text">@interface</code> 키워드를 사용하여 어노테이션을 정의할 수 있다.</p>
+<p>예를 들어, <code class="language-text">@MyAnnotation</code>라는 커스텀 어노테이션을 정의할 수 있다.</p>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span><span class="token class-name">RetentionPolicy</span><span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token class-name">ElementType</span><span class="token punctuation">.</span>METHOD<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">MyAnnotation</span> <span class="token punctuation">{</span>
+    <span class="token class-name">String</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>이렇게 정의된 커스텀 어노테이션을 사용할 수 있다.</p>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token annotation punctuation">@MyAnnotation</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span></span></pre></div>
+<h3 id="자바의-원시타입과-각각-몇-바이트의-값을-표현하는-가" style="position:relative;"><a href="#%EC%9E%90%EB%B0%94%EC%9D%98-%EC%9B%90%EC%8B%9C%ED%83%80%EC%9E%85%EA%B3%BC-%EA%B0%81%EA%B0%81-%EB%AA%87-%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%9D%98-%EA%B0%92%EC%9D%84-%ED%91%9C%ED%98%84%ED%95%98%EB%8A%94-%EA%B0%80" aria-label="자바의 원시타입과 각각 몇 바이트의 값을 표현하는 가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>자바의 원시타입과 각각 몇 바이트의 값을 표현하는 가</h3>
+<p><strong>Java의 원시타입과 바이트 크기</strong></p>
+<table>
+<thead>
+<tr>
+<th>원시타입</th>
+<th>크기 (바이트)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">byte</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td><code class="language-text">short</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td><code class="language-text">int</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td><code class="language-text">long</code></td>
+<td>8</td>
+</tr>
+<tr>
+<td><code class="language-text">float</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td><code class="language-text">double</code></td>
+<td>8</td>
+</tr>
+<tr>
+<td><code class="language-text">boolean</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td>### SOLID 5대 원칙에 대해 설명하시오</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SOLID 5대 원칙</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>소프트웨어 개발에서 SOLID 5대 원칙은 객체 지향 프로그래밍(OOP)에서 중요한 원칙이다.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>S</strong>ingle Responsibility Principle (SRP)</p>
+<ul>
+<li>한 클래스는 하나의 책임만 가져야 한다</li>
+<li>클래스의 책임이 분리되면 유지보수가 쉬워진다</li>
+</ul>
+<p><strong>O</strong>pen/Closed Principle (OCP)</p>
+<ul>
+<li>소프트웨어는 확장에는 열려 있어야 하지만, 변경에는 닫혀 있어야 한다</li>
+<li>클래스는 새로운 기능을 추가할 수 있어야 하지만, 기존의 기능을 변경하지 않아야 한다.</li>
+</ul>
+<p><strong>L</strong>iskov Substitution Principle (LSP)</p>
+<ul>
+<li>하위 클래스는 상위 클래스를 대체할 수 있어야 한다.</li>
+<li>하위 클래스는 상위 클래스의 인터페이스를 구현해야한다.</li>
+</ul>
+<p><strong>I</strong>nterface Segregation Principle (ISP)</p>
+<ul>
+<li>클라이언트는 인터페이스에 정의된 메서드만 호출해야 한다.</li>
+<li>클라이언트는 인터페이스에 정의되지 않은 메서드를 호출하면 안 된다.</li>
+</ul>
+<p><strong>D</strong>ependency Inversion Principle (DIP)</p>
+<ul>
+<li>고급 모듈은 저급 모듈에 의존하면 안 된다.</li>
+<li>고급 모듈은 추상화된 인터페이스에 의존해야 한다.</li>
+</ul>
+<h3 id="동일성과-동등성에-대해-설명하시오" style="position:relative;"><a href="#%EB%8F%99%EC%9D%BC%EC%84%B1%EA%B3%BC-%EB%8F%99%EB%93%B1%EC%84%B1%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="동일성과 동등성에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>동일성과 동등성에 대해 설명하시오.</h3>
+<p><strong>동일성 (Identity)</strong></p>
+<ul>
+<li>동일성은 두 개의 객체가 같은지 확인하는 것을 의미한다.</li>
+<li>동일성은 두 개의 객체가 같은 메모리 주소를 가지는지 확인한다.</li>
+<li>동일성은 <code class="language-text">==</code> 연산자를 사용하여 확인할 수 있다.</li>
+</ul>
+<p>예를 들어, 다음 코드에서는 <code class="language-text">a</code>와 <code class="language-text">b</code>가 같은 객체를 가지는지 확인한다.</p>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token class-name">Object</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Object</span> b <span class="token operator">=</span> a<span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a <span class="token operator">==</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span></span></pre></div>
+<p><strong>동등성 (Equality)</strong></p>
+<ul>
+<li>동등성은 두 개의 객체가 같은지 확인하는 것을 의미한다.</li>
+<li>동등성은 두 개의 객체가 같은 속성을 가지는지 확인한다.</li>
+<li>동등성은 <code class="language-text">equals()</code> 메서드를 사용하여 확인할 수 있다.</li>
+</ul>
+<p>예를 들어, 다음 코드에서는 <code class="language-text">a</code>와 <code class="language-text">b</code>가 같은 속성을 가지는지 확인한다.</p>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token class-name">Object</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Object</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span></span></pre></div>
+<p>위 코드에서는 <code class="language-text">a</code>와 <code class="language-text">b</code>가 같은 속성을 가지는지 확인합니다. 두 개의 객체는 같은 속성을 가질 수 없으므로 <code class="language-text">false</code>를 출력합니다.</p>
+<p><strong>객체 비교</strong></p>
+<ul>
+<li>객체 비교는 동일성과 동등성을 구별하는 것이 중요하다</li>
+<li>동일성은 두 개의 객체가 같은지 확인하는 것을 의미한다.</li>
+<li>동등성은 두 개의 객체가 같은 속성을 가지는지 확인하는 것을 의미한다.</li>
+</ul>
+<p>예를 들어, 다음 코드에서는 <code class="language-text">a</code>와 <code class="language-text">b</code>가 같은지 확인한다.</p>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token class-name">Object</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Object</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a <span class="token operator">==</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span></span></pre></div>
+<p>위 코드에서는 <code class="language-text">a</code>와 <code class="language-text">b</code>가 같은지 확인합니다. <code class="language-text">a == b</code>는 동일성으로 <code class="language-text">false</code>를 출력하고, <code class="language-text">a.equals(b)</code>는 동등성으로 <code class="language-text">false</code>를 출력한다.</p>
+<h3 id="string-stringbuilder-string-buffer-에-대해-각각의-클래스를-설명하고-차이를-설명하시오" style="position:relative;"><a href="#string-stringbuilder-string-buffer-%EC%97%90-%EB%8C%80%ED%95%B4-%EA%B0%81%EA%B0%81%EC%9D%98-%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A5%BC-%EC%84%A4%EB%AA%85%ED%95%98%EA%B3%A0-%EC%B0%A8%EC%9D%B4%EB%A5%BC-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="string stringbuilder string buffer 에 대해 각각의 클래스를 설명하고 차이를 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>String, StringBuilder, String Buffer 에 대해 각각의 클래스를 설명하고 차이를 설명하시오</h3>
+<p><strong>String</strong></p>
+<ul>
+<li><code class="language-text">String</code> 클래스는 immutable한 클래스다. 즉, 생성된 문자열은 변경할 수 없다.</li>
+<li><code class="language-text">String</code> 클래스는 내부적으로 char 배열을 사용하여 문자열을 저장한다.</li>
+<li><code class="language-text">String</code> 클래스는 thread-safe하지 않다.</li>
+</ul>
+<p><strong>StringBuilder</strong></p>
+<ul>
+<li><code class="language-text">StringBuilder</code> 클래스는 mutable한 클래스다. 즉, 생성된 문자열을 변경할 수 있다.</li>
+<li><code class="language-text">StringBuilder</code> 클래스는 내부적으로 char 배열을 사용하여 문자열을 저장한다.</li>
+<li><code class="language-text">StringBuilder</code> 클래스는 thread-safe하지 않다.</li>
+</ul>
+<p><strong>StringBuffer</strong></p>
+<ul>
+<li><code class="language-text">StringBuffer</code> 클래스는 mutable한 클래스다. 즉, 생성된 문자열을 변경할 수 있다.</li>
+<li><code class="language-text">StringBuffer</code> 클래스는 내부적으로 char 배열을 사용하여 문자열을 저장한다.</li>
+<li><code class="language-text">StringBuffer</code> 클래스는 thread-safe하다.</li>
+</ul>
+<h3 id="java-8에서-추가된-내용은" style="position:relative;"><a href="#java-8%EC%97%90%EC%84%9C-%EC%B6%94%EA%B0%80%EB%90%9C-%EB%82%B4%EC%9A%A9%EC%9D%80" aria-label="java 8에서 추가된 내용은 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JAVA 8에서 추가된 내용은?</h3>
+<p><strong>Lambda Expression</strong></p>
+<ul>
+<li>Lambda 표현식은 메서드 참조를 더 쉽게 작성할 수 있도록 하는 새로운 기능이다.</li>
+<li>Lambda 표현식은 메서드 참조를 사용하여 코드를 더 짧게 작성할 수 있다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span> <span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+list<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token operator">::</span><span class="token function">toUpperCase</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span></span></pre></div>
+<p>위 코드에서는 Lambda 표현식을 사용하여 List에 있는 모든 요소를 uppercase로 변경해준다.</p>
+<p><strong>Method Reference</strong></p>
+<ul>
+<li>메서드 참조는 Lambda 표현식과 함께 사용하여 코드를 더 짧게 작성할 수 있도록 하는 새로운 기능이다.</li>
+<li>메서드 참조는 Lambda 표현식과 함께 사용하여 코드를 더 짧게 작성할 수 있다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span> <span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+list<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token operator">::</span><span class="token function">toUpperCase</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span></span></pre></div>
+<p>위 코드에서는 메서드 참조를 사용하여 List에 있는 모든 요소를 uppercase로 변경한다.</p>
+<p><strong>Functional Interface</strong></p>
+<ul>
+<li>함수적 인터페이스는 Lambda 표현식과 함께 사용하여 코드를 더 짧게 작성할 수 있도록 하는 새로운 기능이다.</li>
+<li>함수적 인터페이스는 Lambda 표현식과 함께 사용하여 코드를 더 짧게 작성할 수 있다.</li>
+</ul>
+<p>예를 들어, 다음 코드에서는 함수적 인터페이스를 사용하여 List에 있는 모든 요소를 uppercase로 변경한다.</p>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span> <span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+list<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span>s <span class="token operator">-></span> s<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span></span></pre></div>
+<p>위 코드에서는 함수적 인터페이스를 사용하여 List에 있는 모든 요소를 uppercase로 변경한다.</p>
+<p><strong>Stream API</strong></p>
+<ul>
+<li>스트림 API는 데이터를 처리하는 새로운 기능이다.</li>
+</ul>
+<p>예를 들어, 다음 코드에서는 스트림 API를 사용하여 List에 있는 모든 요소를 uppercase로 변경한다.</p>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span> <span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+list<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token operator">::</span><span class="token function">toUpperCase</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token operator">::</span><span class="token function">println</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span></span></pre></div>
+<h3 id="강한-결합과-느슨한-결합에-대해-설명하시오" style="position:relative;"><a href="#%EA%B0%95%ED%95%9C-%EA%B2%B0%ED%95%A9%EA%B3%BC-%EB%8A%90%EC%8A%A8%ED%95%9C-%EA%B2%B0%ED%95%A9%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="강한 결합과 느슨한 결합에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>강한 결합과 느슨한 결합에 대해 설명하시오</h3>
+<p><strong>강한 결합 (Strong Coupling)</strong></p>
+<ul>
+<li>강한 결합은 두 개의 모듈이 서로 강하게 결합된 상태를 의미한다.</li>
+<li>강한 결합은 모듈이 서로 강하게 의존하여, 하나의 모듈이 변경되면 다른 모듈도 영향을 받게 된다.</li>
+<li>강한 결합은 모듈의 변경이 어려워질 수 있다.</li>
+</ul>
+<p>예를 들어, 다음 코드에서는 강한 결합을 보여주는 예시입니다.</p>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Car</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Engine</span> engine<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Car</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        engine <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Engine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Engine</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Engine started"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>위 코드에서는 <code class="language-text">Car</code> 클래스가 <code class="language-text">Engine</code> 클래스를 강하게 결합하여, <code class="language-text">Car</code> 클래스가 <code class="language-text">Engine</code> 클래스를 사용하여 작동한다. 이 경우, <code class="language-text">Engine</code> 클래스가 변경되면 <code class="language-text">Car</code> 클래스도 영향을 받게 된다.</p>
+<p><strong>느슨한 결합 (Loose Coupling)</strong></p>
+<ul>
+<li>느슨한 결합은 두 개의 모듈이 서로 느슨하게 결합된 상태를 의미한다.</li>
+<li>느슨한 결합은 모듈이 서로 느슨하게 의존하여, 하나의 모듈이 변경되더라도 다른 모듈은 영향을 받지 않는다.</li>
+<li>느슨한 결합은 모듈의 변경이 쉬워질 수 있다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Engine</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Car</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Engine</span> engine<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Car</span><span class="token punctuation">(</span><span class="token class-name">Engine</span> engine<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>engine <span class="token operator">=</span> engine<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        engine<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Engine</span> <span class="token keyword">implements</span> <span class="token class-name">Engine</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Engine started"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>위 코드에서는 <code class="language-text">Car</code> 클래스가 <code class="language-text">Engine</code> 인터페이스를 사용하여, <code class="language-text">Engine</code> 클래스를 느슨하게 결합한다. 이 경우, <code class="language-text">Engine</code> 클래스가 변경되더라도 <code class="language-text">Car</code> 클래스는 영향을 받지 않는다.</p>
+<p>따라서, 강한 결합은 모듈의 변경이 어려워질 수 있다. 반면에 느슨한 결합은 모듈의 변경이 쉬워질 수 있다.</p>
+<h3 id="자바의-동시성-이슈공유-자원-접근에-대해-설명해보시오" style="position:relative;"><a href="#%EC%9E%90%EB%B0%94%EC%9D%98-%EB%8F%99%EC%8B%9C%EC%84%B1-%EC%9D%B4%EC%8A%88%EA%B3%B5%EC%9C%A0-%EC%9E%90%EC%9B%90-%EC%A0%91%EA%B7%BC%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%B4%EB%B3%B4%EC%8B%9C%EC%98%A4" aria-label="자바의 동시성 이슈공유 자원 접근에 대해 설명해보시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>자바의 동시성 이슈(공유 자원 접근)에 대해 설명해보시오.</h3>
+<p><strong>동시성 이슈</strong>
+동시성 이슈는 여러 스레드가 공유 자원에 접근할 때 발생하는 문제다. 공유 자원은 변수, 객체, 파일 등이 될 수 있다.</p>
+<p><strong>동시성 이슈의 문제점</strong>
+공유 자원에 접근하는 여러 스레드에서는 동시성 이슈가 발생할 수 있다.</p>
+<ul>
+<li><strong>데이터 훼손</strong>: 여러 스레드가 공유 자원에 접근하여 데이터가 훼손될 수 있다.</li>
+<li><strong>데드락</strong>: 두 스레드가 서로를 기다리는 상태에서 데드락이 발생할 수 있다.</li>
+<li><strong>기아상태</strong>: 하나의 스레드가 공유 자원에 접근할 수 없을 때 기아가 발생할 수 있다.</li>
+<li><strong>라이브락</strong>: 두 스레드가 서로를 기다리는 상태에서 라이브락이 발생할 수 있다.</li>
+</ul>
+<p><strong>동시성 이슈 해결</strong>
+자바에서 동시성 문제를 해결하는데는 크게 3가지 정도의 방법론이 있다.</p>
+<ol>
+<li>synchronized : <code class="language-text">synchronized</code> 키워드를 통해 해당 블럭의 액세스를 동기화할 수 있다. 간단히 말해서 <code class="language-text">synchronized</code> 가 선언된 블럭에는 동시에 하나의 스레드만 접근할 수 있다.
+<ul>
+<li>간단한 사용 예제</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SomeClass</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 메서드 전체에 동기화 적용</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token comment">/* critical section */</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 내부에 동기화 블럭 생성</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">/* critical section */</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 클래스 내부의 전역 메서드에서 동기화 블럭을 생성하는 방법</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SomeClass</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">syncMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token class-name">SomeClass</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">/* critical section */</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>사용을 통해 개선을 얻지만, 문제는  critical selection의 크기 및 실행시간에 따라 성능 하락과 자원 낭비가 매우 심해진다.</li>
+</ul>
+</li>
+<li>volatile
+<ul>
+<li>JVM에서 스레드가 실행되고, CPU 메모리 영역에 데이터를 캐싱한다. 그런데 멀티 코프로세서에서 다수의 스레드가 변수 a를 공유하더라도 캐싱 시점에 따라 캐시 메모리에 불려진 값이 다를 수 있고, 불일치 문제가 발생한다.</li>
+<li>이때 해당 키워드를 사용하면 CPU 메모리 영역의 캐싱된 값이 아닌, 항상 최신값을 메모리에서 불러오도록 조정이 가능하다.</li>
+<li>따라서 상호 배재 없이 데이터 변경의 가시성을 보장하고, 원자적 연산인 경우 데이터를 보장한다.</li>
+<li>하지만 반대로 원자적 연산이 아닌 곳에 사용하면 문제가 일어난다.</li>
+</ul>
+</li>
+<li>Atomic 클래스
+<ul>
+<li>앞에 두 키워드로는 동시성 문제를 온전히 해결하진 못하기에, 자바에서 제공하는 클래스 유틸리티이다.</li>
+<li><code class="language-text">java.util.concurrent.*</code></li>
+<li><code class="language-text">volatile</code> 키워드를 이용하면서 현재 스레드에 저장된 값과 메인 메모리에 저장된 값을 비교한다.</li>
+<li>일치하는 경우 새로운 값으로 교체(thread-safe 한 상태이므로 로직 수행)</li>
+<li>일치하지 않는 경우 실패 후 재시도(thread-safe 하지 않은 상태였으므로 재시도)</li>
+</ul>
+</li>
+</ol>
+<h3 id="mutable-객체와-immutable-객체의-개념과-그-차이점을-설명하시오" style="position:relative;"><a href="#mutable-%EA%B0%9D%EC%B2%B4%EC%99%80-immutable-%EA%B0%9D%EC%B2%B4%EC%9D%98-%EA%B0%9C%EB%85%90%EA%B3%BC-%EA%B7%B8-%EC%B0%A8%EC%9D%B4%EC%A0%90%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="mutable 객체와 immutable 객체의 개념과 그 차이점을 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mutable 객체와 Immutable 객체의 개념과 그 차이점을 설명하시오.</h3>
+<p><strong>Mutable Object</strong></p>
+<ul>
+<li>Mutable object는 상태를 변경할 수 있는 객체다.</li>
+<li>Mutable object는 생성된 후에 상태를 변경할 수 있다.</li>
+<li>예를 들어, <code class="language-text">String</code> 클래스는 mutable object입니다. 생성된 후에 문자열을 변경할 수 있다.</li>
+</ul>
+<p><strong>Immutable Object</strong></p>
+<ul>
+<li>Immutable object는 상태를 변경할 수 없는 객체다.</li>
+<li>Immutable object는 생성된 후에 상태를 변경할 수 없다.</li>
+<li>예를 들어, <code class="language-text">String</code> 클래스는 immutable object입니다. 생성된 후에는 문자열을 변경할 수 없다.</li>
+</ul>
+<p><strong>장점</strong></p>
+<ul>
+<li>Immutable object는 thread-safek다. 여러 스레드가 접근할 때도 상태가 변경되지 않는다.</li>
+<li>Immutable object는 코드의 안정성을 높여준다. 상태가 변경되지 않으므로 코드의 안정성이 높아진다.</li>
+</ul>
+<p><strong>단점</strong></p>
+<ul>
+<li>Immutable object는 생성된 후에는 상태를 변경할 수 없다. 이 경우에 새로운 객체를 생성해야 하고, 그만큼 메모리 사용량이 많아지고, 자원도 많이 소모한다.</li>
+</ul>
+<h3 id="자바에서-null을-안전하게-다루는-방법을-설명하시오" style="position:relative;"><a href="#%EC%9E%90%EB%B0%94%EC%97%90%EC%84%9C-null%EC%9D%84-%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EB%8B%A4%EB%A3%A8%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="자바에서 null을 안전하게 다루는 방법을 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>자바에서 null을 안전하게 다루는 방법을 설명하시오.</h3>
+<ul>
+<li>null 체크</li>
+<li>Optional</li>
+<li>null-safe 메서드</li>
+<li>Builder</li>
+<li>Lombok</li>
+<li>Guava</li>
+<li>Apache Commons</li>
+</ul>
+<h3 id="jdk-jre의-차이점을-설명해보시오" style="position:relative;"><a href="#jdk-jre%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%B4%EB%B3%B4%EC%8B%9C%EC%98%A4" aria-label="jdk jre의 차이점을 설명해보시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JDK, JRE의 차이점을 설명해보시오.</h3>
+<p><strong>JDK (Java Development Kit)</strong></p>
+<ul>
+<li>JDK는 Java 개발을 위한 패키지다. JDK에는 Java 컴파일러, 문서화 도구, 디버거, 테스트 도구 등이 포함된다.</li>
+<li>JDK는 Java 애플리케이션을 개발하는 데 필요한 모든 도구를 포함한다.</li>
+<li>JDK는 Java 애플리케이션을 컴파일하고 실행하는 데 사용된다.</li>
+<li>JDK는 JRE를 포함하고 있다.</li>
+</ul>
+<p><strong>JRE (Java Runtime Environment)</strong></p>
+<ul>
+<li>JRE는 Java 애플리케이션을 실행하는 데 필요한 패키지다. JRE에는 Java Runtime Environment가 포함된다.</li>
+<li>JRE는 Java 애플리케이션을 실행하는 데 필요한 모든 클래스를 포함한다.</li>
+<li>JRE는 Java 애플리케이션을 실행하는 데 사용된다.</li>
+</ul>
+<h3 id="자바의-메모리-영역에-대해-설명하고-각-메모리-영역이-할당되는-시점을-설명하시오" style="position:relative;"><a href="#%EC%9E%90%EB%B0%94%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%98%81%EC%97%AD%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EA%B3%A0-%EA%B0%81-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%98%81%EC%97%AD%EC%9D%B4-%ED%95%A0%EB%8B%B9%EB%90%98%EB%8A%94-%EC%8B%9C%EC%A0%90%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="자바의 메모리 영역에 대해 설명하고 각 메모리 영역이 할당되는 시점을 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>자바의 메모리 영역에 대해 설명하고, 각 메모리 영역이 할당되는 시점을 설명하시오</h3>
+<p><strong>1. 메서드 영역 (Method Area)</strong></p>
+<ul>
+<li>또한 “영구 세대” 또는 “PermGen”으로도 알려져 있습니다.</li>
+<li>클래스 메타데이터, 즉 클래스 정의, 메서드 시그니처, 상수를 저장합니다.</li>
+<li>JVM이 시작할 때 부트스트랩 클래스를 로드할 때 할당됩니다.</li>
+<li>가비지 컬렉션이 되지 않습니다. 런타임 중에는 변경되지 않기 때문입니다.</li>
+</ul>
+<p><strong>2. 힙 영역 (Heap)</strong></p>
+<ul>
+<li>애플리케이션이 생성한 객체의 인스턴스를 저장합니다.</li>
+<li>젊은 세대(에덴, 서바이벌 공간), 옛 세대, PermGen(오래된 JVM에서는)으로 나뉩니다.</li>
+<li>JVM이 시작할 때 할당되며, 객체가 생성되고 가비지 컬렉션에 의해 메모리가 해제되면 동적으로 크기가 조정됩니다.</li>
+<li>주기적으로 가비지 컬렉션이 이루어져 메모리를 해제합니다.</li>
+</ul>
+<p><strong>3. 스택 영역 (Stack)</strong></p>
+<ul>
+<li>로컬 변수, 메서드 매개변수, 각 스레드의 반환 주소를 저장합니다.</li>
+<li>스레드가 생성될 때 할당되며, 스레드가 끝나면 해제됩니다.</li>
+<li>각 스레드는 자신의 스택을 가지고 있으며, 스레드가 끝나면 가비지 컬렉션에 의해 해제됩니다.</li>
+</ul>
+<p><strong>4. 네이티브 메모리 (Native Memory)</strong></p>
+<ul>
+<li>네이티브 라이브러리와 JNI(자바 네이티브 인터페이스) 코드에서 사용됩니다.</li>
+<li>네이티브 코드에 의해 할당 및 해제되며, JVM의 제어 밖에 있습니다.</li>
+<li>JVM에 의해 가비지 컬렉션이 되지 않습니다. JVM이 제어하지 않기 때문입니다.</li>
+</ul>
+<p><strong>5. 디렉트 메모리 (Direct Memory)</strong></p>
+<ul>
+<li>NIO(논블로킹 I/O) API에서 직접 버퍼 할당에 사용됩니다.</li>
+<li>애플리케이션이 ByteBuffer API를 사용하여 할당 및 해제합니다.</li>
+<li>JVM에 의해 가비지 컬렉션이 되지 않습니다. JVM이 제어하지 않기 때문입니다.</li>
+</ul>
+<p>요약하자면,</p>
+<ul>
+<li>메서드 영역: JVM 시작 시 할당, 가비지 컬렉션되지 않음</li>
+<li>힙 영역: 동적으로 할당, 주기적으로 가비지 컬렉션</li>
+<li>스택 영역: 스레드 생성 시 할당, 스레드 끝나면 해제</li>
+<li>네이티브 메모리: 네이티브 코드에 의해 할당 및 해제, JVM 제어 밖에 있음</li>
+<li>디렉트 메모리: 애플리케이션이 할당 및 해제, JVM 제어 밖에 있음</li>
+</ul>
+<h3 id="new-string과-의-차이에-대해-설명하시오" style="position:relative;"><a href="#new-string%EA%B3%BC-%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="new string과 의 차이에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>new String()과 ""의 차이에 대해 설명하시오</h3>
+<p><code class="language-text">new String()</code>과 <code class="language-text">""</code>는 Java에서 문자열을 생성하는 두 가지 방법이다. 두 방법의 주요 차이는 메모리 할당과 관련 있다.</p>
+<ol>
+<li>
+<p><code class="language-text">new String()</code> 사용:</p>
+<ul>
+<li><code class="language-text">new String()</code> 구문은 항상 새로운 <code class="language-text">String</code> 객체를 생성한다.</li>
+<li>이 방법은 힙 메모리에 새로운 공간을 할당하며, 같은 문자열이 이미 존재하더라도 중복해서 메모리 공간을 차지한다.</li>
+</ul>
+</li>
+<li>
+<p><code class="language-text">""</code> 리터럴 사용:</p>
+<ul>
+<li><code class="language-text">""</code> 리터럴을 사용하면 Java는 먼저 문자열 상수 풀을 확인한다.</li>
+<li>이미 같은 문자열이 풀에 존재한다면, 그 존재하는 객체의 참조를 반환하여 메모리 사용을 효율적으로 한다.</li>
+<li>문자열 리터럴은 컴파일 시에 결정되므로 런타임에 별도의 객체를 생성하지 않는다.</li>
+</ul>
+</li>
+</ol>
+<p>요약하면, <code class="language-text">new String()</code>은 항상 새로운 객체를 생성하여 메모리를 더 많이 사용하며, <code class="language-text">""</code> 리터럴은 메모리를 절약할 수 있는 방법이다. 따라서 가능한 한 문자열 리터럴을 사용하는 것이 좋다.</p>
+<h3 id="접근-제한자별-차이에-대해-설명하시오" style="position:relative;"><a href="#%EC%A0%91%EA%B7%BC-%EC%A0%9C%ED%95%9C%EC%9E%90%EB%B3%84-%EC%B0%A8%EC%9D%B4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="접근 제한자별 차이에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>접근 제한자별 차이에 대해 설명하시오</h3>
+<p>자바에서는 클래스, 메소드, 변수 등의 접근을 제한하기 위해 다음과 같은 네 가지 접근 제한자를 사용한다.</p>
+<ol>
+<li><strong>public</strong>: 이 제한자로 선언된 멤버는 어떤 클래스에서든 접근할 수 있다. 이는 가장 낮은 제한 수준이며, 외부 클래스, 패키지 어디서나 접근 가능하다.</li>
+<li><strong>protected</strong>: 이 제한자로 선언된 멤버는 같은 패키지 내의 다른 클래스 또는 다른 패키지의 서브 클래스에서 접근할 수 있다. 따라서 상속 관계에 있는 클래스에서 유용하게 사용된다.</li>
+<li><strong>default</strong>(아무 키워드도 사용하지 않음): 접근 제한자를 명시하지 않으면, 기본적으로 default 접근 제한자가 적용된다. 이 경우 같은 패키지 내에서만 접근할 수 있으며, 다른 패키지의 클래스에서는 접근할 수 없다.</li>
+<li><strong>private</strong>: 이 제한자로 선언된 멤버는 해당 클래스 내에서만 접근할 수 있다. 가장 높은 접근 제한 수준을 가지며, 외부 클래스에서는 접근할 수 없다. 이는 클래스 내부에서만 사용되는 멤버를 숨기기 위해 사용된다.</li>
+</ol>
+<p>각 접근 제한자는 클래스의 캡슐화를 강화하고, 객체의 데이터를 보호하는 데 도움을 준다. 사용하는 상황에 따라 적절한 접근 제한자를 선택하는 것이 중요하다.</p>
+<h3 id="static과-final의-개념을-설명하고-메모리-측면에서도-설명하시오" style="position:relative;"><a href="#static%EA%B3%BC-final%EC%9D%98-%EA%B0%9C%EB%85%90%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%98%EA%B3%A0-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B8%A1%EB%A9%B4%EC%97%90%EC%84%9C%EB%8F%84-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="static과 final의 개념을 설명하고 메모리 측면에서도 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>static과 final의 개념을 설명하고, 메모리 측면에서도 설명하시오</h3>
+<p>자바에서 <code class="language-text">static</code>과 <code class="language-text">final</code>은 변수, 메소드, 클래스에 적용할 수 있는 중요한 키워드로, 각각 특정 성질을 부여한다.</p>
+<ol>
+<li>
+<p><strong>static</strong>:</p>
+<ul>
+<li><code class="language-text">static</code> 키워드는 클래스 레벨의 멤버를 선언하는 데 사용된다. 즉, 이 키워드가 붙은 필드나 메소드는 클래스에 속하며, 특정 객체에 속하지 않는다.</li>
+<li><code class="language-text">static</code> 멤버는 모든 인스턴스가 공유하므로, 각 객체가 동일한 값을 갖는다.</li>
+<li>메모리 측면에서, <code class="language-text">static</code> 멤버는 클래스가 메모리에 로드될 때 한 번만 할당되고, 클래스가 언로드될 때까지 유지된다. 따라서 각 객체 인스턴스를 위해 별도의 메모리를 차지하지 않아 메모리 사용을 효율적으로 한다.</li>
+</ul>
+</li>
+<li>
+<p><strong>final</strong>:</p>
+<ul>
+<li><code class="language-text">final</code> 키워드는 변수가 한 번 할당된 후 변경할 수 없음을 의미한다. <code class="language-text">final</code> 변수는 반드시 선언 시, 또는 생성자에서 초기화되어야 한다.</li>
+<li><code class="language-text">final</code> 메소드는 오버라이드할 수 없으며, <code class="language-text">final</code> 클래스는 상속할 수 없다.</li>
+<li>메모리 측면에서, <code class="language-text">final</code> 변수는 상수로 간주되므로 컴파일러는 이를 최적화하는 데 사용할 수 있다. 예를 들어, 컴파일 시점에 <code class="language-text">final</code> 변수의 값이 알려져 있으면, 그 값을 사용하는 곳에서 직접 참조할 수 있어 실행 효율이 증가한다.</li>
+</ul>
+</li>
+</ol>
+<p><code class="language-text">static</code>과 <code class="language-text">final</code>은 서로 다른 목적으로 사용되며, 클래스의 설계와 객체의 메모리 관리 방식을 결정하는 데 중요한 역할을 한다. <code class="language-text">static</code>은 클래스 레벨의 공유 자원을 관리하는 데 유용하고, <code class="language-text">final</code>은 변경되지 않는 상수 값이나 확장을 허용하지 않는 클래스와 메소드를 정의하는 데 적합하다.</p>
+<h3 id="collections-프레임워크란" style="position:relative;"><a href="#collections-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%EB%9E%80" aria-label="collections 프레임워크란 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Collections 프레임워크란?</h3>
+<p><strong>컬렉션 프레임워크 (Collections Framework)</strong></p>
+<p>자바의 컬렉션 프레임워크는 데이터를 저장하고 조작하는 데 사용되는 클래스와 인터페이스의 모음입니다. 이 프레임워크는 다양한 데이터 구조를 제공하여 개발자가 쉽게 데이터를 처리할 수 있도록 도와줍니다.</p>
+<p>컬렉션 프레임워크는 다음과 같은 주요 구성 요소를 포함합니다.</p>
+<p><strong>1. 인터페이스 (Interfaces)</strong></p>
+<ul>
+<li><code class="language-text">Collection</code>: 기본적인 컬렉션 인터페이스로, 컬렉션의 기본적인 메서드를 정의합니다.</li>
+<li><code class="language-text">List</code>: 순서가 있는 컬렉션을 나타내는 인터페이스로, 인덱스를 사용하여 요소를 액세스할 수 있습니다.</li>
+<li><code class="language-text">Set</code>: 중복되지 않는 요소를 저장하는 컬렉션을 나타내는 인터페이스로, 요소의 순서가 중요하지 않습니다.</li>
+<li><code class="language-text">Map</code>: 키-값 쌍을 저장하는 컬렉션을 나타내는 인터페이스로, 키를 사용하여 값을 액세스할 수 있습니다.</li>
+</ul>
+<p><strong>2. 클래스 (Classes)</strong></p>
+<ul>
+<li><code class="language-text">ArrayList</code>: 가변 크기의 배열을 구현하는 클래스로, <code class="language-text">List</code> 인터페이스를 구현합니다.</li>
+<li><code class="language-text">LinkedList</code>: 연결 리스트를 구현하는 클래스로, <code class="language-text">List</code> 인터페이스를 구현합니다.</li>
+<li><code class="language-text">HashSet</code>: 해시 테이블을 사용하여 중복되지 않는 요소를 저장하는 클래스로, <code class="language-text">Set</code> 인터페이스를 구현합니다.</li>
+<li><code class="language-text">HashMap</code>: 해시 테이블을 사용하여 키-값 쌍을 저장하는 클래스로, <code class="language-text">Map</code> 인터페이스를 구현합니다.</li>
+</ul>
+<p><strong>3. 알고리즘 (Algorithms)</strong></p>
+<ul>
+<li><code class="language-text">sort()</code>: 컬렉션을 정렬하는 알고리즘입니다.</li>
+<li><code class="language-text">binarySearch()</code>: 정렬된 컬렉션에서 요소를 찾는 알고리즘입니다.</li>
+<li><code class="language-text">reverse()</code>: 컬렉션의 요소를 역순으로 정렬하는 알고리즘입니다.</li>
+</ul>
+<p>컬렉션 프레임워크는 데이터를 저장하고 조작하는 데 사용되는 강력한 도구를 제공합니다. 이를 사용하면 개발자는 쉽게 데이터를 처리할 수 있습니다.</p>
+<h3 id="직렬화serialize란" style="position:relative;"><a href="#%EC%A7%81%EB%A0%AC%ED%99%94serialize%EB%9E%80" aria-label="직렬화serialize란 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>직렬화(Serialize)란?</h3>
+<p><strong>직렬화(Serialize)</strong>
+직렬화는 자바에서 객체를 바이트 스트림으로 변환하는 프로세스입니다. 이렇게 변환된 바이트 스트림은 네트워크를 통해 전송하거나 파일에 저장할 수 있습니다. 이렇게 저장된 바이트 스트림은 나중에 다시 객체로 변환할 수 있습니다.</p>
+<p>직렬화의 목적은 다음과 같습니다.</p>
+<ul>
+<li>네트워크를 통해 객체를 전송하는 데 사용됩니다.</li>
+<li>파일에 객체를 저장하는 데 사용됩니다.</li>
+<li>데이터베이스에 객체를 저장하는 데 사용됩니다.</li>
+</ul>
+<p>직렬화의 과정은 다음과 같습니다.</p>
+<ol>
+<li><strong>Serialization</strong>: 객체를 바이트 스트림으로 변환하는 과정입니다. 이 과정에서는 객체의 상태를 저장하는 데 사용되는 정보를 포함하는 바이트 스트림이 생성됩니다.</li>
+<li><strong>Deserialization</strong>: 바이트 스트림을 다시 객체로 변환하는 과정입니다. 이 과정에서는 바이트 스트림에서 객체의 상태를 읽어와 객체를 재구성합니다.</li>
+</ol>
+<p>직렬화의 이점은 다음과 같습니다.</p>
+<ul>
+<li>네트워크를 통해 객체를 전송할 수 있습니다.</li>
+<li>파일에 객체를 저장할 수 있습니다.</li>
+<li>데이터베이스에 객체를 저장할 수 있습니다.</li>
+<li>객체의 상태를 저장하고 다시 로드할 수 있습니다.</li>
+</ul>
+<p>그러나 직렬화의 단점도 있습니다.</p>
+<ul>
+<li>직렬화된 바이트 스트림은 플랫폼에 의존적일 수 있습니다.</li>
+<li>직렬화된 바이트 스트림은 버전 호환성이 없습니다.</li>
+<li>직렬화된 바이트 스트림은 보안 문제를 일으킬 수 있습니다.</li>
+</ul>
+<h3 id="메모리의-상수-풀-영역이-무엇인가요" style="position:relative;"><a href="#%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%9D%98-%EC%83%81%EC%88%98-%ED%92%80-%EC%98%81%EC%97%AD%EC%9D%B4-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94" aria-label="메모리의 상수 풀 영역이 무엇인가요 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>메모리의 상수 풀 영역이 무엇인가요?</h3>
+<p><strong>메모리의 상수 풀 영역 (String Constant Pool)</strong>
+자바의 메모리 영역 중 하나인 상수 풀 영역은 문자열 상수를 저장하는 데 사용됩니다. 이 영역은 클래스 로더가 클래스를 로드할 때 생성됩니다.</p>
+<p>상수 풀 영역의 주요 기능은 다음과 같습니다.</p>
+<ul>
+<li><strong>문자열 상수 저장</strong>: 이 영역에는 클래스 파일에 포함된 모든 문자열 상수가 저장됩니다.</li>
+<li><strong>중복 제거</strong>: 같은 문자열 상수가 여러 번 등장할 경우, 상수 풀 영역에는 하나의 복사본만 저장됩니다.</li>
+<li><strong>메모리 절약</strong>: 중복 제거를 통해 메모리 사용량을 줄입니다.</li>
+</ul>
+<p>상수 풀 영역의 특징은 다음과 같습니다.</p>
+<ul>
+<li><strong>클래스 로더에 의해 생성</strong>: 클래스 로더가 클래스를 로드할 때 상수 풀 영역이 생성됩니다.</li>
+<li><strong>PermGen 영역에 저장</strong> : 상수 풀 영역은 PermGen 영역에 저장됩니다. PermGen 영역은 클래스 메타데이터를 저장하는 영역입니다.</li>
+<li><strong>가비지 컬렉션 대상이 아님</strong>: 상수 풀 영역은 가비지 컬렉션의 대상이 아닙니다. 클래스 로더가 클래스를 언로드할 때까지 상수 풀 영역은 유지됩니다.</li>
+</ul>
+<p>상수 풀 영역의 이점은 다음과 같습니다.</p>
+<ul>
+<li><strong>메모리 절약</strong>: 중복 제거를 통해 메모리 사용량을 줄입니다.</li>
+<li><strong>성능 향상</strong>: 문자열 상수를 빠르게 찾을 수 있습니다.</li>
+</ul>
+<p>그러나 상수 풀 영역의 단점도 있습니다.</p>
+<ul>
+<li><strong>PermGen 영역의 크기 제한</strong> : PermGen 영역의 크기가 제한되어 있습니다. 따라서 상수 풀 영역의 크기도 제한됩니다.</li>
+<li><strong>OutOfMemoryError</strong>: PermGen 영역이 가득 차면 OutOfMemoryError가 발생할 수 있습니다.</li>
+</ul>
+<h3 id="serialversionuid를-선언해야-하는-이유는" style="position:relative;"><a href="#serialversionuid%EB%A5%BC-%EC%84%A0%EC%96%B8%ED%95%B4%EC%95%BC-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0%EB%8A%94" aria-label="serialversionuid를 선언해야 하는 이유는 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SerialVersionUID를 선언해야 하는 이유는?</h3>
+<p><strong>SerialVersionUID를 선언해야 하는 이유</strong>
+SerialVersionUID는 자바의 직렬화(serialization) 메커니즘에서 사용되는 고유 식별자입니다. 이 값을 선언하는 것은 직렬화된 객체의 버전을 관리하는 데 사용됩니다.</p>
+<p>SerialVersionUID를 선언해야 하는 이유는 다음과 같습니다.</p>
+<p><strong>1. 버전 관리</strong>: SerialVersionUID는 직렬화된 객체의 버전을 관리하는 데 사용됩니다. 이 값이 변경되면 직렬화된 객체의 버전이 변경된 것으로 간주됩니다.</p>
+<p><strong>2. 호환성 보장</strong>: SerialVersionUID를 선언하면 직렬화된 객체의 호환성을 보장할 수 있습니다. 이 값이 일치하지 않으면 직렬화된 객체를 역직렬화할 수 없습니다.</p>
+<p><strong>3. 에러 방지</strong>: SerialVersionUID를 선언하지 않으면 직렬화된 객체를 역직렬화할 때 에러가 발생할 수 있습니다. 이 값을 선언하면 이러한 에러를 방지할 수 있습니다.</p>
+<p><strong>4. 버전 관리의 표준화</strong>: SerialVersionUID는 자바의 직렬화 메커니즘에서 표준화된 버전 관리 방법입니다. 이 값을 선언하면 직렬화된 객체의 버전을 표준화된 방법으로 관리할 수 있습니다.</p>
+<p>따라서, SerialVersionUID를 선언하는 것은 직렬화된 객체의 버전을 관리하고 호환성을 보장하는 데 중요합니다.</p>
 <div class="table-of-contents">
 <ul>
 <li>
 <p><a href="#%EC%8B%A0%EC%9E%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%9D%B8%ED%84%B0%EB%B7%B0-%EB%8C%80%EB%B9%84--6-java--%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4">신입 개발자 인터뷰 대비 : 6. JAVA &#x26; 객체지향언어</a></p>
 <ul>
-<li><a href="#java--%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4">JAVA &#x26; 객체지향언어</a></li>
+<li>
+<p><a href="#java--%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4">JAVA &#x26; 객체지향언어</a></p>
+<ul>
+<li><a href="#jvm%EC%9D%98-%EC%97%AD%ED%95%A0%EA%B3%BC-jvm%EC%9D%98-%EA%B5%AC%EC%A1%B0%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">JVM의 역할과, JVM의 구조에 대해 설명하시오</a></li>
+<li><a href="#java%EB%A1%9C-%EC%9B%90%EC%8B%9C-%ED%83%80%EC%9E%85-%EC%B0%B8%EC%A1%B0-%ED%83%80%EC%9E%85%EC%9D%98-%EB%B3%80%EC%88%98%EB%A5%BC-%EC%83%9D%EC%84%B1%ED%96%88%EC%9D%84-%EB%95%8C-%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%9D%98-%EC%96%B4%EB%8A%90-%EC%98%81%EC%97%AD%EC%97%90-%ED%95%A0%EB%8B%B9%EB%90%98%EB%8A%94%EC%A7%80-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">Java로 원시 타입, 참조 타입의 변수를 생성했을 때, 메모리의 어느 영역에 할당되는지 설명하시오</a></li>
+<li><a href="#java%EC%9D%98-%EC%BB%B4%ED%8C%8C%EC%9D%BC-%EA%B3%BC%EC%A0%95%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">Java의 컴파일 과정에 대해 설명하시오</a></li>
+<li><a href="#garbage-collect%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EC%A7%80-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">Garbage Collect가 무엇인지 설명하시오</a></li>
+<li><a href="#%EC%98%A4%EB%B2%84%EB%9D%BC%EC%9D%B4%EB%94%A9%EA%B3%BC-%EC%98%A4%EB%B2%84%EB%A1%9C%EB%94%A9%EC%9D%B4-%EA%B0%81%EA%B0%81-%EB%AC%B4%EC%97%87%EC%9D%B8%EC%A7%80-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">오버라이딩과 오버로딩이 각각 무엇인지 설명하시오</a></li>
+<li><a href="#%EB%9E%98%ED%8D%BC%ED%81%B4%EB%9E%98%EC%8A%A4%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EC%A7%80-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">래퍼클래스가 무엇인지 설명하시오</a></li>
+<li><a href="#%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80-interface%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">추상클래스와 interface에 대해 설명하시오</a></li>
+<li><a href="#%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%A0%ED%95%98%EC%8B%9C%EC%98%A4">클래스와 인스턴스의 차이에 대해 설명할하시오</a></li>
+<li><a href="#%EC%A0%9C%EB%84%A4%EB%A6%AD%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">제네릭에 대해 설명하시오</a></li>
+<li><a href="#%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EA%B3%BC-stream-api%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">함수형 프로그래밍과 Stream API에 대해 설명하시오</a></li>
+<li><a href="#%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">어노테이션에 대해 설명하시오</a></li>
+<li><a href="#%EC%9E%90%EB%B0%94%EC%9D%98-%EC%9B%90%EC%8B%9C%ED%83%80%EC%9E%85%EA%B3%BC-%EA%B0%81%EA%B0%81-%EB%AA%87-%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%9D%98-%EA%B0%92%EC%9D%84-%ED%91%9C%ED%98%84%ED%95%98%EB%8A%94-%EA%B0%80">자바의 원시타입과 각각 몇 바이트의 값을 표현하는 가</a></li>
+<li><a href="#%EB%8F%99%EC%9D%BC%EC%84%B1%EA%B3%BC-%EB%8F%99%EB%93%B1%EC%84%B1%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">동일성과 동등성에 대해 설명하시오.</a></li>
+<li><a href="#string-stringbuilder-string-buffer-%EC%97%90-%EB%8C%80%ED%95%B4-%EA%B0%81%EA%B0%81%EC%9D%98-%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A5%BC-%EC%84%A4%EB%AA%85%ED%95%98%EA%B3%A0-%EC%B0%A8%EC%9D%B4%EB%A5%BC-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">String, StringBuilder, String Buffer 에 대해 각각의 클래스를 설명하고 차이를 설명하시오</a></li>
+<li><a href="#java-8%EC%97%90%EC%84%9C-%EC%B6%94%EA%B0%80%EB%90%9C-%EB%82%B4%EC%9A%A9%EC%9D%80">JAVA 8에서 추가된 내용은?</a></li>
+<li><a href="#%EA%B0%95%ED%95%9C-%EA%B2%B0%ED%95%A9%EA%B3%BC-%EB%8A%90%EC%8A%A8%ED%95%9C-%EA%B2%B0%ED%95%A9%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">강한 결합과 느슨한 결합에 대해 설명하시오</a></li>
+<li><a href="#%EC%9E%90%EB%B0%94%EC%9D%98-%EB%8F%99%EC%8B%9C%EC%84%B1-%EC%9D%B4%EC%8A%88%EA%B3%B5%EC%9C%A0-%EC%9E%90%EC%9B%90-%EC%A0%91%EA%B7%BC%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%B4%EB%B3%B4%EC%8B%9C%EC%98%A4">자바의 동시성 이슈(공유 자원 접근)에 대해 설명해보시오.</a></li>
+<li><a href="#mutable-%EA%B0%9D%EC%B2%B4%EC%99%80-immutable-%EA%B0%9D%EC%B2%B4%EC%9D%98-%EA%B0%9C%EB%85%90%EA%B3%BC-%EA%B7%B8-%EC%B0%A8%EC%9D%B4%EC%A0%90%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">Mutable 객체와 Immutable 객체의 개념과 그 차이점을 설명하시오.</a></li>
+<li><a href="#%EC%9E%90%EB%B0%94%EC%97%90%EC%84%9C-null%EC%9D%84-%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EB%8B%A4%EB%A3%A8%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">자바에서 null을 안전하게 다루는 방법을 설명하시오.</a></li>
+<li><a href="#jdk-jre%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%B4%EB%B3%B4%EC%8B%9C%EC%98%A4">JDK, JRE의 차이점을 설명해보시오.</a></li>
+<li><a href="#%EC%9E%90%EB%B0%94%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%98%81%EC%97%AD%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EA%B3%A0-%EA%B0%81-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%98%81%EC%97%AD%EC%9D%B4-%ED%95%A0%EB%8B%B9%EB%90%98%EB%8A%94-%EC%8B%9C%EC%A0%90%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">자바의 메모리 영역에 대해 설명하고, 각 메모리 영역이 할당되는 시점을 설명하시오</a></li>
+<li><a href="#new-string%EA%B3%BC-%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">new String()과 ""의 차이에 대해 설명하시오</a></li>
+<li><a href="#%EC%A0%91%EA%B7%BC-%EC%A0%9C%ED%95%9C%EC%9E%90%EB%B3%84-%EC%B0%A8%EC%9D%B4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">접근 제한자별 차이에 대해 설명하시오</a></li>
+<li><a href="#static%EA%B3%BC-final%EC%9D%98-%EA%B0%9C%EB%85%90%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%98%EA%B3%A0-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B8%A1%EB%A9%B4%EC%97%90%EC%84%9C%EB%8F%84-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">static과 final의 개념을 설명하고, 메모리 측면에서도 설명하시오</a></li>
+<li><a href="#collections-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%EB%9E%80">Collections 프레임워크란?</a></li>
+<li><a href="#%EC%A7%81%EB%A0%AC%ED%99%94serialize%EB%9E%80">직렬화(Serialize)란?</a></li>
+<li><a href="#%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%9D%98-%EC%83%81%EC%88%98-%ED%92%80-%EC%98%81%EC%97%AD%EC%9D%B4-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94">메모리의 상수 풀 영역이 무엇인가요?</a></li>
+<li><a href="#serialversionuid%EB%A5%BC-%EC%84%A0%EC%96%B8%ED%95%B4%EC%95%BC-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0%EB%8A%94">SerialVersionUID를 선언해야 하는 이유는?</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

@@ -237,16 +237,137 @@
 </ol>
 <p>OSI 7 계층 모델은 네트워크 설계와 문제 해결을 위해 데이터 통신 과정을 이해하는 데 도움을 준다. 각 계층은 다른 계층의 작업을 독립적으로 수행할 수 있어, 네트워크 통신을 효율적으로 관리하고 조정할 수 있다.</p>
 <h3 id="restful-이란-무엇이며-이에-대해-설명하시오" style="position:relative;"><a href="#restful-%EC%9D%B4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B4%EB%A9%B0-%EC%9D%B4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="restful 이란 무엇이며 이에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RESTful 이란 무엇이며, 이에 대해 설명하시오.</h3>
+<p>RESTful은 REST(REpresentational State Transfer) 아키텍처를 따르는 웹 서비스를 의미한다. 이 아키텍처는 인터넷에서 컴퓨터 시스템 간에 통신을 용이하게 하기 위해 고안됐다. RESTful 웹 서비스의 주요 특징은 다음과 같다:</p>
+<ol>
+<li><strong>클라이언트-서버 구조</strong>: 서비스는 사용자 인터페이스와 데이터 스토리지를 분리하는 클라이언트와 서버 구조를 가진다. 이로 인해 각 부분이 독립적으로 발전할 수 있다.</li>
+<li><strong>무상태성(stateless)</strong>: 각 요청은 독립적으로 처리되며, 서버는 클라이언트의 상태 정보를 저장하지 않는다. 클라이언트는 필요한 모든 정보를 함께 전송해야 한다.</li>
+<li><strong>캐시 가능(cacheable)</strong>: 서버는 응답이 캐시 가능한지 여부를 명시해 클라이언트가 응답을 재사용할 수 있게 한다.</li>
+<li><strong>계층화</strong>: 클라이언트는 종단 서버와 직접 통신할 수도 있지만, 중간 서버를 통해서도 데이터에 접근할 수 있다.</li>
+<li><strong>통일된 인터페이스</strong>: REST는 표준 HTTP 메소드(GET, POST, PUT, DELETE 등)를 사용하여 리소스에 접근하므로 인터페이스가 통일되어 있다.</li>
+</ol>
+<p>RESTful 서비스는 이러한 원칙을 통해 웹의 확장성을 증대시키고, 다양한 클라이언트에서 원활하게 작동할 수 있도록 돕는다.</p>
 <h3 id="cors란-무엇이며-이에-대해-설명하시오" style="position:relative;"><a href="#cors%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B4%EB%A9%B0-%EC%9D%B4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="cors란 무엇이며 이에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CORS란 무엇이며 이에 대해 설명하시오.</h3>
+<p>CORS(Cross-Origin Resource Sharing)는 웹 페이지가 다른 도메인의 리소스에 접근할 수 있도록 허용하는 보안 메커니즘이다. 웹은 기본적으로 같은 출처 정책(Same-Origin Policy)을 따르는데, 이 정책은 웹 페이지가 다른 도메인의 리소스에 대한 요청을 제한한다. CORS는 이 정책을 완화하여 특정 조건 아래에서 다른 출처의 리소스 접근을 가능하게 한다. CORS의 핵심 요소는 다음과 같다:</p>
+<ol>
+<li><strong>HTTP 헤더 사용</strong>: CORS는 웹 서버가 <code class="language-text">Access-Control-Allow-Origin</code>과 같은 특정 HTTP 헤더를 사용해, 다른 출처의 리소스 요청을 허용할지 결정한다.</li>
+<li><strong>사전 요청(Preflight Request)</strong>: 복잡한 요청을 보내기 전에, 브라우저는 <code class="language-text">OPTIONS</code> 메소드를 사용해 사전 요청을 보낸다. 이는 실제 요청이 안전한지 확인하기 위함이다.</li>
+<li><strong>안전한 리소스 공유</strong>: 서버는 특정 출처, 메소드, 헤더 등을 허용하도록 설정할 수 있다. 이렇게 함으로써 리소스가 안전하게 공유될 수 있도록 조치한다.</li>
+</ol>
+<p>CORS는 웹 애플리케이션의 상호 운용성을 향상시키고, 다양한 출처의 리소스를 효과적으로 활용할 수 있도록 해준다.</p>
 <h3 id="tcpip-4계층에-대해-설명해보시오" style="position:relative;"><a href="#tcpip-4%EA%B3%84%EC%B8%B5%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%B4%EB%B3%B4%EC%8B%9C%EC%98%A4" aria-label="tcpip 4계층에 대해 설명해보시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TCP/IP 4계층에 대해 설명해보시오.</h3>
+<p>TCP/IP 모델은 네트워크 통신을 위해 널리 사용되는 프로토콜 집합이며, 주로 네 계층으로 구성된다. 각 계층은 특정 기능을 수행하며, 상위 계층은 하위 계층의 서비스를 이용한다. TCP/IP의 4계층은 다음과 같다:</p>
+<ol>
+<li><strong>응용 계층(Application Layer)</strong>: 사용자와 직접적으로 상호작용하는 응용 프로그램을 포함한다. HTTP, FTP, SMTP 등과 같은 프로토콜이 이 계층에 속한다. 사용자의 요청을 네트워크로 전송하고, 네트워크에서 받은 데이터를 사용자에게 제공한다.</li>
+<li><strong>전송 계층(Transport Layer)</strong>: 네트워크 상에서 데이터의 전송을 담당하며, TCP(Transmission Control Protocol)와 UDP(User Datagram Protocol)가 주요 프로토콜이다. TCP는 신뢰성 있는 연결을 제공하고 데이터 순서 보장 및 오류 검출 등의 기능을 담당한다. UDP는 연결이 없는 서비스로 빠른 전송을 지원하지만 신뢰성은 낮다.</li>
+<li><strong>인터넷 계층(Internet Layer)</strong>: 데이터 패킷이 네트워크 간에 올바르게 라우팅되도록 관리한다. IP(Internet Protocol)는 이 계층의 핵심 프로토콜로, 데이터 패킷을 목적지까지 전달하는 기능을 한다. 또한, IP 주소와 라우팅 기능을 통해 패킷을 적절한 목적지로 보낸다.</li>
+<li><strong>링크 계층(Link Layer)</strong>: 네트워크의 물리적 매체를 통해 데이터를 전송하는 하드웨어 수준의 통신을 담당한다. 이 계층은 네트워크 어댑터나 드라이버 같은 요소를 포함하며, 이더넷과 같은 기술이 여기에 속한다.</li>
+</ol>
+<p>이러한 계층적 구조는 네트워크 통신의 복잡성을 관리하고, 각 계층이 독립적인 개발과 기능 수행을 가능하게 한다.</p>
 <h3 id="웹-서버-소프트웨어-apache-nginx-는-osi-7계층에서-어디에서-동작하는가" style="position:relative;"><a href="#%EC%9B%B9-%EC%84%9C%EB%B2%84-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-apache-nginx-%EB%8A%94-osi-7%EA%B3%84%EC%B8%B5%EC%97%90%EC%84%9C-%EC%96%B4%EB%94%94%EC%97%90%EC%84%9C-%EB%8F%99%EC%9E%91%ED%95%98%EB%8A%94%EA%B0%80" aria-label="웹 서버 소프트웨어 apache nginx 는 osi 7계층에서 어디에서 동작하는가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>웹 서버 소프트웨어 (Apache, Nginx) 는 OSI 7계층에서 어디에서 동작하는가</h3>
+<p>웹 서버 소프트웨어인 Apache와 Nginx는 OSI 7계층 모델에서 주로 **응용 계층(Application Layer)**에서 동작한다. OSI 7계층 모델에서 응용 계층은 가장 상위 계층으로, 사용자와 직접적으로 상호작용하며 응용 프로그램 간의 데이터 전송을 촉진하는 데 필요한 서비스를 제공한다. 이 계층에서는 네트워크 서비스에 대한 직접적인 사용자 인터페이스를 제공하며, 여기에는 웹 페이지의 호스팅과 같은 기능이 포함된다.</p>
+<p>Apache와 Nginx 같은 웹 서버는 HTTP 프로토콜을 사용하여 클라이언트의 요청을 처리하고 응답을 생성하는 기능을 수행한다. 이들은 웹 컨텐츠를 서비스하는데 필요한 로직과 구성을 관리하며, 필요에 따라 보안, 캐시 관리, 로드 밸런싱 등의 추가적인 기능을 제공한다. 따라서 이 소프트웨어들은 응용 계층에서 중요한 역할을 하며, 사용자가 웹을 통해 정보를 요청하고 받아볼 수 있도록 한다.</p>
 <h3 id="jwt에-대해-간단히-설명하시오" style="position:relative;"><a href="#jwt%EC%97%90-%EB%8C%80%ED%95%B4-%EA%B0%84%EB%8B%A8%ED%9E%88-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="jwt에 대해 간단히 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JWT에 대해 간단히 설명하시오</h3>
+<p>JWT(JSON Web Token)는 인터넷에서 두 당사자 사이에 정보를 JSON 객체 형태로 안전하게 전송하기 위해 디자인된 컴팩트하고 자가 수용적인 방식의 토큰이다. 이 토큰은 정보를 안전하게 전송하기 위해 디지털 서명되어 있으며, 일반적으로 HMAC 알고리즘을 사용한 서명 또는 RSA를 사용한 공개 키/개인 키 쌍을 이용한 서명 방식을 사용한다. JWT의 주요 특징과 사용법은 다음과 같다:</p>
+<ol>
+<li><strong>구조</strong>: JWT는 세 부분으로 나뉜다. 헤더(Header), 페이로드(Payload), 서명(Signature). 헤더는 토큰의 유형과 사용된 알고리즘을 명시하고, 페이로드는 클레임(즉, 토큰에 담길 정보)을 포함하며, 서명은 토큰이 위변조되지 않았음을 검증하는 데 사용된다.</li>
+<li><strong>자가 수용성(Self-contained)</strong>: JWT는 필요한 모든 정보를 자체적으로 갖고 있어, 별도의 상태 저장소가 필요 없다. 이는 사용자 인증 토큰으로 적합하게 만든다.</li>
+<li><strong>보안</strong>: 서명 덕분에 토큰이 변조되지 않았는지 확인할 수 있다. 공개 키 인프라를 사용하면 발신자의 신원 또한 검증할 수 있다.</li>
+</ol>
+<p>JWT는 주로 사용자 인증 및 정보 교환에 사용되며, 웹 서비스 간에 간단하고 안전하게 정보를 전송할 수 있는 방법을 제공한다.</p>
 <h3 id="비대칭키-암호화-대칭키-암호화에-대해-설명하시오" style="position:relative;"><a href="#%EB%B9%84%EB%8C%80%EC%B9%AD%ED%82%A4-%EC%95%94%ED%98%B8%ED%99%94-%EB%8C%80%EC%B9%AD%ED%82%A4-%EC%95%94%ED%98%B8%ED%99%94%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="비대칭키 암호화 대칭키 암호화에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>비대칭키 암호화, 대칭키 암호화에 대해 설명하시오</h3>
+<p>비대칭키 암호화와 대칭키 암호화는 데이터를 보호하기 위해 널리 사용되는 두 가지 주요 암호화 방식이다. 각각의 방식은 특정 상황에 적합하도록 설계되어 있으며, 그 특징과 사용법은 다음과 같다:</p>
+<h4 id="대칭키-암호화-symmetric-key-encryption" style="position:relative;"><a href="#%EB%8C%80%EC%B9%AD%ED%82%A4-%EC%95%94%ED%98%B8%ED%99%94-symmetric-key-encryption" aria-label="대칭키 암호화 symmetric key encryption permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>대칭키 암호화 (Symmetric Key Encryption)</h4>
+<p>대칭키 암호화에서는 암호화와 복호화 과정에 동일한 키를 사용한다. 이 방식의 주요 특징은 다음과 같다:</p>
+<ol>
+<li><strong>속도</strong>: 대칭키 암호화는 비대칭키 암호화보다 일반적으로 빠르며, 대량의 데이터를 처리하는 데 적합하다.</li>
+<li><strong>키 관리</strong>: 같은 키를 사용하기 때문에, 키의 분배와 관리가 중요한 이슈가 된다. 키가 노출되면 데이터의 보안이 위협 받는다.</li>
+<li><strong>예시</strong>: AES(Advanced Encryption Standard)와 DES(Data Encryption Standard)가 대표적인 대칭키 암호화 알고리즘이다.</li>
+</ol>
+<h4 id="비대칭키-암호화-asymmetric-key-encryption" style="position:relative;"><a href="#%EB%B9%84%EB%8C%80%EC%B9%AD%ED%82%A4-%EC%95%94%ED%98%B8%ED%99%94-asymmetric-key-encryption" aria-label="비대칭키 암호화 asymmetric key encryption permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>비대칭키 암호화 (Asymmetric Key Encryption)\</h4>
+<p>비대칭키 암호화에서는 두 개의 키, 즉 공개 키와 개인 키를 사용한다. 한 키로 암호화하면 다른 키로만 복호화할 수 있다. 이 방식의 주요 특징은 다음과 같다:</p>
+<ol>
+<li><strong>키 쌍</strong>: 사용자는 공개 키(누구나 접근 가능)와 비공개 키(개인적으로 보관)를 갖는다. 공개 키로 암호화된 데이터는 비공개 키로만, 비공개 키로 암호화된 데이터는 공개 키로만 복호화할 수 있다.</li>
+<li><strong>보안성</strong>: 비대칭키 암호화는 키 분배 문제를 해결하지만, 암호화 및 복호화 과정이 대칭키 방식보다 느리다.</li>
+<li><strong>사용 예</strong>: SSL/TLS에서 데이터 전송 보안, 디지털 서명 생성 및 검증 등에 사용된다.</li>
+<li><strong>예시</strong>: RSA, ECC(타원 곡선 암호)가 비대칭키 암호화 알고리즘으로 널리 사용된다.</li>
+</ol>
+<p>대칭키와 비대칭키 암호화는 각각의 장단점이 있으며, 실제 응용에서는 종종 두 방식을 혼합하여 사용한다. 예를 들어, 비대칭키 암호화로 안전하게 키를 교환하고, 이 키를 사용해 대칭키 암호화로 데이터를 암호화하는 방식이다. 이러한 결합은 보안성과 성능을 모두 향상시킨다.</p>
 <h3 id="oauth-에-대해-설명하시오" style="position:relative;"><a href="#oauth-%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="oauth 에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OAuth 에 대해 설명하시오</h3>
+<p>OAuth는 인터넷 사용자가 외부 서비스에 자신의 정보에 접근할 수 있는 권한을 안전하게 위임할 수 있는 개방형 표준 프로토콜입니다. 이 프로토콜을 통해 사용자는 자신의 중요한 자격 증명을 공개하지 않고도 서비스 간에 안전하게 정보를 공유할 수 있습니다. OAuth는 주로 사용자가 하나의 서비스(예: 페이스북, 구글)의 자격증명을 사용하여 다른 서드파티 애플리케이션(예: 모바일 앱, 웹사이트)에서 로그인할 수 있도록 합니다. OAuth의 주요 특징과 사용 방법은 다음과 같습니다:</p>
+<ol>
+<li><strong>역할 분리</strong>: OAuth에서는 <code class="language-text">리소스 소유자</code>(사용자), <code class="language-text">클라이언트</code> (사용자가 사용하고자 하는 서드파티 서비스), <code class="language-text">리소스 서버</code>(사용자 데이터를 보유한 서비스), 그리고 <code class="language-text">인증 서버</code> (인증 및 토큰 발급을 담당) 등 네 가지 주요 역할이 구분됩니다.</li>
+<li><strong>접근 토큰</strong>: 사용자의 승인을 받은 후, 클라이언트는 리소스 서버에 접근하기 위한 접근 토큰을 받습니다. 이 토큰은 리소스 소유자의 자격 증명을 공유하지 않고도 서비스 간의 정보 교환을 가능하게 합니다.</li>
+<li><strong>보안</strong>: OAuth는 토큰을 통해 인증을 처리함으로써, 실제 사용자의 로그인 정보를 외부에 노출시키지 않습니다. 이는 보안을 강화하며, 불필요한 정보 유출 위험을 줄입니다.</li>
+<li><strong>권한 위임</strong>: 사용자는 자신의 데이터에 대한 특정 부분만을 선택적으로 클라이언트에게 접근 권한을 줄 수 있습니다. 예를 들어, 소셜 미디어 계정에서는 프로필 정보만 공유하고 메시지 접근은 허용하지 않는 등의 세밀한 제어가 가능합니다.</li>
+</ol>
+<p>OAuth는 웹, 모바일, IoT 장치 등 다양한 플랫폼에서 광범위하게 채택되어 사용되고 있으며, 사용자 경험을 향상 시키는 동시에 서비스 제공자와 사용자 모두에게 보다 높은 보안을 제공합니다.</p>
 <h3 id="jwt와-oauth-를-비교하고-차이를-설명하시오" style="position:relative;"><a href="#jwt%EC%99%80-oauth-%EB%A5%BC-%EB%B9%84%EA%B5%90%ED%95%98%EA%B3%A0-%EC%B0%A8%EC%9D%B4%EB%A5%BC-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="jwt와 oauth 를 비교하고 차이를 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JWT와 OAuth 를 비교하고 차이를 설명하시오</h3>
+<p>JWT(JSON Web Token)와 OAuth는 인증 및 권한 부여에 사용되지만, 목적과 구현 방식에서 중요한 차이가 있습니다. 이들 간의 차이를 정확히 이해하면, 각각을 적절하게 활용할 수 있습니다.</p>
+<h4 id="jwt-json-web-token" style="position:relative;"><a href="#jwt-json-web-token" aria-label="jwt json web token permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JWT (JSON Web Token)</h4>
+<ul>
+<li><strong>목적</strong>: JWT는 정보의 안전한 전송을 목적으로 하는 자가 수용적인 토큰입니다. 인증 후 사용자의 세션을 관리하는 데 주로 사용됩니다.</li>
+<li><strong>구조</strong>: JWT는 헤더(Header), 페이로드(Payload), 서명(Signature) 세 부분으로 구성되며, 이를 통해 사용자의 정보와 토큰이 유효한지를 검증할 수 있는 서명이 포함됩니다.</li>
+<li><strong>독립성</strong>: JWT는 자체적으로 모든 필요한 정보를 포함하므로 별도의 인증 저장소가 필요 없습니다. 이는 분산 시스템에서의 확장성과 성능 향상에 유리합니다.</li>
+<li><strong>사용 예</strong>: 사용자 로그인 후 세션 관리, 사용자 정보 전송 등에 사용됩니다.</li>
+</ul>
+<h4 id="oauth" style="position:relative;"><a href="#oauth" aria-label="oauth permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OAuth</h4>
+<ul>
+<li><strong>목적</strong>: OAuth는 사용자의 자격증명을 사용하지 않고, 서드 파티 애플리케이션에 사용자의 리소스에 대한 접근 권한을 안전하게 위임하는 것을 목적으로 합니다.</li>
+<li><strong>역할</strong>: OAuth에서는 리소스 소유자(사용자), 클라이언트(서드파티 애플리케이션), 리소스 서버(사용자 데이터를 보유한 서버), 인증 서버(인증 및 토큰 발행을 담당하는 서버) 등 여러 주체가 관련됩니다.</li>
+<li><strong>프로세스</strong>: OAuth는 클라이언트가 사용자로부터 특정 리소스에 대한 접근 권한을 얻고, 이를 인증 서버로부터 발급받은 토큰을 통해 리소스 서버에 접근하도록 합니다.</li>
+<li><strong>사용 예</strong>: 소셜 로그인, 외부 서비스에서의 자원 접근 권한 부여 등에 사용됩니다.</li>
+</ul>
+<h4 id="결론" style="position:relative;"><a href="#%EA%B2%B0%EB%A1%A0" aria-label="결론 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>결론</h4>
+<p>JWT는 정보를 안전하게 전송하고 인증 정보를 토큰 내에 포함시켜 세션 관리 등에 주로 사용되는 반면, OAuth는 사용자의 권한을 안전하게 위임하여 서드파티 애플리케이션에서 사용자의 리소스에 접근할 수 있도록 하는 프로토콜입니다. 따라서, JWT는 인증 수단으로, OAuth는 권한 위임 메커니즘으로 각각 활용됩니다. 이 두 기술은 서로 다른 목적을 가지고 있지만, 보안이 필요한 다양한 웹 기반 서비스에서 함께 사용될 수 있습니다.</p>
 <h3 id="sql-injection-에-대해서-간단히-설명하고-대처-법에-대해-설명해보시오" style="position:relative;"><a href="#sql-injection-%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EA%B0%84%EB%8B%A8%ED%9E%88-%EC%84%A4%EB%AA%85%ED%95%98%EA%B3%A0-%EB%8C%80%EC%B2%98-%EB%B2%95%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%B4%EB%B3%B4%EC%8B%9C%EC%98%A4" aria-label="sql injection 에 대해서 간단히 설명하고 대처 법에 대해 설명해보시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SQL Injection 에 대해서 간단히 설명하고, 대처 법에 대해 설명해보시오</h3>
+<p>SQL 인젝션(SQL Injection)은 악의적인 SQL 코드가 데이터베이스 시스템에 주입되어 실행되게 하는 보안 취약점 공격 방법이다. 이 공격은 애플리케이션의 보안이 취약한 데이터 입력 포인트를 이용하여 데이터베이스에 접근하고, 데이터를 조작하거나 무단으로 조회하는 데 사용될 수 있다. SQL 인젝션의 주요 특징과 대처 방법은 다음과 같다:</p>
+<h4 id="sql-인젝션의-특징" style="position:relative;"><a href="#sql-%EC%9D%B8%EC%A0%9D%EC%85%98%EC%9D%98-%ED%8A%B9%EC%A7%95" aria-label="sql 인젝션의 특징 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SQL 인젝션의 특징</h4>
+<ul>
+<li><strong>데이터 손상</strong>: 공격자는 SQL 인젝션을 통해 데이터를 삭제하거나 변조할 수 있다.</li>
+<li><strong>정보 유출</strong>: 사용자 정보, 중요 기업 데이터 등이 유출될 위험이 있다.</li>
+<li><strong>시스템 접근</strong>: 공격자는 데이터베이스 관리자 권한을 얻어 시스템 전반에 접근할 수 있는 경우도 있다.</li>
+</ul>
+<h4 id="대처-방법" style="position:relative;"><a href="#%EB%8C%80%EC%B2%98-%EB%B0%A9%EB%B2%95" aria-label="대처 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>대처 방법</h4>
+<ol>
+<li><strong>입력 값 검증</strong>: 사용자로부터 받은 모든 입력 데이터에 대해 엄격하게 검증해야 한다. 특히 SQL 명령어가 포함되어 있는지 체크하는 것이 중요하다.</li>
+<li><strong>준비된 명령어 사용(Prepared Statements)</strong>: SQL 쿼리를 실행할 때 변수를 직접 쿼리에 삽입하는 대신, 준비된 명령어(예: PreparedStatement in Java)를 사용한다. 이 방법은 SQL 인젝션 공격을 방지하는 데 효과적이다.</li>
+<li><strong>저장 프로시저 사용</strong>: 데이터베이스에서 지원하는 저장 프로시저를 사용하면, SQL 코드가 미리 컴파일되어 실행되기 때문에 외부에서 임의의 SQL 코드를 주입하기가 더 어려워진다.</li>
+<li><strong>최소 권한 원칙 적용</strong>: 데이터베이스 계정은 필요한 최소한의 권한만을 가지도록 설정한다. 예를 들어, 읽기 전용 데이터에 대한 접근이 필요한 경우, 해당 계정에는 쓰기 권한을 주지 않는다.</li>
+<li><strong>오류 메시지 관리</strong>: SQL 쿼리 실행 실패 시, 구체적인 데이터베이스 오류 내용을 사용자에게 보여주지 않고, 로그 파일에만 기록해야 한다. 이는 공격자가 시스템 구조를 유추하는 것을 방지한다.</li>
+</ol>
+<p>이러한 방법들을 종합적으로 적용함으로써, SQL 인젝션 공격으로부터 시스템을 보호하고 데이터의 안전성을 유지할 수 있다.</p>
 <h3 id="xss에-대해서-설명하시오" style="position:relative;"><a href="#xss%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="xss에 대해서 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>XSS에 대해서 설명하시오</h3>
+<p>XSS(Cross-Site Scripting)는 웹 애플리케이션 보안의 취약점을 이용한 공격 유형 중 하나로, 악의적인 스크립트가 웹 페이지에 삽입되어 사용자의 브라우저에서 실행되는 현상을 말한다. 이 공격은 사용자의 세션 쿠키, 세션 토큰 등을 탈취하거나, 사용자를 가장하여 악의적인 행동을 수행하게 할 수 있다. XSS의 주요 유형과 대처 방법은 다음과 같다:</p>
+<h4 id="xss의-유형" style="position:relative;"><a href="#xss%EC%9D%98-%EC%9C%A0%ED%98%95" aria-label="xss의 유형 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>XSS의 유형</h4>
+<ol>
+<li><strong>반사형 XSS(Reflected XSS)</strong>: 사용자로부터 받은 입력값이 서버에서 처리된 후 즉시 웹 페이지에 반영되어 사용자의 브라우저로 되돌아갈 때 발생한다. 대개 링크를 통해 악의적인 스크립트가 전달된다.</li>
+<li><strong>저장형 XSS(Stored XSS)</strong>: 악의적인 스크립트가 웹 서버에 저장되었다가, 다른 사용자의 요청에 의해 해당 스크립트가 포함된 데이터가 웹 페이지에 출력될 때 발생한다.</li>
+<li><strong>DOM 기반 XSS(DOM-based XSS)</strong>: DOM(Document Object Model)의 구조나 속성을 조작하여 발생하는 XSS로, 클라이언트 사이드에서 스크립트가 실행된다.</li>
+</ol>
+<h4 id="대처-방법-1" style="position:relative;"><a href="#%EB%8C%80%EC%B2%98-%EB%B0%A9%EB%B2%95-1" aria-label="대처 방법 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>대처 방법</h4>
+<ol>
+<li><strong>입력값 검증 및 적절한 처리</strong>: 사용자 입력값에 대해 HTML, JavaScript 등이 포함되지 않도록 필터링하거나 적절히 이스케이프 처리하는 것이 중요하다.</li>
+<li><strong>콘텐츠 보안 정책(CSP)</strong>: CSP는 웹 페이지에서 실행할 수 있는 스크립트의 출처를 제한함으로써 XSS 공격을 막는 데 도움을 준다. CSP를 통해 외부 스크립트, 인라인 스크립트, eval() 사용 등을 제한할 수 있다.</li>
+<li><strong>HTTPOnly와 Secure 플래그 사용</strong>: 쿠키에 HTTPOnly와 Secure 플래그를 설정하면, 쿠키 정보가 JavaScript를 통해 접근되지 않도록 하여, 스크립트가 사용자의 세션을 탈취하는 것을 방지할 수 있다.</li>
+<li><strong>사용자 입력을 동적으로 생성된 DOM에 안전하게 추가</strong>: 사용자 입력을 DOM에 직접 삽입할 경우, 텍스트 노드로 처리하거나, 적절히 새니타이즈하도록 한다.</li>
+</ol>
+<p>XSS 공격은 웹 애플리케이션에서 흔히 발견되는 보안 취약점이기 때문에, 개발 초기 단계부터 보안을 고려하는 것이 중요하다. 이러한 기본적인 방어 기술들을 통합하고 엄격히 적용함으로써 웹 애플리케이션을 보호할 수 있다.</p>
 <h3 id="csrf에-대해-설명하시오" style="position:relative;"><a href="#csrf%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4" aria-label="csrf에 대해 설명하시오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CSRF에 대해 설명하시오</h3>
+<p>CSRF(Cross-Site Request Forgery, 사이트 간 요청 위조)는 웹 애플리케이션 보안의 취약점을 이용한 공격 유형 중 하나로, 사용자가 자신의 의지와는 무관하게 공격자가 의도한 행위를 웹 애플리케이션에서 실행하게 만드는 공격을 말한다. 이 공격은 사용자가 이미 인증된 세션을 가지고 있을 때 특히 위험하다.</p>
+<h4 id="csrf의-특징" style="position:relative;"><a href="#csrf%EC%9D%98-%ED%8A%B9%EC%A7%95" aria-label="csrf의 특징 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CSRF의 특징</h4>
+<ul>
+<li><strong>사용자의 세션을 이용</strong>: 공격자는 사용자의 브라우저가 이미 인증받은 상태를 이용해 악의적인 요청을 만들어내며, 이는 사용자가 로그인한 상태에서 무심코 악의적인 링크를 클릭하거나 방문함으로써 발생할 수 있다.</li>
+<li><strong>사용자는 무의식적으로 요청</strong>: 사용자는 공격이 일어나고 있다는 것을 전혀 인지하지 못하는 상태에서 공격자가 설정해 놓은 행동(비밀번호 변경, 송금 등)을 수행할 수 있다.</li>
+<li><strong>악의적인 요청</strong>: 이 요청은 이미지 태그, 숨겨진 폼, 자바스크립트 XMLHttpRequest 등 다양한 방법으로 실행될 수 있다.</li>
+</ul>
+<h4 id="대처-방법-2" style="position:relative;"><a href="#%EB%8C%80%EC%B2%98-%EB%B0%A9%EB%B2%95-2" aria-label="대처 방법 2 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>대처 방법</h4>
+<ol>
+<li><strong>CSRF 토큰 사용</strong>: 각 폼 요청에 고유한 CSRF 토큰을 포함시켜 서버에서 그 토큰을 검증하게 함으로써, 요청이 정당한 페이지에서 발생했는지를 확인할 수 있다.</li>
+<li><strong>SameSite 쿠키 속성 사용</strong>: 최신 브라우저는 쿠키에 <code class="language-text">SameSite</code> 속성을 지원하여, 쿠키가 같은 도메인의 요청에만 사용될 수 있도록 제한한다. 이 속성을 사용하면 CSRF 공격을 막을 수 있다.</li>
+<li><strong>사용자 인증 요청</strong>: 중요한 행동을 수행할 때마다 사용자의 비밀번호를 재확인하거나 2단계 인증을 요구하는 것이다.</li>
+<li><strong>Referer 검증</strong>: HTTP 헤더의 Referer를 검증하여 요청이 신뢰할 수 있는 도메인에서 발생했는지 확인할 수 있다.</li>
+</ol>
+<p>CSRF 공격은 사용자가 자신도 모르게 중요한 행동을 수행하게 만들 수 있으므로, 웹 애플리케이션을 설계할 때 이를 고려하여 보안 조치를 적용해야 한다. 이러한 방어 기술들은 애플리케이션의 보안을 강화하고 사용자의 데이터를 보호하는 데 중요한 역할을 한다.</p>
 <div class="table-of-contents">
 <ul>
 <li>
@@ -308,21 +429,42 @@
 </li>
 <li>
 <p><a href="#%EB%B9%84%EB%8C%80%EC%B9%AD%ED%82%A4-%EC%95%94%ED%98%B8%ED%99%94-%EB%8C%80%EC%B9%AD%ED%82%A4-%EC%95%94%ED%98%B8%ED%99%94%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">비대칭키 암호화, 대칭키 암호화에 대해 설명하시오</a></p>
+<ul>
+<li><a href="#%EB%8C%80%EC%B9%AD%ED%82%A4-%EC%95%94%ED%98%B8%ED%99%94-symmetric-key-encryption">대칭키 암호화 (Symmetric Key Encryption)</a></li>
+<li><a href="#%EB%B9%84%EB%8C%80%EC%B9%AD%ED%82%A4-%EC%95%94%ED%98%B8%ED%99%94-asymmetric-key-encryption">비대칭키 암호화 (Asymmetric Key Encryption)\</a></li>
+</ul>
 </li>
 <li>
 <p><a href="#oauth-%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">OAuth 에 대해 설명하시오</a></p>
 </li>
 <li>
 <p><a href="#jwt%EC%99%80-oauth-%EB%A5%BC-%EB%B9%84%EA%B5%90%ED%95%98%EA%B3%A0-%EC%B0%A8%EC%9D%B4%EB%A5%BC-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">JWT와 OAuth 를 비교하고 차이를 설명하시오</a></p>
+<ul>
+<li><a href="#jwt-json-web-token">JWT (JSON Web Token)</a></li>
+<li><a href="#oauth">OAuth</a></li>
+<li><a href="#%EA%B2%B0%EB%A1%A0">결론</a></li>
+</ul>
 </li>
 <li>
 <p><a href="#sql-injection-%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EA%B0%84%EB%8B%A8%ED%9E%88-%EC%84%A4%EB%AA%85%ED%95%98%EA%B3%A0-%EB%8C%80%EC%B2%98-%EB%B2%95%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%B4%EB%B3%B4%EC%8B%9C%EC%98%A4">SQL Injection 에 대해서 간단히 설명하고, 대처 법에 대해 설명해보시오</a></p>
+<ul>
+<li><a href="#sql-%EC%9D%B8%EC%A0%9D%EC%85%98%EC%9D%98-%ED%8A%B9%EC%A7%95">SQL 인젝션의 특징</a></li>
+<li><a href="#%EB%8C%80%EC%B2%98-%EB%B0%A9%EB%B2%95">대처 방법</a></li>
+</ul>
 </li>
 <li>
 <p><a href="#xss%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">XSS에 대해서 설명하시오</a></p>
+<ul>
+<li><a href="#xss%EC%9D%98-%EC%9C%A0%ED%98%95">XSS의 유형</a></li>
+<li><a href="#%EB%8C%80%EC%B2%98-%EB%B0%A9%EB%B2%95-1">대처 방법</a></li>
+</ul>
 </li>
 <li>
 <p><a href="#csrf%EC%97%90-%EB%8C%80%ED%95%B4-%EC%84%A4%EB%AA%85%ED%95%98%EC%8B%9C%EC%98%A4">CSRF에 대해 설명하시오</a></p>
+<ul>
+<li><a href="#csrf%EC%9D%98-%ED%8A%B9%EC%A7%95">CSRF의 특징</a></li>
+<li><a href="#%EB%8C%80%EC%B2%98-%EB%B0%A9%EB%B2%95-2">대처 방법</a></li>
+</ul>
 </li>
 </ul>
 </li>
