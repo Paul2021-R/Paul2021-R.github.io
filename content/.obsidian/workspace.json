@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/interview/20240503024540.md",
+                "file": "ETC/20240506135456.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/interview/20240503024540.md",
+                "file": "ETC/20240506135456.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/interview/20240503024540.md",
+                "file": "ETC/20240506135456.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/interview/20240503024540.md"
+                "file": "ETC/20240506135456.md"
               }
             }
           }
@@ -148,18 +148,19 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "cd0ea02965d451ae",
+  "active": "799749a987e50230",
   "lastOpenFiles": [
+    "STUDY/interview/20240430100401.md",
+    "ETC/20240506135456.md",
+    "STUDY/interview/20240430150404.md",
+    "STUDY/interview/20240430230482.md",
+    "STUDY/interview/20240502150598.md",
+    "STUDY/interview/20240503010579.md",
+    "STUDY/interview/20240503020528.md",
+    "STUDY/interview/20240503024540.md",
     "STUDY/interview/20240503024436.md",
     "STUDY/interview/20240503024313.md",
     "STUDY/interview/20240503020582.md",
-    "STUDY/interview/20240503020528.md",
-    "STUDY/interview/20240503024540.md",
-    "STUDY/interview/20240430230482.md",
-    "STUDY/interview/20240430150404.md",
-    "STUDY/interview/20240503010579.md",
-    "STUDY/interview/20240502150598.md",
-    "STUDY/interview/20240430100401.md",
     "STUDY/interview/20240503020579.md",
     "20240503020583.md",
     "STUDY/interview/20240503020502.md",
@@ -188,7 +189,6 @@
     "STUDY/JAVA/20240425190450.md",
     "src",
     "STUDY/JAVA/20240423130499.md",
-    "STUDY/docker-kubernetes/20240423160450.md",
-    "ETC/20240408222022.md"
+    "STUDY/docker-kubernetes/20240423160450.md"
   ]
 }
