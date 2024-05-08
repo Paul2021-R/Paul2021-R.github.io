@@ -161,6 +161,46 @@
 <p>N+1 문제가 무엇이며 이를 해결할 방법은?</p>
 </blockquote>
 <p>이 질문을 처음 받았을 때, 다소 혼란스러웠다. JPA 와 관련된 내용이 나와야 하는 영역에서 밑도 끝도 없이 이런 질문이 나오며, 어떻게 해야 하는 것인가? 지식으로 해결하기도 안되고, makeshift를 만들어 보기에도 잘못 말하면 뜬구름 잡는 이야기가 되는 게 아닌가? 그렇기에 가장 먼저 생각한 것이 chatGPT의 도움을 구해 보는 것이었다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 58.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAABY0lEQVQoz5VT7XKCMBD0QXT8QAiKgkQIkADO2Pd/pu3s2UuZ1v7oj50lH7e3d0dWzjkcDgfsdjvs93vh7Xb7LyxjV0sxHjbWomkaGJPjfD7jdDoJ8jwXLPeMMcLH4zFqrPRDM2RZirIsJZgBxmTIMsLIWoSNEeEomCTfgir2LWgwTZOImowBL0cv0UwEkyTBer3GZrOJYHVRcOmSB1VVYRgGdF0H9tjWNay1gvv9Lsw7itvtJkmlh0uHKj54j+fzA/M8Y5oncUyE4FHXNdq2jWC/mbiqypfg0l0UHDwejwe893CuFZcMGvpeROiKwhSj47u10qLo8OdgeDGMASEEKZ2Xr9cristF+PLFCp5zSH86dF0n5Y7jiHEa4UMQtxTv+14SkbW/dPm2ZP0uikKykgl1pWAwy+Z+mqYyffKvkpXZLzrQKRPsHZ10zsU2MBkTkOOU3znUV8FXpNA7un73RPkffgKU0GOWlF0RjQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240508143822"
+        title="20240508143822"
+        src="/static/f28f396e7395d9424ec64c8990ea125a/37523/20240508143822.png"
+        srcset="/static/f28f396e7395d9424ec64c8990ea125a/e9ff0/20240508143822.png 180w,
+/static/f28f396e7395d9424ec64c8990ea125a/f21e7/20240508143822.png 360w,
+/static/f28f396e7395d9424ec64c8990ea125a/37523/20240508143822.png 720w,
+/static/f28f396e7395d9424ec64c8990ea125a/302a4/20240508143822.png 1080w,
+/static/f28f396e7395d9424ec64c8990ea125a/07a9c/20240508143822.png 1440w,
+/static/f28f396e7395d9424ec64c8990ea125a/2b984/20240508143822.png 2164w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>빙고, 내 기억력의 한계로 못한 영역이 있는 것은 어쩔 수 없다. 하지만 문맥을 이해할 수 있던 점은 아주 훌륭했다. 이렇게 활용해서 정리를 하자, 거의 90개 정도 되는 질문들에 대해 의도와 내용을 파악할 수 있었으며, 그에 대한 답을 달 수 있었다.</p>
+<h2 id="먼접-후기--어떻게-접근하는게-옳았을까" style="position:relative;"><a href="#%EB%A8%BC%EC%A0%91-%ED%9B%84%EA%B8%B0--%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%A0%91%EA%B7%BC%ED%95%98%EB%8A%94%EA%B2%8C-%EC%98%B3%EC%95%98%EC%9D%84%EA%B9%8C" aria-label="먼접 후기  어떻게 접근하는게 옳았을까 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>먼접 후기 : 어떻게 접근하는게 옳았을까?</h2>
+<p>그리하여 부랴부랴 거의 대부분의 질문은 소화를 시키고 답변을 준비할 수 있었다. 부족한 부분이나 시간이 없어 다 못 채운 부분도 있었지만, 그건 그거대로 배짱 승부를 봐야지 어떻게 안되겠다는 생각으로 마무리를 짓고 답변을 해나갔다.</p>
+<p>질문은 예상한 내용에 가깝긴 했지만, 전혀 준비하지 않았던 영역도 있었다. 특히나 궁금해 하시던 것은 왜 8개월이란 시간을 CSAPP 란 책에 시간을 쏟았는지. 2년이라는 긴 기간을 준비한다는 것에 대해 힘들지 않았던 건지 등… 전반적으로 나 역시 고민하던 부분에 대해 궁금해 하는 게 느껴졌다.</p>
+<p>생각해보면 난 어떻게 그걸 버텼던 것일까? 그리고 왜 그렇게 버티려고 했던 것일까?</p>
+<p>사실 간단하다. 아주 간단한 명제다. 내가 42서울을 처음 들어갔던 순간 느꼈던 무력감. 그리고 거기서 하나를 제대로 소화 시켰을 때 얻은 만족감과 든든한 기초 체력. 결국 한 순간도 잊지 않고 생각했던 것이지만, ‘일’이 아닌 ‘실력’이 필요한 이상 잡다한 임시 방편들과 대충대충이란 키워드로 해결해나가는 것은 결코 옳지 못하다.</p>
+<p>고전 인문학이 없으면 현대 인문학이 없으며 사유의 과정의 결론은 내려지지 않았을 것 처럼, 고전 물리학이 없이는 현대 물리학이 왜 고전 물리학이 틀린지를 지적하고, 새로이 현대의 물리학의 전신을 세울 수 있던 것처럼 나의 실력의 기본기가 되어야할 영역에서 편법이나, 돌아가는 길로 정공법을 무시할 수는 없으리라. 그리고 결국 그러했기에 나 또한 처음 시작했을 땐 모두가 무시하던 그저 한 명의 비전공자였지만, 피어의 개발 총괄로 진두지휘가 가능했던 게 아닐까? 아마 앞으로도, 일이라면 효과적이고 효율적이게, 실력과 관련된 것이라면 어떻게든 제대로 채워 나가리라.</p>
+<p>추가로 하나 더. 아쉬웠던 점은 ‘티키타카’가 안 되었다는 점이었다. 내 나름의 준비한 내용들이 있기에, 해당 내용을 듣는 구조가 되는 것은 자연스러운 흐름이긴 하지만, 면접을 배웠다는 양반이 오랜 만에 진지하게 면접을 봐서 일까? 상대의 반응을 보고 이어가는 흐름을 조절하는게 잘 되지 않았다는 게 참 아쉬웠다. 아무래도 반응을 보기에는 원격으로 면접을 본다는 상황 자체가 익숙하진 않아서 그랬다고 생각이 든다.</p>
+<h2 id="면접관이-마지막으로-원하던-것은" style="position:relative;"><a href="#%EB%A9%B4%EC%A0%91%EA%B4%80%EC%9D%B4-%EB%A7%88%EC%A7%80%EB%A7%89%EC%9C%BC%EB%A1%9C-%EC%9B%90%ED%95%98%EB%8D%98-%EA%B2%83%EC%9D%80" aria-label="면접관이 마지막으로 원하던 것은 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>면접관이 마지막으로 원하던 것은..</h2>
+<p>다행히 마무리에 마무리로 면접을 끝내고 난 뒤, 마지막으로 나는 궁금한 부분들을 물어보는 시간을 가졌다. 그 중에 가장 궁금한 것은 현재의 상황에서 개발자들이 내 이력서를 어떻게 생각하는가? 였다.</p>
+<p>왜냐면 위에서 언급했듯이 현재 개발자를 원하는 사람들이 많아도 너무 많다. 그 만큼 청년층에게 질 좋은 일자리는 없다는 이야기겠다. 그러니 국비 과정을 거치거나, 속성으로 개발자를 해보겠다는 분들도 많이 늘고 이를 활용한 업체들이 정말 말이 안될 정도로 많아진 것이 웃픈 현실이자, 현재의 상황이니 말이다.</p>
+<p>그러니 내 이력서가 차별성이 있는가? 이에 대한 답이 명확하지 않다면 이는 문제이리라 생각했고, 그렇기에 내 이력서에 대해, 내 노력에 대해 물어보는 건 너무나 당연한 수순이리라.</p>
+<p>이에 대해 묻자 면접을 함께 해주신 담당자님께서는 나에대해 ‘면접에 강하다’ 라고 말씀을 해주셨고, 그에 비해 반대로 ‘이력서’에 대해 보기 힘들다는 평을 들려주셨다. 아하- 하고 머릿속을 스치는 내 상황. 내 이력서의 내용을 생각하니 이제는 무엇을 준비해야할지 보다 명확해졌다.</p>
+<p>필요한 건 비주얼이다. 개발자는 많아졌고, 그 와중에 내실이 없는 사람도 많고, 내실이 있어도 못 살리는 사람도 있다. 한달에 200-300 명을 만나는 인사의 담당자들에게 이런 상황에서 글로 가득차거나, 어쩌면 비주얼적이기 보단 다소 슴슴하고 재미없게 적은 내 이력서가 오히려 나를 더 표현해주지 못하며 묻혀 버리는 게 아닐까?</p>
+<p>거기다 내가 이력서를 봐주고 할 때도, 결국 근본적으로는 같았다. 그러나 시대가 이젠 더 효과적이고 적극적인 이미지를 원하게 된게 아닌가 싶었다. 어쨌든, 이번 기회에 전체적인 형태나 틀의 구조, 이미지를 넣고 동영상 등도 적용해봄직 한지 검토해볼 필요가 있어 보인다.</p>
 <div class="table-of-contents">
 <ul>
 <li>
@@ -178,6 +218,12 @@
 <li><a href="#%EB%B0%98%EB%93%9C%EC%8B%9C-%EC%86%90%EC%9C%BC%EB%A1%9C-%EC%8D%A8%EB%B4%90%EC%95%BC-%ED%96%88%EB%8D%98-%EC%98%81%EC%97%AD">반드시 손으로 써봐야 했던 영역</a></li>
 <li><a href="#chatgpt%EB%A5%BC-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%99%9C%EC%9A%A9%ED%95%B4%EC%95%BC-%ED%95%A0%EA%B9%8C--%EC%9E%90%EB%8F%99%ED%99%94--%EC%9D%98%EB%8F%84-%ED%8C%8C%EC%95%85">ChatGPT를 어떻게 활용해야 할까? : 자동화 &#x26; 의도 파악</a></li>
 </ul>
+</li>
+<li>
+<p><a href="#%EB%A8%BC%EC%A0%91-%ED%9B%84%EA%B8%B0--%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%A0%91%EA%B7%BC%ED%95%98%EB%8A%94%EA%B2%8C-%EC%98%B3%EC%95%98%EC%9D%84%EA%B9%8C">먼접 후기 : 어떻게 접근하는게 옳았을까?</a></p>
+</li>
+<li>
+<p><a href="#%EB%A9%B4%EC%A0%91%EA%B4%80%EC%9D%B4-%EB%A7%88%EC%A7%80%EB%A7%89%EC%9C%BC%EB%A1%9C-%EC%9B%90%ED%95%98%EB%8D%98-%EA%B2%83%EC%9D%80">면접관이 마지막으로 원하던 것은..</a></p>
 </li>
 </ul>
 </li>
