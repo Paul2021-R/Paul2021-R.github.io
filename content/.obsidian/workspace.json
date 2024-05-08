@@ -134,8 +134,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -150,6 +149,7 @@
   },
   "active": "cd0ea02965d451ae",
   "lastOpenFiles": [
+    "ETC/src/20240508143822.png",
     "ETC/20240429200451.md",
     "ETC/20240423170432.md",
     "ETC/20240408071348.md",
@@ -185,7 +185,6 @@
     "ETC/src/Pasted image 20240430030350.png",
     "ETC/src/20240430025753.png",
     "STUDY/JAVA/20240427000460.md",
-    "STUDY/JAVA/20240428210415.md",
     "STUDY/JAVA/src/20240428220637.png",
     "STUDY/JAVA/src/20240427193055.png",
     "STUDY/JAVA/src/20240427191459.png",
