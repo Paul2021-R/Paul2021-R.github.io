@@ -48,27 +48,241 @@
         }
       }
     })
-  </script><title data-react-helmet="true">docker-kubernetes ) til - 20240510</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="docker-kubernetes ) til - 20240510"/><meta data-react-helmet="true" property="og:site_title" content="docker-kubernetes ) til - 20240510"/><meta data-react-helmet="true" name="description" content="색션 12. 실전 Kubernetes - 핵심 개념 자세히 알아보기 203. Label &amp; Selector selector 에 대해 다시 이야기를 해보고자 한다. 이는 다른 리소스를 리소스에 연결하는데 사용하는 용도라는 중요한 기능을 가지고 있기 때문이다. 최근의 현대적 selector는 이라는 개념을 사용한다. : 이는 좀더 다양한 기능들을 지원한다. 204. 활성 프로브(Liveness Probes) 205.구성 옵션 자세히 살펴보기 206. 요약 207. 모듈 리소스 본문 색션 12. 실전 Kubernetes - 핵심 개념 자세히 알아보기 203. Label &amp; Selector 204. 활성 프로브(Liveness Probes) 205.구성 옵션 자세히 살펴보기 206. 요약 207. 모듈 리소스"/><meta data-react-helmet="true" property="og:description" content="색션 12. 실전 Kubernetes - 핵심 개념 자세히 알아보기 203. Label &amp; Selector selector 에 대해 다시 이야기를 해보고자 한다. 이는 다른 리소스를 리소스에 연결하는데 사용하는 용도라는 중요한 기능을 가지고 있기 때문이다. 최근의 현대적 selector는 이라는 개념을 사용한다. : 이는 좀더 다양한 기능들을 지원한다. 204. 활성 프로브(Liveness Probes) 205.구성 옵션 자세히 살펴보기 206. 요약 207. 모듈 리소스 본문 색션 12. 실전 Kubernetes - 핵심 개념 자세히 알아보기 203. Label &amp; Selector 204. 활성 프로브(Liveness Probes) 205.구성 옵션 자세히 살펴보기 206. 요약 207. 모듈 리소스"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/docker-kubernetes/20240510154846/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🐋</div><div class="info"><div class="categories"><a class="category" href="/posts/til">til</a><a class="category" href="/posts/backend">backend</a></div></div><h1 class="title">docker-kubernetes ) til - 20240510</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->May 10, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="색션-12-실전-kubernetes---핵심-개념-자세히-알아보기" style="position:relative;"><a href="#%EC%83%89%EC%85%98-12-%EC%8B%A4%EC%A0%84-kubernetes---%ED%95%B5%EC%8B%AC-%EA%B0%9C%EB%85%90-%EC%9E%90%EC%84%B8%ED%9E%88-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0" aria-label="색션 12 실전 kubernetes   핵심 개념 자세히 알아보기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>색션 12. 실전 Kubernetes - 핵심 개념 자세히 알아보기</h1>
+  </script><title data-react-helmet="true">docker-kubernetes ) til - 20240510</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="docker-kubernetes ) til - 20240510"/><meta data-react-helmet="true" property="og:site_title" content="docker-kubernetes ) til - 20240510"/><meta data-react-helmet="true" name="description" content="색션 12. 실전 Kubernetes - 핵심 개념 자세히 알아보기 203. Label &amp; Selector selector 에 대해 다시 이야기를 해보고자 한다. 이는 다른 리소스를 리소스에 연결하는데 사용하는 용도라는 중요한 기능을 가지고 있기 때문이다. selector 는 기본적으로 서비스나, deployment를 모니터링하고 연결시키는 역할을 한다. 최근의 현대적 selector는 이라는 것이 있고, 거기서 더 나아가서 이라는 개념을 사용한다. 이는 좀더 다양한 기능들을 지원한다.
+ 기본적으로 -(하이픈)을 통해 구성이 되며, 중괄호 내의 키와 값으로 구성되어 있다. 추가로 Operator 가 들어갈 수 있다는 점이 차이점이다. In이란 값을 가지면, 각 키의 값들에 포함되면 감지가 되는 구조라고 보면 된다. 더 많은 자원 제어와, 유연성이 필요하면 가 적절하다 그러나 기본적인 경우에는 어지간하면 쓰지 않아도 충분하다. 더불어 하나 알아둘 것이 metadata는 키값=쌍의 구…"/><meta data-react-helmet="true" property="og:description" content="색션 12. 실전 Kubernetes - 핵심 개념 자세히 알아보기 203. Label &amp; Selector selector 에 대해 다시 이야기를 해보고자 한다. 이는 다른 리소스를 리소스에 연결하는데 사용하는 용도라는 중요한 기능을 가지고 있기 때문이다. selector 는 기본적으로 서비스나, deployment를 모니터링하고 연결시키는 역할을 한다. 최근의 현대적 selector는 이라는 것이 있고, 거기서 더 나아가서 이라는 개념을 사용한다. 이는 좀더 다양한 기능들을 지원한다.
+ 기본적으로 -(하이픈)을 통해 구성이 되며, 중괄호 내의 키와 값으로 구성되어 있다. 추가로 Operator 가 들어갈 수 있다는 점이 차이점이다. In이란 값을 가지면, 각 키의 값들에 포함되면 감지가 되는 구조라고 보면 된다. 더 많은 자원 제어와, 유연성이 필요하면 가 적절하다 그러나 기본적인 경우에는 어지간하면 쓰지 않아도 충분하다. 더불어 하나 알아둘 것이 metadata는 키값=쌍의 구…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/docker-kubernetes/20240510154846/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🐋</div><div class="info"><div class="categories"><a class="category" href="/posts/til">til</a><a class="category" href="/posts/backend">backend</a></div></div><h1 class="title">docker-kubernetes ) til - 20240510</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->May 10, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="색션-12-실전-kubernetes---핵심-개념-자세히-알아보기" style="position:relative;"><a href="#%EC%83%89%EC%85%98-12-%EC%8B%A4%EC%A0%84-kubernetes---%ED%95%B5%EC%8B%AC-%EA%B0%9C%EB%85%90-%EC%9E%90%EC%84%B8%ED%9E%88-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0" aria-label="색션 12 실전 kubernetes   핵심 개념 자세히 알아보기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>색션 12. 실전 Kubernetes - 핵심 개념 자세히 알아보기</h1>
 <h2 id="203-label--selector" style="position:relative;"><a href="#203-label--selector" aria-label="203 label  selector permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>203. Label &#x26; Selector</h2>
 <ul>
 <li>selector 에 대해 다시 이야기를 해보고자 한다. 이는 다른 리소스를 리소스에 연결하는데 사용하는 용도라는 중요한 기능을 가지고 있기 때문이다.</li>
-<li>최근의 현대적 selector는 <code class="language-text">matchExpression</code>이라는 개념을 사용한다. : 이는 좀더 다양한 기능들을 지원한다.</li>
+<li>selector 는 기본적으로 서비스나, deployment를 모니터링하고 연결시키는 역할을 한다.</li>
+<li>최근의 현대적 selector는 <code class="language-text">matchLabel</code>이라는 것이 있고,</li>
+<li>거기서 더 나아가서 <code class="language-text">matchExpression</code>이라는 개념을 사용한다. 이는 좀더 다양한 기능들을 지원한다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 35%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA4UlEQVQoz5WR207DMBBE8x/gtXe93lyaJgRo0wqQ6FPf+P+/GZQ6KeEmwcORZ2VrNDsumBnRalh/gFgDZg8iApGH9/+nSMkQRaDdiGp3glbtfEkgP5tPmlZ8nVcUVlbIKUukbo/n/Q7nlyNqUzhH2XxJS7/wOWFCCAExMbSO6B8aPI49rFGwBHDkzKQX1vOsr4aqCTKt3A5I2wGSGCH6yxlNIMofpEwsJWvNbziGaxWFWQWNEVK2qA9naLkB3d4gLP39hPuul0oKTXbpMJCDNPfo+gFvr08Y77Zwzv35dxfTd/n6w66YNM26AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240510233242"
+        title="20240510233242"
+        src="/static/3f478d743c9e22c97505265a54317b06/37523/20240510233242.png"
+        srcset="/static/3f478d743c9e22c97505265a54317b06/e9ff0/20240510233242.png 180w,
+/static/3f478d743c9e22c97505265a54317b06/f21e7/20240510233242.png 360w,
+/static/3f478d743c9e22c97505265a54317b06/37523/20240510233242.png 720w,
+/static/3f478d743c9e22c97505265a54317b06/f4281/20240510233242.png 1016w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+<ul>
+<li>기본적으로 -(하이픈)을 통해 구성이 되며, 중괄호 내의 키와 값으로 구성되어 있다.</li>
+<li>추가로 Operator 가 들어갈 수 있다는 점이 차이점이다. In이란 값을 가지면, 각 키의 값들에 포함되면 감지가 되는 구조라고 보면 된다.</li>
+<li>더 많은 자원 제어와, 유연성이 필요하면 <code class="language-text">matchExpressions</code>가 적절하다</li>
+<li>그러나 기본적인 경우에는 어지간하면 쓰지 않아도 충분하다.</li>
+</ul>
+</li>
+<li>더불어 하나 알아둘 것이 metadata는 키값=쌍의 구조이며, 이를 임의로 지정해주고, delete 등을 할 때 해당 <code class="language-text">-l</code> 옵션과 함께 키=값을 같이 입력해서 일종의 확장 보안 메커니즘으로 쓸 수 있다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 587px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 75.55555555555556%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAABu0lEQVQ4y42Ty27bMBBF/SEW36RIibJefiR246RF2k1RFOiu//8hpxBjFO6m1mJAERQOzp0hN1Z7UkqM00RuG6ZpZOh7+n5X1pw7pJQIIVbVRkmFcx5fR+r+RD68kMZnwvLdNuQYqIQo0DW1WajGWKQ2+OGC6w4Mi2m345Aj3ui/wFWGQkistSjjCOOnUnm+UIeAM4rlXNwBHxvKBehYohufiMd3XLdnbhPHLjG3Ea3UKtgHsBK4JqBbg5KGePpKGJ6IwROsxmhVIq+1/ADmGt055FZg4o56/xnbPxO849QlXqeO5C1V9biXdz00+P6JOo84HzAuFLtgTSmzMnbpYW4zUghSHnj/+Zsv339x/fYD61yJWy2DkRKl1MPaSCHxoUZpVYzScCId3tg1ifOQmZpY1iEFtpVAPTJUUhP7jGoMeokfu3IfYwhc+paXMXPI6W4gj16KUoQ6lR+NqwnzldDNRV/eYpqb/aopK6VvQInSGmMMrp3ww5l6vuKbHdFq9m0scR9dn5thLButdbnEy/Nz3ZHdPNLPPdtthbYGbfQaw3+By96mnnp+LYYun/Cx5fx24niZqarqv8A/OziocsokntMAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240511022117"
+        title="20240511022117"
+        src="/static/52c58e242430dc4fe571a52441cddebb/d72eb/20240511022117.png"
+        srcset="/static/52c58e242430dc4fe571a52441cddebb/e9ff0/20240511022117.png 180w,
+/static/52c58e242430dc4fe571a52441cddebb/f21e7/20240511022117.png 360w,
+/static/52c58e242430dc4fe571a52441cddebb/d72eb/20240511022117.png 587w"
+        sizes="(max-width: 587px) 100vw, 587px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 602px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 48.888888888888886%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABK0lEQVQoz5WS6WoDMQyE9z0SH7JleY33zmYTAgmFHu//RlPWbSEQmuPHIPxD40/SVMYSfBrAeQdKI4y0CMzoaykS76C0hjHmKVWGPOJ0QegOmPseh3HCeWzxuQzF0JG9adJ3PqhCTJDpDBlO6HYn5LhSEdgRtkpjoxS2V/oz+8+0spbgYoN6+QC3M/oUMecaQxLsm4RdrrG0qejYZwRHd1dQhRxgiRH375Buj8ge0btCKL81BY+afXmTfTCyyx5Wafg8Ih2/wN2CGBhLk3DqM8QRNlsFpXTRw5E5RoT2AK4bEAus43KIlXKlImtvmu8SWmvLDmU8I7RziVBMNbQxN0fQT8SnYvawzkOmC+LuJz7ee5irZv1KDkUEKyU3M+L8VgxLbWcQ0Utmq+E3jrIaKM1hnnsAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240511022142"
+        title="20240511022142"
+        src="/static/d69984d8f48557e5ea442475b2ff2d50/32056/20240511022142.png"
+        srcset="/static/d69984d8f48557e5ea442475b2ff2d50/e9ff0/20240511022142.png 180w,
+/static/d69984d8f48557e5ea442475b2ff2d50/f21e7/20240511022142.png 360w,
+/static/d69984d8f48557e5ea442475b2ff2d50/32056/20240511022142.png 602w"
+        sizes="(max-width: 602px) 100vw, 602px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 8.333333333333332%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAbklEQVQI112MQQrDIBAA8wnRg1BQzCFNY3ZjtKb9/7empNBCexjmNDO0HinlwqaCiKCqHMeDWitl2yhl5zpNLMvCugq3eUZU8d5jrcU598MgutOPJzlnam30e2McR2KMb59hSokQAsaYL5/Z//QFw7w5o34szkUAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240511022231"
+        title="20240511022231"
+        src="/static/3e3ef4d7b0972c469c6c7a19534b4707/37523/20240511022231.png"
+        srcset="/static/3e3ef4d7b0972c469c6c7a19534b4707/e9ff0/20240511022231.png 180w,
+/static/3e3ef4d7b0972c469c6c7a19534b4707/f21e7/20240511022231.png 360w,
+/static/3e3ef4d7b0972c469c6c7a19534b4707/37523/20240511022231.png 720w,
+/static/3e3ef4d7b0972c469c6c7a19534b4707/2c5fd/20240511022231.png 1006w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+<blockquote>
+<p>놀랍게도 어떤 key의 어떤 값이라도 들어가면 된다.</p>
+</blockquote>
+</li>
+<li><mark style="background: #FF5582A6;">결론적으로 name이라는 값이 아니라, metadata에 정의된 레이블로도 선택과 삭제 등이 가능하다는 사실을 정확하게 이해하는 게 중요하다. </mark></li>
 </ul>
 <h2 id="204-활성-프로브liveness-probes" style="position:relative;"><a href="#204-%ED%99%9C%EC%84%B1-%ED%94%84%EB%A1%9C%EB%B8%8Cliveness-probes" aria-label="204 활성 프로브liveness probes permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>204. 활성 프로브(Liveness Probes)</h2>
+<ul>
+<li>쿠버네티스의 Pod와 컨테이너가 정상 여부를 판단하는 방법에 대한 개념이 있다.</li>
+<li><code class="language-text">livenessProbe</code> 라는 속성이 있으며, 이를 spec에 정의가 가능하다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 88.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAAsTAAALEwEAmpwYAAABvElEQVQ4y52TzW7bMBCE9RKpLxLJ3SVFStS/8te4SYoCQQ+99v1fZQqtXde9yTkMREDSh5ndYTHOK4ZpRu56OBbc3X3B4XD4tIqh76GaFggzAjlYY1CWJaqqulkFsSD09/B5QQgBXfRg52CMUbC5UQURQdoJcX2Hb0eUxqKqDKy1n1LBzHCOIHlFzDO6JiMK60t1uRN0ccgscNbA5wG573BcWixDgrn6aI/+QhXIdUDIDeIQEQeP2HvUWSCR4SNDAsEnhtSsz9CInqUmPXOgC7RgIlBIqKcjJI0oy0p1S9zr8VwiSzMizkekIGiCQJj+i7I7sngP5xwk9Vqd+5zwMrbwV8CLi30Oz1tuRnDq4XxCaQyqs8rKaI32VukMdCBnId0DYr/gsfV4HlrMbUT0rCNIXvYVO4Ragdscu4d3PH78xsuPX1ifvilwzQm1sGqXw22G223Z1HYD1tefmJ7eIBJQbvdT53PSbZGJTk7ThNhmpMbDmq0+Fayxu7ddeB/OM3SQOumdzl8/0D1/RzOu8HWEteYGhyIKZCFtfxoTyAdY8nAcQMxn4M4t6w/GnuJum64JjoxGPemfuz3QP0ze81ZEJjm4AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240511023252"
+        title="20240511023252"
+        src="/static/7576228ac36e949588ce08e12821811a/37523/20240511023252.png"
+        srcset="/static/7576228ac36e949588ce08e12821811a/e9ff0/20240511023252.png 180w,
+/static/7576228ac36e949588ce08e12821811a/f21e7/20240511023252.png 360w,
+/static/7576228ac36e949588ce08e12821811a/37523/20240511023252.png 720w,
+/static/7576228ac36e949588ce08e12821811a/6acbf/20240511023252.png 1001w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li><code class="language-text">periodSeconds</code> : 얼마의 주기로 상태를 체크하는 지에 대한 내용</li>
+<li><code class="language-text">initialDelaySeconds</code> : 최초 구동 시 몇 초 이후부터 상태를 체크할지</li>
+<li>이렇게 구성한 내용으로 구동을 하고, 강제로 종료를 시켜보면 순식간에 다시 구동되어있음을 알 수 있는데, 이것이 <code class="language-text">livenessProbe</code> 가 감지를 하고 있으면서 다시 Pod가 정상화 된 것이다.</li>
+<li>그리고 이전에 이러한 내용을 정의하지 않아도, Pod가 살아나던 것은 기본적으로 해당 기능이 디폴트값으로 작동하기 때문이다.</li>
+</ul>
 <h2 id="205구성-옵션-자세히-살펴보기" style="position:relative;"><a href="#205%EA%B5%AC%EC%84%B1-%EC%98%B5%EC%85%98-%EC%9E%90%EC%84%B8%ED%9E%88-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0" aria-label="205구성 옵션 자세히 살펴보기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>205.구성 옵션 자세히 살펴보기</h2>
+<ul>
+<li>공식 참조를 살펴보면, 여러가지 구성 시 넣을 수 있는 다양한 명령이 있다는 사실을 알 수 있다.</li>
+<li><code class="language-text">imagePullPolicy</code> : Always 설정시 태그 지정 없이도, 항상 최신 이미지를 요청할 때마다 받아서 작동시킨다. 이 밖에도 Never  등의 옵션도 존재 한다.</li>
+<li>이 밖에도 다양한 옵션들이 있고, 가능하면 공식문서를 깊게 파서 확인하고 적용해보면 된다.</li>
+</ul>
 <h2 id="206-요약" style="position:relative;"><a href="#206-%EC%9A%94%EC%95%BD" aria-label="206 요약 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>206. 요약</h2>
-<h2 id="207-모듈-리소스" style="position:relative;"><a href="#207-%EB%AA%A8%EB%93%88-%EB%A6%AC%EC%86%8C%EC%8A%A4" aria-label="207 모듈 리소스 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>207. 모듈 리소스</h2>
-<p>본문</p>
+<h3 id="쿠버네티스의-역할과-개발자의-역할" style="position:relative;"><a href="#%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EC%9D%98-%EC%97%AD%ED%95%A0%EA%B3%BC-%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9D%98-%EC%97%AD%ED%95%A0" aria-label="쿠버네티스의 역할과 개발자의 역할 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>쿠버네티스의 역할과 개발자의 역할</h3>
+<ol>
+<li>쿠버네티스의 역할
+<ul>
+<li>개발자의 객체들을 생성하고 관리한다.</li>
+<li>Pod 들을 감시하고, Pod들을 재생성하거나, 스케일링 한다.</li>
+<li>당신의 설정이나 목표를 위하여 제공된 자원을 사용한다.</li>
+</ul>
+</li>
+<li>개발자의 역할
+<ul>
+<li>클러스터를 생성하고, Node 인스턴스를 생성한다.</li>
+<li>API 서버를 설정하고 kubelet이나 다른 쿠버네티스 서비스(소프트웨어) 를 Node들 위에 설치한다.</li>
+<li>필요시 자원의 제공자를 생성한다.</li>
+</ul>
+</li>
+</ol>
+<h3 id="설치" style="position:relative;"><a href="#%EC%84%A4%EC%B9%98" aria-label="설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>설치</h3>
+<p>minikube의 도움으로 로컬 개발환경을 구성했다.
+kubectl 이라는 도구를 활용해 클러스터를 구성한다. 이는, 로컬 뿐 아니라 쿠버네티스 클러스터에 명령을 전달하는 통신장치다.</p>
+<h3 id="쿠버네티스-객체에-대한-이해" style="position:relative;"><a href="#%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B0%9D%EC%B2%B4%EC%97%90-%EB%8C%80%ED%95%9C-%EC%9D%B4%ED%95%B4" aria-label="쿠버네티스 객체에 대한 이해 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>쿠버네티스 객체에 대한 이해</h3>
+<ul>
+<li>우리에게 제공되는 모든 쿠버네티스의 작업과 관련된 것은 ‘객체’로 구성되어 있다고 보면된다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 31.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAABWklEQVQY04WMSS9DYRhG74400SiV2nTD3lSq1d7bhJAo2nslLd0YOvoFQlRCJTZayo9A5y0bVsRYCzHFwj9x5PsMW4uTnPfN8zyK2uxFs6gSn0VjyOxm2m5QUI+ojpSojBSpDP8wVqI6WuZYPUS3B2RWdH77YkvxtWj4WjW0FhXhLrOLSOcs1/5L6sYt98YNdeNOej10y0PonqvxC8IdIdxml+zIbqsmXRk0OXE2DOBudKE1eVEFJg8TVj96e5CgbQqjTUe3BgjaAui2IJNWP16T5zvb5JVdsSG2lJQzSTa8Q352l5QjKTmI7MtfrCdKvDfG7kyO3Ez2786Fs+xH8iT7Eiz1p8hH9mQ+MRBHOc+ewRPwBpW1MoXlY3j8hGek19IVeAFeobRapJauShcUVwrU1qvwAbzD6fYJSqI/TkbfYMvIsNA9LxEumO+a+/de7FmQntE3iTuifAGy8wrVsSVUDgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240511025020"
+        title="20240511025020"
+        src="/static/16c8d94733176c875ae670722b702348/37523/20240511025020.png"
+        srcset="/static/16c8d94733176c875ae670722b702348/e9ff0/20240511025020.png 180w,
+/static/16c8d94733176c875ae670722b702348/f21e7/20240511025020.png 360w,
+/static/16c8d94733176c875ae670722b702348/37523/20240511025020.png 720w,
+/static/16c8d94733176c875ae670722b702348/302a4/20240511025020.png 1080w,
+/static/16c8d94733176c875ae670722b702348/07a9c/20240511025020.png 1440w,
+/static/16c8d94733176c875ae670722b702348/91b67/20240511025020.png 1527w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<h3 id="명령적-vs-선언적" style="position:relative;"><a href="#%EB%AA%85%EB%A0%B9%EC%A0%81-vs-%EC%84%A0%EC%96%B8%EC%A0%81" aria-label="명령적 vs 선언적 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>명령적 vs 선언적</h3>
+<ul>
+<li>CLI를 활용하고 명령을 통해 생성 뿐 아니라 이미지 삭제, 설정, 현재 실행중인 deployment 에 대한 갱신도 할 수 있었다.</li>
+<li>하지만 좀더 편리한 형태가 선언적 접근 방법이며, yaml 파일을 구성하고, 이를 통해 kubectl apply 로 적용하는 형태가 가능했다.</li>
+<li>이때 각 필요한 기능들을 따로따로 구현할 수도 있고, 하나의 파일에 통으로 기록하여 단일한 파일로 구성하는 것도 가능하다.</li>
+<li>또한 선언적 접근의 이점은 변경사항을 yaml파일에 기록 후 적용을 하면 쿠버네티스가 알아서 자동으로 변경점을 수정해준다는 점이다.</li>
+<li>특히나 label, selector라는 개념을 통해 다른 리소스들 끼리는 연결, 서로 모니터링 되기도 하며, 이를 활용하면 name이 아니더라도 필요한 영역을 구분하여 체크할 수 있다는 특징이 있다.</li>
+<li>뿐만 아니라 상태를 확인하는 방법, 이미지를 가져올 때 제어하는 다양한 옵션등이 공식문서를 통해 배웠고, 필요한 내용이 있을 경우 더더욱 공식문서를 찾아보면 유용하다.</li>
+</ul>
 <div class="table-of-contents">
 <ul>
 <li>
 <p><a href="#%EC%83%89%EC%85%98-12-%EC%8B%A4%EC%A0%84-kubernetes---%ED%95%B5%EC%8B%AC-%EA%B0%9C%EB%85%90-%EC%9E%90%EC%84%B8%ED%9E%88-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0">색션 12. 실전 Kubernetes - 핵심 개념 자세히 알아보기</a></p>
 <ul>
-<li><a href="#203-label--selector">203. Label &#x26; Selector</a></li>
-<li><a href="#204-%ED%99%9C%EC%84%B1-%ED%94%84%EB%A1%9C%EB%B8%8Cliveness-probes">204. 활성 프로브(Liveness Probes)</a></li>
-<li><a href="#205%EA%B5%AC%EC%84%B1-%EC%98%B5%EC%85%98-%EC%9E%90%EC%84%B8%ED%9E%88-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0">205.구성 옵션 자세히 살펴보기</a></li>
-<li><a href="#206-%EC%9A%94%EC%95%BD">206. 요약</a></li>
-<li><a href="#207-%EB%AA%A8%EB%93%88-%EB%A6%AC%EC%86%8C%EC%8A%A4">207. 모듈 리소스</a></li>
+<li>
+<p><a href="#203-label--selector">203. Label &#x26; Selector</a></p>
+</li>
+<li>
+<p><a href="#204-%ED%99%9C%EC%84%B1-%ED%94%84%EB%A1%9C%EB%B8%8Cliveness-probes">204. 활성 프로브(Liveness Probes)</a></p>
+</li>
+<li>
+<p><a href="#205%EA%B5%AC%EC%84%B1-%EC%98%B5%EC%85%98-%EC%9E%90%EC%84%B8%ED%9E%88-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0">205.구성 옵션 자세히 살펴보기</a></p>
+</li>
+<li>
+<p><a href="#206-%EC%9A%94%EC%95%BD">206. 요약</a></p>
+<ul>
+<li><a href="#%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EC%9D%98-%EC%97%AD%ED%95%A0%EA%B3%BC-%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9D%98-%EC%97%AD%ED%95%A0">쿠버네티스의 역할과 개발자의 역할</a></li>
+<li><a href="#%EC%84%A4%EC%B9%98">설치</a></li>
+<li><a href="#%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B0%9D%EC%B2%B4%EC%97%90-%EB%8C%80%ED%95%9C-%EC%9D%B4%ED%95%B4">쿠버네티스 객체에 대한 이해</a></li>
+<li><a href="#%EB%AA%85%EB%A0%B9%EC%A0%81-vs-%EC%84%A0%EC%96%B8%EC%A0%81">명령적 vs 선언적</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
