@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/frontend/20240510171350.md",
+                "file": "STUDY/docker-kubernetes/20240510154846.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/frontend/20240510171350.md",
+                "file": "STUDY/docker-kubernetes/20240510154846.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/frontend/20240510171350.md",
+                "file": "STUDY/docker-kubernetes/20240510154846.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/frontend/20240510171350.md"
+                "file": "STUDY/docker-kubernetes/20240510154846.md"
               }
             }
           }
@@ -148,11 +148,19 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "1f1f4c6118bf16b8",
+  "active": "799749a987e50230",
   "lastOpenFiles": [
+    "STUDY/docker-kubernetes/src/20240511025020.png",
+    "STUDY/docker-kubernetes/src/20240511023252.png",
+    "STUDY/docker-kubernetes/src/20240511022231.png",
+    "STUDY/docker-kubernetes/src/20240511022225.png",
+    "STUDY/docker-kubernetes/src/20240511022142.png",
+    "STUDY/docker-kubernetes/src/20240511022117.png",
+    "STUDY/docker-kubernetes/src/20240510233242.png",
+    "STUDY/docker-kubernetes/20240426160434.md",
+    "STUDY/frontend/20240510171350.md",
     "STUDY/frontend/20240510170905.md",
     "ETC/20240506135456.md",
-    "STUDY/frontend/20240510171350.md",
     "STUDY/frontend/src/202405101454.png",
     "STUDY/frontend/src/202405101450.png",
     "STUDY/frontend/src",
@@ -160,7 +168,6 @@
     "STUDY/frontend/무제 파일.md",
     "STUDY/frontend",
     "STUDY/무제 파일.md",
-    "STUDY/docker-kubernetes/20240426160434.md",
     "STUDY/docker-kubernetes/20240424100414.md",
     "STUDY/docker-kubernetes/20240423160450.md",
     "STUDY/docker-kubernetes/20240421090494.md",
@@ -184,12 +191,6 @@
     "STUDY/interview/src",
     "desktop.ini",
     "STUDY/interview",
-    "ETC/src/20240430044935.png",
-    "ETC/src/20240430041442.png",
-    "ETC/src/20240430040349.png",
-    "ETC/src/20240430030724.png",
-    "ETC/src/Pasted image 20240430030350.png",
-    "ETC/src/20240430025753.png",
     "src"
   ]
 }
