@@ -48,13 +48,31 @@
         }
       }
     })
-  </script><title data-react-helmet="true">java) til - 20240425</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="java) til - 20240425"/><meta data-react-helmet="true" property="og:site_title" content="java) til - 20240425"/><meta data-react-helmet="true" name="description" content="자바 ORM 표준 JPA 프로그래밍 - 기본편 프록시와 연관관계 정리 - 프록시 프록시 기초  vs  em.find() : 데이터베이스를 통해 실제 엔티티 객체 조회 em.getReference() : 데이터베이스 조회를 미루는 가짜(프록시) 엔티티 객체 조회  내용 조금 수정됨 프록시와 연관관계 정리 - 즉시 로딩과 지연 로딩 프록시와 연관관계 정리 - 영속성 전이(CASCADE) 와 고아 객체 프록시와 연관관계 정리 - 실전 예제 5 - 연관관계 관리 본문 자바 ORM 표준 JPA 프로그래밍 - 기본편 프록시와 연관관계 정리 - 프록시 프록시 기초 프록시와 연관관계 정리 - 즉시 로딩과 지연 로딩 프록시와 연관관계 정리 - 영속성 전이(CASCADE) 와 고아 객체 프록시와 연관관계 정리 - 실전 예제 5 - 연관관계 관리"/><meta data-react-helmet="true" property="og:description" content="자바 ORM 표준 JPA 프로그래밍 - 기본편 프록시와 연관관계 정리 - 프록시 프록시 기초  vs  em.find() : 데이터베이스를 통해 실제 엔티티 객체 조회 em.getReference() : 데이터베이스 조회를 미루는 가짜(프록시) 엔티티 객체 조회  내용 조금 수정됨 프록시와 연관관계 정리 - 즉시 로딩과 지연 로딩 프록시와 연관관계 정리 - 영속성 전이(CASCADE) 와 고아 객체 프록시와 연관관계 정리 - 실전 예제 5 - 연관관계 관리 본문 자바 ORM 표준 JPA 프로그래밍 - 기본편 프록시와 연관관계 정리 - 프록시 프록시 기초 프록시와 연관관계 정리 - 즉시 로딩과 지연 로딩 프록시와 연관관계 정리 - 영속성 전이(CASCADE) 와 고아 객체 프록시와 연관관계 정리 - 실전 예제 5 - 연관관계 관리"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/JAVA/20240428210415/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">☕</div><div class="info"><div class="categories"><a class="category" href="/posts/til">til</a><a class="category" href="/posts/java">java</a></div></div><h1 class="title">java) til - 20240425</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->April 28, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="자바-orm-표준-jpa-프로그래밍---기본편" style="position:relative;"><a href="#%EC%9E%90%EB%B0%94-orm-%ED%91%9C%EC%A4%80-jpa-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D---%EA%B8%B0%EB%B3%B8%ED%8E%B8" aria-label="자바 orm 표준 jpa 프로그래밍   기본편 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>자바 ORM 표준 JPA 프로그래밍 - 기본편</h1>
+  </script><title data-react-helmet="true">java) til - 20240511</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="java) til - 20240511"/><meta data-react-helmet="true" property="og:site_title" content="java) til - 20240511"/><meta data-react-helmet="true" name="description" content="자바 ORM 표준 JPA 프로그래밍 - 기본편 프록시와 연관관계 정리 - 프록시 프록시 기초 멤버를 조회할 때 팀도 함께 조회해야 하는가? 쿼리가 나갈 때 한 번에 검색되어 나오는게 좋지 않을까? 반대로 연관관계가 있다고 해서, 사용하지 않고 멤버만 사용한다면? 결국 경우에 따라 비즈니스 로직, 실제 쿼리가 달라질 수 있다. 이러한 상황을 JPA는 프록시와 지연 로딩을 활용하여 해결한다.  vs  em.find() : 데이터베이스를 통해 실제 엔티티 객체 조회 em.getReference() : 데이터베이스 조회를 미루는 가짜(프록시) 엔티티 객체 조회 즉, 이후 실제 값을 접근하려고 하면, 그 때 쿼리를 날려 실제 데이터를 가져 온다.  프록시 특징 실제 클래스를 상속 받아서 만들어짐 실제 클래스와 겉 모양 동일 사용 입장에선 객체와 프록시 객체 구분 하지 않고 사용하면 됨(이론상) 프록시 객체는 실제 객체의 참조(target)을 보관 프록시 객체를 호출하면 프록시 객체는 실제 …"/><meta data-react-helmet="true" property="og:description" content="자바 ORM 표준 JPA 프로그래밍 - 기본편 프록시와 연관관계 정리 - 프록시 프록시 기초 멤버를 조회할 때 팀도 함께 조회해야 하는가? 쿼리가 나갈 때 한 번에 검색되어 나오는게 좋지 않을까? 반대로 연관관계가 있다고 해서, 사용하지 않고 멤버만 사용한다면? 결국 경우에 따라 비즈니스 로직, 실제 쿼리가 달라질 수 있다. 이러한 상황을 JPA는 프록시와 지연 로딩을 활용하여 해결한다.  vs  em.find() : 데이터베이스를 통해 실제 엔티티 객체 조회 em.getReference() : 데이터베이스 조회를 미루는 가짜(프록시) 엔티티 객체 조회 즉, 이후 실제 값을 접근하려고 하면, 그 때 쿼리를 날려 실제 데이터를 가져 온다.  프록시 특징 실제 클래스를 상속 받아서 만들어짐 실제 클래스와 겉 모양 동일 사용 입장에선 객체와 프록시 객체 구분 하지 않고 사용하면 됨(이론상) 프록시 객체는 실제 객체의 참조(target)을 보관 프록시 객체를 호출하면 프록시 객체는 실제 …"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/JAVA/20240511203900/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">☕</div><div class="info"><div class="categories"><a class="category" href="/posts/til">til</a><a class="category" href="/posts/java">java</a></div></div><h1 class="title">java) til - 20240511</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->May 11, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="자바-orm-표준-jpa-프로그래밍---기본편" style="position:relative;"><a href="#%EC%9E%90%EB%B0%94-orm-%ED%91%9C%EC%A4%80-jpa-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D---%EA%B8%B0%EB%B3%B8%ED%8E%B8" aria-label="자바 orm 표준 jpa 프로그래밍   기본편 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>자바 ORM 표준 JPA 프로그래밍 - 기본편</h1>
 <h2 id="프록시와-연관관계-정리---프록시" style="position:relative;"><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80-%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84-%EC%A0%95%EB%A6%AC---%ED%94%84%EB%A1%9D%EC%8B%9C" aria-label="프록시와 연관관계 정리   프록시 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프록시와 연관관계 정리 - 프록시</h2>
 <h3 id="프록시-기초" style="position:relative;"><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C-%EA%B8%B0%EC%B4%88" aria-label="프록시 기초 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프록시 기초</h3>
 <ul>
-<li><code class="language-text">em.find()</code> vs <code class="language-text">em.getReference()</code></li>
-<li>em.find() : 데이터베이스를 통해 실제 엔티티 객체 조회</li>
-<li>em.getReference() : 데이터베이스 조회를 미루는 가짜(프록시) 엔티티 객체 조회</li>
+<li>
+<p>멤버를 조회할 때 팀도 함께 조회해야 하는가?</p>
+<ul>
+<li>쿼리가 나갈 때 한 번에 검색되어 나오는게 좋지 않을까?</li>
+<li>반대로 연관관계가 있다고 해서, 사용하지 않고 멤버만 사용한다면?</li>
+<li>결국 경우에 따라 비즈니스 로직, 실제 쿼리가 달라질 수 있다.</li>
+<li>이러한 상황을 JPA는 프록시와 지연 로딩을 활용하여 해결한다.</li>
+</ul>
+</li>
+<li>
+<p><code class="language-text">em.find()</code> vs <code class="language-text">em.getReference()</code></p>
+</li>
+<li>
+<p>em.find() : 데이터베이스를 통해 실제 엔티티 객체 조회</p>
+</li>
+<li>
+<p>em.getReference() : 데이터베이스 조회를 미루는 가짜(프록시) 엔티티 객체 조회</p>
+<ul>
+<li>즉, 이후 실제 값을 접근하려고 하면, 그 때 쿼리를 날려 실제 데이터를 가져 온다.</li>
+</ul>
+</li>
 </ul>
 <p><span
       class="gatsby-resp-image-wrapper"
@@ -78,11 +96,286 @@
         decoding="async"
       />
     </span></p>
-<p>내용 조금 수정됨</p>
+<h3 id="프록시-특징" style="position:relative;"><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C-%ED%8A%B9%EC%A7%95" aria-label="프록시 특징 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프록시 특징</h3>
+<ul>
+<li>실제 클래스를 상속 받아서 만들어짐</li>
+<li>실제 클래스와 겉 모양 동일</li>
+<li>사용 입장에선 객체와 프록시 객체 구분 하지 않고 사용하면 됨(이론상)</li>
+<li>프록시 객체는 실제 객체의 참조(target)을 보관</li>
+<li>프록시 객체를 호출하면 프록시 객체는 실제 객체의 메소드 호출</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 35%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABNklEQVQoz3VR207CQBDt//+MPIskcnkQJCixASNxofSCLRJY6GW3LT3mDMHgg5uc7Gxm5lxap6oqEHVVoyzLS13XqMrLLacBmqYRSO+6U9d/3oRjrcX5fAZvLtzWaZrCX/uIv2LsvndIkgRZmgkJxYu8QFEUv0aMsXCMMdjvD9AHDdd1odRSaq012CPhZrNBFEVSW2OxTbbwVh5GwxE6Dx2EQYjAD0RACGezGQb9Adr3bbTuWlCfCr7vixu6pYs8z+U+nU6Yz9+xpLDWMkMOcZ9lcExhsPhYoNftYfo6xdpb43g8iiMOcJggcWlLiccUNDCZvIgAxeI4vhDy4yul0O/1MX4ew31zEQShxPrvRGGE7mMXw6eh7DBuGEaSwLmq0z6VCDqkczpi7xbXn8EZgnsSPcuE8AeOKhJHuzTa5AAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240512004905"
+        title="20240512004905"
+        src="/static/7c26218a6ca94d342f50a52b77ce4627/37523/20240512004905.png"
+        srcset="/static/7c26218a6ca94d342f50a52b77ce4627/e9ff0/20240512004905.png 180w,
+/static/7c26218a6ca94d342f50a52b77ce4627/f21e7/20240512004905.png 360w,
+/static/7c26218a6ca94d342f50a52b77ce4627/37523/20240512004905.png 720w,
+/static/7c26218a6ca94d342f50a52b77ce4627/302a4/20240512004905.png 1080w,
+/static/7c26218a6ca94d342f50a52b77ce4627/f213e/20240512004905.png 1192w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<h3 id="프록시-객체의-초기화" style="position:relative;"><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C-%EA%B0%9D%EC%B2%B4%EC%9D%98-%EC%B4%88%EA%B8%B0%ED%99%94" aria-label="프록시 객체의 초기화 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프록시 객체의 초기화</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 10%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAeklEQVQI1z2MQQ6DIBQFvf/l6soaUq0paGoQTPlFQBfThEVXb2Yxr9nshn5pvPdorZmeE+ETqo/jSH/vUUoxPAaWZWF9r+z7TggB5xwppb/nlGm88xhjsNbSdR3trWU2MzFGRL5IEESkBsdx1IOcM6WUytd1VT7Ps+4PLE2WyOaKe9MAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240512005047"
+        title="20240512005047"
+        src="/static/1e235b17f92174f0fd502bd7ee84ba4e/37523/20240512005047.png"
+        srcset="/static/1e235b17f92174f0fd502bd7ee84ba4e/e9ff0/20240512005047.png 180w,
+/static/1e235b17f92174f0fd502bd7ee84ba4e/f21e7/20240512005047.png 360w,
+/static/1e235b17f92174f0fd502bd7ee84ba4e/37523/20240512005047.png 720w,
+/static/1e235b17f92174f0fd502bd7ee84ba4e/302a4/20240512005047.png 1080w,
+/static/1e235b17f92174f0fd502bd7ee84ba4e/07a9c/20240512005047.png 1440w,
+/static/1e235b17f92174f0fd502bd7ee84ba4e/d7050/20240512005047.png 1647w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 61.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAABYklEQVQoz5WS3W6CQBCFef/nqUm9q17UemMTvTCpiFQBlf+VBTUKpzljbBGxTTdZNjvsfHP2zBrn8xlRFKE5GNeZhtYa+/0eZVne/Oc+TVIsP5dYr9fI81ziRlEUsG1bAIEfYLVcYbvdYjyeoPPUQfe5i36vD8dxJJGr53mwLAvz+Ryzj5ns4zgWhnE6nZAkCbiyCieVDd+G6L30MJ1O4aycbxVXxSw6eB3AnJk4Ho9ySzKMw+EgVauqurlSFEYwTVPUe64nSfVB6Gj0LgUX1gJJnAjD4KdtclCRUkrgtObGX63lmlQahiE2m80FeD3UhNUVZ1mGIAgEwqnUDnF08UxyykqadKewDqrHCSnyAq7jwnVdqFTJlZs2SJebgSZQFO4yUUkQV8JpBRU2i98B2+BMTNMU9sIWaNuZhwp/g9J4vohrg9r8/lPhT8cL6SY7S7Vt6v6lkI82DEL4vi8ePgJ+AZ8oovAMPdb5AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240512005112"
+        title="20240512005112"
+        src="/static/ea9370d6e5fb5c29e7df27c573a20525/37523/20240512005112.png"
+        srcset="/static/ea9370d6e5fb5c29e7df27c573a20525/e9ff0/20240512005112.png 180w,
+/static/ea9370d6e5fb5c29e7df27c573a20525/f21e7/20240512005112.png 360w,
+/static/ea9370d6e5fb5c29e7df27c573a20525/37523/20240512005112.png 720w,
+/static/ea9370d6e5fb5c29e7df27c573a20525/302a4/20240512005112.png 1080w,
+/static/ea9370d6e5fb5c29e7df27c573a20525/7af19/20240512005112.png 1359w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<h3 id="프록시의-특징" style="position:relative;"><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C%EC%9D%98-%ED%8A%B9%EC%A7%95" aria-label="프록시의 특징 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프록시의 특징</h3>
+<ul>
+<li>프록시 객체는 처음 사용할 때 한 번만 초기화</li>
+<li>프록시 객체를 초기화 할 때, 프록시 객체가 실제 엔티티로 바뀌는 것 아님. 초기화 되면, 프록시 객체를 통해 실제 엔티티에 접근 가능</li>
+<li>프록시 객체는 원본 엔티티를 ‘상속’ 받음, 따라서 타입 체크 시 주의 해야함. (<code class="language-text">==</code> 비교는 실패, instance of 사용해야함)
+<ul>
+<li>즉, 프록시 객체는 동일 타입은 아니며, 프록시 타입과 원래 사용하는 객체의 타입이 다를 수도 있다.</li>
+<li>같은 대상을 찾게 되면, 프록시로 먼저 초기화를 하든, 객체를 먼저 찾고 프록시를 나중에 초기화를 하든, 결론적으로 선행한 타입에 맞춰서 정리된다(<code class="language-text">==</code> 의 true를 위해)
+<ul>
+<li>즉, <code class="language-text">em.find</code>를 먼저 하고, <code class="language-text">em.getReference</code>를하면 영속성 컨텍스트 덕에 두 객체 모두 요청한 엔티티 클래스 타입을 가지며</li>
+<li>반대의 경우, 둘다 프로시 객체 타입으로, 값만을 상속받은 형태가 된다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>영속성 컨텍스트에 찾는 엔티티가 있으면 <code class="language-text">em.getReference()</code>를 호출해도 실제 엔티티 반환</li>
+<li>영속성 컨텍스트의 도움을 받을 수 없는 준 영속 상태일 때, 프록시를 초기화하면 문제 발생(hibernate의 경우 org.hibernate.LazyInitializationException 발생)</li>
+</ul>
+<h3 id="프록시-확인" style="position:relative;"><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C-%ED%99%95%EC%9D%B8" aria-label="프록시 확인 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프록시 확인</h3>
+<ul>
+<li>프록시 인스턴스 초기화 여부 확인: <code class="language-text">PersistenceUnitUtil.isLoaded(Object entity)</code></li>
+<li>프록시 클래스 확인 방법 : <code class="language-text">entity.getClass().getName()</code> 출력하기</li>
+<li>프록시 강제 초기화 : <code class="language-text">org.hibernate.Hibernate.initialize(entity)</code> (강제로 쿼리를 호출해준다)</li>
+<li>참고 : JPA 표준은 강제 초기화 없음</li>
+</ul>
 <h2 id="프록시와-연관관계-정리---즉시-로딩과-지연-로딩" style="position:relative;"><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80-%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84-%EC%A0%95%EB%A6%AC---%EC%A6%89%EC%8B%9C-%EB%A1%9C%EB%94%A9%EA%B3%BC-%EC%A7%80%EC%97%B0-%EB%A1%9C%EB%94%A9" aria-label="프록시와 연관관계 정리   즉시 로딩과 지연 로딩 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프록시와 연관관계 정리 - 즉시 로딩과 지연 로딩</h2>
+<h3 id="지연-로딩-lazy를-사용해서-프록시로-조회" style="position:relative;"><a href="#%EC%A7%80%EC%97%B0-%EB%A1%9C%EB%94%A9-lazy%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-%ED%94%84%EB%A1%9D%EC%8B%9C%EB%A1%9C-%EC%A1%B0%ED%9A%8C" aria-label="지연 로딩 lazy를 사용해서 프록시로 조회 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>지연 로딩 LAZY를 사용해서 프록시로 조회</h3>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+publuc <span class="token keyword">class</span> <span class="token class-name">Member</span> <span class="token punctuation">{</span>
+<span class="token comment">// . . . 전략</span>
+
+<span class="token annotation punctuation">@ManyToOne</span><span class="token punctuation">(</span>fetch <span class="token operator">=</span> <span class="token class-name">FetchType</span><span class="token punctuation">.</span>LAZY<span class="token punctuation">)</span> <span class="token comment">// Proxy type으로 준비한다는 의미를 내포한다...!</span>
+<span class="token annotation punctuation">@JoinColumn</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"TEAM_ID"</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> <span class="token class-name">Team</span> team<span class="token punctuation">;</span>
+
+<span class="token comment">// . . . 후략</span>
+
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h3 id="지연-로딩" style="position:relative;"><a href="#%EC%A7%80%EC%97%B0-%EB%A1%9C%EB%94%A9" aria-label="지연 로딩 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>지연 로딩</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 31.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6klEQVQY022R3W6EIBCF9/0fy8S9LhfdxE0qREUvFC1W1j/wNDNdWtt0ki8MgTlnGC77toMIISD4gH3fn3het23D9DFhGAY455hlWeCf55F1XVnjEouapoG1FvM8c7HpDOy7Rdu2uL3ekCQJxItgZC6/jKaJzbz3zLcgCdV1jSzLoKSCrjSUUqh1jaqsuAMqYPN1g9YaxhgURcG1fd/jCMeP4HEciNF1HaSULFiWJT/vbzj34AbImBjH8XeHJHgWpTjvKafL0fCaXnHP7hBCIH/LkaYpv4SCBflj4oDP+T/EedE9WmmWEerwEw5RzVXUOCKLAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240512015516"
+        title="20240512015516"
+        src="/static/a7f2e5761f0f83b7af9aabbb6b1fb131/37523/20240512015516.png"
+        srcset="/static/a7f2e5761f0f83b7af9aabbb6b1fb131/e9ff0/20240512015516.png 180w,
+/static/a7f2e5761f0f83b7af9aabbb6b1fb131/f21e7/20240512015516.png 360w,
+/static/a7f2e5761f0f83b7af9aabbb6b1fb131/37523/20240512015516.png 720w,
+/static/a7f2e5761f0f83b7af9aabbb6b1fb131/302a4/20240512015516.png 1080w,
+/static/a7f2e5761f0f83b7af9aabbb6b1fb131/07a9c/20240512015516.png 1440w,
+/static/a7f2e5761f0f83b7af9aabbb6b1fb131/52c43/20240512015516.png 1499w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 52.222222222222214%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3UlEQVQoz4WSz28SQRzF+X/0ahNN0Xrq0Xir0UJ7KBpae9C7J/8ETUwaY28eGms0pNGatNoqWlRg68IiWGFZ0wgpAZYuu+wPPmYmkECbxpdMMpP3nTfv+74T8oMAgVdbu0zH7hOOxAlHFpmO3eN9KoPvumSzCkpWodls0u126fV6NI4a1Ot1eXYch2CgE+r3+3Kz8iLBxI0YU3N3uTq/zIWZBdbebktOXHJdF9/zsSwLcadWq1EsFqWY4IY6Idu2Mdsmbq/H1/0cqy83eLaeIJMv0A8CPM+TjuyuLcWES1FvmiaO7dBqtqTo8NGQKFBVFS2vYeg6nXaLQ8OgfHBAVa/K1krFEnpFR9MKKMq+dJbP5alUKuTUHIZhyPaF6xAjEKY9PyAY2P8fTlaJtmWGItBhqKMQAxP86PJ9/7TwgBsbikD5zyGbn/bYTqVptNpnOrNsm49phTe7XyjpxrjDobOVtddMzsblunTrjvw6O98ykrNtRwYvhvTj5y+uzC1x8eZtJiNxzl2b5eGT1dOCj5+vE44uyn8oCqfml3mXTNH3PUyzQ6dzjOs4fFc1+ejEzAKXo0ucvx7lwaOn4xkOUShX2dj5zGYyxd+jxpktm8cWW3tpEh+SqKXfYy3/A5lfyy0rT6A4AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240512015541"
+        title="20240512015541"
+        src="/static/db52dc3900651294dc6993a7ddde9ebf/37523/20240512015541.png"
+        srcset="/static/db52dc3900651294dc6993a7ddde9ebf/e9ff0/20240512015541.png 180w,
+/static/db52dc3900651294dc6993a7ddde9ebf/f21e7/20240512015541.png 360w,
+/static/db52dc3900651294dc6993a7ddde9ebf/37523/20240512015541.png 720w,
+/static/db52dc3900651294dc6993a7ddde9ebf/302a4/20240512015541.png 1080w,
+/static/db52dc3900651294dc6993a7ddde9ebf/bb072/20240512015541.png 1318w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>결국 비즈니스 로직 상 바로 필요가 없다면, 이러한 형식으로 지연 로딩을 통해 효율적으로 쓰는게 좋다.</li>
+<li>하지만 비즈니스 로직상 함께 사용하는 경우라면?</li>
+</ul>
+<h3 id="즉시-로딩-eager-를-사용해서-함께-조회" style="position:relative;"><a href="#%EC%A6%89%EC%8B%9C-%EB%A1%9C%EB%94%A9-eager-%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-%ED%95%A8%EA%BB%98-%EC%A1%B0%ED%9A%8C" aria-label="즉시 로딩 eager 를 사용해서 함께 조회 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>즉시 로딩 EAGER 를 사용해서 함께 조회</h3>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+publuc <span class="token keyword">class</span> <span class="token class-name">Member</span> <span class="token punctuation">{</span>
+<span class="token comment">// . . . 전략</span>
+
+<span class="token annotation punctuation">@ManyToOne</span><span class="token punctuation">(</span>fetch <span class="token operator">=</span> <span class="token class-name">FetchType</span><span class="token punctuation">.</span>EAGER<span class="token punctuation">)</span> <span class="token comment">// 이번엔 바로 로딩이 이루어진다. 프록시를 거치지 않는다.</span>
+<span class="token annotation punctuation">@JoinColumn</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"TEAM_ID"</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> <span class="token class-name">Team</span> team<span class="token punctuation">;</span>
+
+<span class="token comment">// . . . 후략</span>
+
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<h3 id="프록시와-즉시-로딩-주의" style="position:relative;"><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80-%EC%A6%89%EC%8B%9C-%EB%A1%9C%EB%94%A9-%EC%A3%BC%EC%9D%98" aria-label="프록시와 즉시 로딩 주의 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프록시와 즉시 로딩 주의</h3>
+<ul>
+<li>가급적 지연 로딩만 사용(특히 실무에선)
+<ul>
+<li>생각해보면, LAZY라고 하더라도, 얼마나 어떻게 가져올지에 따라 문제가 커질 수도 있는데 EAGER를 설정하는 순간 재앙급 문제가 발생할 수 있다.</li>
+<li>따라서 실무에서는 절대 사용하면 안된다. 차라리 JPQL을 최대한 활용하는 게 핵심이다.</li>
+</ul>
+</li>
+<li>즉시 로딩을 적용하면 예상하지 못한 SQL이 발생</li>
+<li><mark style="background: #FF5582A6;">즉시 로딩은 JQPL에서 N+1의 문제를 일으킨다.</mark>
+<ul>
+<li>JPQL은 기본적으로 SQL을 자바 식으로 번역해둔 것일 뿐. 최적화가 되어있지 않다.</li>
+<li>이런 상황에서 EAGER 설정이 있는 경우, 고려되지 않은 값을 또 SQL을 호출하게 되는 것이다. 이것이 N+1 의 문제다. (최초 1쿼리에 따라서 N개만큼 쿼리가 나간다는 의미이다.) -> LAZY로 하는 순간 쿼리가 줄어들게 되는 것이다.</li>
+<li>고급 기술로 fetch join이라는 형태로 동적으로 한 번에 가져올 경우를 판단하고 가져오는 형태로 최적화를 할 수 있다.</li>
+<li>그 외에 annotation, batch 등을 통해 해결하는 방법도 있다.(fetch join 정도면 일단은 충분하다)</li>
+</ul>
+</li>
+<li><code class="language-text">@ManyToOne</code>, <code class="language-text">@OneToOne</code>은 기본이 즉시로딩 -> LAZY로 설정해야함</li>
+<li><code class="language-text">@OneToMany</code>, <code class="language-text">@ManyToMany</code>는 기본이 지연로딩</li>
+<li><mark style="background: #FF5582A6;">위의 두 경우가 다르기 때문에, 혹시 모를 실수를 고려하면, 모든 경우에 LAZY로 전략을 설정해주어야 한다. </mark></li>
+</ul>
+<h3 id="지연-로딩-활용" style="position:relative;"><a href="#%EC%A7%80%EC%97%B0-%EB%A1%9C%EB%94%A9-%ED%99%9C%EC%9A%A9" aria-label="지연 로딩 활용 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>지연 로딩 활용</h3>
+<ul>
+<li>비즈니스 로직 상 자주 함께 사용한다면 즉시 로딩, 그렇지 않다면 지연 로딩</li>
+<li>하지만 실무에서는 위에서 언급한 것처럼 문제를 감안해야 하므로 무조건 LAZY Loading 을 사용해야 한다.</li>
+</ul>
 <h2 id="프록시와-연관관계-정리---영속성-전이cascade-와-고아-객체" style="position:relative;"><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80-%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84-%EC%A0%95%EB%A6%AC---%EC%98%81%EC%86%8D%EC%84%B1-%EC%A0%84%EC%9D%B4cascade-%EC%99%80-%EA%B3%A0%EC%95%84-%EA%B0%9D%EC%B2%B4" aria-label="프록시와 연관관계 정리   영속성 전이cascade 와 고아 객체 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프록시와 연관관계 정리 - 영속성 전이(CASCADE) 와 고아 객체</h2>
+<h3 id="영속성-전이--cascade" style="position:relative;"><a href="#%EC%98%81%EC%86%8D%EC%84%B1-%EC%A0%84%EC%9D%B4--cascade" aria-label="영속성 전이  cascade permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>영속성 전이 : CASCADE</h3>
+<ul>
+<li>특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태를 만들고 싶을 때 사용한다.</li>
+</ul>
+<h3 id="cascadetype의-종류" style="position:relative;"><a href="#cascadetype%EC%9D%98-%EC%A2%85%EB%A5%98" aria-label="cascadetype의 종류 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CascadeType의 종류</h3>
+<ul>
+<li><code class="language-text">CascadeType.ALL</code>
+<ul>
+<li>모든 Cascade를 적용한다.</li>
+</ul>
+</li>
+<li><code class="language-text">CascadeType.PERSIST</code>
+<ul>
+<li>엔티티를 영속화할 때, 연관된 하위 엔티티도 함께 유지한다.</li>
+</ul>
+</li>
+<li><code class="language-text">CascadeType.MERGE</code>
+<ul>
+<li>엔티티 상태를 병합(Merge)할 때, 연관된 하위 엔티티도 모두 병합한다.</li>
+</ul>
+</li>
+<li><code class="language-text">CascadeType.REMOVE</code>
+<ul>
+<li>엔티티를 제거할 때, 연관된 하위 엔티티도 모두 제거한다.</li>
+</ul>
+</li>
+<li><code class="language-text">CascadeType.DETACH</code>
+<ul>
+<li>영속성 컨텍스트에서 엔티티 제거</li>
+<li>부모 엔티티를 detach() 수행하면, 연관 하위 엔티티도 detach()상태가 되어 변경 사항을 반영하지 않는다.</li>
+</ul>
+</li>
+<li><code class="language-text">CascadeType.REFRESH</code>
+<ul>
+<li>상위 엔티티를 새로고침(Refresh)할 때, 연관된 하위 엔티티도 모두 새로고침한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="영속성-전이--저장" style="position:relative;"><a href="#%EC%98%81%EC%86%8D%EC%84%B1-%EC%A0%84%EC%9D%B4--%EC%A0%80%EC%9E%A5" aria-label="영속성 전이  저장 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>영속성 전이 : 저장</h3>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token annotation punctuation">@OneToMany</span><span class="token punctuation">(</span>mappedBy<span class="token operator">=</span><span class="token string">"parent"</span><span class="token punctuation">,</span> cascade<span class="token operator">=</span><span class="token class-name">CascadeType</span><span class="token punctuation">.</span>PERSIST<span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span></span></pre></div>
+<h3 id="고아-객체---주의" style="position:relative;"><a href="#%EA%B3%A0%EC%95%84-%EA%B0%9D%EC%B2%B4---%EC%A3%BC%EC%9D%98" aria-label="고아 객체   주의 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>고아 객체 - 주의</h3>
+<ul>
+<li>참조가 제거된 엔티티는 다른 곳에서 참조하지 않는 고아 객체로 보고 삭제 기능</li>
+<li>참조하는 곳이 하나일 때 사용해야 함.</li>
+<li>특정 엔티티가 개인 소유할 때 사용</li>
+<li><code class="language-text">@OneToOne</code>, <code class="language-text">@@neToMany</code> 만가능</li>
+<li>참고로 개념적으로 부모를 제거하면, 자식은 고아가됨. 따라서 고아 객체제거 기능을 활성화 하면 부모를 제거할 때 자식도 함께 제거된다. 이것은 CascadeType.REMOVE 처럼 동작한다.</li>
+</ul>
+<h3 id="영속성-전이--고아객체-생명주기" style="position:relative;"><a href="#%EC%98%81%EC%86%8D%EC%84%B1-%EC%A0%84%EC%9D%B4--%EA%B3%A0%EC%95%84%EA%B0%9D%EC%B2%B4-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0" aria-label="영속성 전이  고아객체 생명주기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>영속성 전이 + 고아객체, 생명주기</h3>
+<ul>
+<li><code class="language-text">CascadeType.ALL</code> + <code class="language-text">orphanRemoval=true</code></li>
+<li>스스로 생명주기를 관리하는 엔티티는 em.persist()로 영속화, em.persist()로 영속화, en.remove()로 제거</li>
+<li>두 옵션을 모두 활성화 하면 부모 엔티티를 통해 자식의 생명 주기도 관리됨.</li>
+<li>도메인 주도 설계(DDD)의 Aggregate Root 개념을 구현할 때 유용</li>
+</ul>
+<blockquote>
+<p>CascadeType.REMOVE vs orphanRemoval=true
+전자는 부모 엔티티가 삭제되면 자식 엔티티도 삭제 된다. 즉, 부모가 자식의 생명주기를 관리한다.
+만약, CascadeType.REFRESH 도 함께 사용 시, 자식 엔티티의 전체 생명주기를 관리할 수 있다. 그러나 이 옵션의 경우, 부모가 자식과의 관계를 제거해도, 자식 엔티티는 삭제되지 않고 남아 있다.
+후자는 기본적으로 부모가 삭제되면 자식도 삭제된다. 그러나 동시에 부모가 관계를 제거하는 경우에도, 자식은 고아로 취급, 그대로 사라진다.</p>
+</blockquote>
 <h2 id="프록시와-연관관계-정리---실전-예제-5---연관관계-관리" style="position:relative;"><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80-%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84-%EC%A0%95%EB%A6%AC---%EC%8B%A4%EC%A0%84-%EC%98%88%EC%A0%9C-5---%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84-%EA%B4%80%EB%A6%AC" aria-label="프록시와 연관관계 정리   실전 예제 5   연관관계 관리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프록시와 연관관계 정리 - 실전 예제 5 - 연관관계 관리</h2>
-<p>본문</p>
+<h3 id="글로벌-페치-전략-설정" style="position:relative;"><a href="#%EA%B8%80%EB%A1%9C%EB%B2%8C-%ED%8E%98%EC%B9%98-%EC%A0%84%EB%9E%B5-%EC%84%A4%EC%A0%95" aria-label="글로벌 페치 전략 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>글로벌 페치 전략 설정</h3>
+<ol>
+<li>모든 연관관계는 LAZY LOADING</li>
+<li>@ManyToOne, @OneToOne은 기본이 즉시 로딩이므로, 지연로딩으로 반드시 변경</li>
+</ol>
 <div class="table-of-contents">
 <ul>
 <li>
@@ -92,21 +385,42 @@
 <p><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80-%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84-%EC%A0%95%EB%A6%AC---%ED%94%84%EB%A1%9D%EC%8B%9C">프록시와 연관관계 정리 - 프록시</a></p>
 <ul>
 <li><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C-%EA%B8%B0%EC%B4%88">프록시 기초</a></li>
+<li><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C-%ED%8A%B9%EC%A7%95">프록시 특징</a></li>
+<li><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C-%EA%B0%9D%EC%B2%B4%EC%9D%98-%EC%B4%88%EA%B8%B0%ED%99%94">프록시 객체의 초기화</a></li>
+<li><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C%EC%9D%98-%ED%8A%B9%EC%A7%95">프록시의 특징</a></li>
+<li><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C-%ED%99%95%EC%9D%B8">프록시 확인</a></li>
 </ul>
 </li>
 <li>
 <p><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80-%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84-%EC%A0%95%EB%A6%AC---%EC%A6%89%EC%8B%9C-%EB%A1%9C%EB%94%A9%EA%B3%BC-%EC%A7%80%EC%97%B0-%EB%A1%9C%EB%94%A9">프록시와 연관관계 정리 - 즉시 로딩과 지연 로딩</a></p>
+<ul>
+<li><a href="#%EC%A7%80%EC%97%B0-%EB%A1%9C%EB%94%A9-lazy%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-%ED%94%84%EB%A1%9D%EC%8B%9C%EB%A1%9C-%EC%A1%B0%ED%9A%8C">지연 로딩 LAZY를 사용해서 프록시로 조회</a></li>
+<li><a href="#%EC%A7%80%EC%97%B0-%EB%A1%9C%EB%94%A9">지연 로딩</a></li>
+<li><a href="#%EC%A6%89%EC%8B%9C-%EB%A1%9C%EB%94%A9-eager-%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-%ED%95%A8%EA%BB%98-%EC%A1%B0%ED%9A%8C">즉시 로딩 EAGER 를 사용해서 함께 조회</a></li>
+<li><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80-%EC%A6%89%EC%8B%9C-%EB%A1%9C%EB%94%A9-%EC%A3%BC%EC%9D%98">프록시와 즉시 로딩 주의</a></li>
+<li><a href="#%EC%A7%80%EC%97%B0-%EB%A1%9C%EB%94%A9-%ED%99%9C%EC%9A%A9">지연 로딩 활용</a></li>
+</ul>
 </li>
 <li>
 <p><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80-%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84-%EC%A0%95%EB%A6%AC---%EC%98%81%EC%86%8D%EC%84%B1-%EC%A0%84%EC%9D%B4cascade-%EC%99%80-%EA%B3%A0%EC%95%84-%EA%B0%9D%EC%B2%B4">프록시와 연관관계 정리 - 영속성 전이(CASCADE) 와 고아 객체</a></p>
+<ul>
+<li><a href="#%EC%98%81%EC%86%8D%EC%84%B1-%EC%A0%84%EC%9D%B4--cascade">영속성 전이 : CASCADE</a></li>
+<li><a href="#cascadetype%EC%9D%98-%EC%A2%85%EB%A5%98">CascadeType의 종류</a></li>
+<li><a href="#%EC%98%81%EC%86%8D%EC%84%B1-%EC%A0%84%EC%9D%B4--%EC%A0%80%EC%9E%A5">영속성 전이 : 저장</a></li>
+<li><a href="#%EA%B3%A0%EC%95%84-%EA%B0%9D%EC%B2%B4---%EC%A3%BC%EC%9D%98">고아 객체 - 주의</a></li>
+<li><a href="#%EC%98%81%EC%86%8D%EC%84%B1-%EC%A0%84%EC%9D%B4--%EA%B3%A0%EC%95%84%EA%B0%9D%EC%B2%B4-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0">영속성 전이 + 고아객체, 생명주기</a></li>
+</ul>
 </li>
 <li>
 <p><a href="#%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80-%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84-%EC%A0%95%EB%A6%AC---%EC%8B%A4%EC%A0%84-%EC%98%88%EC%A0%9C-5---%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84-%EA%B4%80%EB%A6%AC">프록시와 연관관계 정리 - 실전 예제 5 - 연관관계 관리</a></p>
-</li>
+<ul>
+<li><a href="#%EA%B8%80%EB%A1%9C%EB%B2%8C-%ED%8E%98%EC%B9%98-%EC%A0%84%EB%9E%B5-%EC%84%A4%EC%A0%95">글로벌 페치 전략 설정</a></li>
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/JAVA/20240427000460/"><div class="direction">이전 글</div><div class="title">java) til - 20240424</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/ETC/20240429200451/"><div class="direction">다음 글</div><div class="title">블로그를 날려 먹을 뻔했지만 알게 된 것들을 기록해보자</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/frontend/20240510171350/"><div class="direction">이전 글</div><div class="title">react-frontend ) til - 20240510</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/STUDY/JAVA/20240512045635/"><div class="direction">다음 글</div><div class="title">java) til - 20240512</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
@@ -124,4 +438,4 @@
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', 'G-YDPMMYNR6Y', options);
-  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/JAVA/20240428210415/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-c638078fc4709f33b879.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js" async=""></script><script src="/app-c638078fc4709f33b879.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-55cbc9fb510ae844c257.js" async=""></script></body></html>
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/JAVA/20240511203900/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-c638078fc4709f33b879.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js" async=""></script><script src="/app-c638078fc4709f33b879.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-55cbc9fb510ae844c257.js" async=""></script></body></html>
