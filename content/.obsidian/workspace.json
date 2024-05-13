@@ -20,24 +20,6 @@
             }
           }
         ]
-      },
-      {
-        "id": "c8b22487ae28bf1d",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "febb95bf6eaf627a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/JAVA/20240512195111.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -168,6 +150,9 @@
   },
   "active": "799749a987e50230",
   "lastOpenFiles": [
+    "STUDY/JAVA/src/20240513120837.png",
+    "STUDY/JAVA/src/20240513115839.png",
+    "STUDY/JAVA/src/20240513115813.png",
     "STUDY/JAVA/src/20240513085514.png",
     "STUDY/JAVA/20240512195111.md",
     "STUDY/JAVA/20240512195218.md",
@@ -180,9 +165,6 @@
     "STUDY/JAVA/src/20240512051821.png",
     "STUDY/JAVA/20240511203900.md",
     "STUDY/JAVA/src/20240512015541.png",
-    "STUDY/JAVA/src/20240512015516.png",
-    "STUDY/JAVA/src/20240512005112.png",
-    "STUDY/JAVA/src/20240512005047.png",
     "STUDY/docker-kubernetes/20240510154846.md",
     "STUDY/docker-kubernetes/20240426160434.md",
     "STUDY/frontend/20240510171350.md",
