@@ -48,10 +48,18 @@
         }
       }
     })
-  </script><title data-react-helmet="true">java) til - 20240512</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="java) til - 20240512"/><meta data-react-helmet="true" property="og:site_title" content="java) til - 20240512"/><meta data-react-helmet="true" name="description" content="자바 ORM 표준 JPA 프로그래밍 - 기본편 객제지향 쿼리 언어 2 - 중급 문법 : 경로 표현식 경로 표현식 점을 찍어 객체 그래프를 탐색하는 것 경로 표현식 용어 정리 상태 필드(state field) : 단순히 값을 저장하기 위한 필드(ex: m.username) 연관 필드(association field) : 연관관계를 위한 필드 단일 값 연관 필드 : , , 대상이 엔티티(ex: team) 컬렉션 값 연관 필드 : , , 대상이 컬렉션(ex: m.orders) 경로 표현식 특징 상태필드 : 경로 탐색의 끝, 탐색 ❌ 단일 값 연관 경로 : 묵시적 내부 조인(inner join) 발생, 탐색 ⭕ 컬렉션 값 연관 경로 : 묵시적 내부 조인 발생, 탐색 ❌ FROM 절에서 명시적 조인을 통해 별칭을 얻으면 별칭을 통해 탐색 가능 상태 필드 경로 탐색 JPQL :  SQL :  단일 값 연관 경로 탐색 JPQL :  SQL :  명시적, 묵시적 조인 명시적 조인 : join 키…"/><meta data-react-helmet="true" property="og:description" content="자바 ORM 표준 JPA 프로그래밍 - 기본편 객제지향 쿼리 언어 2 - 중급 문법 : 경로 표현식 경로 표현식 점을 찍어 객체 그래프를 탐색하는 것 경로 표현식 용어 정리 상태 필드(state field) : 단순히 값을 저장하기 위한 필드(ex: m.username) 연관 필드(association field) : 연관관계를 위한 필드 단일 값 연관 필드 : , , 대상이 엔티티(ex: team) 컬렉션 값 연관 필드 : , , 대상이 컬렉션(ex: m.orders) 경로 표현식 특징 상태필드 : 경로 탐색의 끝, 탐색 ❌ 단일 값 연관 경로 : 묵시적 내부 조인(inner join) 발생, 탐색 ⭕ 컬렉션 값 연관 경로 : 묵시적 내부 조인 발생, 탐색 ❌ FROM 절에서 명시적 조인을 통해 별칭을 얻으면 별칭을 통해 탐색 가능 상태 필드 경로 탐색 JPQL :  SQL :  단일 값 연관 경로 탐색 JPQL :  SQL :  명시적, 묵시적 조인 명시적 조인 : join 키…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/JAVA/20240512195218/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">☕</div><div class="info"><div class="categories"><a class="category" href="/posts/til">til</a><a class="category" href="/posts/java">java</a></div></div><h1 class="title">java) til - 20240512</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->May 12, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="자바-orm-표준-jpa-프로그래밍---기본편" style="position:relative;"><a href="#%EC%9E%90%EB%B0%94-orm-%ED%91%9C%EC%A4%80-jpa-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D---%EA%B8%B0%EB%B3%B8%ED%8E%B8" aria-label="자바 orm 표준 jpa 프로그래밍   기본편 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>자바 ORM 표준 JPA 프로그래밍 - 기본편</h1>
+  </script><title data-react-helmet="true">java) til - 20240512</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="java) til - 20240512"/><meta data-react-helmet="true" property="og:site_title" content="java) til - 20240512"/><meta data-react-helmet="true" name="description" content="자바 ORM 표준 JPA 프로그래밍 - 기본편 객제지향 쿼리 언어 2 - 중급 문법 : 경로 표현식 경로 표현식 개념 : 테이블 간의 관계를 통해 복합 객체 내의 속성에 접근할 수 있도록 돕는 것을 말한다. 경로 표현식을 사용하는 이유 복합객체접근 : JPA 엔티티의 관계를 활용하여 복합 객체 내의 속성을 접근할 수 있다. 쿼리 간소화 : 복잡한 쿼리를 더 간단하고 읽기 쉽게 만들어준다. 이로써 개발자는 복잡한 조인 연산 없이도 필요한 데이터를 쉽게 접근이 가능하다. ORM과의 호환성 : 현대 ORM 프레임워크는 경로 표현식을 사용하여 데이터베이스와 객체 지향 프로그래밍 언어 사이의 간격을 연결한다. 점을 찍어 객체 그래프를 탐색하는 것 경로 표현식 용어 정리 상태 필드(state field) : 단순히 값을 저장하기 위한 필드(ex: m.username) 연관 필드(association field) : 연관관계를 위한 필드 단일 값 연관 필드 : , , 대상이 엔티티(ex: te…"/><meta data-react-helmet="true" property="og:description" content="자바 ORM 표준 JPA 프로그래밍 - 기본편 객제지향 쿼리 언어 2 - 중급 문법 : 경로 표현식 경로 표현식 개념 : 테이블 간의 관계를 통해 복합 객체 내의 속성에 접근할 수 있도록 돕는 것을 말한다. 경로 표현식을 사용하는 이유 복합객체접근 : JPA 엔티티의 관계를 활용하여 복합 객체 내의 속성을 접근할 수 있다. 쿼리 간소화 : 복잡한 쿼리를 더 간단하고 읽기 쉽게 만들어준다. 이로써 개발자는 복잡한 조인 연산 없이도 필요한 데이터를 쉽게 접근이 가능하다. ORM과의 호환성 : 현대 ORM 프레임워크는 경로 표현식을 사용하여 데이터베이스와 객체 지향 프로그래밍 언어 사이의 간격을 연결한다. 점을 찍어 객체 그래프를 탐색하는 것 경로 표현식 용어 정리 상태 필드(state field) : 단순히 값을 저장하기 위한 필드(ex: m.username) 연관 필드(association field) : 연관관계를 위한 필드 단일 값 연관 필드 : , , 대상이 엔티티(ex: te…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/JAVA/20240512195218/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">☕</div><div class="info"><div class="categories"><a class="category" href="/posts/til">til</a><a class="category" href="/posts/java">java</a></div></div><h1 class="title">java) til - 20240512</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->May 12, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="자바-orm-표준-jpa-프로그래밍---기본편" style="position:relative;"><a href="#%EC%9E%90%EB%B0%94-orm-%ED%91%9C%EC%A4%80-jpa-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D---%EA%B8%B0%EB%B3%B8%ED%8E%B8" aria-label="자바 orm 표준 jpa 프로그래밍   기본편 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>자바 ORM 표준 JPA 프로그래밍 - 기본편</h1>
 <h2 id="객제지향-쿼리-언어-2---중급-문법--경로-표현식" style="position:relative;"><a href="#%EA%B0%9D%EC%A0%9C%EC%A7%80%ED%96%A5-%EC%BF%BC%EB%A6%AC-%EC%96%B8%EC%96%B4-2---%EC%A4%91%EA%B8%89-%EB%AC%B8%EB%B2%95--%EA%B2%BD%EB%A1%9C-%ED%91%9C%ED%98%84%EC%8B%9D" aria-label="객제지향 쿼리 언어 2   중급 문법  경로 표현식 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>객제지향 쿼리 언어 2 - 중급 문법 : 경로 표현식</h2>
 <h3 id="경로-표현식" style="position:relative;"><a href="#%EA%B2%BD%EB%A1%9C-%ED%91%9C%ED%98%84%EC%8B%9D" aria-label="경로 표현식 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>경로 표현식</h3>
 <ul>
+<li>개념 : 테이블 간의 관계를 통해 복합 객체 내의 속성에 접근할 수 있도록 돕는 것을 말한다.</li>
+<li>경로 표현식을 사용하는 이유
+<ul>
+<li>복합객체접근 : JPA 엔티티의 관계를 활용하여 복합 객체 내의 속성을 접근할 수 있다.</li>
+<li>쿼리 간소화 : 복잡한 쿼리를 더 간단하고 읽기 쉽게 만들어준다. 이로써 개발자는 복잡한 조인 연산 없이도 필요한 데이터를 쉽게 접근이 가능하다.</li>
+<li>ORM과의 호환성 : 현대 ORM 프레임워크는 경로 표현식을 사용하여 데이터베이스와 객체 지향 프로그래밍 언어 사이의 간격을 연결한다.</li>
+</ul>
+</li>
 <li>점을 찍어 객체 그래프를 탐색하는 것</li>
 </ul>
 <div class="gatsby-highlight" data-language="sql"><pre style="counter-reset: linenumber NaN" class="language-sql line-numbers"><code class="language-sql"><span class="token keyword">select</span> m<span class="token punctuation">.</span>username <span class="token operator">-</span><span class="token operator">></span> 상태 필드
@@ -71,9 +79,13 @@
 </ul>
 <h3 id="경로-표현식-특징" style="position:relative;"><a href="#%EA%B2%BD%EB%A1%9C-%ED%91%9C%ED%98%84%EC%8B%9D-%ED%8A%B9%EC%A7%95" aria-label="경로 표현식 특징 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>경로 표현식 특징</h3>
 <ul>
-<li>상태필드 : 경로 탐색의 끝, 탐색 ❌</li>
-<li>단일 값 연관 경로 : 묵시적 내부 조인(inner join) 발생, 탐색 ⭕</li>
-<li>컬렉션 값 연관 경로 : 묵시적 내부 조인 발생, 탐색 ❌
+<li>상태필드 : 경로 탐색의 끝, 탐색 ❌, 더 이상의 깊이가 없다.</li>
+<li>단일 값 연관 경로 : 묵시적 내부 조인(inner join) 발생, 탐색 ⭕, 더 내부의 객체로 탐색이 가능하다. 묵시적 내부조인이란, 객체 입장에선 . 을 눌러서 좀더 쉽게 접근하는 것으로 보이지만, 막상 내부적으로 성능 면에서 조인이 발생하는 만큼 실무에서 조심스럽게 사용해야함.
+<ul>
+<li>따라서 실무에서는 묵시적 내부 조인이 일어나도록 하면 안되고, 성능에 지대한 영향을 주고 튜닝이 매우 어려워진다.</li>
+</ul>
+</li>
+<li>컬렉션 값 연관 경로 : 묵시적 내부 조인 발생, 탐색 ❌, 컬렉션 값의 경우 SIZE 정도를 제외하면 .으로 내부로 들어가 탐색 가능한 것이 거의 없어 쓸모가 없다.
 <ul>
 <li>FROM 절에서 명시적 조인을 통해 별칭을 얻으면 별칭을 통해 탐색 가능</li>
 </ul>
@@ -115,9 +127,9 @@
 </ul>
 <h3 id="실무-조언" style="position:relative;"><a href="#%EC%8B%A4%EB%AC%B4-%EC%A1%B0%EC%96%B8" aria-label="실무 조언 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>실무 조언</h3>
 <ul>
-<li>가급적 묵시적 조인 대신에 명시적 조인 사용</li>
-<li>조인은 SQL 튜닝에 중요 포인트</li>
-<li>묵시적 조인이 일어나는 상황을 한눈에 파악하기 어려움</li>
+<li>가급적 묵시적 조인 대신에 <mark style="background: #FF5582A6;">명시적 조인 사용</mark></li>
+<li>조인은 SQL 튜닝에 중요 포인트 - 성능에 지대한 영향을 준다.</li>
+<li>묵시적 조인이 일어나는 상황을 한눈에 파악하기 어려움. (이게 문제이므로 결국 사용을 안 하는게 낫다.)</li>
 </ul>
 <h2 id="객제지향-쿼리-언어-2---중급-문법--페치-조인-1---기본" style="position:relative;"><a href="#%EA%B0%9D%EC%A0%9C%EC%A7%80%ED%96%A5-%EC%BF%BC%EB%A6%AC-%EC%96%B8%EC%96%B4-2---%EC%A4%91%EA%B8%89-%EB%AC%B8%EB%B2%95--%ED%8E%98%EC%B9%98-%EC%A1%B0%EC%9D%B8-1---%EA%B8%B0%EB%B3%B8" aria-label="객제지향 쿼리 언어 2   중급 문법  페치 조인 1   기본 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>객제지향 쿼리 언어 2 - 중급 문법 : 페치 조인 1 - 기본</h2>
 <h3 id="페치-조인fetch-join" style="position:relative;"><a href="#%ED%8E%98%EC%B9%98-%EC%A1%B0%EC%9D%B8fetch-join" aria-label="페치 조인fetch join permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>페치 조인(fetch join)</h3>
@@ -126,8 +138,58 @@
 <li>JPQL에서 성능 최적화를 위해 제공하는 기능</li>
 <li>연관된 엔티티나 컬렉션을 SQL 한 번에 함께 조회하는 기능</li>
 <li>join fetch 명령어 사용</li>
+<li>실무에서 정말 많이 사용하는 중요한 기술이다.</li>
 <li>페치 조인 ::= <code class="language-text">[LEFT [OUTER] | INNER] JOIN FETCH 조인경로</code></li>
 </ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 27.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA4UlEQVQY022R2aqFMAxF/f8PFAdQnOdZcTaHFeh9uoWyd9p0pU0tEZHjOOT7Pqyq8dd1yX+jrmuJ41i1KApVM6ymaSSKIgnDUMqy/NuYpkmSJJG+7+V5HoXjl2WRqqoUGASBKjHr8zyLlaapAlEAgEjwfV/yPJcsy+Q8T1nXVQHEZs+2bfE8Tz1gzltc13VdheBZ5BkUIBGlJQDHcdRXOI4jXdfJMAya27at5nLeAgSEgCTTt/u+Zds2ne/7KpCDAACSz6QgbePmFLPMJwADzgaefgEygz5y033ftQjexEaZP/6/xrQVydlyAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240513115813"
+        title="20240513115813"
+        src="/static/a5e55964a9f26e31c8dae0440fe6659f/37523/20240513115813.png"
+        srcset="/static/a5e55964a9f26e31c8dae0440fe6659f/e9ff0/20240513115813.png 180w,
+/static/a5e55964a9f26e31c8dae0440fe6659f/f21e7/20240513115813.png 360w,
+/static/a5e55964a9f26e31c8dae0440fe6659f/37523/20240513115813.png 720w,
+/static/a5e55964a9f26e31c8dae0440fe6659f/302a4/20240513115813.png 1080w,
+/static/a5e55964a9f26e31c8dae0440fe6659f/07a9c/20240513115813.png 1440w,
+/static/a5e55964a9f26e31c8dae0440fe6659f/3af77/20240513115813.png 2071w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 65.55555555555556%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAABRklEQVQ4y42TW4+CQAyF/f//DgWfeBEwCAJyU5BbzddkyALuLpPU4rQ9PaczcxARmaZJuq6Tvu/l/X7LMAyyXuTsWQd+AAmCQE6nk1wuF7nf79K27WyAGfvZYL2PV0CKACnLUrIsU0vTVJ7Pp+R5rvE10G8KFBC5gFHseZ5YliVxHCvw4/FQ3zSN5pnFWIwCsz8zRDKABOq6lqIo5PV6qSVJouyjKFLg2+0mtm1rQ8bk+742pWYxQzaqqtKC8/mskgEAiOIwDFUBY6AJuXhikABjAQhDAgC6rqvJhiUge9ZGMh76sIIxIwAQNsS4VhiNMfJgbuIbhkgiyXEclQxL/sMaIwe7Xq/aGM8hUreZIcV0xf91bcwax3E+ZVgvJPNBgKsBuElELsmc6vF41IuPvG8vZ76He56UaUJDmP37UtbBb8l73/UHk1DyJmoSPg0AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240513115839"
+        title="20240513115839"
+        src="/static/197cb00bfa52331486ce20f038540240/37523/20240513115839.png"
+        srcset="/static/197cb00bfa52331486ce20f038540240/e9ff0/20240513115839.png 180w,
+/static/197cb00bfa52331486ce20f038540240/f21e7/20240513115839.png 360w,
+/static/197cb00bfa52331486ce20f038540240/37523/20240513115839.png 720w,
+/static/197cb00bfa52331486ce20f038540240/302a4/20240513115839.png 1080w,
+/static/197cb00bfa52331486ce20f038540240/8740f/20240513115839.png 1106w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
 <h3 id="엔티티-페치-조인" style="position:relative;"><a href="#%EC%97%94%ED%8B%B0%ED%8B%B0-%ED%8E%98%EC%B9%98-%EC%A1%B0%EC%9D%B8" aria-label="엔티티 페치 조인 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>엔티티 페치 조인</h3>
 <ul>
 <li>회원을 조회하면서 연관된 팀도 함게 조회(SQL 한 번에)</li>
@@ -142,25 +204,58 @@
 	<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"username = "</span> <span class="token operator">+</span> member<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">", "</span> <span class="token operator">+</span> 
 						<span class="token string">"teamName = "</span> <span class="token operator">+</span> member<span class="token punctuation">.</span><span class="token function">getTeam</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>최초의 검색 시 영속성 컨텍스트가 들어가므로, 뒤에 걱정없이 일괄 호출이 가능하다.</li>
+</ul>
 <h3 id="컬렉션-페치-조인" style="position:relative;"><a href="#%EC%BB%AC%EB%A0%89%EC%85%98-%ED%8E%98%EC%B9%98-%EC%A1%B0%EC%9D%B8" aria-label="컬렉션 페치 조인 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>컬렉션 페치 조인</h3>
 <ul>
 <li>일대다 관계, 컬렉션 페치 조인</li>
 <li>JPQL : <code class="language-text">select t from Team t join fetch t.members where t.name = '팀A</code></li>
 <li>SQL : <code class="language-text">SELECT T.*, M.* FROM TEAM T INNER JOIN MEMBER M ON T.ID = M.TEAM_ID WHERE T.NAME = '팀A'</code></li>
+<li><mark style="background: #FF5582A6;">이렇게 할 경우 일대 다로 원하는 데이터를 잘 들고는 오나, 중복이 발생하는 관계에서 값이 여러개가 나올 수 있다…!</mark></li>
 </ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 122.77777777777779%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAYAAAAxFw7TAAAACXBIWXMAAAsTAAALEwEAmpwYAAACoklEQVQ4y6XVCUtrQQwF4P7/XyW4goha991a677vex5fHrlcq+KDd2GYmU5ycpKcmXY+Pj7CaH/t/fDZ6+tr3N3dxcPDQ7y/v3/x69Tm8fExbm5uGqN2oJeXl7i9vc15eXk5RkZGYmJiIi4uLuLp6Snu7+8bv04BbW1txdjYWJycnMTz8/OnyBgtLS3F5uZm2gHb2dmJ4+PjWFxcjPPz82ScgKurqzE6OhpnZ2exsrISu7u7cXp6muze3t6S2cLCQgJsbGxEr9eL7e3tHPazs7Ppwz8B19fXw9jf34+1tbU4ODhIAHvAhkCyuLy8zD3GMgGCddklYL/fT0BA6GMADDt1MfwmVUywcs4Hy+np6WR/dXX1F1BUBupgtpdm+7PHACs2e3t7OSPR7XaTaVNDDdAlzeE0GAwymlSqPoIdHh7m7xzZG9bS5yujBGwz0TWpYaIUagkYqPQqrZ++1GHpbVjAvzl+N74wLHFKcX5+PllhqAHY0iLm392ghqEmlASkdH19nfu5ubmUiwFwZmYmBQ1YndmVvRtTl6GDxdTUVB4Yk5OTWUtrBcdUME0gkfHx8WTpGjpzFas5jQ6lRQrES3PABHKmIWZdFsgaQ5nxIR3qKKl11As6Y+0nXBE5MpSKAM7rITg6OkobiqBH5w2gCH6kduC0B0jdioFzzP0OjK0yELVG+U12CagWWGBntjfsMarzWtdZ29b6W2H/75eygVxXT12Ghdqef7sECQhIx2jJbD8s9Epn+MHQTMP604tdAgVoXW+fIBrAgV09Z87JyPup02QkywS00L26IWZ7DrpHuHWbdF6AetWry5TQCFuHsCrQ+jeTZnWx/gqAkRK2gpFTib65esBQZsCYPP7lq/RrNE1BFWjVD6OfniiOP3W5nq8/4NZxoKhR1v4AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="20240513120837"
+        title="20240513120837"
+        src="/static/1487634829a2354cf687fd16ca284251/37523/20240513120837.png"
+        srcset="/static/1487634829a2354cf687fd16ca284251/e9ff0/20240513120837.png 180w,
+/static/1487634829a2354cf687fd16ca284251/f21e7/20240513120837.png 360w,
+/static/1487634829a2354cf687fd16ca284251/37523/20240513120837.png 720w,
+/static/1487634829a2354cf687fd16ca284251/302a4/20240513120837.png 1080w,
+/static/1487634829a2354cf687fd16ca284251/8cdda/20240513120837.png 1168w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
 <h3 id="컬렉션-페치-조인-사용-코드" style="position:relative;"><a href="#%EC%BB%AC%EB%A0%89%EC%85%98-%ED%8E%98%EC%B9%98-%EC%A1%B0%EC%9D%B8-%EC%82%AC%EC%9A%A9-%EC%BD%94%EB%93%9C" aria-label="컬렉션 페치 조인 사용 코드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>컬렉션 페치 조인 사용 코드</h3>
 <div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token class-name">String</span> jpql <span class="token operator">=</span> <span class="token string">"select t from Team t join fetch t.members where t.name = '팀A'"</span><span class="token punctuation">;</span>
 <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Team</span><span class="token punctuation">></span></span> teams <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">createQuery</span><span class="token punctuation">(</span>jpql<span class="token punctuation">,</span> <span class="token class-name">Team</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResultList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Team</span> team <span class="token operator">:</span> teams<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 	<span class="token class-name">Suystem</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"teamname = "</span> <span class="token operator">+</span> team<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">", team = "</span> <span class="token operator">+</span> team<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token comment">//페치 조인으로 팀과 함게 조회해서 지연로딩 발생 안함 </span>
-	<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"-> username = "</span> <span class="token operator">+</span> member<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" , member = "</span> <span class="token operator">+</span> member<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Member</span> member <span class="token operator">:</span> team<span class="token punctuation">.</span><span class="token function">getMembers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//페치 조인으로 팀과 함게 조회해서 지연로딩 발생 안함 </span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"-> username = "</span> <span class="token operator">+</span> member<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" , member = "</span> <span class="token operator">+</span> member<span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<ul>
+<li>이렇게 출력하면, 하나의 팀에 참여한 인원수 만큼 같은 값이 나올 수 있다.</li>
+<li>이러한 형태는 JPA 기본 스펙에서 지원하는 형태이기 때문이며, 실제로 이러한 값을 원한 결과일 수 도 있기 때문에 DB는 그대로 전달, JPA도 그대로 전달해주게된다.</li>
+</ul>
 <h3 id="페치-조인과-distinct" style="position:relative;"><a href="#%ED%8E%98%EC%B9%98-%EC%A1%B0%EC%9D%B8%EA%B3%BC-distinct" aria-label="페치 조인과 distinct permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>페치 조인과 DISTINCT</h3>
 <ul>
-<li>SQL의 DISTINCT 는 중복된 결과를 제거하는 명령</li>
-<li>JPQL의 DISTINCT 2가지 기능 제공
+<li>SQL의 DISTINCT 는 중복된 결과를 제거하는 명령 -> 단, 원래 DB에서도 이것 만으로 완벽하게 제거가 되지 않는다.</li>
+<li>JPQL의 DISTINCT 2가지 기능 제공(DB에서 주는 정도로 끝나지 않음)
 <ul>
 <li>SQL에 DISTINCT 를 추가한다.</li>
 <li>애플리케이션에서 엔티티 중복제거</li>
@@ -192,13 +287,14 @@
 <td>팀A</td>
 <td>2</td>
 <td>1</td>
-<td></td>
+<td>회원2</td>
 </tr>
 </tbody>
 </table>
 <ul>
 <li>DISTINCT 가 추가로 애플리케이션에서 중복 제거 시도</li>
 <li>같은 식별자를 가진 Team 엔티티 제거</li>
+<li>이러한 키워드인 distinct 는 반드시 일대다인 상황에서 성립되지, 다대일인 경우에선 중복이 발생하지 않는다.</li>
 </ul>
 <p><span
       class="gatsby-resp-image-wrapper"
@@ -224,14 +320,17 @@
     </span></p>
 <h3 id="페치-조인과-일반-조인의-차이" style="position:relative;"><a href="#%ED%8E%98%EC%B9%98-%EC%A1%B0%EC%9D%B8%EA%B3%BC-%EC%9D%BC%EB%B0%98-%EC%A1%B0%EC%9D%B8%EC%9D%98-%EC%B0%A8%EC%9D%B4" aria-label="페치 조인과 일반 조인의 차이 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>페치 조인과 일반 조인의 차이</h3>
 <ul>
-<li>일반 조인 실행 시 연관된 엔티티를 함께 조회하지 않음</li>
+<li>일반 조인 실행 시 <mark style="background: #FF5582A6;">연관된 엔티티를 함께 조회하지 않음</mark>. 자연스럽게 지연로딩의 설정이라면 그대로 작동하게 된다.
+<ul>
 <li>JPQL : <code class="language-text">select t from Taem t join t.members m where t.name = '팀A</code></li>
 <li>SQL : <code class="language-text">SELECT t.* FROM TEAM T INNER JOIN MEMBER M ON T.ID = M.TEAM_ID WHERE T.NAME = '팀A'</code></li>
+</ul>
+</li>
 <li>JPQL 은 결과를 반환할 대 연관 관계 고려 ❌</li>
 <li>단지 SELECT 절에 지정한 엔티티만 조회할 뿐</li>
 <li>여기서는 팀 엔티티만 조회 하고 회원 엔티티는 조회 ❌</li>
-<li>페치 조인을 사용할 태만 연관된 엔티티도 함게 조회(즉시 로딩)</li>
-<li>페치 조인은 객체 그래프를 SQL 한번에 조회하는 개념</li>
+<li>페치 조인을 사용할 태만 <strong>연관된 엔티티도 함게 조회(즉시 로딩)</strong></li>
+<li>페치 조인은 <strong>객체 그래프를 SQL 한번에 조회하는 개념</strong></li>
 </ul>
 <h3 id="페치-조인-실행-예시" style="position:relative;"><a href="#%ED%8E%98%EC%B9%98-%EC%A1%B0%EC%9D%B8-%EC%8B%A4%ED%96%89-%EC%98%88%EC%8B%9C" aria-label="페치 조인 실행 예시 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>페치 조인 실행 예시</h3>
 <ul>
@@ -242,18 +341,28 @@
 <h2 id="객제지향-쿼리-언어-2---중급-문법--페치-조인-2---한계" style="position:relative;"><a href="#%EA%B0%9D%EC%A0%9C%EC%A7%80%ED%96%A5-%EC%BF%BC%EB%A6%AC-%EC%96%B8%EC%96%B4-2---%EC%A4%91%EA%B8%89-%EB%AC%B8%EB%B2%95--%ED%8E%98%EC%B9%98-%EC%A1%B0%EC%9D%B8-2---%ED%95%9C%EA%B3%84" aria-label="객제지향 쿼리 언어 2   중급 문법  페치 조인 2   한계 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>객제지향 쿼리 언어 2 - 중급 문법 : 페치 조인 2 - 한계</h2>
 <h3 id="페치-조인의-특징과-한계" style="position:relative;"><a href="#%ED%8E%98%EC%B9%98-%EC%A1%B0%EC%9D%B8%EC%9D%98-%ED%8A%B9%EC%A7%95%EA%B3%BC-%ED%95%9C%EA%B3%84" aria-label="페치 조인의 특징과 한계 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>페치 조인의 특징과 한계</h3>
 <ul>
-<li>페치 조인 대상에는 별칭을 줄 수 없다. : 하이버네이트 가능, 가급적 사용 ❌</li>
-<li>둘 이상 컬렉션은 페치 조인할 수 없다.</li>
+<li>페치 조인 대상에는 별칭을 줄 수 없다. : 하이버네이트 가능, 가급적 사용 ❌
+<ul>
+<li>관례적인 면에서, 관리 차원에서 생각과 다를 수 있으므로 주의하라는 것이다.</li>
+<li>실무에서 사용될 가능성이 있는 경우는, 여러 관계성을 걸쳐서 페치 조인이 필요한 경우일 수 있다. (Team -> Members -> Orders …etc)</li>
+</ul>
+</li>
+<li><strong>둘 이상 컬렉션은 페치 조인할 수 없다.</strong>
+<ul>
+<li>일대다인 경우도 데이터가 늘어나거나 중복 등 정합성에서 문제가 발생하는데, 다대다로 진행이 된다면 정말 예상치 못한 일이 발생할 수 있다.</li>
+</ul>
+</li>
 <li>컬렉션을 페치 조인하면 페이징 API를 사용할 수 없다.
 <ul>
-<li>일대일 다대일 같은 단일 값 연관 필드들은 페치 조인해도 페이징 가능</li>
+<li>일대일 다대일 같은 단일 값 연관 필드들은 페치 조인해도 페이징 가능.</li>
+<li>그러나 문제는 일대다인 경우 페이징 시 데이터 정합도 맞지 않으며, 오류도 발생할 수 있다.</li>
 <li>하이버네이트는 경고 로그를 남기고 메모리에서 페이징(매우 위험)</li>
 </ul>
 </li>
 </ul>
 <h3 id="페치-조인---정리" style="position:relative;"><a href="#%ED%8E%98%EC%B9%98-%EC%A1%B0%EC%9D%B8---%EC%A0%95%EB%A6%AC" aria-label="페치 조인   정리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>페치 조인 - 정리</h3>
 <ul>
-<li>모든 거을 페치 조인으로 해결할 수 없음</li>
+<li>모든 것 페치 조인으로 해결할 수 없음</li>
 <li>페치 조인은 객체 그래프를 유지할 때 사용하면 효과적</li>
 <li>여러 테이블을 조인해서 엔티티가 가진 모양이 아닌 전혀 다른 결과를 내야 하며, 페치 조인 보다는 일반 조인을 사용하고 필요한 데이터들만 조회해서 DTO로 반환하는 것이 효과적</li>
 </ul>
@@ -399,11 +508,36 @@
 <ul>
 <li>벌크 연산은 영속성 컨텍스트를 무시하고 데이터베이스에 직접 쿼리
 <ul>
-<li>벌크 연산을 먼저 실행</li>
-<li>벌크 연산 수행 후 영속성 컨텍스트 초기화</li>
+<li>벌크 연산을 먼저 실행 -> 이렇게 하면 애초에 문제 발생 안함</li>
+<li>벌크 연산 수행 후 영속성 컨텍스트 초기화 -> 이 경우 꼬일 수 있으니, 벌크 연산 후 바로 플러시를 날려버리고 데이터의 문제를 없애버리면 된다.</li>
 </ul>
 </li>
 </ul>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token class-name">Member</span> member3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Member</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+member3<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span><span class="token string">"회원3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+member3<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+member3<span class="token punctuation">.</span><span class="token function">setTeam</span><span class="token punctuation">(</span>teamB<span class="token punctuation">)</span><span class="token punctuation">;</span>
+em<span class="token punctuation">.</span>persist
+
+<span class="token keyword">int</span> resultCount <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">creatQuery</span><span class="token punctuation">(</span><span class="token string">"update Member m set m.age = 20"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Member</span> findMember <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token class-name">Member</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> member3<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"findMemember = "</span> <span class="token operator">+</span> findMember<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 여기서 에러 발생 </span>
+<span class="token comment">// 왜냐면 Update 구분이 영속성 컨텍스트에 반영이 안되고</span>
+<span class="token comment">// DB 자체만 수정했고 </span>
+<span class="token comment">// 영속성 컨텍스트에 아직 member3 가 존재하므로, age 는 0인 경우만 가지고 있다. </span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<div class="gatsby-highlight" data-language="java"><pre style="counter-reset: linenumber NaN" class="language-java line-numbers"><code class="language-java"><span class="token class-name">Member</span> member3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Member</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+member3<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span><span class="token string">"회원3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+member3<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+member3<span class="token punctuation">.</span><span class="token function">setTeam</span><span class="token punctuation">(</span>teamB<span class="token punctuation">)</span><span class="token punctuation">;</span>
+em<span class="token punctuation">.</span>persist
+
+<span class="token keyword">int</span> resultCount <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">creatQuery</span><span class="token punctuation">(</span><span class="token string">"update Member m set m.age = 20"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+em<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 강제 영속성 초기화(member3가 사라짐)</span>
+
+<span class="token class-name">Member</span> findMember <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token class-name">Member</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> member3<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"findMemember = "</span> <span class="token operator">+</span> findMember<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
 <div class="table-of-contents">
 <ul>
 <li>
