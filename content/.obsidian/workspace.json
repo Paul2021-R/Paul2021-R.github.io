@@ -13,7 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/JAVA/20240512195218.md",
+                "file": "STUDY/frontend/20240513214825.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b9b104bb9a6bbc38",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/frontend/20240510171350.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/JAVA/20240512195218.md",
+                "file": "STUDY/frontend/20240513214825.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/JAVA/20240512195218.md",
+                "file": "STUDY/frontend/20240513214825.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/JAVA/20240512195218.md"
+                "file": "STUDY/frontend/20240513214825.md"
               }
             }
           }
@@ -150,24 +162,26 @@
   },
   "active": "799749a987e50230",
   "lastOpenFiles": [
+    "STUDY/frontend/src/20240514010512.png",
+    "STUDY/frontend/src/20240513224117.png",
+    "STUDY/frontend/src/20240513224043.png",
+    "STUDY/frontend/src/20240513223944.png",
+    "STUDY/frontend/src/20240513223744.png",
+    "STUDY/frontend/src/20240513223331.png",
+    "STUDY/frontend/20240510171350.md",
+    "STUDY/frontend/20240513214825.md",
+    "STUDY/docker-kubernetes/20240513135157.md",
+    "STUDY/docker-kubernetes/src/20240513205210.png",
+    "STUDY/docker-kubernetes/20240510154846.md",
+    "STUDY/docker-kubernetes/src/20240315165528.png",
+    "STUDY/docker-kubernetes/20240426160434.md",
+    "STUDY/JAVA/20240512195218.md",
     "STUDY/JAVA/src/20240513120837.png",
     "STUDY/JAVA/src/20240513115839.png",
     "STUDY/JAVA/src/20240513115813.png",
-    "STUDY/JAVA/src/20240513085514.png",
     "STUDY/JAVA/20240512195111.md",
-    "STUDY/JAVA/20240512195218.md",
     "STUDY/JAVA/20240512045635.md",
-    "STUDY/JAVA/src/20240512053905.png",
-    "STUDY/JAVA/src/20240512064549.png",
-    "STUDY/JAVA/src/20240512061016.png",
-    "STUDY/JAVA/src/20240512052442.png",
-    "STUDY/JAVA/src/20240512052024.png",
-    "STUDY/JAVA/src/20240512051821.png",
     "STUDY/JAVA/20240511203900.md",
-    "STUDY/JAVA/src/20240512015541.png",
-    "STUDY/docker-kubernetes/20240510154846.md",
-    "STUDY/docker-kubernetes/20240426160434.md",
-    "STUDY/frontend/20240510171350.md",
     "STUDY/frontend/20240510170905.md",
     "ETC/20240506135456.md",
     "STUDY/frontend/src",
@@ -186,8 +200,6 @@
     "ETC/20240429200451.md",
     "ETC/20240423170432.md",
     "ETC/20240408071348.md",
-    "ETC/20240324085132.md",
-    "ETC/20240213115618.md",
     "STUDY/interview/src",
     "desktop.ini",
     "STUDY/interview",
