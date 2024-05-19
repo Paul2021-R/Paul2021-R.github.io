@@ -4,28 +4,34 @@
     "type": "split",
     "children": [
       {
-        "id": "9a2610f781d7d224",
+        "id": "bd46e13185da75e8",
         "type": "tabs",
         "children": [
           {
-            "id": "431188524673a68a",
+            "id": "96d6d74bf9b2fb94",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/frontend/20240513214825.md",
+                "file": "Projects/20240223080156.md",
                 "mode": "source",
                 "source": false
               }
             }
-          },
+          }
+        ]
+      },
+      {
+        "id": "d41441976d7b1f20",
+        "type": "tabs",
+        "children": [
           {
-            "id": "b9b104bb9a6bbc38",
+            "id": "338481b4af84a2ec",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/frontend/20240510171350.md",
+                "file": "Projects/20240518154910.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/frontend/20240513214825.md",
+                "file": "Projects/20240518154910.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/frontend/20240513214825.md",
+                "file": "Projects/20240518154910.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +143,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/frontend/20240513214825.md"
+                "file": "Projects/20240518154910.md"
               }
             }
           }
@@ -160,25 +166,34 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "799749a987e50230",
+  "active": "338481b4af84a2ec",
   "lastOpenFiles": [
-    "STUDY/frontend/src/20240514010512.png",
-    "STUDY/frontend/src/20240513224117.png",
-    "STUDY/frontend/src/20240513224043.png",
-    "STUDY/frontend/src/20240513223944.png",
-    "STUDY/frontend/src/20240513223744.png",
-    "STUDY/frontend/src/20240513223331.png",
-    "STUDY/frontend/20240510171350.md",
+    "Projects/20240223080156.md",
+    "Projects/20240518154910.md",
+    "Projects/src/20240519200850.png",
+    "Projects/src/20240519082345.png",
+    "Projects/src/20240519080351.png",
+    "Projects/src/20240519073244.png",
+    "Projects/src/20240519071659.png",
+    "Projects/src/20240519071651.png",
+    "Projects/src/20240519071643.png",
+    "Projects/src/20240519070556.png",
+    "Projects/src/20240519070506.png",
+    "Projects/20240223020331.md",
+    "STUDY/frontend/20240516095202.md",
+    "STUDY/frontend/src/20240516113535.png",
     "STUDY/frontend/20240513214825.md",
+    "STUDY/docker-kubernetes/20240515193557.md",
+    "Projects/BTBProject/20240514150137.md",
+    "Projects/BTBProject/20240328104040.md",
+    "Projects/202402091238.md",
+    "Projects/202402010049.md",
+    "STUDY/frontend/20240510171350.md",
+    "Projects/BTBProject/20240406013846.md",
     "STUDY/docker-kubernetes/20240513135157.md",
-    "STUDY/docker-kubernetes/src/20240513205210.png",
     "STUDY/docker-kubernetes/20240510154846.md",
-    "STUDY/docker-kubernetes/src/20240315165528.png",
     "STUDY/docker-kubernetes/20240426160434.md",
     "STUDY/JAVA/20240512195218.md",
-    "STUDY/JAVA/src/20240513120837.png",
-    "STUDY/JAVA/src/20240513115839.png",
-    "STUDY/JAVA/src/20240513115813.png",
     "STUDY/JAVA/20240512195111.md",
     "STUDY/JAVA/20240512045635.md",
     "STUDY/JAVA/20240511203900.md",
@@ -190,16 +205,6 @@
     "STUDY/무제 파일.md",
     "STUDY/docker-kubernetes/20240424100414.md",
     "STUDY/docker-kubernetes/20240423160450.md",
-    "STUDY/docker-kubernetes/20240421090494.md",
-    "STUDY/docker-kubernetes/20240420150435.md",
-    "STUDY/docker-kubernetes/20240416203739.md",
-    "STUDY/docker-kubernetes/20240325014749.md",
-    "STUDY/docker-kubernetes/20240320111443.md",
-    "STUDY/docker-kubernetes/20240315043632.md",
-    "STUDY/docker-kubernetes/20240312092035.md",
-    "ETC/20240429200451.md",
-    "ETC/20240423170432.md",
-    "ETC/20240408071348.md",
     "STUDY/interview/src",
     "desktop.ini",
     "STUDY/interview",
