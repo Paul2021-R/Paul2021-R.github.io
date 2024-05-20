@@ -4,40 +4,47 @@
     "type": "split",
     "children": [
       {
-        "id": "bd46e13185da75e8",
-        "type": "tabs",
+        "id": "b8b0fbf86d09eeaa",
+        "type": "split",
         "children": [
           {
-            "id": "96d6d74bf9b2fb94",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Projects/20240223080156.md",
-                "mode": "source",
-                "source": false
+            "id": "88608f9229ae217c",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "c76cab1c6a29fc52",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Projects/BTBProject/20240520212941.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
               }
-            }
-          }
-        ]
-      },
-      {
-        "id": "d41441976d7b1f20",
-        "type": "tabs",
-        "children": [
+            ]
+          },
           {
-            "id": "338481b4af84a2ec",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Projects/20240518154910.md",
-                "mode": "source",
-                "source": false
+            "id": "a82e4cb0d301de77",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "c446ee44c794cb72",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Projects/BTBProject/20240328104040.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
               }
-            }
+            ]
           }
-        ]
+        ],
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -103,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Projects/20240518154910.md",
+                "file": "Projects/BTBProject/20240328104040.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Projects/20240518154910.md",
+                "file": "Projects/BTBProject/20240328104040.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Projects/20240518154910.md"
+                "file": "Projects/BTBProject/20240328104040.md"
               }
             }
           }
@@ -166,10 +173,20 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "338481b4af84a2ec",
+  "active": "c446ee44c794cb72",
   "lastOpenFiles": [
-    "Projects/20240223080156.md",
+    "Projects/BTBProject/20240514150137.md",
+    "Projects/BTBProject/20240406013846.md",
+    "Projects/BTBProject/20240520212941.md",
+    "Projects/BTBProject/20240328104040.md",
+    "Projects/BTBProject/src/BTB_architecture.png",
     "Projects/20240518154910.md",
+    "STUDY/coding-test/20240321083437.md",
+    "STUDY/coding-test/20240322142654.md",
+    "STUDY/coding-test/20240320010052.md",
+    "STUDY/coding-test/20240313023806.md",
+    "STUDY/coding-test/20240418160403.md",
+    "Projects/20240223080156.md",
     "Projects/src/20240519200850.png",
     "Projects/src/20240519082345.png",
     "Projects/src/20240519080351.png",
@@ -181,15 +198,11 @@
     "Projects/src/20240519070506.png",
     "Projects/20240223020331.md",
     "STUDY/frontend/20240516095202.md",
-    "STUDY/frontend/src/20240516113535.png",
     "STUDY/frontend/20240513214825.md",
     "STUDY/docker-kubernetes/20240515193557.md",
-    "Projects/BTBProject/20240514150137.md",
-    "Projects/BTBProject/20240328104040.md",
     "Projects/202402091238.md",
     "Projects/202402010049.md",
     "STUDY/frontend/20240510171350.md",
-    "Projects/BTBProject/20240406013846.md",
     "STUDY/docker-kubernetes/20240513135157.md",
     "STUDY/docker-kubernetes/20240510154846.md",
     "STUDY/docker-kubernetes/20240426160434.md",
@@ -197,14 +210,8 @@
     "STUDY/JAVA/20240512195111.md",
     "STUDY/JAVA/20240512045635.md",
     "STUDY/JAVA/20240511203900.md",
-    "STUDY/frontend/20240510170905.md",
-    "ETC/20240506135456.md",
     "STUDY/frontend/src",
-    "STUDY/frontend/무제 파일.md",
     "STUDY/frontend",
-    "STUDY/무제 파일.md",
-    "STUDY/docker-kubernetes/20240424100414.md",
-    "STUDY/docker-kubernetes/20240423160450.md",
     "STUDY/interview/src",
     "desktop.ini",
     "STUDY/interview",
