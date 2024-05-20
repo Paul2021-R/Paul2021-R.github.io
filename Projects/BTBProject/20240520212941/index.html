@@ -48,287 +48,213 @@
         }
       }
     })
-  </script><title data-react-helmet="true">react-frontend ) til - 20240516</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="react-frontend ) til - 20240516"/><meta data-react-helmet="true" property="og:site_title" content="react-frontend ) til - 20240516"/><meta data-react-helmet="true" name="description" content="색션 4 Rendering Elements Elements의 정의와 생김새 Elements란?  리액트 앱을 구성하는 가장 작은 블록들  본 이미지는 DOM Elements들을 의미하며, 기본적으로 태그 형태의 노드들로 구성되어 있다. 일반적인 DOM Elements와 React Elements DOM elements : 화면에 나타나는 내용을 기술하는 자바스크립트 객체. Descriptor 라는 명칭이었으나, 이후 바뀌어 지금의 구조로 바뀌었다.  React Elements : Virtual DOM에 존재하는 Elements들을 일컫는 말이라고 보면 된다. 즉, DOM Elements의 가상 표현이 React Elements 라고 볼 수 있다. 또한 Render라는 작업 전의 데이터를 모두 가지고 있는 만큼 React Elements는 렌더 후의 그것보다 상대적으로 무겁다. 결론적으로 React Elements가 화면에 표시될 것들을 기술하는 것이라고 보면된다.  Elements…"/><meta data-react-helmet="true" property="og:description" content="색션 4 Rendering Elements Elements의 정의와 생김새 Elements란?  리액트 앱을 구성하는 가장 작은 블록들  본 이미지는 DOM Elements들을 의미하며, 기본적으로 태그 형태의 노드들로 구성되어 있다. 일반적인 DOM Elements와 React Elements DOM elements : 화면에 나타나는 내용을 기술하는 자바스크립트 객체. Descriptor 라는 명칭이었으나, 이후 바뀌어 지금의 구조로 바뀌었다.  React Elements : Virtual DOM에 존재하는 Elements들을 일컫는 말이라고 보면 된다. 즉, DOM Elements의 가상 표현이 React Elements 라고 볼 수 있다. 또한 Render라는 작업 전의 데이터를 모두 가지고 있는 만큼 React Elements는 렌더 후의 그것보다 상대적으로 무겁다. 결론적으로 React Elements가 화면에 표시될 것들을 기술하는 것이라고 보면된다.  Elements…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/STUDY/frontend/20240516095202/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🌸</div><div class="info"><div class="categories"><a class="category" href="/posts/til">til</a><a class="category" href="/posts/frontend">frontend</a></div></div><h1 class="title">react-frontend ) til - 20240516</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->May 16, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="색션-4-rendering-elements" style="position:relative;"><a href="#%EC%83%89%EC%85%98-4-rendering-elements" aria-label="색션 4 rendering elements permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>색션 4 Rendering Elements</h1>
-<h2 id="elements의-정의와-생김새" style="position:relative;"><a href="#elements%EC%9D%98-%EC%A0%95%EC%9D%98%EC%99%80-%EC%83%9D%EA%B9%80%EC%83%88" aria-label="elements의 정의와 생김새 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Elements의 정의와 생김새</h2>
-<h3 id="elements란" style="position:relative;"><a href="#elements%EB%9E%80" aria-label="elements란 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Elements란?</h3>
-<ul>
-<li><code class="language-text">Elements are the smallest building blocks of React apps</code></li>
-<li>리액트 앱을 구성하는 가장 작은 블록들</li>
-</ul>
+  </script><title data-react-helmet="true">[B2B] 아키텍처 설계문서</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="[B2B] 아키텍처 설계문서"/><meta data-react-helmet="true" property="og:site_title" content="[B2B] 아키텍처 설계문서"/><meta data-react-helmet="true" name="description" content="아키텍처 설계문서  전체 아키텍처 
+영겁의 시간을 거쳐, 여러 이슈들을 파악했다. 무엇보다 핵심은 Docker, Kubernetes를 적용 시키는 것이 가능하도록 만들 수 있는가? 에 대한 문제를 내가 이해하고 짜는 것을 목표로 삼았다. 그렇게 기본적인 각 요소들이 어떤 식으로 연결되어야 할지, 그 구조가 이제는 좀 명확해진 것으로 보여지고 이를 문서로 정리하고자 한다. 핵심 기능 본 구조의 핵심은 아래와 같다.  : Kubernetes를 활용하여 어떠한 클라우드 프로바이저, 로컬에서도 동작 가능한 설계, 세팅이 자동으로 설정되도록 만든다.  : 기본적으로 Auto Scaling 은 HPA(Horizontal Pod Autoscaler)에서 제공해주는 기능으로 애플리케이션의 부하에 따라 자동으로 Pod의 수를 조절해주는 역할을 한다. 이를 통해 가용성의 극대화와 리소스 사용을 최적화해준다. 기본적인 전략 React 서버의 경우 SSR 을 지원하지 않고 기본적인 정적인 데이터들의 전…"/><meta data-react-helmet="true" property="og:description" content="아키텍처 설계문서  전체 아키텍처 
+영겁의 시간을 거쳐, 여러 이슈들을 파악했다. 무엇보다 핵심은 Docker, Kubernetes를 적용 시키는 것이 가능하도록 만들 수 있는가? 에 대한 문제를 내가 이해하고 짜는 것을 목표로 삼았다. 그렇게 기본적인 각 요소들이 어떤 식으로 연결되어야 할지, 그 구조가 이제는 좀 명확해진 것으로 보여지고 이를 문서로 정리하고자 한다. 핵심 기능 본 구조의 핵심은 아래와 같다.  : Kubernetes를 활용하여 어떠한 클라우드 프로바이저, 로컬에서도 동작 가능한 설계, 세팅이 자동으로 설정되도록 만든다.  : 기본적으로 Auto Scaling 은 HPA(Horizontal Pod Autoscaler)에서 제공해주는 기능으로 애플리케이션의 부하에 따라 자동으로 Pod의 수를 조절해주는 역할을 한다. 이를 통해 가용성의 극대화와 리소스 사용을 최적화해준다. 기본적인 전략 React 서버의 경우 SSR 을 지원하지 않고 기본적인 정적인 데이터들의 전…"/><meta data-react-helmet="true" property="og:author" content="류한솔"/><meta data-react-helmet="true" property="og:image" content="og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-55cbc9fb510ae844c257.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-c638078fc4709f33b879.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/Projects/BTBProject/20240520212941/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">Be.Insight.Programmer</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">🧐</div><div class="info"><div class="categories"><a class="category" href="/posts/project">project</a></div></div><h1 class="title">[B2B] 아키텍처 설계문서</h1><div class="info"><div class="author">posted by <strong>Paul</strong>,</div> <!-- -->May 20, 2024</div></header><div class="post-content"><div class="markdown"><h1 id="아키텍처-설계문서" style="position:relative;"><a href="#%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84%EB%AC%B8%EC%84%9C" aria-label="아키텍처 설계문서 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>아키텍처 설계문서</h1>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 59.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAADU0lEQVQoz42Sy28bdRzEv7bTSq2KKhASlbggwY0LUqAnJC6ROCDUA2AJHNriFHlN/Frba8cJJiEtteK0OCJJE6fQun781rv7243tpvF77c26a8evXdupW9ETB8R/wAkpKCpXEB9pbjOjOQzAP9iTms6eGADxYPCOi+6HSU4J2TgxYKJLL5nSJTAzVfhfmKa/hOkvTOBEQ70djYGIDz/0sZo6Jxx2Xby0Z0zkXzXSZTCzNd2J90T/iS050LvozgTJHZ4ORJvgpJ+8u8BraDHbRr5sI2JM184fHx+DnZZP2XF9wpwu6SxsGQj2XxaT9BD8XA+o3QZQ3T/Bcrf5UQAPast7vaKTq+HpyNbr3vxv4OcU8AgHcI2twswvgi7xKA7v3anA5IYCk2ttmNwRXxQ6UoNPPGwvTHIHq9bUPjEv9KGhjeH4r99h6SS81bzgTLRue7jWDReuh66x4hvvh5bgRlY6FcyIhmlUAhMqgpUtvyh0p4/m/Vgd+ARFtfFSmOJb8C03hNsPFVgsjuHyrepbPm7U8Avdx1Tmcevqz+m3V5Q/YHNfgWBGhMt8DUz3C7op9Bw+TdYA7KnBFRK1Uy5GSlm5KnFp7dezJFLXfbgTI7kqmrm3b5xNqDc97GFslhU3vk4qFnfykKb4ZszOiXdm+INX3lyJwmqmbAgKBR2Q9MgR4NWqX1CqNlybv7g0PkPSg3iA75Q9grxnflAxOZLa/WBWzTtYMffVvZqfYoe7AaFVdmAp9QFlP79x8BQ2cxWY44twchc7xXSrXixXbFj0X4o8O+dEWpJimwU3Lz26iqQpihlFfLi7T/H1rDUlhzxpDVNsozjLiVEi1tr2MR3RjWXJylQWgERDyxxWGZ/QTDuwSH689vQcSWvbAb4XpwQ5ZU7Vp7zpUWiO7zK+3UbMgpoUSWs7Xk5BBCOGiUT/Oy/TR05WxgRTtcEiP4Sf8ipECgosZCvw2fYIrgsabJZ6cCsvgQXVIZw7gruVDtzMteGb+Piin9OUAK/I3oyceW1n+fRyrgUrOQm8uATwvTDUbxb6hvVCQx/MVfTG7SH8sKsZouWOfq1QN1hQXffj3pF+9WF/4vOt50DEB5PutBr14va6E0srV1DlZXAFYDlbM/j5ov5vPb3OsIf/O+8AAAAASUVORK5CYII='); background-size: cover; display: block;"
+    style="padding-bottom: 120.55555555555557%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAYABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMFBP/EABcBAAMBAAAAAAAAAAAAAAAAAAABAgT/2gAMAwEAAhADEAAAAdCdOpKLjEz0h1iAz//EABsQAAIDAQEBAAAAAAAAAAAAAAACAQMREwRB/9oACAEBAAEFAnSSUsMQouW2fk4eW/pOrnRj/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAEQEf/aAAgBAwEBPwG6z//EABYRAAMAAAAAAAAAAAAAAAAAAAAQEf/aAAgBAgEBPwEj/8QAHBAAAQQDAQAAAAAAAAAAAAAAAQACEDITMVGh/9oACAEBAAY/AhjaFVqrBgh3Fv2P/8QAGxABAQEAAwEBAAAAAAAAAAAAAREAITFRYYH/2gAIAQEAAT8hjot5uHOD3fM/mQAJCtyvnxikvmZKEHbmiGxxbt3/2gAMAwEAAgADAAAAEBTfA//EABoRAAICAwAAAAAAAAAAAAAAAAABESExUWH/2gAIAQMBAT8QSTUwVowjof/EABgRAQADAQAAAAAAAAAAAAAAAAEAEBEx/9oACAECAQE/EApgcmT/xAAbEAEBAAIDAQAAAAAAAAAAAAABEQAhMUFhcf/aAAgBAQABPxBzULjKZtgqVB131hs5CuxrzImvgm1x1iBTfmLEWPcrNIRBbirnSAPX3IHIEz//2Q=='); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="20240516100504"
-        title="20240516100504"
-        src="/static/ad492254bb0bc6f68581ae1855be7724/37523/20240516100504.png"
-        srcset="/static/ad492254bb0bc6f68581ae1855be7724/e9ff0/20240516100504.png 180w,
-/static/ad492254bb0bc6f68581ae1855be7724/f21e7/20240516100504.png 360w,
-/static/ad492254bb0bc6f68581ae1855be7724/37523/20240516100504.png 720w,
-/static/ad492254bb0bc6f68581ae1855be7724/302a4/20240516100504.png 1080w,
-/static/ad492254bb0bc6f68581ae1855be7724/07a9c/20240516100504.png 1440w,
-/static/ad492254bb0bc6f68581ae1855be7724/d61c2/20240516100504.png 1800w"
+        alt="background change demo"
+        title="background change demo"
+        src="/static/0a24d75b57429eadc15dfb3af4586983/80e3c/background-change-demo.jpg"
+        srcset="/static/0a24d75b57429eadc15dfb3af4586983/4ec73/background-change-demo.jpg 180w,
+/static/0a24d75b57429eadc15dfb3af4586983/158ba/background-change-demo.jpg 360w,
+/static/0a24d75b57429eadc15dfb3af4586983/80e3c/background-change-demo.jpg 720w,
+/static/0a24d75b57429eadc15dfb3af4586983/47311/background-change-demo.jpg 1080w,
+/static/0a24d75b57429eadc15dfb3af4586983/644c5/background-change-demo.jpg 1440w,
+/static/0a24d75b57429eadc15dfb3af4586983/a1747/background-change-demo.jpg 3456w"
         sizes="(max-width: 720px) 100vw, 720px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
         decoding="async"
       />
     </span></p>
-<blockquote>
-<p>본 이미지는 DOM Elements들을 의미하며, 기본적으로 태그 형태의 노드들로 구성되어 있다.</p>
-</blockquote>
-<h3 id="일반적인-dom-elements와-react-elements" style="position:relative;"><a href="#%EC%9D%BC%EB%B0%98%EC%A0%81%EC%9D%B8-dom-elements%EC%99%80-react-elements" aria-label="일반적인 dom elements와 react elements permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>일반적인 DOM Elements와 React Elements</h3>
-<ul>
-<li>DOM elements : 화면에 나타나는 내용을 기술하는 자바스크립트 객체. Descriptor 라는 명칭이었으나, 이후 바뀌어 지금의 구조로 바뀌었다.</li>
-</ul>
+<h2 id="전체-아키텍처" style="position:relative;"><a href="#%EC%A0%84%EC%B2%B4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98" aria-label="전체 아키텍처 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>전체 아키텍처</h2>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 40.55555555555556%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAABpUlEQVQoz1WS32/SUBTH+at988EH45vxSaMxcdPEKLAZ4xw4g2iZW8CEGqZssm6wMuRHB0hbWtre9mPubdn0JDf3e8/95Jzvyb25OI5JkgS5yyUjCgNmsxmO4yCE+O9erSRRnOsscByXpesShqHicjdgQiRiXmgm5+aI7WKe3d2SAtex5sIwYqs+pN5ss5V/RaFYxHVdxeRkVZE5I/J4/P6I/nzJYDzGNM00HUV4nnftjNjnaekHvZnH8Mriondx3TC3HvP3dMnDnbbSzWeP6Ff3lLYXCzRNI18o8F1vMrV9HrxpqTv9+RO6H94pLaIoHVmIrOBowstPv4hJ6FfLnFQ/qnwYBPi+j++vEIHHZGKxsXeM9Dr4XOZneUdxiRCpQ3motkZsVk5lH+6+1rGAS73Bwb3bKZyN2jidslExgID72y0uA5gYx9Tu3LoZWYrOYEGzu1DJ/ZMZqwRW4wG9Slk5kS8t42xo0zDmSh90/mAHIOYW56W3iktkwSiDr8YDvmganXaLw6/7nHV7adfs26yL2nMLrVbjSP9Go35IxzD++QExfwHg6FQV65n/KAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+    style="padding-bottom: 71.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAAC+ElEQVQ4y02T+W7bRhCH9cJpH6Bv0P+KvkGDHmgKpED/8NHWqWMnviLLUmQ7FkRSvEnxXHJ5H18hO047wAIzWOw3M/ubmfDZxnF89hiAS2UgTPrnaw7nd5jb4EvMUDOuDvBtg0LKL28nO9AzrBtAZpLIjvljVnJ9H6AZFn4k+PV8yfRBx9vGhKKiKBvSq0N0wyFIS4oGmm5k8l/KkbAYUVyJtklZGjELPWG2DlisQ7wMzBTUsEWLOoy4xylADxusdGAT9Zhxz2SoC5rQfETGxcA6GjDEgJ6OWBkEqWBlayRS0vbQ9OPjWcuOi7Bm6ghuvJyN7PBFz0T1G17+EyGEQLMCppuUuSmYqSFLNeSDuuTr82+5du4JQ4EbxJhewN69zm92zZ4Sc6TFfBQd26xn0rQdkSgfW44qsDSHVFUIixpP9Dh5xE/T19h5QN/DIq44DUpOrJh9I+VPNeDIEtzlA1vRPf/hTpSenajW8RvS33/Aj1zcrKXqBhzHRdYN/QgrUXOxzbkMS145LftKzBs14va5wh1M1GAJiAoIRY3nuMRpxjbvSKuRIJVopk/VQlmPVM2AV/TYWYMlasyswZMtbto/VZjkNedKwdoRaFGLJ0espMVIOvIGRNny0bhl5l4xt29YOku8xEfcrTDen2G8PSW+X+GKz8CikOjqiq1ouNmkaFGDW4xs4p60kGS15M5e8Nf6FRf6EVP9PXPlI/bPv6B//x3m4QHR1RX+ruWyLNF1gzDYkjWwDmqObjxeX1aPQMVbs3Y/cflwxky74sP6nJlxiS+3ZIbDw7szzAeF1I+egMfHx7x48RUyFyQlmGLgYFHxzcsEJezI64q8KVlac/ZWP3Ki7HOhnuBLj7ma8fe1zr3mY0fVEzCOYzabzdPYyN1gj9yaMacLBSVsSPOaKMkwEwMlfkBPVDaJQtZkzD/5vJuuiURNlDW4aff/1YOsGjCSATPp0aPdSvU4kcQOBInsycqdQCCKkbQYkM2IbEFUA0nRE+Y9/wKdVRNIep2XwAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="20240516105951"
-        title="20240516105951"
-        src="/static/9ffe8adf8b5add1580c78e3d2fc3da4e/37523/20240516105951.png"
-        srcset="/static/9ffe8adf8b5add1580c78e3d2fc3da4e/e9ff0/20240516105951.png 180w,
-/static/9ffe8adf8b5add1580c78e3d2fc3da4e/f21e7/20240516105951.png 360w,
-/static/9ffe8adf8b5add1580c78e3d2fc3da4e/37523/20240516105951.png 720w,
-/static/9ffe8adf8b5add1580c78e3d2fc3da4e/302a4/20240516105951.png 1080w,
-/static/9ffe8adf8b5add1580c78e3d2fc3da4e/553fd/20240516105951.png 1255w"
+        alt="BTB architecture"
+        title="BTB architecture"
+        src="/static/da07a546f77fb85713a6e7655aa88095/37523/BTB_architecture.png"
+        srcset="/static/da07a546f77fb85713a6e7655aa88095/e9ff0/BTB_architecture.png 180w,
+/static/da07a546f77fb85713a6e7655aa88095/f21e7/BTB_architecture.png 360w,
+/static/da07a546f77fb85713a6e7655aa88095/37523/BTB_architecture.png 720w,
+/static/da07a546f77fb85713a6e7655aa88095/302a4/BTB_architecture.png 1080w,
+/static/da07a546f77fb85713a6e7655aa88095/07a9c/BTB_architecture.png 1440w,
+/static/da07a546f77fb85713a6e7655aa88095/ec5f6/BTB_architecture.png 1852w"
         sizes="(max-width: 720px) 100vw, 720px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
         decoding="async"
       />
-    </span></p>
-<ul>
-<li>React Elements : Virtual DOM에 존재하는 Elements들을 일컫는 말이라고 보면 된다. 즉, DOM Elements의 가상 표현이 React Elements 라고 볼 수 있다. 또한 Render라는 작업 전의 데이터를 모두 가지고 있는 만큼 React Elements는 렌더 후의 그것보다 상대적으로 무겁다.</li>
-<li>결론적으로 React Elements가 화면에 표시될 것들을 기술하는 것이라고 보면된다.</li>
-</ul>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 27.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAjUlEQVQY062RQQoCMQxFewLbMqKRJkUH9y68aNorTYuIh/rSuBA3IjiBx/v5i2zisPK4x62h3xuWpaG1/+i9w11nwvkiEM7IWcAikDxyBjO/LCOL7d9IKcHFzRa8ZxznURKmHYHkZIeIyDwdsvUxBIQQEcxvYoyG9x6uqKKUAi0K1U+sV/2ZWivc2k95AvhfStNdEa9hAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="20240516110526"
-        title="20240516110526"
-        src="/static/c8f2d4be69eed170aaa10fd96af98b4a/37523/20240516110526.png"
-        srcset="/static/c8f2d4be69eed170aaa10fd96af98b4a/e9ff0/20240516110526.png 180w,
-/static/c8f2d4be69eed170aaa10fd96af98b4a/f21e7/20240516110526.png 360w,
-/static/c8f2d4be69eed170aaa10fd96af98b4a/37523/20240516110526.png 720w,
-/static/c8f2d4be69eed170aaa10fd96af98b4a/302a4/20240516110526.png 1080w,
-/static/c8f2d4be69eed170aaa10fd96af98b4a/7960f/20240516110526.png 1274w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<h3 id="elements의-생김새" style="position:relative;"><a href="#elements%EC%9D%98-%EC%83%9D%EA%B9%80%EC%83%88" aria-label="elements의 생김새 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Elements의 생김새</h3>
-<ul>
-<li>
-<p>React Elements = JS Object</p>
-</li>
-<li>
-<p>한번 생성 되면 변하지 않는 불변의 특성을 갖고 있다.</p>
-</li>
-<li>
-<p>예시</p>
-<div class="gatsby-highlight" data-language="javascript"><pre style="counter-reset: linenumber NaN" class="language-javascript line-numbers"><code class="language-javascript"><span class="token punctuation">{</span>
-	<span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'button'</span><span class="token punctuation">,</span>
-	<span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-		<span class="token literal-property property">className</span><span class="token operator">:</span> <span class="token string">'bg-green'</span><span class="token punctuation">,</span>
-		<span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-			<span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'b'</span><span class="token punctuation">,</span>
-			<span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-				<span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token string">'Hello, element!'</span>
-			<span class="token punctuation">}</span>
-		<span class="token punctuation">}</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-</li>
-<li>
-<p>위의 예시가 render가 되면 다음 DOM Element로 변환된다.</p>
-<div class="gatsby-highlight" data-language="html"><pre style="counter-reset: linenumber NaN" class="language-html line-numbers"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>bg-green<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">></span></span>
-		Hello, elememt!
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-</li>
-<li>
-<p>추가 예시</p>
-</li>
-</ul>
-<div class="gatsby-highlight" data-language="js"><pre style="counter-reset: linenumber NaN" class="language-js line-numbers"><code class="language-js"><span class="token punctuation">{</span>
-	<span class="token literal-property property">type</span><span class="token operator">:</span> Button<span class="token punctuation">,</span>
-	<span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-		<span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">'green'</span><span class="token punctuation">,</span>
-		<span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token string">'Hello. ele,'</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<ul>
-<li>일전에 배웠던 createElements가 요소를 만든다고 했다. 이제 다시 보면 비밀이 어느정도 풀리게 된다.</li>
-</ul>
-<div class="gatsby-highlight" data-language="js"><pre style="counter-reset: linenumber NaN" class="language-js line-numbers"><code class="language-js">React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>
-	type<span class="token punctuation">,</span>
-	<span class="token punctuation">[</span>props<span class="token punctuation">]</span><span class="token punctuation">,</span>
-	<span class="token punctuation">[</span><span class="token operator">...</span>children<span class="token punctuation">]</span>
-<span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<h3 id="버튼-예시" style="position:relative;"><a href="#%EB%B2%84%ED%8A%BC-%EC%98%88%EC%8B%9C" aria-label="버튼 예시 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>버튼 예시</h3>
-<div class="gatsby-highlight" data-language="js"><pre style="counter-reset: linenumber NaN" class="language-js line-numbers"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Button</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">return</span> <span class="token punctuation">(</span>
-		<span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token punctuation">{</span>`bg<span class="token operator">-</span>$<span class="token punctuation">{</span>props<span class="token punctuation">.</span>color<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">></span>
-			<span class="token operator">&lt;</span>b<span class="token operator">></span>
-				<span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span>
-			<span class="token operator">&lt;</span><span class="token operator">/</span>b<span class="token operator">></span>
-		<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
-	<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">ConfirmDialog</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-	<span class="token keyword">return</span> <span class="token punctuation">(</span>
-		<span class="token operator">&lt;</span>div<span class="token operator">></span>
-			<span class="token operator">&lt;</span>p<span class="token operator">></span>내용을 확인하셨으면 확인버튼을 눌러세요<span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
-			<span class="token operator">&lt;</span>Button color<span class="token operator">=</span> <span class="token string">'green'</span><span class="token operator">></span>확인<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
-		<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-	<span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<h2 id="elements의-특징-및-렌더링-하기" style="position:relative;"><a href="#elements%EC%9D%98-%ED%8A%B9%EC%A7%95-%EB%B0%8F-%EB%A0%8C%EB%8D%94%EB%A7%81-%ED%95%98%EA%B8%B0" aria-label="elements의 특징 및 렌더링 하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Elements의 특징 및 렌더링 하기</h2>
-<h3 id="elements의-속성" style="position:relative;"><a href="#elements%EC%9D%98-%EC%86%8D%EC%84%B1" aria-label="elements의 속성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Elements의 속성</h3>
+    </span>
+영겁의 시간을 거쳐, 여러 이슈들을 파악했다. 무엇보다 핵심은 Docker, Kubernetes를 적용 시키는 것이 가능하도록 만들 수 있는가? 에 대한 문제를 내가 이해하고 짜는 것을 목표로 삼았다. 그렇게 기본적인 각 요소들이 어떤 식으로 연결되어야 할지, 그 구조가 이제는 좀 명확해진 것으로 보여지고 이를 문서로 정리하고자 한다.</p>
+<h2 id="핵심-기능" style="position:relative;"><a href="#%ED%95%B5%EC%8B%AC-%EA%B8%B0%EB%8A%A5" aria-label="핵심 기능 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>핵심 기능</h2>
+<p>본 구조의 핵심은 아래와 같다.</p>
 <ol>
-<li>불변성 : 한 번 생성 후에는 children, attributes 를 바꿀 수 없다. 즉, 생성 전에는 다양한 모습이지만, 생성이 된 이후에 수정이 불가능한 형태인 것이다.
+<li><code class="language-text">설치 자동화</code> : Kubernetes를 활용하여 어떠한 클라우드 프로바이저, 로컬에서도 동작 가능한 설계, 세팅이 자동으로 설정되도록 만든다.</li>
+<li><code class="language-text">Auto-Scaling</code> : 기본적으로 Auto Scaling 은 HPA(Horizontal Pod Autoscaler)에서 제공해주는 기능으로 애플리케이션의 부하에 따라 자동으로 Pod의 수를 조절해주는 역할을 한다. 이를 통해 가용성의 극대화와 리소스 사용을 최적화해준다.
 <ul>
-<li>그렇다면 새로운 화면, 변화하는 것은 어떻게? -> 기존 Element가 아닌 새로운 Element를 생성하고 바꿔치기 하면 된다.</li>
-<li>이러한 특징 때문에 프론트의 성능은 React Element를 얼마나 많이, 얼마나 자주 새롭게 렌더링 하냐에 달려있다.</li>
+<li>기본적인 전략
+<ul>
+<li>React 서버의 경우 SSR 을 지원하지 않고 기본적인 정적인 데이터들의 전달만을 담당하기 때문에 최대 스케일업은 1 Pod ~ 2Pod 가지로 한다.</li>
+<li>Spring 서버의 경우 연산량과 리소스 사용량이 많은 만큼, 최대 4 Pod 까지 늘어날 수 있게 하되, CPU 연산량과 메모리 사용량의 기준 조건을 높게 둔다. (단, 사용량의 양 측정 후, 리액트와 동일한 수준의 Pod Replica로 둘수도 있다.)</li>
+<li>스케일링 전략은 가능하면 느리게 늘어날 수 있도록 매트릭을 조정하며, 가능한한 무분별한 스케일링은 방지한다. 이에 대한 기준이 될 만한 테스트를 고려해보고, 테스트 기준을 근거로 메트릭스 설정을 지향한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code class="language-text">NGINX Ingress</code>를 활용한 <code class="language-text">서비스 라우팅과 모니터링 시스템의 결합</code> :
+<ul>
+<li>서비스와 같은 Kubenetes 리소스를 활용할 수도 있으나, 다양한 프로토콜 지원, 로드 밸런스, 가상 호스팅을 특화 하는 리소스이다.</li>
+<li>외부와의 연결, 로드 밸런싱도 서비스 객체를 통해 가능한 기술이지만, 최적화되어 있기 해당 방식을 사용한다.</li>
+<li>특히나, 이를 활용하여 Prometheus 와 같은 모니터링 도구와 통합을 통해 요청에 대해 모니터링, 메트릭 수집 및 시각화를 시켜볼 수 있다.</li>
+</ul>
+</li>
+<li>Github Action과 Kubernetes 기능을 활용해 구현하는 <code class="language-text">무중단 배포 기능</code>
+<ul>
+<li>Github 의 Action 시스템을 활용하여, 각각의 레포지터리들을 관리하고, 관리되는 기능들의 공식 릴리즈가 업데이트가 되면, 자동적으로 이를 Action을 활용하여 인식시킨다.</li>
+<li>Kubernetes의 리소스 Pod들은 그 특성상 새로운 버전 업이 이루어지도록 요청을 받아도, 완벽하게 처리되기 전까진 기존 이미지 버전의 Pod를 유지하고, 버전 업에 따른 변화가 완벽하게 적응되기 전까지 기존 서비스를 제공하는 고가용성을 제공한다.</li>
+<li>이러한 점 때문에 Git Action과 Kubernetes의 조합을 통한 무중단 배포를 구현하며, 전략적으로는 가장 기본적인 블루-그린 배포 구조로 구현해낸다.</li>
+</ul>
+</li>
+<li><code class="language-text">Google Analytics</code>
+<ul>
+<li>Google Analytics 는 웹 사이트와 앱의 사용자 행동, 트래픽 소스, 페이지 뷰, 세션 지속 시간, 전환율 등 다양한 데이터 수집 분석용 도구다.</li>
+<li>해당 도구를 통해 방문자들의 행동을 이해하고, 웹 사이트 성능 향상을 위한 인사이트를 얻을 수 있다.</li>
+<li>작동은 기본적으로 자바스크립트 추적 코드를 포함시킴으로 데이터를 수집하고 처리하여 전달해주는데, React 애플리케이션에도 동작하므로, React 컴포넌트 내에서 페이지 뷰와 이벤트를 추적하도록 설정해야 한다.</li>
+<li>또한 react Router 와 연동하여 페이지 전환 시 자동으로 추적 코드를 호출하거나 수동으로 특정 이벤트를 추적할 수 있어서, 기본적으로 <code class="language-text">react-ga</code> 라이브러리를 통해 통합 설정을 진행한다.</li>
 </ul>
 </li>
 </ol>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 67.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAACmElEQVQ4y12SS2/jVgyF9f/X030H7WKAWXaKBlmkSdNB3Ew7sePEtmzr/X5bkmXL1uMr7nWaRQkQlzgkL8lDKnme85/8/u2F43ixh+FizNcmKzt6wwb5VnXD3T9L/i9FUaAURS6TF1uTIMlY3f1BHScywPIiDD9Cn8/xplOJlfWepWbh+wHr21u604mtpqFp2uXDcrfjeGy5vn+UCU+fPpFst9K+f5wS7WqS5YL5L18kZjoeD9MFjAOTHz8ynE88TCZMJhP2+z2KGPm7asmq05XBk+6za1oML2au6jxpHq/3X9GuriQdjy8bXjWbuWrw/PNPdG0rC3Vdx263QwnDENsLCOMUP0qwHI8sy4mSFC+IJA2BaeGpKru6lrEiLghjrOdnsjSlLEuSJJGqjONIXVVYpolpGFRlSRSFRFFEEsdo2w2O69K0LbZtk+cZQeBjWRb9W2fn81mqWJpS1zVxkuB6HoHvEcfxu/pBgOc6hEFAlmWIaQQu3igMKPJcjilUUCc5FG2Kn/uu49urRr1vGMeB0+ksuVlbPpobAqPsgnFkV9b8vdDpx0FiYsq2bWVRRaxaSJIXzFVN8tO/3eDh2KLqFmvD5tieJNb3A24Q86Jq5K7L0PeSQ9Hl+9n0fc+vd3/JhIfZCj/OpH37OCPNC6I0l9sVYvsRf35/vZzVhx84HQ78dnXFzc0Ngj7Z4UJ3ma+2qKbPbKVT1g1BWjBbbnjZWKxNl7Xp0fU9T0uN+Vpna7rMPn9mEAvpOpqmoaoqlDiOUE0Xywtl4spwZFdOEKPZPhvLY2t56E5AWVYsdQfDDdkaDuvra6qi4HQ+y+7SNEURmzk2DYdmz/HQSBXOZr+/YNJ38YvzEn5hH0TsMFDV9TuHh8OBfwHPHspjonW5YAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="20240516113348"
-        title="20240516113348"
-        src="/static/59560d3020b805d3931dc8c9f5a99733/37523/20240516113348.png"
-        srcset="/static/59560d3020b805d3931dc8c9f5a99733/e9ff0/20240516113348.png 180w,
-/static/59560d3020b805d3931dc8c9f5a99733/f21e7/20240516113348.png 360w,
-/static/59560d3020b805d3931dc8c9f5a99733/37523/20240516113348.png 720w,
-/static/59560d3020b805d3931dc8c9f5a99733/f1901/20240516113348.png 942w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span>
-<span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 46.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAABKElEQVQoz42SzUrDQBSF82a+gU/iM7hx4VoQ3IjuBDcilFIQRA1GEygiaYilNopibYykJtNpk3R+jjiJtcq09cLlXu7MfJwzM0ae54jjGIQQRFGEMAyRJImaZVmG2RBCQEo5rbo00jSFbdvwfR+O48A0TbiuC8uy4HkeKKX4SIeg4xyYgc2DGlgQXJZ1q9bGdiNQPeNCweYCvxd1qTYVI7QfXuAHPeRfsyXWjUWwYsKwtnuL+5CCvj7heHUFo0E8vU+dUkMnm3OhDk3GBPXrDvpv74Ao4NeOMCDDEsiZ3vLfAatgV3cRNg5bACQOzrvYO31U84vNdbT2d0ooY8sVclECO70EjZu+6pvdGKYXqj44qeP58qxSyf9nWVRQ9dJC/vxDzn/1Osufgo60/q5XY7oAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="20240516113522"
-        title="20240516113522"
-        src="/static/11db54551fa41d6176a2c24c027ac075/37523/20240516113522.png"
-        srcset="/static/11db54551fa41d6176a2c24c027ac075/e9ff0/20240516113522.png 180w,
-/static/11db54551fa41d6176a2c24c027ac075/f21e7/20240516113522.png 360w,
-/static/11db54551fa41d6176a2c24c027ac075/37523/20240516113522.png 720w,
-/static/11db54551fa41d6176a2c24c027ac075/f6f7a/20240516113522.png 1009w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span>
-<span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 21.666666666666668%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA40lEQVQY023NzWqDQBiFYYnbUpLG6Sj+NNG2aRPI1bkQZ1zrWnDGLEqp5D68g2RdcjFvkZaSRRYP5+Nw4HMu3xeOHx3202A6S2cM1lqsMZg/091bQ9/3Nx0OB9q25Xw+4xyHI9HyjjD28eUjYSh5WHp4MkBKSRD4COmzEJL5fH6T53nMZjOapsEZhi/uF4Ln1z3Zdsd2m7FKVyRve56yF9LNO8lmR5JlpGnMeh2RZglRIImnZ0IghIfrutR1jXM6nSiKAlVpSqUpyxKtFUopyiuVVlSVRmv9m0r976Yuz3PGceQH0gqkj/nrS4UAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="20240516113535"
-        title="20240516113535"
-        src="/static/bbbd69fa512e6570fa35e8b639163260/37523/20240516113535.png"
-        srcset="/static/bbbd69fa512e6570fa35e8b639163260/e9ff0/20240516113535.png 180w,
-/static/bbbd69fa512e6570fa35e8b639163260/f21e7/20240516113535.png 360w,
-/static/bbbd69fa512e6570fa35e8b639163260/37523/20240516113535.png 720w,
-/static/bbbd69fa512e6570fa35e8b639163260/302a4/20240516113535.png 1080w,
-/static/bbbd69fa512e6570fa35e8b639163260/d7e70/20240516113535.png 1286w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<h3 id="렌더링-된-elements를-업데이트-하기" style="position:relative;"><a href="#%EB%A0%8C%EB%8D%94%EB%A7%81-%EB%90%9C-elements%EB%A5%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%ED%95%98%EA%B8%B0" aria-label="렌더링 된 elements를 업데이트 하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>렌더링 된 Elements를 업데이트 하기</h3>
-<div class="gatsby-highlight" data-language="js"><pre style="counter-reset: linenumber NaN" class="language-js line-numbers"><code class="language-js"><span class="token keyword">function</span> <span class="token function">tick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">const</span> element <span class="token operator">=</span> <span class="token punctuation">(</span>
-		<span class="token operator">&lt;</span>div<span class="token operator">></span>
-			<span class="token operator">&lt;</span>h1<span class="token operator">></span>안녕<span class="token punctuation">,</span> 리액트<span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
-			<span class="token operator">&lt;</span>h2<span class="token operator">></span>현재 시간<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">></span>
-		<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-	<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	React<span class="token punctuation">.</span><span class="token constant">DOMR</span><span class="token punctuation">(</span>rendlement<span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">set</span> <span class="token function">Interval</span><span class="token punctuation">(</span>tick<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<h2 id="실습-시계-만들기" style="position:relative;"><a href="#%EC%8B%A4%EC%8A%B5-%EC%8B%9C%EA%B3%84-%EB%A7%8C%EB%93%A4%EA%B8%B0" aria-label="실습 시계 만들기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(실습) 시계 만들기</h2>
+<h2 id="각-부분-별-설명" style="position:relative;"><a href="#%EA%B0%81-%EB%B6%80%EB%B6%84-%EB%B3%84-%EC%84%A4%EB%AA%85" aria-label="각 부분 별 설명 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>각 부분 별 설명</h2>
+<ol>
+<li>Client : 클라이언트의 요청은 Nginx Ingress를 통해 접근 되며, 최초 접근이 되면 당연히 React application 쪽으로 요청이 전달되어 정적 데이터들을 제공받는다.</li>
+<li>Nginx Ingress : Nginx와 추가적인 기능을 제공하는 kubernetes resource 다. 모니터링 통합과 로드 밸런싱을 담당하며, HTTPS 암호화의 기능을 수행한다.</li>
+<li>HPA(프론트, 백) : Horizontal Pod Autoscaler로 기본적으로 Pod들의 모니터링을 담당하며, 시스템 부하를 모니터링한다. 이를 통해 지정된 조건에 맞춰 스케일링이 이루어지며, 리액트는 최대 2개 Replica, 스프링은 최대 3개 Replica를 구현해볼 계획이다.</li>
+<li>Front Service : Front-end 의 외부 접속을 담당한다.</li>
+<li>Back Service : Back-end 의 외부 접속을 담당한다.</li>
+<li>Front Deployment : 실질적인 애플리케이션 리소스</li>
+<li>Back Deployment : 실질적인 애플리케이션 리소스</li>
+<li>Redis Service : Redis 외부 접속을 담당한다.</li>
+<li>Redis Deployment : Redis 애플리케이션 리소스</li>
+<li>PostgreSQL Service : DB 외부 접속을 담당한다.</li>
+<li>PostgresSQL Deployment : DB 애플리케이션 리소스. 기존의 SQLite 는 Kubernetes와 성격적으로 맞지 않으며, Full Search Text 기능을 활용하기 위하여 PostgresSQL을 사용하기로 변경함.</li>
+</ol>
+<h2 id="전체-재원을-위한-하드웨어-리소스-명세" style="position:relative;"><a href="#%EC%A0%84%EC%B2%B4-%EC%9E%AC%EC%9B%90%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EB%AA%85%EC%84%B8" aria-label="전체 재원을 위한 하드웨어 리소스 명세 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>전체 재원을 위한 하드웨어 리소스 명세</h2>
+<h3 id="기본-local" style="position:relative;"><a href="#%EA%B8%B0%EB%B3%B8-local" aria-label="기본 local permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기본, Local</h3>
+<p>구현을 위한 하드웨어 리소스 사용량에 대한 명세를 추정한다. 이는 최소의 추정치인 만큼 향후 더 커질 수 있다.</p>
+<ol>
+<li>React Pod : 128 ~ 512MB, 최대 2개(1GB)</li>
+<li>Spring Pod : 512mb ~ 2GB, 최대 3개(6GB)</li>
+<li>Redis Pod : 512mb ~ 2GB</li>
+<li>PostgreSQL Pod : 1GB ~ 4GB</li>
+<li>Nginx Ingress : 256mb ~ 512mb</li>
+<li>기타 오버헤드 : 1GB ~ 2GB</li>
+</ol>
+<p>=> 최소 3.384GB, 최대 11GB(호스트 OS 재원 제외)
+따라서 이러한 상황에서 내릴 수 있는 결론은 다음과 같다.</p>
+<ol>
+<li>Linux OS 기반의 device로 가상화 오버헤드를 최소화 한다고 하더라도 RAM 16GB 이상의 서버가 필요</li>
+<li>CPU 재원은 따로 고려하지 않았으나, 정상적인 성능을 위한 최소 재원으로 볼 때, DB, Redis, Spring 의 경우가 많이 필요할 수 있고, 오버헤드를 고려한다면 추산치 5.4 vCPU가 필요할 수 있다(최소). 따라서 해당 현재 내가 가진 하드웨어 리소스 기준 4코어의 N100 CPU 탑재 제품과 i5 6세대 서버 PC를 풀로 써야 최소보다 살짝 나은 수준의 기본 구동 성능은 확보할 것으로 예상된다.</li>
+<li>그러나 쿠버네티스에서 사용할 무중단 배포 기능, 여러가지 시스템 자원 사용 양등을 고려한다면 저전력 기반의<mark style="background: #FFB86CA6;"> Ryzen 5세대 8코어 16스레드, 6코어 12스레드 정도의 제품에 32GB 메모리를 탑재한 정도의 성능이라면 아이들 24~25와트, 풀로드 최대 60와트 급으로 권장사양 정도의 성능을 낼 것으로 추정된다.</mark></li>
+</ol>
+<h3 id="eks" style="position:relative;"><a href="#eks" aria-label="eks permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>EKS</h3>
+<h4 id="인스턴스-구성-최소치" style="position:relative;"><a href="#%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EA%B5%AC%EC%84%B1-%EC%B5%9C%EC%86%8C%EC%B9%98" aria-label="인스턴스 구성 최소치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>인스턴스 구성 최소치</h4>
+<ol>
+<li>필요한 리소스 요약
+<ul>
+<li>RAM : 약 8GB</li>
+<li>vCPU : 약 8v CPU</li>
+<li>대략 인스턴스 타입은 범용 인스턴스 m5.large 정도가 필요</li>
+</ul>
+</li>
+<li>실질 클러스터 구성
+<ul>
+<li>4개의 m5.large 인스턴스(각 2v CPU, 8GB RAM 제공)</li>
+<li>총합 8v CPU, 32GB RAM</li>
+</ul>
+</li>
+</ol>
+<h4 id="비용-추산" style="position:relative;"><a href="#%EB%B9%84%EC%9A%A9-%EC%B6%94%EC%82%B0" aria-label="비용 추산 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>비용 추산</h4>
+<ol>
+<li>인스턴스 비용
+<ul>
+<li>m5.large -> $0.096 per hour</li>
+<li>한달 : <code class="language-text">$0.096 * 24 hours * 30 days ≈ $69.12 per 인스턴스</code></li>
+<li>총 비용 : 4개 인스턴스 기준 = <code class="language-text">$69.12 * 4 ≈ $276.48</code></li>
+</ul>
+</li>
+<li>추가 비용
+<ul>
+<li>EKS 관리 비용 : $0.10 per hour per cluster
+<ul>
+<li>월가 : <code class="language-text">$0.10 * 24 hours * 30 days ≈ $72</code></li>
+</ul>
+</li>
+<li>EBS(Elastic Block Store) 비용
+<ul>
+<li>월간 비용 : <code class="language-text">30GB * 4 인스턴스 * $0.10 ≈ $12</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>총 월간 비용
+<ul>
+<li>인스턴스 비용 : 약 $277</li>
+<li>EKS 관리 비용 : 약 $72</li>
+<li>EBS 스토리지 비용 : 약 $12</li>
+<li>총 월 비용 : 약 $361(24.5.21 기준 약 49만원)</li>
+</ul>
+</li>
+</ol>
 <div class="table-of-contents">
 <ul>
 <li>
-<p><a href="#%EC%83%89%EC%85%98-4-rendering-elements">색션 4 Rendering Elements</a></p>
+<p><a href="#%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84%EB%AC%B8%EC%84%9C">아키텍처 설계문서</a></p>
 <ul>
 <li>
-<p><a href="#elements%EC%9D%98-%EC%A0%95%EC%9D%98%EC%99%80-%EC%83%9D%EA%B9%80%EC%83%88">Elements의 정의와 생김새</a></p>
-<ul>
-<li><a href="#elements%EB%9E%80">Elements란?</a></li>
-<li><a href="#%EC%9D%BC%EB%B0%98%EC%A0%81%EC%9D%B8-dom-elements%EC%99%80-react-elements">일반적인 DOM Elements와 React Elements</a></li>
-<li><a href="#elements%EC%9D%98-%EC%83%9D%EA%B9%80%EC%83%88">Elements의 생김새</a></li>
-<li><a href="#%EB%B2%84%ED%8A%BC-%EC%98%88%EC%8B%9C">버튼 예시</a></li>
-</ul>
+<p><a href="#%EC%A0%84%EC%B2%B4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98">전체 아키텍처</a></p>
 </li>
 <li>
-<p><a href="#elements%EC%9D%98-%ED%8A%B9%EC%A7%95-%EB%B0%8F-%EB%A0%8C%EB%8D%94%EB%A7%81-%ED%95%98%EA%B8%B0">Elements의 특징 및 렌더링 하기</a></p>
-<ul>
-<li><a href="#elements%EC%9D%98-%EC%86%8D%EC%84%B1">Elements의 속성</a></li>
-<li><a href="#%EB%A0%8C%EB%8D%94%EB%A7%81-%EB%90%9C-elements%EB%A5%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%ED%95%98%EA%B8%B0">렌더링 된 Elements를 업데이트 하기</a></li>
-</ul>
+<p><a href="#%ED%95%B5%EC%8B%AC-%EA%B8%B0%EB%8A%A5">핵심 기능</a></p>
 </li>
 <li>
-<p><a href="#%EC%8B%A4%EC%8A%B5-%EC%8B%9C%EA%B3%84-%EB%A7%8C%EB%93%A4%EA%B8%B0">(실습) 시계 만들기</a></p>
+<p><a href="#%EA%B0%81-%EB%B6%80%EB%B6%84-%EB%B3%84-%EC%84%A4%EB%AA%85">각 부분 별 설명</a></p>
+</li>
+<li>
+<p><a href="#%EC%A0%84%EC%B2%B4-%EC%9E%AC%EC%9B%90%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EB%AA%85%EC%84%B8">전체 재원을 위한 하드웨어 리소스 명세</a></p>
+<ul>
+<li>
+<p><a href="#%EA%B8%B0%EB%B3%B8-local">기본, Local</a></p>
+</li>
+<li>
+<p><a href="#eks">EKS</a></p>
+<ul>
+<li><a href="#%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EA%B5%AC%EC%84%B1-%EC%B5%9C%EC%86%8C%EC%B9%98">인스턴스 구성 최소치</a></li>
+<li><a href="#%EB%B9%84%EC%9A%A9-%EC%B6%94%EC%82%B0">비용 추산</a></li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/docker-kubernetes/20240515193557/"><div class="direction">이전 글</div><div class="title">docker-kubernetes ) til - 20240513</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/Projects/BTBProject/20240520212941/"><div class="direction">다음 글</div><div class="title">[B2B] 아키텍처 설계문서</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/STUDY/frontend/20240516095202/"><div class="direction">이전 글</div><div class="title">react-frontend ) til - 20240516</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/Projects/BTBProject/20240328104040/"><div class="direction">다음 글</div><div class="title">[BTB] 프로젝트 관리 일지</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/Paul2021-R">류한솔</a> powered by<a href="https://www.gatsbyjs.com/"> Gatsby</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YDPMMYNR6Y"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-YDPMMYNR6Y'
     );
@@ -346,4 +272,4 @@
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', 'G-YDPMMYNR6Y', options);
-  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/STUDY/frontend/20240516095202/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-c638078fc4709f33b879.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js" async=""></script><script src="/app-c638078fc4709f33b879.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-55cbc9fb510ae844c257.js" async=""></script></body></html>
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/Projects/BTBProject/20240520212941/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-c638078fc4709f33b879.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b4cf4fa21ac75e1b706d.js" async=""></script><script src="/app-c638078fc4709f33b879.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-55cbc9fb510ae844c257.js" async=""></script></body></html>
