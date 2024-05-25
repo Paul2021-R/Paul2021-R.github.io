@@ -4,34 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "bb61dd2012058cd1",
+        "id": "24144eccf4c2d51a",
         "type": "tabs",
         "children": [
           {
-            "id": "76149df491f1c788",
+            "id": "99c698700e353c0b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240524113616.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "b879d2885a859efb",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "b03f356d1d9d921e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/docker-kubernetes/20240515193557.md",
+                "file": "STUDY/coding-test/20240524141258.md",
                 "mode": "source",
                 "source": false
               }
@@ -103,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240524113616.md",
+                "file": "STUDY/coding-test/20240524141258.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240524113616.md",
+                "file": "STUDY/coding-test/20240524141258.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/docker-kubernetes/20240524113616.md"
+                "file": "STUDY/coding-test/20240524141258.md"
               }
             }
           }
@@ -166,24 +148,28 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "799749a987e50230",
+  "active": "99c698700e353c0b",
   "lastOpenFiles": [
+    "STUDY/frontend/20240523172530.md",
+    "STUDY/frontend/20240516095202.md",
+    "STUDY/frontend/20240513214825.md",
+    "Projects/20240223080156.md",
+    "STUDY/coding-test/20240520180426.md",
+    "STUDY/coding-test/20240524141258.md",
+    "STUDY/coding-test/20240422060464.md",
+    "STUDY/docker-kubernetes/20240524113616.md",
     "STUDY/docker-kubernetes/src/20240524134439.png",
     "STUDY/docker-kubernetes/20240515193557.md",
-    "STUDY/docker-kubernetes/20240524113616.md",
     "STUDY/docker-kubernetes/src/20240524124732.png",
     "STUDY/docker-kubernetes/src/20240524124716.png",
     "STUDY/docker-kubernetes/src/20240524124654.png",
     "STUDY/docker-kubernetes/src/Pasted image 20240524124630.png",
     "STUDY/docker-kubernetes/src/20240524124227.png",
     "STUDY/docker-kubernetes/src/20240524120155.png",
-    "STUDY/frontend/20240523172530.md",
     "STUDY/frontend/src/20240523222723.png",
     "STUDY/frontend/src/20240523212501.png",
     "STUDY/frontend/src/20240523212412.png",
-    "STUDY/frontend/src/20240523212344.png",
     "STUDY/frontend/20240521091605.md",
-    "STUDY/frontend/20240516095202.md",
     "Projects/BTBProject/20240328104040.md",
     "Projects/BTBProject/20240514150137.md",
     "Projects/BTBProject/20240406013846.md",
@@ -194,16 +180,12 @@
     "STUDY/coding-test/20240320010052.md",
     "STUDY/coding-test/20240313023806.md",
     "STUDY/coding-test/20240418160403.md",
-    "Projects/20240223080156.md",
     "Projects/20240223020331.md",
-    "STUDY/frontend/20240513214825.md",
     "Projects/202402091238.md",
     "Projects/202402010049.md",
     "STUDY/frontend/20240510171350.md",
     "STUDY/docker-kubernetes/20240513135157.md",
     "STUDY/docker-kubernetes/20240510154846.md",
-    "STUDY/docker-kubernetes/20240426160434.md",
-    "STUDY/JAVA/20240512195218.md",
     "STUDY/frontend/src",
     "STUDY/frontend",
     "STUDY/interview/src",
