@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/coding-test/20240524141258.md",
+                "file": "STUDY/frontend/20240527091826.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/coding-test/20240524141258.md",
+                "file": "STUDY/frontend/20240527091826.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/coding-test/20240524141258.md",
+                "file": "STUDY/frontend/20240527091826.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/coding-test/20240524141258.md"
+                "file": "STUDY/frontend/20240527091826.md"
               }
             }
           }
@@ -151,11 +151,12 @@
   "active": "99c698700e353c0b",
   "lastOpenFiles": [
     "STUDY/frontend/20240523172530.md",
+    "STUDY/frontend/20240527091826.md",
+    "STUDY/coding-test/20240524141258.md",
     "STUDY/frontend/20240516095202.md",
     "STUDY/frontend/20240513214825.md",
     "Projects/20240223080156.md",
     "STUDY/coding-test/20240520180426.md",
-    "STUDY/coding-test/20240524141258.md",
     "STUDY/coding-test/20240422060464.md",
     "STUDY/docker-kubernetes/20240524113616.md",
     "STUDY/docker-kubernetes/src/20240524134439.png",
@@ -185,7 +186,6 @@
     "Projects/202402010049.md",
     "STUDY/frontend/20240510171350.md",
     "STUDY/docker-kubernetes/20240513135157.md",
-    "STUDY/docker-kubernetes/20240510154846.md",
     "STUDY/frontend/src",
     "STUDY/frontend",
     "STUDY/interview/src",
