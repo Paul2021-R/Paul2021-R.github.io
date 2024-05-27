@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/frontend/20240527091826.md",
+                "file": "STUDY/frontend/20240523172530.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/frontend/20240527091826.md",
+                "file": "STUDY/frontend/20240523172530.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/frontend/20240527091826.md",
+                "file": "STUDY/frontend/20240523172530.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/frontend/20240527091826.md"
+                "file": "STUDY/frontend/20240523172530.md"
               }
             }
           }
@@ -150,8 +150,8 @@
   },
   "active": "99c698700e353c0b",
   "lastOpenFiles": [
-    "STUDY/frontend/20240523172530.md",
     "STUDY/frontend/20240527091826.md",
+    "STUDY/frontend/20240523172530.md",
     "STUDY/coding-test/20240524141258.md",
     "STUDY/frontend/20240516095202.md",
     "STUDY/frontend/20240513214825.md",
