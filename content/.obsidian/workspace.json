@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "24144eccf4c2d51a",
+        "id": "abd02ca40ced499c",
         "type": "tabs",
         "children": [
           {
-            "id": "99c698700e353c0b",
+            "id": "25812b207084db73",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/frontend/20240523172530.md",
+                "file": "STUDY/frontend/20240528090241.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/frontend/20240523172530.md",
+                "file": "STUDY/frontend/20240528090241.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/frontend/20240523172530.md",
+                "file": "STUDY/frontend/20240528090241.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/frontend/20240523172530.md"
+                "file": "STUDY/frontend/20240528090241.md"
               }
             }
           }
@@ -148,9 +148,16 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "99c698700e353c0b",
+  "active": "25812b207084db73",
   "lastOpenFiles": [
     "STUDY/frontend/20240527091826.md",
+    "STUDY/frontend/20240528090241.md",
+    "Projects/BTBProject/20240328104040.md",
+    "Projects/BTBProject/20240325020721.md",
+    "Projects/BTBProject/20240406013846.md",
+    "Projects/BTBProject/20240514150137.md",
+    "Projects/BTBProject/20240520212941.md",
+    "STUDY/CSAPP/20240415110026.md",
     "STUDY/frontend/20240523172530.md",
     "STUDY/coding-test/20240524141258.md",
     "STUDY/frontend/20240516095202.md",
@@ -171,10 +178,6 @@
     "STUDY/frontend/src/20240523212501.png",
     "STUDY/frontend/src/20240523212412.png",
     "STUDY/frontend/20240521091605.md",
-    "Projects/BTBProject/20240328104040.md",
-    "Projects/BTBProject/20240514150137.md",
-    "Projects/BTBProject/20240406013846.md",
-    "Projects/BTBProject/20240520212941.md",
     "Projects/20240518154910.md",
     "STUDY/coding-test/20240321083437.md",
     "STUDY/coding-test/20240322142654.md",
@@ -183,9 +186,6 @@
     "STUDY/coding-test/20240418160403.md",
     "Projects/20240223020331.md",
     "Projects/202402091238.md",
-    "Projects/202402010049.md",
-    "STUDY/frontend/20240510171350.md",
-    "STUDY/docker-kubernetes/20240513135157.md",
     "STUDY/frontend/src",
     "STUDY/frontend",
     "STUDY/interview/src",
