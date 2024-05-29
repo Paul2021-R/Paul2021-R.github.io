@@ -4,22 +4,47 @@
     "type": "split",
     "children": [
       {
-        "id": "abd02ca40ced499c",
-        "type": "tabs",
+        "id": "d77794cd5b11ff24",
+        "type": "split",
         "children": [
           {
-            "id": "25812b207084db73",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/frontend/20240528090241.md",
-                "mode": "source",
-                "source": false
+            "id": "abd02ca40ced499c",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "25812b207084db73",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "STUDY/coding-test/20240524141258.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
               }
-            }
+            ]
+          },
+          {
+            "id": "d9b7493b59a6ff25",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "315ea7bbdb9edd1a",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "STUDY/coding-test/20240529212047.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              }
+            ]
           }
-        ]
+        ],
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -85,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/frontend/20240528090241.md",
+                "file": "STUDY/coding-test/20240529212047.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/frontend/20240528090241.md",
+                "file": "STUDY/coding-test/20240529212047.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/frontend/20240528090241.md"
+                "file": "STUDY/coding-test/20240529212047.md"
               }
             }
           }
@@ -134,8 +159,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -148,10 +172,13 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "25812b207084db73",
+  "active": "315ea7bbdb9edd1a",
   "lastOpenFiles": [
-    "STUDY/frontend/20240527091826.md",
+    "STUDY/coding-test/20240524141258.md",
+    "STUDY/coding-test/20240529212047.md",
+    "STUDY/coding-test/무제 파일.md",
     "STUDY/frontend/20240528090241.md",
+    "STUDY/frontend/20240527091826.md",
     "Projects/BTBProject/20240328104040.md",
     "Projects/BTBProject/20240325020721.md",
     "Projects/BTBProject/20240406013846.md",
@@ -159,7 +186,6 @@
     "Projects/BTBProject/20240520212941.md",
     "STUDY/CSAPP/20240415110026.md",
     "STUDY/frontend/20240523172530.md",
-    "STUDY/coding-test/20240524141258.md",
     "STUDY/frontend/20240516095202.md",
     "STUDY/frontend/20240513214825.md",
     "Projects/20240223080156.md",
@@ -184,8 +210,6 @@
     "STUDY/coding-test/20240320010052.md",
     "STUDY/coding-test/20240313023806.md",
     "STUDY/coding-test/20240418160403.md",
-    "Projects/20240223020331.md",
-    "Projects/202402091238.md",
     "STUDY/frontend/src",
     "STUDY/frontend",
     "STUDY/interview/src",
