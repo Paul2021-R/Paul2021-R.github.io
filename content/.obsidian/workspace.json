@@ -4,47 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "d77794cd5b11ff24",
-        "type": "split",
+        "id": "2fd6ebdf35f52349",
+        "type": "tabs",
         "children": [
           {
-            "id": "abd02ca40ced499c",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "25812b207084db73",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "STUDY/coding-test/20240524141258.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
+            "id": "25812b207084db73",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Projects/BTBProject/20240531122026.md",
+                "mode": "source",
+                "source": false
               }
-            ]
-          },
-          {
-            "id": "d9b7493b59a6ff25",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "315ea7bbdb9edd1a",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "STUDY/coding-test/20240529212047.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
-              }
-            ]
+            }
           }
-        ],
-        "direction": "horizontal"
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/coding-test/20240529212047.md",
+                "file": "Projects/BTBProject/20240531122026.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/coding-test/20240529212047.md",
+                "file": "Projects/BTBProject/20240531122026.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/coding-test/20240529212047.md"
+                "file": "Projects/BTBProject/20240531122026.md"
               }
             }
           }
@@ -172,18 +147,24 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "315ea7bbdb9edd1a",
+  "active": "799749a987e50230",
   "lastOpenFiles": [
+    "Projects/BTBProject/src/20240531135316.png",
+    "Projects/BTBProject/src/20240531133528.png",
+    "Projects/BTBProject/src/20240531131641.png",
+    "Projects/BTBProject/src/20240531130723.png",
+    "Projects/BTBProject/20240328104040.md",
+    "Projects/BTBProject/20240531122026.md",
+    "Projects/BTBProject/src/project_BTB_v_1.0.0.png",
+    "Projects/BTBProject/20240520212941.md",
+    "Projects/BTBProject/20240406013846.md",
+    "Projects/BTBProject/20240514150137.md",
     "STUDY/coding-test/20240524141258.md",
     "STUDY/coding-test/20240529212047.md",
     "STUDY/coding-test/무제 파일.md",
     "STUDY/frontend/20240528090241.md",
     "STUDY/frontend/20240527091826.md",
-    "Projects/BTBProject/20240328104040.md",
     "Projects/BTBProject/20240325020721.md",
-    "Projects/BTBProject/20240406013846.md",
-    "Projects/BTBProject/20240514150137.md",
-    "Projects/BTBProject/20240520212941.md",
     "STUDY/CSAPP/20240415110026.md",
     "STUDY/frontend/20240523172530.md",
     "STUDY/frontend/20240516095202.md",
@@ -199,17 +180,11 @@
     "STUDY/docker-kubernetes/src/20240524124654.png",
     "STUDY/docker-kubernetes/src/Pasted image 20240524124630.png",
     "STUDY/docker-kubernetes/src/20240524124227.png",
-    "STUDY/docker-kubernetes/src/20240524120155.png",
-    "STUDY/frontend/src/20240523222723.png",
-    "STUDY/frontend/src/20240523212501.png",
-    "STUDY/frontend/src/20240523212412.png",
     "STUDY/frontend/20240521091605.md",
     "Projects/20240518154910.md",
     "STUDY/coding-test/20240321083437.md",
     "STUDY/coding-test/20240322142654.md",
     "STUDY/coding-test/20240320010052.md",
-    "STUDY/coding-test/20240313023806.md",
-    "STUDY/coding-test/20240418160403.md",
     "STUDY/frontend/src",
     "STUDY/frontend",
     "STUDY/interview/src",
