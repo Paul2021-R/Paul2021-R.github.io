@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "2fd6ebdf35f52349",
+        "id": "556467757e04a671",
         "type": "tabs",
         "children": [
           {
-            "id": "25812b207084db73",
+            "id": "98c17a6cab814381",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/nestJS/20240603074630.md",
+                "file": "STUDY/TypeScript/20240603161349.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "02d5a075cc6688b0",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/nestJS/20240603074630.md",
+                "file": "STUDY/TypeScript/20240603161349.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/nestJS/20240603074630.md",
+                "file": "STUDY/TypeScript/20240603161349.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/nestJS/20240603074630.md"
+                "file": "STUDY/TypeScript/20240603161349.md"
               }
             }
           }
@@ -134,7 +135,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -147,8 +148,15 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "799749a987e50230",
+  "active": "98c17a6cab814381",
   "lastOpenFiles": [
+    "STUDY/TypeScript/20240603132943.md",
+    "STUDY/TypeScript/20240603161349.md",
+    "STUDY/nestJS/20240603125033.md",
+    "STUDY/TypeScript",
+    "STUDY/nestJS/20240603074630.md",
+    "STUDY/docker-kubernetes/20240524113616.md",
+    "STUDY/Development English/202401041006.md",
     "STUDY/nestJS/src/20240603091959.png",
     "STUDY/nestJS/src/20240603085208.png",
     "STUDY/nestJS/src/20240603085118.png",
@@ -157,13 +165,11 @@
     "STUDY/nestJS/src/20240603083918.png",
     "STUDY/nestJS/src/20240603081929.png",
     "STUDY/nestJS/src/20240603081907.png",
-    "STUDY/nestJS/20240603074630.md",
     "STUDY/nestJS/src",
     "Projects/BTBProject/20240531122026.md",
     "STUDY/nestJS",
     "Projects/BTBProject/src/20240531135316.png",
     "Projects/BTBProject/src/20240531133528.png",
-    "Projects/BTBProject/src/20240531131641.png",
     "Projects/BTBProject/20240328104040.md",
     "Projects/BTBProject/20240520212941.md",
     "Projects/BTBProject/20240406013846.md",
@@ -181,12 +187,8 @@
     "Projects/20240223080156.md",
     "STUDY/coding-test/20240520180426.md",
     "STUDY/coding-test/20240422060464.md",
-    "STUDY/docker-kubernetes/20240524113616.md",
     "STUDY/docker-kubernetes/20240515193557.md",
     "STUDY/frontend/20240521091605.md",
-    "Projects/20240518154910.md",
-    "STUDY/coding-test/20240321083437.md",
-    "STUDY/coding-test/20240322142654.md",
     "STUDY/frontend/src",
     "STUDY/frontend",
     "STUDY/interview/src",
