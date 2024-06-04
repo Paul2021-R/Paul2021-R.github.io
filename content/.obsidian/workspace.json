@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/TypeScript/20240603161349.md",
+                "file": "STUDY/TypeScript/20240604153540.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "02d5a075cc6688b0",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/TypeScript/20240603161349.md",
+                "file": "STUDY/TypeScript/20240604153540.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/TypeScript/20240603161349.md",
+                "file": "STUDY/TypeScript/20240604153540.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/TypeScript/20240603161349.md"
+                "file": "STUDY/TypeScript/20240604153540.md"
               }
             }
           }
@@ -135,7 +134,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -150,11 +149,13 @@
   },
   "active": "98c17a6cab814381",
   "lastOpenFiles": [
-    "STUDY/TypeScript/20240603132943.md",
+    "STUDY/TypeScript/20240604130732.md",
+    "STUDY/TypeScript/20240604153540.md",
     "STUDY/TypeScript/20240603161349.md",
     "STUDY/nestJS/20240603125033.md",
-    "STUDY/TypeScript",
     "STUDY/nestJS/20240603074630.md",
+    "STUDY/TypeScript/20240603132943.md",
+    "STUDY/TypeScript",
     "STUDY/docker-kubernetes/20240524113616.md",
     "STUDY/Development English/202401041006.md",
     "STUDY/nestJS/src/20240603091959.png",
@@ -187,8 +188,6 @@
     "Projects/20240223080156.md",
     "STUDY/coding-test/20240520180426.md",
     "STUDY/coding-test/20240422060464.md",
-    "STUDY/docker-kubernetes/20240515193557.md",
-    "STUDY/frontend/20240521091605.md",
     "STUDY/frontend/src",
     "STUDY/frontend",
     "STUDY/interview/src",
