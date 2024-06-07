@@ -4,22 +4,47 @@
     "type": "split",
     "children": [
       {
-        "id": "556467757e04a671",
-        "type": "tabs",
+        "id": "e04deacab837128c",
+        "type": "split",
         "children": [
           {
-            "id": "98c17a6cab814381",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/TypeScript/20240604153540.md",
-                "mode": "source",
-                "source": false
+            "id": "ff89a76f8781f5af",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "bb23388348aef3d0",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "STUDY/TypeScript/20240605091959.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
               }
-            }
+            ]
+          },
+          {
+            "id": "556467757e04a671",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "98c17a6cab814381",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "STUDY/AWS/20240607105147.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              }
+            ]
           }
-        ]
+        ],
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -85,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/TypeScript/20240604153540.md",
+                "file": "STUDY/AWS/20240607105147.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/TypeScript/20240604153540.md",
+                "file": "STUDY/AWS/20240607105147.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/TypeScript/20240604153540.md"
+                "file": "STUDY/AWS/20240607105147.md"
               }
             }
           }
@@ -149,12 +174,15 @@
   },
   "active": "98c17a6cab814381",
   "lastOpenFiles": [
-    "STUDY/TypeScript/20240604130732.md",
+    "STUDY/TypeScript/20240605091959.md",
+    "STUDY/AWS/20240607105147.md",
+    "STUDY/AWS",
     "STUDY/TypeScript/20240604153540.md",
+    "STUDY/TypeScript/20240604130732.md",
     "STUDY/TypeScript/20240603161349.md",
+    "STUDY/TypeScript/20240603132943.md",
     "STUDY/nestJS/20240603125033.md",
     "STUDY/nestJS/20240603074630.md",
-    "STUDY/TypeScript/20240603132943.md",
     "STUDY/TypeScript",
     "STUDY/docker-kubernetes/20240524113616.md",
     "STUDY/Development English/202401041006.md",
@@ -186,8 +214,6 @@
     "STUDY/frontend/20240516095202.md",
     "STUDY/frontend/20240513214825.md",
     "Projects/20240223080156.md",
-    "STUDY/coding-test/20240520180426.md",
-    "STUDY/coding-test/20240422060464.md",
     "STUDY/frontend/src",
     "STUDY/frontend",
     "STUDY/interview/src",
