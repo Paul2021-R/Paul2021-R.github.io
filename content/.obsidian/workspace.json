@@ -13,7 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/AWS/20240607105147.md",
+                "file": "STUDY/AWS/20240607105151.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a8db3c156cfaf583",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STUDY/TypeScript/20240605091959.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "02d5a075cc6688b0",
@@ -86,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/AWS/20240607105147.md",
+                "file": "STUDY/AWS/20240607105151.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/AWS/20240607105147.md",
+                "file": "STUDY/AWS/20240607105151.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/AWS/20240607105147.md"
+                "file": "STUDY/AWS/20240607105151.md"
               }
             }
           }
@@ -135,8 +146,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200.5,
-    "collapsed": true
+    "width": 253.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -151,10 +161,23 @@
   },
   "active": "c11938dacf78e07a",
   "lastOpenFiles": [
+    "STUDY/AWS/20240607105150.md",
+    "STUDY/AWS/20240607105149.md",
+    "STUDY/AWS/20240607105148.md",
+    "STUDY/AWS/20240607105147.md",
+    "STUDY/AWS/20240607105151.md",
+    "STUDY/AWS/src/Pasted image 20240609140825.png",
+    "STUDY/AWS/src/20240609140015.png",
+    "STUDY/AWS/src/20240609112033.png",
+    "STUDY/AWS/src/202406090837.png",
+    "STUDY/TypeScript/20240605091959.md",
+    "STUDY/AWS/src/20240608233338.png",
+    "STUDY/AWS/src/20240608231754.png",
+    "STUDY/AWS/src/20240608231559.png",
+    "STUDY/AWS/src/20240608231411.png",
+    "STUDY/AWS/src/20240608095715.png",
     "STUDY/AWS/src/20240607115717.png",
     "STUDY/AWS/src",
-    "STUDY/AWS/20240607105147.md",
-    "STUDY/TypeScript/20240605091959.md",
     "STUDY/AWS",
     "STUDY/TypeScript/20240604153540.md",
     "STUDY/TypeScript/20240604130732.md",
@@ -165,19 +188,9 @@
     "STUDY/TypeScript",
     "STUDY/docker-kubernetes/20240524113616.md",
     "STUDY/Development English/202401041006.md",
-    "STUDY/nestJS/src/20240603091959.png",
-    "STUDY/nestJS/src/20240603085208.png",
-    "STUDY/nestJS/src/20240603085118.png",
-    "STUDY/nestJS/src/20240603084958.png",
-    "STUDY/nestJS/src/20240603083928.png",
-    "STUDY/nestJS/src/20240603083918.png",
-    "STUDY/nestJS/src/20240603081929.png",
-    "STUDY/nestJS/src/20240603081907.png",
     "STUDY/nestJS/src",
     "Projects/BTBProject/20240531122026.md",
     "STUDY/nestJS",
-    "Projects/BTBProject/src/20240531135316.png",
-    "Projects/BTBProject/src/20240531133528.png",
     "Projects/BTBProject/20240328104040.md",
     "Projects/BTBProject/20240520212941.md",
     "Projects/BTBProject/20240406013846.md",
@@ -189,9 +202,6 @@
     "STUDY/frontend/20240527091826.md",
     "Projects/BTBProject/20240325020721.md",
     "STUDY/CSAPP/20240415110026.md",
-    "STUDY/frontend/20240523172530.md",
-    "STUDY/frontend/20240516095202.md",
-    "STUDY/frontend/20240513214825.md",
     "STUDY/frontend/src",
     "STUDY/frontend",
     "STUDY/interview/src",
