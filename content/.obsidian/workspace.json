@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/CSAPP/20240611225220.md",
+                "file": "STUDY/nestJS/20240616172228.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/CSAPP/20240611225220.md",
+                "file": "STUDY/nestJS/20240616172228.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/CSAPP/20240611225220.md",
+                "file": "STUDY/nestJS/20240616172228.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/CSAPP/20240611225220.md"
+                "file": "STUDY/nestJS/20240616172228.md"
               }
             }
           }
@@ -148,14 +148,15 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "799749a987e50230",
+  "active": "c11938dacf78e07a",
   "lastOpenFiles": [
+    "STUDY/CSAPP/20240611225220.md",
+    "STUDY/nestJS/20240616172228.md",
+    "STUDY/nestJS/20240609163555.md",
     "STUDY/CSAPP/src/20240616170055.png",
     "STUDY/CSAPP/src/20240616005058.png",
     "STUDY/CSAPP/20240415110026.md",
-    "STUDY/CSAPP/20240611225220.md",
     "STUDY/CSAPP/20240409213823.md",
-    "STUDY/nestJS/20240609163555.md",
     "STUDY/nestJS/20240603125033.md",
     "STUDY/AWS/20240607105151.md",
     "STUDY/AWS/20240607105149.md",
@@ -171,7 +172,6 @@
     "STUDY/AWS/src/20240608231754.png",
     "STUDY/AWS/src/20240608231559.png",
     "STUDY/AWS/src/20240608231411.png",
-    "STUDY/AWS/src/20240608095715.png",
     "STUDY/AWS/src",
     "STUDY/AWS",
     "STUDY/TypeScript/20240604153540.md",
