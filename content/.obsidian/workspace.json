@@ -13,19 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/AWS/20240607105151.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "a8db3c156cfaf583",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STUDY/TypeScript/20240605091959.md",
+                "file": "STUDY/CSAPP/20240611225220.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/AWS/20240607105151.md",
+                "file": "STUDY/CSAPP/20240611225220.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/AWS/20240607105151.md",
+                "file": "STUDY/CSAPP/20240611225220.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/AWS/20240607105151.md"
+                "file": "STUDY/CSAPP/20240611225220.md"
               }
             }
           }
@@ -146,26 +134,34 @@
       }
     ],
     "direction": "horizontal",
-    "width": 253.5
+    "width": 253.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:퀵 스위처 열기": false,
-      "graph:그래프 뷰 열기": false,
-      "canvas:새 캔버스 만들기": false,
-      "daily-notes:오늘의 데일리 노트 열기": false,
-      "templates:템플릿 삽입": false,
-      "command-palette:명령어 팔레트 열기": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c11938dacf78e07a",
+  "active": "799749a987e50230",
   "lastOpenFiles": [
-    "STUDY/AWS/20240607105150.md",
+    "STUDY/CSAPP/src/20240616170055.png",
+    "STUDY/CSAPP/src/20240616005058.png",
+    "STUDY/CSAPP/20240415110026.md",
+    "STUDY/CSAPP/20240611225220.md",
+    "STUDY/CSAPP/20240409213823.md",
+    "STUDY/nestJS/20240609163555.md",
+    "STUDY/nestJS/20240603125033.md",
+    "STUDY/AWS/20240607105151.md",
     "STUDY/AWS/20240607105149.md",
+    "STUDY/AWS/20240607105150.md",
     "STUDY/AWS/20240607105148.md",
     "STUDY/AWS/20240607105147.md",
-    "STUDY/AWS/20240607105151.md",
     "STUDY/AWS/src/Pasted image 20240609140825.png",
     "STUDY/AWS/src/20240609140015.png",
     "STUDY/AWS/src/20240609112033.png",
@@ -176,14 +172,12 @@
     "STUDY/AWS/src/20240608231559.png",
     "STUDY/AWS/src/20240608231411.png",
     "STUDY/AWS/src/20240608095715.png",
-    "STUDY/AWS/src/20240607115717.png",
     "STUDY/AWS/src",
     "STUDY/AWS",
     "STUDY/TypeScript/20240604153540.md",
     "STUDY/TypeScript/20240604130732.md",
     "STUDY/TypeScript/20240603161349.md",
     "STUDY/TypeScript/20240603132943.md",
-    "STUDY/nestJS/20240603125033.md",
     "STUDY/nestJS/20240603074630.md",
     "STUDY/TypeScript",
     "STUDY/docker-kubernetes/20240524113616.md",
@@ -197,11 +191,6 @@
     "Projects/BTBProject/20240514150137.md",
     "STUDY/coding-test/20240524141258.md",
     "STUDY/coding-test/20240529212047.md",
-    "STUDY/coding-test/무제 파일.md",
-    "STUDY/frontend/20240528090241.md",
-    "STUDY/frontend/20240527091826.md",
-    "Projects/BTBProject/20240325020721.md",
-    "STUDY/CSAPP/20240415110026.md",
     "STUDY/frontend/src",
     "STUDY/frontend",
     "STUDY/interview/src",
