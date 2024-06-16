@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-category-template-js",
+    "path": "/posts/backendd",
+    "result": {"pageContext":{"currentCategory":"backendd","categories":["All","til","backendd","study","backend","project","algorithm","frontend","java","etc","js","42seoul"],"edges":[{"node":{"id":"d8975438-c571-5a08-924f-5bcd15529997","excerpt":"Jest unit testing… 회사에서 개발하기 시작한 서버에서 본격적으로 유닛 테스트를 구현하는 방법에 대한 이해가 필요한 상황이다. 이에 공식 문서를 보면서 좀 정리를 해둘 필요를 느껴 정리해본다… Getting Started 설치 특정 메서드를 생성한다. 테스트 파일을 만들어 보자 그 뒤  에 아래의 내용을 기록하면 된다. 이제는  혹은  을 이용해 jest 테스트를 실행할 수 있다. 그리고 Jest는 다음과 같은 메시지를 띄울 것이다. Test with NestJS 자동화된 테스트는 어떤 진지한 소프트웨어 개발의 필수적인 영역이다. 자동화는 개별적인 테스트의 반복을 쉽게 만들어주고, 개발 과정 동안 테스트를 빠르고 쉽게 하도록 도와준다. 자동화는 개별 개발자들의 생산성을 증대시키며, 소스 코드 제어 체크인, 기능 통합 및 버전 릴리스와 같은 중요한 개발 수명 주기 시점에서 테스트가 실행되도록 보장한다. 이러한 점에서 Nest 프레임워크는 효과적인 테스트를 포함한 개발을 …","fields":{"slug":"/STUDY/nestJS/20240616172228/"},"frontmatter":{"categories":"til backendd","title":"Jest 테스터 코드 작성하기 (1)","date":"June 16, 2024"}},"next":{"fields":{"slug":"/STUDY/CSAPP/20240611225220/"}},"previous":null}]}},
+    "staticQueryHashes": ["1073350324","1956554647","2938748437"]}
