@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "ea3c0a94825a2bb1",
+        "id": "b69ab10643da67ac",
         "type": "tabs",
         "children": [
           {
-            "id": "c11938dacf78e07a",
+            "id": "f0c072464a49e3c3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/nestJS/20240616172228.md",
+                "file": "STUDY/CSAPP/20240629115215.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 269.49999618530273
   },
   "right": {
     "id": "02d5a075cc6688b0",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/nestJS/20240616172228.md",
+                "file": "STUDY/CSAPP/20240629115215.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/nestJS/20240616172228.md",
+                "file": "STUDY/CSAPP/20240629115215.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/nestJS/20240616172228.md"
+                "file": "STUDY/CSAPP/20240629115215.md"
               }
             }
           }
@@ -148,10 +148,20 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c11938dacf78e07a",
+  "active": "799749a987e50230",
   "lastOpenFiles": [
+    "STUDY/CSAPP/src/20240630032959.png",
+    "STUDY/CSAPP/src/20240630032944.png",
+    "STUDY/CSAPP/src/20240630031412.png",
+    "STUDY/CSAPP/20240619214432.md",
+    "STUDY/CSAPP/20240629115215.md",
+    "STUDY/CSAPP/src/20240620001720.png",
+    "STUDY/frontend/src/desktop.ini",
+    "ETC/20220508/src/desktop.ini",
+    "desktop.ini",
     "STUDY/CSAPP/20240611225220.md",
     "STUDY/nestJS/20240616172228.md",
+    "STUDY/CSAPP/20240229121939.md",
     "STUDY/nestJS/20240609163555.md",
     "STUDY/CSAPP/src/20240616170055.png",
     "STUDY/CSAPP/src/20240616005058.png",
@@ -169,9 +179,6 @@
     "STUDY/AWS/src/202406090837.png",
     "STUDY/TypeScript/20240605091959.md",
     "STUDY/AWS/src/20240608233338.png",
-    "STUDY/AWS/src/20240608231754.png",
-    "STUDY/AWS/src/20240608231559.png",
-    "STUDY/AWS/src/20240608231411.png",
     "STUDY/AWS/src",
     "STUDY/AWS",
     "STUDY/TypeScript/20240604153540.md",
@@ -187,14 +194,7 @@
     "STUDY/nestJS",
     "Projects/BTBProject/20240328104040.md",
     "Projects/BTBProject/20240520212941.md",
-    "Projects/BTBProject/20240406013846.md",
-    "Projects/BTBProject/20240514150137.md",
-    "STUDY/coding-test/20240524141258.md",
-    "STUDY/coding-test/20240529212047.md",
     "STUDY/frontend/src",
-    "STUDY/frontend",
-    "STUDY/interview/src",
-    "desktop.ini",
-    "STUDY/interview"
+    "STUDY/frontend"
   ]
 }
