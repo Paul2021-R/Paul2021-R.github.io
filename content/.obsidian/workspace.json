@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/CSAPP/20240629115215.md",
+                "file": "STUDY/CSAPP/20240706195916.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/CSAPP/20240629115215.md",
+                "file": "STUDY/CSAPP/20240706195916.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/CSAPP/20240629115215.md",
+                "file": "STUDY/CSAPP/20240706195916.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/CSAPP/20240629115215.md"
+                "file": "STUDY/CSAPP/20240706195916.md"
               }
             }
           }
@@ -148,23 +148,26 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "799749a987e50230",
+  "active": "f0c072464a49e3c3",
   "lastOpenFiles": [
+    "STUDY/CSAPP/src/20240616005058.png",
+    "STUDY/CSAPP/20240706195916.md",
+    "STUDY/CSAPP/src/20240706233439.png",
+    "STUDY/CSAPP/src/20240706233432.png",
+    "STUDY/CSAPP/20240629115215.md",
+    "STUDY/CSAPP/20240619214432.md",
+    "STUDY/nestJS/20240616172228.md",
     "STUDY/CSAPP/src/20240630032959.png",
     "STUDY/CSAPP/src/20240630032944.png",
     "STUDY/CSAPP/src/20240630031412.png",
-    "STUDY/CSAPP/20240619214432.md",
-    "STUDY/CSAPP/20240629115215.md",
     "STUDY/CSAPP/src/20240620001720.png",
     "STUDY/frontend/src/desktop.ini",
     "ETC/20220508/src/desktop.ini",
     "desktop.ini",
     "STUDY/CSAPP/20240611225220.md",
-    "STUDY/nestJS/20240616172228.md",
     "STUDY/CSAPP/20240229121939.md",
     "STUDY/nestJS/20240609163555.md",
     "STUDY/CSAPP/src/20240616170055.png",
-    "STUDY/CSAPP/src/20240616005058.png",
     "STUDY/CSAPP/20240415110026.md",
     "STUDY/CSAPP/20240409213823.md",
     "STUDY/nestJS/20240603125033.md",
@@ -175,10 +178,7 @@
     "STUDY/AWS/20240607105147.md",
     "STUDY/AWS/src/Pasted image 20240609140825.png",
     "STUDY/AWS/src/20240609140015.png",
-    "STUDY/AWS/src/20240609112033.png",
-    "STUDY/AWS/src/202406090837.png",
     "STUDY/TypeScript/20240605091959.md",
-    "STUDY/AWS/src/20240608233338.png",
     "STUDY/AWS/src",
     "STUDY/AWS",
     "STUDY/TypeScript/20240604153540.md",
@@ -193,7 +193,6 @@
     "Projects/BTBProject/20240531122026.md",
     "STUDY/nestJS",
     "Projects/BTBProject/20240328104040.md",
-    "Projects/BTBProject/20240520212941.md",
     "STUDY/frontend/src",
     "STUDY/frontend"
   ]
