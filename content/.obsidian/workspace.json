@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STUDY/CSAPP/20240706195916.md",
+                "file": "STUDY/AWS/20240709032957.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "STUDY/CSAPP/20240706195916.md",
+                "file": "STUDY/AWS/20240709032957.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "STUDY/CSAPP/20240706195916.md",
+                "file": "STUDY/AWS/20240709032957.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STUDY/CSAPP/20240706195916.md"
+                "file": "STUDY/AWS/20240709032957.md"
               }
             }
           }
@@ -148,10 +148,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "f0c072464a49e3c3",
+  "active": "799749a987e50230",
   "lastOpenFiles": [
-    "STUDY/CSAPP/src/20240616005058.png",
+    "STUDY/AWS/src/20240709033212.png",
+    "STUDY/AWS/20240607105151.md",
+    "STUDY/AWS/20240709032957.md",
+    "STUDY/AWS/20240607105150.md",
     "STUDY/CSAPP/20240706195916.md",
+    "STUDY/CSAPP/src/20240616005058.png",
     "STUDY/CSAPP/src/20240706233439.png",
     "STUDY/CSAPP/src/20240706233432.png",
     "STUDY/CSAPP/20240629115215.md",
@@ -171,12 +175,10 @@
     "STUDY/CSAPP/20240415110026.md",
     "STUDY/CSAPP/20240409213823.md",
     "STUDY/nestJS/20240603125033.md",
-    "STUDY/AWS/20240607105151.md",
     "STUDY/AWS/20240607105149.md",
-    "STUDY/AWS/20240607105150.md",
     "STUDY/AWS/20240607105148.md",
     "STUDY/AWS/20240607105147.md",
-    "STUDY/AWS/src/Pasted image 20240609140825.png",
+    "STUDY/AWS/src/20240609140825.png",
     "STUDY/AWS/src/20240609140015.png",
     "STUDY/TypeScript/20240605091959.md",
     "STUDY/AWS/src",
@@ -192,7 +194,6 @@
     "STUDY/nestJS/src",
     "Projects/BTBProject/20240531122026.md",
     "STUDY/nestJS",
-    "Projects/BTBProject/20240328104040.md",
     "STUDY/frontend/src",
     "STUDY/frontend"
   ]
