@@ -23,7 +23,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Paul2021-R"},"description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"about","url":"http://localhost:4000/about.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="icon" href="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1600658982/noticon/hk60kbfbqnedpguy0gbb.png">
+<link rel="icon" href="./assets/images/android-chrome-192x192.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
   <link rel="stylesheet" href="/assets/css/main.css">
@@ -386,12 +386,22 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
-<header class="site-header " role="banner">
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
 
   <div class="wrapper">
     <div class="site-header-inner">
 <span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
-  <img class="site-favicon" title="Paul's Archives" src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1600658982/noticon/hk60kbfbqnedpguy0gbb.png" onerror="this.style.display='none'">
+  <img class="site-favicon" title="Paul's Archives" src="./assets/images/android-chrome-192x192.png" onerror="this.style.display='none'">
   Paul's Archives
 </a>
 </span><nav class="site-nav">
@@ -570,7 +580,7 @@ function googleTranslateElementInit() {
     var documentElement = document.documentElement;
 
     function storeScrollData() {
-      var y = getScrollPos().y;var scrollStatus = "";
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
 
       if (y <= 0) {
         scrollStatus = "top";
@@ -737,7 +747,125 @@ function googleTranslateElementInit() {
 
 
 
-<script>
+
+
+
+
+
+
+
+
+
+
+<style>
+    html .page-banner {
+      background: #000;
+    }
+  </style>
+<style>html .page-banner {
+      height:  36.8vh;
+      min-height: 38vh;
+    }
+    html[data-scroll-status="top"] .page-banner {
+      height: 100vh;
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-img > *:first-child {
+      opacity: 0.618;
+    }
+
+    html[data-theme="dark"] .page-banner .page-banner-img > *:first-child {
+      opacity: 0.443724;
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-inner > *:first-child > *:nth-child(1) {
+      font-size: 4.25em; font-weight: bold; text-decoration: underline
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-inner > *:first-child > *:nth-child(2) {
+      color: gold
+    }
+  </style>
+<section class="page-banner">
+    <div class="page-banner-img">
+<video autoplay="" poster="https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg" playsinline>
+          <source src="https://cdn.pixabay.com/video/2015/12/11/1656-148614494_medium.mp4">
+        </source></video>
+        <script>
+          (function() {
+            var video = document.querySelector('.page-banner .page-banner-img > video');
+            var videoPlay = function() {
+              video.play().catch (function() {
+                  video.muted = true;
+                  video.play();
+                });
+            }
+
+            video.onloadstart = function() {
+              video.currentTime = 0;
+              video.volume = 0;
+              video.muted = (video.volume == 0);
+              videoPlay();
+            }
+
+            video.onended = function() {
+              video.currentTime = 0;
+              video.volume = 0;video.play();}
+          })();
+        </script>
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">about</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="" itemprop="datePublished"><i class="fa fa-calendar"></i> 
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+  </p></header>
+</div>
+    </div>
+  </section><script>
   function hashLocate(hashValue) {
     hashValue = hashValue.replace(/^.*#h-/, '');
     hashValue = decodeURIComponent(hashValue);

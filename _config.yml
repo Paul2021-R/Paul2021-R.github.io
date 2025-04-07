@@ -49,12 +49,16 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://paul2021-r.github.io" # the base hostname & protocol for your site, e.g. https://example.com
-favicon: "https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1600658982/noticon/hk60kbfbqnedpguy0gbb.png" # the favicon for your site
+favicon: "./assets/images/android-chrome-192x192.png" # the favicon for your site
 
 # Yat date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
 yat:
   date_format: " %Y년 %m월 %d일"
+
+exclude:
+  - temp
+  - temp/**/*
 
 # If you want more debug log, you can set true
 # debug: false
@@ -164,18 +168,18 @@ yat:
 # Banner default settings
 # These banner settings are for global banner default, but you can also
 # config it by the front matter for one specific post
-# banner:
-#   video: null             # Video banner source
-#   loop: true              # Video loop
-#   volume: 0               # Video volume (100% is 1.0)
-#   start_at: 0             # Video start time
-#   image: null             # Image banner source
-#   opacity: 1.0            # Banner opacity (100% is 1.0)
-#   background: "rgba(0, 0, 0, 0.8)"  # Banner background (Could be a image)
-#   height: "640px"         # Banner default height
-#   min_height: null        # Banner minimum height
-#   heading_style: null     # Custom heading style (e.g. "font-weight: bold; text-decoration: underline")
-#   subheading_style: null  # Custom subheading style (e.g. color: gold)
+banner:
+  video: "https://cdn.pixabay.com/video/2015/12/11/1656-148614494_medium.mp4"             # Video banner source
+  loop: true              # Video loop
+  volume: 0               # Video volume (100% is 1.0)
+  start_at: 0             # Video start time
+  image: "https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg"             # Image banner source
+  opacity: 0.618
+  background: "#000"
+  height: "100vh"
+  min_height: "38vh"
+  heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
+  subheading_style: "color: gold" # Custom subheading style (e.g. color: gold)
 
 # Excerpt size setting
 # excerpt_size: 350
