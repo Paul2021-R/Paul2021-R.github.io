@@ -107,7 +107,7 @@ html {
 
     .site-favicon {
       display: inline-block;
-      height: $header-height / 1.5;
+      height: calc($header-height / 1.5);
       margin-right: 5px;
     }
   }
@@ -406,6 +406,8 @@ html {
     overflow-wrap: normal;
     word-wrap: normal;
     word-break: normal;
+    font-size: 15px; // 여기에 원하는 폰트 크기 추가
+
 
     h2 {
       @include relative-font-size(2);
@@ -680,7 +682,7 @@ html {
   }
 
   @include media-query($on-palm) {
-    height: $banner-height / 1.5;
+    height: calc($banner-height / 1.5);
   }
 }
 

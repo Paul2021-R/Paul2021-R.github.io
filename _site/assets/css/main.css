@@ -564,6 +564,7 @@ html[data-scroll-status=down] .framework .sidebar {
   overflow-wrap: normal;
   word-wrap: normal;
   word-break: normal;
+  font-size: 15px;
 }
 .post .post-content h2 {
   font-size: 28px;
@@ -1116,27 +1117,27 @@ html[data-theme=dark] .post-menu .post-menu-content ul a:hover {
   border-left: 1px solid #e9ecef;
 }
 .post-menu .post-menu-content ul .h-h2 {
-  padding-inline-start: 3.5px;
+  padding-inline-start: caclc(3.5px)0px;
   font-size: 15.4px;
   line-height: 1.4;
 }
 .post-menu .post-menu-content ul .h-h3 {
-  padding-inline-start: 21.7px;
+  padding-inline-start: caclc(3.5px)18.2px;
   font-size: 15.4px;
   line-height: 1.4;
 }
 .post-menu .post-menu-content ul .h-h4 {
-  padding-inline-start: 39.9px;
+  padding-inline-start: caclc(3.5px)36.4px;
   font-size: 15.4px;
   line-height: 1.4;
 }
 .post-menu .post-menu-content ul .h-h5 {
-  padding-inline-start: 58.1px;
+  padding-inline-start: caclc(3.5px)54.6px;
   font-size: 15.4px;
   line-height: 1.4;
 }
 .post-menu .post-menu-content ul .h-h6 {
-  padding-inline-start: 76.3px;
+  padding-inline-start: caclc(3.5px)72.8px;
   font-size: 15.4px;
   line-height: 1.4;
 }
