@@ -177,7 +177,7 @@ banner:
   opacity: 0.618
   background: "#000"
   height: "70vh"
-  min_height: "38vh"
+  min_height: "20vh"
   heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
   subheading_style: "color: gold" # Custom subheading style (e.g. color: gold)
 
