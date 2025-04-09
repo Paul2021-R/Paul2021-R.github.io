@@ -176,7 +176,7 @@ banner:
   image: "https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg"             # Image banner source
   opacity: 0.618
   background: "#000"
-  height: "100vh"
+  height: "70vh"
   min_height: "38vh"
   heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
   subheading_style: "color: gold" # Custom subheading style (e.g. color: gold)
