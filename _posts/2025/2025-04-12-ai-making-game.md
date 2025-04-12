@@ -19,7 +19,7 @@ banner:
   subheading_style: "color: gold"
 ---
 
-## 이런 영상을 보았다
+## AI 어디까지 가능할까? 게임 가능할까?
 이런 영상을 보았다. 
 
 ![](https://www.youtube.com/watch?v=NSXsTq6zg_s)

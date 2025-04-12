@@ -72,7 +72,7 @@ exclude:
 # enableDNT: "false"
 
 # 웹사이트 사이트맵을 생성하고 싶다면 true로 설정하세요
-# sitemap: false
+sitemap: true
 
 # 사이트 언어를 변경하고 싶다면 lang 옵션을 설정하세요
 lang: "kr"  # 기본 언어는 영어입니다
@@ -149,8 +149,8 @@ banner:
   image: "https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg"             # Image banner source
   opacity: 0.618
   background: "#000"
-  height: "70vh"
-  min_height: "20vh"
+  height: "60vh"
+  min_height: "10vh"
   heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
   subheading_style: "color: gold" # Custom subheading style (e.g. color: gold)
 
