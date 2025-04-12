@@ -2,25 +2,26 @@
 layout: post 
 title: AI 로 어디까지 가능할까? 
 subtitle: 진짜 혼자 만들기 가능?
+thumb: /assets/images/banners/AI_tools_2034_a6f14cb052.png
 categories: 생각정리
 tags: etc 생각정리 게임
-favicon: "./assets/images/favicon-32x32.png"
+custom-excerpt: AI를 활용해 게임을 만들 수 있을까? 고민을 정리해보았다
 banner:
   video: https://cdn.pixabay.com/video/2021/09/27/89894-616430996_large.mp4
   loop: true
   volume: 0.8
   # start_at: 8.5
-  image: hhttps://wallpapers.com/images/high/tetris-gaming-blocks-y7ldgkg8xcwjk3t0.webp
+  image: https://wallpapers.com/images/high/tetris-gaming-blocks-y7ldgkg8xcwjk3t0.webp
   opacity: 0.618
   background: "#000"
-  height: "100vh"
-  min_height: "38vh"
+  height: "50vh"
   heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
   subheading_style: "color: gold"
+
 ---
 
-## AI 어디까지 가능할까? 게임 가능할까?
-이런 영상을 보았다. 
+## AI 어디까지 가능할까? 게임 만들 수 있을까?
+이런 영상을 보았다
 
 ![](https://www.youtube.com/watch?v=NSXsTq6zg_s)
 

@@ -9,35 +9,66 @@
   <!-- Post list links -->
   <ul class="post-list">
     {%- for post in paginator.posts -%}
-    <li>
+    <li class="post-card">
       {%- assign date_format = site.yat.date_format | default: "%b %-d, %Y" -%}
-
       {% assign article = post.content %}
       {% assign lang = post.lang %}
       {%- include functions.html func='get_reading_time' -%}
       {% assign reading_time = return %}
-      {%- include functions.html func='get_article_excerpt' -%}
+      {%- include functions.html
+        func='get_article_excerpt'
+        article=post.content
+        lang=post.lang
+        excerpt_size=site.excerpt_size
+   -%}
       {% assign excerpt = return %}
       {%- assign post_url = post.url | relative_url -%}
+    
+      <div class="post-card-inner">
 
-      <h2 class="post-title">
-        <a class="post-link" href="{{ post_url }}">
-          {{ post.title | escape }}
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> {{ post.date | date: date_format }}</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> {{ reading_time }}</span>
-      </div>
-      <a class="post-excerpt" href="{{ post_url }}">
-        <p>
-        {{ excerpt }} <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags">
-        {%- for tag in post.tags -%}
-        <a class="post-tag" href="{{ '/tags.html ' | relative_url }}#{{tag}}">#{{tag}}</a>
-        {%- endfor -%}
+        {% if post.thumb %}
+        <div class="post-thumbnail">
+          <a href="{{ post_url }}">
+            <img src="{{ post.thumb | relative_url }}" alt="{{ post.title }}">
+          </a>
+        </div>
+        {% else %}
+        <div class="post-thumbnail">
+          <a href="{{ post_url }}">
+            <img src="{{ site.excerpt.default_image | relative_url }}" alt="{{ post.title }}">
+          </a>
+        </div>
+        {% endif %}
+    
+        <div class="post-info">
+          <h2 class="post-title">
+            <a class="post-link" href="{{ post_url }}">
+              {{ post.title | escape }}
+            </a>
+          </h2>
+          <div class="post-meta">
+            <span class="post-date"><i class="fa fa-calendar"></i> {{ post.date | date: date_format }}</span>
+            <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> {{ reading_time }}</span>
+          </div>
+
+          {% if post.custom-excerpt %}
+          <a class="post-excerpt" href="{{ post_url }}">
+            <p>{{ post.custom-excerpt }} <span class="read_more">...Read More</span></p>
+          </a>
+          {% else %}
+          <a class="post-excerpt" href="{{ post_url }}">
+            <p>{{ excerpt}} <span class="read_more">...Read More</span></p>
+          </a>
+          {% endif %}
+
+
+          <div class="post-tags">
+            {%- for tag in post.tags -%}
+            <a class="post-tag" href="{{ '/tags.html' | relative_url }}#{{tag}}">#{{tag}}</a>
+            {%- endfor -%}
+          </div>
+        </div>
+    
       </div>
     </li>
     {%- endfor -%}

@@ -40,7 +40,8 @@ author: Paul2021-R
 #   "Copyright (c) 2017-{currentYear} <a href="https://example.com">{author}</a>"
 #   "Copyright © 2017-2021 Foobar"
 
-copyright: "Unpublished Work (cleft) 2017-{currentYear} {author}"
+copyright: "Unpublished Work (cleft) 2021-{currentYear} {author}"
+
 
 description: >- # this means to ignore newlines until "baseurl:"
   성장하는 개발자, 소통하는 개발자, 
@@ -79,8 +80,30 @@ lang: "kr"  # 기본 언어는 영어입니다
 
 # 언어 번역
 # 언어 참조: https://cloud.google.com/translate/docs/languages
-# translate_langs:
-#   [언어 설정 부분은 기존과 동일하게 유지]
+translate_langs:
+  - lang: en
+    img: https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png
+    text: English
+
+  - lang: fr
+    img: https://cdn.countryflags.com/thumbs/france/flag-400.png
+    text: French
+
+  - lang: zh-CN
+    img: https://cdn.countryflags.com/thumbs/china/flag-400.png
+    text: Chinese(Simple)
+
+  - lang: ja
+    img: https://cdn.countryflags.com/thumbs/japan/flag-400.png
+    text: Japanese
+
+  - lang: ru
+    img: https://cdn.countryflags.com/thumbs/russia/flag-400.png
+    text: Russian
+
+  # - lang: ko
+  #   img: https://cdn.countryflags.com/thumbs/south-korea/flag-400.png
+  #   text: Korean
 
 # 테마 색상 선택
 # 기본 테마 색상은 다음과 같습니다:
@@ -140,25 +163,43 @@ lang: "kr"  # 기본 언어는 영어입니다
 # 배너 기본 설정
 # 이 배너 설정은 전역 배너 기본값이지만,
 # front matter를 통해 특정 게시물에 대해 구성할 수도 있습니다
-
 banner:
-  video: "https://cdn.pixabay.com/video/2015/12/11/1656-148614494_medium.mp4"             # Video banner source
+  video: https://cdn.pixabay.com/video/2015/12/11/1656-148614494_medium.mp4         # Video banner source
   loop: true              # Video loop
   volume: 0               # Video volume (100% is 1.0)
   start_at: 0             # Video start time
-  image: "https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg"             # Image banner source
+  image: https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg            # Image banner source
   opacity: 0.618
   background: "#000"
-  height: "60vh"
-  min_height: "10vh"
+  height: "40vh"
   heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
   subheading_style: "color: gold" # Custom subheading style (e.g. color: gold)
 
-# 발췌 크기 설정
-# excerpt_size: 350
+# exceprt 설정
+excerpt:
+  default_image: /assets/images/default-image.png  # Default image when the image style is not none
+  image_style: z          # Image layout style (It's value could be none, left, right, top, z, z-reverse)
+  image_width: 38.2%      # Image default width
+  image_height: 160px     # Image default height
+  text_size: 350          # Words default size
 
 # 페이지네이션 설정
-paginate: 10
+show_excerpts: true     # 요약 텍스트 보여주기
+paginate: 5             # 한 페이지에 보여줄 포스트 수
+paginate_path: "/page:num/"
+
+# Photo previewer settings (PhotoSwipe 5)
+# the options please refer to: https://photoswipe.com/options/
+# photo_previewer:
+#  gallery: "section.main"
+#  children: "a.photo-swipe"
+#  bgOpacity: 0.8
+#  padding:
+#    top: 20
+#    bottom: 40
+#    left: 100
+#    right: 100
+
 
 # Disqus 댓글
 # disqus:
@@ -188,7 +229,6 @@ utterances:
 markdown: kramdown
 kmarkdown:
   input: GFM
-asset_url: /assets
 
 plugins:
   - jekyll-feed

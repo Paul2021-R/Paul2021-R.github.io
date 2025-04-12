@@ -1430,4 +1430,37 @@ html[data-theme=dark] .click-to-top {
   background: #34323D;
 }
 
+.post-card {
+  display: flex;
+  align-items: flex-start;
+}
+
+.post-card-inner {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.post-card-inner.reverse {
+  flex-direction: row-reverse;
+}
+
+.post-thumbnail {
+  flex-shrink: 0;
+  width: 180px;
+  max-height: auto;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.post-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-info {
+  flex-grow: 1;
+}
+
 /*# sourceMappingURL=main.css.map */

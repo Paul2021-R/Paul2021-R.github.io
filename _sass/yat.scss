@@ -39,6 +39,8 @@ $banner-background: rgba(0,0,0,0.8) !default;
 $on-palm:          600px !default;
 $on-laptop:        800px !default;
 
+
+
 // Use media queries like this:
 // @include media-query($on-palm) {
 //   .wrapper {
@@ -66,5 +68,5 @@ $on-laptop:        800px !default;
   "misc/common-list",
   "misc/google-translate",
   "misc/gitment",
-  "misc/click-to-top"
-;
+  "misc/click-to-top",
+  "_custom"
