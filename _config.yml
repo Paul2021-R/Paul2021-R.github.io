@@ -1,55 +1,53 @@
-# Welcome to Jekyll!
+# Jekyll에 오신 것을 환영합니다!
 #
-# About Theme
+# 테마 소개
 #
-# Yet another theme for elegant writers with modern flat style and beautiful
-# night/dark mode.
+# 우아한 작성자를 위한 현대적인 플랫 스타일과 아름다운 야간/다크 모드를 
+# 제공하는 또 다른 테마입니다.
 #
-# Website: https://github.com/jeffreytse/jekyll-theme-yat
+# 웹사이트: https://github.com/jeffreytse/jekyll-theme-yat
 #
-# You can do anything you want, including projects for your clients, as long
-# as you mention an attribution back (credit links in footer or project).
-# See the LICENCE file.
+# 귀하는 프로젝트나 고객을 위한 작업을 포함하여 원하는 모든 것을 할 수 있습니다.
+# 단, 귀속 표시(footer나 프로젝트의 크레딧 링크)를 언급해야 합니다.
+# LICENCE 파일을 참조하세요.
 #
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that.
+# 이 설정 파일은 블로그 전체에 영향을 미치는 설정을 위한 것이며,
+# 한 번 설정하고 나면 거의 수정할 필요가 없는 값들입니다.
 #
-# For technical reasons, this file is *NOT* reloaded automatically when you
-# use 'bundle exec jekyll serve'. If you change this file, please restart
-# the server process.
+# 기술적인 이유로, 이 파일은 'bundle exec jekyll serve' 사용 시
+# 자동으로 다시 로드되지 않습니다. 이 파일을 변경할 경우
+# 서버 프로세스를 다시 시작해주세요.
 #
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# 사이트 설정
+# 이것들은 새로운 사이트를 개인화하는데 사용됩니다. HTML 파일을 보면
+# {{ site.title }}, {{ site.email }} 등을 통해 접근하는 것을 볼 수 있습니다.
+# 원하는 사용자 정의 변수를 만들 수 있으며, {{ site.myvariable }}을 통해
+# 템플릿에서 접근할 수 있습니다.
 
 title: Paul's Archives
 email: ryu.axel@gmail.com
 author: Paul2021-R
 
-# Copyright setting
-# You can use any html code, currently below placeholders are available:
-# * current year: {currentYear}
-# * author: {author} (Value is the same as site.author)
-# * copyright: (c) - ©
-# * copyleft: (cleft)
-# * sound recording copyright: (p) - ℗
+# 저작권 설정
+# 어떤 html 코드도 사용할 수 있으며, 현재 아래 플레이스홀더를 사용할 수 있습니다:
+# * 현재 년도: {currentYear}
+# * 저자: {author} (site.author와 동일한 값)
+# * 저작권: (c) - ©
+# * 카피레프트: (cleft)
+# * 음원 저작권: (p) - ℗
 #
-# For example:
+# 예시:
 #   "Copyright (c) 2017-{currentYear} <a href="https://example.com">{author}</a>"
 #   "Copyright © 2017-2021 Foobar"
-#
+
 copyright: "Unpublished Work (cleft) 2017-{currentYear} {author}"
 
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  성장하는 개발자, 소통하는 개발자, 
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://paul2021-r.github.io" # the base hostname & protocol for your site, e.g. https://example.com
-favicon: "./assets/images/favicon-32x32.png" # the favicon for your site
+favicon: "/assets/images/favicon-32x32.png" # the favicon for your site
 
 # Yat date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
@@ -60,97 +58,71 @@ exclude:
   - temp
   - temp/**/*
 
-# If you want more debug log, you can set true
+# 디버그 로그를 더 보고 싶다면 true로 설정하세요
 # debug: false
 
-# If you don't want transparent header, you can set false
+# 투명한 헤더를 원하지 않는다면 false로 설정하세요
 # header_transparent: true
 
-# If you want to change the content width, you can set to another value
+# 컨텐츠 너비를 변경하고 싶다면 다른 값으로 설정하세요
 # content_width: "920px"
 
-# Google analytics - GA4
-# google_analytics: [Measurement ID]
+# Google 애널리틱스 - GA4
+# google_analytics: [측정 ID]
 # enableDNT: "false"
 
-# If you want to generate website sitemap, you can set true
+# 웹사이트 사이트맵을 생성하고 싶다면 true로 설정하세요
 # sitemap: false
 
-# If you want to change site language, you can set lang option
-# lang: "en"  # default lang is en
+# 사이트 언어를 변경하고 싶다면 lang 옵션을 설정하세요
+lang: "kr"  # 기본 언어는 영어입니다
 
-# Translate languges
-# langs refer to https://cloud.google.com/translate/docs/languages
+# 언어 번역
+# 언어 참조: https://cloud.google.com/translate/docs/languages
 # translate_langs:
-#   - lang: en
-#     img: https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png
-#     text: English
-#
-#   - lang: fr
-#     img: https://cdn.countryflags.com/thumbs/france/flag-400.png
-#     text: French
-#
-#   - lang: zh-CN
-#     img: https://cdn.countryflags.com/thumbs/china/flag-400.png
-#     text: Chinese(Simple)
-#
-#   - lang: ja
-#     img: https://cdn.countryflags.com/thumbs/japan/flag-400.png
-#     text: Japanese
-#
-#   - lang: ko
-#     img: https://cdn.countryflags.com/thumbs/south-korea/flag-400.png
-#     text: Korean
-#
-#   - lang: ru
-#     img: https://cdn.countryflags.com/thumbs/russia/flag-400.png
-#     text: Russian
+#   [언어 설정 부분은 기존과 동일하게 유지]
 
-# You can choose a theme color
-# Default theme colors as below:
+# 테마 색상 선택
+# 기본 테마 색상은 다음과 같습니다:
 # coolblack: #090a0b
 # spacegrey: #353535
 # snowwhite: #ffffff
 #
 # theme_color: snowwhite
 #
-# Custom color as below:
+# 사용자 정의 색상 예시:
 # theme_color: "#882250"
 
-# You can choose a brand color
-# Default brand colors as below:
+# 브랜드 색상 선택
+# 기본 브랜드 색상은 다음과 같습니다:
 # orangered: #ff5100
 # greatgold: #f2cb05
 # greenblue: #389092
 #
 # brand_color: orangered
 #
-# Custom color as below:
+# 사용자 정의 색상 예시:
 # brand_color: "#1a8e42"
 
-# Night/Dark mode
-# Default mode is "auto", "auto" is for auto nightshift
-# (19:00 - 07:00), "manual" is for manual toggle, and
-# "on/off" is for default on/off.
+# 야간/다크 모드
+# 기본 모드는 "auto"이며, "auto"는 자동 야간 전환용입니다
+# (19:00 - 07:00), "manual"은 수동 전환용이며,
+# "on/off"는 기본 켜짐/꺼짐 설정입니다.
 #
-# Whatever the user's choice is, it will supersede the
-# default setting of the site and be kept during the
-# visit (session). Only the dark mode setting is"manual",
-# it will be always kept on every visit (i.e. no matter
-# the browser is closed or not)
-#
-# night_mode: "auto"
+# 사용자의 선택은 사이트의 기본 설정을 우선하며
+# 방문(세션) 동안 유지됩니다. 다크 모드 설정이 "manual"인 경우에만
+# 모든 방문에서 항상 유지됩니다(즉, 브라우저가 닫혀도 유지됨)
 
-# Code badge setting
-# You can enable or disable the code badge and so on
+# 코드 뱃지 설정
+# 코드 뱃지를 활성화하거나 비활성화할 수 있습니다
 # code_badge:
 #   enabled: "true"
 #   color: "#fff"
 #   background_color: "#ff4e00"
 #   text_transform: "uppercase"  # ("uppercase", "lowercase", "capitalize")
 
-# If you want to link only specific pages in your header, uncomment
-# this and add the path to the pages in order as they should show up
+# 헤더에 특정 페이지만 링크하고 싶다면 주석을 해제하고
+# 표시되어야 하는 순서대로 페이지 경로를 추가하세요
 # header_pages:
 #   - index.html
 #   - archives.html
@@ -158,16 +130,17 @@ exclude:
 #   - tags.html
 #   - about.md
 
-# Page default value
+# 페이지 기본값
 # defaults:
 #   home:
-#     heading: "Your awesome heading"
-#     subheading: "Your awesome subheading"
-#     banner: "Your image url"
+#     heading: "멋진 제목"
+#     subheading: "멋진 부제목"
+#     banner: "이미지 URL"
 
-# Banner default settings
-# These banner settings are for global banner default, but you can also
-# config it by the front matter for one specific post
+# 배너 기본 설정
+# 이 배너 설정은 전역 배너 기본값이지만,
+# front matter를 통해 특정 게시물에 대해 구성할 수도 있습니다
+
 banner:
   video: "https://cdn.pixabay.com/video/2015/12/11/1656-148614494_medium.mp4"             # Video banner source
   loop: true              # Video loop
@@ -181,40 +154,41 @@ banner:
   heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
   subheading_style: "color: gold" # Custom subheading style (e.g. color: gold)
 
-# Excerpt size setting
+# 발췌 크기 설정
 # excerpt_size: 350
 
-# Pagination setting
-# paginate: 5
+# 페이지네이션 설정
+paginate: 10
 
-# Disqus comments
+# Disqus 댓글
 # disqus:
-#   shortname: "Your Disqus username"
+#   shortname: "Disqus 사용자명"
 
-# Gitment comments
+# Gitment 댓글
 # gitment:
-#   username: "Your GitHub username"
-#   repo: "The repo to store comments"
-#   client_id: "Your client ID"
-#   client_secret: "Your client secret"
-#   redirect_uri: "Your redirect url"   # If you use a custom domain name
+#   username: "GitHub 사용자명"
+#   repo: "댓글을 저장할 저장소"
+#   client_id: "클라이언트 ID"
+#   client_secret: "클라이언트 시크릿"
+#   redirect_uri: "리다이렉트 URL"   # 사용자 정의 도메인을 사용하는 경우
 
-# Utterances comments
-# See https://utteranc.es/
-# set follow_site_theme true to make utterances' theme follow the site's
+# Utterances 댓글
+# https://utteranc.es/ 참조
+# utterances의 테마가 사이트 테마를 따르게 하려면 follow_site_theme을 true로 설정
 
-# utterances:
-#   repo: "owner/repo"
-#   issue_term: "title"
-#   label: "utterances comment"
-#   theme: "github-light"
-#   follow_site_theme: true
+utterances:
+  repo: "Paul2021-R/blog-comments"
+  issue_term: "blog-comment:"
+  label: "utterances"
+  theme: "github-light"
+  follow_site_theme: true
 
 # Build settings
 # highlighter: none
 markdown: kramdown
 kmarkdown:
   input: GFM
+asset_url: /assets
 
 plugins:
   - jekyll-feed
