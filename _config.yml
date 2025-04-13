@@ -167,6 +167,7 @@ banner:
   video: https://cdn.pixabay.com/video/2015/12/11/1656-148614494_medium.mp4         # Video banner source
   loop: true              # Video loop
   volume: 0               # Video volume (100% is 1.0)
+  muted: true
   start_at: 0             # Video start time
   image: https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg            # Image banner source
   opacity: 0.618
