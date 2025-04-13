@@ -10,6 +10,7 @@ banner:
   video: https://cdn.pixabay.com/video/2021/09/27/89894-616430996_large.mp4
   loop: true
   volume: 0.8
+  muted: true
   # start_at: 8.5
   image: https://wallpapers.com/images/high/tetris-gaming-blocks-y7ldgkg8xcwjk3t0.webp
   opacity: 0.618
