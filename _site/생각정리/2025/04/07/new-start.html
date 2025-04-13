@@ -805,13 +805,52 @@ function googleTranslateElementInit() {
           <source src="https://cdn.pixabay.com/video/2019/10/04/27539-364430966_large.mp4">
         </source></video>
         <script>
+          // (function() {
+          //   var video = document.querySelector('.page-banner .page-banner-img > video');
+          //   var videoPlay = function() {
+          //     video.play().catch (function() {
+          //         video.muted = true;
+          //         video.play();
+          //       });
+          //   }
+
+          //   video.onloadstart = function() {
+          //     video.currentTime = 0;
+          //     video.volume = 0.8;
+          //     video.muted = (video.volume == 0);
+          //     videoPlay();
+          //   }
+
+          //   video.onended = function() {
+          //     video.currentTime = 0;
+          //     video.volume = 0;
+          ////     video.play();
+          ////   }
+          // })();
           (function() {
+          // 모바일 기기 감지
+          var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+          
+          if (isMobile) {
+            // 모바일에서는 비디오 요소 제거하고 이미지로 대체
+            var video = document.querySelector('.page-banner .page-banner-img > video');
+            if (video) {
+              // 비디오 요소 제거
+              video.parentNode.removeChild(video);
+              
+              // 이미지 배경 추가
+              var imgDiv = document.createElement('div');
+              imgDiv.style.backgroundImage = 'url(https://wallpapers.com/images/featured-full/running-wl9pg3zeygysq0ps.jpg)';
+              document.querySelector('.page-banner .page-banner-img').appendChild(imgDiv);
+            }
+          } else {
+            // 데스크톱에서만 비디오 로직 실행
             var video = document.querySelector('.page-banner .page-banner-img > video');
             var videoPlay = function() {
               video.play().catch (function() {
-                  video.muted = true;
-                  video.play();
-                });
+                video.muted = true;
+                video.play();
+              });
             }
 
             video.onloadstart = function() {
@@ -824,7 +863,8 @@ function googleTranslateElementInit() {
             video.onended = function() {
               video.currentTime = 0;
               video.volume = 0;video.play();}
-          })();
+          }
+        })();
         </script>
 </div>
     <div class="wrapper">

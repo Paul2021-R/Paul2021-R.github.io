@@ -805,13 +805,52 @@ function googleTranslateElementInit() {
           <source src="https://cdn.pixabay.com/video/2021/09/27/89894-616430996_large.mp4">
         </source></video>
         <script>
+          // (function() {
+          //   var video = document.querySelector('.page-banner .page-banner-img > video');
+          //   var videoPlay = function() {
+          //     video.play().catch (function() {
+          //         video.muted = true;
+          //         video.play();
+          //       });
+          //   }
+
+          //   video.onloadstart = function() {
+          //     video.currentTime = 0;
+          //     video.volume = 0.8;
+          //     video.muted = (video.volume == 0);
+          //     videoPlay();
+          //   }
+
+          //   video.onended = function() {
+          //     video.currentTime = 0;
+          //     video.volume = 0;
+          ////     video.play();
+          ////   }
+          // })();
           (function() {
+          // 모바일 기기 감지
+          var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+          
+          if (isMobile) {
+            // 모바일에서는 비디오 요소 제거하고 이미지로 대체
+            var video = document.querySelector('.page-banner .page-banner-img > video');
+            if (video) {
+              // 비디오 요소 제거
+              video.parentNode.removeChild(video);
+              
+              // 이미지 배경 추가
+              var imgDiv = document.createElement('div');
+              imgDiv.style.backgroundImage = 'url(https://wallpapers.com/images/high/tetris-gaming-blocks-y7ldgkg8xcwjk3t0.webp)';
+              document.querySelector('.page-banner .page-banner-img').appendChild(imgDiv);
+            }
+          } else {
+            // 데스크톱에서만 비디오 로직 실행
             var video = document.querySelector('.page-banner .page-banner-img > video');
             var videoPlay = function() {
               video.play().catch (function() {
-                  video.muted = true;
-                  video.play();
-                });
+                video.muted = true;
+                video.play();
+              });
             }
 
             video.onloadstart = function() {
@@ -824,7 +863,8 @@ function googleTranslateElementInit() {
             video.onended = function() {
               video.currentTime = 0;
               video.volume = 0;video.play();}
-          })();
+          }
+        })();
         </script>
 </div>
     <div class="wrapper">
@@ -1172,8 +1212,8 @@ function googleTranslateElementInit() {
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game.html" title="">AI 로 어디까지 가능할까?</a></li>
-<li><a class="post-link" href="/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/07/new-start.html" title="">기술 블로그를 다시 시작하면서</a></li>
+        <li><a class="post-link" href="/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/07/new-start.html" title="">기술 블로그를 다시 시작하면서</a></li>
+<li><a class="post-link" href="/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game.html" title="">AI 로 어디까지 가능할까?</a></li>
 </ul>
     </div>
 <div class="post-comments">

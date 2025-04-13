@@ -74,13 +74,54 @@
           <source src="{{ banner_video }}">
         </video>
         <script>
+          // (function() {
+          //   var video = document.querySelector('.page-banner .page-banner-img > video');
+          //   var videoPlay = function() {
+          //     video.play().catch (function() {
+          //         video.muted = true;
+          //         video.play();
+          //       });
+          //   }
+
+          //   video.onloadstart = function() {
+          //     video.currentTime = {{ banner_start_at }};
+          //     video.volume = {{ banner_volume }};
+          //     video.muted = (video.volume == 0);
+          //     videoPlay();
+          //   }
+
+          //   video.onended = function() {
+          //     video.currentTime = {{ banner_start_at }};
+          //     video.volume = 0;
+          //   {%- if banner_loop -%}
+          //     video.play();
+          //   {%- endif -%}
+          //   }
+          // })();
           (function() {
+          // 모바일 기기 감지
+          var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+          
+          if (isMobile) {
+            // 모바일에서는 비디오 요소 제거하고 이미지로 대체
+            var video = document.querySelector('.page-banner .page-banner-img > video');
+            if (video) {
+              // 비디오 요소 제거
+              video.parentNode.removeChild(video);
+              
+              // 이미지 배경 추가
+              var imgDiv = document.createElement('div');
+              imgDiv.style.backgroundImage = 'url({{ banner_image }})';
+              document.querySelector('.page-banner .page-banner-img').appendChild(imgDiv);
+            }
+          } else {
+            // 데스크톱에서만 비디오 로직 실행
             var video = document.querySelector('.page-banner .page-banner-img > video');
             var videoPlay = function() {
               video.play().catch (function() {
-                  video.muted = true;
-                  video.play();
-                });
+                video.muted = true;
+                video.play();
+              });
             }
 
             video.onloadstart = function() {
@@ -97,7 +138,8 @@
               video.play();
             {%- endif -%}
             }
-          })();
+          }
+        })();
         </script>
       {%- else -%}
         <div style="background-image: url({{ banner_image }})"></div>
