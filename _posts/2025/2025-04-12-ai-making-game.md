@@ -23,7 +23,8 @@ banner:
 ## AI 어디까지 가능할까? 게임 만들 수 있을까?
 이런 영상을 보았다
 
-![](https://www.youtube.com/watch?v=NSXsTq6zg_s)
+<!-- ![](https://www.youtube.com/watch?v=NSXsTq6zg_s) -->
+[![5090사서...](https://img.youtube.com/vi/NSXsTq6zg_s/0.jpg)](https://www.youtube.com/watch?v=NSXsTq6zg_s)
 
 엄밀히 말하면 5090을 가진 어마무시한 분의 이야기... 지금 살 수 있는 사람이 몇이나 될까하는 글카로 벤치에 AI까지 돌리는 내용인데.. 나에게는 다소 다르게 보였다. 
 
