@@ -14,7 +14,7 @@ banner:
   image: https://wallpapers.com/images/high/tetris-gaming-blocks-y7ldgkg8xcwjk3t0.webp
   opacity: 0.618
   background: "#000"
-  height: "50vh"
+  height: "100vh"
   heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
   subheading_style: "color: gold"
 

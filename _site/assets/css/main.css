@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * Reset some basic elements
  */
@@ -1430,7 +1431,7 @@ html[data-theme=dark] .click-to-top {
   background: #34323D;
 }
 
-.post-card {
+--- --- .post-card {
   display: flex;
   align-items: flex-start;
 }
@@ -1461,6 +1462,48 @@ html[data-theme=dark] .click-to-top {
 
 .post-info {
   flex-grow: 1;
+}
+
+/* 모바일 화면을 위한 미디어 쿼리 */
+@media screen and (max-width: 767px) {
+  .post-card-inner,
+  .post-card-inner.reverse {
+    flex-direction: column !important; /* !important 추가 */
+    gap: 1rem !important;
+  }
+  .post-thumbnail {
+    width: 100% !important;
+    height: 200px !important;
+    margin-bottom: 0.5rem !important;
+  }
+}
+/* 페이지 배너 스타일 */
+@media screen and (max-width: 767px) {
+  .page-banner {
+    /* 변수 대신 직접 값 사용 */
+    height: 200px !important;
+  }
+  .page-banner .page-banner-inner > *:first-child > :nth-child(1) {
+    font-size: 3rem !important;
+  }
+  .page-banner .page-banner-inner > *:first-child > :nth-child(2) {
+    font-size: 1.3rem !important;
+  }
+  .page-banner .page-banner-inner .post-subtitle {
+    padding-right: 0 !important;
+    font-size: 1.2rem !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .page-banner {
+    height: 150px !important;
+  }
+  .page-banner .page-banner-inner > *:first-child > :nth-child(1) {
+    font-size: 2.8rem !important;
+  }
+  .page-banner .page-banner-inner > *:first-child > :nth-child(2) {
+    font-size: 1rem !important;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

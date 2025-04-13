@@ -44,7 +44,7 @@ copyright: "Unpublished Work (cleft) 2021-{currentYear} {author}"
 
 
 description: >- # this means to ignore newlines until "baseurl:"
-  성장하는 개발자, 소통하는 개발자, 
+  성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://paul2021-r.github.io" # the base hostname & protocol for your site, e.g. https://example.com
@@ -69,8 +69,8 @@ exclude:
 # content_width: "920px"
 
 # Google 애널리틱스 - GA4
-# google_analytics: [측정 ID]
-# enableDNT: "false"
+google_analytics: G-YDPMMYNR6Y
+enableDNT: "false"
 
 # 웹사이트 사이트맵을 생성하고 싶다면 true로 설정하세요
 sitemap: true
@@ -171,7 +171,7 @@ banner:
   image: https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg            # Image banner source
   opacity: 0.618
   background: "#000"
-  height: "40vh"
+  height: "100vh"
   heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
   subheading_style: "color: gold" # Custom subheading style (e.g. color: gold)
 
