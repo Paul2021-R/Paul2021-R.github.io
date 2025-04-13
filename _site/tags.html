@@ -133,7 +133,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
   function initPhotoSwipe() {
     var mainEl = document.querySelector("section.main");
 
-    var imgEls = mainEl.querySelectorAll("img:not(.emoji)");
+    // var imgEls = mainEl.querySelectorAll("img:not(.emoji)");
+    var imgEls = mainEl.querySelectorAll("section.main img:not(.emoji):not(.post-thumbnail img)");
     imgEls.forEach((imgEl) => {
       imgEl.outerHTML = `
     <a class="photo-swipe"
