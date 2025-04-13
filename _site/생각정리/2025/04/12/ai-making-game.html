@@ -138,6 +138,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
     var imgEls = mainEl.querySelectorAll("img:not(.emoji):not(.post-thumbnail img):not([src*='youtube']):not([src*='youtu.be'])");
 
     imgEls.forEach((imgEl) => {
+
+      if(imgEl.parentNode.href && 
+       (imgEl.parentNode.href.includes('youtube.com') || 
+        imgEl.parentNode.href.includes('youtu.be'))) {
+      return; // YouTube 관련 이미지는 건너뛰기
+    }
+
       imgEl.outerHTML = `
     <a class="photo-swipe"
       href="${imgEl.src}"
