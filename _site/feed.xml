@@ -1,4 +1,184 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-04-13T06:20:52+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">AI 로 어디까지 가능할까?</title><link href="http://localhost:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game.html" rel="alternate" type="text/html" title="AI 로 어디까지 가능할까?" /><published>2025-04-12T00:00:00+00:00</published><updated>2025-04-12T00:00:00+00:00</updated><id>http://localhost:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game</id><content type="html" xml:base="http://localhost:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game.html"><![CDATA[<h2 id="ai-어디까지-가능할까-게임-만들-수-있을까">AI 어디까지 가능할까? 게임 만들 수 있을까?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-04-27T09:49:36+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">클린 코드를 위한 룰</title><link href="http://localhost:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html" rel="alternate" type="text/html" title="클린 코드를 위한 룰" /><published>2025-04-27T00:00:00+00:00</published><updated>2025-04-27T00:00:00+00:00</updated><id>http://localhost:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming</id><content type="html" xml:base="http://localhost:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html"><![CDATA[<h2 id="-클린-코드-황금-6원칙-스터디-정리"><strong>🧠 클린 코드 황금 6원칙 스터디 정리</strong></h2>
+
+<p><img src="/assets/images/posts/2025-04-27-0002.png" alt="" /></p>
+
+<blockquote>
+  <p>링크드인에서 개발과 관련한 이미지를 한 장봤다. 새롭게 개편한 블로그를 위한 글도 써야 하고, ‘오랜만에 정리 해 봐야겠구나’ 라는 생각이 들었다. 왜냐면 이제 개발을 시작한지 4년? 팀 개발을 해나가면 나갈 수록 더 중요한게 어디에 있는가에 대한 답변이 항상 거의 여기서 나오고 있다고 스스로도 느끼는데, 정작 정확하게 이해하고 있냐? 라고 하면 그렇지는 않다… 가 있기 때문이다. 🤔</p>
+</blockquote>
+
+<h3 id="1️⃣-soc-seperation-of-concerns--관심사는-분리해라">1️⃣ <strong>SOC (Seperation of Concerns) : 관심사는 분리해라</strong></h3>
+<p><img src="/assets/images/posts/2025-04-27-0003.png" alt="" />
+어떤 비즈니스 로직을 구현 하는 과정에서, 다양한 것, 다양한 ‘관심’이 필요 시 된다. DTO로 들어오는 대상에 대해 무결성을 검증 해야 하고, 룰은 지켰으나 데이터는 온전한지도 확인 해야 하며,  그렇게 들어온 데이터는 비즈니스 로직이 정한 룰이나, 다양한 절차를 거쳐 결과적으로 요청을 한 클라이언트에게 전달되다.</p>
+
+<p>따라서 다양한 요소들이나, 로직, 기능이 서로를 바라보게 될 수 밖에 없고, 보통 그런 구조가 설계되기 시작하면 거미줄처럼 얼키고 설켜 복잡한 형태를 이루게 된다.</p>
+
+<p>문제는 그런 구조를 가지면 하나를 바꿔도 그 안에서 모든 것들이 영향을 미치게 되어 버린다는 점이다. 거기다 아무리 대단한 사람이 함께 참여하더라도 수천, 수만줄의 코드의 협업 속에서 그런 일이 일어난다면? 그걸 어떻게 발견하겠는가? 사소한 문제가 얼마나 커질 수 있는가를 여기서 알 수 있는 것이다. 물론, 이는 단적이고 극단적인 예시일 것이고 이 외에도 관심사의 혼재는 아주 큰 문제들을 많이 가진다.</p>
+
+<p>따라서 많은 이들이 Seperation Of Concerns(관심사의 분리) 라는 가치를 이야기 하며, 이것이 필요한 이유를 크게 3가지 정도로 축약하여 이야기 한다.</p>
+
+<ul>
+  <li><strong>단일 책임 원칙을 지키기 위해</strong></li>
+  <li><strong>유지 보수 과정에서 문제를 빠르게 좁혀야 한다.</strong></li>
+  <li><strong>코드 재사용성을 극대화 하기 위해</strong></li>
+</ul>
+
+<p>예시를 그래도 간략하게 들어보자면… (feat. ChatGPT)</p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Controller - 요청 처리만</span>
+<span class="p">@</span><span class="nd">Post</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">)</span>
+<span class="nf">login</span><span class="p">(@</span><span class="nd">Body</span><span class="p">()</span> <span class="nx">loginDto</span><span class="p">:</span> <span class="nx">LoginDto</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 여기서 무슨 일이 일어나든 </span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">userService</span><span class="p">.</span><span class="nf">login</span><span class="p">(</span><span class="nx">loginDto</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Service - 비즈니스 로직</span>
+<span class="k">async</span> <span class="nf">login</span><span class="p">(</span><span class="nx">loginDto</span><span class="p">:</span> <span class="nx">LoginDto</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">validateUser</span><span class="p">(</span><span class="nx">loginDto</span><span class="p">);</span>
+  <span class="c1">// 여기서 무슨 일이 일어나든 로직은 구분되어 있다 </span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">authService</span><span class="p">.</span><span class="nf">issueToken</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="2️⃣-dyc-document-your-code--코드를-문서화하라">2️⃣ <strong>DYC (Document Your Code) : 코드를 문서화하라</strong></h3>
+
+<p><img src="/assets/images/posts/2025-04-27-0004.png" alt="" /></p>
+
+<p>팀 플레이를 진행하던, 혼자서 코드를 짜던 한 가지 중요한 지점은 사람은 ‘컴퓨터’ 가 아니라는 점이다. 컴퓨터도 데이터를 소실되니 마니 하는 마당에, 사람의 머리가 알 수 있고 기억할 수 있는 용량은 반드시 한계가 있다. 작업을 하던 과정이 급하고, 촉박하거나 하지 않더라도 개발을 하다보면 시간이 지나면서  ‘뇌 내 풍화(?)’를 겪게 된다.</p>
+
+<p>그럴 때면 드디어 객관적으로 내 코드를 볼 수 있게 되고, 그 코드를 보며 자괴감도 분노도, 실망도 느끼게 되는게 마치 인생같다는(?) 이상한 소리를 할 수 있다. 왜 이렇게 했더라, 이 부분이 왜 필요했지 등등.. 그러다 보면 몇 달만에 다시 보고, 그 부분을 수정해야 할 때 그저 쉽게 코드 몇줄 추가 했음에도 에러가 생기는 일 등… 다양한 방해물이 생기고 나면, 그제야 우리는 깨닫게 된다.</p>
+
+<p>‘아 메모 해 둘걸’</p>
+
+<p>하고 말이다.</p>
+
+<p>문서화가 중요한 것은 다음과 같은 이유라고 보면 된다.</p>
+
+<ul>
+  <li><strong>협업자가 코드를 빠르게 이해할 수 있으려면 필요하다.</strong></li>
+  <li><strong>시간이 지난 뒤 ‘나’의 이해를 돕기 위해 필요하다.</strong></li>
+</ul>
+
+<p>뭐 예시는 필요하진 않을 것이다. 심지어 요즘은 LLM 을 활용하여 자동 문서화도 기가 막히게 잘 되고 있으니, 이 부분은 확실하게 도입하고 습관을 들이는 것이 좋아 보인다.</p>
+
+<p>Cursor를 활용해도 좋을 것이고 Vsc 에 Continue 를 활용해도 좋다고 느껴진다.</p>
+
+<h3 id="3️⃣-dry-dont-repeat-yourself--중복을-피하라">3️⃣ <strong>DRY (Don’t Repeat Yourself) : 중복을 피하라</strong></h3>
+<p><img src="/assets/images/posts/2025-04-27-0005.png" alt="" />
+이번에는 좀 극단적인 예시를 들어 보면 좋을 것 같다.</p>
+
+<blockquote>
+  <p>결제 로직을 만들게 되었다고 치자. 전처리 과정에서 데이터들에 대한 정리, 특히나 암호화된 데이터를 decode 해서 실제 결제 이벤트를 받아내야 한다. 그 뒤 자세한 로직들이 나온다. 그런데 작업을 하다보니 이 decode 의 과정이 코드가 너무 길어, 블록으로 떼어 내서 다시 메서드화 시키기 너무 귀찮다..!</p>
+
+  <p>결제 이벤트는 총 4개. 마음은 아팠지만, 기간이 얼마 남지 않았다는 생각에 어쩔 수 없이 결단을 내려 ctrl + c를 4회 진행하게 되는데…</p>
+
+  <p>몇 달이 흘러, 결제 개선이 가능한 시점이 되었다. 결제 이벤트 하나만 추가로 개선하면 되는 것이었음에도, 무언가 이상하다. 무엇이 문제 였을까?</p>
+</blockquote>
+
+<p>같은 코드가 같은 내용임에도 불구하고 다양한 로직에 사용되는 경우는 은근히 흔하게 있다. 암호화와 복호화 과정이라는 대표적인 예시도 있지만, 그 밖에도 처리해야 하는 데이터의 가공 영역은 특히나 그런 경우가 많다.</p>
+
+<p>하지만 문제는 예를 들어 이럴 수 있다. A 라는 로직이 있고 이것이 4번 쓰였는데, A를 고친다는 생각에 A’를 만들었지만, 막상 내가 그때 A를 4번 복붙 해야 한다는 걸 까먹을 수도 있고 실제로 그런 경우로 사고가 나는 경우가 정말 많다.</p>
+
+<p>따라서 꼭 기억할 것은 같은 코드, 같은 규칙이라면 하나를 작성하고 그것을 통해 항상 정확하게 처리하는 것이 필요하다. 이를 통해 버그 발생 확률을 낮추고, 수정과 리펙토링 과정을 쉽고 정확하게 만들어주며, 오히려 이런 설계가 되었을 때 향후 코드 확장성이 높아지는 것은 당연히 덤이니까.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 이런 단순한 코드라도 만들어두면, 재사용할 때 검색 한번으로 찾아서 쓸 수 있고, </span>
+<span class="c1">// 향후 조건이 여러개로 늘어나도 1번의 수정이면 끝난다</span>
+<span class="kd">function</span> <span class="nf">getUserStatus</span><span class="p">(</span><span class="nx">score</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">)</span> <span class="k">return</span> <span class="dl">'</span><span class="s1">excellent</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">)</span> <span class="k">return</span> <span class="dl">'</span><span class="s1">good</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">)</span> <span class="k">return</span> <span class="dl">'</span><span class="s1">normal</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">return</span> <span class="dl">'</span><span class="s1">bad</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="4️⃣-kiss-keep-it-simple-stupid--단순하게-유지하라">4️⃣ <strong>KISS (Keep It Simple, Stupid) : 단순하게 유지하라</strong></h3>
+<p><img src="/assets/images/posts/2025-04-27-0007.png" alt="" /></p>
+
+<p>백엔드 개발자로 입문하게 되어, 첫 해 작업을 할 때 항상 생각했던 것은, 단단한 구조, 안정적인 성능, 이를 위한 수학적이거나 계산적인 로직으로 단단한 기능으로 구현하는게 좋지 않을까! 라는 호기로움이었다.</p>
+
+<p>하지만 6개월 정도 했었을까? 그런 코드가 ‘잘 동작’은 하지만 ‘쓸모 없다’ 는 것은 너무나 빨리 알게 된 사실이었다.</p>
+
+<p>개발의 과정은 완벽이 없다. 기능은 그대로지만 방향성은 달라지게되고, 사업의 형태, 비즈니스의 방향성의 고려로 기능은 수시로 바뀔 수 있다.</p>
+
+<p>뿐만 아니라 새로운 사람이 들어오거나, 코드를 만드는 입장과 리뷰, 관리 하는 입장이 다른 경우도 있다. 무엇이 되었든 그런 상황이 되면 우리는 코드를 봐야하고, 그 코드를 이해하고 문제가 없는지를 확인하는 작업들이 필요 시 된다.</p>
+
+<p>그런데 여기서 나만 아는, 혹은 나 혼자 이해할만한 로직을 활용한다는 것은 심각한 비효율성을 낳는다.</p>
+
+<p>리펙토링을 이후에 할 때도 어려워지고, 누군가 읽고 해석해서 향후 관리를 해 나가는 것도 어렵다. 특히나 디버깅이나 테스트 과정 역시 어려울 수 밖에 없는 경우가 많다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">getUserStatus</span><span class="p">(</span><span class="nx">score</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">)</span> <span class="k">return</span> <span class="dl">'</span><span class="s1">excellent</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">)</span> <span class="k">return</span> <span class="dl">'</span><span class="s1">good</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">)</span> <span class="k">return</span> <span class="dl">'</span><span class="s1">normal</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">return</span> <span class="dl">'</span><span class="s1">bad</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">getUserStatus</span><span class="p">(</span><span class="nx">score</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">levels</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">bad</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">normal</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">good</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">excellent</span><span class="dl">'</span><span class="p">];</span>
+  <span class="kd">const</span> <span class="nx">thresholds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">90</span><span class="p">];</span>
+
+  <span class="kd">let</span> <span class="nx">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">right</span> <span class="o">=</span> <span class="nx">thresholds</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  
+  <span class="k">while </span><span class="p">(</span><span class="nx">left</span> <span class="o">&lt;=</span> <span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">mid</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">((</span><span class="nx">left</span> <span class="o">+</span> <span class="nx">right</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="nx">thresholds</span><span class="p">[</span><span class="nx">mid</span><span class="p">])</span> <span class="p">{</span>
+      <span class="nx">idx</span> <span class="o">=</span> <span class="nx">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="nx">left</span> <span class="o">=</span> <span class="nx">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">right</span> <span class="o">=</span> <span class="nx">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">levels</span><span class="p">[</span><span class="nx">idx</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>둘은 동일한 결과를 만든다. 사실, 의도만 이해할 수 있다면 아래의 코드는 비교가 많아질 때 O(log n)의 복잡도로 이진탐색을 진행하기에, chatGPT 도 ‘압도적으로’ 성능이 좋다고 말할 정도로 성능면에선 좋다.</p>
+
+<p>하지만 만약 구조가 바뀌거나 조건이 바뀐다고 할 때, 그리고 이 코드를 처음 보고 이해해야 하는 사람 입장이라면? 이런 부분들이 지속적으로 나온다면? 내 고집으로 만들어서 넣어 두고 충격적인 결말을 마주하게 될 지도 모를 것이다.</p>
+<h3 id="5️⃣-tdd-test-driven-development--테스트-주도-개발">5️⃣ <strong>TDD (Test Driven Development) : 테스트 주도 개발</strong></h3>
+
+<p><img src="/assets/images/posts/2025-04-27-0006.png" alt="" /></p>
+
+<p>TDD는 일종의 로망(?) 처럼 느껴지고, 마치 판타지 처럼 여겨지는 경우가 좀 있다. 현실에 적용하기엔 어렵고, 번거롭고, 복잡하다는 것.</p>
+
+<p>이러한 점이, 거를 타선이 없다는 것은 격하게 공감한다(?)</p>
+
+<p>하지만 생각을 조금만 바꿔봐도 요즘은 훨씬 TDD 를 구현하고 준비하는 것이 어렵지 않은 시대가 되었다. 예를 들어 refernece 로 쓰이는 DTO 를 설정하고, AI 를 활용하여 예시가 되는 에러 케이스를 만들고, 그 경우의 수에 맞춰 만들어 달라고 해줄 수 있다.</p>
+
+<p><img src="/assets/images/posts/2025-04-27-0001.png" alt="" /></p>
+
+<p>실패를 먼저 고려하고, 그에 대한 대응을 정리해둔다면 로직에서 핸들링할 에러를 빼먹지 않을 수 있으며, 훨씬 명확한 협업, 클라이언트를 배려한 협업이 가능하다는 점에서 반드시 100% 완벽한 TDD 가 아니더라도 충분히 LLM 을 활용한 효율적인 방법이 적용 가능한 것이다.</p>
+
+<p>특히나, 이렇게 준비되고, 이에 대한 Jest 테스트 같은 것들이 준비 된다면? 아마 말 하지 않아도 알 것이다. <code class="language-plaintext highlighter-rouge">버그는 잡히며</code>, <code class="language-plaintext highlighter-rouge">리펙토링을 해도 문제 없는지를 거의 즉각적으로 알 수 있고</code>, 결정적으로 성능 향상과 같이 <code class="language-plaintext highlighter-rouge">지표가 필요한 영역의 기능</code>이라면 손쉽게 테스트를 통해 리펙토링 포인트를 파악할 수 있다.</p>
+
+<h3 id="6️⃣-yagni-you-arent-gonna-need-it--필요할-때만-만들기">6️⃣ <strong>YAGNI (You Aren’t Gonna Need It) : 필요할 때만 만들기</strong></h3>
+
+<p><img src="/assets/images/posts/2025-04-27-0008.png" alt="" /></p>
+
+<p>개발을 하는 것은 약간 장인정신(?)을 가지게 만든다. 내가 만드는 그것이 좀 더 멋지거나, 좀 더 성능이 좋거나, 뭐가 되었든 그 개발 분야가 뭐가 되었든 나름의 ‘미학’을 쫓는 것을 종종 보게 된다.</p>
+
+<p>이것이 취미 일 땐 아름다울지 모른다.</p>
+
+<p>취미 일 땐 입이 벌어지는 센스를 느낄 수 있는 것이 오히려 멋지고, 훌륭하며, 재미있다.</p>
+
+<p>하지만 이것이 일이고, 비즈니스라면 말이 달라진다. 당장 필요한 기능, 시장이 원하는 기능, 괜찮은 아이디어를 빨리 구현하는 것이 이젠 너무 중요하고, 비즈니스에서 그 가치는 이미 십수년도 전, 아니 수백년 전부터 먼저 가져가는 사람이 임자였다.</p>
+
+<p>개발 속도를 늦추는 오버 엔지니어링이 되어 버리게 된다면, 오히려 이후 유지 보수에도, 그리고 리소스의 낭비로 타이밍을 놓칠 수도 있다. 그리고 그것을 개발자도 경영자도, 상품을 소비할 소비자에게도 결코 좋을 리는 없다. 개발자는 회사 내지는 조직에서 함께 일하고 있고, 내가 맥을 쓰고, 커피를 마시면서, 일에 집중할 수 있게 해주는 건 내가 만든 그것을 쓰는 사람들의 돈으로 이루어진다는 사실을 잊고 살면, ‘잘 만들어도 욕을 먹는’ 케이스가 아주 드물지 않다는 것을 몸소 느낄 수 있을 것이다.</p>
+
+<h2 id="-결론">📖 결론</h2>
+<p>이 원치들에 대해 다양하게 적는건 시간 관계상 피하려고 한다. 이미 뭐 자료는 많으니… 😅</p>
+
+<p>하지만 이 전체를 고민하고, 경험하고, 인정하게 되면 어느새 드는 하나의 생각은 다음처럼 정리 된다.</p>
+
+<ul>
+  <li>복잡한 시스템이 만들어지는 것을 막고</li>
+  <li>코드를 읽기 쉽게 만들며</li>
+  <li>유지 보수 가능하면서도</li>
+  <li>팀 전체가 빠르게 개선할 수 있도록 하는 것.</li>
+</ul>
+
+<p>결국 이게 되면 그 어떤 소프트웨어도 유기적으로 살아 숨쉬듯 자기 복제와 자기 진화를 이루고, 목표 시 되는 프로덕트의 퀄리티를 맞추며, 인정받는 개인이자 팀이 될 수 있다.</p>
+
+<p>오랜만에 링크드인에서 그저 짤로 본 것이지만, 정리를 하는 과정에서 CTO를 통해 얻어온 많은 경험들 그리고 백엔드 개발자로 1년 간 유지 보수, 코드를 짜오면서 얻은 많은 것들을 새삼 정리하는 감각을 느꼈다. 왜 실수가 많았고, 어디서 아쉬웠는지 새삼스럽게 느껴진 시간이었다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="etc" /><category term="cleanCode" /><category term="prgramming" /><summary type="html"><![CDATA[🧠 클린 코드 황금 6원칙 스터디 정리]]></summary></entry><entry><title type="html">AI 로 어디까지 가능할까?</title><link href="http://localhost:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game.html" rel="alternate" type="text/html" title="AI 로 어디까지 가능할까?" /><published>2025-04-12T00:00:00+00:00</published><updated>2025-04-12T00:00:00+00:00</updated><id>http://localhost:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game</id><content type="html" xml:base="http://localhost:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game.html"><![CDATA[<h2 id="ai-어디까지-가능할까-게임-만들-수-있을까">AI 어디까지 가능할까? 게임 만들 수 있을까?</h2>
 <p>이런 영상을 보았다</p>
 
 <p><a href="https://www.youtube.com/watch?v=NSXsTq6zg_s"><img src="https://img.youtube.com/vi/NSXsTq6zg_s/0.jpg" alt="5090사서..." /></a></p>

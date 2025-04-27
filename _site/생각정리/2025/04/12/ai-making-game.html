@@ -837,18 +837,8 @@ function googleTranslateElementInit() {
             if (video) {
               // 비디오 요소 제거
               video.pause(); // 비디오 재생 중지
-              video.parentNode.removeChild(video);
-              
-              // 이미지 배경 추가 (기존 banner_image 사용)
-              var imgDiv = document.createElement('div');
-              imgDiv.style.backgroundImage = 'url(https://wallpapers.com/images/high/tetris-gaming-blocks-y7ldgkg8xcwjk3t0.webp)';
-              document.querySelector('.page-banner .page-banner-img').appendChild(imgDiv);
-              
-              // 이미지 플레이스홀더 추가 (원래 비디오가 없을 때 렌더링되는 방식)
-              var imgPlaceholder = document.createElement('img');
-              imgPlaceholder.className = 'img-placeholder';
-              imgPlaceholder.src = 'https://wallpapers.com/images/high/tetris-gaming-blocks-y7ldgkg8xcwjk3t0.webp';
-              document.querySelector('.page-banner .page-banner-img').appendChild(imgPlaceholder);
+              video.src = ''; // 비디오 소스 제거
+              // video.parentNode.removeChild(video);
             }
           } else {
             // 데스크톱에서만 비디오 로직 실행
@@ -1214,13 +1204,14 @@ function googleTranslateElementInit() {
 
 </article>
 <div class="post-nav">
-<a class="previous" href="/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/07/new-start.html" title="기술 블로그를 다시 시작하면서">기술 블로그를 다시 시작하면서</a><span></span>
+<a class="previous" href="/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/07/new-start.html" title="기술 블로그를 다시 시작하면서">기술 블로그를 다시 시작하면서</a><a class="next" href="/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html" title="클린 코드를 위한 룰">클린 코드를 위한 룰</a>
 </div>
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game.html" title="">AI 로 어디까지 가능할까?</a></li>
-<li><a class="post-link" href="/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/07/new-start.html" title="">기술 블로그를 다시 시작하면서</a></li>
+        <li><a class="post-link" href="/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game.html" title="클린 코드를 위한 룰">AI 로 어디까지 가능할까?</a></li>
+<li><a class="post-link" href="/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html" title="클린 코드를 위한 룰">클린 코드를 위한 룰</a></li>
+<li><a class="post-link" href="/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/07/new-start.html" title="클린 코드를 위한 룰">기술 블로그를 다시 시작하면서</a></li>
 </ul>
     </div>
 <div class="post-comments">

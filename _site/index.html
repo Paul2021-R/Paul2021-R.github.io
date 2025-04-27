@@ -816,18 +816,8 @@ function googleTranslateElementInit() {
             if (video) {
               // 비디오 요소 제거
               video.pause(); // 비디오 재생 중지
-              video.parentNode.removeChild(video);
-              
-              // 이미지 배경 추가 (기존 banner_image 사용)
-              var imgDiv = document.createElement('div');
-              imgDiv.style.backgroundImage = 'url(/assets/images/banners/home.jpg)';
-              document.querySelector('.page-banner .page-banner-img').appendChild(imgDiv);
-              
-              // 이미지 플레이스홀더 추가 (원래 비디오가 없을 때 렌더링되는 방식)
-              var imgPlaceholder = document.createElement('img');
-              imgPlaceholder.className = 'img-placeholder';
-              imgPlaceholder.src = '/assets/images/banners/home.jpg';
-              document.querySelector('.page-banner .page-banner-img').appendChild(imgPlaceholder);
+              video.src = ''; // 비디오 소스 제거
+              // video.parentNode.removeChild(video);
             }
           } else {
             // 데스크톱에서만 비디오 로직 실행
@@ -1113,6 +1103,104 @@ function googleTranslateElementInit() {
 
         
         <div class="post-thumbnail">
+          <a href="/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html">
+            <img src="/assets/images/posts/2025-04-27-0002.png" alt="클린 코드를 위한 룰">
+          </a>
+        </div>
+        
+    
+        <div class="post-info">
+          <h2 class="post-title">
+            <a class="post-link" href="/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html">
+              클린 코드를 위한 룰
+            </a>
+          </h2>
+          <div class="post-meta">
+            <span class="post-date"><i class="fa fa-calendar"></i>  2025년 04월 27일</span>
+            <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 22 mins</span>
+          </div>
+
+          
+          <a class="post-excerpt" href="/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html">
+            <p>클린 코드를 위한~ 이라고 쓰고 팀 개발을 위한 클린 코드 원칙을 정리해 보았다. <span class="read_more">...Read More</span></p>
+          </a>
+          
+
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags.html#etc">#etc</a><a class="post-tag" href="/tags.html#cleanCode">#cleanCode</a><a class="post-tag" href="/tags.html#prgramming">#prgramming</a>
+</div>
+        </div>
+    
+      </div>
+    </li>
+<li class="post-card">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-card-inner">
+
+        
+        <div class="post-thumbnail">
           <a href="/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game.html">
             <img src="/assets/images/banners/AI_tools_2034_a6f14cb052.png" alt="AI 로 어디까지 가능할까?">
           </a>
@@ -1275,7 +1363,7 @@ function googleTranslateElementInit() {
   <ul>
     <li>
       <a href="/index.html">
-        All<span>2</span>
+        All<span>3</span>
       </a>
     </li>
 
@@ -1283,6 +1371,12 @@ function googleTranslateElementInit() {
       <li>
         <a href="/categories.html#h-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC">
           생각정리 <span>2</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories.html#h-%ED%95%99%EC%8A%B5">
+          학습 <span>1</span>
         </a>
       </li>
     

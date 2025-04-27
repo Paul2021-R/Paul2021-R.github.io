@@ -836,18 +836,8 @@ function googleTranslateElementInit() {
             if (video) {
               // 비디오 요소 제거
               video.pause(); // 비디오 재생 중지
-              video.parentNode.removeChild(video);
-              
-              // 이미지 배경 추가 (기존 banner_image 사용)
-              var imgDiv = document.createElement('div');
-              imgDiv.style.backgroundImage = 'url(https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg)';
-              document.querySelector('.page-banner .page-banner-img').appendChild(imgDiv);
-              
-              // 이미지 플레이스홀더 추가 (원래 비디오가 없을 때 렌더링되는 방식)
-              var imgPlaceholder = document.createElement('img');
-              imgPlaceholder.className = 'img-placeholder';
-              imgPlaceholder.src = 'https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg';
-              document.querySelector('.page-banner .page-banner-img').appendChild(imgPlaceholder);
+              video.src = ''; // 비디오 소스 제거
+              // video.parentNode.removeChild(video);
             }
           } else {
             // 데스크톱에서만 비디오 로직 실행
@@ -1079,8 +1069,34 @@ function googleTranslateElementInit() {
   <div class="page-segments">
   <ul class="page-segments-list">
     
+    <h2 id="cleanCode" class="segment-name">cleanCode</h2>
+      
+      
+        
+        <li> 
+<span class="post-meta"> 2025년 04월 27일</span>
+<span>
+  <a class="post-link" href="/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html">
+    클린 코드를 위한 룰
+  </a>
+</span>
+ </li>
+        
+      
+    
     <h2 id="etc" class="segment-name">etc</h2>
       
+      
+        
+        <li> 
+<span class="post-meta"> 2025년 04월 27일</span>
+<span>
+  <a class="post-link" href="/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html">
+    클린 코드를 위한 룰
+  </a>
+</span>
+ </li>
+        
       
         
         <li> 
@@ -1099,6 +1115,21 @@ function googleTranslateElementInit() {
 <span>
   <a class="post-link" href="/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/07/new-start.html">
     기술 블로그를 다시 시작하면서
+  </a>
+</span>
+ </li>
+        
+      
+    
+    <h2 id="prgramming" class="segment-name">prgramming</h2>
+      
+      
+        
+        <li> 
+<span class="post-meta"> 2025년 04월 27일</span>
+<span>
+  <a class="post-link" href="/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html">
+    클린 코드를 위한 룰
   </a>
 </span>
  </li>
@@ -1176,14 +1207,26 @@ function googleTranslateElementInit() {
   <ul>
     <li>
       <a href="/index.html">
-        All<span>2</span>
+        All<span>3</span>
       </a>
     </li>
 
     
       <li>
+        <a href="/tags.html#h-cleanCode">
+          cleanCode <span>1</span>
+        </a>
+      </li>
+    
+      <li>
         <a href="/tags.html#h-etc">
-          etc <span>2</span>
+          etc <span>3</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/tags.html#h-prgramming">
+          prgramming <span>1</span>
         </a>
       </li>
     
