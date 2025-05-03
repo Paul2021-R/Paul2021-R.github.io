@@ -4,7 +4,7 @@ title: "@type/~ 의존성을 설치하면 얻는 것"
 subtitle: Backend 심화학습
 categories: Backend
 tags: 학습 TypeScript Backend 
-thumb: /assets/images/posts/2025-04-27-0002.png
+thumb: /assets/images/posts/2025-05-04-0001.png
 custom-excerpt: 클린 코드를 위한~ 이라고 쓰고 팀 개발을 위한 클린 코드 원칙을 정리해 보았다. 
 banner:
   # video: https://vjs.zencdn.net/v/oceans.mp4
@@ -177,3 +177,10 @@ VS Code의 `TypeScript-Auto-Importer`와 같은 확장 프로그램은 사용 �
    npm view @types/package-name
    ```
 4. `@types` 패키지가 존재하면 설치: `yarn add -D @types/package-name`
+
+## 마치며 
+확실히 사용해보니, 없을 때 보다 공식 설명이 더 풍부한 경우가 많고, 객체, 타입에 대한 설명이 상세 해지는 걸 보니, 개발 시 무언가 추가 시 신경 써서 넣어두거나, 기본적으로 갖춰 둔 템플릿을 활용하면 좋을 것 같다. 
+
+이런 거 보면 아직 짬이 덜 찬 느낌이 든다. 🫥
+
+개발의 길은 멀고, 아주 멀고, 아주 멀다. 😖
