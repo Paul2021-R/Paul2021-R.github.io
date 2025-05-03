@@ -1,6 +1,6 @@
 ---
 layout: post 
-title: "@type/~ 의존성을 설치하면 얻는 것"
+title: "@types/~ 의존성을 설치하면 얻는 것"
 subtitle: Backend 심화학습
 categories: Backend
 tags: 학습 TypeScript Backend 
