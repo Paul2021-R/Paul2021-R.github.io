@@ -4,7 +4,7 @@ title: "@types/~ 의존성을 설치하면 얻는 것"
 subtitle: Backend 심화학습
 categories: Backend
 tags: 학습 TypeScript Backend 
-thumb: /assets/images/posts/2025-05-04-0001.png
+thumb: /assets/images/posts/2025-05/2025-05-04-0001.png
 custom-excerpt: 클린 코드를 위한~ 이라고 쓰고 팀 개발을 위한 클린 코드 원칙을 정리해 보았다. 
 banner:
   # video: https://vjs.zencdn.net/v/oceans.mp4

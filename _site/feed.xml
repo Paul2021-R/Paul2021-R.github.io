@@ -1,4 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-05-03T15:22:24+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">@type/~ 의존성을 설치하면 얻는 것</title><link href="http://localhost:4000/backend/2025/05/03/Type-library.html" rel="alternate" type="text/html" title="@type/~ 의존성을 설치하면 얻는 것" /><published>2025-05-03T00:00:00+00:00</published><updated>2025-05-03T00:00:00+00:00</updated><id>http://localhost:4000/backend/2025/05/03/Type-library</id><content type="html" xml:base="http://localhost:4000/backend/2025/05/03/Type-library.html"><![CDATA[<h2 id="intro">Intro</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-05-06T09:56:54+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">docker는 흔들리고 있을까?</title><link href="http://localhost:4000/backend/2025/05/06/alternative-for-docker.html" rel="alternate" type="text/html" title="docker는 흔들리고 있을까?" /><published>2025-05-06T00:00:00+00:00</published><updated>2025-05-06T00:00:00+00:00</updated><id>http://localhost:4000/backend/2025/05/06/alternative-for-docker</id><content type="html" xml:base="http://localhost:4000/backend/2025/05/06/alternative-for-docker.html"><![CDATA[<h2 id="도커-왕좌를-지키지-못하는-이유-컨테이너-생태계의-지각변동">도커, 왕좌를 지키지 못하는 이유? 컨테이너 생태계의 지각변동</h2>
+
+<p><img src="/assets/images/posts/2025-05/docker-wallpaper.jpeg" alt="" /></p>
+
+<p>수년간 <strong>컨테이너 생태계의 중심에는 도커가 있었다</strong>. 사실 도커는 ‘대명사’가 되긴 했지만 원래 그 기술의 근간은 ‘컨테이너’라는 기술이다.</p>
+
+<p>리눅스 기반 OS 에서 제공하는 기술로 <strong>컨테이너</strong>는 시스템의 나머지 부분으로부터 격리된 하나 이상의 프로세스 집합을 의미한다.</p>
+
+<p>이러한 프로세스를 실행하는 데 필요한 모든 파일과 필수 라이브러리, 종속성이 개별 이미지 내에 함께 패키징된다. 한 마디로 정리하면, Host 에 해당하는 영역에서 공통적인 걸 가져오고, 실제 독립적인 시스템 구현을 위해 필요한 부분은 ‘레이어’ 라는 이름으로 별도로 이미지 내부에 장착시켜서 호스트와는 별개의 시스템이 마치 구동되는 듯 보이게 만들어준다.</p>
+
+<p>컨테이너는 가상 머신과 달리 <strong>가상 머신보다 적은 리소스를 사용</strong>하면서도 애플리케이션 격리를 유지할 수 있다. 또한, 표준 인터페이스를 갖추고 있어 대규모 애플리케이션(여러 컨테이너)의 일부로 더 쉽게 관리될 수 있으며, 여러 클라우드에 걸쳐 오케스트레이션될 수 있다. 궁극적으로 컨테이너는 <strong>애플리케이션 개발, 배포, 관리 방식에서 이식성과 일관성을 유지시키며 발전</strong>시킨 기술이라고 볼 수 있다. 그리고 이러한 컨테이너를 활용하여 시스테메틱한 관리체계를 정립한 도커는 컨테이너의 대명사처럼 여겨졌다.</p>
+
+<p>하지만 이제는 도커만의 독주 무대가 아니게 되어감을 종종 느끼게 된다. 도커는 여전히 인기가 있지만, 점점 더 많은 기업과 개발자들이 다른 대안으로 눈을 돌리고 있다는 점은 고려해볼만한 논지가 아닐까 한다. 이는 도커가 선택지에서 제외되었다는 것이 아닌 성능, 보안, 유연성, 비용 등 주요 측면에서 도커가 뒤처지거나, 대안이 있다 혹은 대안을 찾아야 한다는 인식이 확산되고 있는 것이다.</p>
+
+<p><img src="/assets/images/posts/2025-05/2025-05-06-0001.png" alt="" /></p>
+
+<h3 id="도커가-가지는-현안들">도커가 가지는 현안들</h3>
+
+<p><img src="/assets/images/posts/2025-05/2025-05-06-0002.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p><strong>라이선스 및 비용 구조 변경</strong></p>
+
+    <p>가장 중요한 전환점 중 하나는 <strong>도커 데스크톱의 라이선스와 비용 구조 변경</strong>이다. 도커는 일정 규모 이상의 조직에 유료 멤버십을 요구하기로 결정했으며, 이전까지 무료로 사용하던 도구에 대해 기업들이 갑자기 비용을 지불해야 하는 상황이 발생했다.</p>
+
+    <p>이러한 부분은 비용에 민감한 팀들이 <strong>도커에 대한 의존도를 진지하게 재평가</strong>하도록 만들게 된다. 오픈 소스 도구로 전환하고자 하는 이들이 대안을 모색하는 계기가 되었다.</p>
+  </li>
+  <li>
+    <p><strong>성능 문제</strong></p>
+
+    <p>도커는 리눅스에서는 뛰어난 성능을 가집니다. 물론, 이는 컨테이너라는 기술 자체의 본질적으로 리눅스 시스템 구조와 밀접한 연관성을 갖고 있다.</p>
+
+    <p>하지만 문제는 이러한 편리함을 윈도우나 Mac 에서 사용하고자 하면서 여러 이슈가 발생하게 된다. 도커는 기본적으로 Host로 사용할 영역을 각각 WSL2, HyperKit 을 활용하는데, 이를 기반으로 하는 도커 데스크톱은 리눅스 컨테이너를 에뮬레이트하기 위해 가상 머신을 사용하기 때문에, 이로 인한 불가피한 <strong>성능 저하, 과도한 메모리와 CPU 사용 등의 문제가 발생</strong>할 수 있다.</p>
+
+    <p>고질적인 윈도우 WSL Vmmem 이슈, 파일 시스템의 비정상적인 느림, IO 성능 저하, CPU 오버헤드 문제 등등… 알려진 문제들, 불편함은 이미 충분히 지적되고 있고, 이에 대한 개선은 수년째 언급 되고 있는 실정이다.</p>
+
+    <p>특히나 무거운 빌드나 복잡한 멀티 컨테이너 구성에서는 문제가 더욱 심각해진다. 수겹의 레이어를 만들어야 하고, 그걸 위한 이미지들은 기존보다 훨씬 많은 양의 가상화를 위한 리소스를 필요로 한다.</p>
+
+    <p>반면, 핀치(Finch)에서 사용하는 리마(Lima) 같은 신기술은 맥 개발자를 위해 최적화된 가상화 환경을 제공하여 도커 데스크톱의 복잡성 없이 성능을 개선합니다. 맥 성능을 극대화하는 것이 대체 런타임을 고려하는 또 하나의 이유다.</p>
+  </li>
+  <li>
+    <p><strong>보안 문제</strong></p>
+
+    <p>도커의 아키텍처는 켜보면 바로 알 수 있는 특징이 있다. 내부의 구동에서 <strong>루트 권한으로 실행되는 데몬에 의존</strong>하고 있다는 점이다. 그러나 이러한 점이 바로 보안의 문제냐? 라고 하면 그렇지는 않다고 생각한다. 오히려 개발 친화적이고, Host 로의 입구 관문이 존재하는 데, 각 내부에 더 많고, 두꺼운 보안은 불필요한 요소일 수 있다.</p>
+
+    <p>하지만 이로 인해 운영 환경에서 <strong>보안 위협 노출이 넓어질 수 있다</strong>. 이러한 점에서 도커는 보안 기능을 추가했지만, 보안을 중시하는 조직들은 애초부터 보안을 고려해 설계된 대안들을 선호하는 경우가 생길 수 밖에 없다.</p>
+  </li>
+  <li>
+    <p><strong>모노리틱 접근 방식</strong></p>
+
+    <p><img src="/assets/images/posts/2025-05/2025-05-06-0003.png" alt="" /></p>
+
+    <p>클러스터링을 위한 스웜(Swarm)과 이미지 레지스트리를 위한 도커 허브(Docker Hub)가 밀접하게 결합된 도커의 모노리틱 구조는 적응하고 난 사용자에게는 매우 편리하게 느껴질 수 있다. 모든 것이 물 흐르듯, 일사천리로 움직이게 되고 이러한 구조는 설정과 이식에서 우수한 성능을 보여준다.</p>
+
+    <p>하지만 <strong>현대 클라우드 네이티브 환경에서는 오히려 제약</strong>으로 다가오게 될 수 있다. 오늘날의 트렌드는 <strong>특화되고 모듈화된 도구들로의 전환</strong>이다. 오케스트레이션은 쿠버네티스(Kubernetes)가 완전히 지배하고 있으며, 패키징은 헬름(Helm)이 담당하고, 컨테이너드(containerd)와 같은 전용 컨테이너 런타임은 컨테이너 관리에만 집중해준다. 즉, 각 역할에 맞는 수준의 관리를 하고 통제가 가능하다는 것은, 전체의 조율과 모듈화에 오히려 도움이 되지, 도커의 통합적 관리는, 오히려 <strong>복잡성을 증가</strong>시킬 수 있다.</p>
+  </li>
+  <li>
+    <p><strong>밴더 종속성 우려</strong></p>
+
+    <p><img src="/assets/images/posts/2025-05/2025-05-06-0005.png" alt="" /></p>
+
+    <p>개발자들은 도커의 특정 도구에 지나치게 의존하는 것에 신중해지고 있다. 도커 파일 문법은 널리 사용되지만, OCI 이미지 및 런타임 요구 사항처럼 공개 표준에 의해 관리되는 것이 아니다. 개발자들은 <strong>단일 툴체인에 묶이는 것을 피하고 싶어 하며</strong>, 특히 공개 표준이 더 큰 유연성과 장기적인 안정성을 보장해 줄 수 있다는 주장은 언제나 그렇지만 지속적으로 강조된다. <strong>다양한 도구와 플랫폼 간의 호환성 보장, 이식성, 밴더 중립성 확보가 더욱 중요</strong>해졌고 그렇지 못한 대상에 대해선 기피하는 것이 어느 기업이나, 개발자들의 공통된 영역이리라.</p>
+  </li>
+</ol>
+
+<h3 id="도커의-대안들-새로운-플레이어들의-등장">도커의 대안들: 새로운 플레이어들의 등장</h3>
+
+<p><img src="/assets/images/posts/2025-05/2025-05-06-0004.png" alt="" /></p>
+
+<p>이러한 배경 속에서 여러 컨테이너 런타임들이 인기를 얻고 있으며, 이들은 현대적인 컨테이너 네이티브 환경의 핵심 가치인 모듈화, 성능, 개방성을 반영하고 있다. 주목할 만한 대안들은 다음과 같다.</p>
+
+<ul>
+  <li><strong>Podman</strong>: 레드햇(Red Hat)에서 개발한 포드만은 <strong>안전하고 데몬이 없는 대체재</strong>로 평가받는다. 도커와 달리 중앙 데몬에 의존하지 않으며, <strong>루트 권한 없이 컨테이너를 실행할 수 있는 루트리스 환경을 적극 지원</strong> 한다. 명령어 인터페이스도 도커와 매우 유사하여 보안을 중시하는 팀이 쉽게 전환할 수 있다.</li>
+  <li><strong>containerd</strong>: 원래는 도커의 일부였지만 분리되어 현재는 CNCF가 관리하는 독립 프로젝트다. 특히 <strong>쿠버네티스 1.24에서 도커에 대한 직접 지원이 중단된 이후</strong>로, <strong>컨테이너드는 대부분의 쿠버네티스 배포판에서 기본 컨테이너 런타임으로 사용</strong>되고 있다. AWS, 구글 클라우드, 애저와 같은 주요 클라우드 제공 업체들도 자체 관리형 쿠버네티스 서비스에서 컨테이너드를 기반으로 사용한다. 컨테이너 관리에 단일 목적을 가지고 있어 <strong>경량화되고 확장 가능</strong>하다는 특징이 가장 크다.</li>
+  <li><strong>CRI-O</strong>: CRI-O 역시 CNCF에서 관리하며, <strong>쿠버네티스를 위해 특별히 설계</strong>되었다. 컨테이너 런타임 인터페이스(CRI)를 엄격히 준수하며, 불필요한 요소를 제거한 간결하고 목적에 맞는 환경을 유지해준다. 오직 쿠버네티스 워크로드만을 지원하기 때문에 보안 측면에서도 이점을 제공한다. 레드햇 오픈 시프트의 기본 런타임이며, 최소주의와 규정 준수를 중시하는 팀들에게 선호된다.</li>
+  <li><strong>Lima 및 Finch</strong>: 맥OS 성능 문제를 해결하기 위한 도구들이다. <strong>Lima는 맥OS에서 컨테이너 빌드를 위한 리눅스 가상 머신을 구성</strong>해 주는 도구로 성능에 최적화된 환경을 제공한다. <strong>Finch는 AWS가 후원하는 프로젝트</strong>로 리마와 컨테이너드/너드컨트롤(nerdctl)을 기반으로 하여 <strong>도커 데스크톱을 대체할 수 있는 고성능 도구를 제공</strong>한다. <strong>라이선스 제약 없이 사용할 수 있다는 점</strong>이 큰 장점이며, 맥OS 개발자들 사이에서 <strong>네이티브에 가까운 성능</strong>을 제공하는 대안으로 빠르게 선호되고 있다.</li>
+</ul>
+
+<h3 id="컨테이너-생태계의-미래">컨테이너 생태계의 미래</h3>
+
+<p>컨테이너 생태계 전반의 분위기는 현재 지속적으로 <strong>모듈화와 전문화로의 전환</strong>을 반영하고 있다. 그러한 상황에서 도커의 아쉬운 부분을 이야기 해봤으나, 사실 지속적인 개선이 이루어지고 있다. 2025년 1월에 쓰여진 글로, <a href="https://www.paolomainardi.com/posts/docker-performance-macos-2025/">Docker on MacOS is still slow?</a>라는 이 글만 보더라도 2년 전 분석에 비하면 Docker 의 File Synchronization 기능으로 성능 저하는 최소화 가능하며, 아직 베타지만 Docker VMM 등 대안, 대첵 등도 거론된다는 점에서 MacOS 가상화 환경과 native linux 성능 간 격차 개선을 통해 컨테이너 생태계와 Docker가 여전히 개발자들의 선택을 받게 될 것이라는 점은 확실해 보인다.</p>
+
+<p>도커는 사라지는 것이 아니라 변화하고 있는 것이다. 그러나 컨테이너라는 기술을 기반으로 하는 영역은 현재 <strong>개방형 표준, 경량화된 런타임, 클라우드 네이티브 원칙을 중심으로 빠르게 진화</strong>하고 있다. 도커가 이제는 컨테이너의 절대적인 중심은 아닐 수 있지만, 여전히 중요한 역할을 수행할 것이다. 우리가 목격하고 있는 것은 도커가 만들어낸 생태계의 성숙이며, 이를 통해 개발자들은 더 다양한 선택지를 갖게 되었다는 점이다.</p>
+
+<p>미래는 <strong>모듈형 구조를 갖고 설계 단계부터 개방성을 지향하며, 기본적으로 안전하고 다양한 워크플로우에 유연하게 대응할 수 있는 도구들을 선호</strong>하는 것은 자연스러운 흐름일 것이고, 이 흐름을 읽고 대비하는 필요는 있어 보인다고 생각이 든다.</p>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="학습" /><category term="Backend" /><category term="DevOps" /><category term="Container" /><category term="Docker" /><summary type="html"><![CDATA[도커, 왕좌를 지키지 못하는 이유? 컨테이너 생태계의 지각변동]]></summary></entry><entry><title type="html">@types/~ 의존성을 설치하면 얻는 것</title><link href="http://localhost:4000/backend/2025/05/03/Type-library.html" rel="alternate" type="text/html" title="@types/~ 의존성을 설치하면 얻는 것" /><published>2025-05-03T00:00:00+00:00</published><updated>2025-05-03T00:00:00+00:00</updated><id>http://localhost:4000/backend/2025/05/03/Type-library</id><content type="html" xml:base="http://localhost:4000/backend/2025/05/03/Type-library.html"><![CDATA[<h2 id="intro">Intro</h2>
 
 <p>요 최근 MSA 서버 구현 공부를 다시 하고 있다. 영어 강의고, 상당히 난감한 번역의 자막이라 열은 받지만… 그럼에도 구조적 설계를 배울 수 있어서 좋다.</p>
 
@@ -188,14 +273,14 @@ npm view @types/package-name
 
 <p>개발의 길은 멀고, 아주 멀고, 아주 멀다. 😖</p>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="학습" /><category term="TypeScript" /><category term="Backend" /><summary type="html"><![CDATA[Intro]]></summary></entry><entry><title type="html">클린 코드를 위한 룰</title><link href="http://localhost:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html" rel="alternate" type="text/html" title="클린 코드를 위한 룰" /><published>2025-04-27T00:00:00+00:00</published><updated>2025-04-27T00:00:00+00:00</updated><id>http://localhost:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming</id><content type="html" xml:base="http://localhost:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html"><![CDATA[<h2 id="-클린-코드-황금-6원칙-스터디-정리"><strong>🧠 클린 코드 황금 6원칙 스터디 정리</strong></h2>
 
-<p><img src="/assets/images/posts/2025-04-27-0002.png" alt="" /></p>
+<p><img src="/assets/images/posts/2025-04/2025-04-27-0002.png" alt="" /></p>
 
 <blockquote>
   <p>링크드인에서 개발과 관련한 이미지를 한 장봤다. 새롭게 개편한 블로그를 위한 글도 써야 하고, ‘오랜만에 정리 해 봐야겠구나’ 라는 생각이 들었다. 왜냐면 이제 개발을 시작한지 4년? 팀 개발을 해나가면 나갈 수록 더 중요한게 어디에 있는가에 대한 답변이 항상 거의 여기서 나오고 있다고 스스로도 느끼는데, 정작 정확하게 이해하고 있냐? 라고 하면 그렇지는 않다… 가 있기 때문이다. 🤔</p>
 </blockquote>
 
 <h3 id="1️⃣-soc-seperation-of-concerns--관심사는-분리해라">1️⃣ <strong>SOC (Seperation of Concerns) : 관심사는 분리해라</strong></h3>
-<p><img src="/assets/images/posts/2025-04-27-0003.png" alt="" />
+<p><img src="/assets/images/posts/2025-04/2025-04-27-0003.png" alt="" />
 어떤 비즈니스 로직을 구현 하는 과정에서, 다양한 것, 다양한 ‘관심’이 필요 시 된다. DTO로 들어오는 대상에 대해 무결성을 검증 해야 하고, 룰은 지켰으나 데이터는 온전한지도 확인 해야 하며,  그렇게 들어온 데이터는 비즈니스 로직이 정한 룰이나, 다양한 절차를 거쳐 결과적으로 요청을 한 클라이언트에게 전달되다.</p>
 
 <p>따라서 다양한 요소들이나, 로직, 기능이 서로를 바라보게 될 수 밖에 없고, 보통 그런 구조가 설계되기 시작하면 거미줄처럼 얼키고 설켜 복잡한 형태를 이루게 된다.</p>
@@ -228,7 +313,7 @@ npm view @types/package-name
 
 <h3 id="2️⃣-dyc-document-your-code--코드를-문서화하라">2️⃣ <strong>DYC (Document Your Code) : 코드를 문서화하라</strong></h3>
 
-<p><img src="/assets/images/posts/2025-04-27-0004.png" alt="" /></p>
+<p><img src="/assets/images/posts/2025-04/2025-04-27-0004.png" alt="" /></p>
 
 <p>팀 플레이를 진행하던, 혼자서 코드를 짜던 한 가지 중요한 지점은 사람은 ‘컴퓨터’ 가 아니라는 점이다. 컴퓨터도 데이터를 소실되니 마니 하는 마당에, 사람의 머리가 알 수 있고 기억할 수 있는 용량은 반드시 한계가 있다. 작업을 하던 과정이 급하고, 촉박하거나 하지 않더라도 개발을 하다보면 시간이 지나면서  ‘뇌 내 풍화(?)’를 겪게 된다.</p>
 
@@ -250,7 +335,7 @@ npm view @types/package-name
 <p>Cursor를 활용해도 좋을 것이고 Vsc 에 Continue 를 활용해도 좋다고 느껴진다.</p>
 
 <h3 id="3️⃣-dry-dont-repeat-yourself--중복을-피하라">3️⃣ <strong>DRY (Don’t Repeat Yourself) : 중복을 피하라</strong></h3>
-<p><img src="/assets/images/posts/2025-04-27-0005.png" alt="" />
+<p><img src="/assets/images/posts/2025-04/2025-04-27-0005.png" alt="" />
 이번에는 좀 극단적인 예시를 들어 보면 좋을 것 같다.</p>
 
 <blockquote>
@@ -278,7 +363,7 @@ npm view @types/package-name
 </code></pre></div></div>
 
 <h3 id="4️⃣-kiss-keep-it-simple-stupid--단순하게-유지하라">4️⃣ <strong>KISS (Keep It Simple, Stupid) : 단순하게 유지하라</strong></h3>
-<p><img src="/assets/images/posts/2025-04-27-0007.png" alt="" /></p>
+<p><img src="/assets/images/posts/2025-04/2025-04-27-0007.png" alt="" /></p>
 
 <p>백엔드 개발자로 입문하게 되어, 첫 해 작업을 할 때 항상 생각했던 것은, 단단한 구조, 안정적인 성능, 이를 위한 수학적이거나 계산적인 로직으로 단단한 기능으로 구현하는게 좋지 않을까! 라는 호기로움이었다.</p>
 
@@ -324,7 +409,7 @@ npm view @types/package-name
 <p>하지만 만약 구조가 바뀌거나 조건이 바뀐다고 할 때, 그리고 이 코드를 처음 보고 이해해야 하는 사람 입장이라면? 이런 부분들이 지속적으로 나온다면? 내 고집으로 만들어서 넣어 두고 충격적인 결말을 마주하게 될 지도 모를 것이다.</p>
 <h3 id="5️⃣-tdd-test-driven-development--테스트-주도-개발">5️⃣ <strong>TDD (Test Driven Development) : 테스트 주도 개발</strong></h3>
 
-<p><img src="/assets/images/posts/2025-04-27-0006.png" alt="" /></p>
+<p><img src="/assets/images/posts/2025-04/2025-04-27-0006.png" alt="" /></p>
 
 <p>TDD는 일종의 로망(?) 처럼 느껴지고, 마치 판타지 처럼 여겨지는 경우가 좀 있다. 현실에 적용하기엔 어렵고, 번거롭고, 복잡하다는 것.</p>
 
@@ -332,7 +417,7 @@ npm view @types/package-name
 
 <p>하지만 생각을 조금만 바꿔봐도 요즘은 훨씬 TDD 를 구현하고 준비하는 것이 어렵지 않은 시대가 되었다. 예를 들어 refernece 로 쓰이는 DTO 를 설정하고, AI 를 활용하여 예시가 되는 에러 케이스를 만들고, 그 경우의 수에 맞춰 만들어 달라고 해줄 수 있다.</p>
 
-<p><img src="/assets/images/posts/2025-04-27-0001.png" alt="" /></p>
+<p><img src="/assets/images/posts/2025-04/2025-04-27-0001.png" alt="" /></p>
 
 <p>실패를 먼저 고려하고, 그에 대한 대응을 정리해둔다면 로직에서 핸들링할 에러를 빼먹지 않을 수 있으며, 훨씬 명확한 협업, 클라이언트를 배려한 협업이 가능하다는 점에서 반드시 100% 완벽한 TDD 가 아니더라도 충분히 LLM 을 활용한 효율적인 방법이 적용 가능한 것이다.</p>
 
@@ -340,7 +425,7 @@ npm view @types/package-name
 
 <h3 id="6️⃣-yagni-you-arent-gonna-need-it--필요할-때만-만들기">6️⃣ <strong>YAGNI (You Aren’t Gonna Need It) : 필요할 때만 만들기</strong></h3>
 
-<p><img src="/assets/images/posts/2025-04-27-0008.png" alt="" /></p>
+<p><img src="/assets/images/posts/2025-04/2025-04-27-0008.png" alt="" /></p>
 
 <p>개발을 하는 것은 약간 장인정신(?)을 가지게 만든다. 내가 만드는 그것이 좀 더 멋지거나, 좀 더 성능이 좋거나, 뭐가 되었든 그 개발 분야가 뭐가 되었든 나름의 ‘미학’을 쫓는 것을 종종 보게 된다.</p>
 
@@ -415,11 +500,11 @@ npm view @types/package-name
 
 <p>비용의 처리나, 복잡성, 간단함을 승부로 할 것이라면 개인적으론 GameMaker 가 가장 현실적인 중간 답안이 아닐까? 다른 엔진도 여럿 추천 받았지만, 결국 2D 게임을 만든다고 할 때, 가장 적절한 수준은 어디인가에서 다플랫폼을 지원하고, 커뮤니티 수준등을 보면 결국 GameMaker로 갈 수 밖에 없을 것 같다.</p>
 
-<p><img src="/assets/images/posts/2025-04-13-0003.png" alt="" /></p>
+<p><img src="/assets/images/posts/2025-04/2025-04-13-0003.png" alt="" /></p>
 
 <p>거기다 이젠 영어만 있는 것들이 못 쓸 정도가 아니라는 점을 너무나 잘 알고 있다.</p>
 
-<p><img src="/assets/images/posts/2025-04-13-0004.png" alt="" /></p>
+<p><img src="/assets/images/posts/2025-04/2025-04-13-0004.png" alt="" /></p>
 
 <p>노트북LM 을 활용하여, 영어로 된 튜토리얼을 넣고, 학습 시켜 배워야할 영역만 체크하고, 영상도 볼 필요 없이 튜토리얼 대로 만든다… 진짜 지금 내가 사는 시대는 아무리 생각해도 말이 안된다(…)</p>
 
@@ -438,13 +523,13 @@ npm view @types/package-name
 <h3 id="음성-">음성 :</h3>
 <p>이게 가장 큰 문제일 수 있을 것 같다. 비주얼 노벨에서 성우는 생각보다 중요하고, 현재 리메이크된 유명 게임들도 인게임 보이스를 넣어서 리메이크 하는 걸 보면, 확실하 예전 감성으로만 접근할 수 없긴 하다. 그래서 찾아보니…</p>
 
-<p><img src="/assets/images/posts/2025-04-13-0001.png" alt="" /></p>
+<p><img src="/assets/images/posts/2025-04/2025-04-13-0001.png" alt="" /></p>
 
 <p>세상에… AI 는 이미 여기도 이미 해결이 되어 있었다.</p>
 
 <p>그 와중에 개인적으로 사용해본 결과 굉장히 독보적인 곳을 발견했는데, 그곳이 바로 이곳</p>
 
-<p><img src="/assets/images/posts/2025-04-13-0002.png" alt="" /></p>
+<p><img src="/assets/images/posts/2025-04/2025-04-13-0002.png" alt="" /></p>
 
 <p>SUPERTONE 이라는 곳으로, 목소리 수준이나, 비용, 어떤 면에서도 로컬보단 월등히 낫다는 생각이 들었다. 특히 한국어 성우 학습이 정말 괜찮다.</p>
 
