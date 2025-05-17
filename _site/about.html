@@ -907,7 +907,7 @@ function googleTranslateElementInit() {
 
 
 
-    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 17 mins</span>
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 18 mins</span>
   </p></header>
 </div>
     </div>
@@ -1101,6 +1101,30 @@ function googleTranslateElementInit() {
     <div class="post-content e-content" itemprop="articleBody">
 
       <style>
+
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --card-bg: #ffffff;
+    --card-border: #ddd;
+    --tab-bg: #f5f5f5;
+    --tab-active-bg: #333;
+    --tab-active-text: #ffffff;
+    --tab-content-bg: rgba(240, 240, 240, 0.6);
+    --tab-border: #ccc;
+  }
+
+  :root[data-theme='dark'] {
+    --bg-color: #121212;
+    --text-color: #f5f5f5;
+    --card-bg: #1e1e1e;
+    --card-border: #444;
+    --tab-bg: #2a2a2a;
+    --tab-active-bg: #ffffff;
+    --tab-active-text: #000000;
+    --tab-content-bg: rgba(40, 40, 40, 0.9);
+    --tab-border: #555;
+  }
   .skills-container {
     display: flex;
     flex-wrap: wrap;
@@ -1117,6 +1141,11 @@ function googleTranslateElementInit() {
   .skills-container ul {
     list-style-type: none;  
   }
+
+  body, .about-content {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  } 
   
   .about-content {
     text-align: left;
@@ -1160,7 +1189,8 @@ function googleTranslateElementInit() {
   }
 
   .project-card {
-    border: 1px solid #ddd;
+    border: 1px solid var(--card-border);
+    background-color: var(--card-bg);
     border-radius: 12px;
     padding: 15px;
     /* background-color: #fff; */
@@ -1168,13 +1198,13 @@ function googleTranslateElementInit() {
     text-align: left;
   }
 
-    .project-card img {
-      width: 100%;
-      height: 110px; /* 또는 120~180px 등 적절한 고정 높이 */
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
+  .project-card img {
+    width: 100%;
+    height: 110px; /* 또는 120~180px 등 적절한 고정 높이 */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
 
   .project-card h3 {
     margin-top: 0;
@@ -1183,7 +1213,7 @@ function googleTranslateElementInit() {
 
   .project-card p {
     font-size: 0.95em;
-    color: #333;
+    color: var(--text-color);
   }
 
   .tab-wrapper {
@@ -1206,20 +1236,22 @@ function googleTranslateElementInit() {
   .tab-buttons button {
     flex: 0 0 auto;
     padding: 8px 16px;
-    border: 1px solid #ccc;
-    background-color: #f5f5f5;
+    border: 1px solid var(--tab-border);
+    background-color: var(--tab-bg);
+    color: var(--text-color);
     cursor: pointer;
     border-radius: 6px;
     transition: 0.2s;
   }
   .tab-buttons button.active {
-    background-color: #333;
-    color: white;
+    background-color: var(--tab-active-bg);
+    color: var(--tab-active-text);
   }
 
   .tab-content {
     display: none;
-    background-color: rgba(240, 240, 240, 0.6);
+    background-color: var(--tab-content-bg);
+    color: var(--text-color);
     padding: 16px;
     border-radius: 10px;
     margin-top: 10px;
@@ -1237,8 +1269,10 @@ function googleTranslateElementInit() {
     padding: 8px;
     font-size: 1em;
     border-radius: 6px;
-    border: 1px solid #ccc;
-  }
+    border: 1px solid var(--tab-border);
+    background-color: var(--tab-bg);
+    color: var(--text-color);
+    }
 
   /* 모바일에서는 select만 보이고 버튼은 숨김 */
   @media (max-width: 640px) {
@@ -1618,6 +1652,30 @@ function googleTranslateElementInit() {
   const matchBtn = document.querySelector(`.tab-button[data-tab="${id}"]`);
   if (matchBtn) matchBtn.classList.add('active');
 }
+
+  const applyThemeColors = () => {
+      const html = document.documentElement;
+      const theme = html.getAttribute('data-theme');
+      
+      const root = getComputedStyle(document.documentElement);
+      
+      document.body.style.backgroundColor = root.getPropertyValue('--bg-color').trim();
+      document.body.style.color = root.getPropertyValue('--text-color').trim();
+      
+      const about = document.querySelector('.about-content');
+      if (about) {
+        about.style.backgroundColor = root.getPropertyValue('--bg-color').trim();
+        about.style.color = root.getPropertyValue('--text-color').trim();
+      }
+    };
+
+    const observer = new MutationObserver(() => {
+      applyThemeColors();
+    });
+
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    window.addEventListener('DOMContentLoaded', applyThemeColors);
   
   </script> 
 </div>
