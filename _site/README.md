@@ -1,200 +1,124 @@
-<div align="center">
-  <br>
+# Paul의 기술 블로그
 
-  <a href="https://github.com/jeffreytse/jekyll-theme-yat">
-    <img alt="jekyll-theme-yat →~ jekyll" src="https://user-images.githubusercontent.com/9413601/106478481-346fdf00-64e4-11eb-9385-1ab5329c3234.png" width="600">
-  </a>
+이 저장소는 Jekyll을 기반으로 한 개인 기술 블로그입니다. [Jekyll Theme YAT](https://github.com/jeffreytse/jekyll-theme-yat)를 사용하여 구축되었으며, 개발 경험과 기술적 통찰을 공유하기 위한 공간입니다.
 
-  <h1>JEKYLL YAT THEME</h1>
+## 블로그 구조
 
-</div>
+### 기본 정보
+- **블로그 유형**: Jekyll 기반 정적 사이트 생성기
+- **테마**: jekyll-theme-yat (Yet Another Theme) - 플랫 디자인과 다크 모드를 지원하는 현대적인 테마
+- **언어 지원**: 한국어 기본, 다국어 지원 (영어, 중국어, 일본어 등)
 
-<h4 align="center">
-  <a href="https://jekyllrb.com/" target="_blank"><code>Jekyll</code></a> theme for elegant writers.
-</h4>
-
-<p align="center">
-  <a href="https://jeffreytse.github.io/jekyll-theme-yat">
-    <img src="https://github.com/jeffreytse/jekyll-theme-yat/workflows/Github%20Pages/badge.svg"
-      alt="Github Pages" />
-  </a>
-
-  <a href="https://badge.fury.io/rb/jekyll-theme-yat">
-    <img src="https://badge.fury.io/rb/jekyll-theme-yat.svg"
-      alt="Gem Version" />
-  </a>
-
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
-      alt="License: MIT" />
-  </a>
-
-  <a href="https://liberapay.com/jeffreytse">
-    <img src="https://img.shields.io/liberapay/goal/jeffreytse.svg?logo=liberapay"
-      alt="Donate (Liberapay)" />
-  </a>
-
-  <a href="https://patreon.com/jeffreytse">
-    <img src="https://img.shields.io/badge/support-patreon-F96854.svg?style=flat-square"
-      alt="Donate (Patreon)" />
-  </a>
-
-  <a href="https://ko-fi.com/jeffreytse">
-  <img height="20" src="https://www.ko-fi.com/img/githubbutton_sm.svg"
-  alt="Donate (Ko-fi)" />
-  </a>
-</p>
-
-<div align="center">
-  <sub>Built with ❤︎ by
-  <a href="https://jeffreytse.net">jeffreytse</a> and
-  <a href="https://github.com/jeffreytse/jekyll-theme-yat/graphs/contributors">contributors </a>
-  </sub>
-</div>
-
-<br>
-
-Hey, nice to meet you, you found this [Jekyll][jekyll] theme. Here the
-_YAT (Yet Another Theme)_ is a modern responsive theme. It's quite
-clear, clean and neat for writers and posts. **If you are an elegant
-writer and focus on content, don't miss it.**
-
-<p align="center">
-Like this elegant theme? You can give it a star or sponsor me!<br>
-I will respect your crucial support and say THANK YOU!
-</p>
-
-<p align="center">
-
-  <img src="https://user-images.githubusercontent.com/9413601/91842897-6a840b00-ec87-11ea-95ca-52abcc1ac063.png" alt="demo-screenshot" width="100%"/>
-
-</p>
-
-<h4 align="center">BANNER</h4>
-
-<p align="center">
-
-  <img src="https://user-images.githubusercontent.com/9413601/123897812-ae729a00-d996-11eb-96b8-b76ba926f555.gif" alt="demo-screenshot" width="100%"/>
-
-</p>
-
-## Features
-
-- Support beautiful **Night Mode**.
-- Modern responsive web design.
-- Full layouts `home`, `post`, `tags`, `archive` and `about`.
-- Uses font awesome 5 for icons.
-- Beautiful page banner with image and video.
-- Beautiful Syntax Highlight using [highlight.js][highlight-js].
-- RSS support using [Jekyll Feed][jekyll-feed] gem.
-- Optimized for search engines using [Jekyll Seo Tag][jekyll-seo-tag] gem.
-- Sitemap support using [Jekyll Sitemap][jekyll-sitemap] gem.
-- Complex and flexible table support using [Jekyll Spaceship][jekyll-spaceship] gem.
-- MathJAX and LaTeX optional support using [Jekyll Spaceship][jekyll-spaceship] gem.
-- Media (Youtube, Spotify, etc.) support using [Jekyll Spaceship][jekyll-spaceship] gem.
-- Diagram (PlantUML, Mermaid) support using [Jekyll Spaceship][jekyll-spaceship] gem.
-- Google Translation support.
-- New post tag support.
-
-Also, visit the [Live Demo][yat-live-demo] site for the theme.
-
-## Installation
-
-There are three ways to install:
-
-- As a [gem-based theme](https://jekyllrb.com/docs/themes/#understanding-gem-based-themes).
-- As a [remote theme](https://blog.github.com/2017-11-29-use-any-theme-with-github-pages/) (GitHub Pages compatible).
-- Forking/directly copying all of the theme files into your project.
-
-### Gem-based Theme Method
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "jekyll-theme-yat"
+### 디렉토리 구조
+```
+/
+├── _config.yml                   # Jekyll 설정 파일
+├── _data/                        # 사이트에서 사용하는 데이터 파일
+│   ├── defaults.yml              # 기본 설정값 (홈페이지 헤딩 등)
+│   └── translate_langs.yml       # 번역 언어 설정
+├── _includes/                    # 재사용 가능한 HTML 컴포넌트
+├── _layouts/                     # 페이지 레이아웃 템플릿
+│   ├── default.html              # 기본 레이아웃
+│   ├── home.html                 # 홈페이지 레이아웃
+│   ├── post.html                 # 포스트 레이아웃
+│   └── ...                       # 기타 레이아웃
+├── _posts/                       # 블로그 포스트 디렉토리
+│   ├── YYYY-MM/                  # 연도-월 기준 포스트 정리
+│   │   └── YYYY-MM-DD-title.md   # 포스트 파일
+├── _sass/                        # SCSS 스타일 파일
+├── assets/                       # 정적 자원 (이미지, JS, CSS 등)
+├── index.html                    # 메인 페이지
+└── ...                           # 기타 페이지 (about.html, archives.html 등)
 ```
 
-And add this line to your Jekyll site's `_config.yml`:
+### 주요 기능
+- **다크 모드**: 자동/수동 다크 모드 전환 기능
+- **배너 시스템**: 비디오 또는 이미지를 배너로 사용 가능
+- **댓글 시스템**: Utterances를 사용한 GitHub 기반 댓글 기능
+- **카테고리 및 태그**: 포스트를 카테고리와 태그로 분류
+- **아카이브**: 시간순으로 정렬된 포스트 아카이브
+- **반응형 디자인**: 모바일 친화적인 디자인
+
+### 플러그인
+- **jekyll-feed**: RSS 피드 생성
+- **jekyll-seo-tag**: SEO 최적화
+- **jekyll-sitemap**: 사이트맵 생성
+- **jekyll-paginate**: 페이지네이션
+- **jekyll-spaceship**: 마크다운 확장 기능 제공
+
+## 포스트 작성 방법
+
+새 포스트는 `_posts/YYYY-MM/YYYY-MM-DD-title.md` 형식으로 생성합니다. 각 포스트는 다음과 같은 front matter를 포함해야 합니다:
 
 ```yaml
-theme: jekyll-theme-yat
+---
+layout: post 
+title: 포스트 제목
+subtitle: 부제목 (선택사항)
+categories: 카테고리
+tags: 태그1 태그2 태그3
+thumb: 썸네일_이미지_URL (선택사항)
+custom-excerpt: 사용자 정의 요약 (선택사항)
+banner:
+  image: 배너_이미지_URL (선택사항)
+  opacity: 0.618
+  background: "#000"
+  height: "100vh"
+---
+
+포스트 내용...
 ```
 
-And then execute:
+## 향후 작업 계획
 
-```bash
-$ bundle
-```
+### 1. 콘텐츠 검색 기능 추가
 
-Or install it yourself as:
+블로그 내 콘텐츠를 쉽게 검색할 수 있는 기능을 추가할 예정입니다:
 
-```bash
-$ gem install jekyll-theme-yat
-```
+- **Jekyll Simple Search** 또는 **Algolia** 통합
+- 검색 인터페이스 구현
+- 검색 결과 하이라이팅
+- 관련 검색어 제안
 
-### Remote Theme Method with GitHub Pages
-
-Remote themes are similar to Gem-based themes, but do not require `Gemfile` changes or whitelisting making them ideal for sites hosted with GitHub Pages.
-
-To install:
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "github-pages", group: :jekyll_plugins
-```
-
-And add this line to your Jekyll site's `_config.yml`:
-
+구현 방식:
 ```yaml
-# theme: owner/name --> Don't forget to remove/comment the gem-based theme option
-remote_theme: "jeffreytse/jekyll-theme-yat"
+# _config.yml에 추가 예정
+simple_search:
+  enabled: true
+  collections:
+    - posts
+  json_output_path: "/search.json"
 ```
 
-And then execute:
+### 2. SEO 성능 향상을 위한 PWA 지원
 
-```bash
-$ bundle
+Progressive Web App(PWA) 기능을 추가하여 오프라인 액세스, 향상된 성능 및 모바일 기기에 설치 가능한 기능을 제공할 예정입니다:
+
+- **오프라인 접근성**: 인터넷 연결 없이도 이전에 방문한 페이지 접근 가능
+- **모바일 설치 가능**: 홈 화면에 앱처럼 추가 가능
+- **향상된 로딩 속도**: 서비스 워커를 통한 콘텐츠 캐싱
+- **푸시 알림**: 새 콘텐츠 업데이트 시 알림 기능 (선택적)
+
+구현 방식:
+```yaml
+# _config.yml에 추가 예정
+plugins:
+  - jekyll-pwa
+
+pwa:
+  enabled: true
+  sw_src_filepath: service-worker.js
+  sw_dest_filename: service-worker.js
+  precache_recent_posts_num: 5
+  manifest:
+    name: Paul의 기록 보관소
+    short_name: Paul's Archives
+    theme_color: "#ffffff"
+    background_color: "#ffffff"
+    display: standalone
+    start_url: "/"
 ```
 
-### GitHub Pages without limitation
+## 라이센스
 
-GitHub Pages runs in `safe` mode and only allows [a set of whitelisted plugins/themes](https://pages.github.com/versions/). **In other words, the third-party gems will not work normally**.
-
-To use the third-party gem in GitHub Pages without limitation:
-
-Here is a GitHub Action named [jekyll-deploy-action](https://github.com/jeffreytse/jekyll-deploy-action) for Jekyll site deployment conveniently. 👍
-
-## Usage
-
-Add or update your available layouts, includes, sass and/or assets.
-
-## Development
-
-To set up your environment to develop this theme, run `bundle install`.
-
-Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
-
-When your theme is released, only the files in `_data`, `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `jekyll-theme-yat.gemspec` accordingly.
-
-## Contributing
-
-Issues and Pull Requests are greatly appreciated. If you've never contributed to an open source project before I'm more than happy to walk you through how to create a pull request.
-
-You can start by [opening an issue](https://github.com/jeffreytse/jekyll-theme-yat/issues/new) describing the problem that you're looking to resolve and we'll go from there.
-
-## License
-
-This theme is licensed under the [MIT license](https://opensource.org/licenses/mit-license.php) © JeffreyTse.
-
-<!-- External links -->
-
-[jekyll]: https://jekyllrb.com/
-[yat-git-repo]: https://github.com/jeffreytse/jekyll-theme-yat/
-[yat-live-demo]: https://jeffreytse.github.io/jekyll-theme-yat/
-[jekyll-spaceship]: https://github.com/jeffreytse/jekyll-spaceship
-[jekyll-seo-tag]: https://github.com/jekyll/jekyll-seo-tag
-[jekyll-sitemap]: https://github.com/jekyll/jekyll-sitemap
-[jekyll-feed]: https://github.com/jekyll/jekyll-feed
-[highlight-js]: https://github.com/highlightjs/highlight.js
+이 프로젝트는 MIT 라이센스 하에 배포됩니다.
