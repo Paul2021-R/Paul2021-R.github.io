@@ -3,7 +3,7 @@ layout: post
 title: 백엔드 개발자, 2025년 트렌드 정리하기
 subtitle: 제미니를 활용해본 백엔드 트렌드 정리하기
 categories: Backend
-tags: 학습 Backend DevOps Container Docker 
+tags: 학습 Backend DevOps AI GitOps Google Gemini
 thumb: /assets/images/posts/2025-05/2025-05-25-0010.png
 custom-excerpt: google IO 2025 에서 또 다시 저력을 보여준 구글의 제미니. 가장 먼저 사용해서 백엔드 개발자들을 위한 트렌드를 파악해보았다.
 banner:
