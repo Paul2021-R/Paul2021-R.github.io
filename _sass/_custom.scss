@@ -16,18 +16,18 @@
 
 .post-thumbnail {
   flex-shrink: 0;
-  width: 180px;
-  height: 180px; /* 고정된 높이 설정 */
-  overflow: hidden;
+  width: 180px !important;
+  height: 180px !important; /* 고정된 높이 설정 */
+  overflow: hidden !important;
   border-radius: 2px;
-  position: relative; /* 이미지 정렬을 위해 position 추가 */
+  position: relative !important; /* 이미지 정렬을 위해 position 추가 */
 }
 
 .post-thumbnail img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover; /* 이미지 비율 유지하면서 영역을 채움 */
-  object-position: center; /* 이미지 중앙 정렬 */
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* 이미지 비율 유지하면서 영역을 채움 */
+  object-position: center !important; /* 이미지 중앙 정렬 */
 }
 
 .post-info {
@@ -46,12 +46,6 @@
     width: 100% !important;
     height: 200px !important;
     margin-bottom: 0.5rem !important;
-  }
-
-  .post-thumbnail img {
-    width: 465px !important;
-    height: 200px !important;
-    object-position: center;
   }
 }
 
