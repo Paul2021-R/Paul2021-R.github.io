@@ -766,102 +766,10 @@ function googleTranslateElementInit() {
 
 
 
-<style>
-    html .page-banner {
-      background: #000;
-    }
-  </style>
-<style>html .page-banner {
-      height:  36.8vh;
-      min-height: 100vh;
-    }
-    html[data-scroll-status="top"] .page-banner {
-      height: 100vh;
-    }
-  </style>
-<style>
-    html .page-banner .page-banner-img > *:first-child {
-      opacity: 0.618;
-    }
-
-    html[data-theme="dark"] .page-banner .page-banner-img > *:first-child {
-      opacity: 0.443724;
-    }
-  </style>
-<style>
-    html .page-banner .page-banner-inner > *:first-child > *:nth-child(1) {
-      font-size: 4.25em; font-weight: bold; text-decoration: underline
-    }
-  </style>
-<style>
-    html .page-banner .page-banner-inner > *:first-child > *:nth-child(2) {
-      color: gold
-    }
-  </style>
 <section class="page-banner">
     <div class="page-banner-img">
-<video autoplay="" poster="https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg" playsinline>
-          <source src="https://cdn.pixabay.com/video/2015/12/11/1656-148614494_medium.mp4">
-        </source></video>
-        <script>
-          // (function() {
-          //   var video = document.querySelector('.page-banner .page-banner-img > video');
-          //   var videoPlay = function() {
-          //     video.play().catch (function() {
-          //         video.muted = true;
-          //         video.play();
-          //       });
-          //   }
-
-          //   video.onloadstart = function() {
-          //     video.currentTime = 0;
-          //     video.volume = 0;
-          //     video.muted = (video.volume == 0);
-          //     videoPlay();
-          //   }
-
-          //   video.onended = function() {
-          //     video.currentTime = 0;
-          //     video.volume = 0;
-          ////     video.play();
-          ////   }
-          // })();
-          (function() {
-          // 모바일 기기 감지
-          var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-          
-          if (isMobile) {
-            // 모바일에서는 비디오 요소 제거하고 이미지로 대체
-            var video = document.querySelector('.page-banner .page-banner-img > video');
-            if (video) {
-              // 비디오 요소 제거
-              video.pause(); // 비디오 재생 중지
-              video.src = ''; // 비디오 소스 제거
-              // video.parentNode.removeChild(video);
-            }
-          } else {
-            // 데스크톱에서만 비디오 로직 실행
-            var video = document.querySelector('.page-banner .page-banner-img > video');
-            var videoPlay = function() {
-              video.play().catch (function() {
-                video.muted = true;
-                video.play();
-              });
-            }
-
-            video.onloadstart = function() {
-              video.currentTime = 0;
-              video.volume = 0;
-              video.muted = (video.volume == 0);
-              videoPlay();
-            }
-
-            video.onended = function() {
-              video.currentTime = 0;
-              video.volume = 0;video.play();}
-          }
-        })();
-        </script>
+<div style="background-image: url(https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg)"></div>
+        <img class="img-placeholder" src="https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg">
 </div>
     <div class="wrapper">
       <div class="page-banner-inner"><div class="page-banner-default">
@@ -1082,6 +990,17 @@ function googleTranslateElementInit() {
       
         
         <li> 
+<span class="post-meta"> 2025년 05월 31일</span>
+<span>
+  <a class="post-link" href="/ai/2025/05/31/slow-think.html">
+    AI에게 답을 찾는 새로운 방법 'Slow Think'
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
 <span class="post-meta"> 2025년 05월 25일</span>
 <span>
   <a class="post-link" href="/backend/2025/05/25/01-NestJS-Deep-Dive.html">
@@ -1194,14 +1113,14 @@ function googleTranslateElementInit() {
   <ul>
     <li>
       <a href="/index.html">
-        All<span>7</span>
+        All<span>8</span>
       </a>
     </li>
 
     
       <li>
         <a href="/archives.html#h-2025">
-          2025 <span>7</span>
+          2025 <span>8</span>
         </a>
       </li>
     

@@ -747,102 +747,10 @@ function googleTranslateElementInit() {
 
 
 
-<style>
-    html .page-banner {
-      background: #000;
-    }
-  </style>
-<style>html .page-banner {
-      height:  36.8vh;
-      min-height: 100vh;
-    }
-    html[data-scroll-status="top"] .page-banner {
-      height: 100vh;
-    }
-  </style>
-<style>
-    html .page-banner .page-banner-img > *:first-child {
-      opacity: 0.618;
-    }
-
-    html[data-theme="dark"] .page-banner .page-banner-img > *:first-child {
-      opacity: 0.443724;
-    }
-  </style>
-<style>
-    html .page-banner .page-banner-inner > *:first-child > *:nth-child(1) {
-      font-size: 4.25em; font-weight: bold; text-decoration: underline
-    }
-  </style>
-<style>
-    html .page-banner .page-banner-inner > *:first-child > *:nth-child(2) {
-      color: gold
-    }
-  </style>
 <section class="page-banner">
     <div class="page-banner-img">
-<video autoplay="" poster="/assets/images/banners/home.jpg" playsinline>
-          <source src="https://cdn.pixabay.com/video/2015/12/11/1656-148614494_medium.mp4">
-        </source></video>
-        <script>
-          // (function() {
-          //   var video = document.querySelector('.page-banner .page-banner-img > video');
-          //   var videoPlay = function() {
-          //     video.play().catch (function() {
-          //         video.muted = true;
-          //         video.play();
-          //       });
-          //   }
-
-          //   video.onloadstart = function() {
-          //     video.currentTime = 0;
-          //     video.volume = 0;
-          //     video.muted = (video.volume == 0);
-          //     videoPlay();
-          //   }
-
-          //   video.onended = function() {
-          //     video.currentTime = 0;
-          //     video.volume = 0;
-          ////     video.play();
-          ////   }
-          // })();
-          (function() {
-          // 모바일 기기 감지
-          var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-          
-          if (isMobile) {
-            // 모바일에서는 비디오 요소 제거하고 이미지로 대체
-            var video = document.querySelector('.page-banner .page-banner-img > video');
-            if (video) {
-              // 비디오 요소 제거
-              video.pause(); // 비디오 재생 중지
-              video.src = ''; // 비디오 소스 제거
-              // video.parentNode.removeChild(video);
-            }
-          } else {
-            // 데스크톱에서만 비디오 로직 실행
-            var video = document.querySelector('.page-banner .page-banner-img > video');
-            var videoPlay = function() {
-              video.play().catch (function() {
-                video.muted = true;
-                video.play();
-              });
-            }
-
-            video.onloadstart = function() {
-              video.currentTime = 0;
-              video.volume = 0;
-              video.muted = (video.volume == 0);
-              videoPlay();
-            }
-
-            video.onended = function() {
-              video.currentTime = 0;
-              video.volume = 0;video.play();}
-          }
-        })();
-        </script>
+<div style="background-image: url(/assets/images/banners/home.jpg)"></div>
+        <img class="img-placeholder" src="/assets/images/banners/home.jpg">
 </div>
     <div class="wrapper">
       <div class="page-banner-inner"><div class="page-banner-default">
@@ -1037,6 +945,104 @@ function googleTranslateElementInit() {
   <div class="pagination">
   <!-- Post list links -->
   <ul class="post-list">
+<li class="post-card">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-card-inner">
+
+        
+        <div class="post-thumbnail">
+          <a href="/ai/2025/05/31/slow-think.html">
+            <img src="/assets/images/banners/AI_2025-05-31-0001.jpg" alt="AI에게 답을 찾는 새로운 방법 'Slow Think'">
+          </a>
+        </div>
+        
+    
+        <div class="post-info">
+          <h2 class="post-title">
+            <a class="post-link" href="/ai/2025/05/31/slow-think.html">
+              AI에게 답을 찾는 새로운 방법 'Slow Think'
+            </a>
+          </h2>
+          <div class="post-meta">
+            <span class="post-date"><i class="fa fa-calendar"></i>  2025년 05월 31일</span>
+            <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 20 mins</span>
+          </div>
+
+          
+          <a class="post-excerpt" href="/ai/2025/05/31/slow-think.html">
+            <p>새롭게 등장한 AI 의 프롬프팅 방식이 나타났다. 해당 내용을 정리해본다. <span class="read_more">...Read More</span></p>
+          </a>
+          
+
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags.html#etc">#etc</a><a class="post-tag" href="/tags.html#AI">#AI</a><a class="post-tag" href="/tags.html#prompting">#prompting</a>
+</div>
+        </div>
+    
+      </div>
+    </li>
 <li class="post-card">
       
 
@@ -1429,104 +1435,6 @@ function googleTranslateElementInit() {
     
       </div>
     </li>
-<li class="post-card">
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="post-card-inner">
-
-        
-        <div class="post-thumbnail">
-          <a href="/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html">
-            <img src="/assets/images/posts/2025-04/2025-04-27-0002.png" alt="클린 코드를 위한 룰">
-          </a>
-        </div>
-        
-    
-        <div class="post-info">
-          <h2 class="post-title">
-            <a class="post-link" href="/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html">
-              클린 코드를 위한 룰
-            </a>
-          </h2>
-          <div class="post-meta">
-            <span class="post-date"><i class="fa fa-calendar"></i>  2025년 04월 27일</span>
-            <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 22 mins</span>
-          </div>
-
-          
-          <a class="post-excerpt" href="/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html">
-            <p>클린 코드를 위한~ 이라고 쓰고 팀 개발을 위한 클린 코드 원칙을 정리해 보았다. <span class="read_more">...Read More</span></p>
-          </a>
-          
-
-
-          <div class="post-tags">
-<a class="post-tag" href="/tags.html#etc">#etc</a><a class="post-tag" href="/tags.html#cleanCode">#cleanCode</a><a class="post-tag" href="/tags.html#prgramming">#prgramming</a>
-</div>
-        </div>
-    
-      </div>
-    </li>
 </ul>
 
   <!-- Pagination links -->
@@ -1578,10 +1486,16 @@ function googleTranslateElementInit() {
   <ul>
     <li>
       <a href="/index.html">
-        All<span>7</span>
+        All<span>8</span>
       </a>
     </li>
 
+    
+      <li>
+        <a href="/categories.html#h-AI">
+          AI <span>1</span>
+        </a>
+      </li>
     
       <li>
         <a href="/categories.html#h-Backend">
