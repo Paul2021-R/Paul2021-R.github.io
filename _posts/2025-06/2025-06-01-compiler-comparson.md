@@ -4,7 +4,7 @@ title: NestJS 컴파일러 성능 비교 - tsc vs SWC
 subtitle: SWC를 적용하고 개발이 200프로 빨라진다. 대신 300프로 조심해라...
 categories: Backend
 tags: Backend Node NestJS TypeScript Programming
-thumb: https://i.namu.wiki/i/lESG3ZnlLtV8zKQbWkUT8BMOhfdB150eNx3kL4UgcF7JpgiZcc4a71PM0tPrvfeg7hyAJtgBPBGs8URwIS1vhMQf6eJa0OanfRs_XQU1LI3jwe22GUND1TuQlxUSRQBgksnj1r1wvWNiSw85F2voog.svg
+thumb: /assets/images/posts/2025-06/2025-06-03-0001.png
 custom-excerpt: 빠른 개발을 하고 싶다면 SWC 를 써보자. 대신에.... 
 banner:
   # video: https://vjs.zencdn.net/v/oceans.mp4
@@ -31,7 +31,7 @@ TypeScript 컴파일러는 ms 에서 강력한 정적 분석과 엄격한 타입
 
 이러한 점들을 경험하고 나면 살짝 불편함을 느끼게 되고, 검색을 하게 된다. 그러다보면 마치 군대에서 '사제'를 찾듯이(?) 사제 컴파일러가 그렇게 좋다더라~ 하는 소문을 듣게 되고, 나름의 대안을 찾아 보게된다. 그 중에 하나가 `SWC` 라는 컴파일러. 러스트 기반이자, 트랜스파일링 프로세스를 최적화 시켜 Babel 의 직접적인 대체제라는 평가를 가진 컴파일러이다. 
 
-![SWC로고](https://i.namu.wiki/i/lESG3ZnlLtV8zKQbWkUT8BMOhfdB150eNx3kL4UgcF7JpgiZcc4a71PM0tPrvfeg7hyAJtgBPBGs8URwIS1vhMQf6eJa0OanfRs_XQU1LI3jwe22GUND1TuQlxUSRQBgksnj1r1wvWNiSw85F2voog.svg)<br/>
+![SWC로고](/assets/images/posts/2025-06/2025-06-03-0001.png)<br/>
 
 [공식 사이트](https://swc.rs/)<br/>
 
