@@ -3,9 +3,15 @@ layout: post
 title: 백엔드 개발자의 이직 커리어 준비 연구
 subtitle: 커리어 준비를 위해 분석해본 백엔드 개발자 스펙 및 방향성을 고민해보았다.
 categories: 생각정리
-tags: etc 생각정리 이직 backend
+tags: etc 생각정리 이직 Backend
 thumb: /assets/images/posts/2025-05/2025-05-31-0001.png
 custom-excerpt: 커리어 준비를 위해 AI로 분석한 보고서 내용을 정리 및 씹어먹어 보았다.
+banner:
+  image: /assets/images/posts/2025-05/2025-05-31-0001.png
+  height: "100vh"
+  min_height: "38vh"
+  heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
+  subheading_style: "color: gold"
 ---
 
 ## Introduce

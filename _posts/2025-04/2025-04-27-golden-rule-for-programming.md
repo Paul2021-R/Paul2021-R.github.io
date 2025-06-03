@@ -3,7 +3,7 @@ layout: post
 title: 클린 코드를 위한 룰
 subtitle: 숨쉬듯 해야 하는 원칙
 categories: 학습
-tags: etc cleanCode prgramming 
+tags: etc cleanCode Programming 
 thumb: /assets/images/posts/2025-04/2025-04-27-0002.png
 custom-excerpt: 클린 코드를 위한~ 이라고 쓰고 팀 개발을 위한 클린 코드 원칙을 정리해 보았다. 
 banner:

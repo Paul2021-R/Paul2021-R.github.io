@@ -170,11 +170,11 @@ banner:
   # muted: true
   # start_at: 0             # Video start time
   image: https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg            # Image banner source
-  # opacity: 0.618
-  # background: "#000"
-  # height: "100vh"
-  # heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
-  # subheading_style: "color: gold" # Custom subheading style (e.g. color: gold)
+  opacity: 0.618
+  background: "#000"
+  height: "70vh"
+  heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
+  subheading_style: "color: gold" # Custom subheading style (e.g. color: gold)
 
 # exceprt 설정
 excerpt:
