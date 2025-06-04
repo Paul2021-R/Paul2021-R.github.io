@@ -69,6 +69,11 @@ banner:
 포스트 내용...
 ```
 
+## 개발 방법
+```shell
+bundle exec jekyll serve --livereload
+```
+
 ## 향후 작업 계획
 
 ### 1. 콘텐츠 검색 기능 추가
