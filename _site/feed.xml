@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-06-04T17:14:58+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">NestJS 를 위한 NodeJS Deep Dive</title><link href="http://localhost:4000/backend/2025/06/04/deep-dive-node-js.html" rel="alternate" type="text/html" title="NestJS 를 위한 NodeJS Deep Dive" /><published>2025-06-04T00:00:00+00:00</published><updated>2025-06-04T00:00:00+00:00</updated><id>http://localhost:4000/backend/2025/06/04/deep-dive-node-js</id><content type="html" xml:base="http://localhost:4000/backend/2025/06/04/deep-dive-node-js.html"><![CDATA[<h2 id="0-들어가면서">0. 들어가면서</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-06-05T02:25:25+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">NestJS 를 위한 NodeJS Deep Dive</title><link href="http://localhost:4000/backend/2025/06/04/deep-dive-node-js.html" rel="alternate" type="text/html" title="NestJS 를 위한 NodeJS Deep Dive" /><published>2025-06-04T00:00:00+00:00</published><updated>2025-06-04T00:00:00+00:00</updated><id>http://localhost:4000/backend/2025/06/04/deep-dive-node-js</id><content type="html" xml:base="http://localhost:4000/backend/2025/06/04/deep-dive-node-js.html"><![CDATA[<h2 id="0-들어가면서">0. 들어가면서</h2>
 <p>본 글은 어디까지나 NestJS 개발자로써 Node 기본기를 다지기 위해 원하는 식의 재구성이 포함됩니다. 혹시나 내용적으로 오류가 있으면 알려주시면 감사하겠습니다 😎</p>
 
 <h2 id="1-why-node-and-then-nestjs">1. Why Node And then NestJS</h2>
@@ -85,9 +85,34 @@
 </ul>
 
 <h4 id="2-2-3-nestjs-의-비동기-작업과-nodejs-의-관계">2-2-3. NestJS 의 비동기 작업과 Node.js 의 관계</h4>
-<p>(작성중)</p>
+<p>NestJS 는 Node의 비동기 작업의 구조와 시스템을 그대로 컨트롤러, 서비스에 적용하고 의존하고 있다. 그렇기에 이벤트 루프 개념의 이해, NestJS 의 큐 개념에 대한 이해 등을 기반으로 더 강력한 비동기적 처리 구조를 구현할 수도 있다. async/await, Promise의 올바른 사용법과 setImediate또는 nextTick을 언제 쓰면 될지를 이해하는 가는 작업 스케쥴링 최적화를 가능케 한다.</p>
+
+<p>NestJS 는 기본 철학에서부터 비동기 작업을 권장한다. 단, 서비스 내에서 CPU 바운드 블로킹 코드를 작성하는 것도 가능한데, 이러한 형태의 가장 큰 단점은, 연산량이 많아지면 단일 스레드를 독점하고 이벤트 루프가 다른 보류중인 이벤트 처리를 못하게 되어, 요청에 대한 응답이 밀리게 된다는 점이다.</p>
+
+<p>이러한 경우 워커 스레드와 같은 기술을 사용하여 오프로드해야 하는 등으로 일에 대한 선택적 스케쥴링도 필요할 수 있다. IO 에 대해서도 aync/await 정도만으로도 충분히 병목을 제어할 수 없는 경우도 있다. 따라서 NestJS 기술 스택을 사용하는 개발자는 단순히 I/O 바운드의 비동기성과 함께 CPU 바운드 작업에 대한 주의 역시 이해하고 워커 스레드와 같은 전략을 사용할 필요가 있다.</p>
+
+<p><img src="/assets/images/posts/2025-06/2025-06-05-0005.png" alt="" /></p>
 
 <h3 id="2-3-논블로킹-io-및-비동기-프로그래밍">2-3. 논블로킹 IO 및 비동기 프로그래밍</h3>
+<p>Node.js의 표준 라이브러리에서 비동기 IO 를 기본 제공하며, JS 코드가 차단되는, 동기식 동작을 방지한다. IO 작업의 수행 시 스레드를 차단하기 대신에 응답이 돌아오면 하던 작업을 재게하는 식을 통해 수천개의 동시 연결을 단일 스레드에서 처리하는 것이 가능해진다.</p>
+
+<h4 id="2-3-1-콜백-지옥과-promise로의-진화">2-3-1. 콜백 지옥과 Promise로의 진화</h4>
+<ul>
+  <li>초기 Node.js는 비동기 작업을 위해 콜백에 의존하고 있었다. 이러한 구조는 깊이 중첩되고 관리하기 어려운 코드들을 발생하였고, 따라서 개발의 생산성(가독성, 유지보수성)이 매우 제한적이었다. ES6이후 Promise의 도입은 매우 큰 변화를 가져왔다.</li>
+</ul>
+
+<h4 id="2-3-2-깔끔한-비동기-코드를-위한-asyncawait">2-3-2. 깔끔한 비동기 코드를 위한 async/await</h4>
+<ul>
+  <li>콜백 방식은 try/catch 불가능, 에러 전파가 불명확했으나, Promise 이후 .catch() 로 에러흐름을 명확히 분리했으며, async/await 로 더 자연스러운 동기식 표현이 가능하면서도 비동기로 동작이 구현 될 수 있게 되었다.</li>
+</ul>
+
+<h4 id="2-3-3-nestjs-가-비동기-패턴을-적용하는-방법">2-3-3. NestJS 가 비동기 패턴을 적용하는 방법</h4>
+<ul>
+  <li>JS 와 의 발전으로 Node.js 기반인 상태에서 NestJS 는 async/await 을 완전히 수용 한 단계 더 나아간 추상화를 통해 컨트롤러, 서비스, 프로바이더, 그리고 그 하부의 메서드나 핸들러들 모두 async 함수가 될 수 있고 Promise 를 반환한다. 이를 통해 응답을 받기전까지 언제든지 멈추고 다른 작업이 가능하도록 NestJS 는 구현된다.</li>
+  <li>수명주기 이벤트: onModuleInit을 포함 각종 후크도 이벤트들로 지정되어 있고 async를 활용하여 비동기적으로 로직의 초기화를 수행할 수있고 이러한 점은 NestJS 개발자들에게 개발적 구성을 더욱 풍부하고 쉽게 할수 있도록 돕게 된다.</li>
+</ul>
+
+<h4 id="결론">결론</h4>
 
 <h2 id="3-nodejs의-모듈-데이터-처리-및-io">3. Node.js의 모듈, 데이터 처리 및 IO</h2>
 
