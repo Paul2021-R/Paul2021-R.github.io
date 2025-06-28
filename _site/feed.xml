@@ -1,4 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-06-14T07:10:04+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">NestJS 를 위한 NodeJS Deep Dive</title><link href="http://localhost:4000/backend/2025/06/04/deep-dive-node-js.html" rel="alternate" type="text/html" title="NestJS 를 위한 NodeJS Deep Dive" /><published>2025-06-04T00:00:00+00:00</published><updated>2025-06-04T00:00:00+00:00</updated><id>http://localhost:4000/backend/2025/06/04/deep-dive-node-js</id><content type="html" xml:base="http://localhost:4000/backend/2025/06/04/deep-dive-node-js.html"><![CDATA[<h2 id="0-들어가면서">0. 들어가면서</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-06-28T10:01:46+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">서버리스 개발 서버 상태 알림 프로젝트 정리</title><link href="http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/28/EKS+LAMDA+CLOUDWATCH.html" rel="alternate" type="text/html" title="서버리스 개발 서버 상태 알림 프로젝트 정리" /><published>2025-06-28T00:00:00+00:00</published><updated>2025-06-28T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/28/EKS+LAMDA+CLOUDWATCH</id><content type="html" xml:base="http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/28/EKS+LAMDA+CLOUDWATCH.html"><![CDATA[<h2 id="0-introduciton">0. Introduciton</h2>
+
+<p>신규 프로젝트를 진행하는 과정에서 backend 개발자로서 Legacy 코드들의 대대적인 개선, 코드 품질 향상, 그러면서도 향후를 고려한 다양한 DevOps 적인 요청이 들어왔다.</p>
+
+<p>아무래도 클라이언트 처럼 직접적인 개발이 필요한 입장에선 타이트한 일정 상황에서 구현이나, 현재의 목표에 중시해야 했지만, 백엔드라는 특성 상 테크리더의 요청으로 백엔드는 보다 안전하고, 보다 관리 용이성을 높이는 것 역시 추가로 필요하다는 것이 리더의 설명이자, 계획이었다.</p>
+
+<p>그렇기에 나 역시 개발의 핵심 방향성을 잡고 한달의 달리기를 위한 목표 설정을 했었다. 내용은 다음과 같다.</p>
+
+<ol>
+  <li>배포와 개발 환경을 최대한 독립화하자.
+    <ul>
+      <li>Docker 이미지화 + ECR 을 활용하기 + 시작 템플릿을 활용하여 1 딸깍이면 신규 이미지를 불러오돌 구현하자</li>
+      <li>Jenkins 를 활용한 무중단 배포를 최대 목표로 잡자.</li>
+    </ul>
+  </li>
+  <li>배포, 개발의 과정에서, 기계적으로 코드 품질을 유지할 장치를 마련하자.
+    <ul>
+      <li>Husky 의 도입을 통해 git 이벤트를 추적해 특정 품질 최적화 기능을 구동시킨다.</li>
+      <li>lint, lint-staged, tsc 컴파일러의 typechecking 등을 내부에 추가하기</li>
+    </ul>
+  </li>
+  <li>코드 외적으로 Ops 관점에서 최대한 안정성을 확보하자.
+    <ul>
+      <li><strong>Cloud Watch 서비스를 보다 고도로 파악하고 적용하자, 특히 각 서버의 특성(AI, API) 이에 최적화된 헬스 체킹의 기반을 준비하자.</strong></li>
+      <li><strong>국내에선 당장 문자로 인스턴스 상태 알림을 수신 가능하게 만들자</strong></li>
+    </ul>
+  </li>
+</ol>
+
+<p>말이 길어졌다. 사실 해당 프로젝트에 대해서도 정리가 필요하긴 할 것으로 보이지만, 그것은 또 다음 시간에… 사실 너무 바빠서 그 중간의 내용에 진행했던 내용을 다 적었다간, 논문이 되어버릴지도 모른다. 😂</p>
+
+<h2 id="1-sms-어떻게-보내볼까">1. SMS 어떻게 보내볼까</h2>
+
+<p>사실 요즘은 딸깍- 이라는 키워드를 활용하듯 B2B 서비스나, AWS 에서도 돈을 더 내고 고급 서비스를 써도 된다. 심지어 글로벌이라면 SNS 서비스를 활용하면 그냥 그걸로 끝날지도 모른다. 하물며 lamda 와 SNS API 를 활용하면 아마 그걸로 충분히 구현 될 수도 있다.(그러니 사실 따라하라고 추천하고 싶진 않다… 이 글의 목적도 엄밀히 말하면 서버리스 서비스와 AWS 의 서비스를 보다 내 스타일로 써보면 어디까지 되나? 가 궁금해서 일을 크게 키운거기도 하다.) 어쨌든, 그리하여 여러 고민을 해보았다.</p>
+
+<ol>
+  <li>기존 쓸 수 있는 서비스를 최대한 활용하고 싶다.</li>
+  <li>비용이나, 헬스 체킹에 너무 시간을 쏟기는 싫다.</li>
+  <li>배포 관리하기 귀찮다!</li>
+  <li>서버리스 서비스를 한번 써보고 싶다..!</li>
+  <li>대신 종속성은 최소화 하자</li>
+</ol>
+
+<p>요정도를 고려해보았다.그리하여 나온 구조는 다음과 같은 구조이다.</p>
+
+<p><img src="/assets/images/posts/2025-06/2025-06-28-0001.png" alt="" /></p>
+
+<h3 id="1-1-event-추적--proccessor-로-송신">1-1. Event 추적 ~ Proccessor 로 송신</h3>
+
+<p>CloudWatch 는 기본적으로 모니터링할 대상을 바라본다. 특히 여기서 핵심은 각 서버마다 이벤트를 지정 시 Health 의 지표가 될 만한 핵심을 파악해야 한다는 점이다. 연산장치인 CPUUtilization 을 보는 지표도 있겠지만, 자사의 경우 유저의 일정한 수준의 처리 성능을 중요시 했고, 따라서 네트워크 사용량에 대한 구체적인 정보 쪽이 훨씬 서버 관리에 중요하였다.</p>
+
+<p>여기서 중요한 포인트라고 생각되는 것은, 사실 SNS 를 쓰지 않아도 된다는 사실이다. SimpleNotificationService 를 통해 주제를 설정하지 않더라도, CloudWatch 는 직접 Lambda 를 호출하는 게 가능하다. 하지만 그렇게 하게 되면 CloudWatch 의 알람마다 Lambda 설정을 건드려야 할 필요가 발생하고 만다. 따라서 1:N 의 관계가 필요하다면, 반드시 중간 매개체로 N이 1과 바로 연결되지 않는 구조가 필요하기 때문에 SNS 의 존재가 꼭 중요하다 볼 수 있다.</p>
+
+<p>그 뒤 Lambda 는 SNS 를 통해 일원화 되어 들어오는 이벤트들에 대해 내가 지정한 위치의 URL 로 보내면 되는데, 이때 주요한 내용으로 알아두면 하는 것은, ‘파이썬’ 기반으로 사용한다고 하더라도, 순정 상태에선 외부 라이브러리를 쓰지 못한다는 점이다(괜히 이점 때문에 AI 바이브 코딩 했다 왜 안되나 한참 찾았다.) 다행히, 수동으로 넣어줘도 되고, 간단한 통신 정도만 수행한다면 제일 좋은 건 내장 통신 라이브러리로 전달만 하는 것이다.</p>
+
+<h3 id="1-2-수신-및-프로세싱--sms">1-2. 수신 및 프로세싱 ~ SMS</h3>
+
+<p>Proccessor 라고 이름을 지은 이 서버의 목적은 Naver의 SENS API 에 맞게 전달해주는 역할이다. NaverCloud 라니! 라고 생각할 수도 있다. 하지만 어떻게 하겠는가, 회사에선 이걸 쓰고 있는데(…) 이미 실서비스에 사용 중이기도 했고, API 가 익숙하다는 점을 생각하니, 이부분 만큼은 빠르게 가기로 했다.</p>
+
+<p>그리하여 API ~ SMS 는 처리 했고, 그 다음의 포인트는 역시 수신 받는 곳의 구현이었다.</p>
+
+<p>NestJS 를 사용해도 되긴 했다. 왜냐면 이미 NestJS 서버는, 우리 회사 상용 서버 역시 3.0.0에 해당하는 수준으로 판을 올려놓은 상태였고, 해당 템플릿을 사용한다면 충분히 할만하지 않을까? 싶었다.</p>
+
+<p>그러나 이미 써본 기술, 동시에 장황하게 설정된 기능들이나 관리 코드들을 그대로 가져오기엔 용도에 맞지 않는 다는 점은 분명해 보였다. 이에 이왕 현재 자사 서비스를 위해 사용 중인 FastAPI 를 써보면 좋겠다는 생각을 했고, 이왕 하는 김에 의존성의 관리는 Poetry 를 사용해보기로 했다.</p>
+
+<p>써본 후기로는… Poetry 는 가상환경 커맨드 안쳐도 된다! 편하다! 와, FastAPI 는 우와 자동 Swagger 쩐다…! 😯 라는 느낌을 받았다.</p>
+
+<p>여기서 핵심은 API 를 수신하고, 각 이벤트에 맞춰 지정된 대상에게 전달하는 구조를 작성하는 것이었고, 그 뒤엔 이를 배포하는 걸 조금이라도 ‘편하게’ 하는 방법을 구현하는 것이었다.</p>
+
+<p>이에 ECR(Elastic Container Registry)에 tag 를 활용하여 가장 최신으로 관리되는 것, 그리고 EC2를 활용하여 인스턴스로 관리하는 것이 아니라, 알아서 필요시 사용되기 + 스케일러블 하게 대응이 가능하게 만드는 것으로 하였다.</p>
+
+<p>특히나 이렇게 구현 하면서 ECS(Elastic Container Service) 를 처음 써보게 되었는데, Task 라는 개념으로 Fargate 방식을 제공하는 ECS 를 사용했고, 초기 사용은 복잡했지만, ELB 와 기타 조합을 통해 알아서 이미지로 갱신되도록 만들었다. 코어 0.25개에 0.5GB 의 메모리 사용은, 인스턴스처럼 항상 준비된 하드웨어요금이 나가는 것보다 계산 시 훨씬 경제적이었다. (물론 함정은 다른데 있다)</p>
+
+<h2 id="2-그래서-이-구조의-장점과-단점은-뭘까">2. 그래서 이 구조의 장점과 단점은 뭘까</h2>
+
+<p>전체적으로 작업이 끝나고 SMS 를 받아보니, 확실히 이메일 받을 때 보단 상태를 확인도 가능하고, 설정에 따라 주기적으로 헬스 체크도 가능해진다는 점은 매우 편리하였다. 바이브 코딩 + 각종 기술 맛보기 + AWS 서비스 구성을 배워 본다는 점에선 매우 영양가 있던 시간(?) 이라고 밖에 할 말이 없을 것 같은데, 그럼에도 구조를 짜고 내용을 바라보면 다소 아쉬움도 남았다. 😎</p>
+
+<h3 id="2-1-장점">2-1. 장점</h3>
+
+<p>우선, 완벽하게 모듈화된 설계 구성은 예를 들어 lambda 하나로만 한다거나 하는 것 보다 훨씬 모듈화 되니 직관적이었다. 각 역할이 명확했고, 어디서 어디가 문제인지는 바로 파악이 용이했으며, 특히나 각 영역의 수정이나 배포 등에서 매끄럽다고 생각한다.</p>
+
+<p>데이터 편집은 FastAPI 서버를 건드리면 되고, 알람은 CloudWatch 경보를 추가하거나 세밀하게 만들어 주면 될 문제였다. lambda는 필요할 때만 활성화 되니 필요하지 않을 땐 사실상 없는 것이나 마찬가지. Serverless 의 경우에도 그냥 켜둔 다면 0원에 수렴하기 때문에 가장 작은 EC2 인스턴스를 쓴다고 해도, 이미 프리티어는 넘어버린 자사 입장에선 훨씬 양호했다.</p>
+
+<p>개인적이니 면에서도 서버리스 + ECR + 도커 이미지로의 빌드 + 태깅을 통한 최신 이미지 추적의 형태는 개발 이후 복잡할 수 있는 배포 과정을 굉장히 깔끔하게 만들어주었다. Fargate 라는 서비스는 생각 이상으로 편리하다는 점, 직접 프로비저닝이나 관리 안해도 되는 점은 확실히 좋았다. 응용할 수 있는 방법은 특히나 많았고, 서비스의 특성에 따라 경제적인 서버 운용에 키 역할을 해줄 수 있겠구나 하는 생각을 할 수 있었다.</p>
+
+<p>람다의 경우, 생각 이상으로 너무 편하다는 생각은 확실히 들었다. 데이터의 중간 인터셉터 역할을 하기엔 확실히 편리했고, 그냥 코드를 짜고 deploy 만 하는 순간 끝난다는 점은 ‘서버로 만들긴 애매한’ 무언가를 위한 상당히 좋은 툴이었다는 경험이(?) 추가 되었다고 볼 수 있을 것 같다 😁</p>
+
+<p>또한 먼 이야기겠지만, 이벤트가 늘어나면 조건만 추가하면 자연스럽게 스케일러블 한 설계가 가능하고, 민감한 정보는 모두 컨테이닝화 되어 있으니(특히 전달 받는 분들의 연락처 등), 이러한 점에서 알림 서비스로서 향후를 고려한 꽤 괜찮은 구성이 아닐까 싶다.</p>
+
+<h3 id="2-2-단점">2-2. 단점</h3>
+
+<p>AWS 는 바보가 아니다. 이렇게 편리한 서비스 옵션들, 모듈들을 무료로 푸는 데는 나름의 악랄한 부분이 있지 않으면 안된다(…) <del>등가교환 법칙…</del></p>
+
+<p>우선 핵심은 모듈화 하는 과정에서 Fargate 의 구성 난이도가 오히려 무지하게 높다는(!) 생각을 할 수 있었다. 해당 서비스의 의도와 구성에 대한 이해도가 없지만 AI 를 활용해서 그나마 해결했지, 이걸 모르는 사람이 혼자 해본다? 과연 될까 싶은게 솔직한 감상이었다(…)</p>
+
+<p>특히나 AI 의 조언을 포함해 요구하는데로 포워딩 포트까지 설정을 다했는데, 포워딩이 정상적으로 안되던 이슈는 진짜 2시간 이상은 잡아먹은 주범이었다(…)</p>
+
+<p>뿐만 아니라, SMS 로 알림을 보내는 게 핵심인데, 그걸 위해 하루 정도 소요되는 시간을 들여 만든다는 것은, 어떤 점에선 최악의 시간 낭비일 수도 있지 않나 싶다. 서버 상태의 알림은 주의-경보 이정도만 해도 되는데,  그걸 위해 이렇게까지 투자하는 것은 어쩌면 라이브 서비스에서도 어느정도 운영을 했다고 생각하니까지, 초기 팀이나, 초기 서비스에 이렇게 알림에 하루 쓴다는건 그게 맞나? 싶은 생각을 할 수 있었다.</p>
+
+<p>모듈화가 장점이지만, 동시에 차라리 이렇게 안만들고 통짜로 만들어도 되는거 아닌가? 생각도 문뜩 들었다.</p>
+
+<p>마지막으로 가장 최악은, 비용에 대한 부분이다. SMS 쓴다고 돈을 써야 하는 부분을 제외하면 이번 작업 과정 전체는 충분히 경제적이었다. 0.25 개의 코어 활용, 0.5GB 메모리, 일반 인스턴스론 불가능할 수준으로 작은 수준이다보니, 역할조차 작으니 말이 안되게 작은 스펙이지만 충분히 잘 돌아갔다.</p>
+
+<p>하지만, Fargate, Lambda 등은 문제가 아닌데, 이를 통신하기 위해 연결해야 하고, 그렇게 되는 과정에서 ELB(Elastic Load Balancer) 를 비롯한 각종 도메인 관련 서비스들의 비용은 당연히 부과 되는 것이었고, 그냥 단순히 Fargate 의 컨테이너가 돌리기만 한다면 좋았겠지만 그렇지 못하다보니 계산 시 한달에 3만원 ~ 많게는 4.5 만원까지도 나올 수 있다는 계산을 다 만들고 했다(…)</p>
+
+<p>아니, 인스턴스 24시간 켜놓고 3-4만원 나오는게 맞추면, 이것저것 다할 수 있는데? <del>전형적인 조삼모사</del></p>
+
+<p>… 여하튼 할 말은 많지만 V1 버전은 그리하여 마무리하고 나니 아쉬운 점, 특히 투머치 한 점을 보완해야 한다는 점을 깨달을 수 있었다.</p>
+
+<h2 id="3-결론">3. 결론</h2>
+
+<p>요즘 키워드 DevOps, GitOps 가 특히 중요하다는데, 확실히 재미있는 영역이다. 그리고 더불어 AWS 와 같은 서비스에 대해 개념의 이해도 착실히 늘어가고 있다는 점에서 자신감이 붙는 포인트가 아닐까 싶다.</p>
+
+<p>특히나 서버리스는 말로만 서버리스라고 했지, 막상 테스트 삼아 만들어 본 적은 없었는데, 만들면서 왜 필요한지 확실히 체감을 할 수 있었다. 서버라는 어떤 스테레오 타입 구축을 위한 노력 없이, 기능적 최소환, 자원 사용의 최소화라는 관점에선 꽤나 멋진 기능이고, 활용도가 상당하다는 점에서 괜찮다는 생각이 들었다.</p>
+
+<p>다만, 역시나. 이렇게 편하면 괜한게 아닌것 처럼(…) 그 서비스 자체는 괜찮지만, 사실상 반 필수로 써야 하는 다른 서비스들에 대해 요금설계가 확실히 되어 있다는 점에서, 이럴 거면 그냥 EC2 연결하지 왜…? 라는 말이 튀어나오게 되는게 사실이다(개발자 입장에선)</p>
+
+<p>조만간 V2 버전의 개선 내용도 정리해 봐야 겠다.</p>]]></content><author><name>Paul2021-R</name></author><category term="개발" /><category term="Backend" /><category term="DevOps" /><category term="AWS" /><category term="Python" /><category term="AI" /><category term="NaverCloud" /><summary type="html"><![CDATA[0. Introduciton]]></summary></entry><entry><title type="html">NestJS 를 위한 NodeJS Deep Dive</title><link href="http://0.0.0.0:4000/backend/2025/06/04/deep-dive-node-js.html" rel="alternate" type="text/html" title="NestJS 를 위한 NodeJS Deep Dive" /><published>2025-06-04T00:00:00+00:00</published><updated>2025-06-04T00:00:00+00:00</updated><id>http://0.0.0.0:4000/backend/2025/06/04/deep-dive-node-js</id><content type="html" xml:base="http://0.0.0.0:4000/backend/2025/06/04/deep-dive-node-js.html"><![CDATA[<h2 id="0-들어가면서">0. 들어가면서</h2>
 <p>본 글은 어디까지나 NestJS 개발자로써 Node 기본기를 다지기 위해 원하는 식의 재구성이 포함됩니다. 혹시나 내용적으로 오류가 있으면 알려주시면 감사하겠습니다 😎</p>
 
 <h2 id="1-why-node-and-then-nestjs">1. Why Node And then NestJS</h2>
@@ -455,7 +572,7 @@
 <li><a href="https://seclists.org/oss-sec/2025/q2/112">oss-sec: Re: Fwd: Node.js security updates for all active release lines, May 2025</a></li>
 </ol>
 
-</details>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="Backend" /><category term="Node" /><category term="NestJS" /><category term="JavaScript" /><category term="TypeScript" /><category term="Programming" /><summary type="html"><![CDATA[0. 들어가면서 본 글은 어디까지나 NestJS 개발자로써 Node 기본기를 다지기 위해 원하는 식의 재구성이 포함됩니다. 혹시나 내용적으로 오류가 있으면 알려주시면 감사하겠습니다 😎]]></summary></entry><entry><title type="html">NestJS 컴파일러 성능 비교 - tsc vs SWC</title><link href="http://localhost:4000/backend/2025/06/01/compiler-comparson.html" rel="alternate" type="text/html" title="NestJS 컴파일러 성능 비교 - tsc vs SWC" /><published>2025-06-01T00:00:00+00:00</published><updated>2025-06-01T00:00:00+00:00</updated><id>http://localhost:4000/backend/2025/06/01/compiler-comparson</id><content type="html" xml:base="http://localhost:4000/backend/2025/06/01/compiler-comparson.html"><![CDATA[<h2 id="introduce">introduce</h2>
+</details>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="Backend" /><category term="Node" /><category term="NestJS" /><category term="JavaScript" /><category term="TypeScript" /><category term="Programming" /><summary type="html"><![CDATA[0. 들어가면서 본 글은 어디까지나 NestJS 개발자로써 Node 기본기를 다지기 위해 원하는 식의 재구성이 포함됩니다. 혹시나 내용적으로 오류가 있으면 알려주시면 감사하겠습니다 😎]]></summary></entry><entry><title type="html">NestJS 컴파일러 성능 비교 - tsc vs SWC</title><link href="http://0.0.0.0:4000/backend/2025/06/01/compiler-comparson.html" rel="alternate" type="text/html" title="NestJS 컴파일러 성능 비교 - tsc vs SWC" /><published>2025-06-01T00:00:00+00:00</published><updated>2025-06-01T00:00:00+00:00</updated><id>http://0.0.0.0:4000/backend/2025/06/01/compiler-comparson</id><content type="html" xml:base="http://0.0.0.0:4000/backend/2025/06/01/compiler-comparson.html"><![CDATA[<h2 id="introduce">introduce</h2>
 <p>Node 계열 프레임워크에서 TypeScript 언어 방식으로 개발을 하게 되면, 잘 알듯 JavaScript 로의 변환의 과정이 반드시 필요하다. 타입 체크를 비롯한 TypeScript의 강력한 기능으로 한 번 더 래핑된 상태라, JS 로의 변환 과정은 필수인 것이다.</p>
 
 <h3 id="tsc-기본-컴파일러">tsc 기본 컴파일러</h3>
@@ -757,7 +874,7 @@ main <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span
 <h2 id="마치며">마치며</h2>
 <p>Rust 는 이런 영역에서 점점 빛을 발하고 있다는게 느껴진다. Rust 기반 백엔드 성능도 상당하다고 들었지만, 컴파일러로의 SWC 는 개발 생산성 향상에서 정말 괜찮은 도구이며, 다소 아쉬움은 있지만, 빌드의 시간이 정말 ‘월등히’ 빨라지기 때문에 확실히 초반부터 도입하고 사용하는 것을 기본으로 깔고 가는 것이 좋다.</p>
 
-<p>단, 부재의 제목처럼, 한계가 작게 있고, 작긴 한데 그 작은 한계가 매우 위험 할 수 있다는 것은 주의가 필요해 보인다. 타입체킹이 안되고, 이에 대해 고려하지 않으면 타입 문제가 발생할 수 있다. 또한 어디까지나 확실한 영역은 아니지만 최신의 언어나 프레임워크까지 가버리면 SWC 의 트랜스파일링의 결과물이 tsc 의 그것과 다를 수 있다는 평가도 있다는 점은, 반드시 이에 대한 안전망을 확보하는 것을 최 우선으로 필요하다고 보며, 개발 환경자체에서 어렵다면 CICD 파이프라인 속에 해당 절차를 넣어두는 것이 좋아 보인다.</p>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="Backend" /><category term="Node" /><category term="NestJS" /><category term="TypeScript" /><category term="Programming" /><summary type="html"><![CDATA[introduce Node 계열 프레임워크에서 TypeScript 언어 방식으로 개발을 하게 되면, 잘 알듯 JavaScript 로의 변환의 과정이 반드시 필요하다. 타입 체크를 비롯한 TypeScript의 강력한 기능으로 한 번 더 래핑된 상태라, JS 로의 변환 과정은 필수인 것이다.]]></summary></entry><entry><title type="html">AI에게 답을 찾는 새로운 방법 ‘Slow Think’</title><link href="http://localhost:4000/ai/2025/05/31/slow-think.html" rel="alternate" type="text/html" title="AI에게 답을 찾는 새로운 방법 ‘Slow Think’" /><published>2025-05-31T00:00:00+00:00</published><updated>2025-05-31T00:00:00+00:00</updated><id>http://localhost:4000/ai/2025/05/31/slow-think</id><content type="html" xml:base="http://localhost:4000/ai/2025/05/31/slow-think.html"><![CDATA[<h2 id="ai-에게도-생각할-시간이-필요하다--slow-thinking">AI 에게도 생각할 시간이 필요하다 : Slow Thinking</h2>
+<p>단, 부재의 제목처럼, 한계가 작게 있고, 작긴 한데 그 작은 한계가 매우 위험 할 수 있다는 것은 주의가 필요해 보인다. 타입체킹이 안되고, 이에 대해 고려하지 않으면 타입 문제가 발생할 수 있다. 또한 어디까지나 확실한 영역은 아니지만 최신의 언어나 프레임워크까지 가버리면 SWC 의 트랜스파일링의 결과물이 tsc 의 그것과 다를 수 있다는 평가도 있다는 점은, 반드시 이에 대한 안전망을 확보하는 것을 최 우선으로 필요하다고 보며, 개발 환경자체에서 어렵다면 CICD 파이프라인 속에 해당 절차를 넣어두는 것이 좋아 보인다.</p>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="Backend" /><category term="Node" /><category term="NestJS" /><category term="TypeScript" /><category term="Programming" /><summary type="html"><![CDATA[introduce Node 계열 프레임워크에서 TypeScript 언어 방식으로 개발을 하게 되면, 잘 알듯 JavaScript 로의 변환의 과정이 반드시 필요하다. 타입 체크를 비롯한 TypeScript의 강력한 기능으로 한 번 더 래핑된 상태라, JS 로의 변환 과정은 필수인 것이다.]]></summary></entry><entry><title type="html">AI에게 답을 찾는 새로운 방법 ‘Slow Think’</title><link href="http://0.0.0.0:4000/ai/2025/05/31/slow-think.html" rel="alternate" type="text/html" title="AI에게 답을 찾는 새로운 방법 ‘Slow Think’" /><published>2025-05-31T00:00:00+00:00</published><updated>2025-05-31T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/05/31/slow-think</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/05/31/slow-think.html"><![CDATA[<h2 id="ai-에게도-생각할-시간이-필요하다--slow-thinking">AI 에게도 생각할 시간이 필요하다 : Slow Thinking</h2>
 <p>LLM 과 관련하여 AI를 사용하다보면 답을 정확하게 준다고 생각이 들긴 하지만, 그럼에도 여전히 할루시에이션(hallucination)이 발생하는 경우를 느끼거나, 데이터가 오염되었다고 느끼는 경우가 발생한다. 그러는 와중에 이런 영상을 발견하게 되었다.</p>
 
 <p><a href="https://www.youtube.com/watch?v=mN6FXDeSfAc&amp;t=3s"><img src="https://i.ytimg.com/vi/mN6FXDeSfAc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&amp;rs=AOn4CLA44jSpAlGNEUistYs9DJaIgH4gXQ" alt="GPT/클로드/..." /></a></p>
@@ -974,7 +1091,7 @@ main <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span
       <td>문제 분해 + 근본 원인 분석 + 단계적 사고</td>
     </tr>
   </tbody>
-</table>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="etc" /><category term="AI" /><category term="prompting" /><summary type="html"><![CDATA[AI 에게도 생각할 시간이 필요하다 : Slow Thinking LLM 과 관련하여 AI를 사용하다보면 답을 정확하게 준다고 생각이 들긴 하지만, 그럼에도 여전히 할루시에이션(hallucination)이 발생하는 경우를 느끼거나, 데이터가 오염되었다고 느끼는 경우가 발생한다. 그러는 와중에 이런 영상을 발견하게 되었다.]]></summary></entry><entry><title type="html">백엔드 개발자의 이직 커리어 준비 연구</title><link href="http://localhost:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/05/31/t-backend-developper-career-preparing.html" rel="alternate" type="text/html" title="백엔드 개발자의 이직 커리어 준비 연구" /><published>2025-05-31T00:00:00+00:00</published><updated>2025-05-31T00:00:00+00:00</updated><id>http://localhost:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/05/31/t-backend-developper-career-preparing</id><content type="html" xml:base="http://localhost:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/05/31/t-backend-developper-career-preparing.html"><![CDATA[<h2 id="introduce">Introduce</h2>
+</table>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="etc" /><category term="AI" /><category term="prompting" /><summary type="html"><![CDATA[AI 에게도 생각할 시간이 필요하다 : Slow Thinking LLM 과 관련하여 AI를 사용하다보면 답을 정확하게 준다고 생각이 들긴 하지만, 그럼에도 여전히 할루시에이션(hallucination)이 발생하는 경우를 느끼거나, 데이터가 오염되었다고 느끼는 경우가 발생한다. 그러는 와중에 이런 영상을 발견하게 되었다.]]></summary></entry><entry><title type="html">백엔드 개발자의 이직 커리어 준비 연구</title><link href="http://0.0.0.0:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/05/31/t-backend-developper-career-preparing.html" rel="alternate" type="text/html" title="백엔드 개발자의 이직 커리어 준비 연구" /><published>2025-05-31T00:00:00+00:00</published><updated>2025-05-31T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/05/31/t-backend-developper-career-preparing</id><content type="html" xml:base="http://0.0.0.0:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/05/31/t-backend-developper-career-preparing.html"><![CDATA[<h2 id="introduce">Introduce</h2>
 <p>백엔드 개발자로 생존한지 1년차… 
 이제는 AI가 등장하면서 개발자의 위치는 지속적인 블러핑의 대상(?) 이 되어버렸다.</p>
 
@@ -1304,7 +1421,7 @@ main <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span
   <li><a href="https://interviewkickstart.com/courses/back-end-engineering-interview-masterclass">Backend Developer Interview Course - InterviewKickstart</a></li>
   <li><a href="https://m.blog.naver.com/khaiblog/222520897031">면접에서 인재 찾기 힘들 때 - 네이버 블로그</a></li>
   <li><a href="https://www.codestates.com/blog/content/%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85-%EC%8B%A0%EC%9E%85-%EB%A9%B4%EC%A0%91-tip">IT 스타트업 신입 면접 준비 가이드 - 코드스테이츠</a></li>
-</ol>]]></content><author><name>Paul2021-R</name></author><category term="생각정리" /><category term="etc" /><category term="생각정리" /><category term="이직" /><category term="Backend" /><summary type="html"><![CDATA[Introduce 백엔드 개발자로 생존한지 1년차… 이제는 AI가 등장하면서 개발자의 위치는 지속적인 블러핑의 대상(?) 이 되어버렸다.]]></summary></entry><entry><title type="html">백엔드 개발자, 2025년 트렌드 정리하기</title><link href="http://localhost:4000/backend/2025/05/25/00-backend-developper-issues.html" rel="alternate" type="text/html" title="백엔드 개발자, 2025년 트렌드 정리하기" /><published>2025-05-25T00:00:00+00:00</published><updated>2025-05-25T00:00:00+00:00</updated><id>http://localhost:4000/backend/2025/05/25/00-backend-developper-issues</id><content type="html" xml:base="http://localhost:4000/backend/2025/05/25/00-backend-developper-issues.html"><![CDATA[<h2 id="1-백엔드-왜-지금-이-변화를-주목하려고-하는가">1. 백엔드, 왜 지금 이 변화를 주목하려고 하는가?</h2>
+</ol>]]></content><author><name>Paul2021-R</name></author><category term="생각정리" /><category term="etc" /><category term="생각정리" /><category term="이직" /><category term="Backend" /><summary type="html"><![CDATA[Introduce 백엔드 개발자로 생존한지 1년차… 이제는 AI가 등장하면서 개발자의 위치는 지속적인 블러핑의 대상(?) 이 되어버렸다.]]></summary></entry><entry><title type="html">백엔드 개발자, 2025년 트렌드 정리하기</title><link href="http://0.0.0.0:4000/backend/2025/05/25/00-backend-developper-issues.html" rel="alternate" type="text/html" title="백엔드 개발자, 2025년 트렌드 정리하기" /><published>2025-05-25T00:00:00+00:00</published><updated>2025-05-25T00:00:00+00:00</updated><id>http://0.0.0.0:4000/backend/2025/05/25/00-backend-developper-issues</id><content type="html" xml:base="http://0.0.0.0:4000/backend/2025/05/25/00-backend-developper-issues.html"><![CDATA[<h2 id="1-백엔드-왜-지금-이-변화를-주목하려고-하는가">1. 백엔드, 왜 지금 이 변화를 주목하려고 하는가?</h2>
 <p>백엔드는 더 이상 단순히 데이터를 처리하고 저장하는 ‘뒷단’이 아니다. 서비스의 확장성, 안정성, 그리고 궁극적으로 사용자 경험의 질을 결정하는 핵심 두뇌이자 심장부이다. 기업들은 갈수록 더 빠르고, 더 유연하며, 더 비용 효율적인 시스템을 요구하고 있으며, 이러한 요구는 백엔드 아키텍처와 기술 스택의 끊임없는 진화를 촉진한다.</p>
 
 <p>최신 트렌드를 이해하는 것은 단순히 유행을 쫓는 것이 아니라, 더 나은 아키텍처를 설계하고, 문제를 해결하며, 궁극적으로 더 가치 있는 서비스를 만들어내는 데 필수적이다. 더불어 점점 가속화되고 바이브 코딩이라는 말이 나올 정도로 개발의 사이클이 변화하고 있고, 이는 비즈니스적 문화와 가치 역시 바뀌고 있다는 것을 말하고 있으며, 이러한 상황은 인력시장의 개편 역시 당연한 말이지만 영향이 있다는 점을 새삼 느끼고 있다.</p>
@@ -1481,7 +1598,7 @@ Rust는 Node.js와 Go를 넘어 성능이 중요한 백엔드 시스템에서 �
   <li>Caching Best Practices: Boost Performance in 2024 - Eyer.ai, <a href="https://www.eyer.ai/blog/caching-best-practices-boost-performance-in-2024/">https://www.eyer.ai/blog/caching-best-practices-boost-performance-in-2024/</a></li>
   <li>Top 8 Skills Required in DevOps Engineer for 2024 - Softqube Technologies, <a href="https://www.softqubes.com/blog/top-8-skills-required-in-devops-engineer-for-2024/">https://www.softqubes.com/blog/top-8-skills-required-in-devops-engineer-for-2024/</a></li>
   <li>Best Certifications for Backend Developers in 2025 (Ranked) - Teal, <a href="https://www.tealhq.com/certifications/backend-developer">https://www.tealhq.com/certifications/backend-developer</a></li>
-</ol>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="학습" /><category term="Backend" /><category term="DevOps" /><category term="AI" /><category term="GitOps" /><category term="Google" /><category term="Gemini" /><summary type="html"><![CDATA[1. 백엔드, 왜 지금 이 변화를 주목하려고 하는가? 백엔드는 더 이상 단순히 데이터를 처리하고 저장하는 ‘뒷단’이 아니다. 서비스의 확장성, 안정성, 그리고 궁극적으로 사용자 경험의 질을 결정하는 핵심 두뇌이자 심장부이다. 기업들은 갈수록 더 빠르고, 더 유연하며, 더 비용 효율적인 시스템을 요구하고 있으며, 이러한 요구는 백엔드 아키텍처와 기술 스택의 끊임없는 진화를 촉진한다.]]></summary></entry><entry><title type="html">NestJS Deep Dive</title><link href="http://localhost:4000/backend/2025/05/25/01-NestJS-Deep-Dive.html" rel="alternate" type="text/html" title="NestJS Deep Dive" /><published>2025-05-25T00:00:00+00:00</published><updated>2025-05-25T00:00:00+00:00</updated><id>http://localhost:4000/backend/2025/05/25/01-NestJS-Deep-Dive</id><content type="html" xml:base="http://localhost:4000/backend/2025/05/25/01-NestJS-Deep-Dive.html"><![CDATA[<h2 id="1-서론-nestjs-왜-선택해야-할까">1. 서론: NestJS, 왜 선택해야 할까?</h2>
+</ol>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="학습" /><category term="Backend" /><category term="DevOps" /><category term="AI" /><category term="GitOps" /><category term="Google" /><category term="Gemini" /><summary type="html"><![CDATA[1. 백엔드, 왜 지금 이 변화를 주목하려고 하는가? 백엔드는 더 이상 단순히 데이터를 처리하고 저장하는 ‘뒷단’이 아니다. 서비스의 확장성, 안정성, 그리고 궁극적으로 사용자 경험의 질을 결정하는 핵심 두뇌이자 심장부이다. 기업들은 갈수록 더 빠르고, 더 유연하며, 더 비용 효율적인 시스템을 요구하고 있으며, 이러한 요구는 백엔드 아키텍처와 기술 스택의 끊임없는 진화를 촉진한다.]]></summary></entry><entry><title type="html">NestJS Deep Dive</title><link href="http://0.0.0.0:4000/backend/2025/05/25/01-NestJS-Deep-Dive.html" rel="alternate" type="text/html" title="NestJS Deep Dive" /><published>2025-05-25T00:00:00+00:00</published><updated>2025-05-25T00:00:00+00:00</updated><id>http://0.0.0.0:4000/backend/2025/05/25/01-NestJS-Deep-Dive</id><content type="html" xml:base="http://0.0.0.0:4000/backend/2025/05/25/01-NestJS-Deep-Dive.html"><![CDATA[<h2 id="1-서론-nestjs-왜-선택해야-할까">1. 서론: NestJS, 왜 선택해야 할까?</h2>
 <p>NestJS는 Node.js 환경에서 효율적이고 확장 가능한 서버 사이드 애플리케이션을 구축하기 위한 진보적인 프레임워크다. 이 프레임워크는 Angular의 아키텍처에서 영감을 받아 개발되었으며, TypeScript를 기본 언어로 적극 지원한다는 특징을 가집니다. TypeScript의 강력한 타입 시스템은 개발 과정에서 발생할 수 있는 잠재적인 오류를 미연에 방지하고, 코드의 가독성과 안정성을 크게 향상시킨다.  </p>
 
 <p>백엔드 개발에서 NestJS의 강점은 여러 면에서 확인할 수 있다.</p>
@@ -1914,7 +2031,7 @@ bootstrap();
   <li><a href="https://velog.io/@naljajm/NestJs-CQRS-%EA%B4%80%EC%8B%AC%EC%82%AC-%EB%B6%84%EB%A6%AC">[NestJs] CQRS 관심사 분리 - velog</a></li>
   <li><a href="https://assu10.github.io/dev/2023/04/16/nest-cqrs/">NestJS - CQRS · ASSU BLOG.</a></li>
   <li><a href="https://www.npmjs.com/package/@event-nest/core">@event-nest/core - npm</a></li>
-</ol>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="학습" /><category term="Backend" /><category term="NestJS" /><category term="TypeScript" /><category term="Node" /><summary type="html"><![CDATA[1. 서론: NestJS, 왜 선택해야 할까? NestJS는 Node.js 환경에서 효율적이고 확장 가능한 서버 사이드 애플리케이션을 구축하기 위한 진보적인 프레임워크다. 이 프레임워크는 Angular의 아키텍처에서 영감을 받아 개발되었으며, TypeScript를 기본 언어로 적극 지원한다는 특징을 가집니다. TypeScript의 강력한 타입 시스템은 개발 과정에서 발생할 수 있는 잠재적인 오류를 미연에 방지하고, 코드의 가독성과 안정성을 크게 향상시킨다.  ]]></summary></entry><entry><title type="html">docker는 흔들리고 있을까?</title><link href="http://localhost:4000/backend/2025/05/06/alternative-for-docker.html" rel="alternate" type="text/html" title="docker는 흔들리고 있을까?" /><published>2025-05-06T00:00:00+00:00</published><updated>2025-05-06T00:00:00+00:00</updated><id>http://localhost:4000/backend/2025/05/06/alternative-for-docker</id><content type="html" xml:base="http://localhost:4000/backend/2025/05/06/alternative-for-docker.html"><![CDATA[<h2 id="도커-왕좌를-지키지-못하는-이유-컨테이너-생태계의-지각변동">도커, 왕좌를 지키지 못하는 이유? 컨테이너 생태계의 지각변동</h2>
+</ol>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="학습" /><category term="Backend" /><category term="NestJS" /><category term="TypeScript" /><category term="Node" /><summary type="html"><![CDATA[1. 서론: NestJS, 왜 선택해야 할까? NestJS는 Node.js 환경에서 효율적이고 확장 가능한 서버 사이드 애플리케이션을 구축하기 위한 진보적인 프레임워크다. 이 프레임워크는 Angular의 아키텍처에서 영감을 받아 개발되었으며, TypeScript를 기본 언어로 적극 지원한다는 특징을 가집니다. TypeScript의 강력한 타입 시스템은 개발 과정에서 발생할 수 있는 잠재적인 오류를 미연에 방지하고, 코드의 가독성과 안정성을 크게 향상시킨다.  ]]></summary></entry><entry><title type="html">docker는 흔들리고 있을까?</title><link href="http://0.0.0.0:4000/backend/2025/05/06/alternative-for-docker.html" rel="alternate" type="text/html" title="docker는 흔들리고 있을까?" /><published>2025-05-06T00:00:00+00:00</published><updated>2025-05-06T00:00:00+00:00</updated><id>http://0.0.0.0:4000/backend/2025/05/06/alternative-for-docker</id><content type="html" xml:base="http://0.0.0.0:4000/backend/2025/05/06/alternative-for-docker.html"><![CDATA[<h2 id="도커-왕좌를-지키지-못하는-이유-컨테이너-생태계의-지각변동">도커, 왕좌를 지키지 못하는 이유? 컨테이너 생태계의 지각변동</h2>
 
 <p><img src="/assets/images/posts/2025-05/docker-wallpaper.jpeg" alt="" /></p>
 
@@ -1999,7 +2116,7 @@ bootstrap();
 
 <p>도커는 사라지는 것이 아니라 변화하고 있는 것이다. 그러나 컨테이너라는 기술을 기반으로 하는 영역은 현재 <strong>개방형 표준, 경량화된 런타임, 클라우드 네이티브 원칙을 중심으로 빠르게 진화</strong>하고 있다. 도커가 이제는 컨테이너의 절대적인 중심은 아닐 수 있지만, 여전히 중요한 역할을 수행할 것이다. 우리가 목격하고 있는 것은 도커가 만들어낸 생태계의 성숙이며, 이를 통해 개발자들은 더 다양한 선택지를 갖게 되었다는 점이다.</p>
 
-<p>미래는 <strong>모듈형 구조를 갖고 설계 단계부터 개방성을 지향하며, 기본적으로 안전하고 다양한 워크플로우에 유연하게 대응할 수 있는 도구들을 선호</strong>하는 것은 자연스러운 흐름일 것이고, 이 흐름을 읽고 대비하는 필요는 있어 보인다고 생각이 든다.</p>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="학습" /><category term="Backend" /><category term="DevOps" /><category term="Container" /><category term="Docker" /><summary type="html"><![CDATA[도커, 왕좌를 지키지 못하는 이유? 컨테이너 생태계의 지각변동]]></summary></entry><entry><title type="html">@types/~ 의존성을 설치하면 얻는 것</title><link href="http://localhost:4000/backend/2025/05/03/Type-library.html" rel="alternate" type="text/html" title="@types/~ 의존성을 설치하면 얻는 것" /><published>2025-05-03T00:00:00+00:00</published><updated>2025-05-03T00:00:00+00:00</updated><id>http://localhost:4000/backend/2025/05/03/Type-library</id><content type="html" xml:base="http://localhost:4000/backend/2025/05/03/Type-library.html"><![CDATA[<h2 id="intro">Intro</h2>
+<p>미래는 <strong>모듈형 구조를 갖고 설계 단계부터 개방성을 지향하며, 기본적으로 안전하고 다양한 워크플로우에 유연하게 대응할 수 있는 도구들을 선호</strong>하는 것은 자연스러운 흐름일 것이고, 이 흐름을 읽고 대비하는 필요는 있어 보인다고 생각이 든다.</p>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="학습" /><category term="Backend" /><category term="DevOps" /><category term="Container" /><category term="Docker" /><summary type="html"><![CDATA[도커, 왕좌를 지키지 못하는 이유? 컨테이너 생태계의 지각변동]]></summary></entry><entry><title type="html">@types/~ 의존성을 설치하면 얻는 것</title><link href="http://0.0.0.0:4000/backend/2025/05/03/Type-library.html" rel="alternate" type="text/html" title="@types/~ 의존성을 설치하면 얻는 것" /><published>2025-05-03T00:00:00+00:00</published><updated>2025-05-03T00:00:00+00:00</updated><id>http://0.0.0.0:4000/backend/2025/05/03/Type-library</id><content type="html" xml:base="http://0.0.0.0:4000/backend/2025/05/03/Type-library.html"><![CDATA[<h2 id="intro">Intro</h2>
 
 <p>요 최근 MSA 서버 구현 공부를 다시 하고 있다. 영어 강의고, 상당히 난감한 번역의 자막이라 열은 받지만… 그럼에도 구조적 설계를 배울 수 있어서 좋다.</p>
 
@@ -2187,7 +2304,7 @@ npm view @types/package-name
 
 <p>이런 거 보면 아직 짬이 덜 찬 느낌이 든다. 🫥</p>
 
-<p>개발의 길은 멀고, 아주 멀고, 아주 멀다. 😖</p>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="학습" /><category term="TypeScript" /><category term="Backend" /><summary type="html"><![CDATA[Intro]]></summary></entry><entry><title type="html">클린 코드를 위한 룰</title><link href="http://localhost:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html" rel="alternate" type="text/html" title="클린 코드를 위한 룰" /><published>2025-04-27T00:00:00+00:00</published><updated>2025-04-27T00:00:00+00:00</updated><id>http://localhost:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming</id><content type="html" xml:base="http://localhost:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html"><![CDATA[<h2 id="-클린-코드-황금-6원칙-스터디-정리"><strong>🧠 클린 코드 황금 6원칙 스터디 정리</strong></h2>
+<p>개발의 길은 멀고, 아주 멀고, 아주 멀다. 😖</p>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="학습" /><category term="TypeScript" /><category term="Backend" /><summary type="html"><![CDATA[Intro]]></summary></entry><entry><title type="html">클린 코드를 위한 룰</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html" rel="alternate" type="text/html" title="클린 코드를 위한 룰" /><published>2025-04-27T00:00:00+00:00</published><updated>2025-04-27T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html"><![CDATA[<h2 id="-클린-코드-황금-6원칙-스터디-정리"><strong>🧠 클린 코드 황금 6원칙 스터디 정리</strong></h2>
 
 <p><img src="/assets/images/posts/2025-04/2025-04-27-0002.png" alt="" /></p>
 
@@ -2367,97 +2484,4 @@ npm view @types/package-name
 
 <p>결국 이게 되면 그 어떤 소프트웨어도 유기적으로 살아 숨쉬듯 자기 복제와 자기 진화를 이루고, 목표 시 되는 프로덕트의 퀄리티를 맞추며, 인정받는 개인이자 팀이 될 수 있다.</p>
 
-<p>오랜만에 링크드인에서 그저 짤로 본 것이지만, 정리를 하는 과정에서 CTO를 통해 얻어온 많은 경험들 그리고 백엔드 개발자로 1년 간 유지 보수, 코드를 짜오면서 얻은 많은 것들을 새삼 정리하는 감각을 느꼈다. 왜 실수가 많았고, 어디서 아쉬웠는지 새삼스럽게 느껴진 시간이었다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="etc" /><category term="cleanCode" /><category term="Programming" /><summary type="html"><![CDATA[🧠 클린 코드 황금 6원칙 스터디 정리]]></summary></entry><entry><title type="html">AI 로 어디까지 가능할까?</title><link href="http://localhost:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game.html" rel="alternate" type="text/html" title="AI 로 어디까지 가능할까?" /><published>2025-04-12T00:00:00+00:00</published><updated>2025-04-12T00:00:00+00:00</updated><id>http://localhost:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game</id><content type="html" xml:base="http://localhost:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/04/12/ai-making-game.html"><![CDATA[<h2 id="ai-어디까지-가능할까-게임-만들-수-있을까">AI 어디까지 가능할까? 게임 만들 수 있을까?</h2>
-<p>이런 영상을 보았다</p>
-
-<p><a href="https://www.youtube.com/watch?v=NSXsTq6zg_s"><img src="https://img.youtube.com/vi/NSXsTq6zg_s/0.jpg" alt="5090사서..." /></a></p>
-
-<p>엄밀히 말하면 5090을 가진 어마무시한 분의 이야기… 지금 살 수 있는 사람이 몇이나 될까하는 글카로 벤치에 AI까지 돌리는 내용인데.. 나에게는 다소 다르게 보였다.</p>
-
-<h2 id="ai-로-어디까지-가능할까">AI 로 어디까지 가능할까?</h2>
-
-<p>현재 stable diffusion 이나 Audacity + TortoiseTTS 등.. 오픈소스 AI 툴은 이미 성숙한 수준까지 올라온 상태이다.</p>
-
-<p>뿐만 아니라 그러한 원초의 로우 툴에서 비롯되어, 웹 기반으로 서비스를 시작한 NovelAI, ComfyUI(이건 약간 중간 성격이긴 한데..), soundraw Ai 등… 이미 편리한 서비스들로 구체화 되었고, 좀더 알아보니 네이버나, 기타 굉장한 AI 스타트업들의 개발. 이제는 진짜 아무리 생각해도 AI가 핵심이고, 극강의 효율성이 필요하다는 점을 느낄 수 있었다. 이러한 점을 생각하니 이런 생각에 귀결 되었다.</p>
-
-<blockquote>
-  <p>이 정도면 혼자 게임도 만들 수 있지 않을까?</p>
-</blockquote>
-
-<p>게임, 게임성을 갖추는 것은 대단히 어렵고, 인간의 창조 영역에서도 특히나 혼자선 어려운 분야이다. 특히나 종합적인 컨텐츠로 연출, 그래픽스, 모션, 세부 분야로 파고 들면 생각보다 고려할 것들이 너무 많은 영역일 것이다.</p>
-
-<p>하지만 생각해보면 꼭 종합적이어서 재밌거나 한건 아니다.</p>
-
-<p>사람은 스토리를 먹고 사는 동물이다.</p>
-
-<p>또한 사람은 본질적으로 <code class="language-plaintext highlighter-rouge">부족</code>할 때 비로소 <code class="language-plaintext highlighter-rouge">동기</code>를 얻는다.</p>
-
-<p>그런 점이 가장 극대화 되는 장르들이 보통 퍼즐이나 비주얼 노벨류. 그리고 놀랍게도 현재 모바일 시장에서 여전히 흥행 강세이고, 수명이 유지되는 게임들도 결국 그런 부분에서 받춰져서 팬덤이 형성된 류가 꽤나 있다는 것을 알 수 있다.</p>
-
-<p><img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2396980/capsule_616x353.jpg?t=1726036301" alt="" />
-페이트 스테이 나이트는 내 시절 최고의 판타지 물이었고</p>
-
-<p><img src="https://i.namu.wiki/i/ES0zVAPjU7o89_R-0Hywfus4caJ9LYFpF2zqLHQ0YTUuakUNw5LRY-MFHKKZmxoMiMdzor32OJc3moeQkySnCA.webp" alt="" />
-그에 이어 나온 페이트 그랜드 오더는 소니를 먹여살리는 일등 공신 중 하나로 현재 수년째 그 인기를 이어가고 있는 프랜차이즈가 되었으며,</p>
-
-<p><img src="https://i.namu.wiki/i/pvrIEFOSpzhHxbnEqMMSViO9_BnBoaHZs9hMbO32P27hV7hOv14nEQbJpPr3wpYelqgFxqk78z7C2dyPa2NeBg.webp" alt="" />
-국내 성공작으로 게임성에선 뭐라고 욕을 먹어도 스토리에서 성공적인 블루 아카이브,</p>
-
-<p><img src="https://cdn.getnews.co.kr/news/photo/202405/676535_395705_4552.png" alt="" />
-빵댕이 게임이라고 하지만, 팬들에겐 그 이상이라는 평을 받는 니케</p>
-
-<p>이런 류들이 런칭 이후 지속적인 사랑을 받고, 그 지속적인 사랑으로 얻은 캐시카우가 새로운 능력이나 도전을 이뤄내는 것을 생각해본다면… 과연 AI 를 활용하고, 핵심이 되는 부분 비주얼과 스토리에 대해서만 얼마나 좋은 스토리, 좋은 내용을 양질로 끌고 오냐만 결정 난다면 이건 굉장한 One Man Army 로 뭔가를 할 수 있는 게 아닐까?</p>
-
-<h2 id="필요한-도구들은-뭐가-있을까">필요한 도구들은 뭐가 있을까?</h2>
-<p>지금까지 확인 해보았을 때, 필요한 영역은 다음과 같다.</p>
-
-<h3 id="게임의-툴-">게임의 툴 :</h3>
-<p>게임의 툴로는 렌파이, Game Maker, Unity 를 생각해볼 수 있다. 툴의 난이도는 Unity 쪽이 가장 어렵지만, 활용성이나 장기적으론 Unity 가 가장 우수하다. 하지만 렌파이나 Game Maker는 쉽고, 오픈소스라는 가장 큰 장점을 갖고 있다.</p>
-
-<p>비용의 처리나, 복잡성, 간단함을 승부로 할 것이라면 개인적으론 GameMaker 가 가장 현실적인 중간 답안이 아닐까? 다른 엔진도 여럿 추천 받았지만, 결국 2D 게임을 만든다고 할 때, 가장 적절한 수준은 어디인가에서 다플랫폼을 지원하고, 커뮤니티 수준등을 보면 결국 GameMaker로 갈 수 밖에 없을 것 같다.</p>
-
-<p><img src="/assets/images/posts/2025-04/2025-04-13-0003.png" alt="" /></p>
-
-<p>거기다 이젠 영어만 있는 것들이 못 쓸 정도가 아니라는 점을 너무나 잘 알고 있다.</p>
-
-<p><img src="/assets/images/posts/2025-04/2025-04-13-0004.png" alt="" /></p>
-
-<p>노트북LM 을 활용하여, 영어로 된 튜토리얼을 넣고, 학습 시켜 배워야할 영역만 체크하고, 영상도 볼 필요 없이 튜토리얼 대로 만든다… 진짜 지금 내가 사는 시대는 아무리 생각해도 말이 안된다(…)</p>
-
-<h3 id="그림-">그림 :</h3>
-<p>위에서도 언급한 Raw 한 툴을 활용하는 것도 가능하고, 거기서 좀더 개선된 것들이나 플러그인 등도 있다. 만약 쓰게 된다면 Stable Diffusion 을 사용할 것 같은데, 이는 오픈소스로 개방된 모델들을 활용할 수 있고, 무엇보다 오픈소스라는 점이 가장 중요하기 때문이다. 현재 끌리는 건 미드저니, NovelAI 와 같이 이미 좀더 편리하게 쓰도록 구성된 것들이 있는 것은 사실이지만, 혼자서 할 수 있는가? 로컬에서 이용 가능한가? 라는 점에서 테스트먼트를 한다면 stable diffusion을 우선 써보는게 낫다는 생각이 든다.</p>
-
-<p>다만, 이걸 위해서 필요한 것은 역시 무드, 그리고 캐릭터를 별도로 가져갈 수 있냐는 점. 이 부분은 stable diffusion을 제대로 설치하여 사용해봐야 알 수 있을 것으로 보인다. 아직 아무것도 안하고 써보는 것이다보니(도커에 설치만 해봄 ㅋㅋ..) 뭐라고 이렇다 말하긴 애매하다.</p>
-
-<p>한가지 현재 상황에서 대단히 중요한 부분은 과연 상용으로 쓸 수 있는가? 에 대한 부분이리라 생각된다. 상용 라이센스를 가지는 것들로만 구성을 해야 하므로, 이에 대한 고민 연구가 필요하며 법적인 부분에 대한 조언은 받아봄직 하긴 하다.</p>
-
-<p>어쨌든, 이러라고 산 4080super 가 제 역할을 다해주길 기대한다…(<del>3년 내에 2천은 벌어야 한다…</del>)</p>
-
-<h3 id="bgm--효과음-">BGM / 효과음 :</h3>
-<p>사실 AI 가 거의 필요없다고 생각한다. 이런건 무료 에셋으로 가보자.</p>
-
-<h3 id="음성-">음성 :</h3>
-<p>이게 가장 큰 문제일 수 있을 것 같다. 비주얼 노벨에서 성우는 생각보다 중요하고, 현재 리메이크된 유명 게임들도 인게임 보이스를 넣어서 리메이크 하는 걸 보면, 확실하 예전 감성으로만 접근할 수 없긴 하다. 그래서 찾아보니…</p>
-
-<p><img src="/assets/images/posts/2025-04/2025-04-13-0001.png" alt="" /></p>
-
-<p>세상에… AI 는 이미 여기도 이미 해결이 되어 있었다.</p>
-
-<p>그 와중에 개인적으로 사용해본 결과 굉장히 독보적인 곳을 발견했는데, 그곳이 바로 이곳</p>
-
-<p><img src="/assets/images/posts/2025-04/2025-04-13-0002.png" alt="" /></p>
-
-<p>SUPERTONE 이라는 곳으로, 목소리 수준이나, 비용, 어떤 면에서도 로컬보단 월등히 낫다는 생각이 들었다. 특히 한국어 성우 학습이 정말 괜찮다.</p>
-
-<h2 id="일단-해보자">일단 해보자</h2>
-<p><img src="https://i.namu.wiki/i/H0zMZ4htL9ypyfJ0LXQrcTcC6f7dZBBh1KedrpMXNnEiXaAIzyBTAOgFReXNwgw6JWjtlr4Agc6_kEMckjFUeLQpFzEJiCxurXkxzaA3azZbR_6oMHND5511MI4fQyhP9BcG1zVgKX7GrKgka6uT1A.webp" alt="" /></p>
-
-<p>AI 를 공부하고, 개발자로 뭔가 해보려고 하였다. 개발을 배우는 것도 중요하고 그래서 현재 회사에서 나름데로 정말 노력에 노력을 더하고 있지만, 취미로 무언가 만들기 위해선 역시 재미가 필요하다. 그리고 필요한 건 ‘가볍지만 제대로’ 할 수 있는 도구 들.</p>
-
-<p>어차피 배워 나가고 살아 나가다보니 친구도 없고, 시간은 많다.</p>
-
-<p>내가 좋아하는 건 판타지와 SF, 그리고 씹덕.</p>
-
-<p>개발자로 이것저것 배운 것들이 접목될 수 있는데, 심지어 팀이 아니어도 할 수 있다? 지금 나에게 필요한건 어쩌면 이런 도전을 해보는게 아닐까 싶다.</p>
-
-<p>가즈아.</p>]]></content><author><name>Paul2021-R</name></author><category term="생각정리" /><category term="etc" /><category term="생각정리" /><category term="게임" /><summary type="html"><![CDATA[AI 어디까지 가능할까? 게임 만들 수 있을까? 이런 영상을 보았다]]></summary></entry></feed>
+<p>오랜만에 링크드인에서 그저 짤로 본 것이지만, 정리를 하는 과정에서 CTO를 통해 얻어온 많은 경험들 그리고 백엔드 개발자로 1년 간 유지 보수, 코드를 짜오면서 얻은 많은 것들을 새삼 정리하는 감각을 느꼈다. 왜 실수가 많았고, 어디서 아쉬웠는지 새삼스럽게 느껴진 시간이었다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="etc" /><category term="cleanCode" /><category term="Programming" /><summary type="html"><![CDATA[🧠 클린 코드 황금 6원칙 스터디 정리]]></summary></entry></feed>
