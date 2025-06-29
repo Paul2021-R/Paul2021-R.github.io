@@ -1,4 +1,234 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-06-28T10:07:21+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">서버리스 개발 서버 상태 알림 프로젝트 정리</title><link href="http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/28/EKS+LAMDA+CLOUDWATCH.html" rel="alternate" type="text/html" title="서버리스 개발 서버 상태 알림 프로젝트 정리" /><published>2025-06-28T00:00:00+00:00</published><updated>2025-06-28T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/28/EKS+LAMDA+CLOUDWATCH</id><content type="html" xml:base="http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/28/EKS+LAMDA+CLOUDWATCH.html"><![CDATA[<h2 id="0-introduciton">0. Introduciton</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-06-29T16:41:38+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Jenkins 를 위한 Groovy 스크립트 언어 정리</title><link href="http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/29/groovy-language-with-jenkins.html" rel="alternate" type="text/html" title="Jenkins 를 위한 Groovy 스크립트 언어 정리" /><published>2025-06-29T00:00:00+00:00</published><updated>2025-06-29T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/29/groovy-language-with-jenkins</id><content type="html" xml:base="http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/29/groovy-language-with-jenkins.html"><![CDATA[<h1 id="jenkinsfile-작성-튜토리얼">Jenkinsfile 작성 튜토리얼</h1>
+
+<p>본 내용은 Jenkins 파이프라인 구축 전에 이해도를 위하여 언어에 대한 간단한 가이드를 정리한 내용이다.</p>
+
+<h2 id="들어가기-전에-1-왜-gui가-아닌-스크립트-형태로-써야-하는가">들어가기 전에 1: 왜 GUI가 아닌 스크립트 형태로 써야 하는가?</h2>
+
+<p>Jenkins 는 강력한 플랫폼이다. 다양한 대체제가 나왔음에도 여전히 인정받는 CI/CD 를 위한 툴이며, 그 플러그인과 커뮤니티, 레퍼런스들의 존재들은 여전히 영향력 있는 툴이라는 점을 보여준다.</p>
+
+<p>GUI로 설정 대신 스크립트로 작성해야 하는 이유는 다음과 같다.</p>
+
+<ol>
+  <li>버전 관리 용이, 협업 용이성 : GUI 로 설정을 수행하는 것은 스크립트 형태로 내보낼 수 있으나, 그 스크립트 자체는 Git 과 같은 버전 관리 시스템 통합하기 까다롭다. <code class="language-plaintext highlighter-rouge">Jenkinsfile</code> 은 프로젝트 소스 코드와 함께 저장하여 관리하여, <strong>파이프라인 변경 이력</strong>을 Git 으로 완벽히 추적할 수 있고, 이는 긴급 상황이나, 개선이 필요시 쉽게 작업이 가능하다.</li>
+  <li>재현성(Reproducibility)과 환경 일관성 : Jenkinsfile 은 파이프라인의 모든 단계를 코드로 정의 내리며, 새로운 Jenkins 인스턴스를 설정하거나 다른 팀에 동일한 파이프라인을 제공시, 스크립트만 복사하면 된다. 이러한 점에서 GUI 보다 효과적이고, <strong>환경의 일관성</strong>을 증대시킬 수 있다.</li>
+  <li>복잡하고 동적인 로직 구현 : GUI 방식은 미리 정의된 블록, 제한된 옵션을 활용해야 한다. 그러나 Groovy 언어 기반으로 스크립트를 하게 되면, 매우 유연하고 복잡한 로직을 구현할 수 있다. 이는 다양한 서비스 환경에 맞춤화한 파이프라인 구성이 가능하다는 점에서 매우 중요하다.</li>
+  <li>개발 친화적 : 개발팀이 직접 CI/CD 파이프라인을 개선, 유지보수를 할 수 있는데, 이는 DevOps 문화의 핵심 요소다.</li>
+  <li>오류 사전 감지 : Jenkinsfile은 문법 오류나 논리 오류를 Git 에 커밋하기 전에 Linter 등을 통해 미리 확인해보는 것이 가능하다.</li>
+</ol>
+
+<p>물론, 반대의견으로 GUI 로 만들어 스크립트로 보관을 이야기 하기도 한다. 
+Jenkins에는 <code class="language-plaintext highlighter-rouge">Pipeline Syntax</code> 라는 기능으로 GUI 로 설정한 내용을 기반으로 Groovy 코드로 생성 및 보관이 가능하다. 하지만 다음과 같은 이유로 추천하진 않는다.</p>
+
+<ol>
+  <li>GUI 에서 제공하는 기능만 사용 가능 : 복잡한 조건, 반복, 동적인 데이터 처리는 결국 손이 감</li>
+  <li>복사-붙여넣기 오버헤드 : GUI 에서 설정을 불러와 이를 Jenkinsfile에 넣어야 하는 추가 과정이 발생</li>
+  <li>버전관리의 완전한 통합 부족 : Jenkinsfile 이라는 파일로 관리 되어야 할텐데, 그렇지 못함.</li>
+</ol>
+
+<h2 id="들어가기-전에-2-jenkinsfile을-프로젝트-내부에-보관해야-하는-이유는">들어가기 전에 2: Jenkinsfile을 프로젝트 내부에 보관해야 하는 이유는?</h2>
+<ol>
+  <li>버전관리: Git 저장소에 함께 관리될 수 있으니 애플리케이션 코드와 함께 관리가 가능하여 Git 을 활용한 완벽한 추적이 가능.</li>
+  <li>재현성 및 환경 일관성: 어떤 환경, 어떤 Jenkins 서버세서든 프로젝트 코드만 Git으로 클론하면 Jenkinsfile 이 함께 따라와서, 동일한 CI/CD 파이프라인을 재현할 수 있다.</li>
+  <li>개발자 협업: CI/CD 파이프라인 설정이 코드베이스에 포함되어 개발자들도 파이프라인에 대한 변경 사항을 코드리뷰로 기여할 수 있고, 이는 DevOps 문화 개발, 협업을 강화하는데 기여.</li>
+  <li>프로젝트 종속성: 파이프라인은 해당 프로젝트의 빌드, 테스트, 배포 단계를 정의하는데, 각 프로젝트 요구사항에 맞춰 Jenkinsfile 을 개별적으로 관리하는게 효율적.</li>
+  <li>새로운 Jenkins 서버 설정의 용이성: 향후 Jenkins 서버를 새로 구축하거나 재설정 시 각 프로젝트에 존재하니, 다시 연결만 해주면 모든 파이프라인의 설정이 자동 복구됨.</li>
+</ol>
+
+<h2 id="groovy-언어">Groovy 언어</h2>
+
+<p>Groovy 언어는 Java와 매우 유사하면서도 더 간결하고 유연한 문법을 제공하는 스크립트 언어다. Jenkinsfile에서는 주로 데이터 처리, 조건문, 반복문, 함수 호출 등에 사용된다.</p>
+
+<h3 id="groovy-언어-기본-튜토리얼-jenkinsfile을-위한-핵심">Groovy 언어 기본 튜토리얼 (Jenkinsfile을 위한 핵심)</h3>
+
+<p>여기서는 Jenkinsfile을 작성하는 데 필요한 Groovy의 <strong>핵심적인 문법과 개념</strong>을 위주로 설명한다.</p>
+
+<h4 id="1-변수-선언과-데이터-타입">1. 변수 선언과 데이터 타입</h4>
+
+<p>Groovy는 변수 선언 시 <code class="language-plaintext highlighter-rouge">def</code> 키워드를 사용하거나, 명시적인 데이터 타입을 지정할 수 있다. 대부분의 경우 <code class="language-plaintext highlighter-rouge">def</code>를 사용하면 Groovy가 타입을 자동으로 추론한다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">"Jenkins"</span> <span class="c1">// 문자열 (String)</span>
+<span class="kt">def</span> <span class="n">version</span> <span class="o">=</span> <span class="mf">2.452</span>   <span class="c1">// 숫자 (정수 또는 실수)</span>
+<span class="kt">def</span> <span class="n">isRunning</span> <span class="o">=</span> <span class="kc">true</span>  <span class="c1">// 불리언 (Boolean)</span>
+<span class="kt">def</span> <span class="n">list</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"apple"</span><span class="o">,</span> <span class="s2">"banana"</span><span class="o">,</span> <span class="s2">"cherry"</span><span class="o">]</span> <span class="c1">// 리스트 (List)</span>
+<span class="kt">def</span> <span class="n">map</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"key1"</span><span class="o">:</span> <span class="s2">"value1"</span><span class="o">,</span> <span class="s2">"key2"</span><span class="o">:</span> <span class="mi">123</span><span class="o">]</span> <span class="c1">// 맵 (Map)</span>
+</code></pre></div></div>
+
+<h4 id="2-문자열-strings">2. 문자열 (Strings)</h4>
+
+<p>Groovy는 문자열 처리는 자바보다 유연하게 설계 되어 있다.</p>
+
+<ul>
+  <li><strong>따옴표:</strong> 작은따옴표 (<code class="language-plaintext highlighter-rouge">'...'</code>)는 일반 문자열, 큰따옴표 (<code class="language-plaintext highlighter-rouge">"..."</code>)는 문자열 내 변수 삽입(GString)이 가능한 문자열을 나타낸다.</li>
+  <li><strong>GString (변수 삽입):</strong> 큰따옴표 안에 <code class="language-plaintext highlighter-rouge">${변수명}</code> 또는 <code class="language-plaintext highlighter-rouge">$변수명</code> 형태로 변수를 직접 삽입할 수 있다.</li>
+</ul>
+
+<!-- end list -->
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">buildNumber</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="kt">def</span> <span class="n">jobName</span> <span class="o">=</span> <span class="s2">"MyProject"</span>
+
+<span class="n">println</span> <span class="s2">"Build number is ${buildNumber}"</span> <span class="c1">// 결과: Build number is 10</span>
+<span class="n">println</span> <span class="s2">"Job name is $jobName"</span>         <span class="c1">// 결과: Job name is MyProject</span>
+<span class="n">println</span> <span class="s1">'This is a simple string.'</span>    <span class="c1">// 변수 삽입 안 됨</span>
+
+<span class="c1">// 여러 줄 문자열: """ 또는 '''를 사용</span>
+<span class="kt">def</span> <span class="n">multiLineString</span> <span class="o">=</span> <span class="s2">"""
+Hello,
+This is a multi-line string.
+Build: ${buildNumber}
+"""</span>
+<span class="n">println</span> <span class="n">multiLineString</span>
+</code></pre></div></div>
+
+<h4 id="3-리스트-lists">3. 리스트 (Lists)</h4>
+
+<p>iterable 한 데이터 컬렉션 기능. <code class="language-plaintext highlighter-rouge">[]</code> 대괄호를 사용한다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">fruits</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"apple"</span><span class="o">,</span> <span class="s2">"banana"</span><span class="o">,</span> <span class="s2">"orange"</span><span class="o">]</span>
+
+<span class="n">println</span> <span class="n">fruits</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>      <span class="c1">// 결과: apple (인덱스는 0부터 시작)</span>
+<span class="n">println</span> <span class="n">fruits</span><span class="o">.</span><span class="na">size</span><span class="o">()</span>  <span class="c1">// 결과: 3 (리스트 크기)</span>
+<span class="n">fruits</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s2">"grape"</span><span class="o">)</span>    <span class="c1">// 요소 추가</span>
+<span class="n">println</span> <span class="n">fruits</span>         <span class="c1">// 결과: [apple, banana, orange, grape]</span>
+</code></pre></div></div>
+
+<h4 id="4-맵-maps">4. 맵 (Maps)</h4>
+
+<p>키(key)와 값(value)의 쌍으로 이루어진 데이터 컬렉션이에요. <code class="language-plaintext highlighter-rouge">:</code> 또는 <code class="language-plaintext highlighter-rouge">=</code>를 사용하여 정의한다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">userInfo</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"name"</span><span class="o">:</span> <span class="s2">"Alice"</span><span class="o">,</span> <span class="s2">"age"</span><span class="o">:</span> <span class="mi">30</span><span class="o">,</span> <span class="s2">"city"</span><span class="o">:</span> <span class="s2">"Seoul"</span><span class="o">]</span>
+
+<span class="n">println</span> <span class="n">userInfo</span><span class="o">[</span><span class="s2">"name"</span><span class="o">]</span>  <span class="c1">// 결과: Alice</span>
+<span class="n">println</span> <span class="n">userInfo</span><span class="o">.</span><span class="na">age</span>      <span class="c1">// 결과: 30 (점(.) 표기법도 가능)</span>
+<span class="n">userInfo</span><span class="o">.</span><span class="na">country</span> <span class="o">=</span> <span class="s2">"South Korea"</span> <span class="c1">// 새 키-값 쌍 추가</span>
+<span class="n">println</span> <span class="n">userInfo</span>          <span class="c1">// 결과: [name:Alice, age:30, city:Seoul, country:South Korea]</span>
+</code></pre></div></div>
+
+<h4 id="5-조건문-ifelse">5. 조건문 (If/Else)</h4>
+
+<p>Java와 동일하게 <code class="language-plaintext highlighter-rouge">if</code>, <code class="language-plaintext highlighter-rouge">else if</code>, <code class="language-plaintext highlighter-rouge">else</code>를 사용한다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">status</span> <span class="o">=</span> <span class="s2">"SUCCESS"</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">status</span> <span class="o">==</span> <span class="s2">"SUCCESS"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">println</span> <span class="s2">"배포 성공!"</span>
+<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">status</span> <span class="o">==</span> <span class="s2">"FAILURE"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">println</span> <span class="s2">"배포 실패!"</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">println</span> <span class="s2">"배포 상태 알 수 없음."</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="6-반복문-loops">6. 반복문 (Loops)</h4>
+
+<p><code class="language-plaintext highlighter-rouge">for</code> 루프와 <code class="language-plaintext highlighter-rouge">each</code> 클로저(함수)를 주로 사용한다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">items</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"item1"</span><span class="o">,</span> <span class="s2">"item2"</span><span class="o">,</span> <span class="s2">"item3"</span><span class="o">]</span>
+
+<span class="c1">// for 루프</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">println</span> <span class="s2">"Processing: $item"</span>
+<span class="o">}</span>
+
+<span class="c1">// each 클로저 (더 Groovy스러운 방식)</span>
+<span class="n">items</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">item</span> <span class="o">-&gt;</span>
+    <span class="n">println</span> <span class="s2">"Processing with each: $item"</span>
+<span class="o">}</span>
+
+<span class="c1">// 인덱스와 함께 반복 (eachWithIndex)</span>
+<span class="n">items</span><span class="o">.</span><span class="na">eachWithIndex</span> <span class="o">{</span> <span class="n">item</span><span class="o">,</span> <span class="n">index</span> <span class="o">-&gt;</span>
+    <span class="n">println</span> <span class="s2">"Item ${index}: $item"</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="7-함수-methodsclosures">7. 함수 (Methods/Closures)</h4>
+
+<p>Jenkinsfile에서는 주로 <code class="language-plaintext highlighter-rouge">script</code> 블록 내에서 Groovy 함수를 정의하거나, 클로저를 활용한다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 일반적인 함수 정의</span>
+<span class="kt">def</span> <span class="nf">greet</span><span class="o">(</span><span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s2">"Hello, ${name}!"</span>
+<span class="o">}</span>
+
+<span class="n">println</span> <span class="nf">greet</span><span class="o">(</span><span class="s2">"World"</span><span class="o">)</span> <span class="c1">// 결과: Hello, World!</span>
+
+<span class="c1">// 클로저 (변수에 할당된 코드 블록)</span>
+<span class="kt">def</span> <span class="n">sayHi</span> <span class="o">=</span> <span class="o">{</span> <span class="n">name</span> <span class="o">-&gt;</span>
+    <span class="n">println</span> <span class="s2">"Hi, $name"</span>
+<span class="o">}</span>
+
+<span class="n">sayHi</span><span class="o">(</span><span class="s2">"Bob"</span><span class="o">)</span> <span class="c1">// 결과: Hi, Bob</span>
+</code></pre></div></div>
+
+<h4 id="8-try-catch-예외-처리">8. try-catch (예외 처리)</h4>
+
+<p>스크립트 실행 중 발생하는 오류를 처리하여 파이프라인이 갑자기 중단되지 않도록 할 수 있음.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+    <span class="kt">def</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="s">/ 0 /</span><span class="o">/</span> <span class="mi">0</span><span class="err">으로</span> <span class="err">나누기</span> <span class="err">오류</span> <span class="err">발생</span>
+    <span class="n">println</span> <span class="n">result</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">println</span> <span class="s2">"오류 발생: ${e.message}"</span>
+<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+    <span class="n">println</span> <span class="s2">"오류 발생 여부와 상관없이 항상 실행되는 부분."</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="9-외부-명령어-실행-shell-command">9. 외부 명령어 실행 (Shell Command)</h4>
+
+<p>Jenkinsfile에서 가장 많이 사용하는 기능 중 하나로, <code class="language-plaintext highlighter-rouge">sh</code> (Shell) 명령어를 통해 리눅스/유닉스 쉘 명령어를 실행하는 것이 가능하다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sh</span> <span class="s1">'ls -al'</span> <span class="c1">// 파일 목록을 출력</span>
+<span class="n">sh</span> <span class="s1">'echo "Hello from shell"'</span> <span class="c1">// 쉘에서 메시지 출력</span>
+
+<span class="c1">// 여러 줄 명령</span>
+<span class="n">sh</span> <span class="s2">"""
+    echo "First line"
+    echo "Second line"
+"""</span>
+
+<span class="c1">// 명령의 결과 받기</span>
+<span class="kt">def</span> <span class="n">output</span> <span class="o">=</span> <span class="n">sh</span><span class="o">(</span><span class="nl">script:</span> <span class="s1">'pwd'</span><span class="o">,</span> <span class="nl">returnStdout:</span> <span class="kc">true</span><span class="o">).</span><span class="na">trim</span><span class="o">()</span> <span class="c1">// 현재 작업 디렉토리 경로를 pwd 로 실행하고 받아서, trim 처리하여 작업 디렉토리를 저장한다.</span>
+<span class="n">println</span> <span class="s2">"Current directory: $output"</span>
+
+<span class="c1">// 명령의 성공/실패 여부만 확인</span>
+<span class="kt">def</span> <span class="n">success</span> <span class="o">=</span> <span class="n">sh</span><span class="o">(</span><span class="nl">script:</span> <span class="s1">'exit 0'</span><span class="o">,</span> <span class="nl">returnStatus:</span> <span class="kc">true</span><span class="o">)</span> <span class="c1">// 성공하면 0 반환</span>
+<span class="kt">def</span> <span class="n">failure</span> <span class="o">=</span> <span class="n">sh</span><span class="o">(</span><span class="nl">script:</span> <span class="s1">'exit 1'</span><span class="o">,</span> <span class="nl">returnStatus:</span> <span class="kc">true</span><span class="o">)</span> <span class="c1">// 실패하면 1 반환</span>
+<span class="n">println</span> <span class="s2">"Success: $success, Failure: $failure"</span>
+</code></pre></div></div>
+
+<h4 id="10-jsonyaml-파싱">10. JSON/YAML 파싱</h4>
+
+<p>AWS CLI 명령의 결과가 JSON 형태인 경우가 많다. 이를 Groovy에서 파싱하여 데이터에 접근하는 방법을 알아두면 유용하다. <code class="language-plaintext highlighter-rouge">readJSON</code>이나 <code class="language-plaintext highlighter-rouge">readYaml</code> 같은 Jenkins Pipeline Step이 이를 도와서 처리해준다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">jsonString</span> <span class="o">=</span> <span class="s1">'{"name": "test", "status": "success"}'</span> <span class="c1">// Json 을 읽어</span>
+<span class="kt">def</span> <span class="n">jsonData</span> <span class="o">=</span> <span class="n">readJSON</span><span class="o">(</span><span class="nl">text:</span> <span class="n">jsonString</span><span class="o">)</span> <span class="c1">//파싱 처리 =&gt; 객체화</span>
+
+<span class="n">println</span> <span class="n">jsonData</span><span class="o">.</span><span class="na">name</span>   <span class="c1">// 결과: test</span>
+<span class="n">println</span> <span class="n">jsonData</span><span class="o">.</span><span class="na">status</span> <span class="c1">// 결과: success</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="groovy-학습-팁--알아두면-좋은-내용">Groovy 학습 팁 &amp; 알아두면 좋은 내용:</h2>
+
+<ul>
+  <li><strong>Jenkins Pipeline Syntax Snippet Generator:</strong> Jenkins 대시보드의 파이프라인 잡 설정 페이지에서 “Pipeline Syntax” 링크를 클릭하면 Snippet Generator를 사용할 수 있다. 여기서 원하는 Jenkins 스텝을 선택하고 설정을 채우면 해당 Groovy 코드를 자동으로 생성해 준다. 이것이 Groovy 문법을 익히는 데 가장 강력한 도구 중 하나다.</li>
+  <li><strong>Java 지식 활용:</strong> Groovy는 Java와 매우 유사하므로, Java 경험이 있다면 빠르게 적응할 수 있다.</li>
+  <li><strong>간결함 선호:</strong> Groovy는 Java보다 더 적은 코드로 동일한 작업을 수행할 수 있는 “Syntactic Sugar”가 많다. 간결한 표현을 선호하는 경향이 있다.</li>
+  <li>Jenkins 를 위한 jenkins 파일의 구조를 이해하는 것이 실수를 줄이는데 중요하다.</li>
+  <li>글로벌 변수의 경우 최초 설정을 하긴 하지만, 기본적으로 Secret 등에 대해 우선 가져오는 구조로 설정은 불가능하다. 각 단계별로만 되고, 이러한 경우 에러 핸들링은 Jenkins 가 알아서 해준다는 점 알아둘것.</li>
+</ul>
+
+<hr />
+
+<h2 id="마치면서">마치면서</h2>
+
+<p>젠킨스랑 같이 산지도 어언 7개월 차. Unity 클라이언트 프로젝트를 쓰는 바람에 익숙한 Github 방식을 버리게 되어 다소 아쉽지만, 뭐 어떤가, 대세 기술 하나 제대로 파는건 당연히 필요하고, 특히나 jenkins 는 최소 3년 ~ 5년차에게 요구되는 기술이라는데 제대로 배워둘 필요가 있다고 느꼈다(일단 재미도 있다)</p>
+
+<p>엄두도 안 났었던 내용인데, Docker 를 비롯해 한 두달 바짝 DevOps를 위한 여러 기술들을 고심하고, API 서버에 도입을 하나씩 해 나가니 생각보다 별거 아니란 생각에, 역시 양파 까듯 생각했어야 하는 구나 란 생각을 다시 한 번 해보았다.(처음엔 뭐 그리 부담스럽게 생각했던 것인지…)</p>
+
+<p>이제 한 발자국 남았다. Jenkins 배포를 위한 file 작업 중이니 조만간 마무리 지어야지….🤔</p>]]></content><author><name>Paul2021-R</name></author><category term="개발" /><category term="Backend" /><category term="DevOps" /><category term="Programming" /><category term="Groovy" /><category term="학습" /><summary type="html"><![CDATA[Jenkinsfile 작성 튜토리얼]]></summary></entry><entry><title type="html">서버 상태를 알려주는 서버리스 서버 만들기 v1</title><link href="http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/28/EKS+LAMDA+CLOUDWATCH.html" rel="alternate" type="text/html" title="서버 상태를 알려주는 서버리스 서버 만들기 v1" /><published>2025-06-28T00:00:00+00:00</published><updated>2025-06-28T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/28/EKS+LAMDA+CLOUDWATCH</id><content type="html" xml:base="http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/28/EKS+LAMDA+CLOUDWATCH.html"><![CDATA[<h2 id="0-introduciton">0. Introduciton</h2>
 
 <p>신규 프로젝트를 진행하는 과정에서 backend 개발자로서 Legacy 코드들의 대대적인 개선, 코드 품질 향상, 그러면서도 향후를 고려한 다양한 DevOps 적인 요청이 들어왔다.</p>
 
@@ -75,8 +305,8 @@
 
 <p>전체적으로 작업이 끝나고 SMS 를 받아보니, 확실히 이메일 받을 때 보단 상태를 확인도 가능하고, 설정에 따라 주기적으로 헬스 체크도 가능해진다는 점은 매우 편리하였다. 바이브 코딩 + 각종 기술 맛보기 + AWS 서비스 구성을 배워 본다는 점에선 매우 영양가 있던 시간(?) 이라고 밖에 할 말이 없을 것 같은데, 그럼에도 구조를 짜고 내용을 바라보면 다소 아쉬움도 남았다. 😎</p>
 
-<p>2-1. 장점 (Pros)
-우선, 완벽하게 모듈화된 설계 구성은 예를 들어 lambda 하나로만 한다거나 하는 것 보다 훨씬 직관적이었다. 각 역할(이벤트 수신, 처리, 발송)이 명확했고, 문제가 발생했을 때 어느 지점의 문제인지 파악하기 용이했으며, 특히 각 영역의 수정이나 배포 등에서 매끄럽다고 생각한다.</p>
+<h3 id="2-1-장점-pros">2-1. 장점 (Pros)</h3>
+<p>우선, 완벽하게 모듈화된 설계 구성은 예를 들어 lambda 하나로만 한다거나 하는 것 보다 훨씬 직관적이었다. 각 역할(이벤트 수신, 처리, 발송)이 명확했고, 문제가 발생했을 때 어느 지점의 문제인지 파악하기 용이했으며, 특히 각 영역의 수정이나 배포 등에서 매끄럽다고 생각한다.</p>
 
 <p>데이터 편집은 FastAPI 서버를 건드리면 되고, 알람은 CloudWatch 경보를 추가하거나 세밀하게 만들어 주면 될 문제였다. lambda는 필요할 때만 활성화 되니 필요하지 않을 땐 사실상 없는 것이나 마찬가지. Fargate의 경우에도 그냥 켜둔 다면 0원에 수렴하기 때문에 가장 작은 EC2 인스턴스를 쓴다고 해도, 이미 프리티어는 넘어버린 자사 입장에선 훨씬 양호했다.</p>
 
@@ -86,8 +316,8 @@
 
 <p>또한 먼 이야기겠지만, 이벤트가 늘어나면 조건만 추가하면 자연스럽게 스케일러블 한 설계가 가능하고, 민감한 정보는 모두 컨테이너화 되어 있으니(특히 전달 받는 분들의 연락처 등), 이러한 점에서 알림 서비스로서 향후를 고려한 꽤 괜찮은 구성이 아닐까 싶다.</p>
 
-<p>2-2. 단점 (Cons)
-AWS 는 바보가 아니다. 이렇게 편리한 서비스 옵션들, 모듈들을 무료로 푸는 데는 나름의 악랄한 부분이 있지 않으면 안된다(…) <del>등가교환 법칙…</del></p>
+<h3 id="2-2-단점-cons">2-2. 단점 (Cons)</h3>
+<p>AWS 는 바보가 아니다. 이렇게 편리한 서비스 옵션들, 모듈들을 무료로 푸는 데는 나름의 악랄한 부분이 있지 않으면 안된다(…) <del>등가교환 법칙…</del></p>
 
 <p>우선 핵심은 모듈화 하는 과정에서 Fargate 의 구성 난이도가 오히려 무지하게 높다는(!) 생각을 할 수 있었다. 해당 서비스의 의도와 구성에 대한 이해도가 없지만 AI 를 활용해서 그나마 해결했지, 이걸 모르는 사람이 혼자 해본다? 과연 될까 싶은게 솔직한 감상이었다(…)</p>
 
@@ -2300,184 +2530,4 @@ npm view @types/package-name
 
 <p>이런 거 보면 아직 짬이 덜 찬 느낌이 든다. 🫥</p>
 
-<p>개발의 길은 멀고, 아주 멀고, 아주 멀다. 😖</p>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="학습" /><category term="TypeScript" /><category term="Backend" /><summary type="html"><![CDATA[Intro]]></summary></entry><entry><title type="html">클린 코드를 위한 룰</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html" rel="alternate" type="text/html" title="클린 코드를 위한 룰" /><published>2025-04-27T00:00:00+00:00</published><updated>2025-04-27T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/04/27/golden-rule-for-programming.html"><![CDATA[<h2 id="-클린-코드-황금-6원칙-스터디-정리"><strong>🧠 클린 코드 황금 6원칙 스터디 정리</strong></h2>
-
-<p><img src="/assets/images/posts/2025-04/2025-04-27-0002.png" alt="" /></p>
-
-<blockquote>
-  <p>링크드인에서 개발과 관련한 이미지를 한 장봤다. 새롭게 개편한 블로그를 위한 글도 써야 하고, ‘오랜만에 정리 해 봐야겠구나’ 라는 생각이 들었다. 왜냐면 이제 개발을 시작한지 4년? 팀 개발을 해나가면 나갈 수록 더 중요한게 어디에 있는가에 대한 답변이 항상 거의 여기서 나오고 있다고 스스로도 느끼는데, 정작 정확하게 이해하고 있냐? 라고 하면 그렇지는 않다… 가 있기 때문이다. 🤔</p>
-</blockquote>
-
-<h3 id="1️⃣-soc-seperation-of-concerns--관심사는-분리해라">1️⃣ <strong>SOC (Seperation of Concerns) : 관심사는 분리해라</strong></h3>
-<p><img src="/assets/images/posts/2025-04/2025-04-27-0003.png" alt="" />
-어떤 비즈니스 로직을 구현 하는 과정에서, 다양한 것, 다양한 ‘관심’이 필요 시 된다. DTO로 들어오는 대상에 대해 무결성을 검증 해야 하고, 룰은 지켰으나 데이터는 온전한지도 확인 해야 하며,  그렇게 들어온 데이터는 비즈니스 로직이 정한 룰이나, 다양한 절차를 거쳐 결과적으로 요청을 한 클라이언트에게 전달되다.</p>
-
-<p>따라서 다양한 요소들이나, 로직, 기능이 서로를 바라보게 될 수 밖에 없고, 보통 그런 구조가 설계되기 시작하면 거미줄처럼 얼키고 설켜 복잡한 형태를 이루게 된다.</p>
-
-<p>문제는 그런 구조를 가지면 하나를 바꿔도 그 안에서 모든 것들이 영향을 미치게 되어 버린다는 점이다. 거기다 아무리 대단한 사람이 함께 참여하더라도 수천, 수만줄의 코드의 협업 속에서 그런 일이 일어난다면? 그걸 어떻게 발견하겠는가? 사소한 문제가 얼마나 커질 수 있는가를 여기서 알 수 있는 것이다. 물론, 이는 단적이고 극단적인 예시일 것이고 이 외에도 관심사의 혼재는 아주 큰 문제들을 많이 가진다.</p>
-
-<p>따라서 많은 이들이 Seperation Of Concerns(관심사의 분리) 라는 가치를 이야기 하며, 이것이 필요한 이유를 크게 3가지 정도로 축약하여 이야기 한다.</p>
-
-<ul>
-  <li><strong>단일 책임 원칙을 지키기 위해</strong></li>
-  <li><strong>유지 보수 과정에서 문제를 빠르게 좁혀야 한다.</strong></li>
-  <li><strong>코드 재사용성을 극대화 하기 위해</strong></li>
-</ul>
-
-<p>예시를 그래도 간략하게 들어보자면… (feat. ChatGPT)</p>
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Controller - 요청 처리만</span>
-<span class="p">@</span><span class="nd">Post</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">)</span>
-<span class="nf">login</span><span class="p">(@</span><span class="nd">Body</span><span class="p">()</span> <span class="nx">loginDto</span><span class="p">:</span> <span class="nx">LoginDto</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// 여기서 무슨 일이 일어나든 </span>
-  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">userService</span><span class="p">.</span><span class="nf">login</span><span class="p">(</span><span class="nx">loginDto</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1">// Service - 비즈니스 로직</span>
-<span class="k">async</span> <span class="nf">login</span><span class="p">(</span><span class="nx">loginDto</span><span class="p">:</span> <span class="nx">LoginDto</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">validateUser</span><span class="p">(</span><span class="nx">loginDto</span><span class="p">);</span>
-  <span class="c1">// 여기서 무슨 일이 일어나든 로직은 구분되어 있다 </span>
-  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">authService</span><span class="p">.</span><span class="nf">issueToken</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h3 id="2️⃣-dyc-document-your-code--코드를-문서화하라">2️⃣ <strong>DYC (Document Your Code) : 코드를 문서화하라</strong></h3>
-
-<p><img src="/assets/images/posts/2025-04/2025-04-27-0004.png" alt="" /></p>
-
-<p>팀 플레이를 진행하던, 혼자서 코드를 짜던 한 가지 중요한 지점은 사람은 ‘컴퓨터’ 가 아니라는 점이다. 컴퓨터도 데이터를 소실되니 마니 하는 마당에, 사람의 머리가 알 수 있고 기억할 수 있는 용량은 반드시 한계가 있다. 작업을 하던 과정이 급하고, 촉박하거나 하지 않더라도 개발을 하다보면 시간이 지나면서  ‘뇌 내 풍화(?)’를 겪게 된다.</p>
-
-<p>그럴 때면 드디어 객관적으로 내 코드를 볼 수 있게 되고, 그 코드를 보며 자괴감도 분노도, 실망도 느끼게 되는게 마치 인생같다는(?) 이상한 소리를 할 수 있다. 왜 이렇게 했더라, 이 부분이 왜 필요했지 등등.. 그러다 보면 몇 달만에 다시 보고, 그 부분을 수정해야 할 때 그저 쉽게 코드 몇줄 추가 했음에도 에러가 생기는 일 등… 다양한 방해물이 생기고 나면, 그제야 우리는 깨닫게 된다.</p>
-
-<p>‘아 메모 해 둘걸’</p>
-
-<p>하고 말이다.</p>
-
-<p>문서화가 중요한 것은 다음과 같은 이유라고 보면 된다.</p>
-
-<ul>
-  <li><strong>협업자가 코드를 빠르게 이해할 수 있으려면 필요하다.</strong></li>
-  <li><strong>시간이 지난 뒤 ‘나’의 이해를 돕기 위해 필요하다.</strong></li>
-</ul>
-
-<p>뭐 예시는 필요하진 않을 것이다. 심지어 요즘은 LLM 을 활용하여 자동 문서화도 기가 막히게 잘 되고 있으니, 이 부분은 확실하게 도입하고 습관을 들이는 것이 좋아 보인다.</p>
-
-<p>Cursor를 활용해도 좋을 것이고 Vsc 에 Continue 를 활용해도 좋다고 느껴진다.</p>
-
-<h3 id="3️⃣-dry-dont-repeat-yourself--중복을-피하라">3️⃣ <strong>DRY (Don’t Repeat Yourself) : 중복을 피하라</strong></h3>
-<p><img src="/assets/images/posts/2025-04/2025-04-27-0005.png" alt="" />
-이번에는 좀 극단적인 예시를 들어 보면 좋을 것 같다.</p>
-
-<blockquote>
-  <p>결제 로직을 만들게 되었다고 치자. 전처리 과정에서 데이터들에 대한 정리, 특히나 암호화된 데이터를 decode 해서 실제 결제 이벤트를 받아내야 한다. 그 뒤 자세한 로직들이 나온다. 그런데 작업을 하다보니 이 decode 의 과정이 코드가 너무 길어, 블록으로 떼어 내서 다시 메서드화 시키기 너무 귀찮다..!</p>
-
-  <p>결제 이벤트는 총 4개. 마음은 아팠지만, 기간이 얼마 남지 않았다는 생각에 어쩔 수 없이 결단을 내려 ctrl + c를 4회 진행하게 되는데…</p>
-
-  <p>몇 달이 흘러, 결제 개선이 가능한 시점이 되었다. 결제 이벤트 하나만 추가로 개선하면 되는 것이었음에도, 무언가 이상하다. 무엇이 문제 였을까?</p>
-</blockquote>
-
-<p>같은 코드가 같은 내용임에도 불구하고 다양한 로직에 사용되는 경우는 은근히 흔하게 있다. 암호화와 복호화 과정이라는 대표적인 예시도 있지만, 그 밖에도 처리해야 하는 데이터의 가공 영역은 특히나 그런 경우가 많다.</p>
-
-<p>하지만 문제는 예를 들어 이럴 수 있다. A 라는 로직이 있고 이것이 4번 쓰였는데, A를 고친다는 생각에 A’를 만들었지만, 막상 내가 그때 A를 4번 복붙 해야 한다는 걸 까먹을 수도 있고 실제로 그런 경우로 사고가 나는 경우가 정말 많다.</p>
-
-<p>따라서 꼭 기억할 것은 같은 코드, 같은 규칙이라면 하나를 작성하고 그것을 통해 항상 정확하게 처리하는 것이 필요하다. 이를 통해 버그 발생 확률을 낮추고, 수정과 리펙토링 과정을 쉽고 정확하게 만들어주며, 오히려 이런 설계가 되었을 때 향후 코드 확장성이 높아지는 것은 당연히 덤이니까.</p>
-
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 이런 단순한 코드라도 만들어두면, 재사용할 때 검색 한번으로 찾아서 쓸 수 있고, </span>
-<span class="c1">// 향후 조건이 여러개로 늘어나도 1번의 수정이면 끝난다</span>
-<span class="kd">function</span> <span class="nf">getUserStatus</span><span class="p">(</span><span class="nx">score</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
-  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">)</span> <span class="k">return</span> <span class="dl">'</span><span class="s1">excellent</span><span class="dl">'</span><span class="p">;</span>
-  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">)</span> <span class="k">return</span> <span class="dl">'</span><span class="s1">good</span><span class="dl">'</span><span class="p">;</span>
-  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">)</span> <span class="k">return</span> <span class="dl">'</span><span class="s1">normal</span><span class="dl">'</span><span class="p">;</span>
-  <span class="k">return</span> <span class="dl">'</span><span class="s1">bad</span><span class="dl">'</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h3 id="4️⃣-kiss-keep-it-simple-stupid--단순하게-유지하라">4️⃣ <strong>KISS (Keep It Simple, Stupid) : 단순하게 유지하라</strong></h3>
-<p><img src="/assets/images/posts/2025-04/2025-04-27-0007.png" alt="" /></p>
-
-<p>백엔드 개발자로 입문하게 되어, 첫 해 작업을 할 때 항상 생각했던 것은, 단단한 구조, 안정적인 성능, 이를 위한 수학적이거나 계산적인 로직으로 단단한 기능으로 구현하는게 좋지 않을까! 라는 호기로움이었다.</p>
-
-<p>하지만 6개월 정도 했었을까? 그런 코드가 ‘잘 동작’은 하지만 ‘쓸모 없다’ 는 것은 너무나 빨리 알게 된 사실이었다.</p>
-
-<p>개발의 과정은 완벽이 없다. 기능은 그대로지만 방향성은 달라지게되고, 사업의 형태, 비즈니스의 방향성의 고려로 기능은 수시로 바뀔 수 있다.</p>
-
-<p>뿐만 아니라 새로운 사람이 들어오거나, 코드를 만드는 입장과 리뷰, 관리 하는 입장이 다른 경우도 있다. 무엇이 되었든 그런 상황이 되면 우리는 코드를 봐야하고, 그 코드를 이해하고 문제가 없는지를 확인하는 작업들이 필요 시 된다.</p>
-
-<p>그런데 여기서 나만 아는, 혹은 나 혼자 이해할만한 로직을 활용한다는 것은 심각한 비효율성을 낳는다.</p>
-
-<p>리펙토링을 이후에 할 때도 어려워지고, 누군가 읽고 해석해서 향후 관리를 해 나가는 것도 어렵다. 특히나 디버깅이나 테스트 과정 역시 어려울 수 밖에 없는 경우가 많다.</p>
-
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">getUserStatus</span><span class="p">(</span><span class="nx">score</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
-  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">)</span> <span class="k">return</span> <span class="dl">'</span><span class="s1">excellent</span><span class="dl">'</span><span class="p">;</span>
-  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">)</span> <span class="k">return</span> <span class="dl">'</span><span class="s1">good</span><span class="dl">'</span><span class="p">;</span>
-  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">)</span> <span class="k">return</span> <span class="dl">'</span><span class="s1">normal</span><span class="dl">'</span><span class="p">;</span>
-  <span class="k">return</span> <span class="dl">'</span><span class="s1">bad</span><span class="dl">'</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nf">getUserStatus</span><span class="p">(</span><span class="nx">score</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">levels</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">bad</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">normal</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">good</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">excellent</span><span class="dl">'</span><span class="p">];</span>
-  <span class="kd">const</span> <span class="nx">thresholds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">90</span><span class="p">];</span>
-
-  <span class="kd">let</span> <span class="nx">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">right</span> <span class="o">=</span> <span class="nx">thresholds</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  
-  <span class="k">while </span><span class="p">(</span><span class="nx">left</span> <span class="o">&lt;=</span> <span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">mid</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">((</span><span class="nx">left</span> <span class="o">+</span> <span class="nx">right</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="nx">thresholds</span><span class="p">[</span><span class="nx">mid</span><span class="p">])</span> <span class="p">{</span>
-      <span class="nx">idx</span> <span class="o">=</span> <span class="nx">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-      <span class="nx">left</span> <span class="o">=</span> <span class="nx">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">right</span> <span class="o">=</span> <span class="nx">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="k">return</span> <span class="nx">levels</span><span class="p">[</span><span class="nx">idx</span><span class="p">];</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>둘은 동일한 결과를 만든다. 사실, 의도만 이해할 수 있다면 아래의 코드는 비교가 많아질 때 O(log n)의 복잡도로 이진탐색을 진행하기에, chatGPT 도 ‘압도적으로’ 성능이 좋다고 말할 정도로 성능면에선 좋다.</p>
-
-<p>하지만 만약 구조가 바뀌거나 조건이 바뀐다고 할 때, 그리고 이 코드를 처음 보고 이해해야 하는 사람 입장이라면? 이런 부분들이 지속적으로 나온다면? 내 고집으로 만들어서 넣어 두고 충격적인 결말을 마주하게 될 지도 모를 것이다.</p>
-<h3 id="5️⃣-tdd-test-driven-development--테스트-주도-개발">5️⃣ <strong>TDD (Test Driven Development) : 테스트 주도 개발</strong></h3>
-
-<p><img src="/assets/images/posts/2025-04/2025-04-27-0006.png" alt="" /></p>
-
-<p>TDD는 일종의 로망(?) 처럼 느껴지고, 마치 판타지 처럼 여겨지는 경우가 좀 있다. 현실에 적용하기엔 어렵고, 번거롭고, 복잡하다는 것.</p>
-
-<p>이러한 점이, 거를 타선이 없다는 것은 격하게 공감한다(?)</p>
-
-<p>하지만 생각을 조금만 바꿔봐도 요즘은 훨씬 TDD 를 구현하고 준비하는 것이 어렵지 않은 시대가 되었다. 예를 들어 refernece 로 쓰이는 DTO 를 설정하고, AI 를 활용하여 예시가 되는 에러 케이스를 만들고, 그 경우의 수에 맞춰 만들어 달라고 해줄 수 있다.</p>
-
-<p><img src="/assets/images/posts/2025-04/2025-04-27-0001.png" alt="" /></p>
-
-<p>실패를 먼저 고려하고, 그에 대한 대응을 정리해둔다면 로직에서 핸들링할 에러를 빼먹지 않을 수 있으며, 훨씬 명확한 협업, 클라이언트를 배려한 협업이 가능하다는 점에서 반드시 100% 완벽한 TDD 가 아니더라도 충분히 LLM 을 활용한 효율적인 방법이 적용 가능한 것이다.</p>
-
-<p>특히나, 이렇게 준비되고, 이에 대한 Jest 테스트 같은 것들이 준비 된다면? 아마 말 하지 않아도 알 것이다. <code class="language-plaintext highlighter-rouge">버그는 잡히며</code>, <code class="language-plaintext highlighter-rouge">리펙토링을 해도 문제 없는지를 거의 즉각적으로 알 수 있고</code>, 결정적으로 성능 향상과 같이 <code class="language-plaintext highlighter-rouge">지표가 필요한 영역의 기능</code>이라면 손쉽게 테스트를 통해 리펙토링 포인트를 파악할 수 있다.</p>
-
-<h3 id="6️⃣-yagni-you-arent-gonna-need-it--필요할-때만-만들기">6️⃣ <strong>YAGNI (You Aren’t Gonna Need It) : 필요할 때만 만들기</strong></h3>
-
-<p><img src="/assets/images/posts/2025-04/2025-04-27-0008.png" alt="" /></p>
-
-<p>개발을 하는 것은 약간 장인정신(?)을 가지게 만든다. 내가 만드는 그것이 좀 더 멋지거나, 좀 더 성능이 좋거나, 뭐가 되었든 그 개발 분야가 뭐가 되었든 나름의 ‘미학’을 쫓는 것을 종종 보게 된다.</p>
-
-<p>이것이 취미 일 땐 아름다울지 모른다.</p>
-
-<p>취미 일 땐 입이 벌어지는 센스를 느낄 수 있는 것이 오히려 멋지고, 훌륭하며, 재미있다.</p>
-
-<p>하지만 이것이 일이고, 비즈니스라면 말이 달라진다. 당장 필요한 기능, 시장이 원하는 기능, 괜찮은 아이디어를 빨리 구현하는 것이 이젠 너무 중요하고, 비즈니스에서 그 가치는 이미 십수년도 전, 아니 수백년 전부터 먼저 가져가는 사람이 임자였다.</p>
-
-<p>개발 속도를 늦추는 오버 엔지니어링이 되어 버리게 된다면, 오히려 이후 유지 보수에도, 그리고 리소스의 낭비로 타이밍을 놓칠 수도 있다. 그리고 그것을 개발자도 경영자도, 상품을 소비할 소비자에게도 결코 좋을 리는 없다. 개발자는 회사 내지는 조직에서 함께 일하고 있고, 내가 맥을 쓰고, 커피를 마시면서, 일에 집중할 수 있게 해주는 건 내가 만든 그것을 쓰는 사람들의 돈으로 이루어진다는 사실을 잊고 살면, ‘잘 만들어도 욕을 먹는’ 케이스가 아주 드물지 않다는 것을 몸소 느낄 수 있을 것이다.</p>
-
-<h2 id="-결론">📖 결론</h2>
-<p>이 원치들에 대해 다양하게 적는건 시간 관계상 피하려고 한다. 이미 뭐 자료는 많으니… 😅</p>
-
-<p>하지만 이 전체를 고민하고, 경험하고, 인정하게 되면 어느새 드는 하나의 생각은 다음처럼 정리 된다.</p>
-
-<ul>
-  <li>복잡한 시스템이 만들어지는 것을 막고</li>
-  <li>코드를 읽기 쉽게 만들며</li>
-  <li>유지 보수 가능하면서도</li>
-  <li>팀 전체가 빠르게 개선할 수 있도록 하는 것.</li>
-</ul>
-
-<p>결국 이게 되면 그 어떤 소프트웨어도 유기적으로 살아 숨쉬듯 자기 복제와 자기 진화를 이루고, 목표 시 되는 프로덕트의 퀄리티를 맞추며, 인정받는 개인이자 팀이 될 수 있다.</p>
-
-<p>오랜만에 링크드인에서 그저 짤로 본 것이지만, 정리를 하는 과정에서 CTO를 통해 얻어온 많은 경험들 그리고 백엔드 개발자로 1년 간 유지 보수, 코드를 짜오면서 얻은 많은 것들을 새삼 정리하는 감각을 느꼈다. 왜 실수가 많았고, 어디서 아쉬웠는지 새삼스럽게 느껴진 시간이었다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="etc" /><category term="cleanCode" /><category term="Programming" /><summary type="html"><![CDATA[🧠 클린 코드 황금 6원칙 스터디 정리]]></summary></entry></feed>
+<p>개발의 길은 멀고, 아주 멀고, 아주 멀다. 😖</p>]]></content><author><name>Paul2021-R</name></author><category term="Backend" /><category term="학습" /><category term="TypeScript" /><category term="Backend" /><summary type="html"><![CDATA[Intro]]></summary></entry></feed>

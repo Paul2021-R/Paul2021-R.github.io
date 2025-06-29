@@ -1,6 +1,6 @@
 ---
 layout: post 
-title: 서버리스 개발 서버 상태 알림 프로젝트 정리
+title: 서버 상태를 알려주는 서버리스 서버 만들기 v1 
 subtitle: AWS FARGATE + SNS + CloudWatch 로 실시간 문자 받기
 categories: 개발
 tags: Backend DevOps AWS Python AI NaverCloud
