@@ -1,0 +1,12 @@
+services:
+  jekyll:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"  # Jekyll 서버 포트
+    volumes:
+      - .:/root/workspace  # 로컬 blog 폴더를 컨테이너의 /root/workspace로 마운트
+    environment:
+      - JEKYLL_ENV=development
+    restart: unless-stopped
