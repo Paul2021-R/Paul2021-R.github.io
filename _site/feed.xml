@@ -1,4 +1,234 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-07-31T02:50:43+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">AI Breakfast Ep 8 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/07/30/AI-trend-with-google-08.html" rel="alternate" type="text/html" title="AI Breakfast Ep 8 생각정리" /><published>2025-07-30T00:00:00+00:00</published><updated>2025-07-30T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/07/30/AI-trend-with-google-08</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/07/30/AI-trend-with-google-08.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-08-04T03:33:51+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">AI Breakfast Ep 10 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/08/04/AI-trend-with-google-10.html" rel="alternate" type="text/html" title="AI Breakfast Ep 10 생각정리" /><published>2025-08-04T00:00:00+00:00</published><updated>2025-08-04T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/04/AI-trend-with-google-10</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/04/AI-trend-with-google-10.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
+<p><a href="https://www.youtube.com/watch?v=AuviDcSne9g"><img src="https://i.ytimg.com/vi/AuviDcSne9g/hq720.jpg" alt="비디오 제목" /></a></p>
+
+<h2 id="요약">요약</h2>
+
+<p>9화는 AI 와 관련된 특정 주제에 대한 내용이었기에 생략하고 10화 내용을 기반으로 요약해본다.</p>
+
+<ul>
+  <li><strong>AI 발전과 바이브 코딩의 등장</strong>: AI 기술은 하루가 다르게 빠르게 발전하며, 이 가운데 ‘바이브 코딩(vibe coding)’이 가장 뜨거운 아이템으로 주목받고 있다.</li>
+  <li><strong>바이브 코딩의 의미와 확산</strong>: 바이브 코딩은 AI가 내놓은 답을 <strong>즉흥적으로 수용하여 원하는 결과물을 만들어내는 방식</strong>이다. 한국에서는 ‘입코딩’이나 ‘손코딩’이라고도 부른다. 2023년 초 인도 개발자가 AI로 가벼운 비행기 게임을 만들어 월 5만 달러 수익을 올린 사례가 바이럴되며 시작되었고, Andrej Karpathy가 X(트위터)에서 이 용어를 사용하며 확산되었다. 이 단어는 2025년 3월 Merriam-Webster 사전에 ‘유행하는 속어’로 등재될 예정이기도 하다. 박찬성 연구원의 바이브 코딩 관련 게시물이 데미스 허사비스(DeepMind CEO)와 제프 딘(Google AI Research 수장)의 리트윗과 좋아요를 받으며 <strong>AI 거장들의 인정</strong>을 받았다.</li>
+  <li><strong>아이디어의 중요성 증대</strong>: 생성형 AI의 발전으로 초기 PoC(개념 증명) 수준의 아이디어 구현 비용이 크게 낮아졌다. 이는 <strong>특정 도메인 전문가의 전문 지식을 바탕으로 한 아이디어 자체의 중요성과 가치</strong>를 더욱 높이는 결과를 가져왔다. 박찬성 연구원이 자신의 네트워크 전문 지식을 녹여낸 바이브 코딩 결과물이 바이럴된 것이 좋은 예시이다.</li>
+  <li><strong>바이브 코딩에 필요한 역량</strong>:
+    <ul>
+      <li><strong>반복(Iteration)</strong>: 프롬프트 엔지니어링에서 반복은 매우 중요한 요소이다. 확률에 의거하여 나오는 결과 도출이라는 기반을 가지기 때문에, 요구 사항에 대해 여러번의 반복은 그만큼 높은 확률로 좋은 결과물을 만들어낼 가능성이 생긴다.</li>
+      <li><strong>시행착오와 집요함</strong>: 원하는 결과물이 나올 때까지 AI에 끊임없이 시도하고 개선하는 ‘시행착오(trial and error)’와 집요함이 중요하다.</li>
+      <li><strong>전문 지식</strong>: 기존 개발 지식이나 특정 분야의 전문적인 키워드를 아는 것이 AI에게 정확한 요구사항을 전달하고 생산성을 높이는 데 매우 유용하다.</li>
+      <li><strong>호기심과 흥미</strong>: AI 코딩에 대한 호기심과 즐거움을 느끼는 것이 시작의 중요한 단계이며, 자신이 무엇을 좋아하고 잘하는지를 알아가는 과정이 필요하다.</li>
+    </ul>
+  </li>
+  <li><strong>개인 맞춤형 도구 개발 시대</strong>: 이제는 개인이 자신에게 최적화된 도구를 직접 개발하여 사용하는 시대가 도래하고 있다. 강수진 박사는 시중에 있는 도구들이 자신의 작업 환경에 맞지 않아 <strong>프롬프트 엔지니어링 실험을 위한 플레이그라운드를 직접 만들어 사용</strong>하고 있다고 언급했다.</li>
+  <li><strong>프롬프트와 프로그래밍 역량의 미래</strong>:
+    <ul>
+      <li>자연어 엔지니어 관점에서는 ‘의미론적 응축(Sementic Condensation)’이나 ‘단어 대체(Word Substitution)’를 통해 핵심 의미를 압축하고 제어하는 기술이 활용될 수 있다.</li>
+      <li>현재 AI는 개발자들이 사용하던 용어, 일반인들이 기존에 사용하던 언어 기반인 만큼, 바이브 코딩을 수행함에 있어 개발적 지식이 필요하거나, 단어가 필요시 될 수 있다. 하지만 이것 조차도 학습을 통해 개선될 수 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="내-생각-정리">내 생각 정리</h2>
+<p>바이브 코딩. 이제는 너무 익숙해진 단어이다. 하지만 동시에 여전히 중요하고, 이제는 개발의 중심에 침입하였고, MCP, A2A 를 만나면서 그저 간단하게 질문에 답을 한다 에서 실제 수행을 한다 라는 차원의 영역으로 발전하고 있다.</p>
+
+<p>오늘의 내용은 어쩌면 보편적인 바이브코딩이라는 행위를 평가하는 간단한 내용이기는 했다.</p>
+
+<p>그러나 동시에 전문가들의 이야기에서 그럼에도 인사이트로 얻을 수 있는 영역은 있었다.</p>
+
+<p>예를 들어 한 개발자 분이 네트워크에 대한 시뮬레이터를 만들었다던지 하는 것들은, 상당히 인상 깊었고, 프롬프트 엔지니어링 전문가로 나온 패널은 자신이 직접 만든 프롬프터 테스터를 보여주었다.</p>
+
+<p>그리고 한 마디 더 걸치니, ‘개발 지식이 있는 사람과 일반인의 개발의 차이’를 언급한 부분이다.</p>
+
+<p>바이브코딩을 할 때 개발 지식은 보다 정확한 지시가 가능하다. 하지만 개발 지식의 부재는 어쩔 수 없이 동작 방식을 묘사해야하고, 그 묘사는 결국 확률적으로 어떤 구현 대상에 대해 100% 지목하는게 아니라 ‘가능성’으로 표현할 뿐인거고, 거기서 잘못된 지식이 있다면 이는 비효율적 개발이 이루어질 수 있다.</p>
+
+<p>하지만 기술을 이해하고, 단어를 정확하게 아는 경우, 그 지식은 좀더 명확한 전달, 명확한 결과를 만들 수 있다.</p>
+
+<p>AI 에 대해 명령을 내릴 때 언어적 방법에 대해 체계화가 잘 된 경우 명령을 잘 내리지만, 동시에 빼놓지 말고 기억해야 하는 부분이 있다면 역시나 도메인.</p>
+
+<p>물론 개발자도 언급하길 바이브 코딩을 하는 과정을 통해 또 다시 AI 가 학습할 것들이 생성되고, AI 가 그걸 이해하고 다시 학습된 데이터를 기반이 된다면 더 찰떡같이 알아먹게 되겠지만</p>
+
+<p>현재 가장 필요한 영역이자, 바이브 코딩을 제대로 내 무기화 하려면 필요한 것은 결국 ‘내 분야’ 혹은 ‘전문 지식’의 체계적인 내재화라는 생각은 이번 편을 통해 보다 선명하게 기억하게 되었다.</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry><entry><title type="html">트랜스포머, AI 를 이해해보자</title><link href="http://0.0.0.0:4000/ai/2025/08/04/transformer-gpt-deepSeek-introduction.html" rel="alternate" type="text/html" title="트랜스포머, AI 를 이해해보자" /><published>2025-08-04T00:00:00+00:00</published><updated>2025-08-04T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/04/transformer-gpt-deepSeek-introduction</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/04/transformer-gpt-deepSeek-introduction.html"><![CDATA[<h2 id="개요">개요</h2>
+<p>현재 인공지능(AI) 기술 발전의 핵심에는 <strong>트랜스포머(Transformer)</strong> 아키텍처가 있으며, 2017년 구글의 ‘Attention Is All You Need’ 논문을 통해 소개된 이후 오늘날 가장 널리 사용되는 AI 모델 구조가 되었다. <strong>챗GPT(ChatGPT)</strong>의 ‘GPT’는 ‘Generative Pre-trained Transformer’의 약자로, 방대한 데이터를 통해 사전 학습된 트랜스포머 모델임을 의미한다. 트랜스포머 모델은 텍스트 번역을 넘어 이미지 생성, 음성 변환 등 다양한 AI 분야에 활용되며, 다음 단어나 내용을 예측하는 방식으로 작동한다. 몇 개의 단어를 입력하면 모델이 다음 단어를 예측하고, 그 예측된 단어를 다시 입력으로 사용하여 반복적으로 긴 문장을 생성할 수 있다.</p>
+
+<p>AI 기술의 발전 속도는 전례가 없는데, AI 사용자 및 사용량 증가는 인터넷보다 훨씬 빠르게 나타나고 있으며, 관련 자본 지출(CapEx) 또한 급증하고 있다. ChatGPT는 불과 5일 만에 100만 사용자를 확보하며 역사상 가장 빠른 사용자 채택을 기록했다.</p>
+
+<p>오늘은 이러한 내용들을 정리해보면서, GPT에서 시작해 DeepSeek 까지의 발전 과정을 조금(?) 훑어 보려고 한다. 문돌이 입장에서 AI 의 힘을 여실히 빌려서 만든 내용이긴 하지만 AI 를 좀더 깊게 이해하고 싶은 모든이들에게 도움이 되길 기원한다.</p>
+
+<h3 id="llmlarge-language-model의-개요">LLM(Large Language Model)의 개요</h3>
+
+<p><img src="/assets/images/posts/2025-08/2025-08-04-001.png" alt="" /></p>
+<blockquote>
+  <p>출처 : <a href="https://microsoft.github.io/Workshop-Interact-with-OpenAI-models/ko/llms/">Microsoft AI Tour</a></p>
+</blockquote>
+
+<p><strong>대규모 언어 모델(Large Language Model, LLM)</strong>은 주어진 텍스트가 있을 때 다음에 올 단어를 예측하는 매우 정교한 수학적 함수이다. 더 정확하게는, 딱 하나의 단어를 확정적으로 예측하는 대신 다음에 올 단어들에 대한 확률을 계속해서 구하는 함수이다.</p>
+
+<ul>
+  <li><strong>작동 방식</strong>: LLM은 몇 개의 단어를 입력으로 받아 다음 단어를 예측하고, 그 예측된 단어를 다시 입력으로 사용하여 반복적으로 긴 문장을 생성한다. 이는 챗GPT와 같은 모델과의 대화가 한 단어씩 생성되는 방식으로 이루어지는 이유이다.</li>
+  <li><strong>학습 데이터</strong>: LLM은 인터넷에서 수집한 엄청난 양의 텍스트 데이터로 학습된다. 예를 들어, GPT-3가 학습한 텍스트 양은 사람이 24시간 쉬지 않고 읽었을 때 2,600년 이상이 걸릴 것이며, 요즘 모델들은 훨씬 더 많은 데이터로 훈련된다.</li>
+  <li><strong>파라미터(매개변수) 및 훈련</strong>: 모델 속의 수많은 다이얼(파라미터 또는 가중치)을 조정해가며 학습이 이루어진다. LLM은 수백억 개에서 수천억 개까지 이르는 파라미터를 가지고 있으며, 처음엔 랜덤하게 설정된 이 값들이 훈련을 반복하며 점차 그럴듯한 예측을 할 수 있도록 조정된다.
+    <ul>
+      <li><strong>역전파(Backpropagation)</strong>: 훈련 시 마지막 단어를 제외한 나머지를 모델 입력으로 넣고, 모델이 마지막 단어를 어떻게 예측하는지 확인한 후, 그 예측이 정답에 가까워지도록 파라미터를 조정하는 알고리즘이다.</li>
+      <li><strong>강화 학습(RLHF)</strong>: 사전 훈련된 모델은 사람이 모델의 잘못된 응답을 직접 수정하거나 더 나은 응답을 골라주는 RLHF(Reinforcement Learning from Human Feedback)와 같은 강화 학습을 통해 추가 학습된다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="llm의-속성을-이해하자">LLM의 속성을 이해하자</h3>
+
+<h4 id="llm-vs-nlp">LLM vs NLP</h4>
+<p>기존 자연어 처리의 기술과 LLM 이 다른 점은 다음과 같이 설명할 수 있다.</p>
+
+<ul>
+  <li>기존 NLP 는 기능 당 하나의 모델이 필요하다.</li>
+  <li>기존 NLP 는 한정된 레이블 데이터 셋에서 학습을 시킨다. (예시, 특정 물체 인식 AI 를 위해 특정 물체의 사진을 수십만장 준비한다.)</li>
+  <li>기존 NLP 는 특정 사용 사례에 고도로 최적화 된다.(예시, 특정 물체의 데이터셋으로 학습된 특화 모델)</li>
+</ul>
+
+<p>그러나 LLM은</p>
+
+<ul>
+  <li>여러 NLP 사용 사례에 단일 모델 사용이 가능하다(범용적이다).</li>
+  <li>수 TB 에 달하는 레이블이 없는 데이터에서 학습된 모델이다(기초).</li>
+  <li>개방형 사용 - 자연어를 사용하여 모델에 무언가를 ‘프롬프트’ 하도록 한다. 즉 자연스럽게 다양한 질문을 할 수 있고, 모델이 이에 맞춰 콘텐츠를 생성해 낸다.</li>
+</ul>
+
+<h4 id="llm-이-하지-못하는-것은">LLM 이 하지 못하는 것은?</h4>
+<p>대규모 언어 모델은 강력한 생성형 AI 경험을 제공하고, 이 콘텐츠의 범용성은 지금의 AI 상황의 판도 자체를 뒤집어 엎는 일을 만들어 냈지만, 그 표현, 행위가 다음은 아니라는 사실을 명확히 해야 한다.</p>
+
+<ol>
+  <li><strong>언어를 이해한게 아니다</strong> : LLM은 예측 엔진, 예측 함수셋에 가깝기에 이것이 해당 콘텐츠의 문맥이나 의미를 이해한 거라고 말할 수 없다.</li>
+  <li><strong>사실을 이해하지 못한다</strong> : <code class="language-plaintext highlighter-rouge">정보 검색</code>, <code class="language-plaintext highlighter-rouge">창의적 글쓰기</code>를 위한 별도의 모드가 있는 건 아니고, 진행중인 시퀀스에서 다음으로 가능성이 높은 토큰을 예측하는 것이기에, 그것이 ‘사실’이냐 ‘주장’이냐와 같은 해석은 LLM 자체에서는 무의미하다.</li>
+  <li><strong>매너, 감정, 또는 윤리를 이해하지 못한다</strong> : 인간이 설계하고 설정한 데이터, 프롬프트에 의해 최적의 예측값을 ‘보정한’ 결과이지, 모델이 매너나 감정, 윤리를 이해하고 동작하는 것이 아니다. 결과적으로 LLM 은 통계적 패턴의 예측의 연속이며, 인간처럼 문장의 의미, 맥락을 이해하는 것이 아니다.</li>
+</ol>
+
+<h3 id="트랜스포머의-핵심-개념">트랜스포머의 핵심 개념</h3>
+
+<p>트랜스포머는 텍스트를 처음부터 끝까지 순차적으로 읽는 대신, <strong>전체 문장을 한꺼번에 병렬로 처리한다</strong>. 이 과정에서 문장 내 각 단어는 AI가 이해할 수 있는 숫자 벡터로 변환되어 서로의 관계성을 알 수 있게 된다.</p>
+
+<ul>
+  <li><strong>토큰(Token)</strong>:
+    <ul>
+      <li>트랜스포머는 입력된 문장이나 데이터를 <strong>토큰</strong>이라는 작은 조각으로 나누어 처리한다.</li>
+      <li>텍스트의 경우, 단어나 단어의 일부, 또는 일반적인 문자 조합이 토큰이 될 수 있다.</li>
+      <li>이미지나 음성이 포함될 때는 그 이미지의 작은 조각이나 음성의 작은 부분이 토큰이 될 수 있다.</li>
+    </ul>
+  </li>
+  <li><strong>벡터(Vector) 및 단어 임베딩(Word Embedding)</strong>:
+    <ul>
+      <li>각 토큰은 해당 부분의 의미를 담도록 설계된 숫자 목록인 <strong>벡터</strong>와 연결된다. 이 벡터들은 고차원 공간의 좌표로 생각할 수 있으며, 의미가 비슷한 단어들은 그 공간에서 가까운 벡터로 배치되는 경향이 있다.</li>
+      <li>예를 들어, GPT-2에서는 768차원, DeepSeek R1에서는 7,168차원의 벡터가 단어 하나를 표현하는 데 사용된다.</li>
+      <li>훈련 과정에서, 모델은 학습을 통해 공간 속의 방향들이 어느 정도 의미를 가지도록 벡터를 정리한다. 예를 들어, ‘여자’와 ‘남자’ 사이의 벡터 차이가 ‘왕’과 ‘여왕’ 사이의 차이와 유사하게 나타날 수 있다. 이러한 차이 벡터 사이의 차이는 단어들 사이의 관련성이나, 어떤 특성을 나타낼 수 있다. 성의 차이, 복수와 단수의 차이 등 이러한 특성을 수학적 - 수치적으로 이해한 것이다.</li>
+    </ul>
+
+    <p><img src="/assets/images/posts/2025-08/2025-08-04-002.png" alt="" /></p>
+    <blockquote>
+      <p>단어 사이의 관계성이 벡터 사이의 간격으로 이해가 될 수 있다. 출처 : <a href="https://youtu.be/g38aoGttLhI?si=9zdFBTN0cv1ncJ-r">3Blue1Brown 한국어</a></p>
+    </blockquote>
+  </li>
+  <li><strong>어텐션(Attention)</strong>:
+    <ul>
+      <li>트랜스포머의 핵심 연산으로, 입력된 벡터들이 ‘어텐션 블록’을 통과하며 서로 정보를 주고받고 값을 업데이트하는 과정이다. 이는 문맥을 파악하기 위해 단어들 간의 유사성을 계산하는 방식이다.</li>
+      <li><strong>쿼리(Query), 키(Key), 밸류(Value)</strong>: 어텐션은 <strong>‘쿼리(Query)’, ‘키(Key)’, ‘밸류(Value)’</strong>라는 세 가지 개념을 통해 구현된다. 입력된 단어들(벡터 X)은 각각 고유한 학습 가능한 가중치 행렬(WQ, WK, WV)과 곱해져 쿼리 행렬, 키 행렬, 밸류 행렬로 변환된다. 단 이 개념이 별개의 정보라기 보단 결국 벡터 X 에서 나온다는 점은 명확하게 인지해야 한다.
+        <ul>
+          <li><strong>쿼리(Query)</strong>는 하나의 ‘질문’ 역할을 한다.</li>
+          <li><strong>키(Key)</strong>는 그 질문을 해결할 가능성이 있는 ‘열쇠’ 중 하나이다.</li>
+          <li><strong>밸류(Value)</strong>는 어텐션 패턴에 따라 이동되거나 결합될 실제 정보의 ‘재료’이다.</li>
+        </ul>
+      </li>
+      <li><strong>내적(Dot Product)</strong>: 쿼리가 키들과의 <strong>유사도</strong>를 계산하는 과정은 수학적으로 두 벡터의 <strong>내적</strong>으로 구현된다. 내적은 기하학적으로 벡터들이 비슷한 방향일 때 양수, 직교할 때 0, 반대 방향일 때 음수가 된다.</li>
+      <li><strong>어텐션 패턴(Attention Pattern)</strong>: 모든 쿼리와 키의 유사도를 계산하여 얻는 종합된 정보이다. 이 어텐션 패턴의 크기는 <strong>입력 단어 수의 제곱에 비례하여 늘어난다</strong>. 훈련 과정에서는 다음에 올 단어를 ‘컨닝’하지 못하도록 어텐션 패턴의 오른쪽 윗부분이 가려진다.</li>
+      <li><strong>소프트맥스(Softmax)</strong>: 유사도 계산 후, 각 행의 합이 0이 되도록 <code class="language-plaintext highlighter-rouge">정규화</code>하는 함수이다. 이 함수는 어떠한 숫자들의 나열이든 0과 1 사이의 값으로 변환하여 합이 1이 되는 <code class="language-plaintext highlighter-rouge">확률 분포</code>로 만들어준다. 가장 큰 값은 1에 가깝고 작은 값은 0에 가까워진다. 또한 <code class="language-plaintext highlighter-rouge">온도(Temperature)</code>라는 상수를 사용해 예측의 다양성을 조절할 수 있다. (이 온도는 열역학의 개념과 유사한 동작이기에, 그대로 차용했다.)</li>
+      <li><strong>어텐션 헤드(Attention Head)</strong>: 어텐션 패턴 하나를 계산하는 단위를 ‘어텐션 헤드’라고 부른다. 여러 헤드가 각기 다른 쿼리, 키, 밸류 세트를 사용하여 독립적으로 패턴을 계산한 뒤, 이 값들을 종합하여 다음 레이어의 입력으로 사용한다.</li>
+    </ul>
+  </li>
+  <li><strong>피드포워드 네트워크(Feedforward Network)</strong>: 트랜스포머 안에 포함된 또 다른 연산으로, 모델이 더 많은 언어 패턴을 저장할 수 있도록 돕는다.</li>
+</ul>
+
+<h3 id="트랜스포머의-연산량-문제와-기존-해결책">트랜스포머의 연산량 문제와 기존 해결책</h3>
+
+<p>트랜스포머는 위에서 언급한 어텐션 헤드의 단위로 토큰이 아웃풋이 되고, 그것을 다시 인풋으로 집어넣는 것의 연속이다. 따라서 행렬의 엄청난 연산량을 요구한다는 문제가 있다. 어텐션 패턴의 크기가 입력 단어 수의 제곱에 비례하여 늘어나기 때문에, 몇 문장에서 시작해 책 한권 분량이 들어간다면 기하급수적이라는 것이 무엇인가를 알 수 있게 된다. 이러한 본질적인 구조로 CPU 연산이 아닌 GPU의 사용이 핵심일 수 밖에 없고, 동시에 GPU 의 사용이라 함은 막대한 전기 사용, 발열 등 ‘GPU가 녹는다’ 라는 말에 딱 부합하는 작업인 것이다. (물론 최신 AI 모델들, 특히 구글에선 TPU 를 활용하는 시도라던지, 다양한 시도가 있는 것은 사실이다.)</p>
+
+<p><img src="/assets/images/posts/2025-08/2025-08-04-003.png" alt="" /></p>
+<blockquote>
+  <p>GPUs Are Melting: … 출처 : <a href="https://www.linkedin.com/pulse/gpus-melting-building-real-time-monitoring-systems-go-snehasish-dutta-cctbe/">SNEHASISH DUTTA</a></p>
+</blockquote>
+
+<p>이러한 비효율성을 줄이기 위해 개발된 핵심 기술이 <strong>키-밸류(Key-Value) 캐싱(KV Caching)</strong>이다.</p>
+<ul>
+  <li><strong>키-밸류 캐싱(KV Caching)</strong>: 이미 모델에 입력된 단어들의 쿼리, 키, 밸류 값은 다시 계산할 필요 없이 저장해두고 재활용하는 방식이다. 이 기술을 사용하면 어텐션 연산량이 단어 수에 선형적으로만 증가하도록 안정화되어 폭발적인 증가를 막는다.</li>
+  <li><strong>저장 공간 문제</strong>: 그러나 KV 캐싱은 키-밸류 값을 저장하기 위한 막대한 저장 공간을 요구한다. 단어 하나당 키-밸류를 모두 저장하면 4MB를 차지하며, 10만 개의 단어를 처리할 경우 무려 400GB에 달하는 저장 공간이 필요할 수 있다.</li>
+</ul>
+
+<p>위의 내용에서 언급한 저장공간 문제에 대해 이해하기 위하여, 간략화된 캐시 항목의 수를 계산 식은 다음과 같이 표현된다.</p>
+
+<p>$CacheCounter = 2 \cdot n \cdot d_h \cdot n_h \cdot l$</p>
+
+<ul>
+  <li>$n$ : 입력 토큰 수</li>
+  <li>$d_h$ : 키/ 값 행렬의 차원</li>
+  <li>$n_h$ : 레이어 당 어텐션 헤드 수</li>
+  <li>$l$ : 레이어 수</li>
+</ul>
+
+<p>예를 들어</p>
+
+<p>$let d_h = 128, n_h = 128, l = 61, n = 100000$ 
+(DeepSeek R1/V3 아키텍쳐 기준)</p>
+
+<p>$(2)(128)(128)(61)(2) = 3.998 * 10^6 Bytes/token = (approx)4MB/token$</p>
+
+<p>$4MB/Token * 100000 tokens = 400GB$</p>
+
+<p>이러한 저장 공간 문제를 해결하기 위한 이전 시도에는 두 가지 방식이 있었다:</p>
+<ul>
+  <li><strong>멀티-쿼리 어텐션(Multi-Query Attention)</strong>: 모든 어텐션 헤드가 동일한 키-밸류를 공유하는 전략이다. 이는 저장 용량을 크게 줄일 수 있지만, 각 헤드의 역할이 달라야 하는 점을 방해하여 모델 성능이 저하된다는 단점이 있다.</li>
+</ul>
+
+<p><img src="/assets/images/posts/2025-08/2025-08-04-004.png" alt="" /></p>
+<blockquote>
+  <p>출처 : <a href="https://youtu.be/w5f6mtg0sKQ?si=UMmhUPEorJk_oPAW">웰트랩스</a></p>
+</blockquote>
+
+<ul>
+  <li><strong>그룹별 쿼리 어텐션(Grouped-Query Attention)</strong>: 멀티-쿼리 어텐션을 개선하여 어텐션 헤드를 여러 그룹으로 묶어 <code class="language-plaintext highlighter-rouge">같은 그룹</code>끼리 키-밸류를 공유하는 방식이다. 메타의 라마 3(Llama 3) 모델이 이 방식을 사용하여 저장 공간을 8배 절약했지만, 여전히 전체 헤드가 키-밸류를 저장하는 방식보다 성능이 못 미쳤다.</li>
+</ul>
+
+<p><img src="/assets/images/posts/2025-08/2025-08-04-005.png" alt="" /></p>
+<blockquote>
+  <p>출처 : <a href="https://youtu.be/w5f6mtg0sKQ?si=UMmhUPEorJk_oPAW">웰트랩스</a></p>
+</blockquote>
+
+<h3 id="deepseek의-혁신-multi-head-latent-attention">DeepSeek의 혁신: Multi-Head Latent Attention</h3>
+
+<p><img src="/assets/images/posts/2025-08/2025-08-04-006.png" alt="" /></p>
+<blockquote>
+  <p>출처 : <a href="https://youtu.be/w5f6mtg0sKQ?si=UMmhUPEorJk_oPAW">웰트랩스</a></p>
+</blockquote>
+
+<p>이러한 상황에서 중국의 <strong>딥시크(DeepSeek)</strong>는 기존 AI 개발에 수천억 원이 들어가는 것을 고작 80억 원에 가능하다고 발표하며 세상을 놀라게 했다. 딥시크는 경쟁사의 모델을 모방했다거나 실제 개발 비용보다 축소 발표했다는 구설수가 있었으나, 모든 모델 웨이트와 코드, 그리고 12개에 달하는 디테일한 논문까지 모두 공개하며 그 기술력을 드러냈다.</p>
+
+<p>딥시크의 핵심 기술은 저장 공간과 연산량이라는 두 마리 토끼를 모두 잡은 <strong>멀티-헤드 레이턴트 어텐션(Multi-Head Latent Attention)</strong>이다. 이 기술은 인공지능 압축과 효율의 핵심인 <strong>‘잠재 공간(latent space)’</strong> 개념을 적용했다.</p>
+
+<ul>
+  <li><strong>멀티-헤드 레이턴트 어텐션의 원리</strong>: 기존 멀티-헤드 어텐션에서 입력 X를 키-밸류로 만드는 중간에 <strong>압축하는 스테이지를 하나 추가한다</strong>. 모든 어텐션 헤드는 같은 잠재 공간을 공유하는데, 이는 멀티-쿼리 어텐션과 유사하게 저장 공간을 줄이는 데 효과적이다. 그러나 구체적인 값을 저장하는 대신, 각 헤드에서 압축된 잠재 공간으로 보내줄 가중치(Wv와 W)를 학습하는 문제로 바꾸어 <code class="language-plaintext highlighter-rouge">학습 과정</code>에서 실제 단일한 캐싱 전략으로 가서 용량을 줄이는 경우 보다 <code class="language-plaintext highlighter-rouge">더 많은 자유도</code>를 보장한다.</li>
+  <li><strong>수학적 효율성</strong>: 기본적인 선형 대수의 원리를 활용하여, 훈련 시 합쳐진 모델 자체로 훈련하기 때문에 추론(inference) 상황에서 추가적인 연산이 필요 없다. 새로운 단어가 입력될 때도 쿼리 레이턴트를 만들고 저장해 둔 레이턴트 키-밸류를 사용하므로 효율적이다.</li>
+  <li><strong>성능 개선</strong>: 이 덕분에 딥시크 R1은 키-밸류 캐시를 저장할 때 어텐션 헤드 개수가 아니라 공유된 키-밸류 캐시의 크기에만 영향을 받도록 설계되었다. 이는 <strong>토큰당 70KB만 사용하여 저장 공간을 57배나 줄였으며</strong>, 토큰 생성 속도를 <strong>6배 빠르게</strong> 만들었다. (참고로, 키-밸류 캐시를 모두 저장했다면 토큰당 4MB, 그룹별 쿼리 어텐션은 500KB를 필요로 했을 것이다). 이러한 트랜스포머의 알고리즘 개선은 기존보다 훨씬 빠른 토큰 생성을 가능케 한다는 점에서 주목할 만하다.</li>
+</ul>
+
+<h3 id="llm의-잠재력과-그-가치">LLM의 잠재력과 그 가치</h3>
+
+<p>LLM 의 구조를 씹어먹어보고, 수학적 기초는 처음에는 대단히 어렵게 와닿았지만, 결국 단어들 사이의 예측, 입력이 다시 출력이 되고, 그 출력이 다시 입력이 된다는 이 구조에 대한 이해가 있게 되면 Transformer 와 LLM 의 아주 베이직한 표면의 이해에는 어렵지 않다.</p>
+
+<p>하지만 거기에 더 많은 구조적, 효율적 개선, 그리고 LLM 의 보편성을 이용한 다양한 능력, 다시 특화 기능을 위한 모델로 학습하거나 아예 대형 모델을 기반으로 더 튜닝하는 SLM(Small Language Model)의 등장 등, LLM의 잠재력, 그리고 향후에도 지속적인 판도는 이어질 것이다.</p>
+
+<p>이번 내용을 통해 좀더 LLM 을 실증적으로 이해하고, 특히나 DeepSeek 와 같은 개선의 여지가 여전히 있단 점들은, 앞으로 정말 AI를 거쳐 AGI 까지, 초 거대모델들의 성장 폭은 남아 있다는 점을 나름 생각해 볼 수 있는것 같다.</p>
+
+<h3 id="참고-문헌">참고 문헌</h3>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=HnvitMTkXro">3BlueL1Brown 한국어 - LLM 설명(요약버전)</a></li>
+  <li><a href="https://www.youtube.com/watch?v=g38aoGttLhI">3BlueL1Brown 한국어 - 트랜스포머, ChatGPT가 트랜스포머로 만들어졌죠. -DL5</a></li>
+  <li><a href="https://youtu.be/w5f6mtg0sKQ?si=GDTi2tnoFc-SqZVh">웰츠랩스 - 딥시크의 +99 강화 트랜스포머 몽둥이</a></li>
+  <li><a href="https://microsoft.github.io/Workshop-Interact-with-OpenAI-models/ko/">Microsoft AI Tour - Learn how to interact with OpenAI models</a></li>
+</ul>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="생각정리" /><category term="LLM" /><summary type="html"><![CDATA[개요 현재 인공지능(AI) 기술 발전의 핵심에는 트랜스포머(Transformer) 아키텍처가 있으며, 2017년 구글의 ‘Attention Is All You Need’ 논문을 통해 소개된 이후 오늘날 가장 널리 사용되는 AI 모델 구조가 되었다. 챗GPT(ChatGPT)의 ‘GPT’는 ‘Generative Pre-trained Transformer’의 약자로, 방대한 데이터를 통해 사전 학습된 트랜스포머 모델임을 의미한다. 트랜스포머 모델은 텍스트 번역을 넘어 이미지 생성, 음성 변환 등 다양한 AI 분야에 활용되며, 다음 단어나 내용을 예측하는 방식으로 작동한다. 몇 개의 단어를 입력하면 모델이 다음 단어를 예측하고, 그 예측된 단어를 다시 입력으로 사용하여 반복적으로 긴 문장을 생성할 수 있다.]]></summary></entry><entry><title type="html">AI Breakfast Ep 8 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/07/30/AI-trend-with-google-08.html" rel="alternate" type="text/html" title="AI Breakfast Ep 8 생각정리" /><published>2025-07-30T00:00:00+00:00</published><updated>2025-07-30T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/07/30/AI-trend-with-google-08</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/07/30/AI-trend-with-google-08.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
 <p><a href="https://www.youtube.com/watch?v=BrR5CQuH7Hs"><img src="https://i.ytimg.com/vi/BrR5CQuH7Hs/hq720.jpg" alt="비디오 제목" /></a></p>
 
 <h2 id="요약">요약</h2>
@@ -421,237 +651,4 @@
 <p>진짜 배울게 많다… 써보고 싶은 기능은 많은데 시간은 그걸 허락을 안하니… 이걸 어쩌면 좋으리… 
 <del>복권을 사는 것 말곤 답이 없을 지도</del></p>
 
-<p>확실히 AI 관련 인프라를 비롯해, API 로 활용하기 좋음, 성능을 고려하면 최고는 구글이라고 생각이 든다. 최대한 적용을 해볼 수 있어야 할텐데 싶다. 마음이 급해진다. 🤔</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry><entry><title type="html">Tools - 유튜브 썸네일 추출기</title><link href="http://0.0.0.0:4000/tools/2025/07/21/tools-1st.html" rel="alternate" type="text/html" title="Tools - 유튜브 썸네일 추출기" /><published>2025-07-21T00:00:00+00:00</published><updated>2025-07-21T00:00:00+00:00</updated><id>http://0.0.0.0:4000/tools/2025/07/21/tools-1st</id><content type="html" xml:base="http://0.0.0.0:4000/tools/2025/07/21/tools-1st.html"><![CDATA[<h2 id="들어가면서">들어가면서</h2>
-<p>썸네일 찾기 귀찮을 때 유튜브 썸네일을 활용하고자 찾은 썸네일 추출기. 간단하게 만들었지만 유용해서 별 밖아둡니다…나중엔 내 블로그 내부에 구현해둘까 싶다.</p>
-
-<p><a href="https://marshallku.com/dev/%ec%9c%a0%ed%8a%9c%eb%b8%8c-%ec%8d%b8%eb%84%a4%ec%9d%bc-%ec%b6%94%ec%b6%9c%ed%95%98%ea%b8%b0">유트브 썸네일 추출하기</a></p>]]></content><author><name>Paul2021-R</name></author><category term="tools" /><category term="tools" /><summary type="html"><![CDATA[들어가면서 썸네일 찾기 귀찮을 때 유튜브 썸네일을 활용하고자 찾은 썸네일 추출기. 간단하게 만들었지만 유용해서 별 밖아둡니다…나중엔 내 블로그 내부에 구현해둘까 싶다.]]></summary></entry><entry><title type="html">Jenkins 를 위한 Groovy 스크립트 언어 정리</title><link href="http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/29/groovy-language-with-jenkins.html" rel="alternate" type="text/html" title="Jenkins 를 위한 Groovy 스크립트 언어 정리" /><published>2025-06-29T00:00:00+00:00</published><updated>2025-06-29T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/29/groovy-language-with-jenkins</id><content type="html" xml:base="http://0.0.0.0:4000/%EA%B0%9C%EB%B0%9C/2025/06/29/groovy-language-with-jenkins.html"><![CDATA[<h1 id="jenkinsfile-작성-튜토리얼">Jenkinsfile 작성 튜토리얼</h1>
-
-<p>본 내용은 Jenkins 파이프라인 구축 전에 이해도를 위하여 언어에 대한 간단한 가이드를 정리한 내용이다.</p>
-
-<h2 id="들어가기-전에-1-왜-gui가-아닌-스크립트-형태로-써야-하는가">들어가기 전에 1: 왜 GUI가 아닌 스크립트 형태로 써야 하는가?</h2>
-
-<p>Jenkins 는 강력한 플랫폼이다. 다양한 대체제가 나왔음에도 여전히 인정받는 CI/CD 를 위한 툴이며, 그 플러그인과 커뮤니티, 레퍼런스들의 존재들은 여전히 영향력 있는 툴이라는 점을 보여준다.</p>
-
-<p>GUI로 설정 대신 스크립트로 작성해야 하는 이유는 다음과 같다.</p>
-
-<ol>
-  <li>버전 관리 용이, 협업 용이성 : GUI 로 설정을 수행하는 것은 스크립트 형태로 내보낼 수 있으나, 그 스크립트 자체는 Git 과 같은 버전 관리 시스템 통합하기 까다롭다. <code class="language-plaintext highlighter-rouge">Jenkinsfile</code> 은 프로젝트 소스 코드와 함께 저장하여 관리하여, <strong>파이프라인 변경 이력</strong>을 Git 으로 완벽히 추적할 수 있고, 이는 긴급 상황이나, 개선이 필요시 쉽게 작업이 가능하다.</li>
-  <li>재현성(Reproducibility)과 환경 일관성 : Jenkinsfile 은 파이프라인의 모든 단계를 코드로 정의 내리며, 새로운 Jenkins 인스턴스를 설정하거나 다른 팀에 동일한 파이프라인을 제공시, 스크립트만 복사하면 된다. 이러한 점에서 GUI 보다 효과적이고, <strong>환경의 일관성</strong>을 증대시킬 수 있다.</li>
-  <li>복잡하고 동적인 로직 구현 : GUI 방식은 미리 정의된 블록, 제한된 옵션을 활용해야 한다. 그러나 Groovy 언어 기반으로 스크립트를 하게 되면, 매우 유연하고 복잡한 로직을 구현할 수 있다. 이는 다양한 서비스 환경에 맞춤화한 파이프라인 구성이 가능하다는 점에서 매우 중요하다.</li>
-  <li>개발 친화적 : 개발팀이 직접 CI/CD 파이프라인을 개선, 유지보수를 할 수 있는데, 이는 DevOps 문화의 핵심 요소다.</li>
-  <li>오류 사전 감지 : Jenkinsfile은 문법 오류나 논리 오류를 Git 에 커밋하기 전에 Linter 등을 통해 미리 확인해보는 것이 가능하다.</li>
-</ol>
-
-<p>물론, 반대의견으로 GUI 로 만들어 스크립트로 보관을 이야기 하기도 한다. 
-Jenkins에는 <code class="language-plaintext highlighter-rouge">Pipeline Syntax</code> 라는 기능으로 GUI 로 설정한 내용을 기반으로 Groovy 코드로 생성 및 보관이 가능하다. 하지만 다음과 같은 이유로 추천하진 않는다.</p>
-
-<ol>
-  <li>GUI 에서 제공하는 기능만 사용 가능 : 복잡한 조건, 반복, 동적인 데이터 처리는 결국 손이 감</li>
-  <li>복사-붙여넣기 오버헤드 : GUI 에서 설정을 불러와 이를 Jenkinsfile에 넣어야 하는 추가 과정이 발생</li>
-  <li>버전관리의 완전한 통합 부족 : Jenkinsfile 이라는 파일로 관리 되어야 할텐데, 그렇지 못함.</li>
-</ol>
-
-<h2 id="들어가기-전에-2-jenkinsfile을-프로젝트-내부에-보관해야-하는-이유는">들어가기 전에 2: Jenkinsfile을 프로젝트 내부에 보관해야 하는 이유는?</h2>
-<ol>
-  <li>버전관리: Git 저장소에 함께 관리될 수 있으니 애플리케이션 코드와 함께 관리가 가능하여 Git 을 활용한 완벽한 추적이 가능.</li>
-  <li>재현성 및 환경 일관성: 어떤 환경, 어떤 Jenkins 서버세서든 프로젝트 코드만 Git으로 클론하면 Jenkinsfile 이 함께 따라와서, 동일한 CI/CD 파이프라인을 재현할 수 있다.</li>
-  <li>개발자 협업: CI/CD 파이프라인 설정이 코드베이스에 포함되어 개발자들도 파이프라인에 대한 변경 사항을 코드리뷰로 기여할 수 있고, 이는 DevOps 문화 개발, 협업을 강화하는데 기여.</li>
-  <li>프로젝트 종속성: 파이프라인은 해당 프로젝트의 빌드, 테스트, 배포 단계를 정의하는데, 각 프로젝트 요구사항에 맞춰 Jenkinsfile 을 개별적으로 관리하는게 효율적.</li>
-  <li>새로운 Jenkins 서버 설정의 용이성: 향후 Jenkins 서버를 새로 구축하거나 재설정 시 각 프로젝트에 존재하니, 다시 연결만 해주면 모든 파이프라인의 설정이 자동 복구됨.</li>
-</ol>
-
-<h2 id="groovy-언어">Groovy 언어</h2>
-
-<p>Groovy 언어는 Java와 매우 유사하면서도 더 간결하고 유연한 문법을 제공하는 스크립트 언어다. Jenkinsfile에서는 주로 데이터 처리, 조건문, 반복문, 함수 호출 등에 사용된다.</p>
-
-<h3 id="groovy-언어-기본-튜토리얼-jenkinsfile을-위한-핵심">Groovy 언어 기본 튜토리얼 (Jenkinsfile을 위한 핵심)</h3>
-
-<p>여기서는 Jenkinsfile을 작성하는 데 필요한 Groovy의 <strong>핵심적인 문법과 개념</strong>을 위주로 설명한다.</p>
-
-<h4 id="1-변수-선언과-데이터-타입">1. 변수 선언과 데이터 타입</h4>
-
-<p>Groovy는 변수 선언 시 <code class="language-plaintext highlighter-rouge">def</code> 키워드를 사용하거나, 명시적인 데이터 타입을 지정할 수 있다. 대부분의 경우 <code class="language-plaintext highlighter-rouge">def</code>를 사용하면 Groovy가 타입을 자동으로 추론한다.</p>
-
-<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">"Jenkins"</span> <span class="c1">// 문자열 (String)</span>
-<span class="kt">def</span> <span class="n">version</span> <span class="o">=</span> <span class="mf">2.452</span>   <span class="c1">// 숫자 (정수 또는 실수)</span>
-<span class="kt">def</span> <span class="n">isRunning</span> <span class="o">=</span> <span class="kc">true</span>  <span class="c1">// 불리언 (Boolean)</span>
-<span class="kt">def</span> <span class="n">list</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"apple"</span><span class="o">,</span> <span class="s2">"banana"</span><span class="o">,</span> <span class="s2">"cherry"</span><span class="o">]</span> <span class="c1">// 리스트 (List)</span>
-<span class="kt">def</span> <span class="n">map</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"key1"</span><span class="o">:</span> <span class="s2">"value1"</span><span class="o">,</span> <span class="s2">"key2"</span><span class="o">:</span> <span class="mi">123</span><span class="o">]</span> <span class="c1">// 맵 (Map)</span>
-</code></pre></div></div>
-
-<h4 id="2-문자열-strings">2. 문자열 (Strings)</h4>
-
-<p>Groovy는 문자열 처리는 자바보다 유연하게 설계 되어 있다.</p>
-
-<ul>
-  <li><strong>따옴표:</strong> 작은따옴표 (<code class="language-plaintext highlighter-rouge">'...'</code>)는 일반 문자열, 큰따옴표 (<code class="language-plaintext highlighter-rouge">"..."</code>)는 문자열 내 변수 삽입(GString)이 가능한 문자열을 나타낸다.</li>
-  <li><strong>GString (변수 삽입):</strong> 큰따옴표 안에 <code class="language-plaintext highlighter-rouge">${변수명}</code> 또는 <code class="language-plaintext highlighter-rouge">$변수명</code> 형태로 변수를 직접 삽입할 수 있다.</li>
-</ul>
-
-<!-- end list -->
-
-<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">buildNumber</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="kt">def</span> <span class="n">jobName</span> <span class="o">=</span> <span class="s2">"MyProject"</span>
-
-<span class="n">println</span> <span class="s2">"Build number is ${buildNumber}"</span> <span class="c1">// 결과: Build number is 10</span>
-<span class="n">println</span> <span class="s2">"Job name is $jobName"</span>         <span class="c1">// 결과: Job name is MyProject</span>
-<span class="n">println</span> <span class="s1">'This is a simple string.'</span>    <span class="c1">// 변수 삽입 안 됨</span>
-
-<span class="c1">// 여러 줄 문자열: """ 또는 '''를 사용</span>
-<span class="kt">def</span> <span class="n">multiLineString</span> <span class="o">=</span> <span class="s2">"""
-Hello,
-This is a multi-line string.
-Build: ${buildNumber}
-"""</span>
-<span class="n">println</span> <span class="n">multiLineString</span>
-</code></pre></div></div>
-
-<h4 id="3-리스트-lists">3. 리스트 (Lists)</h4>
-
-<p>iterable 한 데이터 컬렉션 기능. <code class="language-plaintext highlighter-rouge">[]</code> 대괄호를 사용한다.</p>
-
-<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">fruits</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"apple"</span><span class="o">,</span> <span class="s2">"banana"</span><span class="o">,</span> <span class="s2">"orange"</span><span class="o">]</span>
-
-<span class="n">println</span> <span class="n">fruits</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>      <span class="c1">// 결과: apple (인덱스는 0부터 시작)</span>
-<span class="n">println</span> <span class="n">fruits</span><span class="o">.</span><span class="na">size</span><span class="o">()</span>  <span class="c1">// 결과: 3 (리스트 크기)</span>
-<span class="n">fruits</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s2">"grape"</span><span class="o">)</span>    <span class="c1">// 요소 추가</span>
-<span class="n">println</span> <span class="n">fruits</span>         <span class="c1">// 결과: [apple, banana, orange, grape]</span>
-</code></pre></div></div>
-
-<h4 id="4-맵-maps">4. 맵 (Maps)</h4>
-
-<p>키(key)와 값(value)의 쌍으로 이루어진 데이터 컬렉션이에요. <code class="language-plaintext highlighter-rouge">:</code> 또는 <code class="language-plaintext highlighter-rouge">=</code>를 사용하여 정의한다.</p>
-
-<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">userInfo</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"name"</span><span class="o">:</span> <span class="s2">"Alice"</span><span class="o">,</span> <span class="s2">"age"</span><span class="o">:</span> <span class="mi">30</span><span class="o">,</span> <span class="s2">"city"</span><span class="o">:</span> <span class="s2">"Seoul"</span><span class="o">]</span>
-
-<span class="n">println</span> <span class="n">userInfo</span><span class="o">[</span><span class="s2">"name"</span><span class="o">]</span>  <span class="c1">// 결과: Alice</span>
-<span class="n">println</span> <span class="n">userInfo</span><span class="o">.</span><span class="na">age</span>      <span class="c1">// 결과: 30 (점(.) 표기법도 가능)</span>
-<span class="n">userInfo</span><span class="o">.</span><span class="na">country</span> <span class="o">=</span> <span class="s2">"South Korea"</span> <span class="c1">// 새 키-값 쌍 추가</span>
-<span class="n">println</span> <span class="n">userInfo</span>          <span class="c1">// 결과: [name:Alice, age:30, city:Seoul, country:South Korea]</span>
-</code></pre></div></div>
-
-<h4 id="5-조건문-ifelse">5. 조건문 (If/Else)</h4>
-
-<p>Java와 동일하게 <code class="language-plaintext highlighter-rouge">if</code>, <code class="language-plaintext highlighter-rouge">else if</code>, <code class="language-plaintext highlighter-rouge">else</code>를 사용한다.</p>
-
-<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">status</span> <span class="o">=</span> <span class="s2">"SUCCESS"</span>
-
-<span class="k">if</span> <span class="o">(</span><span class="n">status</span> <span class="o">==</span> <span class="s2">"SUCCESS"</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">println</span> <span class="s2">"배포 성공!"</span>
-<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">status</span> <span class="o">==</span> <span class="s2">"FAILURE"</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">println</span> <span class="s2">"배포 실패!"</span>
-<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-    <span class="n">println</span> <span class="s2">"배포 상태 알 수 없음."</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h4 id="6-반복문-loops">6. 반복문 (Loops)</h4>
-
-<p><code class="language-plaintext highlighter-rouge">for</code> 루프와 <code class="language-plaintext highlighter-rouge">each</code> 클로저(함수)를 주로 사용한다.</p>
-
-<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">items</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"item1"</span><span class="o">,</span> <span class="s2">"item2"</span><span class="o">,</span> <span class="s2">"item3"</span><span class="o">]</span>
-
-<span class="c1">// for 루프</span>
-<span class="k">for</span> <span class="o">(</span><span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">println</span> <span class="s2">"Processing: $item"</span>
-<span class="o">}</span>
-
-<span class="c1">// each 클로저 (더 Groovy스러운 방식)</span>
-<span class="n">items</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">item</span> <span class="o">-&gt;</span>
-    <span class="n">println</span> <span class="s2">"Processing with each: $item"</span>
-<span class="o">}</span>
-
-<span class="c1">// 인덱스와 함께 반복 (eachWithIndex)</span>
-<span class="n">items</span><span class="o">.</span><span class="na">eachWithIndex</span> <span class="o">{</span> <span class="n">item</span><span class="o">,</span> <span class="n">index</span> <span class="o">-&gt;</span>
-    <span class="n">println</span> <span class="s2">"Item ${index}: $item"</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h4 id="7-함수-methodsclosures">7. 함수 (Methods/Closures)</h4>
-
-<p>Jenkinsfile에서는 주로 <code class="language-plaintext highlighter-rouge">script</code> 블록 내에서 Groovy 함수를 정의하거나, 클로저를 활용한다.</p>
-
-<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 일반적인 함수 정의</span>
-<span class="kt">def</span> <span class="nf">greet</span><span class="o">(</span><span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="s2">"Hello, ${name}!"</span>
-<span class="o">}</span>
-
-<span class="n">println</span> <span class="nf">greet</span><span class="o">(</span><span class="s2">"World"</span><span class="o">)</span> <span class="c1">// 결과: Hello, World!</span>
-
-<span class="c1">// 클로저 (변수에 할당된 코드 블록)</span>
-<span class="kt">def</span> <span class="n">sayHi</span> <span class="o">=</span> <span class="o">{</span> <span class="n">name</span> <span class="o">-&gt;</span>
-    <span class="n">println</span> <span class="s2">"Hi, $name"</span>
-<span class="o">}</span>
-
-<span class="n">sayHi</span><span class="o">(</span><span class="s2">"Bob"</span><span class="o">)</span> <span class="c1">// 결과: Hi, Bob</span>
-</code></pre></div></div>
-
-<h4 id="8-try-catch-예외-처리">8. try-catch (예외 처리)</h4>
-
-<p>스크립트 실행 중 발생하는 오류를 처리하여 파이프라인이 갑자기 중단되지 않도록 할 수 있음.</p>
-
-<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
-    <span class="kt">def</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="s">/ 0 /</span><span class="o">/</span> <span class="mi">0</span><span class="err">으로</span> <span class="err">나누기</span> <span class="err">오류</span> <span class="err">발생</span>
-    <span class="n">println</span> <span class="n">result</span>
-<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">println</span> <span class="s2">"오류 발생: ${e.message}"</span>
-<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
-    <span class="n">println</span> <span class="s2">"오류 발생 여부와 상관없이 항상 실행되는 부분."</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h4 id="9-외부-명령어-실행-shell-command">9. 외부 명령어 실행 (Shell Command)</h4>
-
-<p>Jenkinsfile에서 가장 많이 사용하는 기능 중 하나로, <code class="language-plaintext highlighter-rouge">sh</code> (Shell) 명령어를 통해 리눅스/유닉스 쉘 명령어를 실행하는 것이 가능하다.</p>
-
-<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sh</span> <span class="s1">'ls -al'</span> <span class="c1">// 파일 목록을 출력</span>
-<span class="n">sh</span> <span class="s1">'echo "Hello from shell"'</span> <span class="c1">// 쉘에서 메시지 출력</span>
-
-<span class="c1">// 여러 줄 명령</span>
-<span class="n">sh</span> <span class="s2">"""
-    echo "First line"
-    echo "Second line"
-"""</span>
-
-<span class="c1">// 명령의 결과 받기</span>
-<span class="kt">def</span> <span class="n">output</span> <span class="o">=</span> <span class="n">sh</span><span class="o">(</span><span class="nl">script:</span> <span class="s1">'pwd'</span><span class="o">,</span> <span class="nl">returnStdout:</span> <span class="kc">true</span><span class="o">).</span><span class="na">trim</span><span class="o">()</span> <span class="c1">// 현재 작업 디렉토리 경로를 pwd 로 실행하고 받아서, trim 처리하여 작업 디렉토리를 저장한다.</span>
-<span class="n">println</span> <span class="s2">"Current directory: $output"</span>
-
-<span class="c1">// 명령의 성공/실패 여부만 확인</span>
-<span class="kt">def</span> <span class="n">success</span> <span class="o">=</span> <span class="n">sh</span><span class="o">(</span><span class="nl">script:</span> <span class="s1">'exit 0'</span><span class="o">,</span> <span class="nl">returnStatus:</span> <span class="kc">true</span><span class="o">)</span> <span class="c1">// 성공하면 0 반환</span>
-<span class="kt">def</span> <span class="n">failure</span> <span class="o">=</span> <span class="n">sh</span><span class="o">(</span><span class="nl">script:</span> <span class="s1">'exit 1'</span><span class="o">,</span> <span class="nl">returnStatus:</span> <span class="kc">true</span><span class="o">)</span> <span class="c1">// 실패하면 1 반환</span>
-<span class="n">println</span> <span class="s2">"Success: $success, Failure: $failure"</span>
-</code></pre></div></div>
-
-<h4 id="10-jsonyaml-파싱">10. JSON/YAML 파싱</h4>
-
-<p>AWS CLI 명령의 결과가 JSON 형태인 경우가 많다. 이를 Groovy에서 파싱하여 데이터에 접근하는 방법을 알아두면 유용하다. <code class="language-plaintext highlighter-rouge">readJSON</code>이나 <code class="language-plaintext highlighter-rouge">readYaml</code> 같은 Jenkins Pipeline Step이 이를 도와서 처리해준다.</p>
-
-<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">jsonString</span> <span class="o">=</span> <span class="s1">'{"name": "test", "status": "success"}'</span> <span class="c1">// Json 을 읽어</span>
-<span class="kt">def</span> <span class="n">jsonData</span> <span class="o">=</span> <span class="n">readJSON</span><span class="o">(</span><span class="nl">text:</span> <span class="n">jsonString</span><span class="o">)</span> <span class="c1">//파싱 처리 =&gt; 객체화</span>
-
-<span class="n">println</span> <span class="n">jsonData</span><span class="o">.</span><span class="na">name</span>   <span class="c1">// 결과: test</span>
-<span class="n">println</span> <span class="n">jsonData</span><span class="o">.</span><span class="na">status</span> <span class="c1">// 결과: success</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="groovy-학습-팁--알아두면-좋은-내용">Groovy 학습 팁 &amp; 알아두면 좋은 내용:</h2>
-
-<ul>
-  <li><strong>Jenkins Pipeline Syntax Snippet Generator:</strong> Jenkins 대시보드의 파이프라인 잡 설정 페이지에서 “Pipeline Syntax” 링크를 클릭하면 Snippet Generator를 사용할 수 있다. 여기서 원하는 Jenkins 스텝을 선택하고 설정을 채우면 해당 Groovy 코드를 자동으로 생성해 준다. 이것이 Groovy 문법을 익히는 데 가장 강력한 도구 중 하나다.</li>
-  <li><strong>Java 지식 활용:</strong> Groovy는 Java와 매우 유사하므로, Java 경험이 있다면 빠르게 적응할 수 있다.</li>
-  <li><strong>간결함 선호:</strong> Groovy는 Java보다 더 적은 코드로 동일한 작업을 수행할 수 있는 “Syntactic Sugar”가 많다. 간결한 표현을 선호하는 경향이 있다.</li>
-  <li>Jenkins 를 위한 jenkins 파일의 구조를 이해하는 것이 실수를 줄이는데 중요하다.</li>
-  <li>글로벌 변수의 경우 최초 설정을 하긴 하지만, 기본적으로 Secret 등에 대해 우선 가져오는 구조로 설정은 불가능하다. 각 단계별로만 되고, 이러한 경우 에러 핸들링은 Jenkins 가 알아서 해준다는 점 알아둘것.</li>
-</ul>
-
-<hr />
-
-<h2 id="마치면서">마치면서</h2>
-
-<p>젠킨스랑 같이 산지도 어언 7개월 차. Unity 클라이언트 프로젝트를 쓰는 바람에 익숙한 Github 방식을 버리게 되어 다소 아쉽지만, 뭐 어떤가, 대세 기술 하나 제대로 파는건 당연히 필요하고, 특히나 jenkins 는 최소 3년 ~ 5년차에게 요구되는 기술이라는데 제대로 배워둘 필요가 있다고 느꼈다(일단 재미도 있다)</p>
-
-<p>엄두도 안 났었던 내용인데, Docker 를 비롯해 한 두달 바짝 DevOps를 위한 여러 기술들을 고심하고, API 서버에 도입을 하나씩 해 나가니 생각보다 별거 아니란 생각에, 역시 양파 까듯 생각했어야 하는 구나 란 생각을 다시 한 번 해보았다.(처음엔 뭐 그리 부담스럽게 생각했던 것인지…)</p>
-
-<p>이제 한 발자국 남았다. Jenkins 배포를 위한 file 작업 중이니 조만간 마무리 지어야지….🤔</p>]]></content><author><name>Paul2021-R</name></author><category term="개발" /><category term="Backend" /><category term="DevOps" /><category term="Programming" /><category term="Groovy" /><category term="학습" /><summary type="html"><![CDATA[Jenkinsfile 작성 튜토리얼]]></summary></entry></feed>
+<p>확실히 AI 관련 인프라를 비롯해, API 로 활용하기 좋음, 성능을 고려하면 최고는 구글이라고 생각이 든다. 최대한 적용을 해볼 수 있어야 할텐데 싶다. 마음이 급해진다. 🤔</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry></feed>
