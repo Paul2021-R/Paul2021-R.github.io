@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-08-06T03:20:33+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">AI Breakfast S2 Ep 1 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/08/06/00-AI-trend-with-google-s2-01.html" rel="alternate" type="text/html" title="AI Breakfast S2 Ep 1 생각정리" /><published>2025-08-06T00:00:00+00:00</published><updated>2025-08-06T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/06/00-AI-trend-with-google-s2-01</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/06/00-AI-trend-with-google-s2-01.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-08-06T08:39:22+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">AI Breakfast S2 Ep 1 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/08/06/00-AI-trend-with-google-s2-01.html" rel="alternate" type="text/html" title="AI Breakfast S2 Ep 1 생각정리" /><published>2025-08-06T00:00:00+00:00</published><updated>2025-08-06T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/06/00-AI-trend-with-google-s2-01</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/06/00-AI-trend-with-google-s2-01.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
 <p><a href="https://youtu.be/Dm1V-ODwb1Q?si=aoeugkXlpHokwMNd"><img src="https://i.ytimg.com/vi/Dm1V-ODwb1Q/hq720.jpg" alt="비디오 제목" /></a></p>
 
 <h2 id="요약">요약</h2>
@@ -80,7 +80,245 @@
 
 <p>기존 스티치 AI 라는 웹 퍼블리싱, 웹 디자인을 위한 툴이 있었는데 이것만으로도 훌륭했지만, 이젠 정말 에이전트의 개념이 충분히 녹아든 서비스가 나오며, 그걸 활용할 줄 아냐 모르느냐의 차이는 명백한 생산성, 무엇보다 기본 실력과 경험의 차이를 이끌 수 있겠다.</p>
 
-<p>내가 필요한 서비스를 만들거나, 내가 필요한 기능을 구체화 한다. 거기서 핵심은 ‘내가 필요한’ 것이 아닌 것들을 AI에게 맡긴다면, 나는 내가 원하는 수준의 내 도메인을 위한 필요에 따른 스킵, 빠른 진행을 가능케 만들 수 있다는 것이다…. 진짜 멈춰 있을 틈이 없을 것 같다.</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry><entry><title type="html">AI Breakfast Ep 11 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/08/05/00-AI-trend-with-google-11.html" rel="alternate" type="text/html" title="AI Breakfast Ep 11 생각정리" /><published>2025-08-05T00:00:00+00:00</published><updated>2025-08-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/05/00-AI-trend-with-google-11</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/05/00-AI-trend-with-google-11.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
+<p>내가 필요한 서비스를 만들거나, 내가 필요한 기능을 구체화 한다. 거기서 핵심은 ‘내가 필요한’ 것이 아닌 것들을 AI에게 맡긴다면, 나는 내가 원하는 수준의 내 도메인을 위한 필요에 따른 스킵, 빠른 진행을 가능케 만들 수 있다는 것이다…. 진짜 멈춰 있을 틈이 없을 것 같다.</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry><entry><title type="html">python AI 개발환경 설정(가상환경) + Jupyter lab (colab)</title><link href="http://0.0.0.0:4000/ai/2025/08/06/01-setting-python-for-ai-study.html" rel="alternate" type="text/html" title="python AI 개발환경 설정(가상환경) + Jupyter lab (colab)" /><published>2025-08-06T00:00:00+00:00</published><updated>2025-08-06T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/06/01-setting-python-for-ai-study</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/06/01-setting-python-for-ai-study.html"><![CDATA[<h2 id="python-ai-개발-환경-구축-로컬uv-vs-클라우드colab">Python AI 개발 환경 구축: 로컬(uv) vs. 클라우드(Colab)</h2>
+
+<h3 id="1-개요">1. 개요</h3>
+
+<p>이 문서는 파이썬 AI 개발을 위한 두 가지 주요 환경 구축 방법을 정리한 것이다. 첫 번째는 <code class="language-plaintext highlighter-rouge">uv</code>를 활용해 개인 PC에 구축하는 <strong>로컬(Local) 환경</strong>의 핵심 도구인 <strong>JupyterLab</strong>이고, 두 번째는 별도 설치가 필요 없는 <strong>클라우드(Cloud) 환경</strong>인 <strong>Google Colab</strong>이다. 각 환경의 개념과 특징을 이해하여 상황에 맞는 최적의 도구를 선택하고 활용하는 것을 목표로 한다.</p>
+
+<hr />
+
+<h3 id="2--로컬-개발-환경-uv--jupyterlab">2. 🚀 로컬 개발 환경 (<code class="language-plaintext highlighter-rouge">uv</code> + JupyterLab)</h3>
+
+<h4 id="가-jupyterlab-이란">가. JupyterLab 이란?</h4>
+
+<p><strong>JupyterLab</strong>은 웹 브라우저에서 실행되는 **통합 개발 환경(IDE)**이다. 단순히 코드를 작성하고 실행하는 노트북(<code class="language-plaintext highlighter-rouge">ipynb</code>) 기능을 넘어, 파일 탐색기, 터미널, 텍스트 편집기 등 데이터 과학 작업에 필요한 여러 도구를 하나의 작업 공간에 통합하여 제공한다.</p>
+
+<blockquote>
+  <p><strong>쉽게 비유하자면,</strong> JupyterLab은 데이터 과학자를 위한 **‘디지털 작업실’**과 같다. 작업실 안에서 코드가 담긴 노트북, 각종 데이터 파일, 명령어 창을 한눈에 펼쳐놓고 유기적으로 오가며 전체 프로젝트를 관리할 수 있는 유연한 공간이다.</p>
+</blockquote>
+
+<h4 id="나-로컬-환경-도구로-uv를-선택한-이유">나. 로컬 환경 도구로 <code class="language-plaintext highlighter-rouge">uv</code>를 선택한 이유</h4>
+
+<p>전통적인 <code class="language-plaintext highlighter-rouge">conda</code>나 <code class="language-plaintext highlighter-rouge">pip</code>+<code class="language-plaintext highlighter-rouge">venv</code> 조합 대신 <code class="language-plaintext highlighter-rouge">uv</code>를 선택한 이유는 <strong>속도와 간결함</strong>을 통해 현대적이고 효율적인 개발 환경을 구성하기 위함이다.</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">uv</code>의 핵심 장점</strong>:
+    <ol>
+      <li><strong>압도적인 속도</strong>: <code class="language-plaintext highlighter-rouge">uv</code>는 Rust로 작성되어 기존 <code class="language-plaintext highlighter-rouge">pip</code>이나 <code class="language-plaintext highlighter-rouge">conda</code> 대비 수십 배에서 수백 배 빠른 패키지 설치 및 의존성 해결 속도를 보여준다. 기다리는 시간을 극적으로 줄여준다.</li>
+      <li><strong>통합된 도구</strong>: 가상 환경 생성(<code class="language-plaintext highlighter-rouge">venv</code>)과 패키지 설치(<code class="language-plaintext highlighter-rouge">pip</code>) 기능을 <code class="language-plaintext highlighter-rouge">uv</code> 명령어 하나로 통합하여 관리의 복잡성을 낮춘다.</li>
+      <li><strong>간결함과 표준</strong>: 파이썬 표준 패키지 인덱스(PyPI)를 사용하면서도 미니멀하고 빠른 환경 구축을 가능하게 한다.</li>
+    </ol>
+  </li>
+</ul>
+
+<h4 id="다-환경-구축-절차-uv-활용">다. 환경 구축 절차 (<code class="language-plaintext highlighter-rouge">uv</code> 활용)</h4>
+
+<ol>
+  <li><strong>Python 3.9 설치 (사전 조건)</strong>
+Homebrew를 통해 특정 버전의 파이썬을 설치한다.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>python@3.9
+</code></pre></div>    </div>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">uv</code> 가상 환경 설정</strong>
+프로젝트 폴더를 생성 후, <code class="language-plaintext highlighter-rouge">uv</code>로 Python 3.9 기반의 가상 환경(<code class="language-plaintext highlighter-rouge">.venv</code>)을 만든다.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>my-local-project <span class="o">&amp;&amp;</span> <span class="nb">cd </span>my-local-project
+uv venv <span class="nt">--python</span> 3.9
+<span class="nb">source</span> .venv/bin/activate
+</code></pre></div>    </div>
+  </li>
+  <li><strong>JupyterLab 설치 및 실행</strong>
+활성화된 가상 환경 내에서 <code class="language-plaintext highlighter-rouge">uv pip</code>으로 JupyterLab을 설치하고 실행한다.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv pip <span class="nb">install </span>jupyterlab
+jupyter lab
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="라-주요-단축키">라. 주요 단축키</h4>
+
+<p>Jupyter의 작업 효율은 <strong>명령 모드</strong>와 <strong>입력 모드</strong>의 이해에서 시작된다.</p>
+
+<ul>
+  <li><strong>명령 모드 (Command Mode)</strong>: 셀 테두리가 <strong>파란색</strong>. 셀 자체를 하나의 블록 단위로 다룬다. (<code class="language-plaintext highlighter-rouge">Esc</code>로 진입)</li>
+  <li><strong>입력 모드 (Edit Mode)</strong>: 셀 테두리가 <strong>초록색</strong>. 셀 내부에 코드를 입력하고 수정한다. (<code class="language-plaintext highlighter-rouge">Enter</code>로 진입)</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">기능</th>
+      <th style="text-align: left">단축키 (Win/Linux: Ctrl)</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">**(필수) 셀 실행**</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Shift + Enter</code></td>
+      <td style="text-align: left">현재 셀 실행 후, 아래 셀로 이동한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + Enter</code></td>
+      <td style="text-align: left">현재 셀 실행 후, 커서는 그대로 유지된다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**셀 추가**</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A</code> (명령 모드)</td>
+      <td style="text-align: left">현재 셀 **위에** 새 셀을 추가한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">B</code> (명령 모드)</td>
+      <td style="text-align: left">현재 셀 **아래에** 새 셀을 추가한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**셀 관리**</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">D, D</code> (명령 모드)</td>
+      <td style="text-align: left">현재 셀을 삭제한다. (D를 두 번 누름)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">X</code> / <code class="language-plaintext highlighter-rouge">C</code> / <code class="language-plaintext highlighter-rouge">V</code> (명령 모드)</td>
+      <td style="text-align: left">셀을 잘라내기 / 복사 / 붙여넣기 한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**셀 타입 변경**</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">M</code> (명령 모드)</td>
+      <td style="text-align: left">셀을 마크다운 타입으로 변경한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Y</code> (명령 모드)</td>
+      <td style="text-align: left">셀을 코드 타입으로 변경한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**코드 편집**</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + /</code> (입력 모드)</td>
+      <td style="text-align: left">선택한 코드 라인을 주석 처리/해제한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Shift + Tab</code> (입력 모드)</td>
+      <td style="text-align: left">함수 괄호 안에서 함수의 설명(Docstring)을 본다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="3-️-클라우드-개발-환경-google-colaboratory">3. ☁️ 클라우드 개발 환경 (Google Colaboratory)</h3>
+
+<h4 id="가-google-colab-이란">가. Google Colab 이란?</h4>
+
+<p>**Google Colaboratory(Colab)**는 구글이 제공하는 <strong>클라우드 기반의 무료 Jupyter Notebook 환경</strong>이다. 모든 연산이 구글의 서버에서 이루어지므로 별도의 설치 과정 없이 웹 브라우저만으로 강력한 개발 환경을 이용할 수 있다.</p>
+
+<blockquote>
+  <p><strong>쉽게 비유하자면,</strong> Colab은 **‘구글이 제공하는 고사양 컴퓨터를 인터넷을 통해 무료로 빌려 쓰는 것’**과 같다. 내 컴퓨터 사양과 무관하게 딥러닝 모델을 학습시킬 수 있는 것이 최대 장점이다.</p>
+</blockquote>
+
+<ul>
+  <li><strong>핵심 장점</strong>:
+    <ul>
+      <li><strong>설치 불필요 (Zero Setup)</strong>: 웹 브라우저와 구글 계정만 있으면 즉시 사용 가능하다.</li>
+      <li><strong>무료 GPU/TPU 제공</strong>: 딥러닝 등 고사양 연산에 필수적인 하드웨어를 무료로 제공한다.</li>
+      <li><strong>쉬운 공유와 협업</strong>: 링크 하나로 노트북을 공유하고 실시간으로 함께 편집할 수 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="나-주요-단축키">나. 주요 단축키</h4>
+
+<p>Colab은 Jupyter와 많은 단축키를 공유하지만, <code class="language-plaintext highlighter-rouge">Ctrl + M</code> (macOS: <code class="language-plaintext highlighter-rouge">Cmd + M</code>) 조합을 사용하는 고유한 단축키가 많다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">기능</th>
+      <th style="text-align: left">단축키 (Win: Ctrl, Mac: Cmd)</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">**(필수) 셀 실행**</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Shift + Enter</code> / <code class="language-plaintext highlighter-rouge">Cmd + Enter</code></td>
+      <td style="text-align: left">Jupyter와 동일하다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**셀 추가**</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + M, A</code></td>
+      <td style="text-align: left">현재 셀 **위에** 새 셀을 추가한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + M, B</code></td>
+      <td style="text-align: left">현재 셀 **아래에** 새 셀을 추가한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**셀 삭제**</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + M, D</code></td>
+      <td style="text-align: left">현재 셀을 삭제한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**셀 타입 변경**</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + M, M</code></td>
+      <td style="text-align: left">셀을 텍스트(마크다운) 타입으로 변경한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + M, Y</code></td>
+      <td style="text-align: left">셀을 코드 타입으로 변경한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**명령어 팔레트**</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + Shift + P</code></td>
+      <td style="text-align: left">모든 기능을 검색하고 실행할 수 있는 창을 연다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="4--로컬-vs-클라우드-언제-무엇을-쓸까">4. 💡 로컬 vs. 클라우드: 언제 무엇을 쓸까?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">구분</th>
+      <th style="text-align: left">**로컬 환경 (<code class="language-plaintext highlighter-rouge">uv</code> + JupyterLab)**</th>
+      <th style="text-align: left">**클라우드 환경 (Google Colab)**</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">**초기 설정**</td>
+      <td style="text-align: left">**필요** (Python, uv, 라이브러리 설치)</td>
+      <td style="text-align: left">**불필요** (웹 브라우저로 접속하면 끝)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**성능**</td>
+      <td style="text-align: left">내 PC 사양에 의존</td>
+      <td style="text-align: left">**무료 GPU/TPU 제공** (고성능)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**인터넷 연결**</td>
+      <td style="text-align: left">오프라인 작업 가능</td>
+      <td style="text-align: left">**필수**</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**파일 관리**</td>
+      <td style="text-align: left">자유롭고 빠름 (로컬 파일 시스템)</td>
+      <td style="text-align: left">구글 드라이브 연동 또는 업로드/다운로드 필요</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**적합한 작업**</td>
+      <td style="text-align: left">- 인터넷이 없는 환경에서의 작업&lt;br&gt;- 맞춤형 환경 구축&lt;br&gt;- 가벼운 데이터 분석 및 스크립팅</td>
+      <td style="text-align: left">- **딥러닝 모델 학습**&lt;br&gt;- 빠른 프로토타이핑&lt;br&gt;- 팀원과의 코드 공유 및 협업</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="학습" /><category term="Python" /><category term="Jupyter-lab" /><category term="colab" /><category term="google" /><category term="UV" /><summary type="html"><![CDATA[Python AI 개발 환경 구축: 로컬(uv) vs. 클라우드(Colab)]]></summary></entry><entry><title type="html">AI Breakfast Ep 11 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/08/05/00-AI-trend-with-google-11.html" rel="alternate" type="text/html" title="AI Breakfast Ep 11 생각정리" /><published>2025-08-05T00:00:00+00:00</published><updated>2025-08-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/05/00-AI-trend-with-google-11</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/05/00-AI-trend-with-google-11.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
 <p><a href="https://www.youtube.com/watch?v=P7TzvAJ6n_w"><img src="https://i.ytimg.com/vi/P7TzvAJ6n_w/hq720.jpg" alt="비디오 제목" /></a></p>
 
 <h2 id="요약">요약</h2>
@@ -867,10 +1105,4 @@
 
 <p>어쩌면 일상의 생활에 얼마나 AI를 통해 자연스럽게 녹아들게 만들것인가. 그리고 그 과정을 단순히 백엔드의 절차적 사고를 통해서만 구현해내는 것이 아니라, 얼마나 통합된 구조를 만들 것인가?</p>
 
-<p>궤도님의 발언처럼, 향후를 고려하여 미리 예측하여 결과를 만들어두는 것과 같이 전통적이지만 좀더 효율성이 있는 서비스로의 성장(물론, 지금 AI 산업의 구조나 하드웨어적 상황으론 거의 불가능할 것 같다만)에 도움이 되는 로직, 구조, 그리고 코드로 살려낼 수 있어야 한다는 생각, 그러려면 그런 서비스의 본질을 이해해야 한다는 생각이다.</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry><entry><title type="html">AI Breakfast Ep 6 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/07/28/AI-trend-with-google-06.html" rel="alternate" type="text/html" title="AI Breakfast Ep 6 생각정리" /><published>2025-07-28T00:00:00+00:00</published><updated>2025-07-28T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/07/28/AI-trend-with-google-06</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/07/28/AI-trend-with-google-06.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
-<p><a href="https://youtu.be/t3OuoheRiTU?si=KMR8Xvpq0Nma9XI7"><img src="https://i.ytimg.com/vi/t3OuoheRiTU/hq720.jpg" alt="비디오 제목" /></a></p>
-
-<h2 id="요약">요약</h2>
-<p>dd</p>
-
-<h2 id="내-생각-정리">내 생각 정리</h2>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry></feed>
+<p>궤도님의 발언처럼, 향후를 고려하여 미리 예측하여 결과를 만들어두는 것과 같이 전통적이지만 좀더 효율성이 있는 서비스로의 성장(물론, 지금 AI 산업의 구조나 하드웨어적 상황으론 거의 불가능할 것 같다만)에 도움이 되는 로직, 구조, 그리고 코드로 살려낼 수 있어야 한다는 생각, 그러려면 그런 서비스의 본질을 이해해야 한다는 생각이다.</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry></feed>
