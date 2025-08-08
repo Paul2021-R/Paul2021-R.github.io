@@ -1,4 +1,156 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-08-06T08:39:22+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">AI Breakfast S2 Ep 1 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/08/06/00-AI-trend-with-google-s2-01.html" rel="alternate" type="text/html" title="AI Breakfast S2 Ep 1 생각정리" /><published>2025-08-06T00:00:00+00:00</published><updated>2025-08-06T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/06/00-AI-trend-with-google-s2-01</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/06/00-AI-trend-with-google-s2-01.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-08-08T07:04:02+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">GPT v5 공개…! 현재 상태 좀 볼까?</title><link href="http://0.0.0.0:4000/ai/2025/08/07/00-chat-gpt-v5-introduction.html" rel="alternate" type="text/html" title="GPT v5 공개…! 현재 상태 좀 볼까?" /><published>2025-08-07T00:00:00+00:00</published><updated>2025-08-07T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/07/00-chat-gpt-v5-introduction</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/07/00-chat-gpt-v5-introduction.html"><![CDATA[<p><img src="/assets/images/posts/2025-08/2025-08-07-002.png" alt="" /></p>
+
+<h2 id="gpt-5-완전-정복-숲과-나무로-이해하는-ai의-새로운-시대">GPT-5 완전 정복: 숲과 나무로 이해하는 AI의 새로운 시대</h2>
+<p>OpenAI의 GPT-5가 드디어 공개되었다. 이번 출시는 GPT-4 라는 모델의 충격 때문일까, 확실히 여기저기, 특히나 유튜브에서 관심을 다들 가지는 느낌이 들었다. 그러니 그 변화에 탑승해서(?) GPT-5라는 새로운 버전에 대해 제대로 파악하고자 먼저, 기업이란 거시적인 관점의 조망해보고, 그 후 구체적인 기능을 살펴보면서, 씹고 뜯고 맛보고 즐겨보자(?).</p>
+
+<h3 id="gpt-5를-통해-볼-수-있는-openai">GPT-5를 통해 볼 수 있는 OpenAI</h3>
+<p>GPT-5의 등장은 몇 가지 핵심적인 전략적 전환을 의미한다. 이는 기술의 방향성과 AI 산업의 미래를 암시하는 거대한 흐름이다.</p>
+
+<ul>
+  <li>GPT-5는 개별 도구의 집합에서 단일 통합 지능 시스템으로의 패러다임 전환이다.
+과거 사용자는 GPT-4, GPT-4o 등 복잡한 ‘모델 선택기(model picker)’ 앞에서 어떤 모델이 자신의 작업에 최적인지 직접 고민해야 했다. GPT-5는 이 불편함을 완전히 해소한다. 사용자의 질문 의도를 실시간으로 분석해 가장 적합한 추론 능력을 자동으로 할당하는 지능형 라우터를 탑재한 통일된 플랫폼으로 진화했다. 이는 AI를 마치 하나의 운영체제(OS)처럼 만들어, 경쟁자들이 쉽게 넘볼 수 없는 기술적 ‘해자(moat)’를 구축하려는 OpenAI의 핵심 전략이다.</li>
+</ul>
+
+<p>개발자들이나, 파워 유저의 경우 특정 룰을 가지고 에이전틱한 사용성을 보장해주는 것을 필요로 한다 말하지만, 일반 사용자가 AI 를 사용할 때는, 그러한 영역들이 상당한 장애물이 될 수 있다. 그런 점을 볼 때 엔드 유저를 생각할 때의 핵심은 ‘알잘딱’하게 알아 맞추는 것이며, 이것이 곧 락인(lock-In) 효과의 핵심이라고 판단한 것으로 보인다.(사실 개발자라도, 쉽고 빠르게 쓰고 싶다는 점에선, 이 점은 여전히 중요하리라 본다.)</p>
+
+<ul>
+  <li>
+    <p>이번 출시는 점진적 개선을 넘어 ‘박사급 전문가’ 수준의 질적 도약을 의미한다.
+샘 알트먼 CEO는 GPT-3를 “고등학생”, GPT-4를 “대학생”에 비유하며, GPT-5와의 대화는 “어떤 분야에서든 합법적인 박사급 전문가와 이야기하는 느낌”이라고 표현했다. 이는 단순 정보 검색을 넘어, 복잡한 문제 해결을 위한 심층적인 사고 파트너로서의 역할을 목표로 함을 의미한다. AI의 지능 수준이 이전 세대와는 근본적으로 다른 차원에 도달했음을 시사하는 대목이다. 이는 기존의 gemini 2.5 Pro를 포함하여 지속적으로 나오는 다른 서비스들의 심층 추론이를 보다 명시적이고 전문성이 있다고 강조한 걸로 보인다.</p>
+  </li>
+  <li>
+    <p>기술의 최전선에서 신뢰성과 안전성을 최우선으로 하여 엔터프라이즈 시장을 정조준한다.
+기업이 AI 도입을 주저했던 가장 큰 이유는 ‘환각(Hallucination)’ 현상, 즉 AI가 그럴듯한 거짓말을 하는 문제였다. GPT-5는 이 문제를 정면으로 겨냥해, 사실 기반 벤치마크에서 이전 모델보다 오류를 최대 80%까지 줄였다. 이러한 신뢰성 향상은 금융 분석, 법률 실사, 헬스케어와 같이 정확성이 생명인 고위험 분야에서 AI를 실용적인 비즈니스 도구로 도입하기 위한 필수적인 기반이다. 이미 SAP, Relativity 같은 기업들은 GPT-5를 활용해 비즈니스 혁신을 가속하고 있다.</p>
+  </li>
+</ul>
+
+<p>이러한 지점은 기존 다른 업체들의 모델들이 자기 나름의 방법으로 할루시네이션을 극복하고, 특히나 비즈니스에서 사용시 이러한 문제를 해결하지 못하면 안된다라는 아주 구조적 킬포인트를, 그들도 이미 공감하고 최우선으로 생각했다는 공감의 표시라고 생각된다. Gemini 2.5 pro의 경우에도 구글 서치 그라운딩고 같이, 정확한 정보인가 아닌가? 를 검증한다는 점을 강하게 어필했고, 지금껏 AI 관련된 공식 팟캐스트에서도 구글 측의 입장은 한결같이 ‘기업이 신뢰할만한가?’ 라는 명제에 최대한 답을 하려고 했단 점은 GPT 역시 동일한 결론이라는 걸 보여준다.</p>
+
+<h3 id="요약해본-gpt-5의-핵심-업데이트-내용">요약해본 GPT-5의 핵심 업데이트 내용</h3>
+<p>OpenAI 의 전략, 상황, 그리고 AI 트랜드의 편린을 보았으니, GPT 5의 개선 사항들을 정리해보자. GPT-5의 강력한 성능은 다음과 같은 핵심 기능들의 비약적인 발전에 기반한다.</p>
+
+<ul>
+  <li><strong>통합 아키텍처는 실시간 라우터를 통해 질문에 따라 최적의 모델을 자동 할당</strong></li>
+</ul>
+
+<p>내부적으로 GPT-5는 빠른 응답을 위한 효율적인 모델과, 복잡한 문제 해결을 위한 심층 “사고(Thinking)” 모델로 나뉘어 있다. 사용자가 “이 문제에 대해 깊이 생각해봐”라고 명시하거나 질문이 복잡하다고 판단되면, 시스템의 중추인 ‘실시간 라우터’가 즉시 ‘사고’ 모델을 활성화한다. 덕분에 사용자는 속도와 깊이를 모두 자연스럽고 빠르게 경험할 수 있다.</p>
+
+<ul>
+  <li><strong>‘주문형 소프트웨어(Software-on-Demand)’ 개념을 현실화하는 강력한 코딩 능력</strong></li>
+</ul>
+
+<p>코딩 지식이 없는 사용자도 “프랑스어 학습 앱을 만들어줘. 단어 퀴즈랑 플래시카드 기능도 넣어줘”와 같은 자연어 설명만으로 몇 분 만에 실제 작동하는 앱을 만들 수 있다고 전했다. 전문 개발자에게는 더욱 강력한 도구가 된다. SWE-bench와 Aider Polyglot 같은 주요 코딩 벤치마크에서 각각 74.9%, 88%라는 압도적인 점수를 기록했으며, 이는 대규모 코드베이스를 이해하고 복잡한 버그를 수정하는 능력이 탁월함을 증명했고, 데모를 제공해준다.</p>
+
+<ul>
+  <li><strong>환각(Hallucination) 현상이 이전 모델 대비 최대 80%까지 감소하여 답변의 신뢰성이 비약적으로 향상</strong></li>
+</ul>
+
+<p>GPT-5의 전체적인 환각 발생률은 이전 모델의 20% 이상에서 4.8%로 크게 줄었다. 특히 민감한 의료 관련 질문에서는 오류율이 1.6%까지 떨어졌으며, 모르는 내용에 대해 억지로 꾸며내는 ‘기만적 행동’은 이전 모델의 86.7%에서 단 9%로 대폭 감소했다. 존재하지 않는 이미지에 대해 질문했을 때 GPT-4 세대가 86.7%의 확률로 자신있게 거짓말을 했던 반면, GPT-5는 단 9%만이 그런 반응을 보여, 모르는 것에 대해 솔직하게 인정하도록 훈련되었음을 보여준다.</p>
+
+<ul>
+  <li><strong>이미지와 텍스트를 동시에 이해하는 멀티모달 능력과 최대 40만 토큰의 컨텍스트 처리 능력</strong></li>
+</ul>
+
+<p>최대 40만 토큰의 컨텍스트 창은 책 한 권 전체나 몇 주간의 대화 기록을 하나의 대화 안에서 일관성 있게 처리할 수 있음을 의미한다. 또한, 사용자의 구글 캘린더나 Gmail과 연동하여 “지난주에 놓친 중요한 이메일 요약해줘”와 같은 개인화된 작업도 수행할 수 있다. 아직 구글의 그것이 정말 말이 안될 사이즈로 제공해주긴 하지만, 이 역시 훌륭한 컨텍스트 양이라고 볼 수 있을 것이다.</p>
+
+<ul>
+  <li><strong>‘취향’이 개선된 작문 능력과 ‘성격(Personalities)’ 기능으로 더 인간적인 상호작용이 가능</strong></li>
+</ul>
+
+<p>“문학적 깊이와 리듬”을 갖춘 설득력 있는 글을 생성하며, 사용자의 비위를 맞추려는 ‘아첨(sycophancy)’ 경향은 14.5%에서 6% 미만으로 줄었다. 또한 ‘냉소주의자(Cynic)’, ‘로봇(Robot)’, ‘너드(Nerd)’ 등 네 가지 사전 설정된 ‘성격’으로 AI의 응답 톤을 간편하게 조절할 수 있다. Gemini 2.5 Pro 에 대한 사용자 평가에서 이부분의 필요성이 대두되었는데, 이점은 보다 ‘객관성’과 ‘신뢰성’ 확보를 위해 필요하다고 생각되는 강조점이라고 볼 수 있겠다.</p>
+
+<ul>
+  <li><strong>‘안전한 완료(Safe Completions)’라는 새로운 안전 철학을 도입</strong></li>
+</ul>
+
+<p>민감한 질문에 대해 무조건 답변을 거부하는 ‘강경한 거절’ 방식에서 벗어나, 유해할 수 있는 내용을 제거하면서도 최대한 유용한 정보를 제공하려 노력한다. 예를 들어 위험 물질에 대한 질문에 제조법을 알려주는 대신, 그것의 위험성과 안전한 취급 방법에 대한 정보를 제공하는 식이다.</p>
+
+<ul>
+  <li><strong>자율적으로 다단계 작업을 수행하는 ‘에이전트(Agentic)’ 능력이 강화</strong></li>
+</ul>
+
+<p>단순 응답을 넘어, “레스토랑 웹사이트를 만들어줘”라는 요청에 스스로 전체 프로젝트 계획을 세우고, 필요한 도구(브라우저, 코드 실행기 등)를 연속적으로 호출하여 과업을 완수하는, 마치 프로젝트 매니저와 같은 역할을 수행한다.</p>
+
+<ul>
+  <li><strong>개발자를 위해 API 기능이 세분화되고 가격 경쟁력을 갖추었다.</strong></li>
+</ul>
+
+<p>용도에 맞게 최고 성능의 <code class="language-plaintext highlighter-rouge">gpt-5</code>부터 비용 효율적인 <code class="language-plaintext highlighter-rouge">gpt-5-mini</code>, 초저지연에 특화된 <code class="language-plaintext highlighter-rouge">gpt-5-nano</code> 모델까지 선택할 수 있다. 가격 또한 GPT-4o 대비 입력 비용이 절반으로 줄어든 100만 토큰당 1.25달러로 책정되었으며, 반복 호출 시 비용을 90% 절감해주는 캐싱 할인도 제공된다. 이러한 부분은 가격 경쟁력 부분이 필요하다는 수요를 나름 인지한 것으로 보인다.</p>
+
+<ul>
+  <li><strong>모두를 위한 사용자 경험(UX) 개선과 생태계 통합:</strong></li>
+</ul>
+
+<p>이제 무료 사용자를 포함한 모든 유저가 개선된 음성 모드를 사용할 수 있으며, 여러 아이디어를 시각적으로 펼쳐놓고 작업하는 ‘캔버스(Canvas)’ 기능도 추가되었다. 또한, GPT-5 출시와 함께 GPT-4o 등 모든 구형 모델이 플랫폼에서 제거되어, 모든 사용자와 개발자가 GPT-5라는 단일 생태계로 통합된다.</p>
+
+<ul>
+  <li><strong>주요 외부 도구와의 통합 심화:</strong></li>
+</ul>
+
+<p>GPT-5는 Microsoft 365 Copilot에 깊숙이 통합되어 사용자의 이메일, 문서 등 개인 업무 데이터를 기반으로 매우 맥락에 맞는 분석을 제공하며, GitHub Copilot과 Visual Studio Code에도 직접 통합되어 개발자들이 코드를 작성하고 디버깅하는 전 과정을 실시간으로 돕는다.</p>
+
+<h3 id="gpt-5-그리고-그-다음은-써보니">GPT 5 그리고 그 다음은…? 써보니..</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">모델</th>
+      <th style="text-align: left">강점 포인트</th>
+      <th style="text-align: left">주요 스펙</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">GPT‑5 (OpenAI)</td>
+      <td style="text-align: left">“박사급 전문가” 수준의 추론• 매우 적은 환각률, 안전한 응답• 뛰어난 도구 연동 및 에이전트 작업• SWE‑bench 74.9%, Aider Polyglot 88% 성능</td>
+      <td style="text-align: left">컨텍스트 윈도우 최대 256k 토큰- variants: standard, mini, nano / Pro, Plus 등- verbosity, reasoning_effort API 옵션 제공</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Gemini 2.5 Pro (Google)</td>
+      <td style="text-align: left">“생각하는 라우팅” 탑재, 추론 기반 응답• WebDev Arena 등 코딩 벤치마크에서 탁월• 영상→코드, UI 자동 생성에 강점• 멀티모달 + 긴 문맥 + 노이즈 인식</td>
+      <td style="text-align: left">컨텍스트 최대 1백만 토큰- Deep Think 모드 제공- 기능: 멀티모달, 오디오, 도구 연동, 스타일 제어</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Claude (Anthropic) 최신 모델 (Opus 4.1, Sonnet 4)</td>
+      <td style="text-align: left">고급 추론·코딩 능력• 긴 문맥 처리 (200k 토큰)• 확장 추론 모드와 멀티모달 지원</td>
+      <td style="text-align: left">Opus 4.1: 최고 성능 모델, 복잡한 논리/코딩에 강함- Sonnet 4: 효율적이고 반응 빠름- 둘 다 텍스트+이미지 입력 가능, 200k 컨텍스트 윈도우</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>GPT 5 의 변화 내용을 여러 시사점, 특히 다른 플랫폼들에 대해 경쟁 지점에 대한 나름의 전략들이 녹아든 개선점이 보이는 것 같아, 그만큼 괜찮은데? 싶었다. 일반 유저들 입장에선 일단 무조건 chatGPT 쓰고 본다- 의 효과를 어떻게든 더 유지하기 위함이 나름 느껴지는 개선포인트가 아니었나 생각한다. 특히나 몇 차례 5를 활용한 심층 분석 시 무엇을 위해 어떤 대상, 어떤 도구, 어떤 범위 등 자신이 해야할 일들을 단순히 ‘판단’ 하고 확신하지 않고, 한번더 물어 본 뒤 작업을 하는 것, 이후 딱 요청한 것들을 정확히 알려준다는 점은 생각 이상으로 4 버전보다 확실히 나아졌다. 오히려 기계스럽게 일을 잘한다는 느낌을 받을 수 있었다.</p>
+
+<p>AWS Bedrock 이 현재 기업 시장에서 나름 인지도를 쌓아간다고 하고, Gemini 와 다양한 모델들, 압도적인 가성비로 Google 역시 기업시장에서 계속 입지를 다져가는 상황, 개발자들은 Claude 의 메모리 성능과 문맥 이해력, Claude Code 의 안정적인 성능 등, 어쩌면 선구자로 입지가 위태위태 하지만, 그럼에도 여전히 GPT 가 살아 있음을 호소한다는 느낌을 강하게 들었다.</p>
+
+<p>다만 결과에 대하여 내가 쓴 경우를 제외하더라도, 다른 분들의 평가나 분석한 내용을 볼 때, 모든게 1등이냐? 라는 차원에서는 여전히 한계는 있어 보였다.</p>
+
+<p>연속적인 이해나, 대화 내용에 대한 안정적인 이해도는 여전히 Claude 가 앞서가고 있고, Gemini 2.5 는 다소 떨어지는 부분은 있지만, 할루시네이션을 구글 검색 그라운딩과 합쳐 놓아 충분히 완성도 있게 해주었다. 토큰 허용치는 정말 타의 추종을 불허한다는 엄청난 장점을 갖고 있다. 또한 코딩 실력 역시 결과적으로 요즘 모델들이 너무 잘 만들어주는 것은 사실이지만, 결국 과거 문맥을 이해하고, 실수가 없는가! 라는 차원의 비교에선 Claude Code가 보다 안정적이었다는, 실무적 결과들을 볼 때, 가닥을 잘 따라 완성도 있게 나온 것은 사실이지만 GPT 5가 엔드 유저가 아닌 다른 유저들에게 얼마나 어필 될까? 는 고민해볼 여지가 있는 영역이라고 보인다. (물론, 링크드인의 다양한 평가들 중에선, ‘전문성’의 키워드에 대한 해결 능력은 뛰어나다는 이야기도 있었다. 즉, 복잡하고 어려운 건 오히려 잘 해낸다고 볼 수도 있을것 같다. 개발 실무 보단, 진짜 연구 개발에 가까운 영역은 호평인듯)</p>
+
+<p>오히려 조사 과정에서 Gemini CLI + Claude Code 라는 미친 조합으로 정보 분석 + 정보 요약은 Gemini에게 시키고, 실 결과물은 Claude 를 쓰게 만드는 끔찍한 혼종을 만들어 쓰는 분들의 결과물을 봤을 때, AI 의 전쟁은 진짜 더욱 더 치열해진다는 점을 새삼 느낄 수 있었다.</p>
+
+<h3 id="참고-문헌">참고 문헌</h3>
+<ul>
+  <li><a href="https://openai.com/index/introducing-gpt-5/">https://openai.com/index/introducing-gpt-5/</a></li>
+  <li><a href="https://openai.com/index/introducing-gpt-5-for-developers/">https://openai.com/index/introducing-gpt-5-for-developers/</a></li>
+  <li><a href="https://azure.microsoft.com/en-us/blog/gpt-5-in-azure-ai-foundry-the-future-of-ai-apps-and-agents-starts-here/">https://azure.microsoft.com/en-us/blog/gpt-5-in-azure-ai-foundry-the-future-of-ai-apps-and-agents-starts-here/</a></li>
+  <li><a href="https://www.microsoft.com/en-us/microsoft-365/blog/2025/08/07/available-today-gpt-5-in-microsoft-365-copilot/">https://www.microsoft.com/en-us/microsoft-365/blog/2025/08/07/available-today-gpt-5-in-microsoft-365-copilot/</a></li>
+  <li><a href="https://news.microsoft.com/source/features/ai/openai-gpt-5/">https://news.microsoft.com/source/features/ai/openai-gpt-5/</a></li>
+  <li><a href="https://simonwillison.net/2025/Aug/7/gpt-5/">https://simonwillison.net/2025/Aug/7/gpt-5/</a></li>
+  <li><a href="https://the-decoder.com/openai-claims-gpt-5-offers-its-best-coding-performance-yet-for-complex-programming-tasks/">https://the-decoder.com/openai-claims-gpt-5-offers-its-best-coding-performance-yet-for-complex-programming-tasks/</a></li>
+  <li><a href="https://apnews.com/article/gpt5-openai-chatgpt-artificial-intelligence-d12cd2d6310a2515042067b5d3965aa1">https://apnews.com/article/gpt5-openai-chatgpt-artificial-intelligence-d12cd2d6310a2515042067b5d3965aa1</a></li>
+  <li><a href="https://mashable.com/article/best-new-gpt-5-ai-features">https://mashable.com/article/best-new-gpt-5-ai-features</a></li>
+  <li><a href="https://mashable.com/article/chatgpt-5-coolest-feature-vibe-coding">https://mashable.com/article/chatgpt-5-coolest-feature-vibe-coding</a></li>
+  <li><a href="https://www.techradar.com/news/live/openai-chatgpt5-launch">https://www.techradar.com/news/live/openai-chatgpt5-launch</a></li>
+  <li><a href="https://www.pcmag.com/news/with-gpt-5-openai-promises-access-to-phd-level-ai-expertise">https://www.pcmag.com/news/with-gpt-5-openai-promises-access-to-phd-level-ai-expertise</a></li>
+  <li><a href="https://economictimes.indiatimes.com/magazines/panache/openai-introduces-chatgpt-5-features-performance-access-pricing-heres-all-you-need-to-know/articleshow/123174283.cms">https://economictimes.indiatimes.com/magazines/panache/openai-introduces-chatgpt-5-features-performance-access-pricing-heres-all-you-need-to-know/articleshow/123174283.cms</a></li>
+  <li><a href="https://timesofindia.indiatimes.com/technology/tech-news/what-have-we-done-sam-altman-says-i-feel-useless-compares-chatgpt-5s-power-to-the-manhattan-project/articleshow/123112813.cms">https://timesofindia.indiatimes.com/technology/tech-news/what-have-we-done-sam-altman-says-i-feel-useless-compares-chatgpt-5s-power-to-the-manhattan-project/articleshow/123112813.cms</a></li>
+  <li><a href="https://wandb.ai/byyoung3/ml-news/reports/GPT-5-Benchmark-Scores---VmlldzoxMzkwMTYyMg">https://wandb.ai/byyoung3/ml-news/reports/GPT-5-Benchmark-Scores—VmlldzoxMzkwMTYyMg</a></li>
+  <li><a href="https://www.vellum.ai/blog/gpt-5-benchmarks">https://www.vellum.ai/blog/gpt-5-benchmarks</a></li>
+  <li><a href="https://metr.github.io/autonomy-evals-guide/gpt-5-report/">https://metr.github.io/autonomy-evals-guide/gpt-5-report/</a></li>
+  <li><a href="https://www.youtube.com/watch?v=0Uu_VJeVVfo">https://www.youtube.com/watch?v=0Uu_VJeVVfo</a></li>
+  <li><a href="https://www.youtube.com/watch?v=tqPQB5sleHY">https://www.youtube.com/watch?v=tqPQB5sleHY</a></li>
+  <li><a href="https://www.youtube.com/watch?v=2jqS7JD0hrY">https://www.youtube.com/watch?v=2jqS7JD0hrY</a></li>
+</ul>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="학습" /><category term="ChatGPT" /><category term="OpenAI" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">AI Breakfast S2 Ep 1 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/08/06/00-AI-trend-with-google-s2-01.html" rel="alternate" type="text/html" title="AI Breakfast S2 Ep 1 생각정리" /><published>2025-08-06T00:00:00+00:00</published><updated>2025-08-06T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/06/00-AI-trend-with-google-s2-01</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/06/00-AI-trend-with-google-s2-01.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
 <p><a href="https://youtu.be/Dm1V-ODwb1Q?si=aoeugkXlpHokwMNd"><img src="https://i.ytimg.com/vi/Dm1V-ODwb1Q/hq720.jpg" alt="비디오 제목" /></a></p>
 
 <h2 id="요약">요약</h2>
@@ -1037,72 +1189,4 @@ jupyter lab
 
 <p>실제로 나의 1년의 서버 개발자로의 삶에서도, 결국 AI 가 있었기에 지금 수준의 성과, 지금 수준의 속도, 지금 수준의 자신감을 가질수 있었으니까 말이다.</p>
 
-<p>그나저나 확실한 건 얼른 VertextAI 를 비롯해서 구글의 AI 를 위한 플랫폼에 대한 서비스 이해도가 높아질 필요가 있어 보인다….</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry><entry><title type="html">AI Breakfast Ep 7 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/07/29/AI-trend-with-google-07.html" rel="alternate" type="text/html" title="AI Breakfast Ep 7 생각정리" /><published>2025-07-29T00:00:00+00:00</published><updated>2025-07-29T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/07/29/AI-trend-with-google-07</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/07/29/AI-trend-with-google-07.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
-<p><a href="https://www.youtube.com/watch?v=113tJcX0io8"><img src="https://i.ytimg.com/vi/113tJcX0io8/hq720.jpg" alt="비디오 제목" /></a></p>
-
-<h2 id="요약">요약</h2>
-<p>이번 최신화는 AI 시대의 업무와 삶의 혁신에 대한 논의를 다루고 있다.</p>
-
-<ul>
-  <li>
-    <p><strong>Vertex AI 스튜디오</strong>: 구글 클라우드 내에 있는 서비스로, 기업 고객과 개발자들이 <strong>직접 AI 서비스를 만들 수 있는 도구</strong>이다. 이는 단순히 코드를 입력하는 개발 도구가 아니라, 노트북LM이나 제미나이 같은 다양한 AI 서비스를 접목하여 챗봇, 기업 맞춤형 제미나이, 비디오 및 음악 생성 등 새로운 서비스를 창의적으로 만들 수 있도록 돕는다. 또한, 고객이 직접 <strong>레고 조립하듯이 본인의 서비스를 만들 수 있는 도구</strong>로 비유되며, 이는 밀키트 판매보다는 음식 프랜차이즈를 기획하고 만드는 과정에 필요한 도구와 같다고 설명된다.</p>
-  </li>
-  <li><strong>구글 클라우드</strong>의 강점:
-    <ul>
-      <li><strong>확장성</strong>과 <strong>연결성</strong>이 매우 중요하며, 구글 클라우드는 AI 서비스의 가장 아래 단계인 모델(제미나이, 클라우드 소넷 등)부터 코드를 만들고 서비스를 제공하는 환경까지 <strong>전 포트폴리오</strong>를 제공하는 업계 유일의 서비스 제공자이다.</li>
-      <li>구글 워크스페이스 같은 생산성 도구와 <strong>유기적인 데이터 교환 및 연동</strong>이 가능하여, 워크스페이스의 데이터를 Vertex AI 학습에 활용하거나 Vertex AI에서 생성된 데이터를 워크스페이스에서 참조할 수 있다. 이는 구글의 가장 큰 강점으로 꼽힌다.</li>
-    </ul>
-  </li>
-  <li><strong>AI 도입 진입 장벽</strong>을 낮추기 위한 전략:
-    <ul>
-      <li>사용자가 AI를 <strong>자연스럽게 받아들이도록 유도</strong>하는 방향을 지향한다. 예를 들어, 구글링이나 이메일, 문서 작업 중 자연스럽게 AI 검색 결과나 제미나이 같은 기능이 등장하여 익숙해지도록 하는 방식이다.</li>
-      <li>구글은 <strong>변화 관리 방법론</strong>을 가지고 있는데, 이는 사용자들이 A에서 B로 변화할 때 겪는 어려움을 최소화하고 마치 게임의 점진적인 업데이트처럼 사용자들이 눈치채지 못할 정도로 부드럽게 변화를 경험하도록 돕는다.</li>
-      <li>이 방법론은 기업이 새로운 기술을 도입할 때 발생하는 <strong>기술 부채를 탕감</strong>해주는 역할을 한다. 기업의 현재 상황을 진단하고, 기존의 좋은 문화를 유지하면서 유연한 도구를 통해 개선할 수 있는 부분을 제안하며, <strong>작은 성공부터 맛보며 변화</strong>할 수 있도록 돕는다. 이는 “긁어 부스럼 만들지 말자”는 기업의 인식을 “변화를 눈치채지 못할 것”이라는 접근 방식으로 설득하는 데 사용된다.</li>
-    </ul>
-  </li>
-  <li><strong>AI의 미래 발전 방향과 역할</strong>:
-    <ul>
-      <li>구글은 AI가 <strong>생산성 증강</strong>과 인간의 능력을 증강시켜 주는 방향으로 개발되고 있다고 밝힌다.</li>
-      <li><strong>멀티모달리티</strong>를 추구하는 <strong>프로젝트 아스트라</strong>를 통해 렌즈, 음성, 소리를 통해 제미나이와 자연스러운 상호작용이 가능하며, 이는 시각 장애인 지원이나 학습 도구로 활용될 수 있다.</li>
-      <li>AI가 발전할수록 우리 생활 속에 스며들어 마치 스마트폰처럼 <strong>본질은 같지만 접근 방식이 달라지는 도구</strong>가 될 것이며, 혁신적인 삶을 살아도 사용자들은 이를 당연하게 여기고 예전과 비슷하게 느낄 것이다.</li>
-      <li>단기적으로는 <strong>개인 맞춤화</strong>된 AI가 발전할 것이며, 사용자의 업무 패턴이나 선호도를 기반으로 맞춤형 결과물을 제공할 것이다.</li>
-      <li>더 나아가 <strong>자연스러운 인터랙션</strong>을 넘어, AI가 사용자의 모든 것을 지켜보다가 필요할 때 알아서 해주는 <strong>‘시키지도 않는 AI’</strong> 단계에 도달할 것이라는 예측도 있다. 이는 자동화와 자율 기능 부여 사이의 딜레마를 내포하고 있으며, 구글은 <strong>책임감 있는 AI</strong>를 만드는 것을 가장 중요한 가치로 삼고 있다.</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>AI의 핵심 가치</strong>는 <strong>시간 절약</strong>이다. AI는 개인이 업무에 소요되는 시간을 단축시켜 삶의 질을 높이는 데 기여한다.</p>
-  </li>
-  <li><strong>교육 현장</strong>에서의 AI:
-    <ul>
-      <li>AI는 학생들에게 양질의 정보를 쉽게 접하고 궁금증을 해결할 수 있는 새로운 채널을 제공한다.</li>
-      <li>선생님들의 행정 업무 부담을 줄여주고, 아이들의 눈높이에 맞는 학습 자료나 과제 아이디어를 얻는 데 도움을 준다.</li>
-      <li>AI는 <strong>숙제 개념 변화</strong>를 가져올 수 있으며, 미래 사회는 AI를 쓰는 능력이 필수가 될 것이기에 <strong>AI 숙련</strong>이 중요해진다.</li>
-      <li>구글의 <strong>노트북LM</strong>은 학교 현장에서 <strong>할루시네이션</strong>(환각) 우려를 줄이고 <strong>데이터 소스 검증</strong> 능력을 키워주는 등 학생 학습과 교사 콘텐츠 준비에 높은 활용도를 제공한다.</li>
-    </ul>
-  </li>
-  <li>학생들의 <strong>안전한 AI 사용</strong>:
-    <ul>
-      <li>어린 학생들의 경우, 판단 기준이 아직 확립되지 않았으므로 AI 도입은 <strong>점진적</strong>이어야 하며, 긍정적/부정적 변화를 평가할 시간이 필요하다. 정책적인 고려가 이루어지고 있다.</li>
-      <li>AI가 아이들에게 칭찬을 많이 해줌으로써 학습 동기를 부여하는 등 긍정적인 학습 방법으로도 활용될 수 있다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="내-생각-정리">내 생각 정리</h2>
-<p>이제 슬슬 구글의 서비스들에 생각 이상으로 이해가 되는, 자체 구글 홍보(?) 같은 일을 내가 하고 있는가 싶다.</p>
-
-<p>구글의 전략, 구글에 대한 이해도가 높아지고 있지만 그러는 한 편으로 AI 관련해서 구글의 전략에 대해서만 이해도가 높아져선 공평하지 않으니(?) 향후에 AWS, MS 등 웹프로바이져들을 중심으로 그 전략을, 그리고 특히나 Naver나 kakao, KT Cloud에 SKT까지는 알아봐야 하지 않을까 생각이 든다.</p>
-
-<p>내용의 핵심인 요는 결국 ‘변화’의 바람에 떠밀듯이 회사도, 조직도, 학교도 적용될 것이지만, 문제는 그것을 어떻게 얼마나 플랫폼으로써 확장 될 수 있을까? 그리고 그 기반, 즉 공기나 물과 같은 위치를 구글의 서비스나 모델들이 확장될 수 있는가를 구글은 고민하고 있다는게 느껴진다.</p>
-
-<p>변화는 좋은 것이지만, 그 결과가 명확하지 않을 때, 도전적인 이들도 있지만, 사실 생각해보면 대부분의 케이스 기존의 것들이 좋다는 관념적인 움직임이이 태반일 것이며 실제로도 그런 이들이 ‘어 바꿨나?’ 싶을 정도로 자연스럽게 녹아들고, 그 서비스에 락인(lock-in)될 때 그것이 진짜 플랫폼이 되는게 아닐까?</p>
-
-<p>플랫폼 사업의 노하우, 그리고 그 앞을 바라보는 시선을 보면 왜 구글이 인터넷 춘추전국시대를 지나, 그 왕자를 분명 뺏을 만한 강자들이 있었음에도 그 강자들 사이에서 압도적일 수 있었는가에 대한 비전, 안목, 그리고 깊이감이 느껴지는 대담이 어제와 오늘자 내용이었다고 생각이 든다.</p>
-
-<p>특히나 노트북LM, 이런 서비스에 대한 지속적인 노출이나, 교육 서비스, 워크 스페이스와의 연동 등은 어쩌면 그런 ‘가랑비에 옷 젖는’ 그리고 동시 ‘숨쉬듯’ 사용하기 위한 서비스이자, 특히나 ‘어떤 결과가 초래될지 모른다’라는 AI의 대중들의 거부감보다는 신뢰감, 효과성을 어필하려는 구글의 노력이 무엇인가를 새삼 느끼게 만드는 것 같다.</p>
-
-<p>결국 내가 AI 와 관련되어 전문성을 얻어야 하는 지점은 어디일까?</p>
-
-<p>어쩌면 일상의 생활에 얼마나 AI를 통해 자연스럽게 녹아들게 만들것인가. 그리고 그 과정을 단순히 백엔드의 절차적 사고를 통해서만 구현해내는 것이 아니라, 얼마나 통합된 구조를 만들 것인가?</p>
-
-<p>궤도님의 발언처럼, 향후를 고려하여 미리 예측하여 결과를 만들어두는 것과 같이 전통적이지만 좀더 효율성이 있는 서비스로의 성장(물론, 지금 AI 산업의 구조나 하드웨어적 상황으론 거의 불가능할 것 같다만)에 도움이 되는 로직, 구조, 그리고 코드로 살려낼 수 있어야 한다는 생각, 그러려면 그런 서비스의 본질을 이해해야 한다는 생각이다.</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry></feed>
+<p>그나저나 확실한 건 얼른 VertextAI 를 비롯해서 구글의 AI 를 위한 플랫폼에 대한 서비스 이해도가 높아질 필요가 있어 보인다….</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry></feed>

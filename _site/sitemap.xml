@@ -121,6 +121,10 @@
 <lastmod>2025-08-06T00:00:00+00:00</lastmod>
 </url>
 <url>
+<loc>http://0.0.0.0:4000/ai/2025/08/07/00-chat-gpt-v5-introduction.html</loc>
+<lastmod>2025-08-07T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://0.0.0.0:4000/about.html</loc>
 </url>
 <url>
@@ -149,5 +153,8 @@
 </url>
 <url>
 <loc>http://0.0.0.0:4000/page6/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/page7/</loc>
 </url>
 </urlset>
