@@ -1,11 +1,11 @@
 ---
 layout: post 
 title: 나의 설명서를 정리는 했던가? 
-subtitle: 나의 
+subtitle: 나를 나는 제대로 이해하고 있을까? 
 categories: 생각정리
 tags: 생각정리 자기개발 심리
 thumb: /assets/images/posts/2025-08/2025-08-12-001.png
-custom-excerpt: 우당탕탕 DevOps 좀더 잘해지기(?)
+custom-excerpt: 나를 나는 제대로 이해하고 있을까? 
 banner:
   # video: https://vjs.zencdn.net/v/oceans.mp4
   video: https://cdn.pixabay.com/video/2019/10/04/27539-364430966_large.mp4
