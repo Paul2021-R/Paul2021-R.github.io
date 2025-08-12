@@ -1,0 +1,36 @@
+{
+    "name": "youtube-thumbnail-saver",
+    "version": "1.0.0",
+    "description": "Get youtube thumbnail easily",
+    "main": "index.js",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/marshall-ku/Youtube-Thumbnail-Saver.git"
+    },
+    "keywords": [
+        "Youtube",
+        "Thumbnail"
+    ],
+    "author": "Marshall K",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/marshall-ku/Youtube-Thumbnail-Saver/issues"
+    },
+    "homepage": "https://github.com/marshall-ku/Youtube-Thumbnail-Saver#readme",
+    "dependencies": {
+        "crtelt": "^0.2.7"
+    },
+    "devDependencies": {
+        "@types/jest": "^29.0.0",
+        "@types/node": "^18.7.14",
+        "ts-jest": "^28.0.8",
+        "typescript": "^4.8.2",
+        "vite": "^3.0.9"
+    }
+}
