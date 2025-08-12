@@ -1,4 +1,5 @@
-# Category List 
+# Category List
+
 - AI
 - Backend
 - 생각정리
@@ -6,7 +7,8 @@
 - 개발
 - tools
 
-# tag List
+# Tag List
+
 - AI
 - Backend
 - Container
@@ -28,5 +30,7 @@
 - 이직
 - 학습
 - Groovy
-- Apple 
+- Apple
 - 채용
+- 자기개발
+- 심리
