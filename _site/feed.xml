@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-08-18T03:21:50+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">AI Breakfast S2 Ep 3 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/08/18/00-AI-trend-with-google-s2-03.html" rel="alternate" type="text/html" title="AI Breakfast S2 Ep 3 생각정리" /><published>2025-08-18T00:00:00+00:00</published><updated>2025-08-18T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/18/00-AI-trend-with-google-s2-03</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/18/00-AI-trend-with-google-s2-03.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-08-18T05:04:00+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">AI Breakfast S2 Ep 3 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/08/18/00-AI-trend-with-google-s2-03.html" rel="alternate" type="text/html" title="AI Breakfast S2 Ep 3 생각정리" /><published>2025-08-18T00:00:00+00:00</published><updated>2025-08-18T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/18/00-AI-trend-with-google-s2-03</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/18/00-AI-trend-with-google-s2-03.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
 <p><a href="https://www.youtube.com/watch?v=WTea4oBLPLQ"><img src="https://i.ytimg.com/vi/WTea4oBLPLQ/hq720.jpg" alt="비디오 제목" /></a></p>
 
 <h2 id="요약">요약</h2>
@@ -74,7 +74,50 @@
 
 <p>그런데 또 대담을 하다보면 AI 개발자가 백엔드지식을 이해하고 접근하시는 분도 분명 있지만, 그렇지 않은 분도 월등히 많다는 사실 또한 알 수 있었다.</p>
 
-<p>AI 를 통해 내가 기본적으로 해야할 백엔드 역량을 매우 빠르고, 정확하게 접근할 수 있게 되었으니, 나의 능력을 어디에 쏟아야 할까? 결국 구글이 제시하듯, LLM 의 리소스를 잘 분배하거나, 평가를 통해 요구되는 사항에 최적화된 기능을 제공하고, 궁극적으로 비용 절감이나, 비용 만큼의 신뢰있는 서비스화 할 수 있는가? 그게 내가 생각하는 다음 내 인계점(Inflection Point)이 아닐까 생각한다.</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry><entry><title type="html">나의 설명서를 정리는 했던가?</title><link href="http://0.0.0.0:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/08/12/00-what-is-my-introduction.html" rel="alternate" type="text/html" title="나의 설명서를 정리는 했던가?" /><published>2025-08-12T00:00:00+00:00</published><updated>2025-08-12T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/08/12/00-what-is-my-introduction</id><content type="html" xml:base="http://0.0.0.0:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/08/12/00-what-is-my-introduction.html"><![CDATA[<h2 id="나는-내-설명서를-갖고-있는가">나는 내 설명서를 갖고 있는가?</h2>
+<p>AI 를 통해 내가 기본적으로 해야할 백엔드 역량을 매우 빠르고, 정확하게 접근할 수 있게 되었으니, 나의 능력을 어디에 쏟아야 할까? 결국 구글이 제시하듯, LLM 의 리소스를 잘 분배하거나, 평가를 통해 요구되는 사항에 최적화된 기능을 제공하고, 궁극적으로 비용 절감이나, 비용 만큼의 신뢰있는 서비스화 할 수 있는가? 그게 내가 생각하는 다음 내 인계점(Inflection Point)이 아닐까 생각한다.</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry><entry><title type="html">memo - blog utterance setting 차이 정리</title><link href="http://0.0.0.0:4000/tools/2025/08/18/01-utterance-setting-issue.html" rel="alternate" type="text/html" title="memo - blog utterance setting 차이 정리" /><published>2025-08-18T00:00:00+00:00</published><updated>2025-08-18T00:00:00+00:00</updated><id>http://0.0.0.0:4000/tools/2025/08/18/01-utterance-setting-issue</id><content type="html" xml:base="http://0.0.0.0:4000/tools/2025/08/18/01-utterance-setting-issue.html"><![CDATA[<h2 id="댓글-이상하다-뭐지">댓글 이상하다… 뭐지?</h2>
+
+<p>댓글이 달렸다. 기술 블로그 운영할 때 정말 가뭄에 콩나듯, 아직 댓글이 많지는 않지만, 와주시는 것만으로도 감사한데…</p>
+
+<p>문제는 이상하다..</p>
+
+<p>알고보니 모든 댓글이 모든 글에 보인다..!</p>
+
+<p>이상하여 분석하고 정리한 내용이다.</p>
+
+<hr />
+
+<h2 id="utterances-댓글-통합-문제-해결">Utterances 댓글 통합 문제 해결</h2>
+
+<h3 id="원인-분석">원인 분석</h3>
+
+<p>원인은 Jekyll 설정 파일(<code class="language-plaintext highlighter-rouge">_config.yml</code>)의 Utterances <code class="language-plaintext highlighter-rouge">issue_term</code> 설정에 있었다.</p>
+
+<p>기존 설정은 <code class="language-plaintext highlighter-rouge">issue_term: "blog-comment:"</code>로 되어 있었는데, 이는 모든 페이지가 ‘blog-comment:’라는 단 하나의 GitHub Issue를 공유하도록 만든다. 따라서 어떤 글에서 댓글을 달아도 모두 같은 Issue에 저장되어 모든 글에 동일하게 표시되는 것이고 이렇게 되면 어느 글에 댓글을 단 건지 확실히 알기 어렵다 ㅠ..</p>
+
+<p><img src="/assets/images/posts/2025-08/2025-08-18-002.png" alt="" /></p>
+<blockquote>
+  <p>설마 다른 글로 공유가 될 줄은 몰랐다.</p>
+</blockquote>
+
+<h3 id="해결-방안">해결 방안</h3>
+
+<p>이 문제를 해결하기 위해 알아본 결과… gemini 왈 + 검색 결과, 해당 설정의 <code class="language-plaintext highlighter-rouge">issue_term</code> 값을 각 페이지의 고유한 URL 경로를 사용하도록 변경해야 한다.</p>
+
+<ul>
+  <li><strong>기존 설정:</strong> <code class="language-plaintext highlighter-rouge">issue_term: "blog-comment:"</code></li>
+  <li><strong>변경할 설정:</strong> <code class="language-plaintext highlighter-rouge">issue_term: "pathname"</code></li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">pathname</code>으로 설정하면, Utterances는 각 게시물의 고유 URL 경로(예: <code class="language-plaintext highlighter-rouge">/2025/08/18/post-A.html</code>)를 제목으로 하는 별도의 GitHub Issue를 생성하고 연결한다.</p>
+
+<p><img src="/assets/images/posts/2025-08/2025-08-18-003.png" alt="" /></p>
+<blockquote>
+  <p>깔끔하게 해결 완료</p>
+</blockquote>
+
+<h3 id="나름-블로그-jekyll-공부-하고-했다는건데">나름 블로그 jekyll 공부 하고 했다는건데..</h3>
+
+<p>아직 부족한게 넘 많다… 화려한 스펙이라고 할만하려면 더 능통해야하는데, 막상 다른 사람들 사이에서 보면 뭐 이리 모르는게 많은지! 🤣</p>]]></content><author><name>Paul2021-R</name></author><category term="tools" /><category term="생각정리" /><category term="학습" /><category term="blog" /><summary type="html"><![CDATA[댓글 이상하다… 뭐지?]]></summary></entry><entry><title type="html">나의 설명서를 정리는 했던가?</title><link href="http://0.0.0.0:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/08/12/00-what-is-my-introduction.html" rel="alternate" type="text/html" title="나의 설명서를 정리는 했던가?" /><published>2025-08-12T00:00:00+00:00</published><updated>2025-08-12T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/08/12/00-what-is-my-introduction</id><content type="html" xml:base="http://0.0.0.0:4000/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/2025/08/12/00-what-is-my-introduction.html"><![CDATA[<h2 id="나는-내-설명서를-갖고-있는가">나는 내 설명서를 갖고 있는가?</h2>
 
 <p><a href="https://www.youtube.com/watch?v=d07JauBUt5g"><img src="https://i.ytimg.com/vi/d07JauBUt5g/hq720.jpg" alt="비디오 제목" /></a></p>
 
@@ -1223,54 +1266,4 @@ jupyter lab
 
 <p>무조건 맡기는 식으론 매우 위험하고, MVP 그 이상으로 빠르게 구현이 되지만 보안의 문제는 확실하게 존재한다. 더불어 회사가 그걸 용인해주는 곳인가? 여러 면에서 편리함, 효용성에 +로 고려할 것을 미리미리 고려하는 것은 매우 중요한 부분이라고 생각된다.</p>
 
-<p>어쩌면 나만의 검증 절차를 AI 로 체계화 하는 것, 그리고 그걸 내 작업 루틴에 넣는 것이 포함되면 좋지 않을까? 하는 생각을 하게 된다. 그리고 그걸 종합해서 적절하게 코드 리포트 형태로 만든다거나 하는 것도 괜찮지 않을까?</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry><entry><title type="html">AI는 집에서 만들지 말고 사서 쓰세요 | 스케일링 법칙</title><link href="http://0.0.0.0:4000/ai/2025/08/05/01-do-not-make-ai.html" rel="alternate" type="text/html" title="AI는 집에서 만들지 말고 사서 쓰세요 | 스케일링 법칙" /><published>2025-08-05T00:00:00+00:00</published><updated>2025-08-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/05/01-do-not-make-ai</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/05/01-do-not-make-ai.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
-<p><a href="https://www.youtube.com/watch?v=QkPeMzr3Qz4"><img src="/assets/images/posts/2025-08/2025-08-05-001.png" alt="비디오 제목" /></a></p>
-
-<h2 id="요약">요약</h2>
-<p>인공지능(AI) 발전의 핵심 원동력 중 하나는 <strong>‘스케일링 법칙(Scaling Laws)’</strong>이며, 이 법칙은 AI 모델의 성능이 <strong>연산량(Compute), 모델 크기(Model Size), 데이터 크기(Data Size)</strong>의 세 가지 핵심 요소에 따라 일정한 패턴으로 예측 가능하게 변화하는 원리이다.</p>
-
-<h3 id="1-스케일링-법칙의-발견과-핵심-개념">1. 스케일링 법칙의 발견과 핵심 개념</h3>
-
-<ul>
-  <li><strong>성능의 한계와 최적의 경계선(Compute Optimal Frontier)</strong>: AI 모델을 훈련할 때 처음에는 오류(Loss)가 급격히 줄지만, 어느 순간부터는 더 이상 줄지 않는다. 모델 크기를 키우면 오류는 더 줄지만 그만큼 더 많은 연산이 필요하다. 로그 스케일로 보면 모델 크기를 늘려도 넘어설 수 없는 명확한 선이 보이는데, 이것을 <strong>‘최적의 경계선’</strong>이라고 부른다. 스케일링 법칙은 AI 성능이 연산량, 모델 크기, 데이터 크기에 따라 일정하게 줄어드는 것을 보여준다.</li>
-  <li><strong>OpenAI의 발견 (2020년)</strong>: OpenAI는 2020년 논문을 통해 언어 모델 성능에 일정한 패턴이 있음을 발견했으며, 성능이 컴퓨팅 파워, 데이터 크기, 모델 크기에 따라 일정하게 감소함을 확인했다. 이 패턴은 아주 큰 스케일에서도 동일하게 적용된다는 것을 깨달았다. 가장 큰 테스트 모델은 15억 개의 파라미터를 가졌고 약 10 페타플롭/일의 계산 능력이 필요했다.</li>
-  <li><strong>오류 측정: 크로스 엔트로피(Cross-Entropy)</strong>:
-    <ul>
-      <li>GPT-3와 같은 언어 모델은 이전 단어들을 받아 다음 단어나 단어의 조각을 예측하는 방식으로 학습된다. 다음에 올 단어들의 확률을 예측하는데, 이 값들은 ‘소프트맥스’ 과정을 거쳐 모든 확률의 합이 1이 되도록 조정된다. 참고로 GPT-3는 사용할 어휘를 총 52,571개 단어로 미리 구성했다.</li>
-      <li>훈련 과정에서 모델의 예측이 실제 정답과 얼마나 일치하는지 <strong>‘로스(Loss)’</strong> 값을 계산하는데, 이 로스 값을 줄이는 것이 비싼 GPU들이 하는 핵심 작업이다.</li>
-      <li>일반적으로 L1 로스보다 <strong>‘크로스 엔트로피’</strong>라는 로스 함수를 더 자주 사용한다. 크로스 엔트로피는 모델이 예측한 확률값에 로그를 씌우고 음수로 바꿔 계산하는데, 모델의 예측이 정답과 다를수록 로스값이 훨씬 빠르게 증가하여 더 많은 페널티를 부여한다.</li>
-      <li>우리가 보는 성능 그래프는 대부분 테스트셋에서 측정한 평균 크로스 엔트로피 값으로, 모델이 다음 단어를 더 높은 확률로 맞출수록 평균 크로스 엔트로피는 0에 가까워지며 이는 모델이 더 똑똑해진다는 것을 의미한다.</li>
-    </ul>
-  </li>
-  <li><strong>자연어의 엔트로피와 성능의 한계</strong>: 모델이 똑똑해져도 로스(오류)가 0이 되지 않는 이유는 주어진 문장에서 다음에 올 단어가 실제로 여러 개 있을 수 있기 때문이고, 그것 모두 정답이 될 수 있다. 이러한 특성을 <strong>‘자연어에서의 엔트로피’</strong>라고 부른다.
-    <ul>
-      <li>OpenAI 내부적으로 이러한 내용에 대해 언급이 이루어지고, Google 딥마인드 팀이 언어에서의 성능 한계를 예측할 수 있는 단서를 내놓았고, 이를 통해 언어에서도 모델과 데이터 크기에 따라 성능을 예측할 수 있는 스케일링 법칙을 크로스 엔트로피 상수항 <strong>1.69</strong>를 포함해 완성할 수 있었다. 이는 아무리 모델을 키우고 데이터를 늘려 훈련해도 크로스 엔트로피 로스를 결국 1.69 이상 낮출 수 없다는 것을 발견하게 된 것이었다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="2-llm-개발과-투자의-지형-변화">2. LLM 개발과 투자의 지형 변화</h3>
-
-<ul>
-  <li><strong>막대한 투자와 예측의 중요성</strong>: OpenAI는 GPT-3 훈련에 1,750억 개의 파라미터와 3,640 페타플롭/일의 연산이 필요했으며, 훈련용 GPU 가격만 한화 약 1,400억 원 가량이 필요했다. GPT-4는 그보다 5배가 넘는 20만 페타플롭/일의 연산을 사용했고, A100 GPU 25,000개를 석 달 동안 사용하며 GPU 가격만 6,000억 원이 넘게 들었다고 알려졌다.</li>
-  <li><strong>투자의 정당성 확보</strong>: 스케일링 법칙은 이처럼 막대한 자본 지출(CapEx)을 하기 전에 모델의 성능 향상 정도를 <strong>정확히 예측</strong>할 수 있게 해주었다. 2020년 초 10^-8 페타플롭/일 규모에서 GPT-4의 20만 페타플롭/일까지 약 13자리가 넘는 차이에서도 정교하게 작동하는 스케일링 법칙이 이러한 투자를 가능하게 했다. OpenAI는 GPT-4 훈련을 위해 약 1,400억 원 이상을 투자하기 전 조그만 실험들을 돌려 그만큼 투자했을 때 얼마나 성능을 뽑을 수 있는지 먼저 확인했다.</li>
-</ul>
-
-<h3 id="3-스케일링-법칙의-이론적-배경-매니폴드-가설">3. 스케일링 법칙의 이론적 배경: 매니폴드 가설</h3>
-
-<ul>
-  <li><strong>고차원 데이터와 매니폴드</strong>: 머신러닝에서는 모델이 학습하는 데이터들이 어떤 ‘곡면’, <strong>‘매니폴드(Manifold)’</strong> 위에 놓인다고 가정한다. 이미지나 텍스트와 같은 주변의 모든 데이터는 이 고차원 공간의 한 점들로 생각할 수 있다. 예를 들어, 28x28 크기의 손글씨 이미지들도 각 위치를 축으로 하는 784차원 공간의 점으로 생각할 수 있다. 하지만 이 거대한 고차원 공간의 대부분은 <code class="language-plaintext highlighter-rouge">손글씨 숫자와 전혀 무관</code>하며, <code class="language-plaintext highlighter-rouge">무작위로 공간의 점을 선택하면 의미 없는 노이즈</code>일 뿐이다.</li>
-  <li><strong>차원 축소와 매니폴드의 중요성</strong>: AI 모델의 학습은 고차원의 데이터를 알기 쉽고 의미 있는 저차원의 공간으로 이동시키는 과정이다. 매니폴드는 단순히 데이터의 차원을 줄이는 것 이상의 의미를 가지는데, 바로 이 매니폴드의 기하 구조 자체가 데이터를 설명하는 중요한 정보를 담고 있기 때문이다. 비슷한 이미지나 개념을 가진 단어가 매니폴드 위에서 서로 가까워지는 것을 확인할 수 있다.</li>
-  <li><strong>데이터 밀도와 오류 예측</strong>: 매니폴드 가설에 따르면 모델은 고차원 공간의 훈련 데이터를 매니폴드 위에 점으로 옮기는 학습을 한다. 훈련 데이터가 매니폴드 위에 얼마나 촘촘하게 분포하는지는 데이터의 양과 매니폴드의 차원에 따라 달라지며, 차원이 높을수록 같은 데이터 개수에도 포인트 간 거리가 멀어져 ‘듬성듬성’해진다.</li>
-  <li><strong>해상도 제한 스케일링</strong>: 테스트할 점에서 생길 오류는 해당 점으로부터 가장 가까운 훈련 점의 거리보다 커질 수 없다. 모델이 훈련 데이터를 완벽하게 학습했다고 가정하면, 훈련된 데이터 지점에서만큼은 오차 없이 실제 데이터의 매니폴드를 정확하게 맞출 것이다. AI 모델은 훈련 포인트들을 선형적으로 보간하여 <code class="language-plaintext highlighter-rouge">보지 않은 지점도 예측한다고</code> 볼 수 있다. 매니폴드가 충분히 매끄럽다고 가정하면 오류는 가장 가까운 훈련 포인트와 테스트 포인트 간의 거리의 제곱에 비례하며, 최종적으로 오류는 데이터셋 크기(D)의 마이너스 (매니폴드 차원 d / 4) 제곱에 비례한다. 이것을 <strong>‘해상도 제한 스케일링’</strong>이라고 부르는데, 데이터가 많을수록 데이터 매니폴드를 더 선명하게 볼 수 있음을 뜻한다.</li>
-  <li><strong>이론과 실제의 일치</strong>: 흥미로운 점은 데이터 차원뿐만 아니라 모델 크기로 수식을 만들어도 똑같이 거듭제곱에 4가 들어간다는 것이다. OpenAI는 2020년 논문에서 크로스 엔트로피 로스가 데이터셋 크기의 -0.095제곱에 비례한다고 발표했는데, 이론대로라면 이 값은 데이터 차원의 최소 네 배 이상이어야 한다. 자연어의 고유 차원은 약 42 정도로 계산되지만, 실제 언어 모델이 학습한 매니폴드의 고유 차원은 약 100 정도로 훨씬 높게 나왔다. 이는 이론적으로는 문제없는 범위에 놓이지만, 자연어에서는 합성 및 작은 데이터셋에서만큼 정확히 맞추지 못했다고 볼 수도 있다. 따라서 지금까지 설명한 이론은 잘 작동하지만, 아직 AI를 완벽히 통합할 만한 이론이라고 보기엔 이르다는 평가다.</li>
-</ul>
-
-<h2 id="내-생각-정리">내 생각 정리</h2>
-<p>LLM의 배경지식을 위하여 AI 에 대한 좋은 영상들을 계속해서 보고, 학습하고 있다. 아직 실질적인 학습까진 아니긴하지만, 어쨌든 기존에 겉핧기로 이해하던 영역을 좀더 구체화하여 이해하고, 이 복잡하고 큰 AI 라는 영역에 대해 어떻게 투자하고, 어떻게 가이드를 잡는지에 대해 저렇게 수학적, 수치적으로 나타내는 것. 그리고 거기까지 앞서가는 이들이 있다는 생각을 하게 되니, 정말 세상이 미친듯이 빠르게 돌아가고 있구나를 새삼 느꼈다.</p>
-
-<p>또한 동시에, 결국 수학적 방식을 통해 저러한 수치적 한계점이 나온다는 것이, 단순한 한계점이 아니라, 오히려 투자를 왜 그렇게 해야만 하는가를 나타내는 시각은 매우 신선한 영역이었다고 생각한다.</p>
-
-<p>동시에, 왜 죽기살기로 거대한 규모를 만들어야 하고, 소버린 AI 라는 차원으로 뭔가 해보려고 하는 국내 업체들에 대한 요최근의 뉴스를 보면 시사하는 지점이 많다는 생각을 하게도 된다.</p>
-
-<p>여담이지만 해당 유튭 내용은 정말 하나하나 엄청나게 주옥같은 내용이라, 엄청나게 도움이 된다고 느낀다…</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="LLM" /><category term="학습" /><summary type="html"><![CDATA[영상 보기]]></summary></entry></feed>
+<p>어쩌면 나만의 검증 절차를 AI 로 체계화 하는 것, 그리고 그걸 내 작업 루틴에 넣는 것이 포함되면 좋지 않을까? 하는 생각을 하게 된다. 그리고 그걸 종합해서 적절하게 코드 리포트 형태로 만든다거나 하는 것도 괜찮지 않을까?</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry></feed>

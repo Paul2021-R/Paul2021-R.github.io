@@ -220,7 +220,7 @@ paginate_path: "/page:num/"
 
 utterances:
   repo: "Paul2021-R/blog-comments"
-  issue_term: "blog-comment:"
+  issue_term: "pathname"
   label: "utterances"
   theme: "github-light"
   follow_site_theme: true
