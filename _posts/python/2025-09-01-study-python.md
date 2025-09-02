@@ -3,7 +3,7 @@ layout: post
 title: 코테 학습 - '택배 상자 꺼내기'
 subtitle: 파이썬 학습 내용 정리
 categories: 학습
-tags: python 이직 학습
+tags: python 이직 학습 코딩테스트
 thumb: /assets/images/posts/python/2025-09-02-001.png
 custom-excerpt: 파이썬 코딩 테스트 학습 
 banner:
