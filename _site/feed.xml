@@ -1,4 +1,225 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-09-02T08:12:40+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">코테 학습 - ‘택배 상자 꺼내기’</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/01/study-python.html" rel="alternate" type="text/html" title="코테 학습 - ‘택배 상자 꺼내기’" /><published>2025-09-01T00:00:00+00:00</published><updated>2025-09-01T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/01/study-python</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/01/study-python.html"><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-09-03T08:05:12+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">CS 학습 - 9월 1주차</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/03/cs.html" rel="alternate" type="text/html" title="CS 학습 - 9월 1주차" /><published>2025-09-03T00:00:00+00:00</published><updated>2025-09-03T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/03/cs</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/03/cs.html"><![CDATA[<h2 id="introduction">introduction</h2>
+
+<p>CS 관련하여 부족한 부분들이 조금 있다고 생각했다. 
+기술 면접을 준비하기 위해, 특히나 백엔드 특화 내용을 확실하게 정리하기 위해 하루에 30분 정도만 소비하기로 했다. 오전 첫 시작 시간을 위한 거라고 보면 될 듯 싶다.</p>
+
+<p>외우는 것까지 되면 좋겠지만… 안되면 일단 기록이라도 제대로 해둬야 하니…</p>
+
+<p>기본 내용은 꽤 괜찮은 글의 내용이 있어 <a href="https://mangkyu.tistory.com/88">여기</a>를 참고하고, 추가적으로 찾아 다니며 정리한 내용들을 기재하려고 한다.</p>
+
+<h2 id="프로그래밍-공통">프로그래밍 공통</h2>
+
+<h3 id="oop란">OOP란</h3>
+<p>현실 세계의 구조, 동작, 추상적 개념을 프로그래밍에 옮겨와 특징과 기능으로 구현해내는 프로그래밍 기법으로, 코드 작성시 재 사용성, 변형 가능성 등을 높이는 특징을 가진다.</p>
+
+<h3 id="oop-5가지-설계-원칙">OOP 5가지 설계 원칙</h3>
+<ul>
+  <li><strong>SRP(Single Responsibility Principle, 단일 책임 원칙)</strong>: 클래스는 단 하나의 목적을 가져야 하며, 클래스를 변경하는 이유는 단 하나의 이유여야 한다.</li>
+  <li><strong>OCP(Open-Closed Principle, 개방 폐쇠 원칙)</strong>: 클래스는 확장에는 열려 있고, 변경에는 닫혀 있어야 한다.</li>
+  <li><strong>LSP(Liskov Substitution Principle, 리스코프 치환 원칙)</strong>: 상위 타입의 객체를 하위 타입으로 바꾸어도 프로그램은 일관되게 동작해야 한다.</li>
+  <li><strong>ISP(Interface Segregation Principle, 인터페이스 분리 원칙)</strong>: 클라이언트는 이용하지 않는 메소드에 의존하지 않도록 인터페이스를 분리해야 한다.</li>
+  <li><strong>DIP(Dependency Inversion Principle, 의존 역전 법칙)</strong>: 클라이언트는 추상화(인터페이스)에 의존해야 하며, 구체화(구현된 클래스)에 의존해선 안된다.</li>
+</ul>
+
+<h3 id="절차-지향-프로그래밍-vs-객체-지향-프로그래밍">절차 지향 프로그래밍 vs 객체 지향 프로그래밍</h3>
+<ul>
+  <li>절차 지향
+    <ol>
+      <li>순차 처리 중시</li>
+      <li>C 언어와 같은 언어가 대표적</li>
+      <li>컴퓨터의 바이너리 처리와 유사하므로, 실행속도가 빠름</li>
+      <li>코드 순서 변경 = 결과 바뀔 가능성 있음</li>
+    </ol>
+  </li>
+  <li>객체 지향
+    <ol>
+      <li>실 세계를 객체화</li>
+      <li>C++, Java, Python 등</li>
+      <li>캡슐화, 상속, 다형성 기법 등으로 보다 추상화된 형태</li>
+      <li>절차 지향보단 당연히 느릴 수 있음</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="rest-api-와-restful-api">REST API 와 RESTful API</h3>
+<ul>
+  <li>REST 는 HTTP를 활용한 아키텍처 스타일이고, REST API 는 이를 기반한 API 이다. RESTful API 라고 함은, REST 의 원칙, 제약조건을 최대한 잘 따르며 설계한 API 를 의미, 즉 REST 는 개념 및 원칙이고 ful 이 붙으면 이를 구현한 결과물이라 볼 수 있다.</li>
+  <li>REST 는 REpresentational State Transfer 의 약자로, 네트워크 상태가 전이되는 표현을 의미한다.</li>
+  <li>REST 원칙
+    <ul>
+      <li>
+        <p><strong>클라이언트-서버 디커플링</strong>. REST API 디자인에서 클라이언트와 서버 애플리케이션은 서로 간에 완전히 독립적이어야 한다. 클라이언트 애플리케이션이 알아야 하는 유일한 정보는 요청된 리소스의 URI이며, 이는 다른 방법으로 서버 애플리케이션과 상호작용할 수 없다. 이와 유사하게, 서버 애플리케이션은 HTTP를 통해 요청된 데이터에 전달하는 것 말고는 클라이언트 애플리케이션을 수정하지 않아야 한다.</p>
+      </li>
+      <li>
+        <p><strong>Stateless</strong>. REST API는 stateless이다. 이는 각 요청에서 이의 처리에 필요한 모든 정보를 포함해야 함을 의미한다. 즉, REST API는 서버측 세션을 필요로 하지 않는다. 서버 애플리케이션은 클라이언트 요청과 관련된 데이터를 저장할 수 없다.</p>
+      </li>
+      <li>
+        <p><strong>캐싱 가능성</strong>. 가능하면 리소스를 클라이언트 또는 서버측에서 캐싱할 수 있어야 한다. 또한 서버 응답에는 전달된 리소스에 대해 캐싱이 허용되는지 여부에 대한 정보도 포함되어야 한다. 이의 목적은 서버측의 확장성 증가와 함께 클라이언트측의 성능 향상을 동시에 얻는 것이다.</p>
+      </li>
+      <li>
+        <p><strong>계층 구조 아키텍처</strong>. REST API에서는 호출과 응답이 서로 다른 계층을 통과한다. 경험에 따르면 클라이언트와 서버 애플리케이션이 서로 간에 직접 연결된다고 가정하지 않는 것이 좋다. 통신 루프에는 다수의 서로 다른 중개자가 있을 수 있다. REST API는 엔드 애플리케이션 또는 중개자와 통신하는지 여부를 클라이언트나 서버가 알 수 없도록 설계되어야 한다.</p>
+      </li>
+      <li>
+        <p>코드 온디맨드(옵션). REST API는 일반적으로 정적 리소스를 전송하지만, 특정한 경우에는 응답에 실행 코드(예: Java 애플릿)를 포함할 수도 있다. 이 경우에 코드는 요청 시에만 실행되어야 한다.</p>
+      </li>
+      <li>
+        <p>균일한 인터페이스. 요청이 어디에서 오는지와 무관하게, 동일한 리소스에 대한 모든 API 요청은 동일하게 보여야 한다. REST API는 사용자의 이름이나 이메일 주소 등의 동일한 데이터 조각이 오직 하나의 URI(Uniform Resource Identifier)에 속함을 보장해야 한다. 리소스가 너무 클 필요는 없지만, 이는 클라이언트가 필요로 하는 모든 정보를 포함해야 한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>REST 구성요소
+    <ul>
+      <li>
+        <p><strong>자원(Resource) by URI</strong> : REST API 는 URI 를 통해 사용할 자원을 명시한다. 보통은 이떄 URI 에 명시되는 자원은 PK 와 같은 고유한 ID 값이다.</p>
+      </li>
+      <li>
+        <p><strong>행위(Verb) by HTTP Method</strong> : REST API 는 HTTP Method (GET, POST, PUT, DELETE 등) 를 사용하여 URI 에 명시된 자원에 대해 어떠한 행위를 수행할 것인지를 명시한다.</p>
+      </li>
+      <li>
+        <p><strong>표현(Representation of Resource)</strong> : REST API 에서 리소스는 다양한 형태(JSON, XML, TEXT, RSS 등)로 표현될 수 있다. 보통은 JSON 또는 XML 을 통해 데이터를 주고받는 것이 일반적이다.</p>
+      </li>
+      <li>
+        <p><a href="https://developer.mozilla.org/ko/docs/Glossary/REST">참고자료</a></p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="메모리-구조">메모리 구조</h3>
+<p><img src="/assets/images/posts/2025-09/2025-09-03-001.png" alt="" /></p>
+<ul>
+  <li><strong>코드 영역</strong>: 실행할 프로그램의 코드가 저장되는 영역으로 텍스트 영역이라고도 부른다. 사용자가 프로그램 실행 명령을 내리면 OS가 HDD에서 메모리로 실행 코드를 올리게 되고, CPU는 코드 영역에 저장된 명령어를 하나씩 처리하게 된다.</li>
+  <li><strong>데이터 영역</strong>: 프로그램의 전역 변수(global)와 정적 변수(static)가 저장되는 영역이다. 데이터 영역은 프로그램의 시작과 함께 할당되며, 프로그램이 종료되면 소멸한다.</li>
+  <li><strong>힙 영역</strong>: 프로그래머가 직접 관리할 수 있는 메모리 영역으로 이 공간에 메모리를 할당하는 것을 동적 할당이라고 부른다. Java에서는 가비지 컬렉터가 자동으로 해제해준다. 힙 영역은 스택 영역과 달리 낮은 주소에서 높은 주소로 메모리가 할당된다.</li>
+  <li><strong>스택 영역</strong>: 함수의 호출과 함께 할당되며 지역 변수와 매개 변수가 저장되는 영역이다. 스택 영역에 저장되는 함수의 호출 정보를 스택프레임이라고 한다. 스택 영역은 함수의 호출이 완료되면 소멸한다. 스택 영역은 높은 주소에서 낮은 주소로 메모리가 할당된다.</li>
+</ul>
+
+<h3 id="메모리-구조-심화---java-와-javascript">메모리 구조 심화 - Java 와 JavaScript</h3>
+<ul>
+  <li><strong>핵심 요약: 관리 주체와 방식의 차이</strong> : Java와 JavaScript는 둘 다 자동 메모리 관리(가비지 컬렉션)를 사용하지만, <strong>Java는 JVM(자바 가상 머신) 위에서 보다 체계적이고 개발자가 직접 관여할 수 있는 옵션이 많은 반면, JavaScript는 브라우저의 엔진에 의해 더 추상화되고 자동화된 방식으로 메모리를 관리</strong>한다.</li>
+</ul>
+
+<h4 id="java의-메모리-사용-방식"><strong>Java의 메모리 사용 방식</strong></h4>
+<ul>
+  <li>Java 애플리케이션은 <strong>JVM(Java Virtual Machine)</strong> 위에서 실행되며, JVM은 운영체제로부터 할당받은 메모리 영역(Runtime Data Area)을 용도에 따라 여러 부분으로 나누어 관리한다.</li>
+  <li><strong>메서드(Method) 영역</strong>: 클래스, 변수, 메서드 등과 같은 클래스 정보가 저장된다. 이 영역은 모든 스레드가 공유한다.</li>
+  <li><strong>힙(Heap) 영역</strong>: <code class="language-plaintext highlighter-rouge">new</code> 키워드로 생성된 객체와 배열이 저장되는 공간이다. 가비지 컬렉터(Garbage Collector)가 주로 활동하는 영역으로, 더 이상 참조되지 않는 객체를 찾아 메모리에서 해제한다.
+    <ul>
+      <li><strong>Young Generation</strong>: 새롭게 생성된 객체가 위치한다. 이곳에서 많은 객체들이 생성되고 빠르게 사라진다.</li>
+      <li><strong>Old Generation</strong>: Young Generation 영역에서 오랫동안 살아남은 객체들이 이동하는 곳이다.</li>
+    </ul>
+  </li>
+  <li><strong>스택(Stack) 영역</strong>: 메서드 호출 시 생성되는 지역 변수, 매개변수, 리턴 값 등이 저장된다. 메서드 호출이 끝나면 해당 스택 프레임은 자동으로 사라지므로 데이터도 함께 제거된다. 각 스레드마다 별도의 스택이 생성된다.</li>
+</ul>
+
+<h4 id="javascript의-메모리-사용-방식"><strong>JavaScript의 메모리 사용 방식</strong></h4>
+<p>JavaScript는 주로 웹 브라우저의 JavaScript 엔진(예: Chrome의 V8)에 의해 메모리가 관리된다. Java와 유사하게 힙과 스택을 사용하지만, 개발자가 직접 제어할 수 있는 부분은 거의 없다.</p>
+<ul>
+  <li><strong>메모리 생명 주기</strong>: JavaScript의 메모리 관리는 할당, 사용, 해제의 3단계 생명 주기를 따른다.
+    <ol>
+      <li><strong>할당 (Allocation)</strong>: 변수 선언, 함수 정의, 객체 생성 시 엔진이 자동으로 메모리를 할당한다.</li>
+      <li><strong>사용 (Use)</strong>: 할당된 메모리에 값을 읽고 쓰는 작업을 한다.</li>
+      <li><strong>해제 (Release)</strong>: 더 이상 필요 없는 메모리는 가비지 컬렉터에 의해 자동으로 회수된다.</li>
+    </ol>
+  </li>
+  <li><strong>메모리 공간</strong>:
+    <ul>
+      <li><strong>콜 스택(Call Stack)</strong>: 함수가 호출될 때마다 해당 함수의 실행 컨텍스트(함수 정보, 인자, 지역 변수 등)가 순서대로 쌓이는 곳이다. 원시 타입(Primitive types) 데이터가 이곳에 저장된다.</li>
+      <li><strong>힙(Heap)</strong>: 객체, 배열, 함수와 같이 크기가 정해지지 않은 참조 타입(Reference types) 데이터가 저장되는 공간이다. 콜 스택에는 힙에 저장된 데이터의 주소(참조)만 저장된다.</li>
+    </ul>
+  </li>
+  <li><strong>가비지 컬렉션</strong>: JavaScript 엔진은 ‘도달 가능성(reachability)’ 개념을 사용하여 더 이상 참조되지 않는 객체를 찾아 메모리에서 제거한다. 특정 객체에 접근할 수 있는 경로가 하나도 없으면 가비지 컬렉션의 대상이 된다.</li>
+</ul>
+
+<h4 id="주요-차이점-정리"><strong>주요 차이점 정리</strong></h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>Java</th>
+      <th>JavaScript</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**실행 환경**</td>
+      <td>JVM (Java Virtual Machine)</td>
+      <td>JavaScript 엔진 (e.g., V8, SpiderMonkey)</td>
+    </tr>
+    <tr>
+      <td>**메모리 구조**</td>
+      <td>메서드, 힙, 스택 등으로 명확하게 구분</td>
+      <td>콜 스택, 힙으로 단순하게 구분</td>
+    </tr>
+    <tr>
+      <td>**데이터 타입**</td>
+      <td>원시 타입은 스택, 참조 타입은 힙에 저장</td>
+      <td>원시 타입은 콜 스택, 참조 타입은 힙에 저장</td>
+    </tr>
+    <tr>
+      <td>**개발자 제어**</td>
+      <td>힙 크기 조절, GC 알고리즘 선택 등 일부 제어 가능</td>
+      <td>메모리 관리에 거의 관여할 수 없음</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="jvm을-계속-쓰는-이유는">JVM을 계속 쓰는 이유는?</h4>
+<p>초기 JVM은 코드를 한 줄씩 해석하는 인터프리터 방식의 비중이 높아 속도가 느리다는 평가를 받았지만, 오늘날의 JVM은 다음과 같은 기술들을 통해 높은 성능을 보여준다.</p>
+
+<ol>
+  <li><strong>고도로 발전된 JIT(Just-In-Time) 컴파일러</strong>
+    <ul>
+      <li><strong>프로파일링 기반 최적화</strong>: JVM은 단순히 코드를 기계어로 번역하는 것을 넘어, 애플리케이션이 실행되는 동안 <strong>코드의 어떤 부분이 자주 사용되는지(‘뜨거운’ 코드)를 지속적으로 분석</strong>한다.</li>
+      <li><strong>적응형 최적화(Adaptive Optimization)</strong>: 자주 사용되는 코드는 더욱 공격적으로 최적화된 기계어로 재컴파일한다. 예를 들어, 처음에는 빠르게 컴파일하고(C1 컴파일러), 해당 코드가 계속해서 많이 쓰이면 시간을 더 들여 최고 수준으로 최적화한다(C2 컴파일러). 이런 동적인 최적화 방식 덕분에 시간이 지날수록 애플리케이션의 성능이 점차 향상된다.</li>
+    </ul>
+  </li>
+  <li><strong>혁신적인 가비지 컬렉터(GC)의 발전</strong>
+    <ul>
+      <li>과거의 GC는 메모리를 정리하는 동안 애플리케이션 실행이 멈추는 <strong>‘Stop-the-world’</strong> 현상 때문에 성능 저하의 주된 원인이었다.</li>
+      <li><strong>G1 GC (Garbage-First)</strong>: Java 9부터 기본 GC로 채택되었으며, 전체 힙(Heap) 영역을 작은 구역(Region)으로 나누어 관리한다. 이를 통해 짧은 멈춤 시간(Pause Time)을 예측 가능하게 유지하면서도 효율적으로 메모리를 정리한다.</li>
+      <li><strong>ZGC 및 Shenandoah GC</strong>: 최신 Java 버전에 도입된 이 GC들은 <strong>멈춤 시간을 수 밀리초(ms) 단위로 극단적으로 줄이는 것</strong>을 목표로 한다. 수백 기가바이트(GB)에 달하는 거대한 메모리를 사용하는 시스템에서도 애플리케이션의 중단 없이 메모리를 정리할 수 있어, 대규모 서비스에서 매우 중요한다.</li>
+    </ul>
+  </li>
+  <li><strong>JVM 자체의 내부 최적화</strong>
+    <ul>
+      <li><strong>이스케이프 분석(Escape Analysis)</strong>: 객체가 특정 메서드 안에서만 사용되고 외부로 벗어나지 않는다고 판단되면, 비싼 메모리 공간인 힙(Heap)이 아니라 훨씬 빠른 스택(Stack)에 객체를 할당한다. 이는 GC의 부담을 크게 줄여준다.</li>
+      <li><strong>프로젝트 룸(Project Loom)</strong>: 최신 Java에 도입된 ‘가상 스레드(Virtual Threads)’ 기능이다. 기존 스레드보다 훨씬 가볍게 만들 수 있어, 적은 자원으로 수백만 개의 동시 작업을 처리할 수 있게 해준다. 이는 JVM 수준에서 동시성 처리 방식을 근본적으로 개선한 것이다.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="js-가-과거보다-빨라진-이유는">JS 가 과거보다 빨라진 이유는?</h4>
+<p>기존의 JS의 철학, 그리고 이를 구동하는 엔진은 편리했으나 한계가 많았다. 비표준의 엉망인 상황에 성능까지 좋지 못했으나, V8 엔진은 다음과 같은 핵심 기술들을 통해 JavaScript의 성능을 크게 향상시킨다.</p>
+
+<ol>
+  <li><strong>JIT (Just-In-Time) 컴파일러 도입</strong>
+    <ul>
+      <li><strong>과거 방식</strong>: 코드를 한 줄씩 읽고 해석하는 <strong>인터프리터(Interpreter)</strong> 방식을 무조건적으로 사용해 속도가 느렸다.</li>
+      <li><strong>V8 방식</strong>: JavaScript 코드를 실행 직전에 <strong>기계어(Machine Code)</strong>로 컴파일한다. 이는 사람이 이해하는 언어를 컴퓨터 CPU가 직접 이해하는 언어로 미리 번역해두는 것과 같아 실행 속도가 매우 빨라진다.</li>
+    </ul>
+  </li>
+  <li><strong>최적화 컴파일러: 이그니션(Ignition)과 터보팬(TurboFan)</strong>
+    <ul>
+      <li>V8은 단순히 코드를 번역하는 것을 넘어, 2단계에 걸친 최적화 전략을 사용한다.</li>
+      <li><strong>이그니션 (Ignition)</strong>: 먼저 코드를 빠르게 실행하기 위해 <strong>바이트코드(Bytecode)</strong>로 변환한다. 이는 시작 속도를 빠르게 만들어 준다.</li>
+      <li><strong>터보팬 (TurboFan)</strong>: 코드가 실행되는 동안, 자주 사용되는 ‘뜨거운(hot)’ 부분을 감시한다. 그리고 이 부분을 <strong>매우 최적화된 기계어</strong>로 다시 컴파일하여, 반복적인 작업의 성능을 극대화한다.</li>
+    </ul>
+  </li>
+  <li><strong>객체 속성 접근 속도 향상: 히든 클래스(Hidden Class)</strong>
+    <ul>
+      <li>JavaScript는 객체의 구조가 동적으로 바뀔 수 있어 속성 접근이 느릴 수 있다.</li>
+      <li>V8은 비슷한 구조의 객체들을 내부적으로 <strong>같은 ‘히든 클래스(Hidden Class)’로 묶어 관리</strong>한다. 이를 통해 객체의 속성이 메모리의 어디에 위치하는지 미리 예측하고 빠르게 접근할 수 있게 된다.</li>
+    </ul>
+  </li>
+  <li><strong>가비지 컬렉션(GC) 최적화</strong>
+    <ul>
+      <li>더 이상 사용하지 않는 메모리를 정리하는 가비지 컬렉션 과정이 프로그램의 실행을 잠시 멈추게 할 수 있다.</li>
+      <li>V8은 이 멈춤 현상(stop-the-world)을 최소화하기 위해, <strong>여러 개의 스레드를 활용하여 병렬적</strong>으로 메모리를 정리하고, 세대별(Generational)로 나누어 효율적으로 관리하는 등 다양한 최적화 기법을 사용한다.</li>
+    </ul>
+  </li>
+</ol>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="이직" /><category term="학습" /><category term="CS" /><summary type="html"><![CDATA[introduction]]></summary></entry><entry><title type="html">코테 학습 - ‘택배 상자 꺼내기’</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/01/study-python.html" rel="alternate" type="text/html" title="코테 학습 - ‘택배 상자 꺼내기’" /><published>2025-09-01T00:00:00+00:00</published><updated>2025-09-01T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/01/study-python</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/01/study-python.html"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>본 글은 원본 문제를 기반으로 풀이한 내용을 담고 있습니다.</p>
 
@@ -149,7 +370,7 @@
 
 <p>좌표를 짤 거지만, 그때 몇번째 줄에 몇번째냐. 그리고 거기서 방향도 고려해야 한다. 이런 조건들에 사실 머리가 좀 하얘지긴 했었다.</p>
 
-<p>그런데 개선 방향을 보니, 결국 위 아래가 중요한게 아니라, 그냥 현재 타겟이 되는 박스의 위치와 같은 x 좌표 위치만 있으면 되고, 최대 값까지 중에서도 그냥 한번만 루프를 돌면 된다는 점.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><summary type="html"><![CDATA[Introduction]]></summary></entry><entry><title type="html">AI Breakfast S2 Ep 3 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/08/18/00-AI-trend-with-google-s2-03.html" rel="alternate" type="text/html" title="AI Breakfast S2 Ep 3 생각정리" /><published>2025-08-18T00:00:00+00:00</published><updated>2025-08-18T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/18/00-AI-trend-with-google-s2-03</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/18/00-AI-trend-with-google-s2-03.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
+<p>그런데 개선 방향을 보니, 결국 위 아래가 중요한게 아니라, 그냥 현재 타겟이 되는 박스의 위치와 같은 x 좌표 위치만 있으면 되고, 최대 값까지 중에서도 그냥 한번만 루프를 돌면 된다는 점.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><category term="코딩테스트" /><summary type="html"><![CDATA[Introduction]]></summary></entry><entry><title type="html">AI Breakfast S2 Ep 3 생각정리</title><link href="http://0.0.0.0:4000/ai/2025/08/18/00-AI-trend-with-google-s2-03.html" rel="alternate" type="text/html" title="AI Breakfast S2 Ep 3 생각정리" /><published>2025-08-18T00:00:00+00:00</published><updated>2025-08-18T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/18/00-AI-trend-with-google-s2-03</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/18/00-AI-trend-with-google-s2-03.html"><![CDATA[<h2 id="영상-보기">영상 보기</h2>
 <p><a href="https://www.youtube.com/watch?v=WTea4oBLPLQ"><img src="https://i.ytimg.com/vi/WTea4oBLPLQ/hq720.jpg" alt="비디오 제목" /></a></p>
 
 <h2 id="요약">요약</h2>
@@ -1121,242 +1342,4 @@ Google 의 서비스는 일반 대중에게는 그다지 큰 놀라움이 아니
 
 <p>기존 스티치 AI 라는 웹 퍼블리싱, 웹 디자인을 위한 툴이 있었는데 이것만으로도 훌륭했지만, 이젠 정말 에이전트의 개념이 충분히 녹아든 서비스가 나오며, 그걸 활용할 줄 아냐 모르느냐의 차이는 명백한 생산성, 무엇보다 기본 실력과 경험의 차이를 이끌 수 있겠다.</p>
 
-<p>내가 필요한 서비스를 만들거나, 내가 필요한 기능을 구체화 한다. 거기서 핵심은 ‘내가 필요한’ 것이 아닌 것들을 AI에게 맡긴다면, 나는 내가 원하는 수준의 내 도메인을 위한 필요에 따른 스킵, 빠른 진행을 가능케 만들 수 있다는 것이다…. 진짜 멈춰 있을 틈이 없을 것 같다.</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry><entry><title type="html">python AI 개발환경 설정(가상환경) + Jupyter lab (colab)</title><link href="http://0.0.0.0:4000/ai/2025/08/06/01-setting-python-for-ai-study.html" rel="alternate" type="text/html" title="python AI 개발환경 설정(가상환경) + Jupyter lab (colab)" /><published>2025-08-06T00:00:00+00:00</published><updated>2025-08-06T00:00:00+00:00</updated><id>http://0.0.0.0:4000/ai/2025/08/06/01-setting-python-for-ai-study</id><content type="html" xml:base="http://0.0.0.0:4000/ai/2025/08/06/01-setting-python-for-ai-study.html"><![CDATA[<h2 id="python-ai-개발-환경-구축-로컬uv-vs-클라우드colab">Python AI 개발 환경 구축: 로컬(uv) vs. 클라우드(Colab)</h2>
-
-<h3 id="1-개요">1. 개요</h3>
-
-<p>이 문서는 파이썬 AI 개발을 위한 두 가지 주요 환경 구축 방법을 정리한 것이다. 첫 번째는 <code class="language-plaintext highlighter-rouge">uv</code>를 활용해 개인 PC에 구축하는 <strong>로컬(Local) 환경</strong>의 핵심 도구인 <strong>JupyterLab</strong>이고, 두 번째는 별도 설치가 필요 없는 <strong>클라우드(Cloud) 환경</strong>인 <strong>Google Colab</strong>이다. 각 환경의 개념과 특징을 이해하여 상황에 맞는 최적의 도구를 선택하고 활용하는 것을 목표로 한다.</p>
-
-<hr />
-
-<h3 id="2--로컬-개발-환경-uv--jupyterlab">2. 🚀 로컬 개발 환경 (<code class="language-plaintext highlighter-rouge">uv</code> + JupyterLab)</h3>
-
-<h4 id="가-jupyterlab-이란">가. JupyterLab 이란?</h4>
-
-<p><strong>JupyterLab</strong>은 웹 브라우저에서 실행되는 **통합 개발 환경(IDE)**이다. 단순히 코드를 작성하고 실행하는 노트북(<code class="language-plaintext highlighter-rouge">ipynb</code>) 기능을 넘어, 파일 탐색기, 터미널, 텍스트 편집기 등 데이터 과학 작업에 필요한 여러 도구를 하나의 작업 공간에 통합하여 제공한다.</p>
-
-<blockquote>
-  <p><strong>쉽게 비유하자면,</strong> JupyterLab은 데이터 과학자를 위한 **‘디지털 작업실’**과 같다. 작업실 안에서 코드가 담긴 노트북, 각종 데이터 파일, 명령어 창을 한눈에 펼쳐놓고 유기적으로 오가며 전체 프로젝트를 관리할 수 있는 유연한 공간이다.</p>
-</blockquote>
-
-<h4 id="나-로컬-환경-도구로-uv를-선택한-이유">나. 로컬 환경 도구로 <code class="language-plaintext highlighter-rouge">uv</code>를 선택한 이유</h4>
-
-<p>전통적인 <code class="language-plaintext highlighter-rouge">conda</code>나 <code class="language-plaintext highlighter-rouge">pip</code>+<code class="language-plaintext highlighter-rouge">venv</code> 조합 대신 <code class="language-plaintext highlighter-rouge">uv</code>를 선택한 이유는 <strong>속도와 간결함</strong>을 통해 현대적이고 효율적인 개발 환경을 구성하기 위함이다.</p>
-
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">uv</code>의 핵심 장점</strong>:
-    <ol>
-      <li><strong>압도적인 속도</strong>: <code class="language-plaintext highlighter-rouge">uv</code>는 Rust로 작성되어 기존 <code class="language-plaintext highlighter-rouge">pip</code>이나 <code class="language-plaintext highlighter-rouge">conda</code> 대비 수십 배에서 수백 배 빠른 패키지 설치 및 의존성 해결 속도를 보여준다. 기다리는 시간을 극적으로 줄여준다.</li>
-      <li><strong>통합된 도구</strong>: 가상 환경 생성(<code class="language-plaintext highlighter-rouge">venv</code>)과 패키지 설치(<code class="language-plaintext highlighter-rouge">pip</code>) 기능을 <code class="language-plaintext highlighter-rouge">uv</code> 명령어 하나로 통합하여 관리의 복잡성을 낮춘다.</li>
-      <li><strong>간결함과 표준</strong>: 파이썬 표준 패키지 인덱스(PyPI)를 사용하면서도 미니멀하고 빠른 환경 구축을 가능하게 한다.</li>
-    </ol>
-  </li>
-</ul>
-
-<h4 id="다-환경-구축-절차-uv-활용">다. 환경 구축 절차 (<code class="language-plaintext highlighter-rouge">uv</code> 활용)</h4>
-
-<ol>
-  <li><strong>Python 3.9 설치 (사전 조건)</strong>
-Homebrew를 통해 특정 버전의 파이썬을 설치한다.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>python@3.9
-</code></pre></div>    </div>
-  </li>
-  <li><strong><code class="language-plaintext highlighter-rouge">uv</code> 가상 환경 설정</strong>
-프로젝트 폴더를 생성 후, <code class="language-plaintext highlighter-rouge">uv</code>로 Python 3.9 기반의 가상 환경(<code class="language-plaintext highlighter-rouge">.venv</code>)을 만든다.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>my-local-project <span class="o">&amp;&amp;</span> <span class="nb">cd </span>my-local-project
-uv venv <span class="nt">--python</span> 3.9
-<span class="nb">source</span> .venv/bin/activate
-</code></pre></div>    </div>
-  </li>
-  <li><strong>JupyterLab 설치 및 실행</strong>
-활성화된 가상 환경 내에서 <code class="language-plaintext highlighter-rouge">uv pip</code>으로 JupyterLab을 설치하고 실행한다.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv pip <span class="nb">install </span>jupyterlab
-jupyter lab
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<h4 id="라-주요-단축키">라. 주요 단축키</h4>
-
-<p>Jupyter의 작업 효율은 <strong>명령 모드</strong>와 <strong>입력 모드</strong>의 이해에서 시작된다.</p>
-
-<ul>
-  <li><strong>명령 모드 (Command Mode)</strong>: 셀 테두리가 <strong>파란색</strong>. 셀 자체를 하나의 블록 단위로 다룬다. (<code class="language-plaintext highlighter-rouge">Esc</code>로 진입)</li>
-  <li><strong>입력 모드 (Edit Mode)</strong>: 셀 테두리가 <strong>초록색</strong>. 셀 내부에 코드를 입력하고 수정한다. (<code class="language-plaintext highlighter-rouge">Enter</code>로 진입)</li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">기능</th>
-      <th style="text-align: left">단축키 (Win/Linux: Ctrl)</th>
-      <th style="text-align: left">설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">**(필수) 셀 실행**</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Shift + Enter</code></td>
-      <td style="text-align: left">현재 셀 실행 후, 아래 셀로 이동한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + Enter</code></td>
-      <td style="text-align: left">현재 셀 실행 후, 커서는 그대로 유지된다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**셀 추가**</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A</code> (명령 모드)</td>
-      <td style="text-align: left">현재 셀 **위에** 새 셀을 추가한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">B</code> (명령 모드)</td>
-      <td style="text-align: left">현재 셀 **아래에** 새 셀을 추가한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**셀 관리**</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">D, D</code> (명령 모드)</td>
-      <td style="text-align: left">현재 셀을 삭제한다. (D를 두 번 누름)</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">X</code> / <code class="language-plaintext highlighter-rouge">C</code> / <code class="language-plaintext highlighter-rouge">V</code> (명령 모드)</td>
-      <td style="text-align: left">셀을 잘라내기 / 복사 / 붙여넣기 한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**셀 타입 변경**</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">M</code> (명령 모드)</td>
-      <td style="text-align: left">셀을 마크다운 타입으로 변경한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Y</code> (명령 모드)</td>
-      <td style="text-align: left">셀을 코드 타입으로 변경한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**코드 편집**</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + /</code> (입력 모드)</td>
-      <td style="text-align: left">선택한 코드 라인을 주석 처리/해제한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Shift + Tab</code> (입력 모드)</td>
-      <td style="text-align: left">함수 괄호 안에서 함수의 설명(Docstring)을 본다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h3 id="3-️-클라우드-개발-환경-google-colaboratory">3. ☁️ 클라우드 개발 환경 (Google Colaboratory)</h3>
-
-<h4 id="가-google-colab-이란">가. Google Colab 이란?</h4>
-
-<p>**Google Colaboratory(Colab)**는 구글이 제공하는 <strong>클라우드 기반의 무료 Jupyter Notebook 환경</strong>이다. 모든 연산이 구글의 서버에서 이루어지므로 별도의 설치 과정 없이 웹 브라우저만으로 강력한 개발 환경을 이용할 수 있다.</p>
-
-<blockquote>
-  <p><strong>쉽게 비유하자면,</strong> Colab은 **‘구글이 제공하는 고사양 컴퓨터를 인터넷을 통해 무료로 빌려 쓰는 것’**과 같다. 내 컴퓨터 사양과 무관하게 딥러닝 모델을 학습시킬 수 있는 것이 최대 장점이다.</p>
-</blockquote>
-
-<ul>
-  <li><strong>핵심 장점</strong>:
-    <ul>
-      <li><strong>설치 불필요 (Zero Setup)</strong>: 웹 브라우저와 구글 계정만 있으면 즉시 사용 가능하다.</li>
-      <li><strong>무료 GPU/TPU 제공</strong>: 딥러닝 등 고사양 연산에 필수적인 하드웨어를 무료로 제공한다.</li>
-      <li><strong>쉬운 공유와 협업</strong>: 링크 하나로 노트북을 공유하고 실시간으로 함께 편집할 수 있다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="나-주요-단축키">나. 주요 단축키</h4>
-
-<p>Colab은 Jupyter와 많은 단축키를 공유하지만, <code class="language-plaintext highlighter-rouge">Ctrl + M</code> (macOS: <code class="language-plaintext highlighter-rouge">Cmd + M</code>) 조합을 사용하는 고유한 단축키가 많다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">기능</th>
-      <th style="text-align: left">단축키 (Win: Ctrl, Mac: Cmd)</th>
-      <th style="text-align: left">설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">**(필수) 셀 실행**</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Shift + Enter</code> / <code class="language-plaintext highlighter-rouge">Cmd + Enter</code></td>
-      <td style="text-align: left">Jupyter와 동일하다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**셀 추가**</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + M, A</code></td>
-      <td style="text-align: left">현재 셀 **위에** 새 셀을 추가한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + M, B</code></td>
-      <td style="text-align: left">현재 셀 **아래에** 새 셀을 추가한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**셀 삭제**</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + M, D</code></td>
-      <td style="text-align: left">현재 셀을 삭제한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**셀 타입 변경**</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + M, M</code></td>
-      <td style="text-align: left">셀을 텍스트(마크다운) 타입으로 변경한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + M, Y</code></td>
-      <td style="text-align: left">셀을 코드 타입으로 변경한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**명령어 팔레트**</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Cmd + Shift + P</code></td>
-      <td style="text-align: left">모든 기능을 검색하고 실행할 수 있는 창을 연다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h3 id="4--로컬-vs-클라우드-언제-무엇을-쓸까">4. 💡 로컬 vs. 클라우드: 언제 무엇을 쓸까?</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">구분</th>
-      <th style="text-align: left">**로컬 환경 (<code class="language-plaintext highlighter-rouge">uv</code> + JupyterLab)**</th>
-      <th style="text-align: left">**클라우드 환경 (Google Colab)**</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">**초기 설정**</td>
-      <td style="text-align: left">**필요** (Python, uv, 라이브러리 설치)</td>
-      <td style="text-align: left">**불필요** (웹 브라우저로 접속하면 끝)</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**성능**</td>
-      <td style="text-align: left">내 PC 사양에 의존</td>
-      <td style="text-align: left">**무료 GPU/TPU 제공** (고성능)</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**인터넷 연결**</td>
-      <td style="text-align: left">오프라인 작업 가능</td>
-      <td style="text-align: left">**필수**</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**파일 관리**</td>
-      <td style="text-align: left">자유롭고 빠름 (로컬 파일 시스템)</td>
-      <td style="text-align: left">구글 드라이브 연동 또는 업로드/다운로드 필요</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**적합한 작업**</td>
-      <td style="text-align: left">- 인터넷이 없는 환경에서의 작업&lt;br&gt;- 맞춤형 환경 구축&lt;br&gt;- 가벼운 데이터 분석 및 스크립팅</td>
-      <td style="text-align: left">- **딥러닝 모델 학습**&lt;br&gt;- 빠른 프로토타이핑&lt;br&gt;- 팀원과의 코드 공유 및 협업</td>
-    </tr>
-  </tbody>
-</table>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="학습" /><category term="Python" /><category term="Jupyter-lab" /><category term="colab" /><category term="google" /><category term="UV" /><summary type="html"><![CDATA[Python AI 개발 환경 구축: 로컬(uv) vs. 클라우드(Colab)]]></summary></entry></feed>
+<p>내가 필요한 서비스를 만들거나, 내가 필요한 기능을 구체화 한다. 거기서 핵심은 ‘내가 필요한’ 것이 아닌 것들을 AI에게 맡긴다면, 나는 내가 원하는 수준의 내 도메인을 위한 필요에 따른 스킵, 빠른 진행을 가능케 만들 수 있다는 것이다…. 진짜 멈춰 있을 틈이 없을 것 같다.</p>]]></content><author><name>Paul2021-R</name></author><category term="AI" /><category term="AI" /><category term="DevOps" /><category term="Google" /><category term="생각정리" /><summary type="html"><![CDATA[영상 보기]]></summary></entry></feed>
