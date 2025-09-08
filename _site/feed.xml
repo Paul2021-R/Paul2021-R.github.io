@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-09-08T06:08:10+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">CS 학습 - 9월 2주차</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/08/cs.html" rel="alternate" type="text/html" title="CS 학습 - 9월 2주차" /><published>2025-09-08T00:00:00+00:00</published><updated>2025-09-08T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/08/cs</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/08/cs.html"><![CDATA[<h2 id="자료구조와-알고리즘">자료구조와 알고리즘</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-09-08T10:12:56+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">CS 학습 - 9월 2주차</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/08/cs.html" rel="alternate" type="text/html" title="CS 학습 - 9월 2주차" /><published>2025-09-08T00:00:00+00:00</published><updated>2025-09-08T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/08/cs</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/08/cs.html"><![CDATA[<h2 id="자료구조와-알고리즘">자료구조와 알고리즘</h2>
 
 <h3 id="알고리즘-성능-분석">알고리즘 성능 분석</h3>
 <p>알고리즘의 효율성을 객관적으로 평가하는 방법을 배우는 단계이다. 모든 자료구조와 알고리즘을 이해하는 데 기반이 된다.</p>
@@ -475,7 +475,199 @@
   <li>개념: 모든 가능한 경우의 수를 탐색하는 완전 탐색 기법을 기반으로 하되, 해가 될 가능성이 없는 경로는 더 이상 탐색하지 않고 이전 단계로 되돌아가(backtrack) 다른 경로를 탐색하는 전략이다.</li>
   <li>특징: 불필요한 탐색을 줄여(가지치기, Pruning) 탐색의 효율을 높인다. DFS와 구현 방식이 유사하다.</li>
   <li>대표 예시: N-Queens 문제, 미로 찾기, 스도쿠 풀이</li>
-</ul>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="이직" /><category term="학습" /><category term="CS" /><summary type="html"><![CDATA[자료구조와 알고리즘]]></summary></entry><entry><title type="html">42 Seoul - 000_libft</title><link href="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-00.html" rel="alternate" type="text/html" title="42 Seoul - 000_libft" /><published>2025-09-05T00:00:00+00:00</published><updated>2025-09-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-00</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-00.html"><![CDATA[<h2 id="-libft-c-언어와의-첫-만남-나만의-라이브러리-만들기">🚀 Libft: C 언어와의 첫 만남, 나만의 라이브러리 만들기</h2>
+</ul>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="이직" /><category term="학습" /><category term="CS" /><summary type="html"><![CDATA[자료구조와 알고리즘]]></summary></entry><entry><title type="html">코테 학습 - ‘유연 근무제’</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/08/study-python.html" rel="alternate" type="text/html" title="코테 학습 - ‘유연 근무제’" /><published>2025-09-08T00:00:00+00:00</published><updated>2025-09-08T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/08/study-python</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/08/study-python.html"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>본 글은 원본 문제를 기반으로 풀이한 내용을 담고 있습니다.</p>
+
+<p><a href="https://school.programmers.co.kr/learn/courses/30/lessons/388351">원본 문제 보러가기</a></p>
+
+<h2 id="2025년-9월-8일-프로그래머스-코딩-테스트-출근-이벤트-문제-풀이-python">2025년 9월 8일: 프로그래머스 코딩 테스트 ‘출근 이벤트’ 문제 풀이 (Python)</h2>
+
+<p>프로그래머스 코딩 테스트 문제 중 ‘출근 이벤트’라는 문제를 풀이하였다. 유연근무제를 시행하는 회사에서 직원들의 출근 희망 시각과 실제 출근 기록을 바탕으로 상품을 받을 직원이 몇 명인지 계산하는 문제였다. 초기 풀이 후, 코드 리뷰를 통해 더 효율적이고 ‘파이썬스러운’ 코드로 개선하는 과정을 거쳤다.</p>
+
+<h3 id="문제의-핵심-core-of-the-problem">문제의 핵심 (Core of the Problem)</h3>
+
+<p>문제의 핵심은 크게 두 가지였다.</p>
+
+<ol>
+  <li><strong>출근 인정 시각 계산:</strong> 직원들이 설정한 출근 희망 시각에 10분을 더한 시각까지 출근을 인정한다는 점이다. 여기서 단순히 숫자를 더하는 것이 아니라, 분이 60분을 넘어가면 시간(Hour)이 바뀌는 경우를 정확하게 처리해야 했다.</li>
+  <li><strong>주말 제외 및 요일 계산:</strong> 토요일과 일요일은 이벤트에 영향을 주지 않으므로, 이 날짜들은 출근 여부 확인에서 제외해야 했다. <code class="language-plaintext highlighter-rouge">startday</code>를 기준으로 요일을 정확히 계산하여 평일(월~금)에만 조건을 적용하는 것이 중요하였다.</li>
+</ol>
+
+<h3 id="초기-풀이-과정-initial-solution-process">초기 풀이 과정 (Initial Solution Process)</h3>
+
+<p>처음에는 다음과 같은 단계로 문제를 해결하였다.</p>
+
+<ol>
+  <li><strong><code class="language-plaintext highlighter-rouge">makeMaxLimit(limit)</code> 함수 구현:</strong>
+    <ul>
+      <li>주어진 <code class="language-plaintext highlighter-rouge">limit</code>에 10분을 더하여 출근 인정 시각을 계산하는 핵심 함수였다.</li>
+      <li><strong>접근 방식:</strong> 시각을 <strong>문자열로 변환</strong>하여 시(hour)와 분(minutes)을 분리하였다.</li>
+      <li>분에 10을 더한 후, 60 이상이 되면 시를 1 증가시키고 분에서 60을 빼는 로직을 적용하였다.</li>
+      <li>최종 시와 분을 다시 정수 형태의 시각으로 변환하여 반환하였다.</li>
+    </ul>
+  </li>
+  <li><strong>헬퍼(Helper) 함수 구현:</strong>
+    <ul>
+      <li><strong><code class="language-plaintext highlighter-rouge">isPass(dayNumber)</code>:</strong> <code class="language-plaintext highlighter-rouge">dayNumber</code>가 평일(1~5)인지 확인하는 함수.</li>
+      <li><strong><code class="language-plaintext highlighter-rouge">checkCondition(limit, targetTime)</code>:</strong> 출근 시각이 인정 시각 내에 있는지 확인하는 함수.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">solution</code> 메인 함수:</strong>
+    <ul>
+      <li>초기 <code class="language-plaintext highlighter-rouge">answer</code>는 전체 직원 수로 설정하고, 지각 시 <strong>1씩 차감</strong>하는 방식을 사용하였다.</li>
+      <li>요일 계산은 <code class="language-plaintext highlighter-rouge">index</code> 변수를 1씩 증가시키고, 8이 되면 1로 초기화하는 방식을 사용하였다.</li>
+      <li><strong><code class="language-plaintext highlighter-rouge">eventTarget</code>이라는 플래그 변수</strong>를 두어 직원의 지각 여부를 추적하고, 반복문이 끝난 뒤 이 플래그를 확인하여 <code class="language-plaintext highlighter-rouge">answer</code>를 차감하였다.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">isPass</span><span class="p">(</span><span class="n">dayNumber</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">dayNumber</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="bp">False</span>
+    
+<span class="k">def</span> <span class="nf">checkCondition</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">targetTime</span><span class="o">=</span><span class="nb">int</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">targetTime</span> <span class="o">&lt;=</span> <span class="n">limit</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="bp">False</span>
+
+<span class="k">def</span> <span class="nf">makeMaxLimit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">핵심중에 핵심으로 시간의 10분 추가 되었을 때 어떻게 처리할지를 판단하는 부분. 최대 유효 시간이 10분이고, 10분 추가시 분과 시간의 변화를 고려해야함</span><span class="sh">"""</span>
+    <span class="n">limitStr</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
+    <span class="n">limitStrHour</span> <span class="o">=</span> <span class="sh">''</span>
+    <span class="n">limitStrMinutes</span> <span class="o">=</span> <span class="sh">''</span>
+
+    <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">limitStr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">limitStrHour</span> <span class="o">=</span> <span class="n">limitStr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">limitStrMinutes</span> <span class="o">=</span> <span class="n">limitStr</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">limitStrHour</span> <span class="o">=</span> <span class="n">limitStr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">limitStrMinutes</span> <span class="o">=</span> <span class="n">limitStr</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+    
+    <span class="n">limitIntHour</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">limitStrHour</span><span class="p">)</span>
+    <span class="n">limitIntMinutes</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">limitStrMinutes</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span>
+
+    <span class="k">if</span> <span class="n">limitIntMinutes</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">limitIntHour</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">limitIntMinutes</span> <span class="o">-=</span> <span class="mi">60</span>
+
+    <span class="n">limit</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">limitIntHour</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">+</span> <span class="n">limitIntMinutes</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">schedules</span><span class="p">,</span> <span class="n">timelogs</span><span class="p">,</span> <span class="n">startday</span><span class="p">):</span>
+    <span class="c1"># 목표 스케쥴 =&gt; 명수, 목표 기준 확인
+</span>    <span class="c1"># timelogs =&gt; 분해, 기준 비교 =&gt; startDay 검토하여 스킵할 날짜 체크 =&gt; 문제 없으면 상품 제공
+</span>
+    <span class="c1"># n 명의 상황 기록 =&gt; 기록 배열 분리 
+</span>    <span class="c1"># start day 기준으로 체킹 =&gt; 도중에 이벤트 조건에 맞지 않으면 =&gt; 문제
+</span>    <span class="c1"># 가장 효과적인 데이터 타입은? 
+</span>    <span class="n">targetList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">schedules</span><span class="p">):</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">{</span>
+            <span class="sh">"</span><span class="s">limit</span><span class="sh">"</span><span class="p">:</span> <span class="nf">makeMaxLimit</span><span class="p">(</span><span class="n">value</span><span class="p">),</span>
+            <span class="sh">"</span><span class="s">timelog</span><span class="sh">"</span><span class="p">:</span> <span class="n">timelogs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="p">})</span>
+        <span class="n">targetList</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+    <span class="n">answer</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">targetList</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targetList</span><span class="p">:</span>
+        <span class="n">limit</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="sh">"</span><span class="s">limit</span><span class="sh">"</span><span class="p">]</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="sh">"</span><span class="s">timelog</span><span class="sh">"</span><span class="p">]</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">startday</span>
+        <span class="n">eventTarget</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">log</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nf">isPass</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nf">checkCondition</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">log</span><span class="p">):</span>
+                <span class="n">eventTarget</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">eventTarget</span><span class="p">:</span>
+            <span class="n">answer</span> <span class="o">-=</span> <span class="mi">1</span>
+                
+    <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>
+
+<h3 id="코드-개선과-새로운-교훈-code-improvement-and-new-lessons">코드 개선과 새로운 교훈 (Code Improvement and New Lessons)</h3>
+
+<p>초기 풀이도 정답이었지만, 코드의 효율성, 가독성, 그리고 ‘파이썬스러움’에 대해 깊이 배우며 다음과 같이 코드를 개선할 수 있었다.</p>
+
+<ol>
+  <li><strong>시간 계산의 효율화: 문자열 변환 vs 산술 연산</strong>
+    <ul>
+      <li>가장 큰 깨달음이었다. 문자열로 변환하고 슬라이싱하는 대신, <strong>몫(<code class="language-plaintext highlighter-rouge">//</code>)과 나머지(<code class="language-plaintext highlighter-rouge">%</code>) 연산</strong>을 사용하면 훨씬 간결하고 빠르게 시간 계산이 가능했다. 이는 불필요한 형 변환 비용을 줄여주는 효율적인 방법이다. 수학적으로 생각을 하는게 중요한데… 쉽지 않다 ㅠ</li>
+      <li><code class="language-plaintext highlighter-rouge">(개선 후) limit_hours = limit // 100</code>, <code class="language-plaintext highlighter-rouge">limit_minutes = limit % 100 + 10</code></li>
+    </ul>
+  </li>
+  <li><strong>Pythonic 네이밍 컨벤션: <code class="language-plaintext highlighter-rouge">snake_case</code></strong>
+    <ul>
+      <li>TypeScript 와 NestJS 에 절여진 내 뇌는 여전히 카멜을 쓰게 만들었다… 파이썬에서는 함수와 변수명에 <code class="language-plaintext highlighter-rouge">camelCase</code>가 아닌 <code class="language-plaintext highlighter-rouge">snake_case</code>를 사용하는 것이 <strong>PEP 8</strong> 스타일 가이드의 표준이라는 것을 배웠다. (예: <code class="language-plaintext highlighter-rouge">makeMaxLimit</code> -&gt; <code class="language-plaintext highlighter-rouge">make_max_limit</code>) 이는 코드의 가독성과 파이썬 커뮤니티 내의 일관성을 위한 중요한 약속이다.</li>
+    </ul>
+  </li>
+  <li><strong>효율적인 순회와 플래그 변수 제거: <code class="language-plaintext highlighter-rouge">zip</code>과 <code class="language-plaintext highlighter-rouge">for-else</code></strong>
+    <ul>
+      <li>별도의 데이터 구조를 만들 필요 없이 <code class="language-plaintext highlighter-rouge">zip(schedules, timelogs)</code>를 사용하면 두 리스트를 깔끔하게 병렬로 순회할 수 있었다.</li>
+      <li>가장 신기했던 것은 <strong><code class="language-plaintext highlighter-rouge">for-else</code> 구문</strong>이었다. 이 구문을 사용하면 <code class="language-plaintext highlighter-rouge">eventTarget</code>과 같은 <strong>플래그 변수 없이도</strong> “반복문이 <code class="language-plaintext highlighter-rouge">break</code>로 중단되지 않고 무사히 끝났을 때”를 처리할 수 있었다. 이는 코드를 훨씬 직관적이고 우아하게 만들어 주었다. 진짜 희안한게 무지하게 많은 Python…</li>
+    </ul>
+  </li>
+  <li><strong>직관적인 로직: 차감보다 덧셈, 순환에는 나머지 연산</strong>
+    <ul>
+      <li>전체에서 차감하는 방식보다, <strong>조건을 통과한 대상만 세는 방식(<code class="language-plaintext highlighter-rouge">answer = 0</code> 시작)</strong>이 로직을 더 이해하기 쉽게 만들었다.</li>
+      <li>요일을 계산할 때 <code class="language-plaintext highlighter-rouge">if</code>문으로 8이 되는지 검사하는 대신, <strong>나머지 연산자(<code class="language-plaintext highlighter-rouge">%</code>)</strong>를 활용(<code class="language-plaintext highlighter-rouge">(startday + index - 1) % 7 + 1</code>)하여 순환하는 값을 훨씬 간결하게 처리할 수 있었다.</li>
+    </ul>
+  </li>
+  <li><strong>성능 개선</strong>
+    <ul>
+      <li>기존 코드는 1000개 까지 변수가 들어올 수 있고, 실제 풀이시 4ms 정도로 속도가 오래 걸렸다. 그러나 신규 코드로 개선으로 루프가 1회로 줄어들면서, 1ms 이하로 떨어지게 만들어낼 수 있었다.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="개선의-결과-the-result-of-improvement">개선의 결과 (The Result of Improvement)</h3>
+
+<p>이러한 배움을 통해 코드는 다음과 같이 발전하였다.</p>
+
+<ul>
+  <li><strong>가독성:</strong> <code class="language-plaintext highlighter-rouge">snake_case</code> 적용, <code class="language-plaintext highlighter-rouge">zip</code>, <code class="language-plaintext highlighter-rouge">for-else</code> 구문 활용으로 코드의 의도가 훨씬 명확해졌다.</li>
+  <li><strong>간결성:</strong> 불필요한 <code class="language-plaintext highlighter-rouge">if-else</code>문, 플래그 변수, 복잡한 요일 계산 로직이 제거되어 코드가 짧고 깔끔해졌다.</li>
+  <li><strong>효율성:</strong> 비효율적인 문자열 변환 로직이 빠른 산술 연산으로 대체되었다.</li>
+  <li><strong>Pythonic:</strong> 코드가 파이썬의 철학과 스타일에 더 가까워져, 다른 파이썬 개발자가 이해하기 쉬운 코드가 되었다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 개선 버전
+</span>
+<span class="k">def</span> <span class="nf">is_pass</span><span class="p">(</span><span class="n">dayNumber</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">dayNumber</span> <span class="o">&lt;</span> <span class="mi">6</span>
+
+<span class="k">def</span> <span class="nf">make_max_limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">limit_hours</span> <span class="o">=</span> <span class="n">limit</span> <span class="o">//</span> <span class="mi">100</span>
+    <span class="n">limit_minutes</span> <span class="o">=</span> <span class="n">limit</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">10</span>
+
+    <span class="k">if</span> <span class="n">limit_minutes</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">limit_hours</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">limit_minutes</span> <span class="o">-=</span> <span class="mi">60</span>
+
+    <span class="k">return</span> <span class="n">limit_hours</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">+</span> <span class="n">limit_minutes</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">schedules</span><span class="p">,</span> <span class="n">timelogs</span><span class="p">,</span> <span class="n">startday</span><span class="p">):</span>
+
+    <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span> 
+
+    <span class="k">for</span> <span class="n">limit</span><span class="p">,</span> <span class="n">logs</span> <span class="ow">in</span> <span class="nf">zip</span><span class="p">(</span><span class="n">schedules</span><span class="p">,</span> <span class="n">timelogs</span><span class="p">):</span>
+        <span class="n">max_limit</span> <span class="o">=</span> <span class="nf">make_max_limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">log</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">logs</span><span class="p">):</span>
+            <span class="n">current_day</span> <span class="o">=</span> <span class="p">(</span><span class="n">startday</span> <span class="o">+</span> <span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="nf">is_pass</span><span class="p">(</span><span class="n">current_day</span><span class="p">)</span> <span class="ow">and</span> <span class="n">log</span> <span class="o">&gt;</span> <span class="n">max_limit</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># for - else 구문 처음 봄 개신기 
+</span>            <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><category term="코딩테스트" /><summary type="html"><![CDATA[Introduction]]></summary></entry><entry><title type="html">42 Seoul - 000_libft</title><link href="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-00.html" rel="alternate" type="text/html" title="42 Seoul - 000_libft" /><published>2025-09-05T00:00:00+00:00</published><updated>2025-09-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-00</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-00.html"><![CDATA[<h2 id="-libft-c-언어와의-첫-만남-나만의-라이브러리-만들기">🚀 Libft: C 언어와의 첫 만남, 나만의 라이브러리 만들기</h2>
 
 <p>개발에 답은 없다. 왜냐면 개발이란 그렇기 때문이다.</p>
 
@@ -1016,115 +1208,4 @@
   <li><strong>동시성 설계의 중요성</strong>: 동시성 문제는 나중에 수정하는 것이 거의 불가능에 가깝다. 시스템 설계 단계부터 어떤 자원이 공유되고, 어떤 임계 영역이 존재하며, 어떤 동기화 전략을 사용할지 명확히 정의해야 함을 깨달았다.</li>
   <li><strong>동기화 도구의 이해</strong>: 뮤텍스는 <strong>상호 배제</strong>가 필요할 때, 세마포어는 <strong>자원 풀링(Pooling)</strong>이나 복잡한 실행 순서 제어가 필요할 때 사용하는 등, 각 동기화 도구의 본질적인 목적과 사용 사례를 구분하는 능력을 기를 수 있었다.</li>
   <li><strong>이론과 현실의 연결</strong>: 교착 상태의 4가지 조건과 같은 이론적 모델이 실제 코드에서 어떻게 발현되고, 그 이론에 기반하여 어떻게 문제를 해결할 수 있는지 직접 증명해 보았다. 이 경험은 데이터베이스의 트랜잭션 처리, 웹 서버의 스레드 풀 관리 등 현실 세계의 복잡한 동시성 시스템을 이해하는 단단한 기반이 되어주었다.</li>
-</ul>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="프로젝트" /><category term="42Seoul" /><category term="C" /><category term="Linux" /><summary type="html"><![CDATA[🤔 philosopher : 동시성(Concurrency)의 두 가지 난제, 교착상태와 경쟁상태]]></summary></entry><entry><title type="html">42 Seoul - 008_minishell</title><link href="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-08.html" rel="alternate" type="text/html" title="42 Seoul - 008_minishell" /><published>2025-09-05T00:00:00+00:00</published><updated>2025-09-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-08</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-08.html"><![CDATA[<h2 id="-minishell-운영체제의-축소판-텍스트와-프로세스-사이의-번역가를-자처하다">💻 Minishell: 운영체제의 축소판, 텍스트와 프로세스 사이의 번역가를 자처하다</h2>
-
-<p>통곡의 벽.
-수 많은 42서울의 과제들 과정에서도, 역대급으로 고민하고, 소통할 일이 많아지는 프로젝트. 
-쉽지 않았던 이 프로젝트는 지금도 두고두고 생각나는, 정말 쉽지 않은 ‘험한 것’ 이었다.</p>
-
-<p>이전의 과제들이 개별적인 시스템 콜이나 동기화 메커니즘을 깊게 파고드는 경험이었다면, <strong>Minishell</strong>은 이 모든 것을 아우르는 하나의 작은 운영체제를 설계하고 구현하는 종합적인 과제이다.</p>
-
-<p>셸(Shell)은 단순히 명령어를 실행하는 프로그램을 넘어, 커널(Kernel)이라는 시스템의 심장부와 사용자 사이를 연결하는 정교한 인터페이스이자 번역가이다. 사용자가 입력한 한 줄의 텍스트 문자열이 어떻게 생명력을 얻어 여러 프로세스의 협연으로 재탄생하는지, 그 모든 과정을 직접 지휘해야 하는, 시스템 프로그래머로서의 진정한 역량을 시험받는 프로젝트이다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">Minishell</code>은 “어떻게 문자열을 해석하고(Parsing), 어떻게 프로세스를 생성하며(Process Management), 어떻게 그들 간의 데이터 흐름을 제어할 것인가(IPC &amp; I/O Redirection)”라는 세 가지 거대한 질문에 대한 답을 찾아가는 여정이다. 그리고 거기에 한 스푼 더.</p>
-
-<p>이 과제는 42서울에서의 본 과정에서의 최초 팀 과제이다.</p>
-
-<hr />
-
-<h3 id="-0단계-협업-길-들이기">📞 0단계: 협업 길 들이기</h3>
-
-<p>처음 수행한 협업의 시작은 정말로 ‘어색’ 했다.</p>
-
-<p>처음 마지하는 git, 버전관리, git 전략과 같은 내용들은 생소한데, 심지어 ‘일’이 아니라 ‘배움’이란 차원에서 진행하는 프로젝트다보니 여럿의 생각이나, 주장이 이어졌고 이러한 것들 속에서 어떻게 프로세스를 만들어내는 지는 정말 어려운 일이었다. 그나마 2명이 한다는 점에서, 해당 프로젝트의 목표가 본격적인 협업이라기 보단, ‘협업 맛보기’ 라는 컨셉이라는 차원에서 본다면 그나마 괜찮았다고 본다.</p>
-
-<p>우선, 상대를 파악했다. 상대의 표현, 상대가 바라는 바, 특히나 목표가 동일하다고 해도, 그 동일한 목표에 대해 이해하고 있는 것은 다른 경우도 많았다. 특히나 신경 쓴 것은 ‘표현’의 정교화다.</p>
-
-<p>한쪽이 아무리 지식이 뛰어나도, 협업을 해서 효율을 내려면, 상대가 이해하는 말로 해줄 수 있어야 하고, 실제로 프로세스 과정에서 약속된 언어로 한다는 말은 정보의 공유 수준도 비슷해져야 한다는 것을 의미했다.</p>
-
-<p>기술적인 전략으로 깃 브랜치 전략, PR 시 어떻게 할지… 등 처음 하는 것인 만큼, 팀원과 진행하는 과정에서 git 의 협업 관련 서적을 보면서, 가장 최선이 뭘까 고민했었다.</p>
-
-<p>사실, 이 내용을 디테일하게 정리한다면 엄청난 일이 될 거다. 거의 한 프로젝트를 3개월간 수행했던걸 생각하면, 얼마나 많은 대화와 소통, 특히 거기서 서로 어떻게 하는 걸로 해야 효율적일지 논하던 시간들은 지금 생각하면 무척 값진 일이었지만 동시에 힘든 과정이기도 했다. 그나마 위안은 42서울의 학생들 상당 수가 개발자의 가능성, 성향, 그리고 무엇보다 열정과 재미를 느끼는 이들이었기에 그런 점들이 우리를 묶어주었던 것이다.</p>
-
-<hr />
-
-<h3 id="-1단계-문자열-해석-parsing---무의미한-텍스트에서-의미-있는-구조로">📜 1단계: 문자열 해석 (Parsing) - 무의미한 텍스트에서 의미 있는 구조로</h3>
-
-<p>본격적으로 기능 구현에 들어가면 셸의 첫 번째 임무는 명령어를 컴퓨터가 이해할 수 있는 구조적인 데이터로 변환하는 것이다.</p>
-
-<p>예를 들어 <code class="language-plaintext highlighter-rouge">ls -al | grep "main" &gt; result.txt</code>와 같이 약속된 명령어들의 나열이있다. 하지만 실제로 컴퓨터가 이 명령어를 알아듣나? 아니다. 실질 터미널에서 치는 내용을 컴퓨터는 알아듣지 못한다. 0, 1이 아니기 때문이다. 따라서 ‘이해시키는’ 작업이 필요하고 이는 작은 프로그래밍 언어의 컴파일러를 만드는 과정과 유사하며, 크게 두 단계로 나뉜다.</p>
-
-<ol>
-  <li>
-    <p><strong>어휘 분석 (Lexical Analysis / Tokenization)</strong>:
-입력된 문자열을 <code class="language-plaintext highlighter-rouge">ls</code>, <code class="language-plaintext highlighter-rouge">-al</code>, <code class="language-plaintext highlighter-rouge">|</code>, <code class="language-plaintext highlighter-rouge">grep</code>, <code class="language-plaintext highlighter-rouge">"main"</code>, <code class="language-plaintext highlighter-rouge">&gt;</code>, <code class="language-plaintext highlighter-rouge">result.txt</code> 와 같이 의미를 가진 최소 단위인 <strong>토큰(Token)</strong>으로 분해한다. 이 과정에서 공백은 분리의 기준이 되며, 파이프(<code class="language-plaintext highlighter-rouge">|</code>)나 리다이렉션(<code class="language-plaintext highlighter-rouge">&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;</code>) 같은 특수 문자는 ‘연산자’ 토큰으로, 따옴표로 묶인 문자열은 하나의 단일 토큰으로 인식하는 등 정교한 규칙이 필요하다.
-이러한 규칙들은 요구되는 조건들, 쉘의 기본 동작에대한 공식문서를 보고 전부 기술화하였다. 약속된 컨벤션의 예약된 단어나 도구들에 대해 리스트업을 한 뒤에는 우선순위나 어떤 걸 우선시 해야 하는지 가시화 하였다.</p>
-  </li>
-  <li>
-    <p><strong>구문 분석 (Syntax Analysis / Parsing)</strong>:
-생성된 토큰의 배열을 바탕으로, 명령어의 문법적 구조를 파악하여 <strong>추상 구문 트리(Abstract Syntax Tree, AST)</strong>와 같은 자료구조를 생성한다. 예를 들어, <code class="language-plaintext highlighter-rouge">A | B &gt; C</code> 라는 명령어는 ‘파이프’라는 최상위 노드를 가지고, 그 왼쪽 자식으로는 ‘A’라는 간단한 명령어(Simple Command) 노드가, 오른쪽 자식으로는 ‘리다이렉션’ 노드가 연결되는 형태가 된다. 이 트리를 통해 각 명령어의 관계와 실행 순서, 입출력 방향이 명확하게 정의된다. 이 과정에서 닫히지 않은 따옴표나 문법에 맞지 않는 특수문자 사용과 같은 구문 오류를 잡아내는 것도 파서의 중요한 역할이다. 특히나 히어독과 같은 것들을 위한 개별 로직이 언제 어떻게 실행 되는지와 같은 포인트들을 이해하는 것도 매우 중요헤지며, 이를 구조체로 담아내는 작업, 그리고 특히나 이런 데이터 단위로 탐색이 편리한 메소드를 구성하는 것은 개발 속도에도 지대한 영향을 주었다.</p>
-  </li>
-</ol>
-
-<ul>
-  <li><strong>따옴표와 환경 변수 처리</strong>: 파싱 과정에서 셸의 미묘한 규칙들을 구현해야 한다.
-  <strong><em>작은따옴표(<code class="language-plaintext highlighter-rouge">'</code>)**는 내부의 모든 문자를 해석 없이 문자 그대로 취급한다.
-  **</em>큰따옴표(<code class="language-plaintext highlighter-rouge">"</code>)</strong>는 내부의 <code class="language-plaintext highlighter-rouge">$</code> 문자를 환경 변수로 인식하여 그 값으로 <strong>치환(Expansion)</strong>해야 한다.<code class="language-plaintext highlighter-rouge">$?</code>와 같이 마지막으로 실행된 명령어의 종료 코드를 나타내는 특수한 환경 변수도 처리해야 한다.</li>
-</ul>
-
-<hr />
-
-<h3 id="️-2단계-명령어-실행-execution---구조화된-명령에-생명을-불어넣다">🛠️ 2단계: 명령어 실행 (Execution) - 구조화된 명령에 생명을 불어넣다</h3>
-
-<p>구문 분석을 통해 만들어진 실행 계획(AST)을 이제 직접 실행되게 하면 된다. 실행기는 트리를 순회하며 각 노드의 타입에 따라 적절한 시스템 콜을 호출하는 역할을 하고, 이때 리눅스 OS 의 철학, 프로세스의 라이프 사이클을 이해하는 것이 정말 중요해진다.</p>
-
-<ol>
-  <li>
-    <p><strong>프로세스 생성 (<code class="language-plaintext highlighter-rouge">fork</code>)</strong>:
-<code class="language-plaintext highlighter-rouge">ls</code>, <code class="language-plaintext highlighter-rouge">grep</code>과 같은 외부 명령어를 실행하기 위해 <code class="language-plaintext highlighter-rouge">fork()</code> 시스템 콜로 현재 셸 프로세스와 똑같은 자식 프로세스를 생성한다. 이후 자식 프로세스는 <code class="language-plaintext highlighter-rouge">execve()</code> 시스템 콜을 통해 자기 자신을 새로운 프로그램(<code class="language-plaintext highlighter-rouge">ls</code> 등)으로 교체하여 실행한다. 부모 프로세스(셸)는 <code class="language-plaintext highlighter-rouge">waitpid()</code>를 통해 자식 프로세스가 종료되기를 기다렸다가, 종료와 함께 제어권을 다시 가져와 다음 명령을 받을 준비를 한다. 이때 특히나 에러핸들링을 잘해주는 것이 필요하고, 적절한 문구를 통해 명령이 왜 실패했는지를 이해하는게, 디버깅의 핵심이었다.</p>
-  </li>
-  <li><strong>파이프 (<code class="language-plaintext highlighter-rouge">|</code>) - 프로세스 간 통신 (IPC)</strong>:
-<code class="language-plaintext highlighter-rouge">pipe()</code> 시스템 콜은 두 개의 파일 디스크립터(읽기용, 쓰기용)를 생성하여 프로세스 간 통신 채널을 만단다. <code class="language-plaintext highlighter-rouge">A |B</code> 구문에서, 셸은 파이프를 생성한 후 두 개의 자식 프로세스를 만든다. 
-여기서 중요한 부분이 파일, FD 를 통해 어떻게 관리되는지를 이해하는 것이었다. 특히나, 열고 닫는 것이 굉장히 중요해지는데, 여러개의 프로세스가 동작할 때, 출력-입력의 열려있는 것들을 잘 닫아주는 로직이 아니게 되면 이전 프로세스가 출력하고 담았지만, 프로세스가 정상 종료가 안 된 것, 혹은 데이터가 더 들어올게 남았다는 식으로 되기 때문에 이 특징을 이해하지 않으면 주구장창 대기하는 상태가 된다는 것은… 끔찍한 경험이었다(…)
-    <ul>
-      <li><strong>프로세스 A</strong>: 자신의 표준 출력(STDOUT, fd 1)을 파이프의 쓰기용 끝에 연결(<code class="language-plaintext highlighter-rouge">dup2</code>)하고, <code class="language-plaintext highlighter-rouge">A</code> 명령어를 실행한다. <code class="language-plaintext highlighter-rouge">A</code>의 모든 결과는 이제 화면이 아닌 파이프로 흘러 들어간다.</li>
-      <li><strong>프로세스 B</strong>: 자신의 표준 입력(STDIN, fd 0)을 파이프의 읽기용 끝에 연결(<code class="language-plaintext highlighter-rouge">dup2</code>)하고, <code class="language-plaintext highlighter-rouge">B</code> 명령어를 실행한다. <code class="language-plaintext highlighter-rouge">B</code>는 이제 키보드가 아닌 파이프로부터 데이터를 입력받아 처리한다.</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>리다이렉션 (<code class="language-plaintext highlighter-rouge">&lt;</code>, <code class="language-plaintext highlighter-rouge">&gt;</code>, <code class="language-plaintext highlighter-rouge">&gt;&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;&lt;</code>) - 파일 디스크립터 제어</strong>:
-리다이렉션은 프로세스의 표준 입출력 대상을 파일로 변경하는 기술이다. 이는 <code class="language-plaintext highlighter-rouge">open()</code>으로 파일을 열고, <code class="language-plaintext highlighter-rouge">dup2()</code>로 기존의 표준 입출력 파일 디스크립터(0, 1, 2)를 새로 열린 파일의 디스크립터로 복제하는 방식으로 구현된다.
-*<code class="language-plaintext highlighter-rouge">&gt;</code>: 명령어의 결과를 파일에 덮어쓴다.
-*<code class="language-plaintext highlighter-rouge">&lt;</code>: 파일의 내용을 명령어의 입력으로 사용한다.
-*<code class="language-plaintext highlighter-rouge">&gt;&gt;</code>: 명령어의 결과를 파일 끝에 추가한다.
-*<code class="language-plaintext highlighter-rouge">&lt;&lt; (Here Document)</code>: 구분자(delimiter)가 나올 때까지 입력을 받아 임시 파일에 저장한 후, 해당 임시 파일을 표준 입력으로 리다이렉션하는 방식으로 구현된다.</p>
-  </li>
-  <li><strong>내장 함수 (Built-ins)</strong>:
-<code class="language-plaintext highlighter-rouge">cd</code>, <code class="language-plaintext highlighter-rouge">export</code>, <code class="language-plaintext highlighter-rouge">unset</code>, <code class="language-plaintext highlighter-rouge">exit</code>와 같이 셸 프로세스 자체의 상태(현재 작업 경로, 환경 변수 등)를 변경해야 하는 명령어들은 외부 프로그램으로 실행할 수 없다. 이러한 내장 함수들은 프로세스의 주인이 되는 메인 프로세스의 설정을 건드리거나, 상호작용하기 때문이다. 예를 들어 <code class="language-plaintext highlighter-rouge">cd</code>를 자식 프로세스에서 실행하면 자식의 경로만 바뀌고 셸 자신은 그대로이고, 이렇게 되면 그 뒤에 오는 명령이 비정상적으로 실행 및 종료 될 수 있다. 따라서 이는 <code class="language-plaintext highlighter-rouge">fork</code> 없이 셸이 직접 함수 호출을 통해 처리해야 한다. <code class="language-plaintext highlighter-rouge">README.md</code>에 명시된 <code class="language-plaintext highlighter-rouge">echo</code>, <code class="language-plaintext highlighter-rouge">cd</code>, <code class="language-plaintext highlighter-rouge">pwd</code>, <code class="language-plaintext highlighter-rouge">export</code>, <code class="language-plaintext highlighter-rouge">unset</code>, <code class="language-plaintext highlighter-rouge">env</code>, <code class="language-plaintext highlighter-rouge">exit</code>가 이에 해당되고, 이들은 독자적인 방식으로 OS 와 주 프로세스에 직접 영향을 주도록 만들어야 했다.</li>
-</ol>
-
-<hr />
-
-<h3 id="-3단계-시그널-처리---예기치-않은-상황에-대응하기">🚦 3단계: 시그널 처리 - 예기치 않은 상황에 대응하기</h3>
-
-<p>사용자는 언제든지 <code class="language-plaintext highlighter-rouge">Ctrl+C</code>(SIGINT)나 <code class="language-plaintext highlighter-rouge">Ctrl+D</code>(EOF)를 눌러 프로세스를 제어하려 할 수 있다.상호작용적인 셸은 이러한 시그널을 적절히 처리하여, 자식 프로세스가 실행 중일 때와 프롬프트에서 입력을 대기 중일 때 다르게 동작하도록 설계해야 한다. <code class="language-plaintext highlighter-rouge">signal</code> 또는 <code class="language-plaintext highlighter-rouge">sigaction</code> 함수를 통해 특정 시그널이 도착했을 때 수행할 동작을 정의하여, 프로그램의 안정성과 사용자 경험을 향상시켰다.
-<strong>*대기 중</strong>: <code class="language-plaintext highlighter-rouge">Ctrl+C</code>는 새 프롬프트를, <code class="language-plaintext highlighter-rouge">Ctrl+D</code>는 셸을 종료한다.</p>
-<ul>
-  <li><strong>실행 중</strong>: <code class="language-plaintext highlighter-rouge">Ctrl+C</code>와 <code class="language-plaintext highlighter-rouge">Ctrl+\</code>는 실행 중인 자식 프로세스에게 전달되어야 한다.</li>
-</ul>
-
-<hr />
-
-<h3 id="-성찰-및-배운-점">✨ 성찰 및 배운 점</h3>
-
-<p><code class="language-plaintext highlighter-rouge">Minishell</code>은 단순한 C 프로그래밍 과제가 아니었다. 운영체제가 어떻게 사용자 요청을 처리하고, 프로세스들을 조율하며, 데이터의 흐름을 관리하는지에 대한 이해도를 높일 수 있는 정말 좋은 과제였다고 생각한다. 뿐만 아니라 한 개인이 개발할 수 있는 한계가 있고, 결국 협업으로 만들어내는 종합 예술임을 처음으로 느낄 수 있던 과제다. 그 와중에 느낀 점들 몇가지를 정리해보면,</p>
-
-<ul>
-  <li><strong>추상화의 위대함</strong>: <code class="language-plaintext highlighter-rouge">|</code>나 <code class="language-plaintext highlighter-rouge">&gt;</code> 같은 간단한 기호 뒤에 <code class="language-plaintext highlighter-rouge">fork</code>, <code class="language-plaintext highlighter-rouge">pipe</code>, <code class="language-plaintext highlighter-rouge">dup2</code>, <code class="language-plaintext highlighter-rouge">execve</code>와 같은 복잡한 시스템 콜들의 오케스트라가 숨어있음을 깨달으며, 잘 설계된 추상화의 힘을 체감했다.</li>
-  <li><strong>프로세스 관리의 정수</strong>: 부모와 자식 프로세스의 관계, 파일 디스크립터의 상속, 프로세스의 라이프사이클을 직접 관리하며 운영체제의 핵심 역할인 프로세스 관리를 피부로 이해하게 되었다.</li>
-  <li><strong>설계의 중요성</strong>: 어휘 분석기, 구문 분석기, 실행기를 각각 독립된 모듈로 설계하고, 이들을 연결하는 명확한 자료구조(AST)를 정의하는 과정은, 복잡한 시스템을 구축하기 위해선 견고한 아키텍처 설계가 선행되어야 함을 가르쳐주었다.</li>
-</ul>
-
-<p>정말 쉽지 않았다. 
-포기하고 싶다는 생각을 정말 많이 했고, 무엇보다 팀원과 함께 기운이 빠지는 정말 쉽지 않은 프로젝트였다.
-그래도 역시 그런 걸까? 돌아보니 정말 재밌고, 치열했던것 같다. 🤣</p>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="프로젝트" /><category term="42Seoul" /><category term="C" /><category term="Linux" /><summary type="html"><![CDATA[💻 Minishell: 운영체제의 축소판, 텍스트와 프로세스 사이의 번역가를 자처하다]]></summary></entry></feed>
+</ul>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="프로젝트" /><category term="42Seoul" /><category term="C" /><category term="Linux" /><summary type="html"><![CDATA[🤔 philosopher : 동시성(Concurrency)의 두 가지 난제, 교착상태와 경쟁상태]]></summary></entry></feed>
