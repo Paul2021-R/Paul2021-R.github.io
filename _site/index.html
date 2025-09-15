@@ -148,8 +148,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
       imgEl.outerHTML = `
     <a class="photo-swipe"
       href="${imgEl.src}"
-      data-width="${imgEl.getAttribute("width") || imgEl.width * 2}"
-      data-height="${imgEl.getAttribute("height") || imgEl.height * 2}"
+      data-width="${imgEl.naturalWidth}"
+      data-height="${imgEl.naturalHeight}"
       data-caption="${imgEl.getAttribute("caption") || imgEl.alt}"
       target="_blank">
       ${imgEl.outerHTML}
