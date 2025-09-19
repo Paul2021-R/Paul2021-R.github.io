@@ -1,4 +1,301 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-09-15T15:20:53+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">CS 학습 - 9월 3주차</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/15/cs-09-03.html" rel="alternate" type="text/html" title="CS 학습 - 9월 3주차" /><published>2025-09-15T00:00:00+00:00</published><updated>2025-09-15T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/15/cs-09-03</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/15/cs-09-03.html"><![CDATA[<h2 id="알고리즘">알고리즘</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-09-19T06:02:47+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">코테 학습 - ‘동영상 재생기’</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/19/study-python.html" rel="alternate" type="text/html" title="코테 학습 - ‘동영상 재생기’" /><published>2025-09-19T00:00:00+00:00</published><updated>2025-09-19T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/19/study-python</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/19/study-python.html"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>본 글은 원본 문제를 기반으로 풀이한 내용을 담고 있습니다.</p>
+
+<p><a href="https://school.programmers.co.kr/learn/courses/30/lessons/340213?language=python3">원본 문제 보러가기</a></p>
+
+<h2 id="2025년-9월-19일-프로그래머스-코딩-테스트-동영상-재생기-문제-풀이-python">2025년 9월 19일: 프로그래머스 코딩 테스트 ‘동영상 재생기’ 문제 풀이 (Python)</h2>
+
+<h3 id="문제-정리">문제 정리</h3>
+
+<ul>
+  <li><strong>목표</strong>: 주어진 명령어(<code class="language-plaintext highlighter-rouge">prev</code>, <code class="language-plaintext highlighter-rouge">next</code>)를 모두 수행한 후 동영상의 최종 재생 위치를 “mm:ss” 형식으로 반환하는 문제이다.</li>
+  <li><strong>핵심 기능</strong>:
+    <ol>
+      <li><strong>10초 전/후 이동</strong>: <code class="language-plaintext highlighter-rouge">prev</code>와 <code class="language-plaintext highlighter-rouge">next</code> 명령을 수행하며, 영상의 시작(00:00)과 끝(video_len)을 벗어나지 않도록 처리한다.</li>
+      <li><strong>오프닝 자동 건너뛰기</strong>: 현재 재생 위치가 오프닝 구간(<code class="language-plaintext highlighter-rouge">op_start</code> ~ <code class="language-plaintext highlighter-rouge">op_end</code>)에 포함될 경우, 즉시 오프닝이 끝나는 위치(<code class="language-plaintext highlighter-rouge">op_end</code>)로 자동 이동한다. 이 기능은 사용자의 명령어와 관계없이 위치가 변경될 때마다 적용되어야 하는 핵심 규칙이다.</li>
+    </ol>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="코드-개선-과정-분석">코드 개선 과정 분석</h3>
+
+<h4 id="1단계-최초-풀이-분minute과-초second를-분리하여-처리">[1단계] 최초 풀이: 분(minute)과 초(second)를 분리하여 처리</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+<span class="k">def</span> <span class="nf">prev_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span><span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">10</span>
+    <span class="k">elif</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">60</span> <span class="o">-</span> <span class="mi">10</span>
+        
+    <span class="k">if</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">current_pos</span>
+
+<span class="k">def</span> <span class="nf">next_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">op_end</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">10</span>
+    
+    <span class="k">if</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">59</span><span class="p">:</span>
+        <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        
+    <span class="n">end_hour</span><span class="p">,</span> <span class="n">end_minutes</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_end</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">end_hour</span> <span class="ow">or</span> <span class="p">(</span><span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">end_hour</span> <span class="ow">and</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">end_minutes</span><span class="p">):</span>
+        <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">end_hour</span>
+        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">end_minutes</span>
+    
+    <span class="k">return</span> <span class="n">current_pos</span>
+
+<span class="k">def</span> <span class="nf">skip_opening</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">op_start</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">op_end</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_start</span><span class="p">)</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_end</span><span class="p">)</span>
+    
+    <span class="n">start_total_time</span> <span class="o">=</span> <span class="n">start_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">start_time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">end_total_time</span> <span class="o">=</span> <span class="n">end_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">end_time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">current_total_time</span> <span class="o">=</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">start_total_time</span> <span class="o">&lt;=</span> <span class="n">current_total_time</span> <span class="ow">and</span> <span class="n">current_total_time</span> <span class="o">&lt;=</span> <span class="n">end_total_time</span><span class="p">:</span>
+        <span class="n">current_pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">end_time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">end_time</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="k">return</span> <span class="n">current_pos</span>
+<span class="k">def</span> <span class="nf">get_str_time</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="p">)</span><span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+
+    
+    <span class="n">hour</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">minute</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">hour</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">'</span><span class="s">0</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="sh">'</span>
+    <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">minute</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">minute</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">'</span><span class="s">0</span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="sh">'</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="sh">'</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="sh">'</span>
+
+<span class="k">def</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">2</span><span class="p">]),</span> <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">])]</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">video_len</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">,</span> <span class="n">commands</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="sh">''</span>
+    
+    <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
+        <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">skip_opening</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="sh">'</span><span class="s">next</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">next_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="n">video_len</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="sh">'</span><span class="s">prev</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">prev_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">)</span>
+    
+    <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">skip_opening</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">)</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="nf">get_str_time</span><span class="p">(</span><span class="n">current_pos</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>
+
+<p>첫 번째 코드는 시간 데이터를 <code class="language-plaintext highlighter-rouge">[분, 초]</code> 형태의 리스트(혹은 튜플)로 다루는 방식이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1단계 코드 (주요 부분)
+</span><span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+<span class="k">def</span> <span class="nf">prev_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span><span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">10</span>
+    <span class="k">elif</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">60</span> <span class="o">-</span> <span class="mi">10</span>
+    <span class="c1"># ...경계 값 처리...
+</span>    <span class="k">return</span> <span class="n">current_pos</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">video_len</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">,</span> <span class="n">commands</span><span class="p">):</span>
+    <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="c1"># [분, 초] 리스트 반환
+</span>    <span class="c1"># ... (생략) ...
+</span></code></pre></div></div>
+
+<ul>
+  <li><strong>접근 방식</strong>:
+    <ul>
+      <li>시간을 ‘분’과 ‘초’ 두 개의 단위로 유지하며 모든 연산을 수행했다.</li>
+    </ul>
+  </li>
+  <li><strong>분석 및 문제점</strong>:
+    <ul>
+      <li><strong>로직의 복잡성</strong>: 10초를 더하고 뺄 때, 60초를 기준으로 받아올림/내림 처리를 해야 하므로 <code class="language-plaintext highlighter-rouge">if-elif</code> 조건문이 복잡해진다. 예를 들어 <code class="language-plaintext highlighter-rouge">prev_pos</code>에서 <code class="language-plaintext highlighter-rouge">03:05</code>에서 10초를 빼는 경우 <code class="language-plaintext highlighter-rouge">02:55</code>로 만들기 위한 연산이 직관적이지 않다.</li>
+      <li><strong>비교 연산의 번거로움</strong>: <code class="language-plaintext highlighter-rouge">skip_opening</code>과 같이 시간의 선후 관계를 비교할 때, 분과 초를 각각 비교해야 하므로 코드가 길어지고 실수할 가능성이 커진다.</li>
+      <li><strong>데이터 타입의 불일치</strong>: 타입 힌트는 불변(immutable) 객체인 <code class="language-plaintext highlighter-rouge">Tuple</code>로 지정했지만, 실제로는 <code class="language-plaintext highlighter-rouge">current_pos[1] -= 10</code>처럼 내부 값을 변경하고 있어 가변(mutable) 객체인 <code class="language-plaintext highlighter-rouge">List</code>처럼 사용했다. 이는 잠재적인 오류를 유발할 수 있는 좋지 않은 패턴이다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="2단계-개선-단위를-초second로-통일">[2단계] 개선: 단위를 ‘초(second)’로 통일</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">prev_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">current_pos</span> <span class="o">-=</span> <span class="mi">10</span>
+    <span class="k">if</span> <span class="n">current_pos</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">current_pos</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">current_pos</span>
+
+<span class="k">def</span> <span class="nf">next_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">video_length</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">current_pos</span> <span class="o">+=</span> <span class="mi">10</span>
+    <span class="n">video_end</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">video_length</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">current_pos</span> <span class="o">&gt;</span> <span class="n">video_end</span><span class="p">:</span>
+        <span class="n">current_pos</span> <span class="o">=</span> <span class="n">video_end</span>
+    
+    <span class="k">return</span> <span class="n">current_pos</span>
+
+<span class="k">def</span> <span class="nf">skip_opening</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">op_start</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">op_end</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_start</span><span class="p">)</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_end</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">start_time</span> <span class="o">&lt;=</span> <span class="n">current_pos</span> <span class="ow">and</span> <span class="n">current_pos</span> <span class="o">&lt;=</span> <span class="n">end_time</span><span class="p">:</span>
+        <span class="n">current_pos</span> <span class="o">=</span> <span class="n">end_time</span>
+    <span class="k">return</span> <span class="n">current_pos</span>
+
+<span class="k">def</span> <span class="nf">get_str_time</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">hour</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">current_pos</span> <span class="o">//</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">minute</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">current_pos</span> <span class="o">%</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">hour</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">'</span><span class="s">0</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="sh">'</span>
+    <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">minute</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">minute</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">'</span><span class="s">0</span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="sh">'</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="sh">'</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="sh">'</span>
+
+<span class="k">def</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span>  <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">video_len</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">,</span> <span class="n">commands</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="sh">''</span>
+    
+    <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
+        <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">skip_opening</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="sh">'</span><span class="s">next</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">next_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="n">video_len</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="sh">'</span><span class="s">prev</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">prev_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">)</span>
+    
+    <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">skip_opening</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">)</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="nf">get_str_time</span><span class="p">(</span><span class="n">current_pos</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>
+
+<p>첫 풀이의 복잡성을 해결하기 위해 모든 시간 단위를 ‘초’로 통일했다. 이는 문제 해결의 <strong>가장 결정적인 개선점</strong>이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2단계 코드 (주요 부분)
+</span><span class="k">def</span> <span class="nf">prev_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">current_pos</span> <span class="o">-=</span> <span class="mi">10</span>
+    <span class="k">if</span> <span class="n">current_pos</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">current_pos</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">current_pos</span>
+
+<span class="k">def</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span>  <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">video_len</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">,</span> <span class="n">commands</span><span class="p">):</span>
+    <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="c1"># '초' 단위 정수 반환
+</span>    <span class="c1"># ... (생략) ...
+</span></code></pre></div></div>
+
+<ul>
+  <li><strong>접근 방식</strong>:
+    <ul>
+      <li>모든 “mm:ss” 형식의 시간을 <code class="language-plaintext highlighter-rouge">get_int_time</code> 함수를 통해 ‘초’ 단위의 정수(integer)로 변환하여 계산했다.</li>
+    </ul>
+  </li>
+  <li><strong>분석 및 개선 효과</strong>:
+    <ul>
+      <li><strong>연산의 단순화</strong>: 시간 계산이 <code class="language-plaintext highlighter-rouge">+10</code>, <code class="language-plaintext highlighter-rouge">-10</code>과 같은 단순한 정수 연산으로 바뀌어 코드가 매우 간결해지고 명확해졌다.</li>
+      <li><strong>비교의 용이성</strong>: 시간 비교 역시 정수의 크기 비교(<code class="language-plaintext highlighter-rouge">&lt;=</code>, <code class="language-plaintext highlighter-rouge">&gt;=</code>)로 단순화되어 <code class="language-plaintext highlighter-rouge">skip_opening</code> 로직이 직관적으로 변했다.</li>
+      <li><strong>오류 가능성 감소</strong>: 복잡한 받아올림/내림 로직이 사라져 버그가 발생할 여지가 크게 줄었다.</li>
+    </ul>
+  </li>
+  <li><strong>남은 개선점</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">next_pos</code>, <code class="language-plaintext highlighter-rouge">skip_opening</code> 함수가 루프 안에서 호출될 때마다 <code class="language-plaintext highlighter-rouge">get_int_time</code> 함수를 통해 문자열을 정수로 변환하는 <strong>불필요한 반복 연산</strong>이 여전히 존재한다.</li>
+      <li>오프닝 스킵 로직의 적용 시점이 루프 전/후로 나뉘어 있어 더 깔끔하게 정리할 여지가 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="3단계-최종-풀이-pythonic-코드-적용-및-로직-최적화">[3단계] 최종 풀이: Pythonic 코드 적용 및 로직 최적화</h4>
+
+<p>2단계에서 이룬 구조적 개선 위에, 코드의 효율성과 가독성을 극대화하는 Pythonic한 기법들과 로직 최적화를 적용한 최종 버전이다.</p>
+
+<ul>
+  <li><strong>접근 방식</strong>:
+    <ul>
+      <li>반복 연산을 제거하고, 파이썬 내장 기능과 더 효율적인 로직 흐름을 적용하여 코드를 완성했다.</li>
+    </ul>
+  </li>
+  <li><strong>핵심 개선점</strong>:
+    <ol>
+      <li><strong>사전 연산 (Pre-computation)</strong>: <code class="language-plaintext highlighter-rouge">solution</code> 함수 시작 시점에서 필요한 모든 시간 문자열(<code class="language-plaintext highlighter-rouge">video_len</code>, <code class="language-plaintext highlighter-rouge">op_start</code> 등)을 ‘초’ 단위 정수로 <strong>미리 한 번만 변환</strong>하여 변수에 저장한다. 이를 통해 루프 내에서 반복적인 변환 작업을 완전히 제거하여 효율성을 높였다.</li>
+      <li><strong>Pythonic 경계 값 처리</strong>: <code class="language-plaintext highlighter-rouge">prev</code>와 <code class="language-plaintext highlighter-rouge">next</code> 기능에서 <code class="language-plaintext highlighter-rouge">if</code>문을 사용하여 0과 영상 최대 길이를 확인하는 대신, <code class="language-plaintext highlighter-rouge">max(0, ...)</code>와 <code class="language-plaintext highlighter-rouge">min(video_len_sec, ...)</code>를 사용하여 코드를 한 줄로 줄이고 의도를 더 명확하게 표현했다.</li>
+      <li><strong>Pythonic 시간 포맷팅</strong>: <code class="language-plaintext highlighter-rouge">get_str_time</code> 함수에서 <code class="language-plaintext highlighter-rouge">divmod()</code>를 사용해 몫(분)과 나머지(초)를 한 번에 계산하고, f-string의 <code class="language-plaintext highlighter-rouge">:02d</code> 서식 지정자를 이용해 두 자리 수에 맞춰 0을 채우는 가장 표준적이고 깔끔한 방식을 사용했다.</li>
+      <li><strong>로직 흐름 최적화</strong>: 오프닝 스킵 로직을 <strong>‘상태가 변경될 때마다 유효성을 검사하는’</strong> 개념으로 접근했다.
+        <ul>
+          <li><strong>초기 상태 보정</strong>: 루프 시작 전, 최초 위치에 대해 스킵 검사를 먼저 수행한다.</li>
+          <li><strong>변경 후 보정</strong>: 명령어 실행으로 위치가 변경된 직후에만 스킵 검사를 수행한다.</li>
+          <li>이 두 번의 검사로 모든 경우를 처리하여, 루프 전과 후로 로직이 나뉘어 있던 2단계 코드보다 훨씬 더 명료한 흐름을 완성했다.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="최종-버전-코드-및-설명">최종 버전 코드 및 설명</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 시간 변환 함수: 초 단위 정수와 "mm:ss" 문자열을 상호 변환한다.
+</span><span class="k">def</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">get_str_time</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="c1"># divmod로 몫(분)과 나머지(초)를 한 번에 계산한다.
+</span>    <span class="n">minutes</span><span class="p">,</span> <span class="n">seconds</span> <span class="o">=</span> <span class="nf">divmod</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="c1"># f-string 포맷팅으로 두 자리가 아닐 경우 앞에 0을 붙여준다.
+</span>    <span class="k">return</span> <span class="sa">f</span><span class="sh">'</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="mi">02</span><span class="n">d</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">seconds</span><span class="si">:</span><span class="mi">02</span><span class="n">d</span><span class="si">}</span><span class="sh">'</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">video_len</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">,</span> <span class="n">commands</span><span class="p">):</span>
+    <span class="c1"># [최적화 1] 모든 시간 값을 미리 한 번만 정수로 변환한다.
+</span>    <span class="n">video_len_sec</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">video_len</span><span class="p">)</span>
+    <span class="n">op_start_sec</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_start</span><span class="p">)</span>
+    <span class="n">op_end_sec</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_end</span><span class="p">)</span>
+    <span class="n">current_pos_sec</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+    
+    <span class="c1"># 오프닝 스킵을 위한 지역 헬퍼 함수. solution 내부 변수에 접근하기 용이하다.
+</span>    <span class="k">def</span> <span class="nf">check_and_skip_opening</span><span class="p">(</span><span class="n">pos_sec</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">op_start_sec</span> <span class="o">&lt;=</span> <span class="n">pos_sec</span> <span class="o">&lt;=</span> <span class="n">op_end_sec</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">op_end_sec</span>
+        <span class="k">return</span> <span class="n">pos_sec</span>
+    
+    <span class="c1"># [로직 최적화] 1. 초기 위치에 대한 오프닝 스킵을 먼저 적용한다.
+</span>    <span class="n">current_pos_sec</span> <span class="o">=</span> <span class="nf">check_and_skip_opening</span><span class="p">(</span><span class="n">current_pos_sec</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="sh">'</span><span class="s">next</span><span class="sh">'</span><span class="p">:</span>
+            <span class="c1"># [최적화 2] min()을 사용해 영상 길이를 넘지 않도록 처리한다.
+</span>            <span class="n">current_pos_sec</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="n">video_len_sec</span><span class="p">,</span> <span class="n">current_pos_sec</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="sh">'</span><span class="s">prev</span><span class="sh">'</span><span class="p">:</span>
+            <span class="c1"># [최적화 2] max()를 사용해 0 미만으로 내려가지 않도록 처리한다.
+</span>            <span class="n">current_pos_sec</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">current_pos_sec</span> <span class="o">-</span> <span class="mi">10</span><span class="p">)</span>
+    
+        <span class="c1"># [로직 최적화] 2. 명령어로 위치가 바뀐 직후, 다시 오프닝 스킵을 적용한다.
+</span>        <span class="n">current_pos_sec</span> <span class="o">=</span> <span class="nf">check_and_skip_opening</span><span class="p">(</span><span class="n">current_pos_sec</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="nf">get_str_time</span><span class="p">(</span><span class="n">current_pos_sec</span><span class="p">)</span>
+
+</code></pre></div></div>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><category term="코딩테스트" /><summary type="html"><![CDATA[Introduction]]></summary></entry><entry><title type="html">CS 학습 - 9월 3주차</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/15/cs-09-03.html" rel="alternate" type="text/html" title="CS 학습 - 9월 3주차" /><published>2025-09-15T00:00:00+00:00</published><updated>2025-09-15T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/15/cs-09-03</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/15/cs-09-03.html"><![CDATA[<h2 id="알고리즘">알고리즘</h2>
 
 <h3 id="sort">Sort</h3>
 <h4 id="1-삽입-정렬-insertion-sort">1. 삽입 정렬 (Insertion Sort)</h4>
@@ -2456,67 +2753,4 @@ Graph {
   <li><strong>문제 분할의 중요성</strong>: 하나의 거대한 문제를 ‘파싱’, ‘정수 변환’, ‘16진수 변환’ 등 작고 명확한 단위의 함수로 나누는 과정은, 이후 더 복잡한 프로젝트를 마주했을 때 어떻게 접근해야 하는지에 대한 훌륭한 훈련이 되었다.</li>
 </ul>
 
-<p>결론적으로 <code class="language-plaintext highlighter-rouge">ft_printf</code>는 단순히 문자열을 출력하는 함수를 만드는 과제가 아니었다. 컴퓨터 내부의 비트(bit) 덩어리를 인간이 이해할 수 있는 의미 있는 정보로 ‘번역’하고 ‘표현’하는 책임이 전적으로 프로그래머에게 있음을 깨닫게 한, 개발자로서의 책임감과 시야를 한 단계 넓혀준 프로젝트였다.</p>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="프로젝트" /><category term="42Seoul" /><category term="C" /><category term="Linux" /><summary type="html"><![CDATA[🖨️ ft_printf : 데이터의 ‘표현’을 책임진다는 것의 의미]]></summary></entry><entry><title type="html">42 Seoul - 004_Minitalk</title><link href="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-04.html" rel="alternate" type="text/html" title="42 Seoul - 004_Minitalk" /><published>2025-09-05T00:00:00+00:00</published><updated>2025-09-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-04</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-04.html"><![CDATA[<h2 id="-minitalk--신호signal로-쌓아-올린-통신의-규약protocol">📢 Minitalk : 신호(Signal)로 쌓아 올린 통신의 규약(Protocol)</h2>
-
-<p><code class="language-plaintext highlighter-rouge">printf</code>가 데이터의 ‘표현’을 다루는 과제였다면, <code class="language-plaintext highlighter-rouge">Minitalk</code>는 한 걸음 더 나아가, 분리된 프로세스들 사이에 어떻게 ‘의미’를 전달할 수 있는지에 대한 근본적인 질문을 던진다.</p>
-
-<p>이 과제의 요구사항은 지극히 미니멀리즘하다: 네트워크 소켓 없이, 오직 두 종류의 유닉스 시그널(<code class="language-plaintext highlighter-rouge">SIGUSR1</code>, <code class="language-plaintext highlighter-rouge">SIGUSR2</code>)만을 이용해 문자열을 전송하라.</p>
-
-<p>본래 시그널은 프로세스를 중단시키거나(<code class="language-plaintext highlighter-rouge">SIGINT</code>), 특정 상태를 알리는 등 단방향의 강제적인 ‘사건(Event)’을 통지하기 위한 원시적인 메커니즘이자 OS 단에서 제공하는 안전 장치이다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">Minitalk</code>는 이 제약 조건을 역으로 이용하여, 가장 혼란스럽고 원시적인 통신 수단 위에 어떻게 질서정연한 ‘규약(Protocol)’을 세우고 안정적인 통신 채널을 구축할 수 있는지 온몸으로 증명해야 하는, 시스템 프로그래밍의 정수가 담긴 과제였다.</p>
-
-<h3 id="-통신의-첫-단추-약속convention의-탄생">💡 통신의 첫 단추: 약속(Convention)의 탄생</h3>
-
-<p>모든 통신은 ‘약속’에서 시작한다. <code class="language-plaintext highlighter-rouge">Minitalk</code>의 세계에서는 두 개의 시그널이 알파벳의 역할을 맡는다.</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">SIGUSR1</code>은 비트(bit) <strong>0</strong>을 의미한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">SIGUSR2</code>는 비트(bit) <strong>1</strong>을 의미한다.</li>
-</ul>
-
-<p>이 지극히 단순한 약속 하나가 무질서한 신호에 의미를 부여하는 첫걸음이다.</p>
-
-<p>시그널을 받으면, 이에 따라 프로세스가 OS 단의 개입을 인지하게 되고, 그 결과로 약속된 신호의 모음을 보내준다.</p>
-
-<p>예를 들어 문자 ‘A’(ASCII 65, 이진수 <code class="language-plaintext highlighter-rouge">01000001</code>)를 보내는 행위로</p>
-
-<blockquote>
-  <p><code class="language-plaintext highlighter-rouge">SIGUSR1</code>, <code class="language-plaintext highlighter-rouge">SIGUSR2</code>, <code class="language-plaintext highlighter-rouge">SIGUSR1</code>, <code class="language-plaintext highlighter-rouge">SIGUSR1</code>, <code class="language-plaintext highlighter-rouge">SIGUSR1</code>, <code class="language-plaintext highlighter-rouge">SIGUSR1</code>, <code class="language-plaintext highlighter-rouge">SIGUSR1</code>, <code class="language-plaintext highlighter-rouge">SIGUSR2</code></p>
-</blockquote>
-
-<p>와 같은 8개의 시그널을 순차적으로 발신하는 행위로 번역된다.</p>
-
-<p>이는 현대 네트워크 통신의 가장 밑단에 있는 물리 계층(Physical Layer)에서 전기 신호의 전압 차이를 0과 1로 해석하는 원리와 정확히 일치한다. 나는 이 과제에서 시그널을 통해 가장 원시적인 형태의 물리 계층을 직접 구현한 것이다.</p>
-
-<h3 id="-프로토콜의-설계-주소-지정-직렬화-그리고-동기화">🤝 프로토콜의 설계: 주소 지정, 직렬화, 그리고 동기화</h3>
-
-<p>단순히 0과 1을 보낼 수 있다고 해서 통신이 완성되지는 않는다. 단순히 통신을 하는 인코딩과 디코딩의 절차일 텐데, 결국 통신이라고 하는 것이 의미 있는 데이터 교환을 위해서는 정교한 프로토콜로의 구성이 필요시 된다.</p>
-
-<ol>
-  <li><strong>주소 지정 (Addressing) - <code class="language-plaintext highlighter-rouge">PID</code></strong>: 서버는 시작과 동시에 자신의 <code class="language-plaintext highlighter-rouge">PID(Process ID)</code>를 출력한다. 이는 네트워크에서 서버가 자신의 IP 주소와 포트 번호를 알리는 것과 같다. <code class="language-plaintext highlighter-rouge">PID</code>는 운영체제가 각 프로세스에게 부여한 고유한 주소이며, 클라이언트는 <code class="language-plaintext highlighter-rouge">kill</code> 시스템 콜을 통해 이 주소로 정확하게 신호를 보낼 수 있다. 통신의 가장 기본인 ‘누가 누구에게’ 보내는지를 명확히 하는 단계다.</li>
-  <li><strong>직렬화와 역직렬화 (Serialization &amp; Deserialization) - 비트 연산</strong>:
-    <ul>
-      <li><strong>클라이언트 (송신자)</strong>: 문자(char)라는 고수준 데이터를 <code class="language-plaintext highlighter-rouge">(character &gt;&gt; i) &amp; 1</code>과 같은 비트 연산을 통해 8개의 비트 스트림으로 분해(직렬화)한다. 이는 통신 채널(시그널)을 통해 보낼 수 있는 형태로 데이터를 가공하는 과정이다.</li>
-      <li><strong>서버 (수신자)</strong>: <code class="language-plaintext highlighter-rouge">sigaction</code>을 통해 등록된 핸들러 함수는 비동기적으로 도착하는 시그널들을 수신한다. 이 핸들러는 <code class="language-plaintext highlighter-rouge">char_byte = (char_byte &lt;&lt; 1) | bit;</code> 코드를 통해 흩어져서 도착한 비트들을 다시 8비트의 문자(char)로 조립(역직렬화)한다. 이는 외부의 비동기적 이벤트를 처리하는 <strong>이벤트 기반 프로그래밍(Event-driven programming)</strong>의 핵심 모델을 직접 구현하는 경험이었다.</li>
-    </ul>
-  </li>
-  <li><strong>흐름 제어 (Flow Control) - 동기화</strong>: 만약 클라이언트가 일방적으로 시그널을 폭주시키면 서버는 이를 모두 처리하지 못하고 유실된다. 이를 막기 위해 <strong>핸드셰이크(Handshake)</strong> 기반의 동기화 프로토콜을 도입해야 했다.
-    <ul>
-      <li>클라이언트는 1비트를 보낸 후 <code class="language-plaintext highlighter-rouge">pause()</code>로 응답을 기다린다.</li>
-      <li>서버는 1비트를 성공적으로 처리한 후, <code class="language-plaintext highlighter-rouge">kill</code>을 통해 클라이언트에게 <strong>ACK(Acknowledgement)</strong> 신호를 보낸다.</li>
-      <li>ACK 신호를 받은 클라이언트는 비로소 다음 비트를 보낸다.</li>
-      <li>이 ‘보내고-받고-확인하는’ 과정은 신뢰성 있는 통신의 대명사인 TCP 프로토콜의 흐름 제어 원리와 정확히 같다. 이러한 구성은 가장 원시적인 재료로 현대적인 통신 프로토콜의 핵심 개념을 재창조한 것이다.</li>
-    </ul>
-  </li>
-</ol>
-
-<h3 id="-성찰-및-배운-점">✨ 성찰 및 배운 점</h3>
-
-<p><code class="language-plaintext highlighter-rouge">Minitalk</code>를 한마디로 정리한다면 운영체제와의 깊은 교감을 통해 통신의 본질을 탐구하게 한 과제였다.</p>
-
-<ul>
-  <li><strong>프로토콜 설계의 본질</strong>: 통신은 단순한 데이터 전송이 아니라, 양측이 동의한 엄격한 ‘규칙의 집합’ 위에서 이루어진다. 주소 지정, 데이터 표현, 순서 보장, 오류 제어 등 모든 현대 네트워크 프로토콜에 담긴 철학을 가장 단순한 형태로 압축해서 경험할 수 있었다. 당연히 이러한 통신을 이해하고 난 뒤, <code class="language-plaintext highlighter-rouge">우아한 종료(graceful termination)</code> 의 개념을 이해할 수 있었으며, 이는 이후 프로젝트, 회사에서의 업무에서도 서버 작업에서도 아주 톡톡히 효과를 해주었다.</li>
-  <li><strong>비동기 프로그래밍의 이해</strong>: 프로그램의 흐름이 나의 코드가 아닌 외부의 이벤트(시그널)에 의해 결정되는 이벤트 기반의 작업, 아주 원시적이지만 맛보기를 하고 직접 다루어 볼 수 있었다.</li>
-  <li><strong>추상화에 대한 감사</strong>: 매일 당연하게 사용하던 <code class="language-plaintext highlighter-rouge">TCP/IP</code> 소켓 통신이 얼마나 많은 복잡성을 감추고 우리에게 편리함을 제공하는지, 가장 낮은 수준의 통신을 구현해보고 나서야 비로소 실감하게 되었다.</li>
-</ul>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="프로젝트" /><category term="42Seoul" /><category term="C" /><category term="Linux" /><summary type="html"><![CDATA[📢 Minitalk : 신호(Signal)로 쌓아 올린 통신의 규약(Protocol)]]></summary></entry></feed>
+<p>결론적으로 <code class="language-plaintext highlighter-rouge">ft_printf</code>는 단순히 문자열을 출력하는 함수를 만드는 과제가 아니었다. 컴퓨터 내부의 비트(bit) 덩어리를 인간이 이해할 수 있는 의미 있는 정보로 ‘번역’하고 ‘표현’하는 책임이 전적으로 프로그래머에게 있음을 깨닫게 한, 개발자로서의 책임감과 시야를 한 단계 넓혀준 프로젝트였다.</p>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="프로젝트" /><category term="42Seoul" /><category term="C" /><category term="Linux" /><summary type="html"><![CDATA[🖨️ ft_printf : 데이터의 ‘표현’을 책임진다는 것의 의미]]></summary></entry></feed>
