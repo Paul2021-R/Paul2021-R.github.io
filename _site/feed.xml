@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-09T12:10:46+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Ubuntu 서버 설정 할 때 snap 사용 시 주의해야하는 이유는?</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/snap-package-management-with-issue.html" rel="alternate" type="text/html" title="Ubuntu 서버 설정 할 때 snap 사용 시 주의해야하는 이유는?" /><published>2025-10-09T00:00:00+00:00</published><updated>2025-10-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/snap-package-management-with-issue</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/snap-package-management-with-issue.html"><![CDATA[<h2 id="ubuntu에서-docker를-sudo-없이-사용하려다-발견한-snap-설치의-함정">Ubuntu에서 Docker를 sudo 없이 사용하려다 발견한 snap 설치의 함정</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-09T14:39:02+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Ubuntu 서버 설정 할 때 snap 사용 시 주의해야하는 이유는?</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/00-snap-package-management-with-issue.html" rel="alternate" type="text/html" title="Ubuntu 서버 설정 할 때 snap 사용 시 주의해야하는 이유는?" /><published>2025-10-09T00:00:00+00:00</published><updated>2025-10-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/00-snap-package-management-with-issue</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/00-snap-package-management-with-issue.html"><![CDATA[<h2 id="ubuntu에서-docker를-sudo-없이-사용하려다-발견한-snap-설치의-함정">Ubuntu에서 Docker를 sudo 없이 사용하려다 발견한 snap 설치의 함정</h2>
 
 <h3 id="문제-상황">문제 상황</h3>
 
@@ -166,7 +166,492 @@ docker run hello-world
 
 <p>GUI를 통한 편리한 설치가 항상 최선은 아니네 싶다. 특히 개발 도구의 경우, 패키지 관리 방식에 따라 동작 방식과 시스템 통합 수준이 크게 달라진다. Docker처럼 시스템 레벨 접근이 필요한 도구는 snap보다 전통적인 apt 방식이 더 적합하며, 이를 통해 불필요한 제약 없이, 최적화된 개발 환경을 구축할 수 있다.</p>
 
-<p>물론 일반 사용에선 전혀 그렇지 않다고 생각도 든다. 왜냐면 리눅스 시스템의 라이브러리의 의존성 문제로 업데이트를 잘못하면 큰일나는 경우를 몇 번 경험했고(…) 무지성하게 구글에서 명령어 긁어다가, install 박아버리는 순간 지옥이 펼쳐지는 경우를 생각한다면(…). 의존성을 확실하게 관리하고 마치 Docker 처럼 정확하게 컨테이너화 시키는게 확실히 이유가 있어 보였다. 이러한 지점에서 Ubuntu 가 일반 소비자용의 철학을 가진 OS 라는 점을, 새삼 느끼게 만든다. (근데 프로세스까지 독립적으로 관리하게 하는 건 좀…)</p>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="DevOps" /><category term="Docker" /><category term="Linux" /><summary type="html"><![CDATA[Ubuntu에서 Docker를 sudo 없이 사용하려다 발견한 snap 설치의 함정]]></summary></entry><entry><title type="html">코테 학습 - ‘지폐접기’</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python.html" rel="alternate" type="text/html" title="코테 학습 - ‘지폐접기’" /><published>2025-10-01T00:00:00+00:00</published><updated>2025-10-01T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python.html"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>물론 일반 사용에선 전혀 그렇지 않다고 생각도 든다. 왜냐면 리눅스 시스템의 라이브러리의 의존성 문제로 업데이트를 잘못하면 큰일나는 경우를 몇 번 경험했고(…) 무지성하게 구글에서 명령어 긁어다가, install 박아버리는 순간 지옥이 펼쳐지는 경우를 생각한다면(…). 의존성을 확실하게 관리하고 마치 Docker 처럼 정확하게 컨테이너화 시키는게 확실히 이유가 있어 보였다. 이러한 지점에서 Ubuntu 가 일반 소비자용의 철학을 가진 OS 라는 점을, 새삼 느끼게 만든다. (근데 프로세스까지 독립적으로 관리하게 하는 건 좀…)</p>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="DevOps" /><category term="Docker" /><category term="Linux" /><summary type="html"><![CDATA[Ubuntu에서 Docker를 sudo 없이 사용하려다 발견한 snap 설치의 함정]]></summary></entry><entry><title type="html">Obsidian + Copilot - 나만의 글쓰기 Agent를 만들어보자</title><link href="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/10/09/01-obsidian-ai-copilot.html" rel="alternate" type="text/html" title="Obsidian + Copilot - 나만의 글쓰기 Agent를 만들어보자" /><published>2025-10-09T00:00:00+00:00</published><updated>2025-10-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/10/09/01-obsidian-ai-copilot</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/10/09/01-obsidian-ai-copilot.html"><![CDATA[<h2 id="obsidian--copilot---나만의-글쓰기-agent를-만들어보자">Obsidian + Copilot - 나만의 글쓰기 Agent를 만들어보자</h2>
+<h3 id="글쓰기의-길은-멀고도-험하다">글쓰기의 길은 멀고도 험하다</h3>
+
+<p>기술 블로그를 써라.</p>
+
+<p>프로젝트의 후기나, 느낀 점. 기술의 효용성이나 고민한 과정을 써라</p>
+
+<p>개발자로 살아가는 이상, 노하우, 기술에 대한 이해를 표현하는 것이 프로그램의 ‘질’ 또는 ‘실력’을 결정한다는 개발 분야의 공통의 법칙은 언제나 우릴 괴롭힌다.</p>
+
+<p>이에 끊임없이 글을 적어둬야 한다는 고통과 노이로제에 시달린다.</p>
+
+<p>나 역시 글쓰기를 완전 잘한다거나 글을 뽑아내는 기계도 아니다. 그나마 글을 쓰는걸 좋아하는 편이라지만, 그럼에도 해야할 일 산더미인데, 언제 적냐.. 라는 말이 매번 튀어나온다. 글쓰기가 가장 시간을 많이 쓴다는 사실은 달라지지 않는다.</p>
+
+<p>그러다가 최소 2-3주 걸릴 만한 미니 프로젝트, Obsidian + Copilot + gemini 의 에이전트 만들기를 진행해 보았다. 그리고 그걸 적용한 이 글. 이 글을 단 3일 만에 마무리 되었다면 믿겠는가?</p>
+
+<p>AI를 활용해서 글을 대신 파바박, 하루 만에 뚝딱 하고 써주진 않지만… 그럼에도 이번 미니 프로젝트를 통해, 글쓰기, 학습에서 정말 도움이 되는 Agent 생성에 도전 그리고 나름의 결과를 만들어냈다.</p>
+
+<p><strong>개인적으로 풀어내는 이 후기, 함께 적용 해본다면, 정말 괜찮게, 도움이 되는 글쓰기 보조 에이전트를 만들 수 있지 않을까?</strong> 조심스레 이야기를 시작해보고자 한다.</p>
+
+<h2 id="본론">본론</h2>
+
+<h3 id="시작은-obsidian-그리고-copilot">시작은 Obsidian 그리고 Copilot</h3>
+<p>Notion 은 많이들 쓸 것이다. 언제 어디서든, 그리고 어떤 장비든 웹 기반의 Notion은 데이터를 저장하기에 적절하다고 생각하는 이들이 많다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-003.png" alt="" /></p>
+
+<p>하지만 한때 이를 진지하게 써본 입장에서, Obsidian을 주력 정보 저장, 글쓰기 도구로 쓰게되었다. 이유는 다음과 같다.</p>
+
+<ol>
+  <li>Notion 업데이트 시 잔버그가 수시로 발생하는데, 데이터 영역까지 함께 문제가 되는 경우가 발생함.(데이터 삭제도 발생한다.)</li>
+  <li>한글 유저는 영어보다 특히나 버그 발생률이 높다</li>
+  <li>문서 양이 많아지면, 유료 계정임에도 검색 문제, 버벅거림 문제가 발생한다</li>
+</ol>
+
+<p>요즘은 많이 나아졌다고 하지만, 한 번쯤 API 문서 같은거 만들어두었다가 날려먹어보면, Notion은 쳐다보지도 않게 된다. 그냥 포트폴리오 를 위한 간단 공유용 정도면 모를까.</p>
+
+<p>Obsidian은 가벼우며, 검색, 태깅 등 기본적인 기능이 강력하다. 특히나 퍼포먼스가 매우 훌륭하다. 플러그인도 제공하기 때문에, 이를 활용하면 Notion 그 이상의 확장성, 사용성, 글쓰는 데 편리함을 제공해준다. 그리고 운명 같은 날이 찾아왔으니… 바로 <code class="language-plaintext highlighter-rouge">Copilot</code> 이란 플러그인을 발견했을 때였다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-004.png" alt="" /></p>
+
+<p>코파일럿. 누가보면 윈도우에서 만든 AI 인줄알 것 같다. 이 플러그인은 단어 의미대로의 윈도우의 AI와는 별도의 플러그인이다. 당당하게 유료 결제 버전도 존재하는데, 그에 대해선 나중에 이야기 하려고 하고, 지금은 이 녀석이 뭔가에 대해 설명해주려고 한다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-005.png" alt="" /></p>
+
+<h3 id="ai-좀더-통합-좀더-효율적이게-분신-만들기">AI, 좀더 통합, 좀더 효율적이게.. 분신 만들기?</h3>
+
+<p>AI 가 말 하나는 기똥차게 하고, 이미 VSC 나 각종 IDE 는 통합이 이루어졌다. 그런데 이 Copilot 은 글쓰기 도구인 Obsidian을 그렇게 만들어주는 프로그램이다. 설치 방법은 간단하다. 로컬 LLM 이나, api 키를 활용해 연결이 된다. 만약 API 발급이 궁금하면 하단의 글을 참고하면 좋다.</p>
+
+<p>연결하고, 사용을 해보니 순간 머릿속에 스치는 게 있었다.</p>
+
+<blockquote>
+  <p>“이 정도 통합이면… 나 대신 글쓰기 해줄 수 있지 않을까?”</p>
+</blockquote>
+
+<p>본론으로 돌아와서 글쓰기. 생각해보면 학습, 개발을 하다보면 글쓸 자료는 넘쳐났다. 지금까지는 gemini + 기타 다른 ai  이런 식으로 하여 사용도 해보았고. gemini 의 세부 기능을 활용한다거나 gemini-cli 라는 프로그램으로 내 맥북 내부에서 llm 을 구동해 자료를 취합, 글을 써보기도 해보았다.</p>
+
+<p>하지만 이런 방식이  대중화되거나 입소문을 많이 타진 않았다. 왜그런가? 우선, 다양한 자료, 글감은 여기저기 흩뿌려져 있는 경우가 있다. 설치도 복잡하고, 오류도 있다. 뿐만 아니라, 정리를 해서 어딘가에 모아서 글감들을 정리해도,  ‘나답게’, ‘내 냄새’ 가 나는 글로 만들 수 있냐! 라고 하면 그렇지 않기 때문에, 실상 내가 알고 있는 것들을 모아서 글을 쓰는 것과 큰 차이가 없는 것이다.</p>
+
+<p>그러는 와중에 Copilot 의 기능으로 <code class="language-plaintext highlighter-rouge">Command</code>라는 기능을 발견하였다. 단순히 LLM 을 연결만 해주는게 아니라, 직접 명령을 적어서 매크로처럼 쓸 수 있는데, 심지어 프롬프트로 전역 설정하는 것들도 있는 것이 아닌가?</p>
+
+<p><strong>그리고 아까 전 상황. 그렇다. 이정도면 나의 문체를 그대로 문서화, 프롬프트화 시켜서 등록을 해두면, ‘딸깍’ 하고 글을 써줄수 있지 않을까? 이 생각에 무릎을 탁친 나는 도전을 해보기로 하였다.</strong></p>
+
+<h4 id="나를-분석해보자-how">나를 분석해보자 How?</h4>
+
+<p>우선, 첫 시작은 나를 분석하는 것이다. 내가 누굴까? 글로 표현되는 나를 AI 가 모방하는게 우선이라고 생각했다. 나는 가능하면 나의 주관적 판단이 들어가는 것은 좋지 않다고 생각했다. 나의 주관은 나에 대한 여러 측면에 대해 ‘과소평가’ 와 ‘과대평가’가 함께 공존하고 있다고 생각하기 때문이다. 그러니 나에 대한 긍정 평가도 부정 평가도 아닌 어딘가의 제 3자 관점에서 분석을 하는 것이 가장 적절하다고 생각했다.</p>
+
+<p>그런데 이제는 간단하다. 내가 쓴 글들을 다 가져와서 분석을 시키던가, 내 블로그에 AI 가 알아서 분석해라고 하는게 가능하다. 오히려 도구를 뭘 쓸지만 고민하면 되었다.  이에 Claude 와 Gemini 의 <code class="language-plaintext highlighter-rouge">deep research</code> 기능으로, 나의 글, 나의 문체에 대한 분석을 각각 요청했다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-006.png" alt="" />
+<img src="/assets/images/posts/2025-10/2025-10-09-007.png" alt="" /></p>
+
+<blockquote>
+  <p>💡 핵심은 자신에 대한 분석을 준비하는 것이다. 방법의 제약은 없다. AI 를 활용해, 자신을 표현하는 자료들을 최대한 보여주면서 분석을 요청해라.</p>
+</blockquote>
+
+<h4 id="나의-분신을-등록해보았다">나의 분신을 등록해보았다.</h4>
+
+<p>음~ 나의 계획은 완벽해! 이런 착각을 하며 Claude 와 Gemini 는 열심히 생각을, GPU가 녹고 있음을 느끼고 있었다. 이제 내가 퇴고만 해주면 되는게 아닌가! 새삼 AI 의 능력은 믿어 의심치 않고 있었고, 개발까지 가지 않아도 해결 될 수 있다는 이 행복한 시대를 살고 있음에 하늘을 향해 감사인사를 하면서, 기다렸다.</p>
+
+<p>10분이 채 안되어, 결론은 순식간에 나왔고, 그 결과가 다음과 같았다.</p>
+
+<pre><code class="language-plain"># gemini의 정확한 모사 버전
+### Persona
+당신은 '성실한 기술 기록자(Diligent Technical Archivist)'입니다. 당신의 주된 목표는 커리어 발전을 위해 스스로 학습한 기술 내용을 미래의 자신이 다시 참고할 수 있도록 정확하고 체계적으로 기록하는 것입니다. 당신의 글은 타인을 가르치기 위한 것이 아니라, 스스로의 이해를 완성하고 검증하기 위한 학습 과정의 산물입니다.
+
+### Core Philosophy
+모든 내용은 '촘촘한 학습'과 '치밀한 정리'라는 핵심 철학을 따라야 합니다. 피상적인 요약 대신, 공식 문서나 신뢰할 수 있는 자료를 기반으로 한 깊이 있고 상세한 내용을 우선시합니다. 정확성과 완전성이 가장 중요한 가치이며, 모든 기술적 설명은 검증 가능해야 합니다.
+
+### Voice and Tone
+- **어조**: 체계적이고, 객관적이며, 사실에 기반한 약간의 격식체를 사용합니다.
+- **감정 배제**: 과장, 유머, 지나치게 친근한 말투는 피합니다.
+- **목적 명시**: 글의 목적이 학습과 기록임을 명확히 하되, 독자를 가르치려는 듯한 계몽적인 어조는 사용하지 않습니다.
+
+### Content Generation Modes
+당신은 아래 두 가지 모드 중 하나로 콘텐츠를 생성해야 합니다. 각 모드는 목적과 형식 면에서 명확히 구분됩니다.
+
+#### Mode 1: 심층 탐구 학습 로그 (Deep Dive Study Log)
+- **목적**: Kubernetes, Docker, CS 기초 등 근본적이고 방대한 주제를 체계적으로 학습하고 정리합니다.
+- **형식**:
+    - 예상 읽기 시간 15~30분 분량의 긴 글을 작성합니다.
+    - 공식 문서를 번역하거나 핵심 내용을 재구성하는 방식으로 정보를 전달합니다.
+    - 복잡한 시스템을 구성 요소별로 나누어 상세히 설명합니다.
+    - 제목은 '[기술명] - [세부 주제]' 형식을 따릅니다.
+    - 논리적 흐름에 따라 명확한 소제목으로 내용을 구조화합니다.
+
+#### Mode 2: 기술 메모 (Technical Memo)
+- **목적**: 특정 도구 사용법, 문제 해결 과정, 설정 방법 등 구체적이고 실용적인 정보를 빠르게 기록합니다.
+- **형식**:
+    - 예상 읽기 시간 2~5분 분량의 짧고 간결한 글을 작성합니다.
+    - '문제 상황 -&gt; 해결 과정 -&gt; 결과'의 구조를 명확히 합니다.
+    - 필요한 경우 코드 스니펫, 설정 파일, 명령어 등을 정확히 포함합니다.
+    - 제목은 'memo - [문제 또는 주제]'와 같이 직관적으로 작성합니다.
+
+### Formatting and Structure
+- **제목**: 기능적이고 내용을 명확히 설명하는 제목을 사용합니다.
+- **마크다운**: 헤딩(##, ###), 목록(리스트), 코드 블록을 적극적으로 사용하여 가독성을 높입니다.
+- **용어 사용**: 기술 용어는 한국어와 영어를 자연스럽게 혼용합니다. (예: 쿠버네티스 컨트롤 플레인(Control Plane))
+
+### Task
+이제 위의 모든 규칙을 준수하여 다음 요청을 수행해 주십시오:
+[여기에 구체적인 콘텐츠 생성 요청 입력]
+</code></pre>
+
+<pre><code class="language-plain"># claude의 정확한 모사 버전
+Paul2021-R 스타일로 글을 작성해주세요:
+
+[문체 지침]
+- 삼박자 수식어구로 리듬감 조성 (예: "종합적으로, 효율적으로, 효과적으로")
+- 격식체 기본 + "...!" 감탄부호로 친근함 표현
+- 영어 기술용어와 한국어 개념어 자연스럽게 혼용
+- 불렛포인트와 계층적 구조로 체계적 정보 정리
+
+[어조와 관점]
+- 겸손하면서도 전문적인 태도 유지
+- 솔직한 자기성찰과 현실적 사고
+- 비전공자/학습자 관점에서의 공감과 조언
+- 과정 중심적 서술 (결과보다는 시행착오 과정 중시)
+
+[표현 스타일]
+- 구체적 수치와 날짜로 생생함 표현
+- 게임/레벨링 비유로 성장 과정 설명
+- "하루 하루", "항상 고민하고, 궁금해하며" 같은 반복 패턴
+- 실패 인정 후 교훈 도출하는 구조
+</code></pre>
+
+<p>내용은 읽으면 읽을수록 찰떡 같았다. 다소의 차이점은 Gemini의 경우 철학, 그리고 Mode 라는 식으로 내 글의 종류에 따라 다르게 접근하는 방법을 포함하여 프롬프트를 만들어주었다.</p>
+
+<p>Claude 는 좀더 중립적이지만, 글의 형태를 따라하는 스타일 가이드 형태로 만들어준 것이 눈에 들어왔다. 그렇게 만들어진 내용들은 서로 특징은 다르지만 분명하게 ‘나’를 담고 있었다.</p>
+
+<p>그렇게 생각하고 보니 하는 김에 이왕이면 글을 좀더 보완한다면 어떻게 하면 좋을까? 라는 생각도 들었다.  그렇기에 내 글의 아쉬운 점을 보완하는 프롬프트까지 만들어달라고 하였다.</p>
+
+<pre><code class="language-plain"># gemini - 문체 개선 요청 버전 
+### Persona
+당신은 '전문가 멘토이자 성실한 기술 기록자(Expert Mentor and Diligent Archivist)'입니다. 당신은 자신의 심도 깊은 학습 과정을 기록함과 동시에, 당신과 비슷한 길을 걷는 다른 엔지니어들에게 의도적으로 명확하고 유용한 가이드를 제공합니다. 당신의 글은 개인적인 기록이자, 가치 있는 공유 자산입니다.
+
+### Audience Awareness
+당신의 글을 읽는 독자는 당신과 같이 똑똑한 엔지니어이지만, 당신과 동일한 사전 지식이나 맥락을 가지고 있지 않을 수 있다고 가정하십시오. 따라서 '무엇(what)'을 설명하기 전에 항상 '왜(why)'를 먼저 설명하여 동기를 부여하고 이해를 도와야 합니다.
+
+### Core Philosophy
+'촘촘한 학습'과 '치밀한 정리'의 원칙을 지키되, 이를 '명확한 전달'이라는 가치와 결합합니다. 기술적 정확성과 깊이를 유지하면서도, 독자가 개념을 직관적으로 이해할 수 있도록 돕는 것이 중요합니다.
+
+### Narrative and Contextual Framing
+모든 게시물은 반드시 다음 세 가지 구조적 요소를 포함해야 합니다.
+1.  **도입부 - 맥락 설정 (Opening Context)**: 글의 시작 부분에 이 주제를 왜 지금 다루는지, 이것이 당신의 학습 여정에서 어떤 위치에 있는지를 1~2 문단으로 설명합니다.
+2.  **본문 - 기술적 설명**: 핵심 기술 내용을 정확하고 상세하게 설명합니다.
+3.  **결론부 - 개인적 종합 (Closing Synthesis)**: 글을 마무리하며, 이번 학습을 통해 얻은 핵심적인 깨달음, 다른 기술과의 연결점, 또는 개인적인 관점을 요약하여 제시합니다.
+
+### Engagement and Readability Elements
+콘텐츠 생성 시, 다음 요소들을 능동적으로 통합하여 가독성과 몰입도를 높여야 합니다.
+- **비유 (Analogies)**: 복잡하고 추상적인 개념을 설명할 때, 독자의 직관적인 이해를 돕기 위한 적절한 비유를 포함시키십시오.
+- **핵심 요약 (Key Takeaway)**: 각 중요 섹션이 끝나거나 글 전체의 마지막에, 핵심 내용을 강조하는 인용문(blockquote) 형식의 요약 박스를 추가하십시오.
+- **질문형 소제목 (Interrogative Subheadings)**: "Service의 종류"와 같은 서술형 제목 대신, "쿠버네티스 Service에는 어떤 종류가 있으며, 각각은 언제 사용해야 하는가?"와 같은 질문형 제목을 사용하여 독자의 탐구심을 자극하십시오.
+
+### Formatting and Structure
+- **제목**: 기능적이면서도 독자의 흥미를 끌 수 있는 제목을 사용합니다.
+- **마크다운**: 헤딩, 목록, 코드 블록, 인용문을 효과적으로 사용하여 시각적 계층 구조와 가독성을 극대화합니다.
+- **용어 사용**: 기술 용어는 한국어와 영어를 자연스럽게 혼용합니다.
+
+### Task
+이제 위의 모든 규칙을 준수하여 다음 요청을 수행해 주십시오:
+[여기에 구체적인 콘텐츠 생성 요청 입력]
+</code></pre>
+
+<pre><code class="language-plain"># claude - 문체 개선 요청 버전
+Paul2021-R 스타일로 글을 작성해주세요:
+
+[문체 지침]
+- 삼박자 수식어구로 리듬감 조성 (예: "종합적으로, 효율적으로, 효과적으로")
+- 격식체 기본 + "...!" 감탄부호로 친근함 표현
+- 영어 기술용어와 한국어 개념어 자연스럽게 혼용
+- 불렛포인트와 계층적 구조로 체계적 정보 정리
+
+[어조와 관점]
+- 겸손하면서도 전문적인 태도 유지
+- 솔직한 자기성찰과 현실적 사고
+- 비전공자/학습자 관점에서의 공감과 조언
+- 과정 중심적 서술 (결과보다는 시행착오 과정 중시)
+
+[표현 스타일]
+- 구체적 수치와 날짜로 생생함 표현
+- 게임/레벨링 비유로 성장 과정 설명
+- "하루 하루", "항상 고민하고, 궁금해하며" 같은 반복 패턴
+- 실패 인정 후 교훈 도출하는 구조
+</code></pre>
+
+<p>마지막으로 Gemini 와 Claude가 서로 다른 시각. 다른 형태의 프롬프트이니, 이걸 합치면 서로 부족한 부분을 보완하고, 완벽해지지 않을까? 아까 전에 언급했던 제 3의 관점의 완전체가 이것이라 생각했다. 화룡점정.</p>
+
+<p>예전부터 gemini, 구글의 모델은 서비스 차원에서 과도한 긍정성, 아첨이 문제시 되기도 했는데, 그러니 서로 다른 관점을 엮거나 합친다면 얼마나 좋을까? 두 모델의 차이를 포함하여 온전한 프롬프트, 강력한 프롬프트를 상상했다. 머릿속에선 이미 나를 대신할 새로운 분신 1호의 탄생에 종이 울리고 있었다. 결과물을 만들 때였다.</p>
+
+<h3 id="context-engineering">Context Engineering</h3>
+<h4 id="-뭔가-이상하다--결과물의-상태가-">🤔 뭔가 이상하다 : 결과물의 상태가 ?</h4>
+
+<p>나는 눈을 의심했다. 정리하고, 프롬프트를 등록하고, 데모 글을 작성해보기 위해 자료를 준비했다. 자동화 이전, 상당한 공을 드렸음에도 결과적으로 AI 가 뽑아낸 글은 뭔가 이상하다고 느꼈다.</p>
+
+<p>분명히 나를 분석한 프롬프트고, 심지어 복합적인 시각을 녹이고자 AI 두개의, 다른 시각을 합쳐 만든 완벽한 프롬프트였다. 나를 정확하게 표현한 버전, 내 개선 포인트를 추가로 담은 버전… 온갖 노력을 다 했는데 너무 아쉬운 글들 뿐이지 않은가?</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-008.png" alt="" /></p>
+
+<p>글의 퀄리티는 내가 예상했던 수준에 미치지 못하는게 보였다. 이젠 에러 분석이 필요한 시점이었다. 내가 준비한 프롬프트는 다음과 같은 종류로 구성 되어 있었다.</p>
+
+<blockquote>
+  <ul>
+    <li>Gemini 분석의 저자의 문체를 복사한 ‘정확도’ 버전</li>
+    <li>Gemini 분석의 저자의 문체에서 개선사항을 포함한 ‘개선’ 버전</li>
+    <li>Claude 분석의 저자의 문체를 복사한 ‘정확도’ 버전</li>
+    <li>Claude 분석의 문체에서 개선사항을 포함한 ‘개선’ 버전</li>
+  </ul>
+</blockquote>
+
+<p>이 버전들을 그냥 쓴게 아니라 언급한 바 Gemini 와 Claude 에게 다시 양측 자료를 제공해주면서, 합쳐진 최종 버전을 만들라고 했었다. 즉 최종 프롬프트는 다음과 같다.</p>
+
+<ol>
+  <li>Gemini 정확도 버전 + Claude 정확도 버전 =&gt; Gemini, Claude 각각 합치기를 요청
+    <ul>
+      <li>Gemini 정확도 버전</li>
+      <li>Claude 정확도 버전</li>
+    </ul>
+  </li>
+  <li>Gemini 개선 버전 + Claude 개선 버전 =&gt; Gemini, Claude 각각 합치기를 요청
+    <ul>
+      <li>Gemini 개선 버전</li>
+      <li>Claude 개선 버전</li>
+    </ul>
+  </li>
+</ol>
+
+<p>이렇게하여 나름 통합적 사고가 가능한 프롬프트가 되었으리라 생각했다. 서로의 분석의 빈틈을 매꿔주리라 생각했던 것이다. 하지만…</p>
+
+<p>gemini 정확도 버전의 프롬프트의 글들의 구성은 간소했다. 요구사항은 잘 따른 편이었으나, 정작 문단 구조가 길고, 줄 글이 되어서 가독성이 좋지 못했다. 단순히 나를 모방했다고 하기엔 특징이 너무 부족한 무미 건조한 글이 되어 있었다.</p>
+
+<p>claude 정확도 버전은 인트로에 나의 철학이란 이름으로 42서울, 비전공자 등 굳이 쓸데없는 도입부를 만들어서 글을 작성하였다. 도입부가 굳이 쓸데없는 사족이 없어도 되는데 특정 단어들에 갇혀진 표현 뿐이었다. 학습, 공유, 자기 성장이 목적인 나에게 필요한 글의 구성은 아니었다.</p>
+
+<p>개선버전의 경우엔 다행이도 글 자체의 느낌은 훨씬 좋았다. 그러나 이상하게 AI 개입이 좀더 많고 나의 의도를 넘어선 내용이 있었다. 나의 글의 특성을 모사하진 못한게 보였다. 오히려 AI의 느낌이 강해져버렸다.</p>
+
+<p>정리하면, 선택지는 없었다. 뭔가 문제는 있었으니, 이젠 글이 문제가 아니라 프롬프트를 제대로 까봐야 한다는 판단이 들었다. 그리하여 이번에야말로 프롬프트를 제대로 읽어 보는 순간 납득이 가는 부분이 있었다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-009.png" alt="" /></p>
+
+<p>오리지날 원본 프롬프트들까지 준비하여 비교해본 결과, 구체적으로 차이점은 다음과 같았다.</p>
+
+<ol>
+  <li>Gemini 건 Claude 건 합치길 요청하여 얻은 결과물들은, 막상 양쪽의 모든 특성을 고려한게 아니라, 일정하게 프롬프트 내역이 빠져 있었다.</li>
+  <li>Claude 버전은 공통적으로 기존의 내용에서 상당한 양의 가이드가 사라져 있었고, 스타일 가이드적인 특성이 훨씬 강했던 원본에 비해 Gemini의 철학이나 방향성에 대한 내용이 담겨 있었다.</li>
+  <li>Gemini 버전의 경우 원본이 방향성, 철학, 태도 등이 담겨 있었는데, 이러한 부분의 내용이 사라져 있었다. 오히려 스타일 가이드가 일부만 들어가거나, 아예 빠져 있는 경우가 있었다.</li>
+</ol>
+
+<p>그리하야… 원본 프롬프트를 다시 써봐야 하겠다 는 생각에 원본 프롬프트로 글을 만들어 내는 것까지 진행해보고 난 뒤, 비로소 나는 결론을 내릴 수 있었다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-010.png" alt="" /></p>
+
+<p>내용을 읽어본다면 아마 납득이 갈 것이다. 원본 프롬프트들을 합쳐서 만든 프롬프트와는 달랐다. 오히려 더 나스러운 글을 만들어 낸 것이 보였고, 무엇보다 디테일 적 누락이 많은 부분 해소 되어 있었다. 이유가 무엇인가? 한참을 프롬프트와 결과물을 읽어보니, 이유를 알 수 있었다.</p>
+
+<h4 id="프롬프트는">프롬프트는…</h4>
+
+<h5 id="왜-프롬프트는-자동화가-이상하게-되었단-말인가">왜 프롬프트는 자동화가 이상하게 되었단 말인가?</h5>
+
+<p>나는 두 가지 다른 관점의 프롬프트를 분석하게 해놓았고, 그 분석된 프롬프트를 기반으로 종합시켰을 때 프롬프트의 질이 올라갈 거라고 생각했다. 하지만 이는 ‘착각’이었다.</p>
+
+<p>AI 들은 여러 관점의 합을 만들 때, ‘일반화’되어 버린다. 즉 고유한, 독특한 특징이 될 포인트를 잡는게 아니라, 여러 특징의 점을 찍다보니 결국 각이 많아지다 보면 원형이 되어 버리듯 아주 일반적인 내용화 되는 것이었고, 이런 점은 gemini 를 통해 합성한 프롬프트에서 나타났다. Claude 의 합성의 경우엔 오히려 정보가 손실된 경우도 있었고 말이다.</p>
+
+<p>이러한 현상은 일종의 AI의 ‘정보 손실’의 특성이었다. AI 어텐션 메커니즘(Attention Mechanism) 원리를 생각해보면 보다 확실히 알 수 있다. 입력 정보가 많아질 수록, 중요도가 떨어지는 정보는 요약 과정에서  우선순위 면에서 밀리고, 이 과정이 길어지면 데이터는 누락이 될 수 있었다.</p>
+
+<p>특히나 가장 ‘그럴듯 하게’ 다음 단어를 예측하는게 핵심인 AI 입장에서, 통계적으로 오히려 그럴듯한 결과를 내기 위해선 독특하거나, 독창적인 정보를 담기 보단 ‘일반적인’ 문장의 결과를 생성해내는 것이 오히려 더 프로그램 목적에 부합한다.  그 결과 오히려 모두를 포함하길 원한다는 사람의 요구가 명확히 없다면, 이는 곧 정보 손실, 두 내용의 중간 어딘가의 일반화된 내용을 출력하는 길로 이어지는 것이다.</p>
+
+<h5 id="프롬프트는-바운더리를-생성한다">프롬프트는 바운더리를 생성한다.</h5>
+
+<p>너무 당연하다고 생각할지도 모르겠지만, 이 표현이 의미하는 바는 매우 컸다. 예를 들어 키워드를 명료하게 설정한 프롬프트는 일종의 룰이 되어 버린다. ‘42서울 출신 개발자’ 라는 철학을 넣으니, 도입부에 이 키워드를 어떻게든 넣으려고 했다.</p>
+
+<p>키워드가 되면 족쇄가 되어 호흡, 흐름, 무게감을 어떻게 내가 원하는 밸런스에 맞추는게 아니라, 오히려 프롬프트를 바운더리로 잡고, 억지로 그 내용을 도출시키는데 목적이 있는 듯 보였다. 그리고 이러한 특성이 작용하면, 원하는 글이 아닌, 억지스러운 글이 되는 것이었다.</p>
+
+<p>또 한편으로, 프롬프트가 일부 사라져 구멍이 생겼던 프롬프트는, 오히려 AI 의 개입이 많아지면서 창의적인 면이나, 글이 좀더 입체적으로 보였다. 이렇게 되면 결국 본질적으로 나를 모사한다는 것과는 전혀 무관계한게 아니겠는가?</p>
+
+<p>프롬프트가 아주 중요하고, 민감한 영역이기에, 역할의 지정, 할 일의 지정 차원에서는 의미가 있지만, 거기에 특정 키워드가 마치 배경 지식으로 작동 되면, 프롬프트는 일종의 저주같이 되어, 원하는 요구사항을 들어주지 못하는 경우가 발생할 수 있는 것이었다.</p>
+
+<h5 id="전-과정을-맡기는-구조는-한계가-명확하다">전 과정을 맡기는 구조는 한계가 명확하다.</h5>
+
+<p>이후에도 여러번의 테스트를 해보았다. 하지만 결정적으로 ‘한 방에 딸깍’ 이라는 말이 어울리는 느낌의 알아서 잘, 딱 맞는 작업을 해준다? 그건 꿈이었다.</p>
+
+<p>전 프로세스를 세분화 하지 않고, 프롬프트로 무언갈 써내려가게 되면, 위의 1번의 이야기가 펼쳐지는데, 그렇다고 여기서 정말 내 스타일의 커스터마이징 잘된 글을 만드려면 프롬프트가 방대해져야 한다. 그렇다고 AI에게 모두 맡기면 AI는 빈 공간에 대한 내용을 AI 의 설정으로 채운다. 그러면 또 원하는 결과가 안 나오게 되는 여지가 생기는 것이고…</p>
+
+<p>즉, 근본적으로 꼬리에 꼬리를 무는 문제들이 생기기에 ‘전 공정’을 맡긴다는 방식 자체가 오히려 목표 달성에 문제를 일으키는 것이다.</p>
+
+<h5 id="결론-적으로">결론 적으로….</h5>
+
+<p>결론적으로 내가 얻은 핵심 통찰, 이는 AI 를 통해 내가 원하는 혹은 나 그 자체를 모방하는 글을 써내려가려면, 주기적으로 진행 과정을 검토하거나, 수정하지 않으면 안된다. 완전 자율성을 못 부여하는 것은 아니지만, 이는 프로그래밍의 영역으로 고려해야할 것으로 보였다. 나의 예상과 가설은 아주 빠르게 무너져 내린 것이었다.</p>
+
+<h4 id="빠른-판단--어떻게-해야-ai-가-내-글쓰기에-도움을-줄까">빠른 판단!  어떻게 해야 AI 가 내 글쓰기에 도움을 줄까?</h4>
+
+<p>그러나 시간을 더 들이는 것은 옳지 못하다. 해야할 일이 쌓여 있는데, 현재 가능한 선에서의 효율을 찾는 것은 핵심이리라.</p>
+
+<p>그리하여 지금 상황에서 최선은 뭘까? 하고 고민한 결과가 다음과 같았다.</p>
+
+<ul>
+  <li>딸깍 하고 한방에 되는 건 어렵다 =&gt; 오히려 역으로 단계 별로 가속화 시키는게 AI 를 잘 쓸 수 있다.</li>
+  <li>프롬프트는 어떻게 해야 가장 베스트일까? =&gt; <code class="language-plaintext highlighter-rouge">Context</code> 와 <code class="language-plaintext highlighter-rouge">Prompt</code>를 나누자!</li>
+</ul>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-011.png" alt="" /></p>
+
+<p>우선, 프롬프트를 그렇다고 지정하지 않고, 그냥 매번 타이핑 친다는 것은 대단히 힘든 일인건 사실이다. 두고두고 쓰는게 편하지 않겠는가? 그런데 나에게 글이란 건 개발 일지, 정보 공유, 메모 등 엄청나게 다양한 역할, 종류가 
+다양하다는 점을 체감했다.</p>
+
+<p>나는 너무 심플하게 생각한 나머지, 글의 종류가 다르고, 프로세스가 다른데 마치 무안단물마냥 ‘줘’ 하면, AI 들이 알아서 내 공유된 개인정보로 알아서 만들어 줄거라는 순진한 생각을 한 것이다.</p>
+
+<p>그러니 Gemini가 제공한 아이디어를 적극 develop 하기로 했다. <code class="language-plaintext highlighter-rouge">Mode</code> 라는 키워드를 추가했다. 메모나 정보의 요약글로 정보저장이 핵심인 글은 1번, 누군가의 공유하는 글, 정보만큼이나 생각과 나름의 사고 과정을 보여주는게 중요한 글은 2번… 이런 식으로 글의 종류를 나누었고, 이를 고려한 프롬프트를 별도로 하여서, 행동의 규정을 명확히 했다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-012.png" alt="" /></p>
+
+<p>두 번째로, 최근 배웠던 단어 중 Context Engineering 이란 키워드가 있었다. 이 말의 의미는 현재는 프롬프트 엔지니어링 보다 AI에게 중요한건 AI 가 달라져도, 학습한 내용이나 설정이 좀 다를 순 있어도, ‘동일한 결과물’을 제공하는 제일 좋은 방법은 ‘Context Engineering’ 이라고 하는 것이다.</p>
+
+<p>요구한 내용에서 할 일, 상황 맥락이 유사하면 결과 값도 유사하게 전달할 수 있다. 예를들어 나라는 존재를 모방한 글쓰기 특징을 갖춘다는 말은, 나의 맥락을 비슷하게 모사하거나, 바탕 정보는 그대로 둔 채로, 들어오는 요청에 따라 조금씩 액션은 달리 해야, 비로소 ‘나’ 스러운 결과가 나오는 것이다.</p>
+
+<p>그러나 프롬프트 마다 일일이 이걸 담아내는 건 효과적이지 못하다. 행동(프롬프트)와 배경(맥락, 컨텍스트)를 분리하고 AI 가 나의 맥락, 글쓰기의 포인트나 특징, 철학에 가까운 사항들은 따로 정리하여 이해한다. 그렇게 모방된 인격 하에 행동을 수행해야 비로소 요구되는 정확한 답변이 가능한 것이다.</p>
+
+<p>이에 <code class="language-plaintext highlighter-rouge">Hansol Persona</code> 란 파일로 만들었고, 마치 전역변수처럼 이 녀석을 추가하고 고려하도록 만들었다. 컨텍스트, 그리고 프롬프트를 분리하고, 아까 언급했듯이 <code class="language-plaintext highlighter-rouge">Mode</code> 라는 개념을 추가했다. 그 결과는 어땠을까?</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-013.png" alt="" /></p>
+
+<p>개인적으로 아주 ‘성공적’ 이라고 평가하고 싶다.</p>
+
+<blockquote>
+  <p>💡 프롬프트, 컨텍스트 가이드</p>
+  <ol>
+    <li>Copilot 에 인용할 자신의 Context 문서를 작성하고, 필요 시 해당 문서를 항상 추가해라.</li>
+    <li>Command 에 프롬프트에 행당하는 부분만 기재한다. context 의 해당하는 부분은 배제하고, 이는 Persona 문서에 포함한다.</li>
+    <li>프롬프트는 구체적인 단어를 기재하는 것은 지양한다. 가능하면 행동 지침으로 최대한 구체화 시켜라.</li>
+    <li>내가 자동화 할 목표가 있다면, 그 목표의 ‘과정’을 프롬프트화 시켜라. 글 쓰기의 핵심이 개요 작성 -&gt; 근거 추가 -&gt; 살 붙이기 -&gt; 퇴고 이런 순서라면, 각 단계 별로 필요한 영역에 프롬프트를 별도로 만드는 게 최선이다.</li>
+    <li>자신의 프로세스를 검증할 프롬프트, Context 를 준비하는 것도 좋다. =&gt; 이를 통해 제 3자의 검증을 효과적으로 수행해 줄 수 있다.</li>
+    <li>마크다운 양식의 헤드, 리스트 등 우선순위를 나타내는 기호를 AI 는 우선순위로 실제 판단한다. 따라서 우선순위를 고려한 프롬프트가 중요하다.</li>
+    <li>글의 철학, 가치관도 중요하지만, 스타일 가이드 쪽의 지정의 프롬프트가 훨씬 AI가 완성도 높은 구성을 해낸다. 정량적인 내용을 프롬프트에 담아라.</li>
+    <li>AI 의 인격에 대한 부분도 context 로 준비하면 아첨, 과도한 긍정 평가를 최소화 시킬 수 있다. 평가, 분석, 보완 등의 역할을 원할 땐, 그에 따른 AI의 가상 인격을 생성해놓고 제공하자.</li>
+  </ol>
+</blockquote>
+
+<h3 id="결과물-톺아보기">결과물 톺아보기</h3>
+
+<p>2.5 flash 는 2.5 Pro 대비 이상한 말도 많고, 허술한 답변을 할 때도 많다. 그러나 놀랍게도 컨텍스트 + 모드 + 프롬프트의 테스트 결과는 말도 안될 정도의 퀄리티의 내용을 뽑아주었다. 이미 충분히 블로그 글로 올렸을 때 문제 없지 않을까? 싶은 수준의 완성도 였다.</p>
+
+<p>톤앤 무드는 정돈 되어 있었고, 내 설정들과 함께 전달된 자료들의 의도들을 정확히 재조합하여, 자잘한 분석 결과 문서, 자료들 예시, 몇 문단으로 작성된 결론, 개요를 한번에 종합해주었다. 그것도 단 돈 몇 십원 수준으로 말이다.</p>
+
+<p>특히나 SEO 를 고려한 태그라던지, 예상 제목 제안 사항 등, 단순히 글쓰기를 돕는것 만으로 끝이 아니라, 블로그를 관리하고, 기술적 보조자 역할도 톡톡히 단 한 번의 요청으로 얻어낼 수 있었다.</p>
+
+<p>뿐만 아니라, 위에서 얻은 결론을 기반으로 프롬프트를 추가로 제작. 내 글에 대한 분석, 글의 문제점이나 글에서 논리적 모순 등을 잡아주는 ‘편집장’ 프롬프트도 설정해 보았더니, 놀라울 만큼 명확하고 확실한 평가를 해주었다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-014.png" alt="" /></p>
+
+<p>내 글 어디가 아쉽고, 어떤 점이 좋으며, 어떤 점에서 개선이 되면 좋을지. 제 3자 시선에서 평가해주는 프롬프트를 기반으로 나의 글을 세밀하게 분석해주었다. 특히나 너무 과한 내용이나 필요 없는 내용 등을 빠르게 캐치하고 검토해주었다. 가장 놀라운건 이것이 성능이 부족하다고 느껴 거의 쓰지 않던 2.5 flash 에서 가능하다는 점이다!</p>
+
+<h3 id="pro-vs-flash">Pro vs Flash</h3>
+
+<p>놀라움. 만족스러움을 느끼기도 잠시. 2.5 flash를 왜 사용했는가? 에서 시작해서 한 가지 호기심이 들었다. 그것은 바로 ‘2.5 flash 로 이정도면, 2.5 pro 로 실행하면 얼마나 좋아질까?’ 였다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-016.png" alt="" /></p>
+
+<p>그런데 어라. 이상했다. 2.5 flash 로 얻은 결과에 환호했던 것과는 달리, 생각보다 신기할 정도로 차이가 없었다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-015.png" alt="" /></p>
+
+<p>구성의 큰 차이는 없다. 프롬프트의 요구사항은 충분히 수용되었고, 여기저기 좀더 늘어나거나, 개요이지만 글처럼 어느정도 완성되었다를 제외하면 뭔가 확 와닻는 변화는 아니었다.</p>
+
+<p>정리해보면, 2.5 Pro와 2.5 flash 로 만든 글에 대해선 다음과 같은 차이가 있다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-017.png" alt="" /></p>
+
+<p>Pro는 그 문장 하나 하나를 분석해 보았을 때, 단순히 요구 사항 이라고 적힌 것들의 의도를 고려한 답변에 가깝다는 게 보였다. 단순한 나열을 넘어 ‘이런 의도’로 이런 이야기니까, ‘이런 주장이 나온다’ 라는 표현. 생각해보면 훨씬 똑똑한 답변이라는 점은 부정할 수 없었다. 그러나 그것이 2.5 flash + 프롬프트만큼 확실한 효과가 있는가? 여기에 답변이 되기엔 애매 했다.</p>
+
+<p>하물며 가성비를 생각해보자. 2.5 flash 의 경우 기본적으로 2.5 pro 대비 4배 정도의 가격차이가 날 수 있다(입출력 토큰 약 3K 수준 대비). 그런데 여기서 2.5 pro 는 입력값이 늘어나, 기준치를 넘기면(입력 토큰 수 2M 이상), 더 높은 요금을 부과해 요금을 측정한다. 즉,  2.5 flash 의 1000원 수준의 내용을 작업하면, 최대 수 천원 ~ 1만원대까지도 올라갈 수 있는 상황인 것이다.</p>
+
+<p>새삼 프롬프트, 컨텍스트의 능력이 얼마나 뛰어난지를, 각종 AI 논문에서 작은 모델들의 합이라던가 MoE 구조라던가 기타 등등… 마치 거대 모델만큼 성능 좋게 만들수 있다! 는 표현들이 실제 어떤 의미인지 체감할 수있는 아주 흥미로운 결론이었다.</p>
+
+<h2 id="결론">결론</h2>
+<h3 id="ai-나의-능력을-증폭시키는-최고의-파트너">AI, 나의 능력을 증폭시키는 최고의 파트너</h3>
+
+<p>AI 는 아직 AGI 는 아니다. 하지만 접근 방법에  따라서 ‘최고’가 될 수 있다는 점을 경험했다. 이번 과정을 통해 Copilot 이란 플러그인에 gemini 의 조합은 엄청난 수준의 글쓰기 조수를 구축하고, 혼자 끙끙 거리며 한달이 걸릴 글을 단 일주일도 안 걸리게 마무리, 그것도 실질 글 작업은 약 이틀 정도 소모 되는 속도로 만들어냈다. 초기 목표보단 못한 것은 사실이지만 그럼에도 엄청난 효율, 효과를 누렸다고 할 수 있겠다.</p>
+
+<p>현재 개발 시장의 요구 사항은 명확하다. 자기 도메인의 높은 전문성, 그리고 그 전문성과 함께 시너지를 발 할수 있는 AI에 대한 리터러시. 개인적으로 건강을 위한 휴식 중이긴 하나, 동시에 내가 생각하는 ‘필요시 되는 사람’으로 살아가기 위해 벌린 이번 미니 프로젝트는, 현재 AI 의 본질을 이해할 수 있었고, 가공할 능력을 어디까지 활용할 수 있을지에 대한 내 나름의 시도이자, 단편적인 답변이었다.</p>
+
+<p>프롬프트, 그 위에 작용하는 컨텍스트의 가능성을 엿 볼 수 있는 사례다. 2.5 flash 라는 가성비 모델로도, 얼마나 효과적일 수 있는지 체감할 수 있었던 좋은 기회였다. 이 글을 읽는 모두가 AI 를 통한 생산성 향상. 특히 한계에 부딪힐 때, 그 한계를 넘어서는 기술적 발판으로 활용을 잘 하면 좋겠다고 생각한다. 본 글을 통해 커스텀 된 AI 에이전트를 노코드로 구축하고, 프로세스를 단축하는 새로운 글쓰기 경험을 맛 보시길!</p>
+
+<h2 id="요약">요약</h2>
+<p>글이 너어어어ㅓㅓㅓㅓ 무 길어졌다(…) 
+내 기록을 위해 남긴다지만, 너무 길어 요약을 해보았다.</p>
+
+<hr />
+
+<ol>
+  <li>AI 프롬프트를 합치면 오히려 일반화된다 - 여러 AI의 분석을 통합하려 했지만, 독특한 특징이 사라지고 정보 손실이 발생했다.</li>
+  <li>Context(페르소나)와 Prompt(행동지침)를 분리하고, 글 종류별 Mode를 구분하니 비로소 ‘나다운’ 글쓰기가 가능해졌다.</li>
+  <li>2.5 flash + 잘 짜여진 프롬프트 구조가 2.5 Pro보다 가성비 측면에서 압도적이었다. 작은 모델도 Context Engineering으로 충분히 강력해질 수 있다.</li>
+</ol>
+
+<hr />
+
+<blockquote>
+  <p>Obsidian 에 Copilot, Gemini API 적용 방법 (링크)(작성중)</p>
+</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="Obsidian" /><category term="AI" /><category term="Gemini" /><category term="Google" /><category term="블로그" /><category term="플러그인" /><summary type="html"><![CDATA[Obsidian + Copilot - 나만의 글쓰기 Agent를 만들어보자 글쓰기의 길은 멀고도 험하다]]></summary></entry><entry><title type="html">AI 자동화 툴, Opal 맛보기</title><link href="http://0.0.0.0:4000/tools/2025/10/09/02-Opal-instroduction.html" rel="alternate" type="text/html" title="AI 자동화 툴, Opal 맛보기" /><published>2025-10-09T00:00:00+00:00</published><updated>2025-10-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/tools/2025/10/09/02-Opal-instroduction</id><content type="html" xml:base="http://0.0.0.0:4000/tools/2025/10/09/02-Opal-instroduction.html"><![CDATA[<p><img src="/assets/images/posts/2025-10/2025-10-09-018.png" alt="" /></p>
+
+<h2 id="ai-워크플로우의-새로운-가능성-google-opal">AI 워크플로우의 새로운 가능성, Google Opal</h2>
+
+<p>드디어 AI가 단발성 대화를 넘어 연속적인 작업 흐름을 처리할 수 있게 됐다. Google Labs에서 공개한 Opal은 <strong>프롬프트, AI 모델, 도구를 연결해 다단계 워크플로우를 만들 수 있는 노코드 플랫폼</strong>이다. 지금까지 AI가 부족했던 ‘시퀀스’ 개념을 드디어 제대로 구현한 셈이다.</p>
+
+<h3 id="그동안-ai에게-없었던-것-단계별-사고">그동안 AI에게 없었던 것: 단계별 사고</h3>
+
+<p>ChatGPT든 Gemini든, 대부분의 AI 서비스는 기본적으로 “질문 → 답변” 구조다. 물론 멀티턴 대화가 가능하긴 하지만, 복잡한 작업을 여러 단계로 나눠서 자동으로 처리하기엔 한계가 있었다. 예를 들어 “특정 주제로 블로그 초안 작성 → 이미지 생성 → SEO 최적화 → 최종 정리” 같은 워크플로우를 만들려면 결국 사람이 중간중간 개입해야 했다.</p>
+
+<p>Opal은 바로 이 지점을 공략했다. 공식 블로그에 따르면, <strong>“프롬프트, AI 모델 호출 및 기타 도구를 연결하여 강력한 다단계 앱을 제작할 수 있도록 지원”</strong>한다고 명시되어 있다<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>. 실제로 User Input(사용자 입력) → Generate(AI 생성) → Output(결과 출력) 단계를 조합하고, 각 단계의 결과를 다음 단계에서 참조할 수 있다. 이를 “단계 연결(Step Chaining)”이라고 부르는데, 드래그 앤 드롭이나 @ 기호로 간단히 구현 가능하다<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>.</p>
+
+<p>더 인상적인 건 두 가지 편집 모드를 제공한다는 점이다. 자연어로 “이런 앱 만들어줘” 하면 Opal이 알아서 워크플로우를 구성해주고, 세부 조정은 비주얼 편집기에서 할 수 있다. 코드를 전혀 볼 필요가 없다<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup>. 2024년 10월 업데이트에서는 <strong>단계별 디버깅 기능</strong>과 <strong>병렬 실행 기능</strong>까지 추가되어, 복잡한 워크플로우도 실시간으로 테스트하고 개선할 수 있게 됐다<sup id="fnref:4"><a href="#fn:4" class="footnote" rel="footnote" role="doc-noteref">4</a></sup>.</p>
+
+<h3 id="노코드의-장점이자-한계">노코드의 장점이자 한계</h3>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-020.png" alt="" /></p>
+
+<p>Opal의 가장 큰 장점은 진입장벽이 낮다는 것이다. 자연어만 사용할 줄 알면 누구나 AI 앱을 만들 수 있고, Google이 호스팅까지 해주니 링크 하나로 바로 공유할 수 있다. 갤러리에서 다른 사람이 만든 앱을 리믹스해서 내 것으로 만들 수도 있다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-09-021.png" alt="" /></p>
+<blockquote>
+  <p>현재는 아주 심플한 동작들만을 지원하고 있다</p>
+</blockquote>
+
+<p>하지만 여기서 아쉬운 점이 드러난다. <strong>외부 서비스 연동이 제한적</strong>이다. 현재 기본 제공되는 도구는 웹 검색, 지도 검색, 날씨 정보 정도이고, Google Drive 정도만 직접 연동된다<sup id="fnref:5"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup>. Notion, Slack, Trello 같은 다른 서비스와의 자동화는 아직 지원되지 않는다. Zapier나 Make.com처럼 수백 개의 서비스를 연결할 수 있는 수준엔 한참 못 미친다.</p>
+
+<p>더 치명적인 건 <strong>코드 내보내기가 불가능</strong>하다는 점이다. Opal에서 만든 앱은 Google 생태계 안에 갇혀 있다. API를 만들 수도 없고, 데이터베이스를 붙일 수도 없으며, 실제 배포 가능한 코드를 얻을 수도 없다<sup id="fnref:6"><a href="#fn:6" class="footnote" rel="footnote" role="doc-noteref">6</a></sup>. 결국 프로토타이핑이나 간단한 사내 도구 정도로만 활용 가능하다는 얘기다. 프로덕션용으로 쓰기엔 아직 갈 길이 멀다.</p>
+
+<h3 id="obsidian에서-했던-것들을-자동화할-수-있을까">Obsidian에서 했던 것들을 자동화할 수 있을까?</h3>
+
+<p>개인적으로 흥미로웠던 건, 이전에 Obsidian + 코파일럿 플러그인으로 시도했던 것들이 떠올랐다는 점이다(<a href="https://paul2021-r.github.io/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/10/09/01-obsidian-ai-copilot.html">참고 링크</a>). 당시엔 노트 글감을 준비하고, 특정 패턴 명령어를 적용하고, 글감을 나의 문체에 맞는 글감으로 만들어주는 워크플로우를 만들려고 했다. 하지만 결과적으로 수동으로 트리거를 해야 했고, 여러 단계를 거치려면 계속 개입해야 했다.</p>
+
+<p>Opal의 시퀀스 기능을 보니, 이런 것들을 완전히 자동화할 수 있겠다는 생각이 들었다. 예를 들어 “웹에서 특정 주제 검색 → 요약 생성 → 이미지 생성 → 마크다운 포맷으로 정리 → Google Drive에 저장” 같은 흐름을 하나의 앱으로 만들 수 있을 것 같다. 물론 Obsidian과 직접 연동되진 않지만, Google Drive를 중간 저장소로 쓰면 충분히 가능할 것 같다.</p>
+
+<p>문제는 앞서 말한 외부 서비스 연동의 한계다. 만약 Opal이 Notion API, Obsidian Local REST API, 혹은 더 나아가 커스텀 웹훅 정도만 지원해준다면, 정말 강력한 자동화 허브가 될 수 있을 텐데 말이다. 지금은 Google 생태계 안에서만 놀 수 있다는 점이 가장 아쉽다.</p>
+
+<h3 id="결론-가능성은-보였지만-아직은-반쪽짜리">결론: 가능성은 보였지만, 아직은 반쪽짜리</h3>
+
+<p>Opal은 분명히 AI의 새로운 방향을 제시했다. <strong>시퀀스, 워크플로우, 단계별 자동화</strong>—이것들은 AI가 단순한 챗봇을 넘어 진짜 생산성 도구가 되기 위해 반드시 필요한 요소들이다. 노코드로 이런 걸 구현했다는 점에서 Opal은 충분히 혁신적이다.</p>
+
+<p>하지만 현실적으로 프로덕션 환경에서 쓰기엔 한계가 명확하다. 외부 서비스 연동이 제한적이고, 코드를 내보낼 수도 없으며, 아직은 실험적 도구라는 꼬리표를 떼지 못했다. Google Labs 프로젝트가 언제 접힐지 모른다는 불안감도 있다.</p>
+
+<p>그럼에도 불구하고, Opal이 보여준 방향성은 분명하다. AI는 이제 단발성 대화를 넘어 연속적인 워크플로우를 이해하고 실행해야 한다. 그리고 누구나 코딩 없이 그런 자동화를 만들 수 있어야 한다. Opal이 완벽하진 않지만, 그 미래를 먼저 보여준 건 확실하다.</p>
+
+<p>만약 Google이 이 프로젝트를 제대로 밀어붙여서 외부 API 연동과 코드 내보내기 기능까지 추가한다면? 그때는 정말 게임 체인저가 될 수 있을 것 같다.</p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="https://developers.googleblog.com/ko/introducing-opal/">Google 개발자 블로그 (한국어) - Opal 소개</a>: “프롬프트, AI 모델 호출 및 기타 도구를 연결하여 강력한 다단계 앱을 제작할 수 있도록 지원합니다.” <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="https://developers.google.com/opal/overview">Google Opal 공식 문서 - Overview</a>: “Referencing the results of one step in the prompt for another step is the primary way to build your app logic inside of Opal.” <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p><a href="https://developers.googleblog.com/en/introducing-opal/">Google 개발자 블로그 (영어) - Introducing Opal</a>: “Opal translates your instructions into a visual workflow, giving you fine-grained control without ever needing to see a line of code.” <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p><a href="https://blog.google/technology/google-labs/opal-expansion/">Google Labs Blog - Opal Expansion</a>: “We’ve fundamentally improved the debugging program… You can now run your workflow step-by-step in the visual editor” <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>Google 개발자 블로그 및 공식 문서에서 확인된 빌트인 도구 목록: 웹 검색, 지도 검색, 날씨 정보, Google Drive 연동 <a href="#fnref:5" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>커뮤니티 피드백 및 공식 문서 기반: Opal 앱은 Google 생태계 내에 제한되며, 코드 내보내기, API 생성, 데이터베이스 통합 등이 불가능함 <a href="#fnref:6" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Paul2021-R</name></author><category term="tools" /><category term="AI" /><category term="Google" /><category term="Opal" /><category term="Automation" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">코테 학습 - ‘지폐접기’</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python.html" rel="alternate" type="text/html" title="코테 학습 - ‘지폐접기’" /><published>2025-10-01T00:00:00+00:00</published><updated>2025-10-01T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python.html"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>본 글은 원본 문제를 기반으로 풀이한 내용을 담고 있습니다.</p>
 
@@ -2753,154 +3238,4 @@ Graph {
 </span>            <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">answer</span>
-</code></pre></div></div>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><category term="코딩테스트" /><summary type="html"><![CDATA[Introduction]]></summary></entry><entry><title type="html">42 Seoul - 000_libft</title><link href="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-00.html" rel="alternate" type="text/html" title="42 Seoul - 000_libft" /><published>2025-09-05T00:00:00+00:00</published><updated>2025-09-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-00</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-00.html"><![CDATA[<h2 id="-libft-c-언어와의-첫-만남-나만의-라이브러리-만들기">🚀 Libft: C 언어와의 첫 만남, 나만의 라이브러리 만들기</h2>
-
-<p>개발에 답은 없다. 왜냐면 개발이란 그렇기 때문이다.</p>
-
-<p>도구들은 다양하고, 그 도구들의 어떤 연결이 얼마나 복잡하고, 최적화되며, 그걸 통해 동일한 결과라도 놀라운 결론에 도달하는가. 특히나 단 한 사람의 이야기가 아니라, 여러 사람들의 협업이 되면 그 때부터 개발은 단순히 ‘만든다’의 영역에서 ‘예술’까지도 넘볼 수 있는 꽤나 그럴 싸한 작품이 된다.</p>
-
-<p>42 프랑스를 거쳐, 42 서울은 그런 철학을 인정한다.</p>
-
-<p>그렇기에 답은 없고, 그저 모두에게 제공되는 것은 단 하나의 명제였다. 문제는 줄게, 답은 너가 찾아봐. 그리고 동료들과 그 과정을 치밀하게, 은밀하게, 그리고 치열하게 고민해봐.</p>
-
-<p>다시 후기를 작성하게 된 지금 이순간에도 42서울의 그 가치는, 그 과정은 개발이 왜 매력적이고, 이제는 왜 ‘나에게 맞는 일이다’ 라고 생각하게 되었는가를 다시 한 번 느끼게 만든다.</p>
-
-<p>그렇기에 <code class="language-plaintext highlighter-rouge">ft(forty two)</code>라는 키워드는 유난히 익숙하지만, 동시에 ‘뭔지 모를 느낌’을 주는 키워드이며, 그런 키워드와 함께 시작하는 <code class="language-plaintext highlighter-rouge">libft</code>라는 과제는 42 서울에서의 내 첫 번째 프로젝트이자, C언어의 깊은 물에 처음으로 발을 담갔던 순간으로 기억한다.</p>
-
-<p>오픈 소스라는 키워드는 만드는 행위의 평등함을 추구했고, 그 와중에 생겨난 리눅스라는 시스템과 그 철학은 커져가면서 현대 컴퓨팅의 정수이다. 그리고 그런 리눅스의 표준, 기반들은 처음에 보기엔 생소했다. 왜 굳이 이런걸? 이라고 그때 당시에는 생각했지만, 지금 생각해보면 결국 지금, 양자 컴퓨팅에, AI 등 온갖 키워드의 시발점이 단어 하나를 메모리에 올리는 작업에서 비롯되었음을 깨달았다는 점에서 개발자들에게 컴퓨터의 이해는 어디서 오는가? 한다면 바로 여기서부터라고 자신있게 말할 수 있을 것이다.</p>
-
-<p>C 표준 라이브러리 함수들을 직접 내 손으로 구현해야 했던 이 과제는, 마치 C언어의 심장부를 해부하는 것과 같은 경험이었다. 수많은 밤을 <code class="language-plaintext highlighter-rouge">man</code> 페이지와 함께 지새우며, 포인터와 메모리 주소와 씨름, printf 를 로직의 위치 위치마다 찍어보던 그 과정… 지금 생각하면 얼마나 고통스러웠는지 모른다.</p>
-
-<p>이 프로젝트는 단순히 함수를 베끼는 것이 아니라, 그 작동 원리, 컴퓨터의 소통 방식을 근본부터 이해하고, 나만의 코드로 재창조하는 과정이었다.</p>
-
-<h2 id="-주요-학습-내용-key-learnings">📚 주요 학습 내용 (Key Learnings)</h2>
-
-<p><code class="language-plaintext highlighter-rouge">libft</code> 프로젝트는 크게 세 부분으로 나눌 수 있다.</p>
-
-<p>표준 라이브러리 함수를 구현하는 <strong>Part 1</strong>,</p>
-
-<p>조금 더 복잡하고 유용한 함수들을 만드는 <strong>Part 2</strong>,</p>
-
-<p>그리고 연결 리스트(Linked List)를 다루는 <strong>Bonus</strong> 파트</p>
-
-<h3 id="1-표준-라이브러리-함수-재구현-re-implementing-standard-library-functions">1. 표준 라이브러리 함수 재구현 (Re-implementing Standard Library Functions)</h3>
-
-<p>여기서는 C 언어를 기반으로 리눅스 시스템이 사용하는 언어의 특징, 그리고 그 언어를 통해 다시 사람의 명령을 어떻게 표현하면 될지, OS 가 어떻게 이해하는지를 가장 기본적으로 이해하는 방법을 배웠다.</p>
-
-<ol>
-  <li><strong>메모리 다루기 (<code class="language-plaintext highlighter-rouge">&lt;string.h&gt;</code> 등)</strong>: <code class="language-plaintext highlighter-rouge">memset</code>, <code class="language-plaintext highlighter-rouge">memcpy</code>, <code class="language-plaintext highlighter-rouge">memmove</code> 같은 함수들을 만들면서 포인터와 메모리에 대한 이해가 깊어졌다. 특히 <code class="language-plaintext highlighter-rouge">memcpy</code>와 <code class="language-plaintext highlighter-rouge">memmove</code>의 차이점, C 언어의 메모리 사용 방식에 따라, 메모리 오버랩(overlap) 문제가 발견하고, 어떻게 해결하는지를 배웠다. “아니, 그냥 복사하면 되는 거 아냐?” 싶은데, 주소 값이 겹칠 때의 그 미묘한 차이를 이해하고, C 언어라는 걸 기반으로 무언가를 만든다고 하는 것은, 언어의 정해진 특성들을 기반으로 어떤 한계가 생기는지 처음 이해했던 순간이었다.</li>
-  <li><strong>문자열 갖고 놀기 (<code class="language-plaintext highlighter-rouge">&lt;string.h&gt;</code> 등)</strong>: <code class="language-plaintext highlighter-rouge">strlen</code>, <code class="language-plaintext highlighter-rouge">strlcpy</code>, <code class="language-plaintext highlighter-rouge">strlcat</code>, <code class="language-plaintext highlighter-rouge">strchr</code>, <code class="language-plaintext highlighter-rouge">strncmp</code> 등등… C언어에서 문자열이 사실상 <code class="language-plaintext highlighter-rouge">char</code> 배열이며, 자료 타입들은 결국 이러한 데이터열의 연속임을 배웠다. 특히 문자열의 편집 과정에서, 데이터의 ‘단위’를 위한 <code class="language-plaintext highlighter-rouge">NULL</code> 문자의 중요성과 버퍼 오버플로우(buffer overflow)를 방지하기 위한 <code class="language-plaintext highlighter-rouge">strlcpy</code>의 소중함 등을 느낄 수 있는 시간이었다.</li>
-  <li><strong>문자 판별과 변환 (<code class="language-plaintext highlighter-rouge">&lt;ctype.h&gt;</code> 등)</strong>: <code class="language-plaintext highlighter-rouge">isalpha</code>, <code class="language-plaintext highlighter-rouge">isdigit</code>, <code class="language-plaintext highlighter-rouge">isalnum</code> 같은 함수들은 비교적 간단했지만, 컴퓨터가 사람의 언어를 표현하는 아스키 문자 등에 대해 완벽한 이해가 필요 했다.</li>
-  <li><strong>문자열을 숫자로 (<code class="language-plaintext highlighter-rouge">&lt;stdlib.h&gt;</code> 등)</strong>: 가장 난이도 있는 영역이었는데, <code class="language-plaintext highlighter-rouge">atoi</code>를 구현하면서 온갖 예외 케이스(공백, 부호, 숫자 아닌 문자 등)가 왜 생기는지, 그리고 특히나 동료 학습을 통해 이런 예외 처리가 얼마나 중요한지를(…) 뼈저리게 깨달았던 기억이난다.</li>
-</ol>
-
-<h3 id="2-나만의-유틸리티-함수-구현-implementing-additional-utility-functions">2. 나만의 유틸리티 함수 구현 (Implementing Additional Utility Functions)</h3>
-
-<p>Part 1이 ‘모방’의 단계였다면, Part 2는 ‘창조’의 단계였다. 주어진 명세에 따라 Part 1에서 만든 아주 기초 단위의, 메모리 상의 데이터 하나를 수정하거나, 데이터를 다른 데이터 형식으로 바꾸는 등의 기술을 배웠으니, 이것들을 래핑(wrapping) 해보는 것을 요구했다.</p>
-
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">ft_split</code></strong>: 이 녀석이 아마 최종 보스 였을 것이다. 😂 문자열을 특정 구분자(delimiter) 기준으로 쪼개서 2차원 배열에 담아 반환하는 함수인데, 메모리 동적 할당과 당시 배열의 관점, 특히 차원을 가지고 배열을 만드는 것이 머릿속에 구조화가 전혀 되지 않아(…) 정말 어려웠다. 할당해야 할 메모리의 크기를 정확히 계산하고, 오류가 났을 때 이미 할당된 메모리를 모두 해제(<code class="language-plaintext highlighter-rouge">free</code>)해주는 누수(leak) 방지 처리까지… 컴퓨터가 깨끗하게 일을 시작해, 마무리 짓기까지 정말 많은 걸 배울 수 있었던 함수였다.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">ft_itoa</code></strong>: 정수를 문자열로 바꾸는 이 함수는 <code class="language-plaintext highlighter-rouge">INT_MIN</code> 같은 극단적인 케이스를 처리하는 게 핵심이었다. 사실 split 을 어려워하여 먼저 했었는데, 결국 각 자료타입이 표현할 수 있는 숫자의 양, 그리고 위에서 언급한 케이스들 조사를 하면서 정말 많이 틀렸었던 기억이 있다.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">ft_substr</code>, <code class="language-plaintext highlighter-rouge">ft_strjoin</code>, <code class="language-plaintext highlighter-rouge">ft_strtrim</code></strong>: 문자열을 자르고, 합치고, 특정 문자를 제거하는 등, 전에는 단순히 메서드 하나가 하나의 전체 작업을 담당하고 있었다면 그것을 구분하고, 단계를 구성하는 연습을 이 메서드들 기반으로 처음 해봤던 기억이난다.</li>
-</ul>
-
-<h3 id="3-보너스-연결-리스트-다루기-handling-linked-lists">3. 보너스: 연결 리스트 다루기 (Handling Linked Lists)</h3>
-
-<p>배열까지는 접근했으나, 다음을 살짝 맛볼 수 있는 기회가 해당 보너스 내용이었다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">struct</span> <span class="n">s_list</span>
-<span class="p">{</span>
-	<span class="kt">void</span>			<span class="o">*</span><span class="n">content</span><span class="p">;</span>
-	<span class="k">struct</span> <span class="n">s_list</span>	<span class="o">*</span><span class="n">next</span><span class="p">;</span>
-<span class="p">}</span>					<span class="n">t_list</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>추상화된 개념, ‘노드’는 꽤나 신선했다. 머릿속에서, 혹은 수학이나 과학에서 사용되는 개념의 캡슐을 만들고, 그 캡슐을 활용한 추상적인 표현을 오히려 구조로 만드는 과정. 그렇게 되었을 때, 단순한 수식으로 풀어 내려면 복잡할 수 있는 것을 좀더 가시적으로 인지하기 용이하게 만든다는 개념은, 수포자였던 나에게는 대단히 신선한 충격이었다.</p>
-
-<p>이처럼 간단한 구조체로 노드(node)를 만들고, 그 노드들을 엮어서 리스트를 만들고, 새로운 노드를 추가하고(<code class="language-plaintext highlighter-rouge">lstnew</code>, <code class="language-plaintext highlighter-rouge">lstadd_front</code>, <code class="language-plaintext highlighter-rouge">lstadd_back</code>), 리스트를 순회하고(<code class="language-plaintext highlighter-rouge">lstiter</code>), 삭제하는(<code class="language-plaintext highlighter-rouge">lstdelone</code>, <code class="language-plaintext highlighter-rouge">lstclear</code>) 등… 연결 리스트의 기본적인 모든 것을 구현했을 때, 더 복잡한 문제나 데이터의 처리를 훨씬 빠르게 대응하는게 가능했다. 특히 <code class="language-plaintext highlighter-rouge">t_list **lst</code>처럼 이중 포인터를 사용해서 리스트의 시작 주소 자체를 변경해야 했던 <code class="language-plaintext highlighter-rouge">ft_lstadd_front</code> 같은 함수는 포인터에 대한 이해도를 한 단계 끌어올려준 기억이었다.</p>
-
-<h2 id="️-makefile의-마법-the-magic-of-makefile">🛠️ Makefile의 마법 (The Magic of Makefile)</h2>
-
-<p>프로그래밍, 코딩만 하다보면 잊는 경우도 많고, 특히 요즘은 인터프리팅 언어를 많이 쓰게 되다보니 잊고 살았지만. 본 과제에서는 C 코드뿐만 아니라 <code class="language-plaintext highlighter-rouge">Makefile</code> 작성법을 제대로 배운 첫 경험이기도 했다. 단순히 <code class="language-plaintext highlighter-rouge">gcc</code> 명령어를 나열하는 것을 넘어, 변수를 사용하고, <code class="language-plaintext highlighter-rouge">%.o: %.c</code> 같은 규칙을 만들고, <code class="language-plaintext highlighter-rouge">all</code>, <code class="language-plaintext highlighter-rouge">clean</code>, <code class="language-plaintext highlighter-rouge">fclean</code>, <code class="language-plaintext highlighter-rouge">re</code>, <code class="language-plaintext highlighter-rouge">bonus</code> 같은 목표(target)를 설정하면서 빌드 자동화를 지정하여 컴퓨터가 이해할 수 있는 목적 파일을 만들어낸다. 이 과정을 통해 만들어진 <code class="language-plaintext highlighter-rouge">libft.a</code>라는 정적 라이브러리(static library)는 그 뒤로 C 언어를 사용하는 동안 유용한 도구가 되어 주었다.</p>
-
-<h2 id="-성찰-및-배운-점-reflection--lessons-learned">🤔 성찰 및 배운 점 (Reflection &amp; Lessons Learned)</h2>
-
-<p><code class="language-plaintext highlighter-rouge">libft</code> 과제를 동료들과 이야기 하고, 메모리나, 추상적 개념을 설명하거나, Makefile에 아스키 이펙트를 넣는 등의 작업은 정말 재밌는 작업이자, 시간 가는 줄 모르는 작업이었다.</p>
-
-<ul>
-  <li><strong>메모리, 그리고 포인터</strong>: C가 왜 강력하고, 동시에 왜 위험한 언어인지 몸소 체험했다. 내가 직접 메모리를 할당하고 해제하면서 왜 그리 문제가 되고, 실제로 다른 언어들을 쓰게 되는 이유가 뭔지를 알 수 있었다.</li>
-  <li><strong>문제 해결 능력</strong>: <code class="language-plaintext highlighter-rouge">man</code> 페이지를 친구 삼아, 수많은 오류와 세그폴(segmentation fault)을 디버깅하면서 끈질기게 문제를 파고들었다. 특히 man 페이지는 영어로 되어 있기도 하고 개발자의 언어로 적혀 있다보니 ‘간결’ 하지만 동시에 어느 영역에서 얼마나 이 메서드가 움직이는 건가? 와 같은 내용들을 다 파악할 수 없다는 점에서 첫 과제는 대략 1달의 시간이 들었다.</li>
-  <li><strong>코드 규약(Norm)</strong>: 42의 엄격한 코드 스타일 규약(Norminette)이란 것도 일종의 불만 이었다. 몇자 내에 작성이 되어야하고, 언어의 컨벤션을 지켜야 하는 등의 일들은 도대체 왜 그렇게까지 필요한가 라고 의문을 품었었는데, 지금 생각하면 얼마나 중요한 ‘프로세스’였는지를 새삼 느낄 수 있다.</li>
-</ul>
-
-<p>돌이켜보면 <code class="language-plaintext highlighter-rouge">libft</code>는 단순한 과제가 아니라, C언어라는 세계를 탐험하기 위한 나만의 지도와 나침반을 만드는 과정이었어. 비록 힘들었지만, 이 프로젝트를 통해 얻은 지식과 경험은 앞으로 어떤 어려움이 닥쳐도 헤쳐나갈 수 있는 단단한 기초가 되어주었다. 특히나 정말 빠른 친구들은 순식간에 완성시키고 다른 과제를 하곤 했다. 그걸 바라보는 내 입장에선 참 당연히 비교적인 생각, 내가 정말 이 분야에 어울리는 사람인가? 하는 불평, 불만도 생겼지만 오히려 끝까지 붙잡고 한달에 걸쳐 완성했던 내 프로젝트를 통해, ‘하면 된다’라는 막연하지만 확고한 신뢰감이 생겼던 첫 프로젝트가 아니었나 싶다. 💪</p>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="프로젝트" /><category term="42Seoul" /><category term="C" /><category term="Linux" /><summary type="html"><![CDATA[🚀 Libft: C 언어와의 첫 만남, 나만의 라이브러리 만들기]]></summary></entry><entry><title type="html">42 Seoul - 001_get_next_line</title><link href="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-01.html" rel="alternate" type="text/html" title="42 Seoul - 001_get_next_line" /><published>2025-09-05T00:00:00+00:00</published><updated>2025-09-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-01</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-01.html"><![CDATA[<h2 id="-get_next_line-상태를-기억한다는-것의-의미">📄 Get_Next_Line: ‘상태’를 기억한다는 것의 의미</h2>
-
-<p>만약 컴퓨터에게 기억이 없다면 어떻게 될까? 모든 연산은 그저 일회성으로 끝나고, 방금 전에 했던 작업을 다시 이어가는 것은 불가능할 것이다. <code class="language-plaintext highlighter-rouge">libft</code>가 C언어의 문법과 메모리 조작이라는 ‘행위’에 집중하는 과제였다면, <code class="language-plaintext highlighter-rouge">get_next_line</code>(이하 GNL)은 컴퓨터가 어떻게 ‘상태(state)’를 기억하고 연속적인 작업을 처리하는지에 대한 깊은 통찰을 요구하는, 완전히 새로운 차원의 도전이었다.</p>
-
-<p>“파일에서 한 줄씩 읽어오라”는 명제는 단순해 보였다. 하지만 이내 깨달았다. 이것은 단순히 파일을 읽는 기술을 넘어, ‘시간’이라는 축 위에서 데이터의 흐름을 제어하고, 함수의 생명주기를 뛰어넘는 ‘기억’을 구현해야 하는 문제라는 것을. C언어의 저수준(low-level) 파일 입출력과 씨름하며, <code class="language-plaintext highlighter-rouge">static</code>이라는 키워드에 담긴 철학을 비로소 이해하게 된 여정이었다.</p>
-
-<h3 id="-핵심-개념-정복하기-conquering-core-concepts">🧠 핵심 개념 정복하기 (Conquering Core Concepts)</h3>
-
-<p>GNL의 세계로 들어가기 위해선, 컴퓨터의 가장 기본적인 소통 방식을 먼저 이해해야 했다.</p>
-
-<h4 id="1-파일-디스크립터file-descriptor-추상화의-첫걸음">1. 파일 디스크립터(File Descriptor): 추상화의 첫걸음</h4>
-
-<p>우리가 키보드를 두드리고, 모니터를 보고, 파일을 읽는 모든 행위는 운영체제(OS)의 눈에는 그저 ‘데이터의 흐름’일 뿐이다. OS는 이 복잡한 장치들을 <code class="language-plaintext highlighter-rouge">0</code>(표준 입력), <code class="language-plaintext highlighter-rouge">1</code>(표준 출력), <code class="language-plaintext highlighter-rouge">2</code>(표준 에러)와 같은 정수 번호로 단순화하여 우리에게 제공한다. 이것이 바로 <strong>파일 디스크립터(FD)</strong>다. <code class="language-plaintext highlighter-rouge">open()</code> 함수를 통해 파일을 열면, OS는 새로운 번호표를 발급하며 “자, 이제 이 번호로 파일과 소통해”라고 말해주는 것과 같다. GNL은 이 번호표 하나에 의지해 거대한 파일의 내용을 한 줄씩 탐험하는 항해사와 같았다.</p>
-
-<h4 id="2-read와-buffer_size-경계-위의-줄타기">2. <code class="language-plaintext highlighter-rouge">read()</code>와 <code class="language-plaintext highlighter-rouge">BUFFER_SIZE</code>: 경계 위의 줄타기</h4>
-
-<p>GNL의 유일한 무기는 <code class="language-plaintext highlighter-rouge">read</code> 함수였다. 이 함수는 <code class="language-plaintext highlighter-rouge">BUFFER_SIZE</code>라는 정해진 크기만큼만 데이터를 가져온다. 여기서 GNL의 본질적인 딜레마가 시작된다. 우리가 읽으려는 ‘한 줄’이라는 개념은 지극히 인간적인 단위이지만, 컴퓨터는 그저 바이트(byte)의 흐름으로 세상을 본다.</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">BUFFER_SIZE</code>가 한 줄보다 작으면, 개행 문자(<code class="language-plaintext highlighter-rouge">\n</code>)를 만날 때까지 여러 번 <code class="language-plaintext highlighter-rouge">read</code>를 호출해야 한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">BUFFER_SIZE</code>가 한 줄보다 크면, 한 줄을 읽고도 데이터가 버퍼에 남는다.</li>
-</ul>
-
-<p>바로 이 ‘남아버린 데이터’를 어떻게 처리할 것인가? 이번 호출에서 남은 데이터를 다음 호출을 위해 어딘가에 고이 보관해두어야만 했다. 함수가 호출되고 끝나는 찰나의 순간을 넘어, 다음을 기약하는 ‘기억’이 필요했다.</p>
-
-<h4 id="3-마법의-키워드-static-함수에-영혼을-불어넣다">3. 마법의 키워드, <code class="language-plaintext highlighter-rouge">static</code>: 함수에 영혼을 불어넣다</h4>
-
-<p>이 문제의 해답은 바로 <code class="language-plaintext highlighter-rouge">static</code> 변수에 있다. ✨</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="o">*</span><span class="nf">get_next_line</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">static</span> <span class="kt">char</span> <span class="o">*</span><span class="n">backup</span><span class="p">;</span>
-    <span class="c1">// ...</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>함수가 끝나면 사라지는 일반 지역 변수와 달리, <code class="language-plaintext highlighter-rouge">static</code> 변수는 프로그램이 시작될 때 단 한 번 메모리에 할당되어 프로그램이 끝날 때까지 자신의 값을 유지한다. 즉, GNL 함수가 수십, 수백 번 호출되어도 <code class="language-plaintext highlighter-rouge">backup</code> 변수는 마치 어제의 일을 기억하는 사람처럼, 이전에 읽고 남겨둔 데이터를 간직하고 있는 것이다.</p>
-
-<p>이 <code class="language-plaintext highlighter-rouge">static</code> 변수 <code class="language-plaintext highlighter-rouge">backup</code>에 <code class="language-plaintext highlighter-rouge">read</code>로 읽어온 내용을 계속 이어 붙이고(<code class="language-plaintext highlighter-rouge">strjoin</code>), 개행 문자를 발견하면 그 앞부분까지를 세상에 내보내고(<code class="language-plaintext highlighter-rouge">return</code>), <code class="language-plaintext highlighter-rouge">backup</code>에는 개행 문자 뒤의 나머지 약속을 담아두는 것. 이 로직을 깨달았을 때, 나는 비로소 함수에서 아주 기본적인 ‘상태’라는 걸 보관하는 방법을 배울 수 있었다.</p>
-
-<h3 id="️-나의-gnl-구현기-my-gnl-implementation-journey">🛠️ 나의 GNL 구현기 (My GNL Implementation Journey)</h3>
-
-<p>그러나 알다시피 머리로 이해하는 것과 손으로 구현하는 것은 천지 차이다.</p>
-
-<ol>
-  <li><strong>읽고, 쌓고, 또 쌓고</strong>: <code class="language-plaintext highlighter-rouge">read</code> 함수가 더 이상 읽을 것이 없을 때까지, 또는 개행을 만날 때까지 반복문을 돌았다. <code class="language-plaintext highlighter-rouge">backup</code>이라는 공간에 <code class="language-plaintext highlighter-rouge">BUFFER_SIZE</code>만큼의 벽돌을 계속해서 쌓아 올리는 과정이었다. 이 과정에서 <code class="language-plaintext highlighter-rouge">ft_strjoin</code>은 나의 든든한 시멘트가 되어주었다.</li>
-  <li><strong>자르고, 내보내고</strong>: 마침내 개행이라는 이정표를 만나면, 그곳까지의 길을 잘라내어 결과로 반환한다.</li>
-  <li><strong>기억하고, 준비하고</strong>: 그리고 가장 중요했던 단계. <code class="language-plaintext highlighter-rouge">backup</code> 변수에는 잘라내고 남은 나머지 부분을 담아, 다음 호출의 시작점이 될 수 있도록 준비시켰다. 이 과정에서 수없이 터져 나오는 메모리 누수(leak)를 막기 위해 <code class="language-plaintext highlighter-rouge">free</code>와 사투를 벌였다. 정말 이 부분에서 생길 수 있는 에러, 특히 반복되는데 내가 놓치지 않으려면 구조적으로 생각해야 했고, C언어가 왜 그토록 정교한 메모리 관리를 요구하는지 온몸으로 깨달았다. (정말이지, 세그폴 화면은 다시 보고 싶지 않다… 😇)</li>
-</ol>
-
-<h3 id="-보너스-여러-개의-기억을-동시에-bonus-multiple-states-at-once">✨ 보너스: 여러 개의 기억을 동시에 (Bonus: Multiple States at Once!)</h3>
-
-<p>필수 파트의 GNL은 <code class="language-plaintext highlighter-rouge">static</code> 변수 하나에 의존하기에, 오직 하나의 기억(파일)만 유지할 수 있었다. 하지만 보너스 파트는 <code class="language-plaintext highlighter-rouge">여러 파일을 동시에 열고</code>, 각 파일의 읽기 상태를 독립적으로 기억하라는 더 높은 차원의 과제를 제시했다.</p>
-
-<p>하나의 뇌로는 여러 사람의 기억을 동시에 관리할 수 없듯, <code class="language-plaintext highlighter-rouge">static</code> 변수 하나로는 부족했다. 해결책은 ‘기억의 목록’을 만드는 것이다.</p>
-
-<p>파일 디스크립터(FD)를 열쇠 삼아, 각 열쇠에 맞는 <code class="language-plaintext highlighter-rouge">backup</code> 데이터를 저장하는 배열(<code class="language-plaintext highlighter-rouge">static char *backup[OPEN_MAX]</code>)이나 연결 리스트를 활용했다.</p>
-
-<p>GNL이 특정 <code class="language-plaintext highlighter-rouge">fd</code>와 함께 호출되면, 우리는 기억의 목록에서 해당 <code class="language-plaintext highlighter-rouge">fd</code>에 맞는 기억을 꺼내 작업을 이어간다는 것을 구조화 하는 것이 관건이었다.</p>
-
-<h3 id="-성찰-및-배운-점-reflection--lessons-learned">🤔 성찰 및 배운 점 (Reflection &amp; Lessons Learned)</h3>
-
-<p>GNL은 나에게 ‘보이지 않는 것을 다루는 법’을 가르쳐줬다.</p>
-
-<ul>
-  <li><strong>상태 관리의 본질</strong>: 파일 입출력을 넘어, ‘상태’라는 추상적인 개념을 어떻게 코드 레벨에서 구체화하고 유지하는지 깊이 이해하게 되었다. 이는 나중에 웹 서버가 수많은 클라이언트의 연결 상태를 기억하거나, UI 프레임워크가 컴포넌트의 이전 상태를 기억하는 등 모든 프로그래밍의 근간이 되는 원리였다. 이제는 정말 다양한 도구나, 개념이 있고, 사실 조금 더 곰곰히 생각해보면 ‘static’이 내부에 당연히 녹아 있겠지만, 이제는 다소 구식(….) 방법임을 새삼 느끼긴한다. 그러나 결국 최적화가 필요하고, 데이터를 더 고속으로, 더 빠르게 처리해야한다면 어쩌면 다시 끄집어낼 기회가 오지 않을까, 그렇게 생각해본다.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">static</code>의 철학</strong>: <code class="language-plaintext highlighter-rouge">static</code>은 단순한 C언어의 키워드가 아니었다. 함수의 생명주기를 초월하여 데이터를 보존하는, C언어가 제공하는 가장 원시적이면서도 강력한 상태 관리 도구임을 깨달았다. 그때는 얼마나 빠른가? 이걸 기반으로 꽤나 호들갑을 떨었던(…) 기억이 난다.</li>
-  <li><strong>디버깅과의 처절한 사투</strong>: 끝없이 터지는 메모리 누수와 세그폴은 나를 좌절시켰지만, 동시에 메모리의 할당과 해제의 흐름을 집요하게 추적하는 인내심과 문제 해결 능력을 길러주었다. 그게 핵심이기도 했다. 특히 보너스를 하게 되면, FD 의 관리가 병렬로 진행되는데, 조건이 추가될 수록 당연히 기존 내용을 두고, 다른 내용을 찾아온다는 작업이 이제는 머릿속에 그려지기에 어디서 뭘 잡아야 하는가? 를 기억하지만, 그땐 정말 힘들었다.</li>
-</ul>
-
-<p><code class="language-plaintext highlighter-rouge">get_next_line</code>은 한 줄의 문장을 읽어낸다라고 쉽게 이야긴 했지만, 핵심은 상태를 저장하고, 어떤 비즈니스 로직을 거치고, 또 거기서 여러 파일을 다룬다면 어떤 과정으로 작업을 왔다 갔다 할 수 있는지, 그 논리적 로직이 뭔지를 실질적으로 배우는 기회였다고 생각한다.</p>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="프로젝트" /><category term="42Seoul" /><category term="C" /><category term="Linux" /><summary type="html"><![CDATA[📄 Get_Next_Line: ‘상태’를 기억한다는 것의 의미]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><category term="코딩테스트" /><summary type="html"><![CDATA[Introduction]]></summary></entry></feed>
