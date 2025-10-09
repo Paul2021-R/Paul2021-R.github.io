@@ -1,4 +1,172 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-01T04:01:08+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">코테 학습 - ‘지폐접기’</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python.html" rel="alternate" type="text/html" title="코테 학습 - ‘지폐접기’" /><published>2025-10-01T00:00:00+00:00</published><updated>2025-10-01T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python.html"><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-09T12:10:46+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Ubuntu 서버 설정 할 때 snap 사용 시 주의해야하는 이유는?</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/snap-package-management-with-issue.html" rel="alternate" type="text/html" title="Ubuntu 서버 설정 할 때 snap 사용 시 주의해야하는 이유는?" /><published>2025-10-09T00:00:00+00:00</published><updated>2025-10-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/snap-package-management-with-issue</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/snap-package-management-with-issue.html"><![CDATA[<h2 id="ubuntu에서-docker를-sudo-없이-사용하려다-발견한-snap-설치의-함정">Ubuntu에서 Docker를 sudo 없이 사용하려다 발견한 snap 설치의 함정</h2>
+
+<h3 id="문제-상황">문제 상황</h3>
+
+<p>Project 를 위하여 Ubuntu 서버 머신을 한대 구했다. Geekom의 A5 7530U 칩셋 탑재 제품으로 윈도우 데스크탑은 나쁘지 않으나, 전성비나, 항시 켜놓고 사용 하기 위함, WSL의 번거로움 등을 고려할 때, 온전한 리눅스 전용 머신의 필요성으로 미니 PC 를 한대 구매했다.</p>
+
+<p>Ubuntu 22.04 LTS 기반으로 설치 후, 개발환경 설정, 컨테이너 활용을 위해 Docker 설정까지 끝냈었다. 그리하여 Docker 명령어를 실행할 때마다 <code class="language-plaintext highlighter-rouge">sudo</code>를 입력하는 것이 번거로워, 일반 사용자 계정을 docker 그룹에 추가하려고 했다. 그런데 예상치 못한 문제들이 연쇄적으로 발생했는데…</p>
+
+<h3 id="발견한-문제들">발견한 문제들</h3>
+
+<h4 id="1-docker-그룹이-존재하지-않음">1. docker 그룹이 존재하지 않음</h4>
+
+<p>일반적으로 Docker를 설치하면 자동으로 생성되는 <code class="language-plaintext highlighter-rouge">docker</code> 그룹이 시스템에 존재하지 않았다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /etc/group | <span class="nb">grep </span>docker
+<span class="c"># 결과: 아무것도 출력되지 않음</span>
+</code></pre></div></div>
+
+<h4 id="2-systemctl로-docker-서비스를-찾을-수-없음">2. systemctl로 Docker 서비스를 찾을 수 없음</h4>
+
+<p>Docker가 분명 설치되어 있고 실행도 되는데, <code class="language-plaintext highlighter-rouge">systemctl status docker</code> 명령이 작동하지 않았다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nt">--version</span>
+<span class="c"># Docker version 24.x.x 등 정상 출력</span>
+
+systemctl status docker
+<span class="c"># Unit docker.service could not be found.</span>
+</code></pre></div></div>
+
+<h4 id="3-원인-snap으로-설치된-docker">3. 원인: snap으로 설치된 Docker</h4>
+
+<p>Docker 그룹이 설정이 안되는 경우는 공식 가이드 문서에서 볼 때 수동 설치만 해주면 되는 것이었다. <a href="https://docs.docker.com/engine/install/linux-postinstall/">링크</a>
+단, 다른 문제들에 대해서는 찾아본 결과 snap 패키지였던 것이 문제의 근본 원인이었다. (이번엔 편한게 해보겠다고 스토어로 GUI 로 설치했더니만…)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snap list | <span class="nb">grep </span>docker
+<span class="c"># docker    xx.x.x    xxxx    latest/stable    canonical    -</span>
+</code></pre></div></div>
+
+<h3 id="snap-vs-apt-무엇이-다른가">snap vs apt: 무엇이 다른가?</h3>
+
+<h4 id="snap의-특징">snap의 특징</h4>
+
+<p>snap은 Ubuntu에서 개발한 독립적인 패키지 시스템으로, 다음과 같은 특징이 있다:</p>
+
+<ul>
+  <li><strong>완전한 격리(confinement)</strong>: 앱을 샌드박스 환경에서 실행</li>
+  <li><strong>자체 포함(self-contained)</strong>: 모든 의존성을 패키지 내부에 포함</li>
+  <li><strong>보안 우선</strong>: 시스템 리소스 접근이 제한적</li>
+  <li><strong>자동 업데이트</strong>: 백그라운드에서 자동으로 업데이트</li>
+</ul>
+
+<h4 id="apt의-특징">apt의 특징</h4>
+
+<p>전통적인 패키지 관리 시스템으로:</p>
+
+<ul>
+  <li><strong>시스템 통합</strong>: 시스템 라이브러리를 직접 공유</li>
+  <li><strong>완전한 접근</strong>: 시스템 리소스에 제약 없이 접근</li>
+  <li><strong>가벼움</strong>: 공유 라이브러리 사용으로 용량 절약</li>
+  <li><strong>수동 관리</strong>: 사용자가 직접 업데이트 제어</li>
+</ul>
+
+<hr />
+<h4 id="docker에는-왜-apt가-적합한가">Docker에는 왜 apt가 적합한가?</h4>
+
+<p>결과적으로 차이점을 고려해본 결과  Docker는 시스템 레벨에서 동작하는 도구이므로:</p>
+
+<ul>
+  <li>호스트 파일시스템에 광범위하게 접근 필요</li>
+  <li>네트워크, 프로세스, 저장소 등 시스템 리소스 제어 필요</li>
+  <li>snap의 격리 정책이 오히려 제약으로 작용</li>
+</ul>
+
+<p>일반 사용자에게는 snap이 편리하고 안전하지만, <strong>서버 개발 도구로는 apt 방식이 훨씬 적합하다는 결론을 내릴 수 있었다</strong>.</p>
+
+<h3 id="해결-방법-snap-제거-후-apt로-재설치">해결 방법: snap 제거 후 apt로 재설치</h3>
+
+<h4 id="1-기존-snap-docker-제거">1. 기존 snap Docker 제거</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>snap remove docker
+</code></pre></div></div>
+
+<h4 id="2-기존-apt-docker-패키지-제거-있을-경우-대비">2. 기존 apt Docker 패키지 제거 (있을 경우 대비)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt remove docker docker-engine docker.io containerd runc
+</code></pre></div></div>
+
+<h4 id="3-docker-공식-저장소에서-설치">3. Docker 공식 저장소에서 설치</h4>
+
+<p><strong>필수 패키지 설치:</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> ca-certificates curl gnupg lsb-release
+</code></pre></div></div>
+
+<p><strong>Docker 공식 GPG 키 추가:</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo install</span> <span class="nt">-m</span> 0755 <span class="nt">-d</span> /etc/apt/keyrings
+curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /etc/apt/keyrings/docker.gpg
+<span class="nb">sudo chmod </span>a+r /etc/apt/keyrings/docker.gpg
+</code></pre></div></div>
+
+<p><strong>Docker 저장소 추가:</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="se">\</span>
+  <span class="s2">"deb [arch=</span><span class="si">$(</span>dpkg <span class="nt">--print-architecture</span><span class="si">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu </span><span class="se">\</span><span class="s2">
+  </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null
+</code></pre></div></div>
+
+<p><strong>Docker 설치:</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+</code></pre></div></div>
+
+<h4 id="4-일반-사용자로-docker-사용-설정">4. 일반 사용자로 Docker 사용 설정</h4>
+
+<p><strong>docker 그룹에 사용자 추가:</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker <span class="nv">$USER</span>
+</code></pre></div></div>
+
+<p><strong>변경사항 적용:</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>newgrp docker
+<span class="c"># 또는 로그아웃 후 재로그인</span>
+</code></pre></div></div>
+
+<p><strong>설치 확인:</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nt">--version</span>
+docker run hello-world
+</code></pre></div></div>
+
+<h3 id="주의사항">주의사항</h3>
+
+<h4 id="보안-고려사항">보안 고려사항</h4>
+
+<p>docker 그룹에 속한 사용자는 <strong>root 권한과 동등한 접근</strong>이 가능하다. 이는 다음을 의미한다:</p>
+
+<ul>
+  <li>컨테이너를 통해 호스트 시스템의 모든 파일에 접근 가능</li>
+  <li>권한 상승(privilege escalation) 위험 존재</li>
+  <li>보안이 중요한 환경에서는 신중히 고려 필요</li>
+</ul>
+
+<h4 id="데이터-백업">데이터 백업</h4>
+
+<p>snap에서 apt로 전환 시 기존 데이터가 삭제된다:</p>
+
+<ul>
+  <li>snap Docker 컨테이너 및 이미지: 모두 삭제됨</li>
+  <li>볼륨 데이터 경로: <code class="language-plaintext highlighter-rouge">/var/snap/docker/</code>에서 <code class="language-plaintext highlighter-rouge">/var/lib/docker/</code>로 변경</li>
+  <li>중요한 데이터가 있다면 사전에 <code class="language-plaintext highlighter-rouge">docker save</code>, <code class="language-plaintext highlighter-rouge">docker export</code> 등으로 백업 필요</li>
+</ul>
+
+<h3 id="참고-자료">참고 자료</h3>
+
+<ul>
+  <li><a href="https://docs.docker.com/engine/install/linux-postinstall/">Docker 공식 문서 - Linux 설치 후 설정</a></li>
+  <li><a href="https://docs.docker.com/engine/install/ubuntu/">Docker 공식 문서 - Ubuntu 설치</a></li>
+  <li><a href="https://docs.docker.com/engine/security/rootless/">Docker 공식 문서 - Rootless 모드</a></li>
+</ul>
+
+<h3 id="결론">결론</h3>
+
+<p>GUI를 통한 편리한 설치가 항상 최선은 아니네 싶다. 특히 개발 도구의 경우, 패키지 관리 방식에 따라 동작 방식과 시스템 통합 수준이 크게 달라진다. Docker처럼 시스템 레벨 접근이 필요한 도구는 snap보다 전통적인 apt 방식이 더 적합하며, 이를 통해 불필요한 제약 없이, 최적화된 개발 환경을 구축할 수 있다.</p>
+
+<p>물론 일반 사용에선 전혀 그렇지 않다고 생각도 든다. 왜냐면 리눅스 시스템의 라이브러리의 의존성 문제로 업데이트를 잘못하면 큰일나는 경우를 몇 번 경험했고(…) 무지성하게 구글에서 명령어 긁어다가, install 박아버리는 순간 지옥이 펼쳐지는 경우를 생각한다면(…). 의존성을 확실하게 관리하고 마치 Docker 처럼 정확하게 컨테이너화 시키는게 확실히 이유가 있어 보였다. 이러한 지점에서 Ubuntu 가 일반 소비자용의 철학을 가진 OS 라는 점을, 새삼 느끼게 만든다. (근데 프로세스까지 독립적으로 관리하게 하는 건 좀…)</p>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="DevOps" /><category term="Docker" /><category term="Linux" /><summary type="html"><![CDATA[Ubuntu에서 Docker를 sudo 없이 사용하려다 발견한 snap 설치의 함정]]></summary></entry><entry><title type="html">코테 학습 - ‘지폐접기’</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python.html" rel="alternate" type="text/html" title="코테 학습 - ‘지폐접기’" /><published>2025-10-01T00:00:00+00:00</published><updated>2025-10-01T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python.html"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>본 글은 원본 문제를 기반으로 풀이한 내용을 담고 있습니다.</p>
 
@@ -2735,51 +2903,4 @@ Graph {
   <li><strong>디버깅과의 처절한 사투</strong>: 끝없이 터지는 메모리 누수와 세그폴은 나를 좌절시켰지만, 동시에 메모리의 할당과 해제의 흐름을 집요하게 추적하는 인내심과 문제 해결 능력을 길러주었다. 그게 핵심이기도 했다. 특히 보너스를 하게 되면, FD 의 관리가 병렬로 진행되는데, 조건이 추가될 수록 당연히 기존 내용을 두고, 다른 내용을 찾아온다는 작업이 이제는 머릿속에 그려지기에 어디서 뭘 잡아야 하는가? 를 기억하지만, 그땐 정말 힘들었다.</li>
 </ul>
 
-<p><code class="language-plaintext highlighter-rouge">get_next_line</code>은 한 줄의 문장을 읽어낸다라고 쉽게 이야긴 했지만, 핵심은 상태를 저장하고, 어떤 비즈니스 로직을 거치고, 또 거기서 여러 파일을 다룬다면 어떤 과정으로 작업을 왔다 갔다 할 수 있는지, 그 논리적 로직이 뭔지를 실질적으로 배우는 기회였다고 생각한다.</p>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="프로젝트" /><category term="42Seoul" /><category term="C" /><category term="Linux" /><summary type="html"><![CDATA[📄 Get_Next_Line: ‘상태’를 기억한다는 것의 의미]]></summary></entry><entry><title type="html">42 Seoul - 002_born2beroot</title><link href="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-02.html" rel="alternate" type="text/html" title="42 Seoul - 002_born2beroot" /><published>2025-09-05T00:00:00+00:00</published><updated>2025-09-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-02</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/09/05/resume-post-42-02.html"><![CDATA[<h2 id="-born2beroot-시스템의-주인이-된다는-것">🐧 Born2beroot: 시스템의 주인이 된다는 것</h2>
-
-<p>GUI의 안락한 유저 인터페이스 뒤편, 모든 것이 날것의 텍스트로 존재하는 세상이 있다. <code class="language-plaintext highlighter-rouge">libft</code>와 <code class="language-plaintext highlighter-rouge">get_next_line</code>이 C언어라는 도구를 날카롭게 벼리는 과정이었다면, <code class="language-plaintext highlighter-rouge">born2beroot</code>는 그 도구를 들고 그곳의 법칙을 세우는 ‘설계자’의 역할을 경험하는 것을 요구한 첫 과제였다. 지금 생각해보면 Ops 영역을 처음으로 맛본게 아닐가 싶다.</p>
-
-<p>이 과제는 단순한 서버 구축 기술을 배우는 것을 넘어선다. 사용자의 입장에서 시스템이 ‘제공하는’ 기능을 수동적으로 사용하던 관점에서 벗어나, 시스템의 모든 요소를 직접 제어하고 책임지는 관리자의 시점으로 전환하는 근본적인 패러다임의 변화를 경험하게 했다.</p>
-
-<p>약간 가오를 잡는 역할을(ㅋㅋ) 하게 해주기도 하고, 검은 화면의 커서 깜빡임은 더 이상 공포의 대상이 아니라, 시스템과 직접 대화하는 강력하고 정밀한 언어임을 깨닫는 여정이었다. OS 라는 바탕, GUI 뒤에서 동작하는 실제 OS 라는 것을 이해하는 기회가 이 과제에서 첫 삽을 떳다고 볼수 있었다.</p>
-
-<h3 id="-시스템-아키텍트의-청사진-무無에서-유有를-창조하다">📜 시스템 아키텍트의 청사진: 무(無)에서 유(有)를 창조하다</h3>
-
-<p><code class="language-plaintext highlighter-rouge">born2beroot</code>의 목표는 명확했다. 우선 OS 라는 것을 이해한다. 그리고 그 바탕에서 가상 머신이라는 격리된 공간을 또 다시 이해한다.</p>
-
-<p>환경을 설정한다는 것이 가지는 리스크를 최소화하는 방법을 배우고 나면, 데비안(Debian) 리눅스 서버를 오직 명령줄 인터페이스(CLI)만을 사용하여 요구사항에 맞춰 구축한다.</p>
-
-<p>이는 마치 건축가가 허허벌판에 건물을 올리듯, 디스크 파티셔닝으로 기초 공사를 하고, 사용자 계정으로 골조를 세우며, 보안 정책과 방화벽으로 견고한 외벽을 쌓아 올리는 과정이었다.</p>
-
-<p>모든 결정에는 이유 물음표를 띄워졌으며,모든 명령어는 시스템에 영구적인 흔적을 남기는 만큼, 이 과제를 하던 이들, OS 를 모르는 이들에게는 과정 하나 하나가 통곡의 반복을 이어나가야 했다.</p>
-
-<h3 id="-핵심-과업들-단순한-설정을-넘어-원리를-이해하다">🔑 핵심 과업들: 단순한 설정을 넘어 원리를 이해하다</h3>
-
-<p>과제를 수행하며 마주한 핵심 과업들은 시스템 관리의 근간을 이루는 개념들을 담고 있다.</p>
-
-<ol>
-  <li><strong>LVM(Logical Volume Manager) 파티셔닝</strong>: 물리적인 디스크의 한계를 넘어 논리적으로 공간을 분할하고 관리하는 방법을 배웠다. 이는 하드웨어를 소프트웨어적으로 추상화하여 유연성과 확장성을 확보하는, 현대 스토리지 관리의 핵심 원리를 체득하는 과정이었다. 고정된 칸막이(기본 파티션)가 아닌, 필요에 따라 늘이고 줄일 수 있는 가변적인 공간(논리 볼륨)의 개념을 이해하게 되었다. 또한 이러한 파티셔닝의 목표는 하드웨어 구축 시 특정 영역의 OS 의 역할에 따라 적절하게 대응하고, 보다 복잡한 시스템이라면 특정 하드웨어를 사용하는 등을 고려하고, 이를 통해 최적의 환경을 구축하거나 위험한 상황에 대응하여 서비스가 지속될 수 있는 방법이 무엇인지 배우는 아주 기초적 단편을 이해할 수 있었다.</li>
-  <li><strong>강력한 암호 정책 (PAM)</strong>: <code class="language-plaintext highlighter-rouge">/etc/pam.d/common-password</code> 파일을 수정하며 사용자의 비밀번호 규칙을 강화하는 것은, 시스템 보안의 첫걸음이자 가장 중요한 원칙인 ‘선제적 방어’의 개념을 배우는 것이다. 복잡성, 주기적 변경, 재사용 금지 등의 규칙은 외부의 위협을 막는 최소한의 방어선이며 이를 OS 차원에서 어떻게 하는지, 리눅스 시스템은 무엇을 활용하는지 배울 수 있었다.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">sudo</code> 권한 관리</strong>: <code class="language-plaintext highlighter-rouge">sudoers</code> 설정을 통해 최고 관리자(root) 권한의 사용을 통제하고 기록하는 것은 ‘최소 권한 원칙(Principle of Least Privilege)’을 실현하는 과정이었다. 모든 <code class="language-plaintext highlighter-rouge">sudo</code> 명령어 실행 시도를 로그로 남기는 것은 시스템의 모든 관리 행위에 대한 ‘감사 추적(Audit Trail)’의 중요성을 일깨워주었다. 지금은 이해하고 있지만, 시스템 내에서 동작하는 프로세스는 OS 의 주인인 유저가 동작시키기도 하지만, 시스템 구축 과정에서 이러한 권한을 제한된 계정으로 만들어 사용하게 만듦으로써 그 계정이 할 수 있는 동작의 한계를 지정하고, 이를 통해 시스템 전체에 대한 제한을 제공하는 것은, Ops 차원의 상당한 노하우임을 나중에 깨달았다.</li>
-  <li><strong>SSH 포트 변경 및 UFW 방화벽 설정</strong>: 서버 개발과 관리, 유지보수 차원에서 본다면 원격의 접속은 가장 필수이자 기본이 된다. 그러나 이를 정해져있는데로 활용하는 것은 자칫 보안의 구멍을 만들 수 있다. SSH 포트(22)를 비표준 포트(4242)로 변경하고 UFW를 통해 해당 포트만 허용하는 작업은, 시스템의 ‘대문’을 지키는 가장 기본적인 보안 조치였다. 이는 무차별적인 자동화 공격(Brute-force attack)의 표적이 될 가능성을 낮추고, 허가된 경로 외의 모든 접근을 차단하는 ‘화이트리스트’ 기반 보안 모델의 기초를 다지는 경험이었다.</li>
-  <li><strong>사용자 및 그룹 관리</strong>: 사용자를 생성하고 <code class="language-plaintext highlighter-rouge">user42</code> 및 <code class="language-plaintext highlighter-rouge">sudo</code> 그룹에 소속시키는 과정은, 역할 기반 접근 제어(RBAC, Role-Based Access Control)의 개념을 이해하게 했다. 각 사용자에게 필요한 최소한의 권한만을 부여함으로써, 시스템의 안정성을 높이고 잠재적인 보안 위협을 줄일 수 있음을 배웠다. 3번과 함께 생각해볼 여지가 있던 영역이었다.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">monitoring.sh</code> 스크립트와 <code class="language-plaintext highlighter-rouge">cron</code></strong>: 시스템 구축이나 사용에서 정말 핵심 중에 하나. 스크립트를 작성하고 이를 활용해 시스템 단계에서 각 프로세스들을 관리하는 기능은 지금도 흥미진진한 주제였다. 여기서는 주기적으로 서버의 상태를 보고하는 셸 스크립트를 작성하고 <code class="language-plaintext highlighter-rouge">cron</code>으로 자동화하는 것을 통해 시스템을 살아있는 유기체처럼 지속적으로 관찰하는 ‘모니터링’을 만들어보았다. 이는 문제가 발생했을 때 사후에 대응하는 것을 넘어, 시스템의 상태를 능동적으로 파악하고 예측하는 인프라 관리의 기본 자세를 길러주었다.</li>
-</ol>
-
-<h3 id="-성찰-및-배운-점">✨ 성찰 및 배운 점</h3>
-
-<p>옛날 옛적, Windows Vista를 쓰던 시절 난 학생이었다.
-무슨 변덕일까 윈도우 대신 새로운걸 경험해보고 싶다면서 OS 를 우분투를 깔아본 적도 있었다.
-그때는 CLI 라는 개념이 뭔지도 모르는 상태로, GUI 없이 명령어를 쳐서 최적화 하는 작업은 그냥 아무것도 모르고 치면 되는 ‘전문가’들의 영역이라고 생각했다.
-또한 그때 OS 는 어찌보면 좋은 성능의 새롭고 신선한 그림이 나오는 ‘게임기’ 취급을 했었다(ㅋㅋ)</p>
-
-<p>그런데 <code class="language-plaintext highlighter-rouge">born2beroot</code>과제를 하면서 OS 를 다시 이해하자, 체계란게 뭐고, 개발에서 어떻게 활용하는가, 이런 부분을 꽤나 알 수 있었다.</p>
-
-<ul>
-  <li><strong>관점의 전환 (사용자에서 관리자로)</strong>: 더 이상 나는 시스템이 정해준 규칙 안에서 움직이는 사용자가 아니었다. 시스템의 규칙을 직접 만들고, 그 결과에 책임을 지는 관리자의 무게를 느끼며, 컴퓨터와의 관계가 근본적으로 재정의되었다.</li>
-  <li><strong>CLI는 언어다</strong>: 처음 마주했을 때의 막막함과 달리, CLI는 시스템의 내부 구조와 직접 소통할 수 있는 가장 강력하고 효율적인 언어임을 깨달았다. 마우스 클릭으로는 결코 닿을 수 없는 깊이까지 시스템을 제어할 수 있는 힘을 얻었다.</li>
-  <li><strong>모든 개발의 기초 체력</strong>: 서버 위에서 애플리케이션이 동작하는 한, 개발자는 운영체제로부터 자유로울 수 없다. 이 과제를 통해 다진 네트워크, 보안, 사용자 권한, 파일 시스템에 대한 이해는, 향후 어떤 애플리케이션을 개발하든 문제의 근본 원인을 파악하고 해결할 수 있는 단단한 기초 체력이 되어주었다.</li>
-  <li><strong>신비로운 서버의 첫 걸음</strong>: 기본 세팅, 거기에 워드프레스를 설치하는 등의 작업으로 해놓고, 호스트에서 포트포워딩으로 접근하는 작업, 그렇게하여 웹 사이트가 딱 떴을 때 그 감각은 서버, 서빙이란게 뭔지 처음으로 제대로 이해한 순간이었다.</li>
-</ul>
-
-<p>결론적으로 <code class="language-plaintext highlighter-rouge">born2beroot</code>는 단순한 서버 세팅 가이드가 아니었다. 그것은 개발자로서 내가 서 있는 땅, 즉 운영체제라는 기반을 두 발로 직접 딛고 이해하게 만든, 진정한 의미의 ‘뿌리 내리기’ 과정이었다.</p>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="프로젝트" /><category term="42Seoul" /><category term="Linux" /><category term="DevOps" /><summary type="html"><![CDATA[🐧 Born2beroot: 시스템의 주인이 된다는 것]]></summary></entry></feed>
+<p><code class="language-plaintext highlighter-rouge">get_next_line</code>은 한 줄의 문장을 읽어낸다라고 쉽게 이야긴 했지만, 핵심은 상태를 저장하고, 어떤 비즈니스 로직을 거치고, 또 거기서 여러 파일을 다룬다면 어떤 과정으로 작업을 왔다 갔다 할 수 있는지, 그 논리적 로직이 뭔지를 실질적으로 배우는 기회였다고 생각한다.</p>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="프로젝트" /><category term="42Seoul" /><category term="C" /><category term="Linux" /><summary type="html"><![CDATA[📄 Get_Next_Line: ‘상태’를 기억한다는 것의 의미]]></summary></entry></feed>
