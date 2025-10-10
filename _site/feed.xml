@@ -1,4 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-09T14:52:03+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Ubuntu 서버 설정 할 때 snap 사용 시 주의해야하는 이유는?</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/00-snap-package-management-with-issue.html" rel="alternate" type="text/html" title="Ubuntu 서버 설정 할 때 snap 사용 시 주의해야하는 이유는?" /><published>2025-10-09T00:00:00+00:00</published><updated>2025-10-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/00-snap-package-management-with-issue</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/00-snap-package-management-with-issue.html"><![CDATA[<h2 id="ubuntu에서-docker를-sudo-없이-사용하려다-발견한-snap-설치의-함정">Ubuntu에서 Docker를 sudo 없이 사용하려다 발견한 snap 설치의 함정</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-10T03:05:16+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Redis, 최근 보안 위협과 대응 방안</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/10/redis-critical-security-issues.html" rel="alternate" type="text/html" title="Redis, 최근 보안 위협과 대응 방안" /><published>2025-10-10T00:00:00+00:00</published><updated>2025-10-10T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/10/redis-critical-security-issues</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/10/redis-critical-security-issues.html"><![CDATA[<h3 id="redis-성능과-편의성-뒤에-숨겨진-보안-위협과-대응-방안">Redis, 성능과 편의성 뒤에 숨겨진 보안 위협과 대응 방안</h3>
+
+<p>많은 시스템에서 캐싱(Caching) 전략이나 메시지 큐(Message Queue)의 구현체로 Redis를 활발하게 사용한다. 이전 직장에서 근무할 당시, 데이터베이스의 부하를 줄이고 애플리케이션의 응답 속도를 높이기 위해 Redis 도입을 적극적으로 추진했던 경험이 있다. 과정은 순탄치 않았고 여러 어려움이 있었지만, 성공적으로 적용한 뒤 눈에 띄게 향상된 성능과 줄어든 DB 사용량을 보며 큰 보람을 느꼈다.</p>
+
+<h4 id="최근-동향과-경각심">최근 동향과 경각심</h4>
+
+<p>최근 Redis의 보안 취약점을 악용한 공격 사례에 대한 보안뉴스 기사를 접하게 되었다.</p>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-10-023.png" alt="" /></p>
+
+<ul>
+  <li><strong>참고 기사</strong>: <a href="https://m.boannews.com/html/detail.html?idx=139675">https://m.boannews.com/html/detail.html?idx=139675</a></li>
+</ul>
+
+<p>기사의 핵심은 <strong>별도의 인증 없이 외부에 노출된 Redis 서버가 주요 공격 대상이 되고 있다는 점</strong>이다. 많은 개발 환경에서 기능 구현의 편의성이나 개발 속도를 우선시하여 보안 설정을 간과하는 경우가 많다. 과거의 프로젝트들을 돌이켜보면, 나 또한 개발 편의를 위해 일부 보안 설정을 관대하게 적용했던 순간들이 있었다. 따라서 해당 기사를 계기로 Redis를 안전하게 운영하기 위해 반드시 적용해야 할 설정들을 다시 한번 정리하고 상기하고자 한다.</p>
+
+<h4 id="redis-보안-강화를-위한-핵심-수칙">Redis 보안 강화를 위한 핵심 수칙</h4>
+
+<p>기사에 따르면, 공격자는 외부에 노출된 Redis 서버에 접근해 데이터를 탈취하거나 서버를 악성코드 유포의 숙주로 삼을 수 있다. 이를 방지하기 위해 다음과 같은 설정은 필수로 적용해야 한다.</p>
+
+<ol>
+  <li>
+    <p><strong>네트워크 격리를 통한 접근 제어</strong></p>
+
+    <ul>
+      <li>
+        <p>Redis는 <strong>로컬 호스트(127.0.0.1) 바인딩을 기본 원칙</strong>으로 삼아야 한다. <code class="language-plaintext highlighter-rouge">redis.conf</code> 파일의 <code class="language-plaintext highlighter-rouge">bind</code> 지시어를 <code class="language-plaintext highlighter-rouge">bind 127.0.0.1</code>로 설정하여 외부에서의 직접적인 접근을 원천적으로 차단하는 것이 가장 중요하다.</p>
+      </li>
+      <li>
+        <p>클라우드 환경(e.g., AWS)에서 여러 인스턴스를 운영할 때, <strong>같은 VPC(Virtual Private Cloud) 내에서 Private IP를 통해 통신하도록 아키텍처를 설계</strong>하는 것이 비용 효율성과 보안 강화 측면에서 필수적이다. 보안 수준을 높이기 위해 <code class="language-plaintext highlighter-rouge">0.0.0.0</code>과 같이 모든 인터페이스를 개방하는 설정은 반드시 지양해야 한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>강력한 인증 체계 및 명령어 제어</strong></p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">redis.conf</code> 파일 내의 <code class="language-plaintext highlighter-rouge">requirepass</code> 항목을 통해 <strong>복잡하고 추측하기 어려운 비밀번호를 설정</strong>하는 것은 기본적이면서도 필수적인 조치이다. 데이터베이스와 달리 Redis의 데이터는 휘발성(in-memory)이라는 생각에 인증 절차의 중요성을 간과하기 쉽지만, 이는 세션 하이재킹이나 데이터 유출 등 심각한 보안 사고로 이어질 수 있는 매우 위험한 접근이다.</p>
+      </li>
+      <li>
+        <p>데이터 전체 삭제(<code class="language-plaintext highlighter-rouge">FLUSHALL</code>, <code class="language-plaintext highlighter-rouge">FLUSHDB</code>)나 서버 설정 변경(<code class="language-plaintext highlighter-rouge">CONFIG</code>)과 같이 시스템 운영에 치명적인 영향을 줄 수 있는 명령어는 <code class="language-plaintext highlighter-rouge">rename-command</code> 설정을 통해 <strong>예측 불가능한 이름으로 변경하거나 비활성화</strong>하여 명령어 실행에 대한 리스크를 최소화해야 한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>지속적인 버전 관리 및 모니터링</strong></p>
+
+    <ul>
+      <li>
+        <p>소프트웨어의 구 버전에는 <strong>알려진 보안 취약점(CVE)이 존재</strong>할 수 있다. 따라서 항상 안정화된 최신 버전으로 Redis를 유지하여 잠재적인 위협을 사전에 방지해야 한다.</p>
+      </li>
+      <li>
+        <p>외부로부터의 비정상적인 접근 시도나 내부에서의 비인가 명령어 실행 여부 등을 지속해서 감시할 수 있는 <strong>모니터링 및 로깅 시스템을 구축</strong>하는 것이 중요하다. 이를 통해 이상 징후를 조기에 탐지하고 신속하게 대응할 수 있다.</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>결론적으로 향후 진행할 프로젝트에도 캐싱 전략은 선택이 아닌 필수 요소이다. 그때마다 안전하고 효율적인 Redis 환경을 구축하기 위해, 이번에 정리한 내용들을 표준 체크리스트로 활용하고자 한다. 더 나아가, 향후에는 이러한 보안 설정들을 코드화하여 구성 관리(Configuration Management)의 일부로 포함시키는 것을 목표로 해야겠다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><category term="코딩테스트" /><summary type="html"><![CDATA[Redis, 성능과 편의성 뒤에 숨겨진 보안 위협과 대응 방안]]></summary></entry><entry><title type="html">Ubuntu 서버 설정 할 때 snap 사용 시 주의해야하는 이유는?</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/00-snap-package-management-with-issue.html" rel="alternate" type="text/html" title="Ubuntu 서버 설정 할 때 snap 사용 시 주의해야하는 이유는?" /><published>2025-10-09T00:00:00+00:00</published><updated>2025-10-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/00-snap-package-management-with-issue</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/00-snap-package-management-with-issue.html"><![CDATA[<h2 id="ubuntu에서-docker를-sudo-없이-사용하려다-발견한-snap-설치의-함정">Ubuntu에서 Docker를 sudo 없이 사용하려다 발견한 snap 설치의 함정</h2>
 
 <h3 id="문제-상황">문제 상황</h3>
 
@@ -3046,196 +3105,4 @@ Graph {
   <li>개념: 모든 가능한 경우의 수를 탐색하는 완전 탐색 기법을 기반으로 하되, 해가 될 가능성이 없는 경로는 더 이상 탐색하지 않고 이전 단계로 되돌아가(backtrack) 다른 경로를 탐색하는 전략이다.</li>
   <li>특징: 불필요한 탐색을 줄여(가지치기, Pruning) 탐색의 효율을 높인다. DFS와 구현 방식이 유사하다.</li>
   <li>대표 예시: N-Queens 문제, 미로 찾기, 스도쿠 풀이</li>
-</ul>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="이직" /><category term="학습" /><category term="CS" /><category term="Python" /><summary type="html"><![CDATA[자료구조와 알고리즘]]></summary></entry><entry><title type="html">코테 학습 - ‘유연 근무제’</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/08/study-python.html" rel="alternate" type="text/html" title="코테 학습 - ‘유연 근무제’" /><published>2025-09-08T00:00:00+00:00</published><updated>2025-09-08T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/08/study-python</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/08/study-python.html"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>본 글은 원본 문제를 기반으로 풀이한 내용을 담고 있습니다.</p>
-
-<p><a href="https://school.programmers.co.kr/learn/courses/30/lessons/388351">원본 문제 보러가기</a></p>
-
-<h2 id="2025년-9월-8일-프로그래머스-코딩-테스트-출근-이벤트-문제-풀이-python">2025년 9월 8일: 프로그래머스 코딩 테스트 ‘출근 이벤트’ 문제 풀이 (Python)</h2>
-
-<p>프로그래머스 코딩 테스트 문제 중 ‘출근 이벤트’라는 문제를 풀이하였다. 유연근무제를 시행하는 회사에서 직원들의 출근 희망 시각과 실제 출근 기록을 바탕으로 상품을 받을 직원이 몇 명인지 계산하는 문제였다. 초기 풀이 후, 코드 리뷰를 통해 더 효율적이고 ‘파이썬스러운’ 코드로 개선하는 과정을 거쳤다.</p>
-
-<h3 id="문제의-핵심-core-of-the-problem">문제의 핵심 (Core of the Problem)</h3>
-
-<p>문제의 핵심은 크게 두 가지였다.</p>
-
-<ol>
-  <li><strong>출근 인정 시각 계산:</strong> 직원들이 설정한 출근 희망 시각에 10분을 더한 시각까지 출근을 인정한다는 점이다. 여기서 단순히 숫자를 더하는 것이 아니라, 분이 60분을 넘어가면 시간(Hour)이 바뀌는 경우를 정확하게 처리해야 했다.</li>
-  <li><strong>주말 제외 및 요일 계산:</strong> 토요일과 일요일은 이벤트에 영향을 주지 않으므로, 이 날짜들은 출근 여부 확인에서 제외해야 했다. <code class="language-plaintext highlighter-rouge">startday</code>를 기준으로 요일을 정확히 계산하여 평일(월~금)에만 조건을 적용하는 것이 중요하였다.</li>
-</ol>
-
-<h3 id="초기-풀이-과정-initial-solution-process">초기 풀이 과정 (Initial Solution Process)</h3>
-
-<p>처음에는 다음과 같은 단계로 문제를 해결하였다.</p>
-
-<ol>
-  <li><strong><code class="language-plaintext highlighter-rouge">makeMaxLimit(limit)</code> 함수 구현:</strong>
-    <ul>
-      <li>주어진 <code class="language-plaintext highlighter-rouge">limit</code>에 10분을 더하여 출근 인정 시각을 계산하는 핵심 함수였다.</li>
-      <li><strong>접근 방식:</strong> 시각을 <strong>문자열로 변환</strong>하여 시(hour)와 분(minutes)을 분리하였다.</li>
-      <li>분에 10을 더한 후, 60 이상이 되면 시를 1 증가시키고 분에서 60을 빼는 로직을 적용하였다.</li>
-      <li>최종 시와 분을 다시 정수 형태의 시각으로 변환하여 반환하였다.</li>
-    </ul>
-  </li>
-  <li><strong>헬퍼(Helper) 함수 구현:</strong>
-    <ul>
-      <li><strong><code class="language-plaintext highlighter-rouge">isPass(dayNumber)</code>:</strong> <code class="language-plaintext highlighter-rouge">dayNumber</code>가 평일(1~5)인지 확인하는 함수.</li>
-      <li><strong><code class="language-plaintext highlighter-rouge">checkCondition(limit, targetTime)</code>:</strong> 출근 시각이 인정 시각 내에 있는지 확인하는 함수.</li>
-    </ul>
-  </li>
-  <li><strong><code class="language-plaintext highlighter-rouge">solution</code> 메인 함수:</strong>
-    <ul>
-      <li>초기 <code class="language-plaintext highlighter-rouge">answer</code>는 전체 직원 수로 설정하고, 지각 시 <strong>1씩 차감</strong>하는 방식을 사용하였다.</li>
-      <li>요일 계산은 <code class="language-plaintext highlighter-rouge">index</code> 변수를 1씩 증가시키고, 8이 되면 1로 초기화하는 방식을 사용하였다.</li>
-      <li><strong><code class="language-plaintext highlighter-rouge">eventTarget</code>이라는 플래그 변수</strong>를 두어 직원의 지각 여부를 추적하고, 반복문이 끝난 뒤 이 플래그를 확인하여 <code class="language-plaintext highlighter-rouge">answer</code>를 차감하였다.</li>
-    </ul>
-  </li>
-</ol>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">isPass</span><span class="p">(</span><span class="n">dayNumber</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">dayNumber</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">True</span>
-    <span class="k">else</span><span class="p">:</span> 
-        <span class="k">return</span> <span class="bp">False</span>
-    
-<span class="k">def</span> <span class="nf">checkCondition</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">targetTime</span><span class="o">=</span><span class="nb">int</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">targetTime</span> <span class="o">&lt;=</span> <span class="n">limit</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">True</span>
-    <span class="k">else</span><span class="p">:</span> 
-        <span class="k">return</span> <span class="bp">False</span>
-
-<span class="k">def</span> <span class="nf">makeMaxLimit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sh">"""</span><span class="s">핵심중에 핵심으로 시간의 10분 추가 되었을 때 어떻게 처리할지를 판단하는 부분. 최대 유효 시간이 10분이고, 10분 추가시 분과 시간의 변화를 고려해야함</span><span class="sh">"""</span>
-    <span class="n">limitStr</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
-    <span class="n">limitStrHour</span> <span class="o">=</span> <span class="sh">''</span>
-    <span class="n">limitStrMinutes</span> <span class="o">=</span> <span class="sh">''</span>
-
-    <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">limitStr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="n">limitStrHour</span> <span class="o">=</span> <span class="n">limitStr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">limitStrMinutes</span> <span class="o">=</span> <span class="n">limitStr</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">limitStrHour</span> <span class="o">=</span> <span class="n">limitStr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-        <span class="n">limitStrMinutes</span> <span class="o">=</span> <span class="n">limitStr</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-    
-    <span class="n">limitIntHour</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">limitStrHour</span><span class="p">)</span>
-    <span class="n">limitIntMinutes</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">limitStrMinutes</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span>
-
-    <span class="k">if</span> <span class="n">limitIntMinutes</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
-        <span class="n">limitIntHour</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">limitIntMinutes</span> <span class="o">-=</span> <span class="mi">60</span>
-
-    <span class="n">limit</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">limitIntHour</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">+</span> <span class="n">limitIntMinutes</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">schedules</span><span class="p">,</span> <span class="n">timelogs</span><span class="p">,</span> <span class="n">startday</span><span class="p">):</span>
-    <span class="c1"># 목표 스케쥴 =&gt; 명수, 목표 기준 확인
-</span>    <span class="c1"># timelogs =&gt; 분해, 기준 비교 =&gt; startDay 검토하여 스킵할 날짜 체크 =&gt; 문제 없으면 상품 제공
-</span>
-    <span class="c1"># n 명의 상황 기록 =&gt; 기록 배열 분리 
-</span>    <span class="c1"># start day 기준으로 체킹 =&gt; 도중에 이벤트 조건에 맞지 않으면 =&gt; 문제
-</span>    <span class="c1"># 가장 효과적인 데이터 타입은? 
-</span>    <span class="n">targetList</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">schedules</span><span class="p">):</span>
-        <span class="n">target</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">{</span>
-            <span class="sh">"</span><span class="s">limit</span><span class="sh">"</span><span class="p">:</span> <span class="nf">makeMaxLimit</span><span class="p">(</span><span class="n">value</span><span class="p">),</span>
-            <span class="sh">"</span><span class="s">timelog</span><span class="sh">"</span><span class="p">:</span> <span class="n">timelogs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="p">})</span>
-        <span class="n">targetList</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-
-    <span class="n">answer</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">targetList</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targetList</span><span class="p">:</span>
-        <span class="n">limit</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="sh">"</span><span class="s">limit</span><span class="sh">"</span><span class="p">]</span>
-        <span class="n">history</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="sh">"</span><span class="s">timelog</span><span class="sh">"</span><span class="p">]</span>
-        <span class="n">index</span> <span class="o">=</span> <span class="n">startday</span>
-        <span class="n">eventTarget</span> <span class="o">=</span> <span class="bp">True</span>
-        <span class="k">for</span> <span class="n">log</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nf">isPass</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nf">checkCondition</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">log</span><span class="p">):</span>
-                <span class="n">eventTarget</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
-                <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">eventTarget</span><span class="p">:</span>
-            <span class="n">answer</span> <span class="o">-=</span> <span class="mi">1</span>
-                
-    <span class="k">return</span> <span class="n">answer</span>
-</code></pre></div></div>
-
-<h3 id="코드-개선과-새로운-교훈-code-improvement-and-new-lessons">코드 개선과 새로운 교훈 (Code Improvement and New Lessons)</h3>
-
-<p>초기 풀이도 정답이었지만, 코드의 효율성, 가독성, 그리고 ‘파이썬스러움’에 대해 깊이 배우며 다음과 같이 코드를 개선할 수 있었다.</p>
-
-<ol>
-  <li><strong>시간 계산의 효율화: 문자열 변환 vs 산술 연산</strong>
-    <ul>
-      <li>가장 큰 깨달음이었다. 문자열로 변환하고 슬라이싱하는 대신, <strong>몫(<code class="language-plaintext highlighter-rouge">//</code>)과 나머지(<code class="language-plaintext highlighter-rouge">%</code>) 연산</strong>을 사용하면 훨씬 간결하고 빠르게 시간 계산이 가능했다. 이는 불필요한 형 변환 비용을 줄여주는 효율적인 방법이다. 수학적으로 생각을 하는게 중요한데… 쉽지 않다 ㅠ</li>
-      <li><code class="language-plaintext highlighter-rouge">(개선 후) limit_hours = limit // 100</code>, <code class="language-plaintext highlighter-rouge">limit_minutes = limit % 100 + 10</code></li>
-    </ul>
-  </li>
-  <li><strong>Pythonic 네이밍 컨벤션: <code class="language-plaintext highlighter-rouge">snake_case</code></strong>
-    <ul>
-      <li>TypeScript 와 NestJS 에 절여진 내 뇌는 여전히 카멜을 쓰게 만들었다… 파이썬에서는 함수와 변수명에 <code class="language-plaintext highlighter-rouge">camelCase</code>가 아닌 <code class="language-plaintext highlighter-rouge">snake_case</code>를 사용하는 것이 <strong>PEP 8</strong> 스타일 가이드의 표준이라는 것을 배웠다. (예: <code class="language-plaintext highlighter-rouge">makeMaxLimit</code> -&gt; <code class="language-plaintext highlighter-rouge">make_max_limit</code>) 이는 코드의 가독성과 파이썬 커뮤니티 내의 일관성을 위한 중요한 약속이다.</li>
-    </ul>
-  </li>
-  <li><strong>효율적인 순회와 플래그 변수 제거: <code class="language-plaintext highlighter-rouge">zip</code>과 <code class="language-plaintext highlighter-rouge">for-else</code></strong>
-    <ul>
-      <li>별도의 데이터 구조를 만들 필요 없이 <code class="language-plaintext highlighter-rouge">zip(schedules, timelogs)</code>를 사용하면 두 리스트를 깔끔하게 병렬로 순회할 수 있었다.</li>
-      <li>가장 신기했던 것은 <strong><code class="language-plaintext highlighter-rouge">for-else</code> 구문</strong>이었다. 이 구문을 사용하면 <code class="language-plaintext highlighter-rouge">eventTarget</code>과 같은 <strong>플래그 변수 없이도</strong> “반복문이 <code class="language-plaintext highlighter-rouge">break</code>로 중단되지 않고 무사히 끝났을 때”를 처리할 수 있었다. 이는 코드를 훨씬 직관적이고 우아하게 만들어 주었다. 진짜 희안한게 무지하게 많은 Python…</li>
-    </ul>
-  </li>
-  <li><strong>직관적인 로직: 차감보다 덧셈, 순환에는 나머지 연산</strong>
-    <ul>
-      <li>전체에서 차감하는 방식보다, <strong>조건을 통과한 대상만 세는 방식(<code class="language-plaintext highlighter-rouge">answer = 0</code> 시작)</strong>이 로직을 더 이해하기 쉽게 만들었다.</li>
-      <li>요일을 계산할 때 <code class="language-plaintext highlighter-rouge">if</code>문으로 8이 되는지 검사하는 대신, <strong>나머지 연산자(<code class="language-plaintext highlighter-rouge">%</code>)</strong>를 활용(<code class="language-plaintext highlighter-rouge">(startday + index - 1) % 7 + 1</code>)하여 순환하는 값을 훨씬 간결하게 처리할 수 있었다.</li>
-    </ul>
-  </li>
-  <li><strong>성능 개선</strong>
-    <ul>
-      <li>기존 코드는 1000개 까지 변수가 들어올 수 있고, 실제 풀이시 4ms 정도로 속도가 오래 걸렸다. 그러나 신규 코드로 개선으로 루프가 1회로 줄어들면서, 1ms 이하로 떨어지게 만들어낼 수 있었다.</li>
-    </ul>
-  </li>
-</ol>
-
-<h3 id="개선의-결과-the-result-of-improvement">개선의 결과 (The Result of Improvement)</h3>
-
-<p>이러한 배움을 통해 코드는 다음과 같이 발전하였다.</p>
-
-<ul>
-  <li><strong>가독성:</strong> <code class="language-plaintext highlighter-rouge">snake_case</code> 적용, <code class="language-plaintext highlighter-rouge">zip</code>, <code class="language-plaintext highlighter-rouge">for-else</code> 구문 활용으로 코드의 의도가 훨씬 명확해졌다.</li>
-  <li><strong>간결성:</strong> 불필요한 <code class="language-plaintext highlighter-rouge">if-else</code>문, 플래그 변수, 복잡한 요일 계산 로직이 제거되어 코드가 짧고 깔끔해졌다.</li>
-  <li><strong>효율성:</strong> 비효율적인 문자열 변환 로직이 빠른 산술 연산으로 대체되었다.</li>
-  <li><strong>Pythonic:</strong> 코드가 파이썬의 철학과 스타일에 더 가까워져, 다른 파이썬 개발자가 이해하기 쉬운 코드가 되었다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 개선 버전
-</span>
-<span class="k">def</span> <span class="nf">is_pass</span><span class="p">(</span><span class="n">dayNumber</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">dayNumber</span> <span class="o">&lt;</span> <span class="mi">6</span>
-
-<span class="k">def</span> <span class="nf">make_max_limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="n">limit_hours</span> <span class="o">=</span> <span class="n">limit</span> <span class="o">//</span> <span class="mi">100</span>
-    <span class="n">limit_minutes</span> <span class="o">=</span> <span class="n">limit</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">10</span>
-
-    <span class="k">if</span> <span class="n">limit_minutes</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
-        <span class="n">limit_hours</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">limit_minutes</span> <span class="o">-=</span> <span class="mi">60</span>
-
-    <span class="k">return</span> <span class="n">limit_hours</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">+</span> <span class="n">limit_minutes</span>
-
-<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">schedules</span><span class="p">,</span> <span class="n">timelogs</span><span class="p">,</span> <span class="n">startday</span><span class="p">):</span>
-
-    <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span> 
-
-    <span class="k">for</span> <span class="n">limit</span><span class="p">,</span> <span class="n">logs</span> <span class="ow">in</span> <span class="nf">zip</span><span class="p">(</span><span class="n">schedules</span><span class="p">,</span> <span class="n">timelogs</span><span class="p">):</span>
-        <span class="n">max_limit</span> <span class="o">=</span> <span class="nf">make_max_limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">log</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">logs</span><span class="p">):</span>
-            <span class="n">current_day</span> <span class="o">=</span> <span class="p">(</span><span class="n">startday</span> <span class="o">+</span> <span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="k">if</span> <span class="nf">is_pass</span><span class="p">(</span><span class="n">current_day</span><span class="p">)</span> <span class="ow">and</span> <span class="n">log</span> <span class="o">&gt;</span> <span class="n">max_limit</span><span class="p">:</span>
-                <span class="k">break</span>
-        <span class="k">else</span><span class="p">:</span> <span class="c1"># for - else 구문 처음 봄 개신기 
-</span>            <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">answer</span>
-</code></pre></div></div>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><category term="코딩테스트" /><summary type="html"><![CDATA[Introduction]]></summary></entry></feed>
+</ul>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="이직" /><category term="학습" /><category term="CS" /><category term="Python" /><summary type="html"><![CDATA[자료구조와 알고리즘]]></summary></entry></feed>
