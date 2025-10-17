@@ -1,4 +1,145 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-15T13:35:21+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">TIL - Next.js</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/14/til-nextjs.html" rel="alternate" type="text/html" title="TIL - Next.js" /><published>2025-10-14T00:00:00+00:00</published><updated>2025-10-14T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/14/til-nextjs</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/14/til-nextjs.html"><![CDATA[<h2 id="2025년-10월-14일-개발-내용-요약-및-학습-정리">2025년 10월 14일 개발 내용 요약 및 학습 정리</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-17T13:43:22+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">TIL - jenkins 로 무중단 nextjs 배포 구축하기</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/17/til-jenkins.html" rel="alternate" type="text/html" title="TIL - jenkins 로 무중단 nextjs 배포 구축하기" /><published>2025-10-17T00:00:00+00:00</published><updated>2025-10-17T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/17/til-jenkins</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/17/til-jenkins.html"><![CDATA[<h2 id="2025년-10월-17일-개발-내용-요약-및-학습-정리">2025년 10월 17일 개발 내용 요약 및 학습 정리</h2>
+<h2 id="-jenkins-무중단-배포-구축을-위한-추가-밑작업">📝 Jenkins 무중단 배포 구축을 위한 추가 밑작업</h2>
+<h3 id="-목적-purpose">✨ 목적 (Purpose)</h3>
+
+<p>Jenkins 를 활용한 무중단 배포를 구축하기 위해, 단순히 Dodcker 컨테이너화로 끝나는게 아닌, 배포 용이, 무중단성을 확보하기 위한 구조 개선이 필요하다고 느꼈다. 이에 아래의 목표를 기반으로 NextJS 의 프로젝트에 추가적인 작업 목표를 설정해보았다.</p>
+
+<ul>
+  <li><strong>CI/CD 파이프라인 통합 용이성</strong>: Jenkins와 같은 CI/CD 도구를 통해 자동화된 빌드 및 배포를 더욱 용이하게 합니다.</li>
+  <li><strong>개발 및 운영 환경 일관성 유지</strong>: Docker를 통해 개발 및 운영 환경 간의 차이를 최소화하고 일관성을 유지합니다.</li>
+  <li><strong>무중단 배포(Zero-downtime Deployment) 지원</strong>: Nginx와 블루/그린 배포 전략을 통해 서비스 중단 없이 애플리케이션을 업데이트할 수 있는 기반을 마련합니다.</li>
+  <li><strong>프로젝트 가독성 및 유지보수성 향상</strong>: 명확한 디렉토리 구조와 상세한 문서화를 통해 프로젝트의 가독성과 유지보수성을 높입니다.</li>
+</ul>
+
+<h3 id="️-주요-변경-사항">🛠️ 주요 변경 사항</h3>
+
+<h4 id="1-프로젝트-구조-재편">1. 프로젝트 구조 재편</h4>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">app/</code> 디렉토리로 파일 이동</strong>: 기존 루트 디렉토리에 있던 Next.js 관련 파일들 (<code class="language-plaintext highlighter-rouge">.dockerignore</code>, <code class="language-plaintext highlighter-rouge">.gitignore</code>, <code class="language-plaintext highlighter-rouge">Dockerfile</code>, <code class="language-plaintext highlighter-rouge">eslint.config.mjs</code>, <code class="language-plaintext highlighter-rouge">next.config.ts</code>, <code class="language-plaintext highlighter-rouge">package.json</code>, <code class="language-plaintext highlighter-rouge">pnpm-lock.yaml</code>, <code class="language-plaintext highlighter-rouge">postcss.config.mjs</code>, <code class="language-plaintext highlighter-rouge">public/</code>, <code class="language-plaintext highlighter-rouge">src/</code>, <code class="language-plaintext highlighter-rouge">tsconfig.json</code>)이 모두 <code class="language-plaintext highlighter-rouge">app/</code> 디렉토리 내부로 이동시켰다. 이는 Next.js 애플리케이션의 모듈성을 높이고, 프로젝트의 각 구성 요소(Next.js 앱, Nginx)를 명확하게 분리하기 위함이다.</li>
+</ul>
+
+<h4 id="2-docker-환경-구성-개선">2. Docker 환경 구성 개선</h4>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">app/Dockerfile</code> 다단계 빌드(Multi-stage Build) 개선</strong>: <code class="language-plaintext highlighter-rouge">Dockerfile</code>의 스테이지 구성이 더욱 세분화 시켰다. <code class="language-plaintext highlighter-rouge">base</code>, <code class="language-plaintext highlighter-rouge">dev_runner</code>, <code class="language-plaintext highlighter-rouge">prod_modules_setter</code> 스테이지가 추가되어 개발 및 운영 환경에 맞는 의존성 설치 및 빌드 과정을 명확하게 분리했다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">dev_runner</code>: 개발용 의존성을 설치하여 빠른 개발 환경을 독립적으로 제공 목적으로 만듬.</li>
+      <li><code class="language-plaintext highlighter-rouge">prod_modules_setter</code>: 운영용 의존성만 설치하여 최종 이미지 크기를 최적화하고 보안을 강화한다.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">app/docker-compose.yml</code> 추가</strong>: <code class="language-plaintext highlighter-rouge">app/</code> 디렉토리 내부에 Next.js 앱만을 위한 <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>, 이 파일은 <code class="language-plaintext highlighter-rouge">dev</code>와 <code class="language-plaintext highlighter-rouge">prod</code> 서비스를 정의하여 Next.js 앱의 개발 및 운영 환경을 독립적으로 관리하도록 만들었다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">루트 최상단의 docker-compose.yml</code></strong> : 기존 <code class="language-plaintext highlighter-rouge">dev</code> 및 <code class="language-plaintext highlighter-rouge">prod</code> 서비스 정의가 삭제되고, <code class="language-plaintext highlighter-rouge">nginx</code>, <code class="language-plaintext highlighter-rouge">app-blue</code>, <code class="language-plaintext highlighter-rouge">app-green</code> 서비스가 새로 정의되어있다. 이는 블루/그린 배포 전략을 위한 핵심적인 내용만을 담고 있어서, 빌드 시 production으로 완전히 빌드되어주는 것만을 바라본다.</li>
+</ul>
+
+<h4 id="3-nginx-리버스-프록시reverse-proxy-및-블루그린-배포-설정">3. Nginx 리버스 프록시(Reverse Proxy) 및 블루/그린 배포 설정</h4>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">nginx/</code> 디렉토리 생성 및 설정 파일 추가</strong>: <code class="language-plaintext highlighter-rouge">nginx/</code> 디렉토리가 새로 생성되었고, 그 안에 <code class="language-plaintext highlighter-rouge">Dockerfile</code>과 <code class="language-plaintext highlighter-rouge">nginx.conf</code> 를 만들었다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">nginx/Dockerfile</code>: Nginx 이미지를 빌드한다. 기존 설정을 배제하는 것 까지만 포함된다.</li>
+      <li><code class="language-plaintext highlighter-rouge">nginx/nginx.conf</code>: <code class="language-plaintext highlighter-rouge">nextjs_app</code> 업스트림을 통해 Next.js 앱(<code class="language-plaintext highlighter-rouge">app-blue:3000</code>으로 초기 설정)으로 트래픽을 전달하도록 설정시키는 용이다. 이는 Jenkins와 같은 CI/CD 도구를 통한 동적 배포를 염두에 둔 구성.</li>
+    </ul>
+  </li>
+  <li><strong>블루/그린 배포 전략 도입</strong>: 루트 <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>에서 <code class="language-plaintext highlighter-rouge">nginx</code> 서비스가 <code class="language-plaintext highlighter-rouge">app-blue</code>와 <code class="language-plaintext highlighter-rouge">app-green</code> 서비스에 의존하도록 설정하여, 무중단 배포를 위한 블루/그린 배포 전략의 기반을 마련하였다.</li>
+</ul>
+
+<hr />
+
+<h2 id="배운-것들-정리">배운 것들 정리</h2>
+<h3 id="멀티-스테이지-빌드multi-stage-build">멀티 스테이지 빌드(Multi-stage build)</h3>
+<ul>
+  <li>멀티스테이지 빌드는 최종 이미지를 <strong>최대한 가볍고 안전하게</strong> 만들기 위해, 하나의 <code class="language-plaintext highlighter-rouge">Dockerfile</code> 안에 여러 개의 독립적인 빌드 환경(스테이지)을 정의하는 기술이다.</li>
+</ul>
+
+<h4 id="필요한-이유는">필요한 이유는?</h4>
+<p>만약 스테이지 개념 없이 <code class="language-plaintext highlighter-rouge">Dockerfile</code>을 작성하면, 다음과 같은 문제가 발생할 수 있다.</p>
+<ol>
+  <li><strong>이미지 비대화 (Bloated Image)</strong>: 코드를 빌드하기 위해 설치했던 <code class="language-plaintext highlighter-rouge">typescript</code>, <code class="language-plaintext highlighter-rouge">eslint</code> 같은 모든 개발용 도구(<code class="language-plaintext highlighter-rouge">devDependencies</code>)가 최종 실행 이미지에 불필요하게 포함된다.</li>
+  <li><strong>보안 취약점 (Security Risk)</strong>: 사용하지 않는 도구나 라이브러리가 많을수록, 해커가 악용할 수 있는 공격 지점(Attack Surface)이 늘어난다.</li>
+</ol>
+
+<hr />
+<h4 id="작동-원리-from--as-와-copy---from">작동 원리: <code class="language-plaintext highlighter-rouge">FROM ... AS</code> 와 <code class="language-plaintext highlighter-rouge">COPY --from</code></h4>
+
+<p>멀티스테이지 빌드는 이 두 가지 명령어로 동작한다.</p>
+<h5 id="1-from--as-스테이지_이름">1. <code class="language-plaintext highlighter-rouge">FROM ... AS &lt;스테이지_이름&gt;</code></h5>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Dockerfile</code>에서 <code class="language-plaintext highlighter-rouge">FROM</code> 명령어가 나올 때마다 새로운 스테이지가 시작됩니다. 이는 <strong>이전 스테이지와는 완전히 격리된, 새로운 환경</strong>에서 시작한다는 뜻이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">AS &lt;스테이지_이름&gt;</code> (예: <code class="language-plaintext highlighter-rouge">AS builder</code>) 구문을 사용해, 해당 스테이지에 우리가 알아볼 수 있는 <strong>이름표</strong>를 붙여주는 역할을 한다.</li>
+</ul>
+
+<h5 id="2-copy---from스테이지_이름">2. <code class="language-plaintext highlighter-rouge">COPY --from=&lt;스테이지_이름&gt;</code></h5>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">COPY</code> 명령어에 <code class="language-plaintext highlighter-rouge">--from</code> 플래그를 사용하면, 다른 스테이지에 붙여둔 이름표를 호출하여 <strong>해당 스테이지의 결과물만</strong> 현재 스테이지로 가져올 수 있다.</li>
+</ul>
+
+<h4 id="실-예제로-보면">실 예제로 보면?</h4>
+
+<div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ======= 1. BASE 스테이지 =======</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">node:22-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">base</span>
+<span class="c"># 작업 위치 설정 - 해당 컨테이너 위치 </span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+
+<span class="c"># pnpm 설치 </span>
+<span class="k">RUN </span>npm <span class="nb">install</span> <span class="nt">-g</span> pnpm
+
+<span class="c"># package.json, pnpm-lock.yaml 등 의존성 관련 파일만 복사</span>
+<span class="k">COPY</span><span class="s"> package.json pnpm-lock.yaml ./</span>
+
+<span class="c"># ======= 2. dev용 스테이지 ========</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">dev_runner</span>
+<span class="c"># 의존성 설치 - dev 용</span>
+<span class="k">RUN </span>pnpm <span class="nb">install</span>
+
+<span class="c"># ======= 3. 빌드 스테이지 ========</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">dev_runner</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+
+<span class="c"># 나머지 소스 코드 전체 복사 </span>
+<span class="k">COPY</span><span class="s"> . .</span>
+
+<span class="c"># 애플리케이션 빌드</span>
+<span class="k">RUN </span>pnpm run build
+
+<span class="c"># ======= 4. 의존성 증류 스테이지 ========</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">prod_modules_setter</span>
+
+<span class="c"># 의존성 중 production용만 받아오기</span>
+<span class="k">RUN </span>pnpm <span class="nb">install</span> <span class="nt">--prod</span>
+
+<span class="c"># ======= 5. prod 실행 스테이지 ========</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">node:22-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">runner</span>
+
+<span class="c"># 작업 디렉토리 설정 </span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+
+<span class="c"># 빌드 스테이지의 운영에 필요한 파일들만 복사 </span>
+<span class="c"># 1. 빌드 결과물 </span>
+<span class="k">COPY</span><span class="s"> --from=builder /app/.next ./.next</span>
+
+<span class="c"># 2. 정적 파일</span>
+<span class="k">COPY</span><span class="s"> --from=builder /app/public ./public</span>
+
+<span class="c"># 3. 운영용 의존성</span>
+<span class="k">COPY</span><span class="s"> --from=prod_modules_setter /app/node_modules ./node_modules</span>
+
+<span class="c"># 4. package.json 파일</span>
+<span class="k">COPY</span><span class="s"> --from=prod_modules_setter /app/package.json ./package.json</span>
+
+<span class="c"># 애플리케이션이 사용할 포트 노출 </span>
+<span class="k">EXPOSE</span><span class="s"> 3000</span>
+
+<span class="c"># 컨테이너 시작 시 명령어</span>
+<span class="k">CMD</span><span class="s"> ["node", "./node_modules/next/dist/bin/next", "start"]</span>
+</code></pre></div></div>
+
+<ul>
+  <li>BASE 스테이지는 공통된 영역까지를 전제로 작성되어 레이어를 구성한다.</li>
+  <li>dev 개발 환경은 모든 의존성을 설치 및 HR(핫리로딩)으로 동작하므로 <code class="language-plaintext highlighter-rouge">dev_runner</code> 스테이지에서 모든 의존성을 받아서, 설정을 종료 하게 된다.(docker-compose.yml 을 통해)</li>
+  <li>prod 의 경우 <code class="language-plaintext highlighter-rouge">builder</code> 를 통해 빌드가 이루어지는데, 이때 빌드 하면서 개발환경의 노드 모듈들을 포함해야 하는데, 그렇기에 실제 프로덕션 환경에서 필요한 노드 모듈만 받아오지 못하게 되어 있다.</li>
+  <li>그렇기에 <code class="language-plaintext highlighter-rouge">prod_modules_setter</code>는 다시 <code class="language-plaintext highlighter-rouge">base</code> 기반에서 –prod 옵션을 통해 프로덕션에서 필요한 것들만을 받아 놓는 역할만을 수행한다.</li>
+  <li>최종적으로 <code class="language-plaintext highlighter-rouge">runner</code>는 빌드된 파일, 순수한 production 기반의 모듈들만을 받아서, 깔끔하게 실행된다.</li>
+</ul>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><summary type="html"><![CDATA[2025년 10월 17일 개발 내용 요약 및 학습 정리 📝 Jenkins 무중단 배포 구축을 위한 추가 밑작업 ✨ 목적 (Purpose)]]></summary></entry><entry><title type="html">TIL - Next.js</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/14/til-nextjs.html" rel="alternate" type="text/html" title="TIL - Next.js" /><published>2025-10-14T00:00:00+00:00</published><updated>2025-10-14T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/14/til-nextjs</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/14/til-nextjs.html"><![CDATA[<h2 id="2025년-10월-14일-개발-내용-요약-및-학습-정리">2025년 10월 14일 개발 내용 요약 및 학습 정리</h2>
 
 <h3 id="1-개발-내용-요약">1. 개발 내용 요약</h3>
 
@@ -2170,494 +2311,4 @@ Paul2021-R 스타일로 글을 작성해주세요:
 
 <h5 id="2-성능을-위한-연결-리스트-기반-구현">2. 성능을 위한 연결 리스트 기반 구현</h5>
 
-<p>데이터의 양이 많고, 추가/삭제가 빈번하게 일어나는 등 성능이 중요한 상황에서는 연결 리스트를 기반으로 큐를 구현하는 것이 정석이다. 연결 리스트의 <code class="language-plaintext highlighter-rouge">head</code>에서 노드를 제거하고(<code class="language-plaintext highlighter-rouge">dequeue</code>), <code class="language-plaintext highlighter-rouge">tail</code>에 새로운 노드를 추가(<code class="language-plaintext highlighter-rouge">enqueue</code>)하는 방식이다. 이 경우, 두 연산 모두 O(1)의 빠른 시간 복잡도를 보장받을 수 있다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="이직" /><category term="학습" /><category term="CS" /><category term="Python" /><category term="TypeScript" /><summary type="html"><![CDATA[자료구조와 알고리즘 (feat, TS와 Python 을 얹은)]]></summary></entry><entry><title type="html">CS 학습 - 9월 2주차 (3)</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/09/cs-09-02-03.html" rel="alternate" type="text/html" title="CS 학습 - 9월 2주차 (3)" /><published>2025-09-09T00:00:00+00:00</published><updated>2025-09-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/09/cs-09-02-03</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/09/cs-09-02-03.html"><![CDATA[<h2 id="자료구조와-알고리즘-feat-ts와-python-을-얹은">자료구조와 알고리즘 (feat, TS와 Python 을 얹은)</h2>
-
-<h3 id="typescript-vs-python-해시-테이블hash-table-사용법">TypeScript vs. Python: 해시 테이블(Hash Table) 사용법</h3>
-<p>Python과 TypeScript 모두 해시 테이블(Hash Table) 기능을 언어의 핵심적인 내장 기능으로 제공한다.** Python은 <strong>딕셔너리(<code class="language-plaintext highlighter-rouge">dict</code>)가 이 역할을 수행하며, TypeScript(JavaScript)에서는 일반 객체(<code class="language-plaintext highlighter-rouge">Object</code>)와 더불어 <code class="language-plaintext highlighter-rouge">Map</code> 객체</strong>를 사용하는 것이 정석이다. <code class="language-plaintext highlighter-rouge">Map</code> 객체는 키(key)의 타입이 자유롭다는 점에서 Python의 딕셔너리와 더 유사하다.</p>
-
-<p>해시 테이블은 <strong>Key-Value 쌍</strong>으로 데이터를 저장하는 자료 구조로, 키를 해시 함수(Hash Function)에 통과시켜 얻은 인덱스(Index)에 값을 저장한다. 이 방식 덕분에 데이터의 추가, 검색, 삭제가 평균적으로 매우 빠른 시간 복잡도(O(1))를 가진다.</p>
-
-<h4 id="1-해시-테이블의-선언과-초기화">1. 해시 테이블의 선언과 초기화</h4>
-
-<p>두 언어 모두 직관적인 문법으로 해시 테이블을 생성할 수 있다.</p>
-
-<ul>
-  <li>
-    <p><strong>Python</strong>: 중괄호 <code class="language-plaintext highlighter-rouge">{}</code>를 사용하여 딕셔너리를 생성하는 것이 가장 일반적이다.</p>
-
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 빈 딕셔너리 생성
-</span><span class="n">hash_table</span> <span class="o">=</span> <span class="p">{}</span>
-
-<span class="c1"># 초기 값을 가진 딕셔너리 생성
-</span><span class="n">user</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">John Doe</span><span class="sh">"</span><span class="p">,</span>
-    <span class="sh">"</span><span class="s">age</span><span class="sh">"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="sh">"</span><span class="s">is_active</span><span class="sh">"</span><span class="p">:</span> <span class="bp">True</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>TypeScript</strong>: JavaScript의 <code class="language-plaintext highlighter-rouge">Map</code> 객체를 사용하는 것이 가장 강력하고 권장되는 방법이다. <code class="language-plaintext highlighter-rouge">Map</code>은 모든 타입의 값을 키로 사용할 수 있어 유연성이 높다.</p>
-
-    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 빈 Map 생성 (key: string, value: any)</span>
-<span class="kd">const</span> <span class="nx">hashTable</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;</span><span class="p">();</span>
-
-<span class="c1">// 초기 값을 가진 Map 생성</span>
-<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span> <span class="o">|</span> <span class="nx">boolean</span><span class="o">&gt;</span><span class="p">([</span>
-  <span class="p">[</span><span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Jane Doe</span><span class="dl">"</span><span class="p">],</span>
-  <span class="p">[</span><span class="dl">"</span><span class="s2">age</span><span class="dl">"</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
-  <span class="p">[</span><span class="dl">"</span><span class="s2">isActive</span><span class="dl">"</span><span class="p">,</span> <span class="kc">true</span><span class="p">]</span>
-<span class="p">]);</span>
-</code></pre></div>    </div>
-
-    <p>물론, JavaScript의 일반 객체(<code class="language-plaintext highlighter-rouge">{}</code>)도 해시 테이블처럼 사용할 수 있지만, 키가 문자열이나 심볼(Symbol) 타입으로 제한되는 단점이 있다.</p>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="2-데이터-추가-접근-삭제">2. 데이터 추가, 접근, 삭제</h4>
-
-<p>Key를 이용해 데이터를 조작하는 방식은 두 언어가 매우 유사하다.</p>
-
-<ul>
-  <li>
-    <p><strong>Python</strong>:</p>
-
-    <ul>
-      <li><strong>추가/수정</strong>: <code class="language-plaintext highlighter-rouge">hash_table[key] = value</code></li>
-      <li><strong>접근</strong>: <code class="language-plaintext highlighter-rouge">hash_table[key]</code> (키가 없으면 <code class="language-plaintext highlighter-rouge">KeyError</code> 발생) 또는 <code class="language-plaintext highlighter-rouge">hash_table.get(key)</code> (키가 없으면 <code class="language-plaintext highlighter-rouge">None</code> 반환)</li>
-      <li><strong>삭제</strong>: <code class="language-plaintext highlighter-rouge">del hash_table[key]</code></li>
-    </ul>
-
-    <!-- end list -->
-
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">user</span> <span class="o">=</span> <span class="p">{</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">John Doe</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">age</span><span class="sh">"</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-
-<span class="c1"># 추가/수정
-</span><span class="n">user</span><span class="p">[</span><span class="sh">"</span><span class="s">age</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">31</span>
-<span class="n">user</span><span class="p">[</span><span class="sh">"</span><span class="s">city</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="sh">"</span><span class="s">Seoul</span><span class="sh">"</span>
-
-<span class="c1"># 접근
-</span><span class="nf">print</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">])</span>       <span class="c1"># "John Doe"
-</span><span class="nf">print</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">"</span><span class="s">email</span><span class="sh">"</span><span class="p">))</span>  <span class="c1"># None
-</span>
-<span class="c1"># 삭제
-</span><span class="k">del</span> <span class="n">user</span><span class="p">[</span><span class="sh">"</span><span class="s">age</span><span class="sh">"</span><span class="p">]</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span> <span class="c1"># {'name': 'John Doe', 'city': 'Seoul'}
-</span></code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>TypeScript (<code class="language-plaintext highlighter-rouge">Map</code> 객체 기준)</strong>:</p>
-
-    <ul>
-      <li><strong>추가/수정</strong>: <code class="language-plaintext highlighter-rouge">hashTable.set(key, value)</code></li>
-      <li><strong>접근</strong>: <code class="language-plaintext highlighter-rouge">hashTable.get(key)</code> (키가 없으면 <code class="language-plaintext highlighter-rouge">undefined</code> 반환)</li>
-      <li><strong>삭제</strong>: <code class="language-plaintext highlighter-rouge">hashTable.delete(key)</code></li>
-      <li><strong>키 존재 여부 확인</strong>: <code class="language-plaintext highlighter-rouge">hashTable.has(key)</code></li>
-    </ul>
-
-    <!-- end list -->
-
-    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;</span><span class="p">();</span>
-
-<span class="c1">// 추가/수정</span>
-<span class="nx">user</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Jane Doe</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">user</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">age</span><span class="dl">"</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
-<span class="nx">user</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">age</span><span class="dl">"</span><span class="p">,</span> <span class="mi">31</span><span class="p">);</span> <span class="c1">// 수정</span>
-
-<span class="c1">// 접근</span>
-<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "Jane Doe"</span>
-
-<span class="c1">// 키 존재 여부 확인</span>
-<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nf">has</span><span class="p">(</span><span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// false</span>
-
-<span class="c1">// 삭제</span>
-<span class="nx">user</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">"</span><span class="s2">age</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span> <span class="c1">// Map(1) { 'name' =&gt; 'Jane Doe' }</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="3-순회-iteration">3. 순회 (Iteration)</h4>
-
-<p>해시 테이블의 모든 Key-Value 쌍을 순회하는 방법도 유사한 패턴을 가진다.</p>
-
-<ul>
-  <li>
-    <p><strong>Python</strong>: <code class="language-plaintext highlighter-rouge">for</code> 루프와 함께 <code class="language-plaintext highlighter-rouge">.keys()</code>, <code class="language-plaintext highlighter-rouge">.values()</code>, <code class="language-plaintext highlighter-rouge">.items()</code> 메서드를 활용한다.</p>
-
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">user</span> <span class="o">=</span> <span class="p">{</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">John Doe</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">age</span><span class="sh">"</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-
-<span class="c1"># Key 순회
-</span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">user</span><span class="p">.</span><span class="nf">keys</span><span class="p">():</span>
-  <span class="nf">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>  <span class="c1"># name, age
-</span>      
-<span class="c1"># Value 순회
-</span><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">user</span><span class="p">.</span><span class="nf">values</span><span class="p">():</span>
-  <span class="nf">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="c1"># "John Doe", 30
-</span>      
-<span class="c1"># Key, Value 동시 순회
-</span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">user</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
-  <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>TypeScript (<code class="language-plaintext highlighter-rouge">Map</code> 객체 기준)</strong>: <code class="language-plaintext highlighter-rouge">forEach</code> 루프나 <code class="language-plaintext highlighter-rouge">for...of</code> 구문을 사용한다.</p>
-
-    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;</span><span class="p">([</span>
-  <span class="p">[</span><span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Jane Doe</span><span class="dl">"</span><span class="p">],</span>
-  <span class="p">[</span><span class="dl">"</span><span class="s2">age</span><span class="dl">"</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
-<span class="p">]);</span>
-
-<span class="c1">// forEach 사용 (value, key 순서)</span>
-<span class="nx">user</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">value</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">key</span><span class="p">}</span><span class="s2">: </span><span class="p">${</span><span class="nx">value</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="c1">// for...of 사용 (key, value 순서)</span>
-<span class="k">for </span><span class="p">(</span><span class="kd">const</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="k">of</span> <span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">key</span><span class="p">}</span><span class="s2">: </span><span class="p">${</span><span class="nx">value</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
-
-<h3 id="typescript-vs-python-트리tree-구조-구현-및-사용법">TypeScript vs. Python: 트리(Tree) 구조 구현 및 사용법</h3>
-
-<p><strong>Python과 TypeScript 모두 트리(Tree)는 내장된 자료 구조가 아니므로, 일반적으로 클래스(Class)를 이용해 직접 노드(Node)와 트리 관계를 정의하여 구현해야 한다.</strong> 두 언어의 구현 로직은 거의 동일하지만, <strong>TypeScript는 제네릭과 타입 시스템을 통해 노드가 가질 데이터의 타입을 명확히 하여 안정성을 확보</strong>하는 반면, <strong>Python은 더 간결하고 유연한 코드로 빠르게 구현</strong>할 수 있다는 점에서 차이를 보인다.</p>
-
-<p>트리는 이름 그대로 나무를 뒤집어 놓은 듯한 계층적 자료 구조이다. 최상위 노드인 루트(Root)에서 시작해 여러 자식 노드(Child Node)가 가지처럼 뻗어 나가는 형태를 가진다. 이진 트리(Binary Tree), 이진 탐색 트리(Binary Search Tree) 등 다양한 종류가 있지만, 여기서는 가장 기본이 되는 노드와 트리 구조의 구현에 초점을 맞춘다.</p>
-
-<h4 id="1-노드node-및-트리tree-클래스-정의">1. 노드(Node) 및 트리(Tree) 클래스 정의</h4>
-
-<p>트리를 구성하는 가장 기본 단위는 데이터와 자식 노드들의 참조를 담고 있는 ‘노드’이다.</p>
-
-<ul>
-  <li>
-    <p><strong>Python</strong>: 클래스를 이용해 간단하게 노드를 정의할 수 있다. 자식 노드들은 보통 리스트(list)로 관리한다.</p>
-
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 트리 노드 클래스
-</span><span class="k">class</span> <span class="nc">TreeNode</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># 자식 노드를 담을 리스트
-</span>
-    <span class="k">def</span> <span class="nf">add_child</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">child_node</span><span class="p">):</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">children</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">child_node</span><span class="p">)</span>
-
-<span class="c1"># 트리 클래스 (루트 노드를 가짐)
-</span><span class="k">class</span> <span class="nc">Tree</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">root_node</span><span class="p">):</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root_node</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>TypeScript</strong>: 제네릭(<code class="language-plaintext highlighter-rouge">&lt;T&gt;</code>)을 활용하여 노드가 담을 데이터의 타입을 지정하고, <code class="language-plaintext highlighter-rouge">children</code> 배열 역시 해당 노드 타입의 배열임을 명시하여 타입 안정성을 높인다.</p>
-
-    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 트리 노드 클래스</span>
-<span class="kd">class</span> <span class="nc">TreeNode</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="k">public</span> <span class="na">value</span><span class="p">:</span> <span class="nx">T</span><span class="p">;</span>
-  <span class="k">public</span> <span class="na">children</span><span class="p">:</span> <span class="nx">TreeNode</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// 자식 노드를 담을 배열</span>
-
-  <span class="nf">constructor</span><span class="p">(</span><span class="na">value</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="k">public</span> <span class="nf">addChild</span><span class="p">(</span><span class="na">childNode</span><span class="p">:</span> <span class="nx">TreeNode</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">childNode</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 트리 클래스</span>
-<span class="kd">class</span> <span class="nc">Tree</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="k">public</span> <span class="na">root</span><span class="p">:</span> <span class="nx">TreeNode</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">;</span>
-
-  <span class="nf">constructor</span><span class="p">(</span><span class="na">rootNode</span><span class="p">:</span> <span class="nx">TreeNode</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="nx">rootNode</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="2-트리-순회-tree-traversal">2. 트리 순회 (Tree Traversal)</h4>
-
-<p>트리의 모든 노드를 방문하는 것을 순회(Traversal)라고 한다. 대표적인 방법으로 깊이 우선 탐색(DFS, Depth-First Search)과 너비 우선 탐색(BFS, Breadth-First Search)이 있다. 여기서는 DFS를 재귀(Recursion) 방식으로 구현하는 예를 보인다.</p>
-
-<ul>
-  <li>
-    <p><strong>Python</strong>: 재귀 호출을 이용해 간결하게 DFS를 구현할 수 있다.</p>
-
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Tree</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">root_node</span><span class="p">):</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root_node</span>
-
-    <span class="c1"># 깊이 우선 탐색 (DFS)
-</span>    <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">start_node</span><span class="p">):</span>
-        <span class="c1"># 현재 노드의 값을 출력 (또는 다른 작업 수행)
-</span>        <span class="nf">print</span><span class="p">(</span><span class="n">start_node</span><span class="p">.</span><span class="n">value</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="sh">'</span><span class="s"> </span><span class="sh">'</span><span class="p">)</span>
-            
-        <span class="c1"># 자식 노드들을 재귀적으로 방문
-</span>        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">start_node</span><span class="p">.</span><span class="n">children</span><span class="p">:</span>
-            <span class="n">self</span><span class="p">.</span><span class="nf">dfs</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
-
-<span class="c1"># 사용 예시
-</span><span class="n">root</span> <span class="o">=</span> <span class="nc">TreeNode</span><span class="p">(</span><span class="sh">"</span><span class="s">A</span><span class="sh">"</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="nc">TreeNode</span><span class="p">(</span><span class="sh">"</span><span class="s">B</span><span class="sh">"</span><span class="p">)</span>
-<span class="n">c</span> <span class="o">=</span> <span class="nc">TreeNode</span><span class="p">(</span><span class="sh">"</span><span class="s">C</span><span class="sh">"</span><span class="p">)</span>
-<span class="n">root</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="n">root</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-
-<span class="n">d</span> <span class="o">=</span> <span class="nc">TreeNode</span><span class="p">(</span><span class="sh">"</span><span class="s">D</span><span class="sh">"</span><span class="p">)</span>
-<span class="n">e</span> <span class="o">=</span> <span class="nc">TreeNode</span><span class="p">(</span><span class="sh">"</span><span class="s">E</span><span class="sh">"</span><span class="p">)</span>
-<span class="n">b</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-<span class="n">b</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-
-<span class="n">tree</span> <span class="o">=</span> <span class="nc">Tree</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-<span class="n">tree</span><span class="p">.</span><span class="nf">dfs</span><span class="p">(</span><span class="n">tree</span><span class="p">.</span><span class="n">root</span><span class="p">)</span> <span class="c1"># 결과: A B D E C
-</span></code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>TypeScript</strong>: 로직은 Python과 동일하지만, 노드의 타입을 명시하여 코드의 명확성을 높인다.</p>
-
-    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Tree</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="k">public</span> <span class="na">root</span><span class="p">:</span> <span class="nx">TreeNode</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">;</span>
-  <span class="c1">// ... 생성자 ...</span>
-
-  <span class="c1">// 깊이 우선 탐색 (DFS)</span>
-  <span class="k">public</span> <span class="nf">dfs</span><span class="p">(</span><span class="na">startNode</span><span class="p">:</span> <span class="nx">TreeNode</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="c1">// 현재 노드의 값을 출력 (또는 다른 작업 수행)</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">startNode</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span><span class="s2"> `</span><span class="p">);</span>
-
-    <span class="c1">// 자식 노드들을 재귀적으로 방문</span>
-    <span class="k">for </span><span class="p">(</span><span class="kd">const</span> <span class="nx">child</span> <span class="k">of</span> <span class="nx">startNode</span><span class="p">.</span><span class="nx">children</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nf">dfs</span><span class="p">(</span><span class="nx">child</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 사용 예시</span>
-<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TreeNode</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeNode</span><span class="p">(</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeNode</span><span class="p">(</span><span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">root</span><span class="p">.</span><span class="nf">addChild</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
-<span class="nx">root</span><span class="p">.</span><span class="nf">addChild</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeNode</span><span class="p">(</span><span class="dl">"</span><span class="s2">D</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeNode</span><span class="p">(</span><span class="dl">"</span><span class="s2">E</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">b</span><span class="p">.</span><span class="nf">addChild</span><span class="p">(</span><span class="nx">d</span><span class="p">);</span>
-<span class="nx">b</span><span class="p">.</span><span class="nf">addChild</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">tree</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Tree</span><span class="p">(</span><span class="nx">root</span><span class="p">);</span>
-<span class="nx">tree</span><span class="p">.</span><span class="nf">dfs</span><span class="p">(</span><span class="nx">tree</span><span class="p">.</span><span class="nx">root</span><span class="p">);</span> <span class="c1">// 결과: A B D E C</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
-
-<h3 id="힙heap-구현-및-사용법">힙(Heap) 구현 및 사용법</h3>
-<p>힙(Heap)의 경우, <strong>Python은 <code class="language-plaintext highlighter-rouge">heapq</code>라는 강력한 내장 라이브러리를 제공</strong>하여 즉시 사용 가능하지만, <strong>TypeScript는 직접 클래스로 구현해야 한다.</strong></p>
-
-<p>힙은 ‘완전 이진 트리’의 일종으로, 부모 노드의 값이 항상 자식 노드의 값보다 작거나 같은(최소 힙, Min Heap) 혹은 크거나 같은(최대 힙, Max Heap) 속성을 만족하는 자료 구조이다. 우선순위 큐(Priority Queue)를 구현하는 데 주로 사용된다.</p>
-
-<h4 id="1-python-heapq-모듈-활용">1. Python: <code class="language-plaintext highlighter-rouge">heapq</code> 모듈 활용</h4>
-
-<p>Python은 <code class="language-plaintext highlighter-rouge">heapq</code> 모듈을 통해 일반 리스트를 최소 힙처럼 다룰 수 있는 함수들을 제공한다. 이는 매우 효율적이고 파이썬다운(Pythonic) 방식이다.</p>
-
-<ul>
-  <li><strong>핵심</strong>: 별도의 힙 클래스 없이, <strong>일반 리스트를 <code class="language-plaintext highlighter-rouge">heapq</code> 함수에 전달하여</strong> 힙 연산을 수행한다.</li>
-</ul>
-
-<!-- end list -->
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">heapq</span>
-
-<span class="c1"># heapq 모듈은 최소 힙(Min Heap)을 기본으로 한다.
-</span><span class="n">heap</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># 힙에 원소 추가 (heappush)
-</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span> <span class="c1"># 결과: [1, 3, 7, 4] (힙 속성을 만족하는 리스트)
-</span>
-<span class="c1"># 힙에서 가장 작은 원소 삭제 및 반환 (heappop)
-</span><span class="n">smallest</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">smallest</span><span class="p">)</span> <span class="c1"># 결과: 1
-</span><span class="nf">print</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>     <span class="c1"># 결과: [3, 4, 7]
-</span></code></pre></div></div>
-
-<h4 id="2-typescript-직접-클래스로-구현">2. TypeScript: 직접 클래스로 구현</h4>
-
-<p>TypeScript는 내장 힙이 없으므로, 배열을 기반으로 힙의 핵심 연산(sift-up, sift-down)을 포함하는 클래스를 직접 구현해야 한다.</p>
-
-<ul>
-  <li><strong>핵심</strong>: <code class="language-plaintext highlighter-rouge">insert</code> 시에는 추가된 노드를 부모와 비교하며 위로 올리고(<code class="language-plaintext highlighter-rouge">siftUp</code>), <code class="language-plaintext highlighter-rouge">delete</code> 시에는 루트 노드를 제거한 뒤 마지막 노드를 루트로 가져와 자식과 비교하며 아래로 내린다(<code class="language-plaintext highlighter-rouge">siftDown</code>).</li>
-</ul>
-
-<!-- end list -->
-
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 최소 힙 (Min Heap) 구현</span>
-<span class="kd">class</span> <span class="nc">MinHeap</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="k">private</span> <span class="na">heap</span><span class="p">:</span> <span class="nx">T</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
-
-  <span class="c1">// 부모-자식 인덱스 계산을 위한 헬퍼 함수들</span>
-  <span class="k">private</span> <span class="nf">getParentIndex</span><span class="p">(</span><span class="na">i</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">number</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">((</span><span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span> <span class="p">}</span>
-  <span class="k">private</span> <span class="nf">getLeftChildIndex</span><span class="p">(</span><span class="na">i</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">number</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
-  <span class="k">private</span> <span class="nf">getRightChildIndex</span><span class="p">(</span><span class="na">i</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">number</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span> <span class="p">}</span>
-  <span class="k">private</span> <span class="nf">swap</span><span class="p">(</span><span class="na">i1</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="na">i2</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">i1</span><span class="p">],</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">i2</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">i2</span><span class="p">],</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">i1</span><span class="p">]];</span> <span class="p">}</span>
-
-  <span class="c1">// 힙에 원소 추가</span>
-  <span class="k">public</span> <span class="nf">insert</span><span class="p">(</span><span class="na">value</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-    <span class="k">this</span><span class="p">.</span><span class="nf">siftUp</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="c1">// 가장 작은 원소(루트) 삭제</span>
-  <span class="k">public</span> <span class="k">delete</span><span class="p">():</span> <span class="nx">T</span> <span class="o">|</span> <span class="kc">null</span> <span class="p">{</span>
-    <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="k">this</span><span class="p">.</span><span class="nf">swap</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">deletedValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span><span class="o">!</span><span class="p">;</span>
-    <span class="k">this</span><span class="p">.</span><span class="nf">siftDown</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">deletedValue</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="k">private</span> <span class="nf">siftUp</span><span class="p">(</span><span class="na">index</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span> <span class="cm">/* ... 부모와 비교하며 위로 올리는 로직 ... */</span> <span class="p">}</span>
-  <span class="k">private</span> <span class="nf">siftDown</span><span class="p">(</span><span class="na">index</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span> <span class="cm">/* ... 자식과 비교하며 아래로 내리는 로직 ... */</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="그래프graph-구현-및-사용법">그래프(Graph) 구현 및 사용법</h3>
-
-<p>그래프(Graph)는 두 언어 모두 내장 기능이 없어 <strong>직접 구현</strong>해야 하며, 주로 Python은 딕셔너리(<code class="language-plaintext highlighter-rouge">dict</code>)를, <strong>TypeScript는 <code class="language-plaintext highlighter-rouge">Map</code> 객체</strong>를 이용해 인접 리스트(Adjacency List) 형태로 표현하는 것이 일반적이다.</p>
-
-<p>그래프는 정점(Vertex 또는 Node)과 그 정점을 연결하는 간선(Edge)의 집합으로 이루어진 자료 구조이다. 소셜 네트워크, 지하철 노선도 등이 그래프의 대표적인 예이다.</p>
-
-<h4 id="1-python-딕셔너리를-이용한-인접-리스트">1. Python: 딕셔너리를 이용한 인접 리스트</h4>
-
-<p>Python에서는 딕셔너리를 사용하여 각 정점을 키(key)로, 해당 정점에 인접한 정점들의 리스트를 값(value)으로 가지는 인접 리스트(Adjacency List) 방식으로 그래프를 표현하는 것이 매우 일반적이다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Graph</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
-        <span class="c1"># 키: 정점, 값: 인접 정점 리스트
-</span>        <span class="n">self</span><span class="p">.</span><span class="n">adjacency_list</span> <span class="o">=</span> <span class="p">{}</span>
-
-    <span class="k">def</span> <span class="nf">add_vertex</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">vertex</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">vertex</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">adjacency_list</span><span class="p">:</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">adjacency_list</span><span class="p">[</span><span class="n">vertex</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">vertex1</span><span class="p">,</span> <span class="n">vertex2</span><span class="p">):</span>
-        <span class="c1"># 무방향 그래프(Undirected Graph)의 경우 양쪽에 모두 추가
-</span>        <span class="n">self</span><span class="p">.</span><span class="n">adjacency_list</span><span class="p">[</span><span class="n">vertex1</span><span class="p">].</span><span class="nf">append</span><span class="p">(</span><span class="n">vertex2</span><span class="p">)</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">adjacency_list</span><span class="p">[</span><span class="n">vertex2</span><span class="p">].</span><span class="nf">append</span><span class="p">(</span><span class="n">vertex1</span><span class="p">)</span>
-
-<span class="c1"># 사용 예시
-</span><span class="n">graph</span> <span class="o">=</span> <span class="nc">Graph</span><span class="p">()</span>
-<span class="n">graph</span><span class="p">.</span><span class="nf">add_vertex</span><span class="p">(</span><span class="sh">"</span><span class="s">A</span><span class="sh">"</span><span class="p">)</span>
-<span class="n">graph</span><span class="p">.</span><span class="nf">add_vertex</span><span class="p">(</span><span class="sh">"</span><span class="s">B</span><span class="sh">"</span><span class="p">)</span>
-<span class="n">graph</span><span class="p">.</span><span class="nf">add_vertex</span><span class="p">(</span><span class="sh">"</span><span class="s">C</span><span class="sh">"</span><span class="p">)</span>
-<span class="n">graph</span><span class="p">.</span><span class="nf">add_edge</span><span class="p">(</span><span class="sh">"</span><span class="s">A</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">B</span><span class="sh">"</span><span class="p">)</span>
-<span class="n">graph</span><span class="p">.</span><span class="nf">add_edge</span><span class="p">(</span><span class="sh">"</span><span class="s">B</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">C</span><span class="sh">"</span><span class="p">)</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="n">graph</span><span class="p">.</span><span class="n">adjacency_list</span><span class="p">)</span> 
-<span class="c1"># 결과: {'A': ['B'], 'B': ['A', 'C'], 'C': ['B']}
-</span></code></pre></div></div>
-
-<h4 id="2-typescript-map-객체를-이용한-인접-리스트">2. TypeScript: <code class="language-plaintext highlighter-rouge">Map</code> 객체를 이용한 인접 리스트</h4>
-
-<p>TypeScript에서는 키의 타입이 자유로운 <code class="language-plaintext highlighter-rouge">Map</code> 객체를 사용하여 인접 리스트를 구현하는 것이 가장 유연하고 안정적인 방법이다.</p>
-
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Graph</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="c1">// 키: 정점, 값: 인접 정점 배열</span>
-  <span class="k">private</span> <span class="na">adjacencyList</span><span class="p">:</span> <span class="nb">Map</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">T</span><span class="p">[]</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Map</span><span class="p">();</span>
-
-  <span class="k">public</span> <span class="nf">addVertex</span><span class="p">(</span><span class="na">vertex</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">adjacencyList</span><span class="p">.</span><span class="nf">has</span><span class="p">(</span><span class="nx">vertex</span><span class="p">))</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">adjacencyList</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">vertex</span><span class="p">,</span> <span class="p">[]);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="k">public</span> <span class="nf">addEdge</span><span class="p">(</span><span class="na">vertex1</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="na">vertex2</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="c1">// 무방향 그래프(Undirected Graph)의 경우</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">adjacencyList</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">vertex1</span><span class="p">)?.</span><span class="nf">push</span><span class="p">(</span><span class="nx">vertex2</span><span class="p">);</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">adjacencyList</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">vertex2</span><span class="p">)?.</span><span class="nf">push</span><span class="p">(</span><span class="nx">vertex1</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 사용 예시</span>
-<span class="kd">const</span> <span class="nx">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Graph</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="nx">graph</span><span class="p">.</span><span class="nf">addVertex</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">graph</span><span class="p">.</span><span class="nf">addVertex</span><span class="p">(</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">graph</span><span class="p">.</span><span class="nf">addVertex</span><span class="p">(</span><span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">graph</span><span class="p">.</span><span class="nf">addEdge</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">graph</span><span class="p">.</span><span class="nf">addEdge</span><span class="p">(</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">graph</span><span class="p">);</span> 
-<span class="cm">/* 결과: 
-Graph {
-  adjacencyList: Map(3) { 'A' =&gt; [ 'B' ], 'B' =&gt; [ 'A', 'C' ], 'C' =&gt; [ 'B' ] }
-}
-*/</span>
-</code></pre></div></div>
-
-<h3 id="python-자료-구조별-구현-특징-요약">Python 자료 구조별 구현 특징 요약</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">자료 구조</th>
-      <th style="text-align: left">구현 방식 및 특징</th>
-      <th style="text-align: left">관련 라이브러리 및 설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">**배열**&lt;br&gt;(Array)</td>
-      <td style="text-align: left">내장 타입인 <code class="language-plaintext highlighter-rouge">list</code>를 사용한다. 크기가 동적으로 변하며, 모든 타입의 데이터를 담을 수 있는 동적 배열이다.</td>
-      <td style="text-align: left">내장 <code class="language-plaintext highlighter-rouge">list</code>: 기본적으로 사용.<code class="language-plaintext highlighter-rouge">array</code> 모듈: C와 유사한 단일 타입의 고정 배열이 필요할 때 사용.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">연결 리스트&lt;br&gt;(Linked List)</td>
-      <td style="text-align: left">내장 기능이 없어 <code class="language-plaintext highlighter-rouge">Node</code> 클래스를 직접 정의하여 구현한다. 각 노드가 데이터와 다음 노드를 가리키는 포인터를 가진다.</td>
-      <td style="text-align: left">(직접 구현): 별도의 표준 라이브러리가 없어 직접 구현이 일반적이다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">스택&lt;br&gt;(Stack)</td>
-      <td style="text-align: left">내장 **<code class="language-plaintext highlighter-rouge">list</code>**를 그대로 사용한다. <code class="language-plaintext highlighter-rouge">append()</code>가 <code class="language-plaintext highlighter-rouge">push</code> 역할을, <code class="language-plaintext highlighter-rouge">pop()</code>이 <code class="language-plaintext highlighter-rouge">pop</code> 역할을 하여 LIFO 구조를 자연스럽게 만족한다.</td>
-      <td style="text-align: left">내장 <code class="language-plaintext highlighter-rouge">list</code>: 스택을 위한 완벽한 기능을 제공하므로 별도 라이브러리가 불필요하다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">큐&lt;br&gt;(Queue)</td>
-      <td style="text-align: left">**<code class="language-plaintext highlighter-rouge">list</code>**의 <code class="language-plaintext highlighter-rouge">pop(0)</code>는 비효율적이므로, 양방향 데이터 입출력이 빠른 <code class="language-plaintext highlighter-rouge">deque</code> 객체를 사용하는 것이 정석이다.</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">collections.deque</code>: <code class="language-plaintext highlighter-rouge">append()</code> (enqueue)와 <code class="language-plaintext highlighter-rouge">popleft()</code> (dequeue) 연산이 모두 O(1) 시간 복잡도를 가지는 최적의 라이브러리이다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">해시 테이블&lt;br&gt;(Hash Table)</td>
-      <td style="text-align: left">내장 타입인 <code class="language-plaintext highlighter-rouge">dict</code>를 사용한다. Key-Value 쌍으로 데이터를 저장하며, 매우 빠른 속도로 데이터를 검색, 추가, 삭제할 수 있다.</td>
-      <td style="text-align: left">내장 <code class="language-plaintext highlighter-rouge">dict</code>: 기본 해시 테이블. <code class="language-plaintext highlighter-rouge">collections.defaultdict</code>: 존재하지 않는 키를 조회할 때 기본값을 자동으로 생성해준다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">트리&lt;br&gt;(Tree)</td>
-      <td style="text-align: left">내장 기능이 없어 <code class="language-plaintext highlighter-rouge">TreeNode</code> 클래스를 직접 정의하여 구현한다. 노드가 데이터와 자식 노드 리스트(또는 <code class="language-plaintext highlighter-rouge">left</code>, <code class="language-plaintext highlighter-rouge">right</code> 포인터)를 가진다.</td>
-      <td style="text-align: left">(직접 구현): 목적에 맞는 트리(이진 트리, 이진 탐색 트리 등)를 직접 클래스로 구현해야 한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">힙&lt;br&gt;(Heap)</td>
-      <td style="text-align: left">일반 **<code class="language-plaintext highlighter-rouge">list</code>**를 <code class="language-plaintext highlighter-rouge">heapq</code> 모듈의 함수들로 제어하여 최소 힙(Min Heap)으로 사용한다. 리스트 자체가 힙이 되는 방식이다.</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">heapq</code>: <code class="language-plaintext highlighter-rouge">heappush</code>, <code class="language-plaintext highlighter-rouge">heappop</code> 등의 함수를 통해 리스트를 효율적인 우선순위 큐로 만들어주는 표준 라이브러리이다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">그래프&lt;br&gt;(Graph)</td>
-      <td style="text-align: left">내장 기능이 없다. 주로 <code class="language-plaintext highlighter-rouge">dict</code>를 이용한 인접 리스트 방식으로 구현한다. 딕셔너리의 키는 정점, 값은 인접 정점 리스트이다.</td>
-      <td style="text-align: left">(직접 구현): <code class="language-plaintext highlighter-rouge">dict</code>와 <code class="language-plaintext highlighter-rouge">list</code>를 조합해 직접 구현한다. 복잡한 분석이 필요하면 <code class="language-plaintext highlighter-rouge">networkx</code> 같은 전문 라이브러리를 사용한다.</td>
-    </tr>
-  </tbody>
-</table>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="이직" /><category term="학습" /><category term="CS" /><category term="Python" /><category term="TypeScript" /><summary type="html"><![CDATA[자료구조와 알고리즘 (feat, TS와 Python 을 얹은)]]></summary></entry></feed>
+<p>데이터의 양이 많고, 추가/삭제가 빈번하게 일어나는 등 성능이 중요한 상황에서는 연결 리스트를 기반으로 큐를 구현하는 것이 정석이다. 연결 리스트의 <code class="language-plaintext highlighter-rouge">head</code>에서 노드를 제거하고(<code class="language-plaintext highlighter-rouge">dequeue</code>), <code class="language-plaintext highlighter-rouge">tail</code>에 새로운 노드를 추가(<code class="language-plaintext highlighter-rouge">enqueue</code>)하는 방식이다. 이 경우, 두 연산 모두 O(1)의 빠른 시간 복잡도를 보장받을 수 있다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="이직" /><category term="학습" /><category term="CS" /><category term="Python" /><category term="TypeScript" /><summary type="html"><![CDATA[자료구조와 알고리즘 (feat, TS와 Python 을 얹은)]]></summary></entry></feed>
