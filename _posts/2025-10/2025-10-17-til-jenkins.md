@@ -5,7 +5,7 @@ subtitle: nextjs 기반 앱을 무중단 배포 구성하기
 categories: 학습
 tags: 학습 NextJS DevOps Jenkins Docker
 thumb: /assets/images/posts/2025-10/2025-10-17-025.png
-custom-excerpt: 2025년 10월 14일 개발 내용 요약 및 학습 정리
+custom-excerpt: 2025년 10월 17일 개발 내용 요약 및 학습 정리
 banner:
   # video: https://vjs.zencdn.net/v/oceans.mp4
   loop: true
