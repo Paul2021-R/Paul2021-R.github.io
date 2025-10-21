@@ -1,4 +1,157 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-20T12:32:34+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">TIL - HTTPS 적용 및 갱신 구조 적용하기(Nginx, NextJS)</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops.html" rel="alternate" type="text/html" title="TIL - HTTPS 적용 및 갱신 구조 적용하기(Nginx, NextJS)" /><published>2025-10-20T00:00:00+00:00</published><updated>2025-10-20T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops.html"><![CDATA[<h2 id="2025년-10월-20일-docker-compose와-nginx-환경에-lets-encrypt-certbot로-https-적용-및-자동-갱신-설정">2025년 10월 20일: Docker Compose와 Nginx 환경에 Let’s Encrypt (Certbot)로 HTTPS 적용 및 자동 갱신 설정</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-21T13:45:00+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">TIL - Jenkins 서버 배포 및 무중단 배포 준비 프로세스</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/21/til-jenkins.html" rel="alternate" type="text/html" title="TIL - Jenkins 서버 배포 및 무중단 배포 준비 프로세스" /><published>2025-10-21T00:00:00+00:00</published><updated>2025-10-21T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/21/til-jenkins</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/21/til-jenkins.html"><![CDATA[<p>알겠습니다, 한솔. “다음 단계(Next Steps)” 섹션을 삭제하고, 오늘 완료한 작업의 세부 명령어와 코드 블럭을 보강하여 최종 TIL 문서를 다시 정리했습니다.</p>
+
+<hr />
+
+<h2 id="2025년-10월-21일-젠킨스jenkins-서버-구축-및-무중단-배포-아키텍처-설계">2025년 10월 21일: 젠킨스(Jenkins) 서버 구축 및 무중단 배포 아키텍처 설계</h2>
+
+<h3 id="1-오늘의-목표">1. 오늘의 목표</h3>
+
+<p>‘실무형 CI/CD 파이프라인’ 구축의 첫 단계로, JCasC(Jenkins Configuration as Code)를 활용해 젠킨스 서버를 독립적으로 설치하고, SSH 기반의 Blue/Green 무중단 배포 아키텍처를 설계 및 확정했다.</p>
+
+<h3 id="2-핵심-아키텍처-설계">2. 핵심 아키텍처 설계</h3>
+
+<p>젠킨스 서버의 독립성과 이식성을 최우선으로 하며, 실제 상용 서비스의 빌드/배포 환경을 정확히 모사하는 것을 목표로 한다.</p>
+
+<h4 id="1-핵심-원칙">1. 핵심 원칙</h4>
+
+<ul>
+  <li><strong>젠킨스 독립성 (이식성):</strong> <code class="language-plaintext highlighter-rouge">project-mini-jenkins</code>라는 별도 리포지토리에서 <code class="language-plaintext highlighter-rouge">Dockerfile</code>, <code class="language-plaintext highlighter-rouge">casc.yaml</code> 등으로 젠킨스 서버 자체를 코드화(Codefied)하여 관리한다. 이는 백업 및 재설정을 매우 용이하게 한다.</li>
+  <li><strong>실무 환경 모사 (역할 분리):</strong>
+    <ul>
+      <li><strong>빌드 서버 (Jenkins):</strong> 젠킨스 컨테이너가 이 역할을 맡는다.</li>
+      <li><strong>타겟 서버 (Host):</strong> 젠킨스가 설치된 호스트 머신(<code class="language-plaintext highlighter-rouge">localhost</code>)이 이 역할을 맡는다.</li>
+    </ul>
+  </li>
+  <li><strong>배포 방식 (SSH):</strong> 빌드 서버는 <strong>DooD 방식을 사용하지 않고</strong>, 오직 <strong>SSH</strong>를 통해서만 타겟 서버에 접속하여 배포 명령(<code class="language-plaintext highlighter-rouge">docker pull</code>, <code class="language-plaintext highlighter-rouge">docker compose up</code>, <code class="language-plaintext highlighter-rouge">nginx reload</code> 등)을 전달한다.</li>
+</ul>
+
+<h4 id="2-자동화-프로세스">2. 자동화 프로세스</h4>
+
+<ol>
+  <li><strong>Trigger:</strong> GitHub <code class="language-plaintext highlighter-rouge">main</code> 브랜치로 PR이 병합되면 Webhook을 통해 젠킨스가 이를 감지한다.</li>
+  <li><strong>Build:</strong> 젠킨스가 <code class="language-plaintext highlighter-rouge">project-mini-frontend</code>의 <code class="language-plaintext highlighter-rouge">Dockerfile</code>을 사용해 새 이미지를 클린 빌드한다.</li>
+  <li><strong>Push:</strong> 젠킨스가 빌드된 이미지를 **GHCR(GitHub Container Registry)**로 푸시한다.</li>
+  <li><strong>Deploy (via SSH):</strong> 젠킨스가 Credential에 등록된 SSH 키를 사용해 타겟 서버(<code class="language-plaintext highlighter-rouge">localhost</code>)에 접속한다.</li>
+  <li><strong>Target Server Actions:</strong> SSH 세션 내에서 다음의 셸 스크립트가 순차적으로 실행된다:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># (예시) 젠킨스가 SSH를 통해 실행할 명령어들</span>
+docker pull ghcr.io/hansol/project-mini-frontend:build-123
+docker compose up <span class="nt">-d</span> <span class="nt">--no-deps</span> app-green
+<span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'s/server app-blue:3000;/server app-green:3000;/'</span> /path/to/nginx.conf
+docker compose <span class="nb">exec </span>nginx nginx <span class="nt">-s</span> reload
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="3-이미지-및-롤백-전략">3. 이미지 및 롤백 전략</h4>
+
+<ul>
+  <li><strong>이미지 명명:</strong> 젠킨스가 <code class="language-plaintext highlighter-rouge">BUILD_NUMBER</code> (빌드 번호), <code class="language-plaintext highlighter-rouge">GIT_COMMIT</code> (커밋 해시) 등 강력한 메타데이터를 이미 관리하므로, 이미지 태그는 <code class="language-plaintext highlighter-rouge">ghcr.io/hansol/repo:${env.BUILD_NUMBER}</code>처럼 젠킨스의 <strong>빌드 번호</strong>를 사용하는 것이 가장 효율적이다.</li>
+  <li><strong>롤백 전략:</strong> <code class="language-plaintext highlighter-rouge">docker image</code>를 이용한 롤백이 아닌, Git에서 <code class="language-plaintext highlighter-rouge">revert</code> 커밋을 푸시하여 새로운 파이프라인을 트리거하는 <strong>‘Roll-Forward’</strong> 방식을 채택한다. 이는 배포의 유일한 진입점을 CI/CD 파이프라인으로 통일시켜 안정성을 높인다.</li>
+</ul>
+
+<hr />
+
+<h3 id="3-젠킨스-서버-설치-과정">3. 젠킨스 서버 설치 과정</h3>
+
+<p>독립된 <code class="language-plaintext highlighter-rouge">project-mini-jenkins</code> 프로젝트를 통해 젠킨스 서버를 컨테이너로 실행했다.</p>
+
+<h4 id="1-jcasc-템플릿-구성">1. JCasC 템플릿 구성</h4>
+
+<p><code class="language-plaintext highlighter-rouge">project-mini-jenkins</code> 폴더를 다음과 같이 구성하여 젠킨스 서버 자체를 코드로 관리했다.</p>
+
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">docker-compose.yml</code> (서비스 정의)</strong></p>
+
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="na">jenkins</span><span class="pi">:</span>
+    <span class="na">build</span><span class="pi">:</span>
+      <span class="na">context</span><span class="pi">:</span> <span class="s">jenkins</span>
+    <span class="na">container_name</span><span class="pi">:</span> <span class="s">jenkins-server</span>
+    <span class="na">ports</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">12345:8080"</span><span class="pi">]</span> <span class="c1"># 8080 대신 12345 포트 사용</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">./jenkins_home:/var/jenkins_home</span> <span class="c1"># Bind Mount</span>
+    <span class="na">entrypoint</span><span class="pi">:</span> <span class="pi">&gt;</span> <span class="c1"># casc.yaml을 jenkins_home으로 복사</span>
+      <span class="s">bash -c "</span>
+        <span class="s">cp /usr/share/jenkins/ref/casc.yaml /var/jenkins_home/casc.yaml &amp;&amp;</span>
+        <span class="s">/usr/bin/tini -- /usr/local/bin/jenkins.sh</span>
+      <span class="s">"</span>
+<span class="na">volumes</span><span class="pi">:</span>
+  <span class="na">jenkins_home</span><span class="pi">:</span> <span class="pi">{}</span> <span class="c1"># Bind Mount를 사용하기로 했으므로 이 부분은 삭제됨</span>
+</code></pre></div>    </div>
+
+    <p><em>최종적으로 <code class="language-plaintext highlighter-rouge">volumes: [jenkins_home: {}]</code>는 삭제하고, <code class="language-plaintext highlighter-rouge">volumes: [./jenkins_home:/var/jenkins_home]</code>로 수정하여 Bind Mount를 사용하기로 결정했다.</em></p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">jenkins/Dockerfile</code> (커스텀 이미지)</strong></p>
+
+    <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> jenkins/jenkins:lts-jdk21</span>
+<span class="k">USER</span><span class="s"> root</span>
+<span class="k">COPY</span><span class="s"> plugins.txt /usr/share/jenkins/ref/plugins.txt</span>
+<span class="k">RUN </span>jenkins-plugin-cli <span class="nt">--plugin-file</span> /usr/share/jenkins/ref/plugins.txt
+<span class="k">COPY</span><span class="s"> casc.yaml /usr/share/jenkins/ref/casc.yaml</span>
+<span class="k">USER</span><span class="s"> jenkins</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">jenkins/plugins.txt</code> (플러그인 목록)</strong></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>configuration-as-code
+git
+workflow-aggregator
+blueocean
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">jenkins/casc.yaml</code> (젠킨스 설정)</strong></p>
+
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jenkins</span><span class="pi">:</span>
+  <span class="na">systemMessage</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Welcome</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">My</span><span class="nv"> </span><span class="s">Jenkins</span><span class="nv"> </span><span class="s">Server!</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">instance</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">managed</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">Code.</span><span class="nv"> </span><span class="s">🚀"</span>
+  <span class="na">numExecutors</span><span class="pi">:</span> <span class="m">2</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="2-bind-mount와-uid-1000-권한-분석">2. Bind Mount와 UID 1000 권한 분석</h4>
+
+<p><code class="language-plaintext highlighter-rouge">Dockerfile</code>로 빌드된 젠킨스 컨테이너는 보안을 위해 <code class="language-plaintext highlighter-rouge">root</code>가 아닌 UID <code class="language-plaintext highlighter-rouge">1000</code>번(<code class="language-plaintext highlighter-rouge">jenkins</code> 유저)으로 실행된다. <code class="language-plaintext highlighter-rouge">volumes: [./jenkins_home:/var/jenkins_home]</code> (Bind Mount) 사용 시, 호스트 폴더의 소유자 UID와 컨테이너 유저의 UID가 다르면 ‘Permission denied’ 오류가 발생한다.</p>
+
+<ul>
+  <li><strong>일반적인 해결책:</strong> 호스트에서 <code class="language-plaintext highlighter-rouge">sudo chown -R 1000:1000 jenkins_home</code> 명령어로 소유권을 강제로 맞춰야 한다.</li>
+  <li><strong>나의 상황 (오늘의 발견):</strong> 내 호스트 서버(Ubuntu 22.04)의 <code class="language-plaintext highlighter-rouge">hansol</code> 계정 ID를 확인해보니, 젠킨스 컨테이너와 동일한 <code class="language-plaintext highlighter-rouge">1000</code>번이었다.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">id </span>hansol
+<span class="c"># uid=1000(hansol) gid=1000(hansol) groups=1000(hansol)...</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>결론:</strong> 나의 <code class="language-plaintext highlighter-rouge">hansol</code> 계정은 우분투 설치 시 생성된 첫 번째 표준 계정 ID(<code class="language-plaintext highlighter-rouge">1000</code>)를 사용하고 있어, 젠킨스 컨테이너의 UID(<code class="language-plaintext highlighter-rouge">1000</code>)와 완벽하게 일치한다. 이로 인해 나는 ‘Permission denied’ 문제가 원천적으로 발생하지 않는 이상적인 상태이며, 별도의 <code class="language-plaintext highlighter-rouge">chown</code> 명령어가 필요 없음을 확인했다.</li>
+</ul>
+
+<h4 id="3-젠킨스-실행-및-설정-마법사">3. 젠킨스 실행 및 설정 마법사</h4>
+
+<ol>
+  <li>프로젝트 폴더에 <code class="language-plaintext highlighter-rouge">jenkins_home</code> 디렉터리를 생성했다. (나의 경우 <code class="language-plaintext highlighter-rouge">chown</code>은 불필요했다.)
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>jenkins_home
+</code></pre></div>    </div>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker compose up --build -d</code> 명령어로 젠킨스 빌드 및 실행.</li>
+  <li><code class="language-plaintext highlighter-rouge">docker logs jenkins-server</code>로 초기 관리자 비밀번호 확인.</li>
+  <li><code class="language-plaintext highlighter-rouge">http://paulryu9309.ddns.net:12345</code> (서버 IP와 변경된 포트)로 접속하여 설정 마법사(플러그인 설치, 관리자 계정 생성)를 완료했다.</li>
+  <li>젠킨스 대시보드에서 <code class="language-plaintext highlighter-rouge">casc.yaml</code>에 정의한 “Welcome to My Jenkins Server!…” 환영 메시지를 확인하며 JCasC 적용을 최종 검증했다.</li>
+</ol>
+
+<h4 id="4-ssh-credential-등록-핵심-준비">4. SSH Credential 등록 (핵심 준비)</h4>
+
+<p>젠킨스가 타겟 서버(<code class="language-plaintext highlighter-rouge">localhost</code>)에 접속할 수 있도록 <code class="language-plaintext highlighter-rouge">ssh-keygen</code>을 통해 젠킨스 전용 키 페어(<code class="language-plaintext highlighter-rouge">jenkins_key</code>, <code class="language-plaintext highlighter-rouge">jenkins_key.pub</code>)를 생성했다.</p>
+
+<ol>
+  <li><strong>서버(호스트)에 ‘자물쇠’ 설치:</strong> 생성한 공개키(<code class="language-plaintext highlighter-rouge">jenkins_key.pub</code>)의 내용을 <code class="language-plaintext highlighter-rouge">cat</code>을 이용해 <code class="language-plaintext highlighter-rouge">~/.ssh/authorized_keys</code> 파일에 추가했다.</li>
+  <li><strong>젠킨스에 ‘열쇠’ 등록:</strong> 젠킨스 UI의 [Manage Jenkins] &gt; [Credentials]에서 <code class="language-plaintext highlighter-rouge">Kind</code>를 <code class="language-plaintext highlighter-rouge">SSH Username with Private Key</code>로 선택하고, <code class="language-plaintext highlighter-rouge">Username</code>에 <code class="language-plaintext highlighter-rouge">hansol</code>, <code class="language-plaintext highlighter-rouge">Private Key</code>에 개인키(<code class="language-plaintext highlighter-rouge">jenkins_key</code>)의 내용을 복사하여 글로벌 Credential을 성공적으로 등록했다.</li>
+</ol>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-21-051.png" alt="" /></p>
+<blockquote>
+  <p>WSL 만 아니었으면 무중단까지 간건데… 아쉽다…</p>
+</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><summary type="html"><![CDATA[알겠습니다, 한솔. “다음 단계(Next Steps)” 섹션을 삭제하고, 오늘 완료한 작업의 세부 명령어와 코드 블럭을 보강하여 최종 TIL 문서를 다시 정리했습니다.]]></summary></entry><entry><title type="html">TIL - HTTPS 적용 및 갱신 구조 적용하기(Nginx, NextJS)</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops.html" rel="alternate" type="text/html" title="TIL - HTTPS 적용 및 갱신 구조 적용하기(Nginx, NextJS)" /><published>2025-10-20T00:00:00+00:00</published><updated>2025-10-20T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops.html"><![CDATA[<h2 id="2025년-10월-20일-docker-compose와-nginx-환경에-lets-encrypt-certbot로-https-적용-및-자동-갱신-설정">2025년 10월 20일: Docker Compose와 Nginx 환경에 Let’s Encrypt (Certbot)로 HTTPS 적용 및 자동 갱신 설정</h2>
 
 <h3 id="요약">요약</h3>
 
@@ -1533,301 +1686,4 @@ Paul2021-R 스타일로 글을 작성해주세요:
             <span class="n">bill</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//=</span> <span class="mi">2</span>
         <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">answer</span>
-</code></pre></div></div>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><category term="코딩테스트" /><summary type="html"><![CDATA[Introduction]]></summary></entry><entry><title type="html">코테 학습 - ‘동영상 재생기’</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/19/study-python.html" rel="alternate" type="text/html" title="코테 학습 - ‘동영상 재생기’" /><published>2025-09-19T00:00:00+00:00</published><updated>2025-09-19T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/19/study-python</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/09/19/study-python.html"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>본 글은 원본 문제를 기반으로 풀이한 내용을 담고 있습니다.</p>
-
-<p><a href="https://school.programmers.co.kr/learn/courses/30/lessons/340213?language=python3">원본 문제 보러가기</a></p>
-
-<h2 id="2025년-9월-19일-프로그래머스-코딩-테스트-동영상-재생기-문제-풀이-python">2025년 9월 19일: 프로그래머스 코딩 테스트 ‘동영상 재생기’ 문제 풀이 (Python)</h2>
-
-<h3 id="문제-정리">문제 정리</h3>
-
-<ul>
-  <li><strong>목표</strong>: 주어진 명령어(<code class="language-plaintext highlighter-rouge">prev</code>, <code class="language-plaintext highlighter-rouge">next</code>)를 모두 수행한 후 동영상의 최종 재생 위치를 “mm:ss” 형식으로 반환하는 문제이다.</li>
-  <li><strong>핵심 기능</strong>:
-    <ol>
-      <li><strong>10초 전/후 이동</strong>: <code class="language-plaintext highlighter-rouge">prev</code>와 <code class="language-plaintext highlighter-rouge">next</code> 명령을 수행하며, 영상의 시작(00:00)과 끝(video_len)을 벗어나지 않도록 처리한다.</li>
-      <li><strong>오프닝 자동 건너뛰기</strong>: 현재 재생 위치가 오프닝 구간(<code class="language-plaintext highlighter-rouge">op_start</code> ~ <code class="language-plaintext highlighter-rouge">op_end</code>)에 포함될 경우, 즉시 오프닝이 끝나는 위치(<code class="language-plaintext highlighter-rouge">op_end</code>)로 자동 이동한다. 이 기능은 사용자의 명령어와 관계없이 위치가 변경될 때마다 적용되어야 하는 핵심 규칙이다.</li>
-    </ol>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="코드-개선-과정-분석">코드 개선 과정 분석</h3>
-
-<h4 id="1단계-최초-풀이-분minute과-초second를-분리하여-처리">[1단계] 최초 풀이: 분(minute)과 초(second)를 분리하여 처리</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
-
-<span class="k">def</span> <span class="nf">prev_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span><span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">10</span>
-    <span class="k">elif</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">60</span> <span class="o">-</span> <span class="mi">10</span>
-        
-    <span class="k">if</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">current_pos</span>
-
-<span class="k">def</span> <span class="nf">next_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">op_end</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-    <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">10</span>
-    
-    <span class="k">if</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">59</span><span class="p">:</span>
-        <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        
-    <span class="n">end_hour</span><span class="p">,</span> <span class="n">end_minutes</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_end</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">end_hour</span> <span class="ow">or</span> <span class="p">(</span><span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">end_hour</span> <span class="ow">and</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">end_minutes</span><span class="p">):</span>
-        <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">end_hour</span>
-        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">end_minutes</span>
-    
-    <span class="k">return</span> <span class="n">current_pos</span>
-
-<span class="k">def</span> <span class="nf">skip_opening</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">op_start</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">op_end</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-    <span class="n">start_time</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_start</span><span class="p">)</span>
-    <span class="n">end_time</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_end</span><span class="p">)</span>
-    
-    <span class="n">start_total_time</span> <span class="o">=</span> <span class="n">start_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">start_time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">end_total_time</span> <span class="o">=</span> <span class="n">end_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">end_time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">current_total_time</span> <span class="o">=</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    
-    <span class="k">if</span> <span class="n">start_total_time</span> <span class="o">&lt;=</span> <span class="n">current_total_time</span> <span class="ow">and</span> <span class="n">current_total_time</span> <span class="o">&lt;=</span> <span class="n">end_total_time</span><span class="p">:</span>
-        <span class="n">current_pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">end_time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">end_time</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
-    <span class="k">return</span> <span class="n">current_pos</span>
-<span class="k">def</span> <span class="nf">get_str_time</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="p">)</span><span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-
-    
-    <span class="n">hour</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">minute</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">hour</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">'</span><span class="s">0</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="sh">'</span>
-    <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">minute</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">minute</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">'</span><span class="s">0</span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="sh">'</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="sh">'</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="sh">'</span>
-
-<span class="k">def</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-    <span class="k">return</span> <span class="p">[</span><span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">2</span><span class="p">]),</span> <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">])]</span>
-
-<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">video_len</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">,</span> <span class="n">commands</span><span class="p">):</span>
-    <span class="n">answer</span> <span class="o">=</span> <span class="sh">''</span>
-    
-    <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
-        <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">skip_opening</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">)</span>
-        
-        <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="sh">'</span><span class="s">next</span><span class="sh">'</span><span class="p">:</span>
-            <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">next_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="n">video_len</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="sh">'</span><span class="s">prev</span><span class="sh">'</span><span class="p">:</span>
-            <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">prev_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">)</span>
-    
-    <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">skip_opening</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">)</span>
-    <span class="n">answer</span> <span class="o">=</span> <span class="nf">get_str_time</span><span class="p">(</span><span class="n">current_pos</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">answer</span>
-</code></pre></div></div>
-
-<p>첫 번째 코드는 시간 데이터를 <code class="language-plaintext highlighter-rouge">[분, 초]</code> 형태의 리스트(혹은 튜플)로 다루는 방식이다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1단계 코드 (주요 부분)
-</span><span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
-
-<span class="k">def</span> <span class="nf">prev_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span><span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">10</span>
-    <span class="k">elif</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="n">current_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">60</span> <span class="o">-</span> <span class="mi">10</span>
-    <span class="c1"># ...경계 값 처리...
-</span>    <span class="k">return</span> <span class="n">current_pos</span>
-
-<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">video_len</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">,</span> <span class="n">commands</span><span class="p">):</span>
-    <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="c1"># [분, 초] 리스트 반환
-</span>    <span class="c1"># ... (생략) ...
-</span></code></pre></div></div>
-
-<ul>
-  <li><strong>접근 방식</strong>:
-    <ul>
-      <li>시간을 ‘분’과 ‘초’ 두 개의 단위로 유지하며 모든 연산을 수행했다.</li>
-    </ul>
-  </li>
-  <li><strong>분석 및 문제점</strong>:
-    <ul>
-      <li><strong>로직의 복잡성</strong>: 10초를 더하고 뺄 때, 60초를 기준으로 받아올림/내림 처리를 해야 하므로 <code class="language-plaintext highlighter-rouge">if-elif</code> 조건문이 복잡해진다. 예를 들어 <code class="language-plaintext highlighter-rouge">prev_pos</code>에서 <code class="language-plaintext highlighter-rouge">03:05</code>에서 10초를 빼는 경우 <code class="language-plaintext highlighter-rouge">02:55</code>로 만들기 위한 연산이 직관적이지 않다.</li>
-      <li><strong>비교 연산의 번거로움</strong>: <code class="language-plaintext highlighter-rouge">skip_opening</code>과 같이 시간의 선후 관계를 비교할 때, 분과 초를 각각 비교해야 하므로 코드가 길어지고 실수할 가능성이 커진다.</li>
-      <li><strong>데이터 타입의 불일치</strong>: 타입 힌트는 불변(immutable) 객체인 <code class="language-plaintext highlighter-rouge">Tuple</code>로 지정했지만, 실제로는 <code class="language-plaintext highlighter-rouge">current_pos[1] -= 10</code>처럼 내부 값을 변경하고 있어 가변(mutable) 객체인 <code class="language-plaintext highlighter-rouge">List</code>처럼 사용했다. 이는 잠재적인 오류를 유발할 수 있는 좋지 않은 패턴이다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="2단계-개선-단위를-초second로-통일">[2단계] 개선: 단위를 ‘초(second)’로 통일</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">def</span> <span class="nf">prev_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="n">current_pos</span> <span class="o">-=</span> <span class="mi">10</span>
-    <span class="k">if</span> <span class="n">current_pos</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">current_pos</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">current_pos</span>
-
-<span class="k">def</span> <span class="nf">next_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">video_length</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="n">current_pos</span> <span class="o">+=</span> <span class="mi">10</span>
-    <span class="n">video_end</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">video_length</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">current_pos</span> <span class="o">&gt;</span> <span class="n">video_end</span><span class="p">:</span>
-        <span class="n">current_pos</span> <span class="o">=</span> <span class="n">video_end</span>
-    
-    <span class="k">return</span> <span class="n">current_pos</span>
-
-<span class="k">def</span> <span class="nf">skip_opening</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">op_start</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">op_end</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-    <span class="n">start_time</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_start</span><span class="p">)</span>
-    <span class="n">end_time</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_end</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">start_time</span> <span class="o">&lt;=</span> <span class="n">current_pos</span> <span class="ow">and</span> <span class="n">current_pos</span> <span class="o">&lt;=</span> <span class="n">end_time</span><span class="p">:</span>
-        <span class="n">current_pos</span> <span class="o">=</span> <span class="n">end_time</span>
-    <span class="k">return</span> <span class="n">current_pos</span>
-
-<span class="k">def</span> <span class="nf">get_str_time</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="n">hour</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">current_pos</span> <span class="o">//</span> <span class="mi">60</span><span class="p">)</span>
-    <span class="n">minute</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">current_pos</span> <span class="o">%</span> <span class="mi">60</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">hour</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">'</span><span class="s">0</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="sh">'</span>
-    <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">minute</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">minute</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">'</span><span class="s">0</span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="sh">'</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="sh">'</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="sh">'</span>
-
-<span class="k">def</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span>  <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
-
-<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">video_len</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">,</span> <span class="n">commands</span><span class="p">):</span>
-    <span class="n">answer</span> <span class="o">=</span> <span class="sh">''</span>
-    
-    <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
-        <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">skip_opening</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">)</span>
-        
-        <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="sh">'</span><span class="s">next</span><span class="sh">'</span><span class="p">:</span>
-            <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">next_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="n">video_len</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="sh">'</span><span class="s">prev</span><span class="sh">'</span><span class="p">:</span>
-            <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">prev_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">)</span>
-    
-    <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">skip_opening</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">)</span>
-    <span class="n">answer</span> <span class="o">=</span> <span class="nf">get_str_time</span><span class="p">(</span><span class="n">current_pos</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">answer</span>
-</code></pre></div></div>
-
-<p>첫 풀이의 복잡성을 해결하기 위해 모든 시간 단위를 ‘초’로 통일했다. 이는 문제 해결의 <strong>가장 결정적인 개선점</strong>이다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2단계 코드 (주요 부분)
-</span><span class="k">def</span> <span class="nf">prev_pos</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="n">current_pos</span> <span class="o">-=</span> <span class="mi">10</span>
-    <span class="k">if</span> <span class="n">current_pos</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">current_pos</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">current_pos</span>
-
-<span class="k">def</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span>  <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
-
-<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">video_len</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">,</span> <span class="n">commands</span><span class="p">):</span>
-    <span class="n">current_pos</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="c1"># '초' 단위 정수 반환
-</span>    <span class="c1"># ... (생략) ...
-</span></code></pre></div></div>
-
-<ul>
-  <li><strong>접근 방식</strong>:
-    <ul>
-      <li>모든 “mm:ss” 형식의 시간을 <code class="language-plaintext highlighter-rouge">get_int_time</code> 함수를 통해 ‘초’ 단위의 정수(integer)로 변환하여 계산했다.</li>
-    </ul>
-  </li>
-  <li><strong>분석 및 개선 효과</strong>:
-    <ul>
-      <li><strong>연산의 단순화</strong>: 시간 계산이 <code class="language-plaintext highlighter-rouge">+10</code>, <code class="language-plaintext highlighter-rouge">-10</code>과 같은 단순한 정수 연산으로 바뀌어 코드가 매우 간결해지고 명확해졌다.</li>
-      <li><strong>비교의 용이성</strong>: 시간 비교 역시 정수의 크기 비교(<code class="language-plaintext highlighter-rouge">&lt;=</code>, <code class="language-plaintext highlighter-rouge">&gt;=</code>)로 단순화되어 <code class="language-plaintext highlighter-rouge">skip_opening</code> 로직이 직관적으로 변했다.</li>
-      <li><strong>오류 가능성 감소</strong>: 복잡한 받아올림/내림 로직이 사라져 버그가 발생할 여지가 크게 줄었다.</li>
-    </ul>
-  </li>
-  <li><strong>남은 개선점</strong>:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">next_pos</code>, <code class="language-plaintext highlighter-rouge">skip_opening</code> 함수가 루프 안에서 호출될 때마다 <code class="language-plaintext highlighter-rouge">get_int_time</code> 함수를 통해 문자열을 정수로 변환하는 <strong>불필요한 반복 연산</strong>이 여전히 존재한다.</li>
-      <li>오프닝 스킵 로직의 적용 시점이 루프 전/후로 나뉘어 있어 더 깔끔하게 정리할 여지가 있다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="3단계-최종-풀이-pythonic-코드-적용-및-로직-최적화">[3단계] 최종 풀이: Pythonic 코드 적용 및 로직 최적화</h4>
-
-<p>2단계에서 이룬 구조적 개선 위에, 코드의 효율성과 가독성을 극대화하는 Pythonic한 기법들과 로직 최적화를 적용한 최종 버전이다.</p>
-
-<ul>
-  <li><strong>접근 방식</strong>:
-    <ul>
-      <li>반복 연산을 제거하고, 파이썬 내장 기능과 더 효율적인 로직 흐름을 적용하여 코드를 완성했다.</li>
-    </ul>
-  </li>
-  <li><strong>핵심 개선점</strong>:
-    <ol>
-      <li><strong>사전 연산 (Pre-computation)</strong>: <code class="language-plaintext highlighter-rouge">solution</code> 함수 시작 시점에서 필요한 모든 시간 문자열(<code class="language-plaintext highlighter-rouge">video_len</code>, <code class="language-plaintext highlighter-rouge">op_start</code> 등)을 ‘초’ 단위 정수로 <strong>미리 한 번만 변환</strong>하여 변수에 저장한다. 이를 통해 루프 내에서 반복적인 변환 작업을 완전히 제거하여 효율성을 높였다.</li>
-      <li><strong>Pythonic 경계 값 처리</strong>: <code class="language-plaintext highlighter-rouge">prev</code>와 <code class="language-plaintext highlighter-rouge">next</code> 기능에서 <code class="language-plaintext highlighter-rouge">if</code>문을 사용하여 0과 영상 최대 길이를 확인하는 대신, <code class="language-plaintext highlighter-rouge">max(0, ...)</code>와 <code class="language-plaintext highlighter-rouge">min(video_len_sec, ...)</code>를 사용하여 코드를 한 줄로 줄이고 의도를 더 명확하게 표현했다.</li>
-      <li><strong>Pythonic 시간 포맷팅</strong>: <code class="language-plaintext highlighter-rouge">get_str_time</code> 함수에서 <code class="language-plaintext highlighter-rouge">divmod()</code>를 사용해 몫(분)과 나머지(초)를 한 번에 계산하고, f-string의 <code class="language-plaintext highlighter-rouge">:02d</code> 서식 지정자를 이용해 두 자리 수에 맞춰 0을 채우는 가장 표준적이고 깔끔한 방식을 사용했다.</li>
-      <li><strong>로직 흐름 최적화</strong>: 오프닝 스킵 로직을 <strong>‘상태가 변경될 때마다 유효성을 검사하는’</strong> 개념으로 접근했다.
-        <ul>
-          <li><strong>초기 상태 보정</strong>: 루프 시작 전, 최초 위치에 대해 스킵 검사를 먼저 수행한다.</li>
-          <li><strong>변경 후 보정</strong>: 명령어 실행으로 위치가 변경된 직후에만 스킵 검사를 수행한다.</li>
-          <li>이 두 번의 검사로 모든 경우를 처리하여, 루프 전과 후로 로직이 나뉘어 있던 2단계 코드보다 훨씬 더 명료한 흐름을 완성했다.</li>
-        </ul>
-      </li>
-    </ol>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="최종-버전-코드-및-설명">최종 버전 코드 및 설명</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 시간 변환 함수: 초 단위 정수와 "mm:ss" 문자열을 상호 변환한다.
-</span><span class="k">def</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="nf">int</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
-
-<span class="k">def</span> <span class="nf">get_str_time</span><span class="p">(</span><span class="n">current_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="c1"># divmod로 몫(분)과 나머지(초)를 한 번에 계산한다.
-</span>    <span class="n">minutes</span><span class="p">,</span> <span class="n">seconds</span> <span class="o">=</span> <span class="nf">divmod</span><span class="p">(</span><span class="n">current_pos</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
-    <span class="c1"># f-string 포맷팅으로 두 자리가 아닐 경우 앞에 0을 붙여준다.
-</span>    <span class="k">return</span> <span class="sa">f</span><span class="sh">'</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="mi">02</span><span class="n">d</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">seconds</span><span class="si">:</span><span class="mi">02</span><span class="n">d</span><span class="si">}</span><span class="sh">'</span>
-
-<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">video_len</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">op_start</span><span class="p">,</span> <span class="n">op_end</span><span class="p">,</span> <span class="n">commands</span><span class="p">):</span>
-    <span class="c1"># [최적화 1] 모든 시간 값을 미리 한 번만 정수로 변환한다.
-</span>    <span class="n">video_len_sec</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">video_len</span><span class="p">)</span>
-    <span class="n">op_start_sec</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_start</span><span class="p">)</span>
-    <span class="n">op_end_sec</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">op_end</span><span class="p">)</span>
-    <span class="n">current_pos_sec</span> <span class="o">=</span> <span class="nf">get_int_time</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-    
-    <span class="c1"># 오프닝 스킵을 위한 지역 헬퍼 함수. solution 내부 변수에 접근하기 용이하다.
-</span>    <span class="k">def</span> <span class="nf">check_and_skip_opening</span><span class="p">(</span><span class="n">pos_sec</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">op_start_sec</span> <span class="o">&lt;=</span> <span class="n">pos_sec</span> <span class="o">&lt;=</span> <span class="n">op_end_sec</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">op_end_sec</span>
-        <span class="k">return</span> <span class="n">pos_sec</span>
-    
-    <span class="c1"># [로직 최적화] 1. 초기 위치에 대한 오프닝 스킵을 먼저 적용한다.
-</span>    <span class="n">current_pos_sec</span> <span class="o">=</span> <span class="nf">check_and_skip_opening</span><span class="p">(</span><span class="n">current_pos_sec</span><span class="p">)</span>
-    
-    <span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="sh">'</span><span class="s">next</span><span class="sh">'</span><span class="p">:</span>
-            <span class="c1"># [최적화 2] min()을 사용해 영상 길이를 넘지 않도록 처리한다.
-</span>            <span class="n">current_pos_sec</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="n">video_len_sec</span><span class="p">,</span> <span class="n">current_pos_sec</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="sh">'</span><span class="s">prev</span><span class="sh">'</span><span class="p">:</span>
-            <span class="c1"># [최적화 2] max()를 사용해 0 미만으로 내려가지 않도록 처리한다.
-</span>            <span class="n">current_pos_sec</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">current_pos_sec</span> <span class="o">-</span> <span class="mi">10</span><span class="p">)</span>
-    
-        <span class="c1"># [로직 최적화] 2. 명령어로 위치가 바뀐 직후, 다시 오프닝 스킵을 적용한다.
-</span>        <span class="n">current_pos_sec</span> <span class="o">=</span> <span class="nf">check_and_skip_opening</span><span class="p">(</span><span class="n">current_pos_sec</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="nf">get_str_time</span><span class="p">(</span><span class="n">current_pos_sec</span><span class="p">)</span>
-
 </code></pre></div></div>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><category term="코딩테스트" /><summary type="html"><![CDATA[Introduction]]></summary></entry></feed>
