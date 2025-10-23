@@ -1,8 +1,251 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-21T13:45:00+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">TIL - Jenkins 서버 배포 및 무중단 배포 준비 프로세스</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/21/til-jenkins.html" rel="alternate" type="text/html" title="TIL - Jenkins 서버 배포 및 무중단 배포 준비 프로세스" /><published>2025-10-21T00:00:00+00:00</published><updated>2025-10-21T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/21/til-jenkins</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/21/til-jenkins.html"><![CDATA[<p>알겠습니다, 한솔. “다음 단계(Next Steps)” 섹션을 삭제하고, 오늘 완료한 작업의 세부 명령어와 코드 블럭을 보강하여 최종 TIL 문서를 다시 정리했습니다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-23T17:16:49+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">TIL - NextJS 무중단 배포 적용</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/23/til-jenkins.html" rel="alternate" type="text/html" title="TIL - NextJS 무중단 배포 적용" /><published>2025-10-23T00:00:00+00:00</published><updated>2025-10-23T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/23/til-jenkins</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/23/til-jenkins.html"><![CDATA[<h2 id="25-10-23-jenkins-무중단-배포-적용">25-10-23 Jenkins 무중단 배포 적용</h2>
+
+<h3 id="1-오늘의-목표">1. 오늘의 목표</h3>
+
+<p>기존에 수동으로 배포되던 Next.js 애플리케이션(<code class="language-plaintext highlighter-rouge">project-mini-frontend</code>)을 위해, 독립적으로 운영되는 Jenkins 서버를 활용하여 GitHub <code class="language-plaintext highlighter-rouge">main</code> 브랜치 변경 시 자동으로 빌드, GHCR 푸시, 타겟 서버 SSH 접속 및 Blue/Green 무중단 배포를 수행하는 CI/CD 파이프라인을 완성하는 것이 목표였다.</p>
+
+<hr />
+<h3 id="jenkins-무중단-배포-파이프라인-구축-절차">Jenkins 무중단 배포 파이프라인 구축 절차</h3>
+<p><strong>1단계: 젠킨스 환경 최종 준비 (도구 챙기기)</strong></p>
+<ul>
+  <li><strong>목표:</strong> 젠킨스 컨테이너가 배포에 필요한 ‘도구’(<code class="language-plaintext highlighter-rouge">ssh</code>, <code class="language-plaintext highlighter-rouge">git</code>, <code class="language-plaintext highlighter-rouge">docker</code>)를 모두 갖추고, ‘비밀번호’(<code class="language-plaintext highlighter-rouge">Credentials</code>)를 발급받도록 합니다.</li>
+  <li><strong>주요 작업:</strong>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">jenkins/Dockerfile</code>에 <code class="language-plaintext highlighter-rouge">openssh-client</code> 설치 코드 추가 및 젠킨스 재시작
+        <ul>
+          <li>설치: <code class="language-plaintext highlighter-rouge">RUN apt-get update &amp;&amp; apt-get install -y openssh-client</code></li>
+          <li>빌드 및 실행(터미널에서) : <code class="language-plaintext highlighter-rouge">docker exec jenkins-server ssh</code> &gt; 입력 시 ssh 정상 설치 되면 매뉴얼이 뜸</li>
+        </ul>
+      </li>
+      <li>젠킨스 Credential 등록 (GitHub PAT, GHCR PAT)
+        <ul>
+          <li><strong>1. GitHub 리포지토리 접근용 (Git Checkout)</strong>
+            <ul>
+              <li><strong>Kind:</strong> <code class="language-plaintext highlighter-rouge">Username with password</code></li>
+              <li><strong>Username:</strong> (본인의 GitHub ID)</li>
+              <li><strong>Password:</strong> (GitHub PAT - <code class="language-plaintext highlighter-rouge">repo</code> 스코프 권한 필요)</li>
+              <li><strong>ID:</strong> <code class="language-plaintext highlighter-rouge">github-creds</code> (또는 식별 가능한 이름)</li>
+            </ul>
+          </li>
+          <li><strong>2. GHCR 이미지 푸시용 (Docker Push)</strong>
+            <ul>
+              <li><strong>Kind:</strong> <code class="language-plaintext highlighter-rouge">Username with password</code></li>
+              <li><strong>Username:</strong> (본인의 GitHub ID)</li>
+              <li><strong>Password:</strong> (GitHub PAT - <code class="language-plaintext highlighter-rouge">write:packages</code> 스코프 권한 필요)</li>
+              <li><strong>ID:</strong> <code class="language-plaintext highlighter-rouge">ghcr-creds</code> (또는 식별 가능한 이름)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>호스트 서버 <code class="language-plaintext highlighter-rouge">sshd</code> 서비스 실행 상태 최종 확인</li>
+    </ol>
+  </li>
+</ul>
+
+<p><strong>2단계: <code class="language-plaintext highlighter-rouge">project-mini-frontend</code> 리포지토리 설정 (명령서 작성)</strong></p>
+<ul>
+  <li><strong>목표:</strong> Next.js 리포지토리에 젠킨스가 수행할 모든 작업을 정의한 ‘명령서’(<code class="language-plaintext highlighter-rouge">Jenkinsfile</code>)를 추가하고, GitHub가 젠킨스를 호출할 ‘연락망’(Webhook)을 설정합니다.</li>
+  <li><strong>주요 작업:</strong>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">Jenkinsfile</code> (파이프라인 스크립트) 신규 작성</li>
+      <li>GitHub 리포지토리 Webhook 설정 (젠킨스 URL 연동)</li>
+    </ol>
+  </li>
+  <li><strong>작업하면서 궁금했던 사항 정리</strong>
+    <ul>
+      <li>env 변수에 쓸수  있는 유용한 내장 환경 변수들
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">env.BUILD_NUMBER</code>: 현재 빌드의 순차 번호 (예: “57”)</li>
+          <li><code class="language-plaintext highlighter-rouge">env.JOB_NAME</code>: 현재 실행 중인 젠킨스 잡(Job)의 이름</li>
+          <li><code class="language-plaintext highlighter-rouge">env.BUILD_URL</code>: 현재 빌드 로그를 볼 수 있는 젠킨스의 URL (실패 알림에 필수)</li>
+          <li><code class="language-plaintext highlighter-rouge">env.BRANCH_NAME</code>: 빌드를 트리거한 브랜치 이름 (예: “main”)</li>
+          <li><code class="language-plaintext highlighter-rouge">env.GIT_COMMIT</code>: 빌드에 사용된 Git 커밋 해시(ID)</li>
+          <li><code class="language-plaintext highlighter-rouge">env.WORKSPACE</code>: 젠킨스 에이전트가 코드를 Checkout 받은 경로</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">ssh -o StrictHostKeyChecking=no</code> 란?
+        <ul>
+          <li>SSH 접속시 일반적으로 설정하는 것 질문 절차가 있는데, 젠킨스는 여기서 yes 라고 입력 안됨. 파이프라인 멈춤게 됨. 이에 그 질문을 강제로 무시하고, 무조건 신뢰하여 자동화 시키는 역할을 함.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>3단계: 젠킨스 파이프라인(Job) 생성 (프로젝트 연결)</strong></p>
+<ul>
+  <li><strong>목표:</strong> 젠킨스 UI에서 “이 GitHub 리포지토리의 <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>을 읽어서 실행해”라고 설정하는 새 작업을 만듭니다.</li>
+  <li><strong>주요 작업:</strong>
+    <ol>
+      <li>젠킨스 대시보드에서 “New Item” &gt; “Pipeline” 생성</li>
+      <li>“Pipeline script from SCM” 옵션으로 GitHub 리포지토리 및 <code class="language-plaintext highlighter-rouge">Jenkinsfile</code> 경로 연결</li>
+    </ol>
+  </li>
+  <li>Jenkins Credential 등록 (GitHub PAT <code class="language-plaintext highlighter-rouge">github-creds</code>, GHCR PAT <code class="language-plaintext highlighter-rouge">ghcr-creds</code>, SSH Private Key <code class="language-plaintext highlighter-rouge">a5-localhost-jenkins</code>).</li>
+  <li><strong>Blue/Green 전환 로직 (<code class="language-plaintext highlighter-rouge">Deploy to Server</code> SSH 스크립트):</strong>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">set -ex</code>: 명령어 추적 및 오류 시 즉시 종료 설정.</li>
+      <li><code class="language-plaintext highlighter-rouge">docker login ghcr.io ...</code>: 타겟 서버에서 GHCR 로그인.</li>
+      <li><code class="language-plaintext highlighter-rouge">docker pull [imageTag]</code>: 새 이미지 다운로드.</li>
+      <li><code class="language-plaintext highlighter-rouge">cd [TARGET_PROJECT_PATH]</code>: 프로젝트 폴더 이동.</li>
+      <li><code class="language-plaintext highlighter-rouge">docker compose --env-file .env.[deployService] up -d --no-deps --force-recreate [deployService]</code>: 임시 <code class="language-plaintext highlighter-rouge">.env</code> 파일을 사용하여 대기조 컨테이너 강제 재생성.</li>
+      <li><code class="language-plaintext highlighter-rouge">sed -i "s|...|..." [nginx.conf 경로]</code>: Nginx 설정 파일의 <code class="language-plaintext highlighter-rouge">upstream</code> 변경.</li>
+      <li><code class="language-plaintext highlighter-rouge">docker compose --env-file init.env exec -T nginx nginx -s reload</code>: Nginx 리로드 (기본 <code class="language-plaintext highlighter-rouge">init.env</code> 참조).</li>
+      <li><code class="language-plaintext highlighter-rouge">docker logout ghcr.io</code>: 타겟 서버 로그아웃.</li>
+    </ol>
+  </li>
+</ul>
+
+<p><strong>4단계: 최초 빌드 실행 및 트러블슈팅</strong></p>
+<ul>
+  <li><strong>목표:</strong> <code class="language-plaintext highlighter-rouge">main</code> 브랜치에 코드를 푸시(Push)하여 1~3단계의 모든 설정이 올바르게 작동하는지 확인하고, 첫 배포를 성공시킵니다.</li>
+  <li><strong>주요 작업:</strong>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">Jenkinsfile</code>을 <code class="language-plaintext highlighter-rouge">main</code> 브랜치에 푸시하여 Webhook 트리거 실행 (또는 “Build Now” 수동 클릭)</li>
+      <li>젠킨스 “Blue Ocean” UI에서 빌드 과정 실시간 모니터링</li>
+      <li>오류 발생 시(예: 권한 문제, 경로 오류) 로그 확인 및 수정</li>
+    </ol>
+  </li>
+</ul>
 
 <hr />
 
-<h2 id="2025년-10월-21일-젠킨스jenkins-서버-구축-및-무중단-배포-아키텍처-설계">2025년 10월 21일: 젠킨스(Jenkins) 서버 구축 및 무중단 배포 아키텍처 설계</h2>
+<h3 id="진행-시-메모">진행 시 메모</h3>
+
+<h4 id="jenkins-서버-쪽-작업">Jenkins 서버 쪽 작업</h4>
+<ul>
+  <li>jenkins 서버 내에서가 아닌 host 서버에서 build 해야 함
+    <ul>
+      <li>Jenkins 의 Dockerfile에 이를 위한 패키지를 추가했다.</li>
+      <li>컨트롤을 할 클라이언트, Docker 를 호스트에서 수행하도록 만들어야 했다. : DooD 가 필요했고, 이를 위한 내용을 Jenkins 의 Dockerfile 에 기록했다.
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="na">services</span><span class="pi">:</span>
+<span class="na">jenkins</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="na">context</span><span class="pi">:</span> <span class="s">jenkins</span>
+  <span class="na">container_name</span><span class="pi">:</span> <span class="s">jenkins-server</span>
+  <span class="na">ports</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">12345:8080"</span>
+  <span class="na">volumes</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">./jenkins_home:/var/jenkins_home</span>
+    <span class="c1"># Docker CLI 사용을 위해 호스트로 마운트</span>
+    <span class="pi">-</span> <span class="s">/var/run/docker.sock:/var/run/docker.sock</span>
+    <span class="pi">-</span> <span class="s">/usr/bin/docker:/usr/bin/docker</span>
+    <span class="pi">-</span> <span class="s">/usr/bin/docker-compose:/usr/bin/docker-compose</span>
+  <span class="c1"># user: root</span>
+  <span class="na">environment</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">CASC_JENKINS_CONFIG=/var/jenkins_home/casc.yaml</span>
+  <span class="na">entrypoint</span><span class="pi">:</span> <span class="pi">&gt;</span>
+    <span class="s">bash -c "</span>
+      <span class="s">cp /usr/share/jenkins/ref/casc.yaml /var/jenkins_home/casc.yaml &amp;&amp;</span>
+      <span class="s">/usr/bin/tini -- /usr/local/bin/jenkins.sh</span>
+    <span class="s">"</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>이때 가장 편한 방법은 <code class="language-plaintext highlighter-rouge">DooD</code> 시 Jenkins 컨테이너 내부 User를 <code class="language-plaintext highlighter-rouge">Root</code> 로 설정해야 바로 젠킨스 서버 컨테이너가, Host 서버의 Docker 를 수정할 수 있음
+    <ul>
+      <li>이는 보안의 위협이 됨. 이에 UID 와 GID 를 수정해줌으로써 권한 문제 없이 호스트를 제어 하도록 만들어 주었다.
+        <div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c"># 전략</span>
+  <span class="c"># DooD 구조를 위함. Docker 그룹에 jenkins 유저 추가</span>
+  ARG DOCKER_GID=1001
+  RUN groupadd -g ${DOCKER_GID} docker
+  RUN usermod -aG docker jenkins
+  <span class="c"># 후략</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="nextjs-서버">NextJS 서버</h4>
+<ul>
+  <li>NextJS 이미지를 app-blue, app-green 으로 스위칭 되며 동작하게 만드는게 핵심이었고, docker-compose.yml 이를 위한 변수를 읽기 위해 <code class="language-plaintext highlighter-rouge">init.env</code> 파일을 설정하였다.</li>
+  <li>Jenkinsfile 의 경우 <code class="language-plaintext highlighter-rouge">environment</code>, <code class="language-plaintext highlighter-rouge">stages</code>, <code class="language-plaintext highlighter-rouge">post</code> 로 간단한 구조다. 이때 핵심은 환경은 변수와 전역으로 필요한 것들만 지정해주었다.
+    <ul>
+      <li>stages 에는 각 스테이지들이 설정되고 스테이지들에서 유의사항은 다음과 같다.
+        <ul>
+          <li>Jenkins 는 workspace 라는 공간에서 설정에 따라 github을 설정하면 자동으로 바라보는 브랜치의 최신 상태를 다운로드 받는다.</li>
+          <li>그리고 그 상단을 기준으로 하면, 이미 파일은 올라가있기 때문에 <code class="language-plaintext highlighter-rouge">Build Image</code> 스테이지에서는 빌드를 빠르게 가능하다.</li>
+          <li>Stages는 아래와 같은 단계를 소유한다
+            <ul>
+              <li>Checkout</li>
+              <li>Build Image</li>
+              <li>Push to GHCR</li>
+              <li>Deploy to GHCR</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>post 는 사후 단계로 향후에는 여러 로깅이나, 이런 것들이 가능하나, 현재는 웹 훅을 통한 알림을 추가했다. 
+<img src="/assets/images/posts/2025-10/2025-10-23-052.png" alt="" />
+        <blockquote>
+          <p>알림은 아주 잘 온다. 향후엔 디테일하게 붙이는 방법이나, 모듈화를 고민해보자..</p>
+        </blockquote>
+      </li>
+      <li>참고로 logging은 깔끔하게 보기 위하여 <code class="language-plaintext highlighter-rouge">블루오션</code> 플러그인을 활용했다
+<img src="/assets/images/posts/2025-10/2025-10-23-053.png" alt="" />
+        <blockquote>
+          <p>처음엔 어떻게 쓰는지 몰라서 한참 기본 로그만 봤다…</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="주요-트러블슈팅-및-해결-과정-파이프라인-실행-중">주요 트러블슈팅 및 해결 과정 (파이프라인 실행 중)</h3>
+
+<ol>
+  <li><strong>Jenkinsfile 문법 오류 (<code class="language-plaintext highlighter-rouge">MultipleCompilationErrorsException</code>):</strong>
+    <ul>
+      <li><strong>원인:</strong> <code class="language-plaintext highlighter-rouge">stages</code> 블록 누락, <code class="language-plaintext highlighter-rouge">post</code> 블록 내 <code class="language-plaintext highlighter-rouge">script</code> 누락.</li>
+      <li><strong>해결:</strong> 파이프라인 구조 수정.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">sshagent</code> DSL 찾기 실패 (<code class="language-plaintext highlighter-rouge">NoSuchMethodError</code>):</strong>
+    <ul>
+      <li><strong>원인:</strong> “SSH Agent” 플러그인 미설치.</li>
+      <li><strong>해결:</strong> 젠킨스 플러그인 관리자에서 설치.</li>
+    </ul>
+  </li>
+  <li><strong>GHCR 푸시 실패 (<code class="language-plaintext highlighter-rouge">denied</code>, <code class="language-plaintext highlighter-rouge">insufficient_scope</code>):</strong>
+    <ul>
+      <li><strong>원인:</strong> 젠킨스 Credential의 PAT 정보 오류 또는 스코프 부족(<code class="language-plaintext highlighter-rouge">repo</code> 누락), <code class="language-plaintext highlighter-rouge">docker build</code> 시 이미지 태그 주소 누락 등 복합적 요인.</li>
+      <li><strong>해결:</strong> Credential 재확인 했으나 문제 없었음. 핵심은 보안에 취약하다며 AI 가 추천한 방식으로 수정했을 때 문제 발생. <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>의 <code class="language-plaintext highlighter-rouge">docker login</code> 방식 수정 (<code class="language-plaintext highlighter-rouge">echo | docker login --password-stdin</code>) 원래 형태로 수정하여 파이프를 통해 credential 전달로 해결 완료.</li>
+    </ul>
+  </li>
+  <li><strong>타겟 서버 <code class="language-plaintext highlighter-rouge">docker pull</code> 실패 (<code class="language-plaintext highlighter-rouge">unauthorized</code>):</strong>
+    <ul>
+      <li><strong>원인:</strong> SSH로 접속한 타겟 서버(<code class="language-plaintext highlighter-rouge">hansol</code> 유저)가 GHCR에 로그인되어 있지 않음.</li>
+      <li><strong>해결:</strong> <code class="language-plaintext highlighter-rouge">Deploy to Server</code> 스테이지 SSH 스크립트 내부에 <code class="language-plaintext highlighter-rouge">docker login ghcr.io ...</code> 명령어 추가. 너무 기본적인 거였는데… 호스트에선 보안, 그리고 클리어한 상태 유지를 위해 로직 내부에 login / logout 을 넣어줬어야 했다.</li>
+    </ul>
+  </li>
+  <li><strong>Blue/Green 컨테이너 미교체 (<code class="language-plaintext highlighter-rouge">up-to-date</code>):</strong>
+    <ul>
+      <li><strong>원인:</strong> <code class="language-plaintext highlighter-rouge">docker compose up</code> 실행 시 <code class="language-plaintext highlighter-rouge">--env-file</code>로 전달된 새 이미지 태그를 인식하지 못하는 건지, 아니면 레이어가 바뀌지 않는 건지 동작하지 않았다.</li>
+      <li><strong>해결:</strong> <code class="language-plaintext highlighter-rouge">docker compose up</code> 명령어에 <code class="language-plaintext highlighter-rouge">--force-recreate</code> 플래그 추가하여 무조건 교체가 되도록 하였음. 그리고 정확한 타게팅을 위해, 환경 변수가 필요했고 이에 <code class="language-plaintext highlighter-rouge">docker compose exec</code> 명령어에 <code class="language-plaintext highlighter-rouge">--env-file init.env</code> 옵션 추가로 환경변수를 명시해줌으로써 완전히 해결되었다.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="배운-점-key-learnings">배운 점 (Key Learnings)</h3>
+
+<ul>
+  <li>젠킨스 파이프라인 문법 및 구조 (<code class="language-plaintext highlighter-rouge">stages</code>, <code class="language-plaintext highlighter-rouge">environment</code>, <code class="language-plaintext highlighter-rouge">Credentials</code>, <code class="language-plaintext highlighter-rouge">post</code>)를 제대로 공부했다. 아직 외운게 아니고 AI 를 통해 맡겨서 하면서, 뭔지 파악한 거라 향후엔 제대로 문서를 보든 해야 할 것 같다.</li>
+  <li>SSH 기반 원격 서버 자동화 시 <code class="language-plaintext highlighter-rouge">sshagent</code>와 <code class="language-plaintext highlighter-rouge">StrictHostKeyChecking=no</code> 옵션, 명령어 실패 처리(<code class="language-plaintext highlighter-rouge">set -ex</code>)의 중요성.. 이라고 하지만 실상 필요한거면 당연히 안 들어있다고 생각했어야 한다. 🤣</li>
+  <li><code class="language-plaintext highlighter-rouge">docker compose</code> 명령어 실행 시 환경 변수 처리 방식 (<code class="language-plaintext highlighter-rouge">--env-file</code>, 기본 <code class="language-plaintext highlighter-rouge">.env</code>) 및 <code class="language-plaintext highlighter-rouge">--force-recreate</code> 플래그의 유용성.. 이라고 AI 가 정리해줬지만, 실질 이제는 –force-recreate 가 필요 없을지도..?</li>
+  <li>Blue/Green 배포 시 <code class="language-plaintext highlighter-rouge">sed</code>를 이용한 Nginx <code class="language-plaintext highlighter-rouge">upstream</code> 동적 변경 및 <code class="language-plaintext highlighter-rouge">nginx -s reload</code>를 통한 무중단 트래픽 전환 방법은 되고 나니 너무 훌륭하고 짜릿하다…😍</li>
+  <li>GHCR 인증 및 이미지 태그 지정 방식의 정확성 필요.</li>
+  <li>CI/CD 파이프라인 구축 시 단계별 로그 확인(<code class="language-plaintext highlighter-rouge">docker logs</code>, <code class="language-plaintext highlighter-rouge">ssh -v</code>, Jenkins Console Output)을 통한 체계적인 트러블슈팅 방법. 아직 완벽하지도 않고, 보니 단계별로 명확한 로그가 남지 않는 다는 건 아쉽다. SSH 기반과 로그를 더 많이 기록하게 하는 방법이나 블루오션 플러그인 활용법 정리가 필요해 보인다.</li>
+  <li>GitHub Webhook 연동을 위해서는 Jenkins 서버의 HTTPS 노출이 필요하며, 이는 <strong>향후 과제</strong>로 남겨두었다. 우선 프론트엔드 작업들 하면서 감 익히고 난 후엔 수행해볼 예정</li>
+</ul>
+
+<p><img src="/assets/images/posts/2025-10/2025-10-23-054.png" alt="" /></p>
+<blockquote>
+  <p>캬 … 먼저 배포부터 만들어버렸다… AI 덕이긴 한데 많이 늘었구나 나도…</p>
+</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><summary type="html"><![CDATA[25-10-23 Jenkins 무중단 배포 적용]]></summary></entry><entry><title type="html">TIL - Jenkins 서버 배포 및 무중단 배포 준비 프로세스</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/21/til-jenkins.html" rel="alternate" type="text/html" title="TIL - Jenkins 서버 배포 및 무중단 배포 준비 프로세스" /><published>2025-10-21T00:00:00+00:00</published><updated>2025-10-21T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/21/til-jenkins</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/21/til-jenkins.html"><![CDATA[<h2 id="2025년-10월-21일-젠킨스jenkins-서버-구축-및-무중단-배포-아키텍처-설계">2025년 10월 21일: 젠킨스(Jenkins) 서버 구축 및 무중단 배포 아키텍처 설계</h2>
 
 <h3 id="1-오늘의-목표">1. 오늘의 목표</h3>
 
@@ -151,7 +394,7 @@ blueocean
 <p><img src="/assets/images/posts/2025-10/2025-10-21-051.png" alt="" /></p>
 <blockquote>
   <p>WSL 만 아니었으면 무중단까지 간건데… 아쉽다…</p>
-</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><summary type="html"><![CDATA[알겠습니다, 한솔. “다음 단계(Next Steps)” 섹션을 삭제하고, 오늘 완료한 작업의 세부 명령어와 코드 블럭을 보강하여 최종 TIL 문서를 다시 정리했습니다.]]></summary></entry><entry><title type="html">TIL - HTTPS 적용 및 갱신 구조 적용하기(Nginx, NextJS)</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops.html" rel="alternate" type="text/html" title="TIL - HTTPS 적용 및 갱신 구조 적용하기(Nginx, NextJS)" /><published>2025-10-20T00:00:00+00:00</published><updated>2025-10-20T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops.html"><![CDATA[<h2 id="2025년-10월-20일-docker-compose와-nginx-환경에-lets-encrypt-certbot로-https-적용-및-자동-갱신-설정">2025년 10월 20일: Docker Compose와 Nginx 환경에 Let’s Encrypt (Certbot)로 HTTPS 적용 및 자동 갱신 설정</h2>
+</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><summary type="html"><![CDATA[2025년 10월 21일: 젠킨스(Jenkins) 서버 구축 및 무중단 배포 아키텍처 설계]]></summary></entry><entry><title type="html">TIL - HTTPS 적용 및 갱신 구조 적용하기(Nginx, NextJS)</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops.html" rel="alternate" type="text/html" title="TIL - HTTPS 적용 및 갱신 구조 적용하기(Nginx, NextJS)" /><published>2025-10-20T00:00:00+00:00</published><updated>2025-10-20T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops.html"><![CDATA[<h2 id="2025년-10월-20일-docker-compose와-nginx-환경에-lets-encrypt-certbot로-https-적용-및-자동-갱신-설정">2025년 10월 20일: Docker Compose와 Nginx 환경에 Let’s Encrypt (Certbot)로 HTTPS 적용 및 자동 갱신 설정</h2>
 
 <h3 id="요약">요약</h3>
 
@@ -1591,99 +1834,4 @@ Paul2021-R 스타일로 글을 작성해주세요:
       <p>커뮤니티 피드백 및 공식 문서 기반: Opal 앱은 Google 생태계 내에 제한되며, 코드 내보내기, API 생성, 데이터베이스 통합 등이 불가능함 <a href="#fnref:6" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
-</div>]]></content><author><name>Paul2021-R</name></author><category term="tools" /><category term="AI" /><category term="Google" /><category term="Opal" /><category term="Automation" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">코테 학습 - ‘지폐접기’</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python.html" rel="alternate" type="text/html" title="코테 학습 - ‘지폐접기’" /><published>2025-10-01T00:00:00+00:00</published><updated>2025-10-01T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/01/study-python.html"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>본 글은 원본 문제를 기반으로 풀이한 내용을 담고 있습니다.</p>
-
-<h3 id="원본-문제">원본 문제</h3>
-<p><a href="https://school.programmers.co.kr/learn/courses/30/lessons/340199?language=python3">원본 문제</a></p>
-
-<h3 id="문제-정리">문제 정리</h3>
-
-<ul>
-  <li><strong>목표</strong>: 규격인 wallet 에 맞는 가로, 세로 크기로 몇번 접어야 하는지 최소 값을 리턴할 것</li>
-  <li><strong>핵심 기능</strong>:
-    <ol>
-      <li>지폐를 접을 때는 항상 길이가 긴 쪽을 반으로 접는다.</li>
-      <li>접기 전 길이 홀수 -&gt; 접은 후 소수점 이하 버리기</li>
-      <li>접힌 지폐를 그대로 또는 90도 돌리고 넣을 수 있다면 그만 접음</li>
-    </ol>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="코드-개선-과정-분석">코드 개선 과정 분석</h3>
-
-<h4 id="1단계-최초-풀이-놓친-지점은-조건-1">[1단계] 최초 풀이: 놓친 지점은 조건 1</h4>
-<ul>
-  <li>거의 조건을 완벽하게 해결했었음. 그러나 마지막 cond ~ 부분에서 조건을 잘못 생각했다. 핵심 조건은 길이가 긴쪽을 줄이는 것이지, 무조건 가로 또는 세로를 줄이는게 아니고 이점을 놓치면 잘못 계산되는 엣지 케이스가 발생하는 것이었다.</li>
-  <li>따라서 cond 배열의 어느쪽이든 문제가 있다 -&gt; 가로와 세로 중 긴 쪽을 우선 접어야 한다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">wallet</span><span class="p">,</span> <span class="n">bill</span><span class="p">):</span>
-<span class="err"> </span> <span class="err"> </span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="err"> </span> <span class="err"> </span> <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">width</span> <span class="o">=</span> <span class="n">bill</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">height</span> <span class="o">=</span> <span class="n">bill</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">cond</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">if</span> <span class="n">width</span> <span class="o">&lt;=</span> <span class="n">wallet</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">if</span> <span class="n">height</span> <span class="o">&lt;=</span> <span class="n">wallet</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">break</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">else</span><span class="p">:</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">cond</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">else</span><span class="p">:</span><span class="err"> </span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">cond</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">if</span> <span class="n">height</span> <span class="o">&lt;=</span> <span class="n">wallet</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">if</span> <span class="n">width</span> <span class="o">&lt;=</span> <span class="n">wallet</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">break</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">else</span><span class="p">:</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">cond</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">else</span><span class="p">:</span><span class="err"> </span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">cond</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">if</span> <span class="n">cond</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># 여기 틀림!
-</span><span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">bill</span> <span class="o">=</span> <span class="p">[</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">height</span><span class="p">]</span> <span class="c1"># 그냥 긴 쪽을 접는 게 중요했다. 
-</span><span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">elif</span> <span class="n">cond</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">cond</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">bill</span> <span class="o">=</span> <span class="p">[</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span> <span class="c1"># 그냥 긴 쪽을 접는 게 중요했다. 
-</span>
-<span class="err"> </span> <span class="err"> </span> <span class="k">return</span> <span class="n">answer</span>
-</code></pre></div></div>
-<h4 id="2단계-최종-풀이-조건의-확립-및-불필요한-코드-제거">[2단계] 최종 풀이: 조건의 확립 및 불필요한 코드 제거</h4>
-<ol>
-  <li>핵심 조건을 개선하여 엣지 케이스까지 대응이 가능해짐.</li>
-  <li>그 외에 불필요한 변수들을 제거하기 시작했는데 다음과 같음
-    <ol>
-      <li>가로, 세로 변수 제거</li>
-      <li>조건은 명확하므로, <code class="language-plaintext highlighter-rouge">and</code>로 묶어 한줄로 처리 가능</li>
-      <li>cond 도 실제 무조건 <code class="language-plaintext highlighter-rouge">wallet</code>에 들어가는 조건이 아니면 무조건 긴 쪽을 접어야 하므로 필요 없음</li>
-      <li>접어야 할 조건에 도착 시 배열값을 직접 수정해도 됨</li>
-    </ol>
-  </li>
-</ol>
-
-<hr />
-
-<h3 id="최종-버전-코드-및-설명">최종 버전 코드 및 설명</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">wallet</span><span class="p">,</span> <span class="n">bill</span><span class="p">):</span>
-    <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
-    
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">bill</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">wallet</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">bill</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">wallet</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="k">break</span>
-        <span class="k">elif</span> <span class="n">bill</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">wallet</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">bill</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">wallet</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="k">break</span>
-
-        <span class="k">if</span> <span class="n">bill</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">bill</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="n">bill</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//=</span> <span class="mi">2</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">bill</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//=</span> <span class="mi">2</span>
-        <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">answer</span>
-</code></pre></div></div>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><category term="코딩테스트" /><summary type="html"><![CDATA[Introduction]]></summary></entry></feed>
+</div>]]></content><author><name>Paul2021-R</name></author><category term="tools" /><category term="AI" /><category term="Google" /><category term="Opal" /><category term="Automation" /><summary type="html"><![CDATA[]]></summary></entry></feed>
