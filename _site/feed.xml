@@ -1,4 +1,1163 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-23T17:16:49+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">TIL - NextJS 무중단 배포 적용</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/23/til-jenkins.html" rel="alternate" type="text/html" title="TIL - NextJS 무중단 배포 적용" /><published>2025-10-23T00:00:00+00:00</published><updated>2025-10-23T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/23/til-jenkins</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/23/til-jenkins.html"><![CDATA[<h2 id="25-10-23-jenkins-무중단-배포-적용">25-10-23 Jenkins 무중단 배포 적용</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-10-28T07:31:21+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">TIL - Jenkins 프로젝트 전체 내용 정리 (1)</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/27/1-til-jenkins.html" rel="alternate" type="text/html" title="TIL - Jenkins 프로젝트 전체 내용 정리 (1)" /><published>2025-10-27T00:00:00+00:00</published><updated>2025-10-27T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/27/1-til-jenkins</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/27/1-til-jenkins.html"><![CDATA[<h2 id="25-10-24--25-10-27">25-10-24 ~ 25-10-27</h2>
+
+<ul>
+  <li>본 내용은 프로젝트에 적용한 CICD 배포 과정에서 있었던 내용 중 개념적으로 추가가 필요한 내용들을 정리한 글이다.</li>
+  <li>사실 KTX 를 탔는데 할 일이 없다… 공부나 하자라는 감성을 했던 내용을 복습한다.</li>
+</ul>
+
+<h2 id="01-jenkins">01 Jenkins</h2>
+
+<h3 id="개념">개념</h3>
+<ul>
+  <li>Jenkins는 소프트웨어 개발에서 지속적인 통합(Continuous Integration, CI)과 지속적인 배포(Continuous Deployment, CD)를 자동화하는 데 사용되는 오픈 소스 자동화 서버다.</li>
+  <li>개발자가 코드를 변경하고 저장소에 커밋(commit)하면, Jenkins는 자동으로 코드를 빌드(build)하고, 테스트(test)하며, 배포하는 일련의 과정을 수행한다.</li>
+  <li>개발 프로세스의 효율성을 높이고, 오류를 조기에 발견하며, 궁극적으로 안정적인 소프트웨어 릴리스(release)를 가능하게 하는 도구이다.
+    <h3 id="왜--jenkins-와-같은-전문-툴이-필요한가--지속적인-통합continuous-integrateion-ci">왜  Jenkins 와 같은 전문 툴이 필요한가? : 지속적인 통합(Continuous Integrateion, CI)</h3>
+  </li>
+  <li><strong>오류 조기 발견</strong>: 코드가 자주 통합되고 테스트되므로, 통합 과정에서 발생하는 오류나 버그를 개발 초기에 발견하고 수정할 수 있다. 이는 문제 해결 비용을 크게 절감한다.</li>
+  <li><strong>코드 품질 향상</strong>: 자동화된 테스트를 통해 코드의 일관성과 안정성을 유지하며, 개발자들은 더 높은 품질의 코드를 작성하는 데 집중할 수 있게 만든다.</li>
+  <li><strong>개발 생산성 증대</strong>: 수동으로 빌드하고 테스트하는 시간을 줄여 개발자들이 새로운 기능 개발에 더 많은 시간을 할애할 수 있도록 한다.</li>
+  <li><strong>팀 협업 강화</strong>: 개발자들이 서로의 코드 변경 사항을 빠르게 공유하고 통합함으로써 팀 전체의 협업 효율성을 높인다.</li>
+</ul>
+
+<h3 id="왜-jenkins-와-같은-전문-툴이-필요한가--지속적인-배포continuous-deployment-cd">왜 Jenkins 와 같은 전문 툴이 필요한가? : 지속적인 배포(Continuous Deployment, CD)</h3>
+<ul>
+  <li><strong>빠른 릴리스 주기</strong>: 새로운 기능이나 버그 수정 사항을 신속하게 사용자에게 제공하여 시장 변화에 빠르게 대응할 수 있다.</li>
+  <li><strong>배포 프로세스 자동화</strong>: 수동 배포 과정에서 발생할 수 있는 인적 오류를 제거하고, 배포의 일관성과 신뢰성을 확보한다.</li>
+  <li><strong>위험 감소</strong>: 작고 빈번한 배포를 통해 한 번의 배포로 인한 위험 부담을 줄이고, 문제가 발생하더라도 빠르게 롤백(rollback)하거나 수정할 수 있다.</li>
+  <li><strong>피드백 루프 단축</strong>: 사용자 피드백을 빠르게 수집하고 다음 개발 주기에 반영함으로써 제품 개선 속도를 높인다.</li>
+</ul>
+
+<h3 id="jenkins-의-역할은">Jenkins 의 역할은</h3>
+<ul>
+  <li><strong>코드 변경 감지</strong>: Git, SVN 등 다양한 버전 관리 시스템(VCS)과 연동하여 코드 저장소의 변경 사항을 지속적으로 감지한다.</li>
+  <li><strong>자동 빌드</strong>: 변경된 코드를 자동으로 가져와 컴파일(compile)하고, 필요한 의존성(dependency)을 설치하며, 실행 가능한 아티팩트(artifact)를 생성한다.</li>
+  <li><strong>자동 테스트</strong>: 단위 테스트(unit test), 통합 테스트(integration test), 성능 테스트(performance test) 등 다양한 유형의 테스트를 자동으로 실행하여 코드의 품질과 안정성을 검증한다.</li>
+  <li><strong>자동 배포</strong>: 테스트를 통과한 아티팩트를 개발, 스테이징(staging), 프로덕션 환경 등 지정된 서버에 자동으로 배포한다.</li>
+  <li><strong>파이프라인 오케스트레이션(Orchestration)</strong>: 빌드, 테스트, 배포 등 CI/CD의 모든 단계를 하나의 파이프라인으로 정의하고, 각 단계의 실행 순서와 조건을 관리한다.</li>
+  <li><strong>알림 및 보고</strong>: 빌드 및 배포 결과에 대한 성공/실패 알림을 이메일, Slack, Discord 등 다양한 채널로 전송하고, 상세한 보고서를 제공한다.</li>
+</ul>
+
+<h3 id="jenkins-의-장점">Jenkins 의 장점</h3>
+<ul>
+  <li><strong>오픈 소스 및 확장성</strong>: 무료로 사용할 수 있는 오픈 소스이며, 수많은 플러그인을 통해 거의 모든 종류의 빌드, 테스트, 배포 도구와 연동하여 기능을 확장할 수 있다.</li>
+  <li><strong>다양한 환경 지원</strong>: Java, Python, Node.js, .NET 등 다양한 프로그래밍 언어와 프레임워크(framework)를 지원하며, Docker, Kubernetes와 같은 컨테이너(container) 기술과도 쉽게 통합된다.</li>
+  <li>
+    <p><strong>강력한 파이프라인 기능</strong>: <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>을 통해 CI/CD 파이프라인을 코드로 정의하고 버전 관리할 수 있어, 파이프라인의 재현성(reproducibility)과 유지보수성(maintainability)을 높다. (예시: <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>)
+```Groovy
+pipeline {
+agent any</p>
+
+    <p>environment {
+    GHCR_CREDS_ID = ‘ghcr-creds’
+    GITHUB_CREDS_ID = ‘github-creds’
+    TARGET_SSH_CREDS_ID = ‘a5-localhost-jenkins’</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET_DEPLOY_SERVER = 'GEEKOM-A5-Server'
+
+DISCORD_CREDS_ID = 'discord-webhook-url'
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>// … 중략</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stages {
+// code pull
+    stage('Checkout') {
+        steps {
+            echo "1. Get the latest code from GitHub"
+            git credentialsId: GITHUB_CREDS_ID, url: 'https://github.com/paul2021-r/project-mini-frontend.git', branch: 'main'
+        }
+    }
+</code></pre></div></div>
+
+<p>// … 중략</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>post {
+    success {
+        echo "Deployment succeeded. Now send a discord notification."
+        script {
+            withCredentials([string(credentialsId: DISCORD_CREDS_ID, variable: 'DISCORD_URL')]) {
+                def message = "{\"content\": \"🚀 Build Process is successfully finished : **[${env.JOB_NAME}]** - **#${env.BUILD_NUMBER}**\"}"
+</code></pre></div></div>
+
+<p>// … 후략</p>
+
+<p>}</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+*   **활발한 커뮤니티 지원**: 전 세계적으로 많은 사용자와 개발자들이 활발하게 활동하며, 다양한 문제 해결과 기능 개선에 기여하고 있다. 이는 풍부한 자료와 지원을 받을 수 있다는 장점으로 이어진다.
+*   **시각화 및 모니터링**: Blue Ocean과 같은 플러그인을 통해 파이프라인의 실행 과정을 시각적으로 확인하고, 빌드 상태를 실시간으로 모니터링할 수 있다.
+
+### Jenkins 의 아키텍쳐 
+- 단일 빌드도 가능하나, 여러 프로젝트를 동시에 처리하는 경우 분산 빌드(Distrivuted Builds) 아키텍처를 활용한다. 이러한 아키텍쳐는 컨트롤러와 노드로 구분되며 각기 역할을 분담하면 Jenkins 의 확장성, 효율성에 도움이 된다. 단, 어디까지나 시스템과 리소스의 상황에 따라 최적화 시키는것이 중요하다. 
+#### Jenkins Master(컨트롤러)
+   - **작업 스케줄링 및 관리**: 빌드 작업을 언제, 어떤 Agent에서 실행할지 결정하고, 전체 파이프라인의 흐름을 관리한다. 
+*   **Agent 연결 관리**: 등록된 Agent들과의 연결을 유지하고, Agent의 상태를 모니터링한다.
+*   **설정 및 플러그인 관리**: Jenkins의 전반적인 설정, 사용자 관리, 보안 설정, 그리고 설치된 플러그인들을 관리합니다. `project-mini-jenkins` 프로젝트의 `jenkins/casc.yaml` 파일은 Master의 설정을 코드로 관리하는 예시입니다.
+*   **빌드 결과 저장**: 빌드 로그, 테스트 결과, 아티팩트 등 빌드 관련 데이터를 저장하고 관리한다.
+*   **UI 제공**: 웹 인터페이스를 통해 사용자에게 Jenkins의 모든 기능과 빌드 현황을 제공합한다.
+
+#### Jenkins Agent(노드/ 실행기)
+*   **작업 실행**: Master로부터 전달받은 빌드 스크립트(예: `Jenkinsfile`에 정의된 `sh` 명령어)를 실행하여 코드 빌드, 테스트, 배포 등의 작업을 수행한다. 
+*   **다양한 환경 지원**: Agent는 물리 서버, 가상 머신(VM), Docker 컨테이너 등 다양한 형태로 구성될 수 있다. 각 Agent는 특정 운영체제, 소프트웨어 버전, 라이브러리 등 특정 빌드 환경을 제공 일정하게 제공할 수 있다.
+*   **확장성**: 필요한 경우 Agent를 추가하여 Jenkins 시스템의 처리 용량을 쉽게 확장할 수 있다. 이는 동시에 더 많은 빌드 작업을 처리하거나, 특정 환경이 필요한 작업을 분리하여 실행하는 데 유용하다.
+*   **격리된 환경**: 각 Agent는 독립적인 환경에서 작업을 수행하므로, 한 Agent에서 실행되는 작업이 다른 Agent의 작업에 영향을 미치지 않는다. 이는 빌드 환경의 일관성과 안정성을 보장해줘, 서로의 충돌이나 호스트 OS에 영향을 주지 않을 수 있다.
+
+#### 분산 빌드(Distributed Builds, Master-Slave)
+- Jenkins 마스터와 하나 이상의 Agent를 준비하고, 빌드를 하여 여러 머신에 분산하여 처리하는 방법을 의미한다. 이 방식의 이점은 아래와 같다. 
+
+*   **부하 분산 (Load Balancing)**: Master의 부하를 줄이고, 빌드 작업을 여러 Agent에 분산하여 동시에 더 많은 작업을 처리할 수 있다. 이는 빌드 큐(queue)를 줄이고 전체 CI/CD 파이프라인의 처리량을 증가시킨다.
+*   **환경 격리 (Environment Isolation)**: 각 Agent가 독립적인 빌드 환경을 제공하므로, 서로 다른 프로젝트나 다른 버전의 소프트웨어가 필요한 빌드 작업을 충돌 없이 실행할 수 있다. 예를 들어, 한 Agent는 Java 8 환경에서 빌드하고, 다른 Agent는 Node.js 18 환경에서 빌드할 수 있다.
+*   **확장성 (Scalability)**: 빌드 요구사항이 증가함에 따라 Agent를 쉽게 추가하거나 제거할 수 있어, Jenkins 시스템의 확장성을 유연하게 관리할 수 있다.
+*   **안정성 (Reliability)**: 특정 Agent에 문제가 발생하더라도 다른 Agent에서 작업을 계속 수행할 수 있으므로, 전체 CI/CD 시스템의 안정성이 향상된다.
+
+- `project-mini-frontend` 프로젝트는 jenkins 시스템을 활용하고, `Jenkinsfile`을 이용하여 Host 서버에서 Docker 컨테이너로 구성되어 있다. 또한 Jenkins 컨테이너는 DooD(Docker-out-of-Docker) 패턴을 통해 Jenkins Master 컨테이너 자체가 Agent 역할을 겸한다. 
+- 그러나 여기에 다른 서버를 추가한다면, Master 와 Agent 를 분리할 수 있고, 특히 용도와 리소스에 맞게 분리한다면 서버의 역할에 따라 빌드하는 노드를 별도로 가져갈 수도 있고, 안정성을  더 강화할 수도 있다.
+
+### Docker 를 이용한 Jenkins 설치 
+- Jenkins를 Docker 컨테이너로 설치하는 것은 환경 설정의 일관성을 보장하고, 배포 및 관리를 용이하게 하는 현대적인 방법이다.
+- 또한 컨테이너화 함을 통해, Jenkins 환경을 모듈화시킬 수 있어 다양한 리소스에 이식할 수 있고, 또 동일한 CICD 환경 구축을 가능케한다.
+- 다양한 패턴이 있겠지만, 많지 않은 리소스 상황, 그리고 Host 의 자원을 완전하게 이용하기 위하여 Jenkins Master 컨테이너가 안에서 Host 의 도커를 조작할 수 있도록 하는 DooD 패턴을 이번 프로젝트에 활용했다. 이를 통해 환경 구축과 내용의 격리는 컨테이너 내에 이루었지만, 실제 빌드는 Host 에서 구성되는 형태를 취한다.
+
+#### DooD 를 위한 docker-compose.yml
+
+```yaml
+# project-mini-jenkins/docker-compose.yml
+services:
+  jenkins:
+    build:
+      context: jenkins
+    container_name: jenkins-server
+    ports:
+      - "12345:8080"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+      # Docker CLI 사용을 위해 호스트로 마운트
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+      - /usr/bin/docker-compose:/usr/bin/docker-compose
+    environment:
+      - CASC_JENKINS_CONFIG=/var/jenkins_home/casc.yaml
+    entrypoint: &gt;
+      bash -c "
+        cp /usr/share/jenkins/ref/casc.yaml /var/jenkins_home/casc.yaml &amp;&amp;
+        /usr/bin/tini -- /usr/local/bin/jenkins.sh
+      "
+</code></pre></div></div>
+
+<p>주요 내용은 다음과 같다.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">build</code></strong>: <code class="language-plaintext highlighter-rouge">context: jenkins</code>는 <code class="language-plaintext highlighter-rouge">jenkins</code> 디렉토리 내의 <code class="language-plaintext highlighter-rouge">Dockerfile</code>을 사용하여 이미지를 빌드하도록 지시한다.</p>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">container_name</code></strong>: 컨테이너 이름을 <code class="language-plaintext highlighter-rouge">jenkins-server</code>로 지정하여 쉽게 식별할 수 있도록 했다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">ports</code></strong>: 호스트의 <code class="language-plaintext highlighter-rouge">12345</code> 포트를 컨테이너의 <code class="language-plaintext highlighter-rouge">8080</code> 포트(Jenkins 기본 포트)에 매핑하여 외부에서 Jenkins에 접근할 수 있도록 하고, 자주 사용되는 포트 점유를 피한다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">volumes</code></strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./jenkins_home:/var/jenkins_home</code>: Jenkins의 데이터(설정, 빌드 기록, 플러그인 등)를 호스트의 <code class="language-plaintext highlighter-rouge">jenkins_home</code> 디렉토리에 영구적으로 저장하도록 마운트한다. 이는 컨테이너가 삭제되더라도 데이터가 보존되도록 하며, 명시적으로 해당 폴더에 남기에, 해당 데이터를 이동하면 다른 서버로 이식이 용이하다.</li>
+      <li><code class="language-plaintext highlighter-rouge">/var/run/docker.sock:/var/run/docker.sock</code>: 호스트의 Docker 소켓을 컨테이너 내부에 마운트한다. 이 설정은 Jenkins 컨테이너가 호스트의 Docker 데몬과 통신하여 Docker 명령어를 실행할 수 있도록 하는 DooD 패턴의 핵심으로, 공유되지 않으면 내부에서 외부로의 조종이 불가능하다.</li>
+      <li><code class="language-plaintext highlighter-rouge">/usr/bin/docker:/usr/bin/docker</code>, <code class="language-plaintext highlighter-rouge">/usr/bin/docker-compose:/usr/bin/docker-compose</code>: 호스트의 Docker 및 Docker Compose 바이너리를 컨테이너 내부에 마운트하여 Jenkins가 이들을 직접 사용할 수 있도록 했다.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">environment</code></strong>: <code class="language-plaintext highlighter-rouge">CASC_JENKINS_CONFIG</code> 환경 변수를 설정하여 JCasC 설정 파일의 경로를 지정한다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">entrypoint</code></strong>: Jenkins 컨테이너가 시작될 때 <code class="language-plaintext highlighter-rouge">casc.yaml</code> 파일을 <code class="language-plaintext highlighter-rouge">jenkins_home</code>으로 복사하고 Jenkins를 실행하는 스크립트를 정의하였다. 해당 entrypoint 설정은 Dockerfile의 기본 설정이 있더라도, 이를 무시하고 덮어씌워진다.</li>
+</ul>
+
+<h3 id="jenkins-초기-설정">Jenkins 초기 설정</h3>
+
+<h4 id="초기-관리자-비밀번호-확인">초기 관리자 비밀번호 확인</h4>
+
+<ol>
+  <li><strong>Jenkins 컨테이너 실행</strong>: <code class="language-plaintext highlighter-rouge">docker-compose up -d</code> 명령으로 Jenkins 컨테이너를 실행한다.</li>
+  <li><strong>로그 확인</strong>: 다음 명령어를 사용하여 Jenkins 컨테이너의 로그를 확인한다.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker logs jenkins-server
+</code></pre></div>    </div>
+    <p>로그 출력에서 <code class="language-plaintext highlighter-rouge">Please use the following password to proceed to installation:</code> 또는 유사한 메시지 뒤에 나오는 긴 문자열이 초기 관리자 비밀번호다.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*************************************************************
+*************************************************************
+*************************************************************
+
+Jenkins initial setup is required. An admin user has been created and a password generated.
+Please use the following password to proceed to installation:
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
+
+*************************************************************
+*************************************************************
+*************************************************************
+</code></pre></div>    </div>
+    <p>(여기서 <code class="language-plaintext highlighter-rouge">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code> 부분이 실제 비밀번호다.)</p>
+  </li>
+</ol>
+
+<h4 id="초기-설정-진행-절차">초기 설정 진행 절차</h4>
+
+<ol>
+  <li><strong>Jenkins 웹 인터페이스 접속</strong>: 웹 브라우저를 열고 <code class="language-plaintext highlighter-rouge">http://localhost:12345</code> (또는 <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>에 설정된 포트)로 접속.</li>
+  <li><strong>관리자 비밀번호 입력</strong>: 위에서 확인한 초기 관리자 비밀번호를 입력하고 <code class="language-plaintext highlighter-rouge">Continue</code>를 클릭</li>
+  <li><strong>플러그인 설치</strong>: <code class="language-plaintext highlighter-rouge">Install suggested plugins</code>를 선택하여 권장 플러그인을 설치하거나, <code class="language-plaintext highlighter-rouge">Select plugins to install</code>을 선택하여 필요한 플러그인만 설치할 수 있다. <code class="language-plaintext highlighter-rouge">project-mini-jenkins</code> 프로젝트의 <code class="language-plaintext highlighter-rouge">jenkins/plugins.txt</code>와 <code class="language-plaintext highlighter-rouge">jenkins/casc.yaml</code>을 사용한다면, 플러그인과 기본 설정은 자동으로 적용된다.</li>
+  <li><strong>관리자 계정 생성</strong>: 초기 관리자 비밀번호를 사용한 후, 새로운 관리자 계정(사용자 이름, 비밀번호, 이름, 이메일)을 생성한다. 이 계정은 이후 Jenkins에 로그인할 때 사용된다.</li>
+  <li><strong>Jenkins URL 설정</strong>: Jenkins 인스턴스의 URL을 설정합니다. 기본값으로 두거나 필요에 따라 변경할 수 있다.</li>
+</ol>
+
+<p>이 과정을 통해 Jenkins 서버의 초기 설정이 완료되며, CI/CD 파이프라인을 구축하고 관리할 준비가 된다. 단 여기서 중요한 지점으로,</p>
+
+<p>1) 실제 프로젝트를 위한 플러그인을 설치할 것이 무엇이 있는지 판단 및 밑설치를 미리 해둬야 예상외의 발생 에러를 잡을 수 있다. 최초 설치시 아주 기본적인 내용만 있고, 빌드 자체를 위한 도구 정도만 설치됨. 이에 dockerfile 을 통해 컨테이너 내부에서 조작할 도구들과, jenkins 자체를 위한 플러그인(예, ssh agent)등을 정확하게 보고 미리 설치해놓아야 한다. 
+2) 외부에서 신호를 수신하여 동작하는 등의 것이 있을 경우, HTTPS 를 통한 외부 접속 통로를 확보해둔 설계가 필요할 수 있다. GitHub 의 웹훅이나, 다양한 도구들의 연결 시 HTTPS 가 필수인 경우가 많다. 이를 고려하지 않은 설계가 되면 완전 자동화를 만들기 어려울 수 있다. (수동 호출 및 빌드는 HTTP 환경으로도 충분)</p>
+
+<h3 id="jenkins-plugin">Jenkins Plugin</h3>
+
+<h4 id="역할">역할</h4>
+<ul>
+  <li><strong>기능 확장</strong>: Jenkins 코어(core)에 없는 새로운 기능을 추가한다. 예를 들어, 특정 버전 관리 시스템(Git, SVN), 빌드 도구(Maven, Gradle), 클라우드 플랫폼(AWS, Azure), 알림 서비스(Slack, Discord) 등과의 연동 기능을 제공한다.</li>
+  <li><strong>통합 용이성</strong>: 다양한 개발 및 운영 도구와의 통합을 간소화하여, 복잡한 CI/CD 파이프라인을 쉽게 구축할 수 있도록 돕는다.</li>
+  <li><strong>사용자 정의</strong>: 특정 프로젝트나 조직의 요구사항에 맞춰 Jenkins 환경을 사용자 정의할 수 있는 유연성을 제공한다.</li>
+  <li><strong>생산성 향상</strong>: 반복적이고 수동적인 작업을 자동화하고, 개발 프로세스의 병목 현상을 제거하여 개발 생산성을 향상시킨다.</li>
+</ul>
+
+<h4 id="핵심-플러그인-정리">핵심 플러그인 정리</h4>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">configuration-as-code</code> (Jenkins Configuration as Code Plugin)</strong>:
+    <ul>
+      <li><strong>기능</strong>: Jenkins의 시스템 설정, 플러그인 설정, 보안 설정 등을 YAML 파일(<code class="language-plaintext highlighter-rouge">casc.yaml</code>)로 정의하고 관리할 수 있도록 한다. 이를 통해 Jenkins 환경을 코드로서 버전 관리하고, 여러 Jenkins 인스턴스 간에 일관된 설정을 적용할 수 있다.</li>
+      <li><strong>중요성</strong>: Jenkins 환경의 재현성(reproducibility)과 유지보수성(maintainability)을 크게 향상시켜 DevOps 원칙을 실현하는 데 필수.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git</code> (Git Plugin)</strong>:
+    <ul>
+      <li><strong>기능</strong>: Git 저장소와 Jenkins를 연동하여 소스 코드를 가져오고, Git 관련 작업을 수행할 수 있도록 한다. <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>에서 <code class="language-plaintext highlighter-rouge">git credentialsId: GITHUB_CREDS_ID, url: '...', branch: 'main'</code>와 같은 명령을 사용할 수 있게 한다.</li>
+      <li><strong>중요성</strong>: 대부분의 현대 소프트웨어 개발에서 Git이 버전 관리 시스템으로 사용되므로, CI/CD 파이프라인의 시작점인 소스 코드 가져오기 기능을 제공하는 핵심 플러그인.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">workflow-aggregator</code> (Pipeline: Aggregator Plugin)</strong>:
+    <ul>
+      <li><strong>기능</strong>: Jenkins Pipeline 기능을 제공하는 여러 플러그인들의 집합체다. <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>을 사용하여 파이프라인을 정의하고 실행할 수 있도록 하는 기반을 마련한다.</li>
+      <li><strong>중요성</strong>: <code class="language-plaintext highlighter-rouge">Jenkinsfile</code> 기반의 CI/CD 파이프라인을 구축하는 데 필수적인 플러그인으로, 복잡한 빌드, 테스트, 배포 워크플로우를 코드로 정의할 수 있게 한다.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">blueocean</code> (Blue Ocean Plugin)</strong>:
+    <ul>
+      <li><strong>기능</strong>: Jenkins 파이프라인의 실행 과정을 시각적으로 보여주는 현대적이고 사용자 친화적인 UI 플러그인. 파이프라인의 각 단계와 상태를 한눈에 파악하고, 문제 발생 시 디버깅(debugging)을 용이하게 한다.</li>
+      <li><strong>중요성</strong>: 파이프라인의 가시성을 높여 개발자와 운영자가 CI/CD 프로세스를 더 쉽게 이해하고 관리할 수 있도록 돕는다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="jcasc">JCasC</h3>
+<h4 id="개념-1">개념</h4>
+<p>Jenkins Configuration as Code (JCasC)는 Jenkins의 설정을 YAML 파일과 같은 코드로 정의하고 관리하는 방법론이다. 전통적으로 Jenkins 설정은 웹 UI를 통해 수동으로 이루어졌으며, 이는 설정의 일관성을 유지하기 어렵고, 변경 이력을 추적하기 힘들며, 새로운 Jenkins 인스턴스를 구축할 때마다 동일한 작업을 반복해야 하는 비효율성을 초래했다. JCasC는 이러한 문제점을 해결하고, Jenkins 설정을 소프트웨어 개발의 다른 부분과 마찬가지로 코드로서 관리할 수 있도록 했다.</p>
+
+<h4 id="jcasc의-이유와-장점">JCasC의 이유와 장점</h4>
+<ul>
+  <li><strong>재현성 (Reproducibility)</strong>: 모든 Jenkins 설정이 코드 파일에 명시되어 있으므로, 언제든지 동일한 Jenkins 환경을 정확하게 재구축할 수 있다. 이는 개발, 테스트, 프로덕션 환경 간의 일관성을 보장한다.</li>
+  <li><strong>버전 관리 (Version Control)</strong>: 설정 파일이 Git과 같은 버전 관리 시스템에 저장되므로, 설정 변경 이력을 추적하고, 필요한 경우 이전 버전으로 쉽게 롤백할 수 있다. 이는 설정 변경으로 인한 문제를 해결하는 데 큰 도움이된다.</li>
+  <li><strong>자동화 (Automation)</strong>: Jenkins 인스턴스를 프로비저닝(provisioning)하고 설정하는 과정을 자동화할 수 있다. 이는 특히 클라우드 환경에서 Jenkins를 동적으로 생성하고 관리할 때 매우 유용하다.</li>
+  <li><strong>협업 강화 (Enhanced Collaboration)</strong>: 여러 개발자나 DevOps 엔지니어가 Jenkins 설정을 함께 검토하고 수정할 수 있으며, 코드 리뷰(code review)를 통해 설정 변경의 투명성과 품질을 높일 수 있다.</li>
+  <li><strong>오류 감소 (Reduced Errors)</strong>: 수동 설정 과정에서 발생할 수 있는 인적 오류를 줄이고, 일관된 방식으로 설정을 적용할 수 있다.</li>
+  <li><strong>문서화 (Documentation)</strong>: 설정 파일 자체가 Jenkins 환경에 대한 명확하고 최신 상태의 문서 역할을 한다.</li>
+</ul>
+
+<h4 id="jcasc-로-설정할-수-있는-주요-기능">JCasC 로 설정할 수 있는 주요 기능</h4>
+
+<p>JCasC를 사용하면 Jenkins의 거의 모든 설정을 YAML 파일로 정의하고 적용할 수 있다.</p>
+
+<ul>
+  <li><strong>전역 설정 (Global Settings)</strong>:
+    <ul>
+      <li>시스템 메시지 (System Message)</li>
+      <li>보안 설정 (Security Realm, Authorization Strategy)</li>
+      <li>플러그인 관리 (Plugin Manager)</li>
+      <li>UI 설정 (Theme, Appearance)</li>
+    </ul>
+  </li>
+  <li><strong>도구 설정 (Tool Configurations)</strong>:
+    <ul>
+      <li>JDK, Maven, Git 등 빌드에 필요한 도구들의 설치 경로 및 설정</li>
+    </ul>
+  </li>
+  <li><strong>노드 설정 (Node Configurations)</strong>:
+    <ul>
+      <li>Jenkins 에이전트 (Agent) 노드 추가, 레이블(Label) 설정, 연결 방식 등</li>
+    </ul>
+  </li>
+  <li><strong>작업(Job) 관련 설정</strong>:
+    <ul>
+      <li>기본 작업 템플릿, 스케줄링 관련 설정 등 (개별 Job 설정은 주로 Jenkinsfile로 관리)</li>
+    </ul>
+  </li>
+  <li><strong>연동 서비스 설정</strong>:
+    <ul>
+      <li>SCM (Source Code Management) 연동 설정</li>
+      <li>알림 서비스 (Discord, Slack 등) 연동 설정</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>JCasC 설정 예시 (YAML)</strong></p>
+
+<p>아래는 JCasC를 사용하여 몇 가지 일반적인 설정을 구성하는 예시다. 실제 설정은 Jenkins 버전 및 설치된 플러그인에 따라 달라질 수 있다.</p>
+
+<p><strong>예시 1: 시스템 메시지 및 기본 Executor 설정</strong></p>
+
+<p>이 예시는 Jenkins의 시스템 메시지를 설정하고, 기본 빌드 실행기(Executor)의 수를 지정합니다. 이는 이전 분석 보고서에서 언급된 내용과 관련이 있습니다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jenkins</span><span class="pi">:</span>
+  <span class="na">systemMessage</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="s">Welcome to Jenkins! This instance is configured via Jenkins Configuration as Code.</span>
+    <span class="s">For any issues, please contact the DevOps team.</span>
+  <span class="na">numExecutors</span><span class="pi">:</span> <span class="m">5</span> <span class="c1"># 기본 Executor 수를 5개로 설정</span>
+</code></pre></div></div>
+
+<p><strong>예시 2: Git 도구 설정</strong></p>
+
+<p>Jenkins에서 사용할 Git 실행 파일의 경로를 지정하는 예시입니다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">tool</span><span class="pi">:</span>
+  <span class="na">git</span><span class="pi">:</span>
+    <span class="na">installations</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Default</span><span class="nv"> </span><span class="s">Git"</span>
+        <span class="na">home</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/usr/bin/git"</span> <span class="c1"># 시스템에 설치된 Git 경로</span>
+</code></pre></div></div>
+
+<p><strong>예시 3: Jenkins 에이전트 노드 설정</strong></p>
+
+<p>새로운 빌드 에이전트 노드를 추가하고 레이블을 지정하는 예시입니다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jenkins</span><span class="pi">:</span>
+  <span class="na">slaves</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">my-agent-node"</span>
+      <span class="na">remoteFS</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/home/jenkins/agent"</span>
+      <span class="na">labels</span><span class="pi">:</span> <span class="s2">"</span><span class="s">docker</span><span class="nv"> </span><span class="s">linux"</span>
+      <span class="na">mode</span><span class="pi">:</span> <span class="s2">"</span><span class="s">NORMAL"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">hudson.slaves.DumbSlave"</span>
+      <span class="na">launcher</span><span class="pi">:</span>
+        <span class="na">ssh</span><span class="pi">:</span>
+          <span class="na">host</span><span class="pi">:</span> <span class="s2">"</span><span class="s">your-agent-host.example.com"</span>
+          <span class="na">username</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jenkins"</span>
+          <span class="na">privateKey</span><span class="pi">:</span>
+            <span class="na">credentialsId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jenkins-ssh-key"</span> <span class="c1"># Jenkins Credentials에 등록된 SSH 키 ID</span>
+</code></pre></div></div>
+
+<p><strong>예시 4: 보안 설정 (익명 접근 비활성화)</strong></p>
+
+<p>익명 사용자의 Jenkins 접근을 비활성화하는 설정입니다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jenkins</span><span class="pi">:</span>
+  <span class="na">securityRealm</span><span class="pi">:</span>
+    <span class="c1"># Active Directory, LDAP 등 다른 보안 설정을 사용할 수도 있습니다.</span>
+    <span class="c1"># 여기서는 Jenkins 자체 사용자 관리 (Jenkins's own user database)를 가정합니다.</span>
+    <span class="na">jenkinsUsers</span><span class="pi">:</span> <span class="pi">[]</span> <span class="c1"># 사용자 DB를 사용하되, 초기에는 비어있음</span>
+  <span class="na">authorizationStrategy</span><span class="pi">:</span>
+    <span class="na">globalMatrix</span><span class="pi">:</span>
+      <span class="c1"># 모든 권한을 가진 Admin 사용자에게만 접근 허용</span>
+      <span class="na">permissions</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">Overall/Administer:anonymous"</span> <span class="c1"># 익명 사용자에게 관리자 권한 부여 방지</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">Overall/Administer:authenticated"</span> <span class="c1"># 인증된 사용자에게 관리자 권한 부여 방지 (필요에 따라 조정)</span>
+</code></pre></div></div>
+
+<p>이러한 YAML 설정 파일들을 <code class="language-plaintext highlighter-rouge">jenkins/casc.yaml</code>과 같은 경로에 저장하고 Jenkins에 적용하면, 해당 설정들이 자동으로 반영된다.</p>
+
+<h4 id="jcasc-문법-및-구조">JCasC 문법 및 구조</h4>
+
+<p>JCasC 설정 파일은 Jenkins의 내부 객체 모델을 YAML 형식으로 매핑한다. 기본적인 YAML 문법 규칙은 다음과 같다.</p>
+
+<ul>
+  <li><strong>키-값 쌍 (Key-Value Pairs)</strong>: <code class="language-plaintext highlighter-rouge">키: 값</code> 형태로 데이터를 표현한다. 콜론(<code class="language-plaintext highlighter-rouge">:</code>) 뒤에는 공백이 하나 이상 있어야 한다.
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">key</span><span class="pi">:</span> <span class="s">value</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>들여쓰기 (Indentation)</strong>: 들여쓰기를 사용하여 계층 구조를 나타낸다. 공백만 사용하며, 탭(tab)은 사용할 수 없다. 동일한 레벨의 항목은 동일한 들여쓰기를 가져야 한다.
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">parent</span><span class="pi">:</span>
+  <span class="na">child_key</span><span class="pi">:</span> <span class="s">child_value</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>목록 (Lists)</strong>: 하이픈(<code class="language-plaintext highlighter-rouge">-</code>)으로 시작하는 항목들을 사용하여 목록을 표현합니다.
+```yaml
+fruits:
+    <ul>
+      <li>Apple</li>
+      <li>Banana</li>
+      <li>Orange
+```</li>
+    </ul>
+  </li>
+  <li><strong>주석 (Comments)</strong>: <code class="language-plaintext highlighter-rouge">#</code>으로 시작하는 줄은 주석으로 처리됩니다.</li>
+</ul>
+
+<p>JCasC 설정 파일의 복잡성은 Jenkins 환경 복잡성에 비례해서 증대되고, 그만큼 다 이해하고 작업하는 것은 난이도가 수직 상승하게 된다. 그러나 기본적인 문법과 설정 항목들이 어떻게 매핑되는지를 이해하면 효율적인 관리가 가능하다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><summary type="html"><![CDATA[25-10-24 ~ 25-10-27]]></summary></entry><entry><title type="html">TIL - Jenkins 프로젝트 전체 내용 정리 (2)</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/27/2-til-jenkins.html" rel="alternate" type="text/html" title="TIL - Jenkins 프로젝트 전체 내용 정리 (2)" /><published>2025-10-27T00:00:00+00:00</published><updated>2025-10-27T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/27/2-til-jenkins</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/27/2-til-jenkins.html"><![CDATA[<h2 id="25-10-24--25-10-27">25-10-24 ~ 25-10-27</h2>
+
+<ul>
+  <li>본 내용은 프로젝트에 적용한 CICD 배포 과정에서 있었던 내용 중 개념적으로 추가가 필요한 내용들을 정리한 글이다.</li>
+  <li>사실 KTX 를 탔는데 할 일이 없다… 공부나 하자라는 감성을 했던 내용을 복습한다.</li>
+</ul>
+
+<h3 id="jenkins-파이프라인">Jenkins 파이프라인</h3>
+<h4 id="개념">개념</h4>
+<ul>
+  <li>파이프라인은 소프트웨어의 빌드, 테스트, 배포 과정을 자동화하는 일련의 단계를 코드로 정의한 것이다.</li>
+  <li>Jenkins Pipeline은 <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>이라는 텍스트 파일에 정의되며, 이 파일은 프로젝트의 소스 코드 저장소에 함께 저장된다. 이를 통해 파이프라인 자체도 코드로서 관리(Pipeline as Code)되어, 소프트웨어 개발의 다른 부분과 마찬가지로 버전 관리, 코드 리뷰, 변경 이력 추적 등의 이점을 얻을 수 있다.</li>
+</ul>
+
+<h4 id="declarative-pipeline-vs-scripted-pipeline">Declarative Pipeline vs Scripted Pipeline</h4>
+<ul>
+  <li><strong>Declarative Pipeline (선언형 파이프라인)</strong>:
+    <ul>
+      <li><strong>특징</strong>: 구조화된 블록(<code class="language-plaintext highlighter-rouge">pipeline</code>, <code class="language-plaintext highlighter-rouge">agent</code>, <code class="language-plaintext highlighter-rouge">stages</code>, <code class="language-plaintext highlighter-rouge">stage</code>, <code class="language-plaintext highlighter-rouge">steps</code> 등)을 사용하여 파이프라인을 정의한다. 미리 정의된 구조와 키워드를 사용하여 파이프라인의 흐름을 명확하고 간결하게 선언하는 방식이다. Groovy 스크립팅에 대한 깊은 지식 없이도 쉽게 작성하고 이해할 수 있는 편이다.</li>
+      <li><strong>장점</strong>: 가독성이 높고, 배우기 쉬우며, Jenkins UI에서 시각적으로 파이프라인을 쉽게 이해할 수 있다. 복잡한 로직보다는 표준화된 CI/CD 흐름에 적합하다.</li>
+      <li><strong>예시</strong>: <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>은 Declarative Pipeline의 대표적인 예시다.</li>
+    </ul>
+
+    <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (Declarative Pipeline 예시)</span>
+<span class="n">pipeline</span> <span class="o">{</span>
+    <span class="n">agent</span> <span class="n">any</span> <span class="c1">// 에이전트를 지정</span>
+    <span class="n">environment</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span> <span class="c1">// 전역 환경을 설정 역할을 한다</span>
+    <span class="n">stages</span> <span class="o">{</span> <span class="c1">// 각 단계를 지정한다</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Checkout'</span><span class="o">)</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span> <span class="c1">// checkout</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Build Image'</span><span class="o">)</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span> <span class="c1">// 이미지 빌드</span>
+        <span class="c1">// ...</span>
+    <span class="o">}</span>
+    <span class="n">post</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span> <span class="c1">// 모든 절차가 종료 후 작업</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Scripted Pipeline (스크립트형 파이프라인)</strong>:
+    <ul>
+      <li><strong>특징</strong>: Groovy 스크립트 언어를 사용하여 파이프라인의 모든 로직을 직접 작성한다. <code class="language-plaintext highlighter-rouge">node</code> 블록 내에서 자유로운 Groovy 문법과 Jenkins DSL(Domain Specific Language)을 활용하여 복잡하고 동적인 파이프라인을 구현할 수 있다.</li>
+      <li><strong>장점</strong>: 매우 유연하고 강력하며, 복잡한 조건부 로직, 루프, 예외 처리 등 고급 프로그래밍 기능을 활용할 수 있다. 특정 요구사항에 맞춰 파이프라인을 세밀하게 제어해야 할 때 유용하다.(실질 빌드 작업을 프로그래밍 하듯이 다 만드는 구조니깐)</li>
+      <li><strong>단점</strong>: Groovy 언어에 대한 이해가 필요하며, 가독성이 Declarative Pipeline보다 낮을 수 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>현대 Jenkins Pipeline 개발에서는 Declarative Pipeline이 더 권장한다. 대부분의 CI/CD 요구사항을 충족하며, 유지보수가 용이하고 팀원 간의 협업에 더 적합하기 때문이다. Scripted Pipeline은 Declarative Pipeline으로 구현하기 어려운 특정 고급 시나리오에서 보조적으로 사용될 수 있다. (빌드 절차 과정에서 유동성이 필요한 작업이 포함된다면 특히나 스크립트형으로 작성이 실질 더 편할 수 있으니까)</p>
+
+<h4 id="jenkinsfile-의-역할과-중요성">Jenkinsfile 의 역할과 중요성</h4>
+
+<p><code class="language-plaintext highlighter-rouge">Jenkinsfile</code>은 Jenkins Pipeline의 핵심이며, CI/CD 파이프라인의 모든 단계를 코드로 정의한 파일이다. 이 파일은 프로젝트의 소스 코드 저장소의 루트 디렉토리(또는 지정된 경로)에 위치하며, Jenkins는 이 파일을 읽고 파이프라인을 실행한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Jenkinsfile</code>의 역할과 중요성은 다음과 같다.</p>
+
+<ul>
+  <li><strong>Pipeline as Code (코드형 파이프라인)</strong>: 파이프라인 정의가 코드화되어 Git과 같은 버전 관리 시스템에 저장하는게 낫다. 이는 파이프라인의 변경 이력을 추적하고, 코드 리뷰를 통해 품질을 관리하며, 필요한 경우 이전 버전으로 롤백할 수 있도록 한다.</li>
+  <li><strong>재현 가능한 CI/CD 환경</strong>: <code class="language-plaintext highlighter-rouge">Jenkinsfile</code> 하나만 있으면 어떤 Jenkins 인스턴스에서도 동일한 CI/CD 파이프라인을 구축하고 실행할 수 있다. 이는 환경 간의 일관성을 보장하고, 새로운 프로젝트 온보딩(onboarding)을 간소화한다.</li>
+  <li><strong>개발자와 운영자의 협업</strong>: 개발자는 코드와 함께 <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>을 관리하며, 운영자는 이 파일을 통해 배포 프로세스를 이해하고 개선할 수 있다. 이는 개발(Dev)과 운영(Ops) 간의 경계를 허물고 협업을 강화한다.</li>
+  <li><strong>유연성과 확장성</strong>: <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>은 Groovy 언어의 강력한 기능을 활용하여 복잡한 로직과 다양한 도구 통합을 지원한다. 이를 통해 프로젝트의 특정 요구사항에 맞춰 파이프라인을 유연하게 확장하고 커스터마이징(customizing)할 수 있다.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>은 실제 프로젝트에서 코드 체크아웃, Docker 이미지 빌드, GHCR(GitHub Container Registry) 푸시, 그리고 Blue/Green 배포 전략을 포함한 서버 배포 단계를 명확하게 정의하고 있고, 이를 통해 수동 빌드와 배포의 과정을 읽고 모사한다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (일부 발췌)</span>
+<span class="n">pipeline</span> <span class="o">{</span>
+    <span class="n">agent</span> <span class="n">any</span>
+    
+    <span class="n">environment</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+
+    <span class="n">stages</span> <span class="o">{</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Checkout'</span><span class="o">)</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Build Image'</span><span class="o">)</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Push to GHCR'</span><span class="o">)</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Deploy to Server'</span><span class="o">)</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+    <span class="o">}</span>
+   
+    <span class="n">post</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이처럼 <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>은 CI/CD 파이프라인의 ‘설계도’이자 ‘실행 스크립트’로서, 현대 소프트웨어 개발에서 자동화된 배포 프로세스를 구축하는 데 필수적인 역할을 수행한다.</p>
+
+<h3 id="pipeline-문법-및-구조-간단-정리">Pipeline 문법 및 구조 간단 정리</h3>
+
+<p>Jenkins Declarative Pipeline은 구조화된 블록과 지시어(Directive)를 사용하여 CI/CD 파이프라인을 정의한다. <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>을 예시로 각 주요 블록과 지시어의 역할에 대해 설명한다.</p>
+
+<h4 id="pipeline-블록"><code class="language-plaintext highlighter-rouge">pipeline</code> 블록</h4>
+
+<p><code class="language-plaintext highlighter-rouge">pipeline</code> 블록은 Declarative Pipeline의 최상위 요소이며, 모든 파이프라인 정의를 감싸는 컨테이너다. 이 블록 내부에 <code class="language-plaintext highlighter-rouge">agent</code>, <code class="language-plaintext highlighter-rouge">stages</code>, <code class="language-plaintext highlighter-rouge">post</code> 등 파이프라인의 모든 구성 요소가 포함된다.</p>
+
+<ul>
+  <li><strong>역할</strong>: 파이프라인의 시작과 끝을 정의하며, 전체 파이프라인의 구조를 명시한다.</li>
+  <li><strong>예시</strong>: <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>의 시작 부분은 <code class="language-plaintext highlighter-rouge">pipeline { ... }</code>으로 구성된다.</li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile</span>
+<span class="n">pipeline</span> <span class="o">{</span> <span class="c1">// 문서 시작을 알리는 부분</span>
+    <span class="n">agent</span> <span class="n">any</span>
+    
+    <span class="n">environment</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+
+    <span class="n">stages</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+   
+    <span class="n">post</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="agent-지시어-directive"><code class="language-plaintext highlighter-rouge">agent</code> 지시어 (Directive)</h4>
+
+<p><code class="language-plaintext highlighter-rouge">agent</code> 지시어는 파이프라인 또는 특정 <code class="language-plaintext highlighter-rouge">stage</code>가 실행될 Jenkins Agent(노드)를 지정한다. 이는 빌드 작업을 수행할 환경을 정의하는 데 사용된다.</p>
+
+<ul>
+  <li><strong>역할</strong>: 파이프라인의 각 단계가 실행될 물리적 또는 가상 환경을 선언한다.</li>
+  <li><strong>유형</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">any</code>: 사용 가능한 모든 Agent에서 파이프라인을 실행한다.</li>
+      <li><code class="language-plaintext highlighter-rouge">none</code>: 파이프라인 레벨에서는 Agent를 지정하지 않고, 각 <code class="language-plaintext highlighter-rouge">stage</code>에서 개별적으로 <code class="language-plaintext highlighter-rouge">agent</code>를 지정한다.</li>
+      <li><code class="language-plaintext highlighter-rouge">label 'your-label'</code>: 특정 라벨이 지정된 Agent에서 실행 (예: <code class="language-plaintext highlighter-rouge">agent { label 'docker-node-with-host-docker' }</code>)</li>
+      <li><code class="language-plaintext highlighter-rouge">docker { image '...' }</code>: Docker 이미지를 사용하여 임시 컨테이너에서 <code class="language-plaintext highlighter-rouge">stage</code>를 실행</li>
+    </ul>
+  </li>
+  <li><strong>예시</strong>: <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>에서는 <code class="language-plaintext highlighter-rouge">agent any</code>를 사용하여 파이프라인의 모든 단계가 사용 가능한 Agent에서 실행되도록 했다</li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (agent 지시어 예시)</span>
+<span class="n">pipeline</span> <span class="o">{</span>
+    <span class="n">agent</span> <span class="n">any</span> <span class="c1">// 파이프라인의 모든 단계가 사용 가능한 Agent에서 실행됩니다.</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="environment-블록-환경-변수-관리"><code class="language-plaintext highlighter-rouge">environment</code> 블록 (환경 변수 관리)</h4>
+
+<p><code class="language-plaintext highlighter-rouge">environment</code> 블록은 파이프라인 전체 또는 특정 <code class="language-plaintext highlighter-rouge">stage</code>에서 사용할 환경 변수를 정의한다. 이는 빌드 스크립트 내에서 재사용 가능한 값이나 민감한 정보를 안전하게 관리하는 데 유용한 역할을 한다.</p>
+
+<ul>
+  <li><strong>역할</strong>: 파이프라인 실행 중에 접근할 수 있는 환경 변수를 선언</li>
+  <li><strong>예시</strong>: <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>에서는 GHCR 자격 증명 ID, GitHub 자격 증명 ID, SSH 자격 증명 ID, 배포 서버 정보, Discord 웹훅 URL, 이미지 이름, SSH 호스트 및 포트, 프로젝트 경로 등 다양한 환경 변수를 정의</li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (environment 블록 예시)</span>
+<span class="n">pipeline</span> <span class="o">{</span>
+    <span class="n">agent</span> <span class="n">any</span>
+    
+    <span class="n">environment</span> <span class="o">{</span>
+        <span class="n">GHCR_CREDS_ID</span> <span class="o">=</span> <span class="s1">'ghcr-creds'</span>
+        <span class="n">GITHUB_CREDS_ID</span> <span class="o">=</span> <span class="s1">'github-creds'</span>
+        <span class="n">TARGET_SSH_CREDS_ID</span> <span class="o">=</span> <span class="s1">'a5-localhost-jenkins'</span>
+
+        <span class="n">TARGET_DEPLOY_SERVER</span> <span class="o">=</span> <span class="s1">'GEEKOM-A5-Server'</span>
+
+        <span class="n">DISCORD_CREDS_ID</span> <span class="o">=</span> <span class="s1">'discord-webhook-url'</span>
+
+        <span class="n">IMAGE_NAME</span> <span class="o">=</span> <span class="s1">'ghcr.io/paul2021-r/project-mini-frontend'</span>
+
+        <span class="n">TARGET_HOST</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">(</span><span class="s1">'ssh-host-creds'</span><span class="o">)</span> <span class="c1">// Jenkins Credentials에서 가져옴 =&gt; 보안을 위함</span>
+        <span class="n">TARGET_PORT</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">(</span><span class="s1">'ssh-port-creds'</span><span class="o">)</span> <span class="c1">// Jenkins Credentials에서 가져옴</span>
+        <span class="n">TARGET_PROJECT_PATH</span> <span class="o">=</span> <span class="s1">'/home/hansol/workspace/project-mini-frontend'</span>
+    <span class="o">}</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">credentials()</code> 함수는 Jenkins Credentials 플러그인을 통해 Jenkins에 저장된 자격 증명(예: 비밀번호, SSH 키)을 안전하게 가져와 환경 변수로 사용할 수 있도록 한다. 이렇게 한 이유는 스크립트로 노출 되어도 문제가 없는 영역과, 그렇지 않은 영역을 구분하기 위함이다.</p>
+
+<h4 id="stages-및-stage-블록-파이프라인-단계-정의"><code class="language-plaintext highlighter-rouge">stages</code> 및 <code class="language-plaintext highlighter-rouge">stage</code> 블록 (파이프라인 단계 정의)</h4>
+
+<p><code class="language-plaintext highlighter-rouge">stages</code> 블록은 파이프라인의 모든 <code class="language-plaintext highlighter-rouge">stage</code> 블록을 포함하는 컨테이너다. 각 <code class="language-plaintext highlighter-rouge">stage</code> 블록은 파이프라인의 논리적인 단계를 정의하며, 일반적으로 빌드, 테스트, 배포와 같은 주요 작업을 나타내고 또한 격리한다.</p>
+
+<ul>
+  <li><strong>역할</strong>: 파이프라인의 전체 흐름을 구성하는 개별적인 작업 단위를 정의</li>
+  <li><strong>예시</strong>: <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>은 <code class="language-plaintext highlighter-rouge">Checkout</code>, <code class="language-plaintext highlighter-rouge">Build Image</code>, <code class="language-plaintext highlighter-rouge">Push to GHCR</code>, <code class="language-plaintext highlighter-rouge">Deploy to Server</code>와 같은 여러 <code class="language-plaintext highlighter-rouge">stage</code>를 정의하여 CI/CD 파이프라인의 각 단계를 명확히 구분</li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (stages 및 stage 블록 예시)</span>
+<span class="n">pipeline</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+    <span class="n">stages</span> <span class="o">{</span>
+    <span class="c1">// code pull</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Checkout'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">steps</span> <span class="o">{</span>
+                <span class="n">echo</span> <span class="s2">"1. Get the latest code from GitHub"</span>
+                <span class="n">git</span> <span class="nl">credentialsId:</span> <span class="n">GITHUB_CREDS_ID</span><span class="o">,</span> <span class="nl">url:</span> <span class="s1">'https://github.com/paul2021-r/project-mini-frontend.git'</span><span class="o">,</span> <span class="nl">branch:</span> <span class="s1">'main'</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="c1">// build image</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Build Image'</span><span class="o">)</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+
+        <span class="c1">// push image</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Push to GHCR'</span><span class="o">)</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+
+        <span class="c1">// deploy to server</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Deploy to Server'</span><span class="o">)</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="steps-블록-단계별-실행-명령어"><code class="language-plaintext highlighter-rouge">steps</code> 블록 (단계별 실행 명령어)</h4>
+
+<p>각 <code class="language-plaintext highlighter-rouge">stage</code> 블록 내에는 <code class="language-plaintext highlighter-rouge">steps</code> 블록이 포함되며, 이 블록은 해당 <code class="language-plaintext highlighter-rouge">stage</code>에서 실제로 실행될 하나 이상의 명령어를 정의한다. <code class="language-plaintext highlighter-rouge">steps</code> 블록 내에서는 쉘(shell) 명령어(<code class="language-plaintext highlighter-rouge">sh</code>), Groovy 스크립트(<code class="language-plaintext highlighter-rouge">script { ... }</code>), Jenkins 플러그인이 제공하는 DSL(Domain Specific Language) 등을 사용할 수 있다.</p>
+
+<ul>
+  <li><strong>역할</strong>: <code class="language-plaintext highlighter-rouge">stage</code> 내에서 수행될 구체적인 작업들을 순차적으로 실행한다.</li>
+  <li><strong>예시</strong>: <code class="language-plaintext highlighter-rouge">Checkout</code> 단계에서는 <code class="language-plaintext highlighter-rouge">echo</code> 명령어로 메시지를 출력하고, <code class="language-plaintext highlighter-rouge">git</code> 명령어로 소스 코드를 가져온다.</li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (steps 블록 예시)</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Checkout'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">steps</span> <span class="o">{</span>
+                <span class="n">echo</span> <span class="s2">"1. Get the latest code from GitHub"</span>
+                <span class="n">git</span> <span class="nl">credentialsId:</span> <span class="n">GITHUB_CREDS_ID</span><span class="o">,</span> <span class="nl">url:</span> <span class="s1">'https://github.com/paul2021-r/project-mini-frontend.git'</span><span class="o">,</span> <span class="nl">branch:</span> <span class="s1">'main'</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="post-블록-빌드-후-처리"><code class="language-plaintext highlighter-rouge">post</code> 블록 (빌드 후 처리)</h4>
+
+<p><code class="language-plaintext highlighter-rouge">post</code> 블록은 파이프라인 실행이 완료된 후(성공, 실패, 항상 등 조건에 따라) 특정 작업을 수행하도록 정의한다. 주로 알림 전송, 리소스 정리, 로그아웃 등의 후처리 작업에 사용된다.</p>
+
+<ul>
+  <li><strong>역할</strong>: 파이프라인의 최종 상태에 따라 실행될 작업을 정의</li>
+  <li><strong>조건</strong>: <code class="language-plaintext highlighter-rouge">always</code>, <code class="language-plaintext highlighter-rouge">success</code>, <code class="language-plaintext highlighter-rouge">failure</code>, <code class="language-plaintext highlighter-rouge">unstable</code>, <code class="language-plaintext highlighter-rouge">changed</code> 등 다양한 조건에 따라 <code class="language-plaintext highlighter-rouge">post</code> 액션을 실행할 수 있다.</li>
+  <li><strong>예시</strong>: <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>에서는 빌드 성공 시와 실패 시 Discord 알림을 보내고, 항상 GHCR에서 로그아웃하도록 <code class="language-plaintext highlighter-rouge">post</code> 블록을 사용.</li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (post 블록 예시)</span>
+    <span class="n">post</span> <span class="o">{</span>
+        <span class="n">success</span> <span class="o">{</span>
+            <span class="n">echo</span> <span class="s2">"Deployment succeeded. Now send a discord notification."</span>
+            <span class="n">script</span> <span class="o">{</span> <span class="cm">/* ... Discord 성공 알림 ... */</span> <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">failure</span> <span class="o">{</span>
+            <span class="n">echo</span> <span class="s2">"Deployment failed! Now send a discord notification."</span>
+            <span class="n">script</span> <span class="o">{</span> <span class="cm">/* ... Discord 실패 알림 ... */</span> <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">always</span> <span class="o">{</span>
+            <span class="n">echo</span> <span class="s2">"Logout from GHCR"</span>
+            <span class="n">sh</span> <span class="s2">"docker logout ghcr.io"</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="groovy-언어의-기본-문법-basic-groovy-syntax">Groovy 언어의 기본 문법 (Basic Groovy Syntax)</h3>
+
+<p>Jenkins Pipeline은 Groovy 언어를 기반으로 한다. Groovy는 Java 플랫폼에서 실행되는 동적 언어로, Java와 유사한 문법을 가지면서도 스크립팅에 더 적합한 유연성을 제공한다. 이전에 정리를 한 적이 있으나, 까먹은 관계로(…) 무식하게 복습한 번 하고 간다. Jenkins Pipeline에서 Groovy의 기본 문법을 이해하는 것은 파이프라인을 효과적으로 작성하고 디버깅하는 데 필수적인 역할을 수행한다.</p>
+
+<h4 id="변수-선언-및-사용-variable-declaration--usage">변수 선언 및 사용 (Variable Declaration &amp; Usage)</h4>
+
+<p>Groovy에서 변수는 <code class="language-plaintext highlighter-rouge">def</code> 키워드를 사용하여 선언할 수 있으며, 타입을 명시하지 않아도 됩니다. 변수는 문자열, 숫자, 리스트, 맵 등 다양한 데이터 타입을 저장할 수 있습니다.</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">def</code> 키워드</strong>: 변수를 선언할 때 사용합니다. 타입을 명시하지 않으면 Groovy가 자동으로 타입을 추론합니다.
+    <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">myString</span> <span class="o">=</span> <span class="s2">"Hello, Jenkins!"</span>
+<span class="kt">def</span> <span class="n">myNumber</span> <span class="o">=</span> <span class="mi">123</span>
+<span class="kt">def</span> <span class="n">myList</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"apple"</span><span class="o">,</span> <span class="s2">"banana"</span><span class="o">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>타입 명시</strong>: 필요에 따라 타입을 명시할 수도 있습니다.
+    <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">String</span> <span class="n">anotherString</span> <span class="o">=</span> <span class="s2">"Hello, Groovy!"</span>
+<span class="kt">int</span> <span class="n">anotherNumber</span> <span class="o">=</span> <span class="mi">456</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>변수 사용</strong>: 선언된 변수는 스크립트 내에서 직접 참조하여 사용할 수 있습니다.
+    <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">echo</span> <span class="s2">"${myString} The number is ${myNumber}"</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>에서는 <code class="language-plaintext highlighter-rouge">environment</code> 블록 내에서 환경 변수를 정의하거나, <code class="language-plaintext highlighter-rouge">script</code> 블록 내에서 <code class="language-plaintext highlighter-rouge">def</code> 키워드를 사용하여 로컬 변수를 선언하고 활용하는 것을 볼 수 있다. 당연히 스크립트 작성 시 전역용과, 지역용에 맞춰서 스코프가 있는 만큼 그에 맞춰 동작하도록 만드는게 중요.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (변수 선언 및 사용 예시)</span>
+<span class="n">pipeline</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+    <span class="n">environment</span> <span class="o">{</span>
+        <span class="n">IMAGE_NAME</span> <span class="o">=</span> <span class="s1">'ghcr.io/paul2021-r/project-mini-frontend'</span> <span class="c1">// 환경 변수</span>
+    <span class="o">}</span>
+    <span class="n">stages</span> <span class="o">{</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Build Image'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">steps</span> <span class="o">{</span>
+                <span class="n">script</span> <span class="o">{</span>
+                    <span class="kt">def</span> <span class="n">imageTag</span> <span class="o">=</span> <span class="s2">"${IMAGE_NAME}:${env.BUILD_NUMBER}"</span> <span class="c1">// def를 사용한 로컬 변수 선언</span>
+                    <span class="n">sh</span> <span class="s2">"docker build -t ${imageTag} ./app"</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="c1">// ...</span>
+    <span class="o">}</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="조건문-conditional-statements">조건문 (Conditional Statements)</h4>
+
+<p>Groovy는 <code class="language-plaintext highlighter-rouge">if</code>, <code class="language-plaintext highlighter-rouge">else if</code>, <code class="language-plaintext highlighter-rouge">else</code>와 같은 표준 조건문을 지원한다.</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">if-else</code> 구조</strong>: 조건이 참(true)일 때 특정 코드 블록을 실행하고, 거짓(false)일 때 다른 코드 블록을 실행.
+    <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">status</span> <span class="o">=</span> <span class="s2">"success"</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">status</span> <span class="o">==</span> <span class="s2">"success"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">echo</span> <span class="s2">"Operation succeeded."</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">echo</span> <span class="s2">"Operation failed."</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>삼항 연산자</strong>: 간단한 조건에 따라 값을 할당할 때 유용
+    <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="o">)</span> <span class="o">?</span> <span class="s2">"Pass"</span> <span class="o">:</span> <span class="s2">"Fail"</span>
+<span class="n">echo</span> <span class="s2">"Result: ${result}"</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>에서는 <code class="language-plaintext highlighter-rouge">BUILD_NUMBER</code>의 홀짝 여부를 판단하여 배포할 서비스를 결정하는 데 조건문을 활용한다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (조건문 예시)</span>
+<span class="n">stage</span><span class="o">(</span><span class="s1">'Deploy to Server'</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">steps</span> <span class="o">{</span>
+        <span class="n">script</span> <span class="o">{</span>
+            <span class="c1">// 어떤 컨테이너를 업데이트 및 업스트림 대상을 지정</span>
+            <span class="kt">def</span> <span class="n">deployService</span> <span class="o">=</span> <span class="o">(</span><span class="n">env</span><span class="o">.</span><span class="na">BUILD_NUMBER</span><span class="o">.</span><span class="na">toInteger</span><span class="o">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="s2">"app-green"</span> <span class="o">:</span> <span class="s2">"app-blue"</span> 
+            <span class="kt">def</span> <span class="n">upstreamService</span> <span class="o">=</span> <span class="o">(</span><span class="n">deployService</span> <span class="o">==</span> <span class="s2">"app-green"</span><span class="o">)</span> <span class="o">?</span> <span class="s2">"app-blue"</span> <span class="o">:</span> <span class="s2">"app-green"</span>
+            <span class="c1">// ...</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">env.BUILD_NUMBER.toInteger() % 2 == 0</code>은 현재 빌드 번호가 짝수인지 홀수인지 확인하는 조건이다. 짝수이면 <code class="language-plaintext highlighter-rouge">app-green</code>을 <code class="language-plaintext highlighter-rouge">deployService</code>로, 홀수이면 <code class="language-plaintext highlighter-rouge">app-blue</code>를 <code class="language-plaintext highlighter-rouge">deployService</code>로 할당하게 했다. 이는 Blue/Green 배포 전략에서 트래픽을 전환할 대상을 동적으로 결정하는 핵심 로직으로, 더 복잡한 방식을 써볼까 했지만, 결과적으로 심플함, 예측 가능성 등을 고려하여 일단 프론트엔드서버는 간단한 방식을 차용하였다.</p>
+
+<h3 id="jenkins-pipeline에서-groovy-활용-eg-script----블록">Jenkins Pipeline에서 Groovy 활용 (e.g., <code class="language-plaintext highlighter-rouge">script { ... }</code> 블록)</h3>
+
+<p>Declarative Pipeline은 구조화된 형태를 가지지만, 복잡한 로직이나 동적인 처리가 필요할 때는 <code class="language-plaintext highlighter-rouge">script { ... }</code> 블록을 사용하여 Groovy 스크립트를 직접 실행할 수 있다. 이 블록은 Declarative Pipeline 내에서 Scripted Pipeline의 유연성을 제공하는 ‘탈출구’ 역할을 한다.</p>
+
+<h4 id="script----블록의-역할"><code class="language-plaintext highlighter-rouge">script { ... }</code> 블록의 역할</h4>
+
+<ul>
+  <li><strong>복잡한 로직 구현</strong>: Declarative Pipeline의 제한된 표현력으로는 어려운 복잡한 조건부 로직, 반복문, 예외 처리 등을 Groovy 스크립트로 직접 구현할 수 있다.</li>
+  <li><strong>동적 처리</strong>: 빌드 번호, 환경 변수, 외부 API 호출 결과 등 동적인 값에 따라 파이프라인의 동작을 변경해야 할 때 유용.</li>
+  <li><strong>Jenkins DSL 확장</strong>: Jenkins Pipeline이 제공하는 내장 DSL(Domain Specific Language) 외에, Groovy의 강력한 기능을 활용하여 사용자 정의 함수나 라이브러리를 호출할 수 있다.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>의 <code class="language-plaintext highlighter-rouge">Build Image</code>, <code class="language-plaintext highlighter-rouge">Push to GHCR</code>, <code class="language-plaintext highlighter-rouge">Deploy to Server</code>, <code class="language-plaintext highlighter-rouge">post</code> 블록 내에서 <code class="language-plaintext highlighter-rouge">script { ... }</code> 블록이 광범위하게 사용했다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (script 블록 활용 예시)</span>
+<span class="n">stage</span><span class="o">(</span><span class="s1">'Build Image'</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">steps</span> <span class="o">{</span>
+        <span class="n">echo</span> <span class="s2">"2. Build New Docker Image"</span>
+        <span class="n">script</span> <span class="o">{</span>
+            <span class="kt">def</span> <span class="n">imageTag</span> <span class="o">=</span> <span class="s2">"${IMAGE_NAME}:${env.BUILD_NUMBER}"</span> <span class="c1">// 빌드할 이미지 명을 가변적으로 지정하도록 사용함.</span>
+            <span class="n">sh</span> <span class="s2">"docker build -t ${imageTag} ./app"</span> 
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">stage</span><span class="o">(</span><span class="s1">'Push to GHCR'</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">steps</span> <span class="o">{</span>
+        <span class="n">echo</span> <span class="s2">"3. Push the Docker Image to GHCR"</span>
+        <span class="n">script</span> <span class="o">{</span>
+            <span class="kt">def</span> <span class="n">imageTag</span> <span class="o">=</span> <span class="s2">"${IMAGE_NAME}:${env.BUILD_NUMBER}"</span>
+            <span class="n">withCredentials</span><span class="o">([</span><span class="n">usernamePassword</span><span class="o">(</span><span class="nl">credentialsId:</span> <span class="n">GHCR_CREDS_ID</span><span class="o">,</span> <span class="nl">usernameVariable:</span> <span class="s1">'USER'</span><span class="o">,</span> <span class="nl">passwordVariable:</span> <span class="s1">'TOKEN'</span><span class="o">)])</span> <span class="o">{</span>
+                <span class="n">sh</span> <span class="s2">"echo ${TOKEN} | docker login ghcr.io -u ${USER} --password-stdin"</span>
+                <span class="n">sh</span> <span class="s2">"docker push ${imageTag}"</span>
+            <span class="o">}</span> <span class="c1">// withCredentials 로 주요내용을 함께 가져가서 명령어에 적용시킨다. </span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 예시에서 <code class="language-plaintext highlighter-rouge">script { ... }</code> 블록은 <code class="language-plaintext highlighter-rouge">imageTag</code> 변수를 선언하고, <code class="language-plaintext highlighter-rouge">sh</code> 명령어를 사용하여 Docker 빌드 및 푸시 작업을 수행하는 Groovy 코드를 포함한다. 특히 <code class="language-plaintext highlighter-rouge">withCredentials</code>와 같은 Jenkins DSL은 <code class="language-plaintext highlighter-rouge">script</code> 블록 내에서 더욱 유연하게 활용될 수 있다.</p>
+
+<p>Jenkins Pipeline 스크립트 언어인 Groovy를 이해하고 활용하는 것은 복잡한 CI/CD 파이프라인을 구축하고 유지보수하는 데 필수적인 역량이다. Groovy의 기본 문법과 <code class="language-plaintext highlighter-rouge">script { ... }</code> 블록의 활용법을 숙지함으로써, Jenkins 파이프라인의 잠재력을 최대한 발휘할 수 있다.</p>
+
+<h3 id="소스-코드-관리-source-code-management---scm">소스 코드 관리 (Source Code Management - SCM)</h3>
+
+<p>CI/CD 파이프라인의 첫 번째이자 가장 기본적인 단계는 소스 코드를 관리하고 변경 사항을 감지하는 것이다. 소스 코드 관리(SCM) 시스템은 개발자들이 작성한 코드를 저장하고, 변경 이력을 추적하며, 여러 개발자 간의 협업을 지원하는 도구다. Jenkins는 다양한 SCM 시스템과 연동하여 코드 변경을 감지하고 파이프라인을 트리거(trigger)해준다. 이 프로젝트에서는 Git을 SCM을 기반으로 만들었다.</p>
+
+<h4 id="git-연동-git-credentialsid-github_creds_id-url--branch-main">Git 연동 (<code class="language-plaintext highlighter-rouge">git credentialsId: GITHUB_CREDS_ID, url: '...', branch: 'main'</code>)</h4>
+
+<p>Jenkins는 Git 플러그인을 통해 Git 저장소와 쉽게 연동할 수 있게 되어있다. <code class="language-plaintext highlighter-rouge">Jenkinsfile</code> 내에서 <code class="language-plaintext highlighter-rouge">git</code> 스텝(step)을 사용하여 특정 Git 저장소에서 소스 코드를 체크아웃(checkout)할 수 있고 특별히 요청하는 단계 없이 자연스럽게 해당 저장소에서 파일을 가져와준다.</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">git</code> 스텝</strong>: Jenkins Pipeline에서 Git 저장소에서 코드를 가져오는 데 사용되는 내장 스텝이다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">credentialsId</code></strong>: Jenkins에 미리 등록된 자격 증명(Credentials)의 ID를 지정한다. 이 자격 증명은 비공개(private) 저장소에 접근하거나, 특정 작업을 수행할 권한이 필요할 때 사용된다. <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>에서는 <code class="language-plaintext highlighter-rouge">GITHUB_CREDS_ID</code>를 사용하여 GitHub 저장소에 접근하도록 세팅했다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">url</code></strong>: 소스 코드를 가져올 Git 저장소의 URL을 지정한다. HTTPS 또는 SSH URL을 사용할 수 있다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">branch</code></strong>: 체크아웃할 브랜치(branch)를 지정한다. 일반적으로 <code class="language-plaintext highlighter-rouge">main</code> 또는 <code class="language-plaintext highlighter-rouge">master</code> 브랜치를 지정하여 최신 코드를 가져오도록 설정했다.</li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (Checkout stage)</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Checkout'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">steps</span> <span class="o">{</span>
+                <span class="n">echo</span> <span class="s2">"1. Get the latest code from GitHub"</span>
+                <span class="n">git</span> <span class="nl">credentialsId:</span> <span class="n">GITHUB_CREDS_ID</span><span class="o">,</span> <span class="nl">url:</span> <span class="s1">'https://github.com/paul2021-r/project-mini-frontend.git'</span><span class="o">,</span> <span class="nl">branch:</span> <span class="s1">'main'</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+</code></pre></div></div>
+
+<p>이 스텝은 <code class="language-plaintext highlighter-rouge">GITHUB_CREDS_ID</code>에 해당하는 자격 증명을 사용하여 <code class="language-plaintext highlighter-rouge">https://github.com/paul2021-r/project-mini-frontend.git</code> 저장소의 <code class="language-plaintext highlighter-rouge">main</code> 브랜치에서 최신 코드를 Jenkins 작업 공간(workspace)으로 가져온다. <code class="language-plaintext highlighter-rouge">credentialsId</code>를 사용하는 것은 민감한 정보(예: GitHub Personal Access Token)를 <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>에 직접 노출하지 않고 안전하게 관리하는 구조다.</p>
+
+<h4 id="git-pull-origin-main-git-checkout-main-명령의-이해"><code class="language-plaintext highlighter-rouge">git pull origin main</code>, <code class="language-plaintext highlighter-rouge">git checkout main</code> 명령의 이해</h4>
+
+<p><code class="language-plaintext highlighter-rouge">Jenkinsfile</code>의 <code class="language-plaintext highlighter-rouge">Deploy to Server</code> 단계 내에서 SSH를 통해 원격 서버에 접속한 후 <code class="language-plaintext highlighter-rouge">git pull origin main</code> 및 <code class="language-plaintext highlighter-rouge">git checkout main</code> 명령어를 실행한다. 이는 배포 서버 자체의 프로젝트 디렉토리에서 최신 코드를 유지하기 위한 목적으로 제공된다. 즉, 기존 젠킨스 빌드 서버는 workspace 에서 자동으로 최신화되지만, 시크릿을 제외한 환경 파일이나 설정 등, 깃을 통해 공유되는 영역을 위해, SSH 접속 후에도 최신화를 시키는 세심한 단계를 추가했다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (Deploy to Server stage 일부)</span>
+                                <span class="n">ssh</span> <span class="o">-</span><span class="n">o</span> <span class="n">StrictHostKeyChecking</span><span class="o">=</span><span class="n">no</span> <span class="o">-</span><span class="n">p</span> <span class="n">$</span><span class="o">{</span><span class="n">TARGET_PORT</span><span class="o">}</span> <span class="n">$</span><span class="o">{</span><span class="n">TARGET_HOST</span><span class="o">}</span> <span class="err">'</span>
+                                <span class="n">set</span> <span class="o">-</span><span class="n">ex</span>
+                                
+                                <span class="c1">// ...</span>
+
+                                <span class="n">echo</span> <span class="s2">"--- Refresh main repository ---"</span>
+                                <span class="n">cd</span> <span class="n">$</span><span class="o">{</span><span class="n">TARGET_PROJECT_PATH</span><span class="o">}</span>
+                                <span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">main</span>
+                                <span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+                                
+                                <span class="c1">// ...</span>
+                                <span class="err">'</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">cd ${TARGET_PROJECT_PATH}</code></strong>: 먼저 배포 서버의 프로젝트 루트 디렉토리로 이동.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git pull origin main</code></strong>: 원격 저장소(<code class="language-plaintext highlighter-rouge">origin</code>)의 <code class="language-plaintext highlighter-rouge">main</code> 브랜치에서 최신 변경 사항을 가져와 현재 로컬 브랜치에 병합(merge)한다. 이는 배포 서버에 항상 최신 버전의 코드가 존재하도록 보장</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git checkout main</code></strong>: 현재 작업 중인 브랜치를 <code class="language-plaintext highlighter-rouge">main</code> 브랜치로 전환한다. 이는 혹시 다른 브랜치에 머물러 있을 경우를 대비하여 <code class="language-plaintext highlighter-rouge">main</code> 브랜치에서 작업을 수행하도록 명확히 하는 역할을 한다.</li>
+</ul>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><summary type="html"><![CDATA[25-10-24 ~ 25-10-27]]></summary></entry><entry><title type="html">TIL - Jenkins 프로젝트 전체 내용 정리 (3)</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/27/3-til-jenkins.html" rel="alternate" type="text/html" title="TIL - Jenkins 프로젝트 전체 내용 정리 (3)" /><published>2025-10-27T00:00:00+00:00</published><updated>2025-10-27T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/27/3-til-jenkins</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/27/3-til-jenkins.html"><![CDATA[<h2 id="25-10-24--25-10-27">25-10-24 ~ 25-10-27</h2>
+
+<ul>
+  <li>본 내용은 프로젝트에 적용한 CICD 배포 과정에서 있었던 내용 중 개념적으로 추가가 필요한 내용들을 정리한 글이다.</li>
+  <li>사실 KTX 를 탔는데 할 일이 없다… 공부나 하자라는 감성을 했던 내용을 복습한다.</li>
+</ul>
+
+<h2 id="jenkins">Jenkins</h2>
+<h3 id="docker-이미지-빌드-및-관리-docker-image-build--management">Docker 이미지 빌드 및 관리 (Docker Image Build &amp; Management)</h3>
+
+<p>CI/CD 파이프라인에서 애플리케이션을 컨테이너화하는 것은 환경 일관성을 보장하고 배포를 간소화하는 핵심적인 단계다. Jenkins는 Docker CLI와 연동하여 Docker 이미지를 빌드하고, 컨테이너 레지스트리(Registry)에 푸시(push)하며, 배포 서버에서 이미지를 풀(pull)하는 일련의 과정을 자동화한다. 이 섹션에서는 <code class="language-plaintext highlighter-rouge">project-mini-frontend</code>의 <code class="language-plaintext highlighter-rouge">app/Dockerfile</code>과 <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>을 기반으로 Docker 이미지 빌드 및 관리의 주요 개념을 정리하였다.</p>
+
+<h4 id="docker-build-명령어-및---build-arg-활용"><code class="language-plaintext highlighter-rouge">docker build</code> 명령어 및 <code class="language-plaintext highlighter-rouge">--build-arg</code> 활용</h4>
+
+<p><code class="language-plaintext highlighter-rouge">docker build</code> 명령어는 <code class="language-plaintext highlighter-rouge">Dockerfile</code>에 정의된 지침에 따라 Docker 이미지를 생성한다. 이 과정에서 <code class="language-plaintext highlighter-rouge">--build-arg</code> 옵션을 사용하여 빌드 시점에 환경 변수를 주입할 수 있다.</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">docker build -t &lt;image_name&gt;:&lt;tag&gt; &lt;path_to_dockerfile_context&gt;</code></strong>: 이미지를 빌드하는 기본 명령어.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">-t &lt;image_name&gt;:&lt;tag&gt;</code>: 빌드된 이미지에 이름과 태그를 부여한다. 태그는 이미지의 버전을 식별하는 데 사용된다.</li>
+      <li><code class="language-plaintext highlighter-rouge">&lt;path_to_dockerfile_context&gt;</code>: <code class="language-plaintext highlighter-rouge">Dockerfile</code>이 위치한 디렉토리의 경로를 지정합한다. Docker 빌드 컨텍스트(context)가 된다.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">--build-arg &lt;VAR_NAME&gt;=&lt;value&gt;</code></strong>: <code class="language-plaintext highlighter-rouge">Dockerfile</code> 내에서 <code class="language-plaintext highlighter-rouge">ARG</code> 지시어로 선언된 변수에 값을 전달한다. 이는 빌드 시점에 동적으로 환경을 구성할 때 유용하다.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>의 <code class="language-plaintext highlighter-rouge">Build Image</code> 단계에서는 <code class="language-plaintext highlighter-rouge">docker build</code> 명령어를 사용하여 Next.js 애플리케이션 이미지를 빌드한다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (Build Image stage)</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Build Image'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">steps</span> <span class="o">{</span>
+                <span class="n">echo</span> <span class="s2">"2. Build New Docker Image"</span>
+                <span class="n">script</span> <span class="o">{</span>
+                    <span class="kt">def</span> <span class="n">imageTag</span> <span class="o">=</span> <span class="s2">"${IMAGE_NAME}:${env.BUILD_NUMBER}"</span> 
+                    <span class="n">sh</span> <span class="s2">"docker build -t ${imageTag} ./app"</span> 
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+</code></pre></div></div>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">sh "docker build -t ${imageTag} ./app"</code> 명령은 <code class="language-plaintext highlighter-rouge">project-mini-frontend/app</code> 디렉토리를 빌드 컨텍스트로 사용하여 이미지를 빌드하고, <code class="language-plaintext highlighter-rouge">IMAGE_NAME</code>과 Jenkins의 <code class="language-plaintext highlighter-rouge">BUILD_NUMBER</code>를 조합한 태그를 부여한다. 만약 <code class="language-plaintext highlighter-rouge">Dockerfile</code> 내에서 <code class="language-plaintext highlighter-rouge">ARG</code>를 통해 <code class="language-plaintext highlighter-rouge">NEXT_PUBLIC_API_URL</code>과 같은 환경 변수를 받도록 설정되어 있다면, <code class="language-plaintext highlighter-rouge">sh "docker build -t ${imageTag} --build-arg NEXT_PUBLIC_API_URL=${env.API_URL} ./app"</code>와 같이 <code class="language-plaintext highlighter-rouge">--build-arg</code>를 추가하여 빌드 시점에 값을 주입해서 다이나믹한 대응이 가능하다.</p>
+
+<h4 id="docker-이미지-태깅-전략-eg-latest-build_number">Docker 이미지 태깅 전략 (e.g., <code class="language-plaintext highlighter-rouge">latest</code>, <code class="language-plaintext highlighter-rouge">BUILD_NUMBER</code>)</h4>
+
+<p>Docker 이미지 태깅은 이미지의 버전을 관리하고 식별하는 데 매우 중요하다. 일관된 태깅 전략은 CI/CD 파이프라인의 안정성과 효율성을 높이기에 구조를 이해할 필요가 있다.</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">latest</code> 태그</strong>: 일반적으로 가장 최신 버전의 안정적인 이미지에 부여된다. 하지만 <code class="language-plaintext highlighter-rouge">latest</code> 태그는 항상 최신을 의미하므로, 특정 버전을 명확히 식별하기 어렵다는 단점이 있다. 프로덕션 환경에서는 <code class="language-plaintext highlighter-rouge">latest</code> 태그만 사용하는 것을 지양하고, 특정 버전 태그와 함께 사용하는 것이 권장된다.(아니면 편의성, 이식성을 위해 이미지를 두개로 tag를 나눠, latest 인 경우, 빌드넘버 두가지를 함께 병용하는 것도 괜찮다.)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">BUILD_NUMBER</code> 태그</strong>: Jenkins의 <code class="language-plaintext highlighter-rouge">BUILD_NUMBER</code>와 같이 CI/CD 시스템에서 생성되는 고유한 빌드 번호를 태그로 사용하는 것은 매우 효과적인 전략이다.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>에서는 <code class="language-plaintext highlighter-rouge">BUILD_NUMBER</code>를 활용한 태깅 전략을 사용했다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (이미지 태깅 예시)</span>
+                    <span class="kt">def</span> <span class="n">imageTag</span> <span class="o">=</span> <span class="s2">"${IMAGE_NAME}:${env.BUILD_NUMBER}"</span> 
+                    <span class="n">sh</span> <span class="s2">"docker build -t ${imageTag} ./app"</span> 
+                    <span class="c1">// ...</span>
+                    <span class="n">sh</span> <span class="s2">"docker push ${imageTag}"</span>
+</code></pre></div></div>
+
+<p>이처럼 <code class="language-plaintext highlighter-rouge">ghcr.io/paul2021-r/project-mini-frontend:123</code>과 같이 빌드 번호가 포함된 태그를 사용함으로써, 어떤 빌드에서 생성된 이미지인지 명확하게 식별할 수 있다.</p>
+
+<h4 id="github-container-registry-ghcr-사용법">GitHub Container Registry (GHCR) 사용법</h4>
+
+<p>GitHub Container Registry (GHCR)는 GitHub에서 제공하는 Docker 이미지 저장소 서비스다. Docker Hub와 유사하게 Docker 이미지를 저장하고 공유할 수 있으며, GitHub 저장소와 긴밀하게 통합된다.</p>
+
+<ul>
+  <li><strong>장점</strong>: GitHub 저장소와 연동되어 접근 제어 및 권한 관리가 용이하며, GitHub Actions와 같은 CI/CD 도구와 함께 사용하기 편리하다.</li>
+  <li><strong>사용 이유</strong>: 다른 서비스들은 무료로 제공해주긴 해도 제한사항이 있고, default 값이 아니라는 점만 제외하면 모든 기능이 동일하다. EKS 와 같은 AWS 의 상용 서비스도 고려는 했지만, 굳이 비용을 들일 필요가 없기 때문에, 가장 널널하게 쓰기좋은 GHCR 을 적용했다.</li>
+  <li><strong>사용법</strong>: <code class="language-plaintext highlighter-rouge">docker login</code>, <code class="language-plaintext highlighter-rouge">docker push</code>, <code class="language-plaintext highlighter-rouge">docker pull</code> 명령어를 사용하여 GHCR에 이미지를 푸시하고 풀할 수 있다. 인증은 GitHub Personal Access Token(PAT)을 통해 이루어진다. 단, PAT 발급 시 package 에 대한 write 권한을 제공해야 한다.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>의 <code class="language-plaintext highlighter-rouge">Push to GHCR</code> 단계는 GHCR 사용법을 보여준다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (Push to GHCR stage)</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Push to GHCR'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">steps</span> <span class="o">{</span>
+                <span class="n">echo</span> <span class="s2">"3. Push the Docker Image to GHCR"</span>
+                <span class="n">script</span> <span class="o">{</span>
+                    <span class="kt">def</span> <span class="n">imageTag</span> <span class="o">=</span> <span class="s2">"${IMAGE_NAME}:${env.BUILD_NUMBER}"</span>
+                    <span class="n">withCredentials</span><span class="o">([</span><span class="n">usernamePassword</span><span class="o">(</span><span class="nl">credentialsId:</span> <span class="n">GHCR_CREDS_ID</span><span class="o">,</span> <span class="nl">usernameVariable:</span> <span class="s1">'USER'</span><span class="o">,</span> <span class="nl">passwordVariable:</span> <span class="s1">'TOKEN'</span><span class="o">)])</span> <span class="o">{</span>
+                        <span class="n">sh</span> <span class="s2">"echo ${TOKEN} | docker login ghcr.io -u ${USER} --password-stdin"</span>
+                        <span class="n">sh</span> <span class="s2">"docker push ${imageTag}"</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">withCredentials</code> 블록을 사용하여 Jenkins에 저장된 <code class="language-plaintext highlighter-rouge">GHCR_CREDS_ID</code> 자격 증명(GitHub 사용자 이름과 PAT)을 <code class="language-plaintext highlighter-rouge">USER</code>와 <code class="language-plaintext highlighter-rouge">TOKEN</code> 환경 변수로 주입한다. 이 정보를 사용하여 <code class="language-plaintext highlighter-rouge">docker login ghcr.io</code> 명령으로 GHCR에 로그인한 후, <code class="language-plaintext highlighter-rouge">docker push ${imageTag}</code> 명령으로 빌드된 이미지를 GHCR에 푸시한다.</p>
+
+<h4 id="docker-login-docker-push-docker-pull-docker-logout-명령어"><code class="language-plaintext highlighter-rouge">docker login</code>, <code class="language-plaintext highlighter-rouge">docker push</code>, <code class="language-plaintext highlighter-rouge">docker pull</code>, <code class="language-plaintext highlighter-rouge">docker logout</code> 명령어</h4>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">docker login &lt;registry_url&gt;</code></strong>: Docker 레지스트리에 로그인한다. 사용자 이름과 비밀번호(또는 PAT)를 입력하며, url을 기준으로 사용하는 서비스 주체 플랫폼을 결정할 수 있다. <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>에서는 <code class="language-plaintext highlighter-rouge">echo ${TOKEN} | docker login ghcr.io -u ${USER} --password-stdin</code>와 같이 표준 입력을 통해 비밀번호를 전달하여 자동화된 로그인 과정을 구현한다.(보안이 약하다고 하여, 대안이 되는 다른 방법도 있다지만, 아직 구현에 성공하진 못했다.)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">docker push &lt;image_name&gt;:&lt;tag&gt;</code></strong>: 로컬에 빌드된 Docker 이미지를 원격 레지스트리에 업로드(푸시)한다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">docker pull &lt;image_name&gt;:&lt;tag&gt;</code></strong>: 원격 레지스트리에서 Docker 이미지를 로컬로 다운로드(풀)한다. <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>의 <code class="language-plaintext highlighter-rouge">Deploy to Server</code> 단계에서 배포 서버가 GHCR로부터 이미지를 풀하는 데 사용된다.
+    <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (Deploy to Server stage 일부)</span>
+                            <span class="n">echo</span> <span class="s2">"--- (1/4) Pull the new image : ${imageTag} ---"</span>
+                            <span class="n">docker</span> <span class="n">pull</span> <span class="n">$</span><span class="o">{</span><span class="n">imageTag</span><span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">docker logout &lt;registry_url&gt;</code></strong>: Docker 레지스트리에서 로그아웃합니다. 보안을 위해 파이프라인의 <code class="language-plaintext highlighter-rouge">post</code> 블록에서 항상 로그아웃하는 것이 권장되고, 그렇게 적용해두었다. 이로써 빌드 하나의 사이클에서 모든 내용이 종결되고 빌드 프로세스는 격리된다.
+    <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (post block)</span>
+    <span class="n">always</span> <span class="o">{</span>
+        <span class="n">echo</span> <span class="s2">"Logout from GHCR"</span>
+        <span class="n">sh</span> <span class="s2">"docker logout ghcr.io"</span>
+    <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="docker-out-of-docker-dood-패턴-docker-out-of-docker-pattern">Docker-out-of-Docker (DooD) 패턴 (Docker-out-of-Docker Pattern)</h3>
+
+<p>Docker-out-of-Docker (DooD) 패턴은 Docker 컨테이너 내부에서 Docker 명령어를 실행하여 호스트(Host)의 Docker 데몬(Daemon)과 상호작용하는 전략이다. <code class="language-plaintext highlighter-rouge">project-mini-jenkins</code> 프로젝트는 Jenkins 컨테이너 내부에서 호스트의 Docker 데몬을 제어하기 위해 DooD 패턴을 활용하고 있다.</p>
+
+<h4 id="jenkins-컨테이너에서-호스트-docker-데몬-제어-원리">Jenkins 컨테이너에서 호스트 Docker 데몬 제어 원리</h4>
+
+<p>일반적으로 Docker 컨테이너는 호스트 시스템과 격리된 환경에서 실행된다. 하지만 DooD 패턴을 사용하면 컨테이너 내부에서 호스트의 Docker 데몬에 접근하여 Docker 명령어를 실행할 수 있다.</p>
+
+<ol>
+  <li><strong>Docker 소켓 마운트</strong>: 호스트의 Docker 데몬은 <code class="language-plaintext highlighter-rouge">/var/run/docker.sock</code>이라는 유닉스 소켓(Unix socket)을 통해 외부와 통신한다. DooD 패턴은 Jenkins 컨테이너를 실행할 때 이 호스트의 <code class="language-plaintext highlighter-rouge">docker.sock</code> 파일을 컨테이너 내부로 마운트한다.
+    <ul>
+      <li><strong>예시</strong>: <code class="language-plaintext highlighter-rouge">project-mini-jenkins/docker-compose.yml</code>의 <code class="language-plaintext highlighter-rouge">volumes</code> 설정
+```yaml
+        <h1 id="project-mini-jenkinsdocker-composeyml-일부">project-mini-jenkins/docker-compose.yml (일부)</h1>
+        <p>services:
+  jenkins:</p>
+        <h1>…</h1>
+        <p>volumes:</p>
+        <ul>
+          <li>./jenkins_home:/var/jenkins_home</li>
+          <li>/var/run/docker.sock:/var/run/docker.sock # 이 부분이 핵심</li>
+          <li>/usr/bin/docker:/usr/bin/docker</li>
+          <li>/usr/bin/docker-compose:/usr/bin/docker-compose
+            <h1 id="-1">…</h1>
+            <p>```
+위 설정은 호스트의 <code class="language-plaintext highlighter-rouge">/var/run/docker.sock</code>을 Jenkins 컨테이너의 <code class="language-plaintext highlighter-rouge">/var/run/docker.sock</code> 경로로 마운트한다. 이로써 Jenkins 컨테이너 내부의 Docker CLI는 호스트의 Docker 데몬과 통신할 수 있게 된 것이다.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Docker CLI 설치</strong>: Jenkins 컨테이너 내부에 Docker CLI가 설치되어 있어야 한다. <code class="language-plaintext highlighter-rouge">project-mini-jenkins/jenkins/Dockerfile</code>은 <code class="language-plaintext highlighter-rouge">apt-get install -y docker-ce-cli</code> 명령을 통해 Docker CLI를 설치하여 제어 도구들을 컨테이너 내부에 소지하게 되는 것이다.
+    <ul>
+      <li><strong>예시</strong>: <code class="language-plaintext highlighter-rouge">project-mini-jenkins/jenkins/Dockerfile</code>의 Docker CLI 설치 부분
+        <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># project-mini-jenkins/jenkins/Dockerfile (일부)</span>
+<span class="c"># ...</span>
+<span class="c"># 4. 패키지 목록 다시 업데이트 및 Docker CLI 설치 (서버 데몬 제외)</span>
+<span class="k">RUN </span>apt-get update <span class="o">&amp;&amp;</span> apt-get <span class="nb">install</span> <span class="nt">-y</span> docker-ce-cli
+<span class="c"># ...</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>권한 설정</strong>: Jenkins 컨테이너 내부에서 Docker 명령어를 실행하는 사용자(일반적으로 <code class="language-plaintext highlighter-rouge">jenkins</code> 사용자)가 호스트의 <code class="language-plaintext highlighter-rouge">docker.sock</code>에 접근할 수 있는 권한을 가져야 한다. 이는 해당 사용자를 <code class="language-plaintext highlighter-rouge">docker</code> 그룹에 추가함으로써 해결된다. <code class="language-plaintext highlighter-rouge">project-mini-jenkins/jenkins/Dockerfile</code>은 <code class="language-plaintext highlighter-rouge">usermod -aG docker jenkins</code> 명령을 통해 이 권한을 부여한다.
+    <ul>
+      <li><strong>예시</strong>: <code class="language-plaintext highlighter-rouge">project-mini-jenkins/jenkins/Dockerfile</code>의 권한 설정 부분
+        <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># project-mini-jenkins/jenkins/Dockerfile (일부)</span>
+<span class="c"># ...</span>
+<span class="c"># DooD 구조를 위함. Docker 그룹에 jenkins 유저 추가</span>
+<span class="k">ARG</span><span class="s"> DOCKER_GID=1001</span>
+<span class="k">RUN </span>groupadd <span class="nt">-g</span> <span class="k">${</span><span class="nv">DOCKER_GID</span><span class="k">}</span> docker
+<span class="k">RUN </span>usermod <span class="nt">-aG</span> docker jenkins
+<span class="c"># ...</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="jenkins-사용자를-docker-그룹에-추가하는-이유"><code class="language-plaintext highlighter-rouge">jenkins</code> 사용자를 <code class="language-plaintext highlighter-rouge">docker</code> 그룹에 추가하는 이유</h4>
+
+<p>리눅스(Linux) 시스템에서 <code class="language-plaintext highlighter-rouge">/var/run/docker.sock</code> 파일은 일반적으로 <code class="language-plaintext highlighter-rouge">root</code> 사용자 또는 <code class="language-plaintext highlighter-rouge">docker</code> 그룹에 속한 사용자만 접근할 수 있도록 권한이 설정되어 있ㅊ다. Jenkins 컨테이너 내부에서 <code class="language-plaintext highlighter-rouge">jenkins</code> 사용자가 Docker 명령어를 실행하려면 이 소켓 파일에 대한 접근 권한이 필요하다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">project-mini-jenkins/jenkins/Dockerfile</code>에서 <code class="language-plaintext highlighter-rouge">usermod -aG docker jenkins</code> 명령을 통해 <code class="language-plaintext highlighter-rouge">jenkins</code> 사용자를 <code class="language-plaintext highlighter-rouge">docker</code> 그룹에 추가하는 것은 바로 이 접근 권한을 부여하기 위함이다. <code class="language-plaintext highlighter-rouge">jenkins</code> 사용자가 <code class="language-plaintext highlighter-rouge">docker</code> 그룹에 속하게 되면, <code class="language-plaintext highlighter-rouge">/var/run/docker.sock</code> 파일에 대한 읽기/쓰기 권한을 얻게 되어 호스트의 Docker 데몬과 통신할 수 있게 된다.</p>
+
+<h3 id="bluegreen-배포-개념-concept-of-bluegreen-deployment">Blue/Green 배포 개념 (Concept of Blue/Green Deployment)</h3>
+
+<p>Blue/Green 배포는 무중단 배포(Zero-Downtime Deployment)를 실현하기 위한 효과적인 전략 중 하나다. 이 방식은 프로덕션 환경에 두 개의 동일한 환경을 구축하고, 한 번에 하나의 환경만 활성화하여 사용자 트래픽을 처리한다. 일반적으로 ‘Blue’ 환경과 ‘Green’ 환경으로 명명되며, 한 환경이 현재 운영 중인(Active) 상태일 때 다른 환경은 새로운 버전의 애플리케이션을 배포하고 테스트하는 데 사용된다.</p>
+
+<h4 id="무중단-배포-zero-downtime-deployment의-중요성">무중단 배포 (Zero-Downtime Deployment)의 중요성</h4>
+
+<p>무중단 배포는 서비스 중단 없이 새로운 버전의 애플리케이션을 배포하는 것을 의미한다. 이는 현대 비즈니스 환경에서 다음과 같은 이유로 매우 중요합니다.</p>
+
+<ul>
+  <li><strong>사용자 경험 유지</strong>: 서비스 중단은 사용자에게 부정적인 경험을 제공하고, 이는 고객 이탈로 이어질 수 있다. 무중단 배포는 사용자가 서비스 중단을 인지하지 못하도록 하여 긍정적인 사용자 경험을 유지한다.</li>
+  <li><strong>비즈니스 연속성 보장</strong>: 24시간 365일 운영되어야 하는 서비스의 경우, 배포로 인한 짧은 중단조차도 큰 비즈니스 손실로 이어질 수 있다. 무중단 배포는 이러한 비즈니스 연속성을 보장한다.</li>
+  <li><strong>경쟁력 확보</strong>: 빠르게 변화하는 시장에서 새로운 기능을 신속하게 배포하고 사용자 피드백을 반영하는 능력은 기업의 경쟁력을 좌우한다. 무중단 배포는 이러한 빠른 릴리스 주기를 가능하게 한다.</li>
+  <li><strong>안정성 향상</strong>: 배포 과정에서 발생할 수 있는 위험을 최소화하고, 문제가 발생하더라도 신속하게 이전 버전으로 롤백할 수 있는 안전망을 제공하여 서비스의 전반적인 안정성을 향상시킨다.</li>
+</ul>
+
+<h4 id="bluegreen-환경-구성-원리">Blue/Green 환경 구성 원리</h4>
+
+<p>Blue/Green 배포는 다음과 같은 원리로 구성된다.</p>
+
+<ol>
+  <li><strong>두 개의 동일한 환경</strong>: ‘Blue’와 ‘Green’이라는 두 개의 완전히 동일한 프로덕션 환경을 준비한다. 이 두 환경은 하드웨어, 소프트웨어, 네트워크 구성 등 모든 면에서 동일해야한다. 이번 프로젝트의 경우, 가능한 실무를 모사하고, 목표로하는 AI서비스를 위해 프론트드는 다소 작게 준비하였기에, 한 호스트 서버에 작게 분할하여 집어넣는 것을 모색했다.</li>
+  <li><strong>트래픽 라우팅 (Traffic Routing)</strong>: 사용자 트래픽은 로드 밸런서(Load Balancer) 또는 리버스 프록시(Reverse Proxy)를 통해 현재 활성화된 환경으로 라우팅된다. <code class="language-plaintext highlighter-rouge">project-mini-frontend</code> 프로젝트에서는 Nginx가 이 역할을 수행하게된다.</li>
+  <li><strong>새로운 버전 배포</strong>: 현재 비활성화된 환경(예: Green)에 새로운 버전의 애플리케이션을 배포하고, 필요한 테스트를 수행할 수 있게 한다. 단, 지금은 로컬 개발환경이 존재하여, 그러한 접근을 만들진 않았음. 그러나 Ngnix 의 가상 서버 기능을 도입하여, 접근 가능한 도메인 URL 단위로 접근하도록 할 것이다.</li>
+  <li><strong>트래픽 전환</strong>: 새로운 버전의 애플리케이션이 안정적으로 동작하는 것이 확인되면, 로드 밸런서/리버스 프록시의 설정을 변경하여 사용자 트래픽을 Blue 환경에서 Green 환경으로 전환한다. 이 전환은 매우 빠르게 이루어지므로 사용자 입장에서는 서비스 중단을 느끼지 못하며, stateless 서버이므로 트래픽의 전환이 아무 문제가 없다.</li>
+  <li><strong>이전 환경 유지 또는 폐기</strong>: 트래픽 전환 후, 이전 버전이 실행되던 환경(예: Blue)은 잠시 동안 유지하여 문제가 발생할 경우 즉시 롤백할 수 있도록 한다. 안정성이 확인되면 이전 환경은 폐기하거나 다음 배포를 위한 대기 환경으로 재활용될 수 있다. 이 부분에 대해도 현재는 롤백을 위한 백업처럼 되어있고, 테스트를 위해선 수동 최신화가 필요하다. 하만, 향후 서비스의 문제 없을 시 이용 가능한 예비 서버의 업데이트 배포 방식도 작업으로추가할 예정이다.</li>
+</ol>
+
+<h3 id="jenkinsfile-내-bluegreen-로직-분석-project-mini-frontendjenkinsfile-참고"><code class="language-plaintext highlighter-rouge">Jenkinsfile</code> 내 Blue/Green 로직 분석 (<code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code> 참고)</h3>
+
+<p><code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>은 Blue/Green 배포 전략을 Jenkins 파이프라인 내에서 직접 구현해보았다. 특히 <code class="language-plaintext highlighter-rouge">Deploy to Server</code> 단계에서 이 로직이 핵심적으로 동작한다.</p>
+
+<h4 id="build_number를-이용한-배포-서비스-결정-deployservice-upstreamservice"><code class="language-plaintext highlighter-rouge">BUILD_NUMBER</code>를 이용한 배포 서비스 결정 (<code class="language-plaintext highlighter-rouge">deployService</code>, <code class="language-plaintext highlighter-rouge">upstreamService</code>)</h4>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (Deploy to Server stage 일부)</span>
+                    <span class="c1">// 어떤 컨테이너를 업데이트 및 업스트림 대상을 지정</span>
+                    <span class="kt">def</span> <span class="n">deployService</span> <span class="o">=</span> <span class="o">(</span><span class="n">env</span><span class="o">.</span><span class="na">BUILD_NUMBER</span><span class="o">.</span><span class="na">toInteger</span><span class="o">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="s2">"app-green"</span> <span class="o">:</span> <span class="s2">"app-blue"</span> 
+                    <span class="kt">def</span> <span class="n">upstreamService</span> <span class="o">=</span> <span class="o">(</span><span class="n">deployService</span> <span class="o">==</span> <span class="s2">"app-green"</span><span class="o">)</span> <span class="o">?</span> <span class="s2">"app-blue"</span> <span class="o">:</span> <span class="s2">"app-green"</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">deployService</code>: 현재 빌드된 새로운 버전의 애플리케이션이 배포될 대상 서비스(컨테이너)의 이름을 결정한다. <code class="language-plaintext highlighter-rouge">BUILD_NUMBER</code>가 짝수이면 <code class="language-plaintext highlighter-rouge">app-green</code>, 홀수이면 <code class="language-plaintext highlighter-rouge">app-blue</code>로 결정된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">upstreamService</code>: 현재 사용자 트래픽을 처리하고 있는 이전 버전의 애플리케이션 서비스 이름이다. <code class="language-plaintext highlighter-rouge">deployService</code>와 반대되는 서비스로 설정된다.</li>
+</ul>
+
+<h4 id="docker-compose-up--d---no-deps---force-recreate-명령의-역할"><code class="language-plaintext highlighter-rouge">docker compose up -d --no-deps --force-recreate</code> 명령의 역할</h4>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (Deploy to Server stage 일부)</span>
+                                <span class="n">cd</span> <span class="n">$</span><span class="o">{</span><span class="n">TARGET_PROJECT_PATH</span><span class="o">}</span>
+                                <span class="c1">// ...</span>
+                                <span class="n">docker</span> <span class="n">compose</span> <span class="o">--</span><span class="n">env</span><span class="o">-</span><span class="n">file</span> <span class="n">init</span><span class="o">.</span><span class="na">env</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">deps</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">recreate</span> <span class="n">$</span><span class="o">{</span><span class="n">deployService</span><span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">docker compose up -d</code></strong>: Docker Compose 파일에 정의된 서비스를 백그라운드(<code class="language-plaintext highlighter-rouge">-d</code>)에서 실행 및 업데이트 역할</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">--env-file init.env</code></strong>: <code class="language-plaintext highlighter-rouge">init.env</code> 파일에 정의된 환경 변수(예: <code class="language-plaintext highlighter-rouge">APP_BLUE_IMAGE</code>, <code class="language-plaintext highlighter-rouge">APP_GREEN_IMAGE</code>)를 Docker Compose 명령에 적용한다. 이 변수들은 <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>에서 이미지 이름을 동적으로 설정하는 데 사용된다.
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># project-mini-frontend/docker-compose.yml (일부)</span>
+<span class="na">app-blue</span><span class="pi">:</span>
+  <span class="na">image</span><span class="pi">:</span> <span class="s">${APP_BLUE_IMAGE}</span>
+  <span class="c1"># ...</span>
+<span class="na">app-green</span><span class="pi">:</span>
+  <span class="na">image</span><span class="pi">:</span> <span class="s">${APP_GREEN_IMAGE}</span>
+  <span class="c1"># ...</span>
+</code></pre></div>    </div>
+    <p>Jenkins 파이프라인은 <code class="language-plaintext highlighter-rouge">init.env</code> 파일을 업데이트하여 <code class="language-plaintext highlighter-rouge">APP_BLUE_IMAGE</code> 또는 <code class="language-plaintext highlighter-rouge">APP_GREEN_IMAGE</code> 변수가 새로 빌드된 이미지 태그를 가리키도록 할 수 있다. (현재 <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>에서는 <code class="language-plaintext highlighter-rouge">init.env</code>를 직접 수정하는 로직은 없지만, 이러한 방식으로 연동될 수 있다.)</p>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">--no-deps</code></strong>: 지정된 서비스(<code class="language-plaintext highlighter-rouge">deployService</code>)만 업데이트하고, 해당 서비스가 의존하는 다른 서비스(예: Nginx)는 다시 시작하지 않도록 하는 설정. 불필요한 서비스 중단을 방지하여 무중단 배포에 기여한다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">--force-recreate</code></strong>: 서비스 컨테이너를 강제로 다시 생성합니다. 이는 새로운 이미지로 컨테이너를 업데이트할 때 필수적이다. 레이어가 중복되는 걸로 인식하여, 실제 변경 사항이 제대로 바뀌지 않는 것을 막기 위함이다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">${deployService}</code></strong>: <code class="language-plaintext highlighter-rouge">app-blue</code> 또는 <code class="language-plaintext highlighter-rouge">app-green</code> 중 현재 배포 대상이 되는 서비스 이름이다.</li>
+</ul>
+
+<h4 id="sed-명령어를-이용한-nginx-설정-동적-변경-nginxnginxconf-업데이트"><code class="language-plaintext highlighter-rouge">sed</code> 명령어를 이용한 Nginx 설정 동적 변경 (<code class="language-plaintext highlighter-rouge">nginx/nginx.conf</code> 업데이트)</h4>
+
+<p>새로운 버전의 애플리케이션이 성공적으로 배포되면, Nginx 리버스 프록시의 설정을 변경하여 사용자 트래픽을 새로운 환경으로 전환해야 하고 <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>에서는 <code class="language-plaintext highlighter-rouge">sed</code> 명령어를 사용하여 <code class="language-plaintext highlighter-rouge">nginx/nginx.conf</code> 파일을 동적으로 수정하고 있다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (Deploy to Server stage 일부)</span>
+                                <span class="n">echo</span> <span class="s2">"--- (3/4) Switch Nginx Configuration to change traffic ---"</span>
+                                <span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s2">"s|server ${upstreamService}:3000;|server ${deployService}:3000;|"</span> <span class="n">$</span><span class="o">{</span><span class="n">TARGET_PROJECT_PATH</span><span class="o">}</span><span class="s">/nginx/</span><span class="n">nginx</span><span class="o">.</span><span class="na">conf</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">sed -i</code></strong>: <code class="language-plaintext highlighter-rouge">sed</code> 명령어는 텍스트 스트림 편집기(Stream Editor)로, 파일의 내용을 변경하는 데 사용된다. <code class="language-plaintext highlighter-rouge">-i</code> 옵션은 변경 사항을 원본 파일에 직접 적용(in-place)하도록 하는 옵션이다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">"s|server ${upstreamService}:3000;|server ${deployService}:3000;|"</code></strong>: <code class="language-plaintext highlighter-rouge">s</code>는 ‘substitute’를 의미하며, 특정 패턴을 찾아 다른 문자열로 대체한다. 여기서는 <code class="language-plaintext highlighter-rouge">server ${upstreamService}:3000;</code> 패턴을 찾아 <code class="language-plaintext highlighter-rouge">server ${deployService}:3000;</code>으로 변경한다. 즉, Nginx가 현재 트래픽을 보내고 있는 이전 서비스(<code class="language-plaintext highlighter-rouge">upstreamService</code>)를 새로운 서비스(<code class="language-plaintext highlighter-rouge">deployService</code>)로 변경하도록 설정 파일의 해당 URL 구문만 수정하는 역할을 한다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">${TARGET_PROJECT_PATH}/nginx/nginx.conf</code></strong>: 수정할 Nginx 설정 파일의 경로</li>
+</ul>
+
+<p><strong><code class="language-plaintext highlighter-rouge">nginx/nginx.conf</code> 예시</strong>:</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># project-mini-frontend/nginx/nginx.conf (일부)</span>
+<span class="k">upstream</span> <span class="s">nextjs_app</span> <span class="p">{</span>
+    <span class="kn">server</span> <span class="nf">app-blue</span><span class="p">:</span><span class="mi">3000</span><span class="p">;</span> <span class="c1"># 이 부분이 동적으로 변경됩니다.</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+    <span class="c1"># ...</span>
+    <span class="kn">location</span> <span class="n">/</span> <span class="p">{</span>
+        <span class="kn">proxy_pass</span> <span class="s">http://nextjs_app</span><span class="p">;</span>
+        <span class="c1"># ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="docker-compose-exec-nginx-nginx--s-reload를-통한-nginx-재로드"><code class="language-plaintext highlighter-rouge">docker compose exec nginx nginx -s reload</code>를 통한 Nginx 재로드</h4>
+
+<p><code class="language-plaintext highlighter-rouge">nginx.conf</code> 파일이 수정된 후, Nginx가 변경된 설정을 적용하도록 재로드해야 한다. 이때 Nginx 서비스를 중단하지 않고 설정을 재로드하는 것이 무중단 배포의 핵심이 된다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (Deploy to Server stage 일부)</span>
+                                <span class="n">echo</span> <span class="s2">"--- (4/4) Reload Nginx Configuration ---"</span>
+                                <span class="n">docker</span> <span class="n">compose</span> <span class="o">--</span><span class="n">env</span><span class="o">-</span><span class="n">file</span> <span class="n">init</span><span class="o">.</span><span class="na">env</span> <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="na">yml</span> <span class="n">exec</span> <span class="o">-</span><span class="n">T</span> <span class="n">nginx</span> <span class="n">nginx</span> <span class="o">-</span><span class="n">s</span> <span class="n">reload</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">docker compose exec nginx</code></strong>: <code class="language-plaintext highlighter-rouge">nginx</code> 서비스 컨테이너 내부에서 명령어를 실행한다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">nginx -s reload</code></strong>: Nginx에게 현재 실행 중인 서비스를 중단하지 않고 설정 파일을 다시 읽어들이도록 지시한다. 이는 새로운 연결은 변경된 설정으로 처리하고, 기존 연결은 현재 설정으로 계속 처리하도록 하여 서비스 중단 없이 설정을 적용할 수 있게 만든다.</li>
+</ul>
+
+<p>이 과정을 통해 사용자 트래픽은 새로운 버전의 애플리케이션이 실행되는 환경으로 즉시 전환되며, 이전 버전의 애플리케이션은 여전히 실행 중인 상태로 유지된다. 이는 문제가 발생할 경우 빠른 롤백을 가능하게 하는 안전망 역할을 한다.</p>
+
+<h3 id="롤백-전략-rollback-strategy">롤백 전략 (Rollback Strategy)</h3>
+
+<p>Blue/Green 배포는 롤백이 매우 용이하다는 강력한 장점을 가지기에 무중단 배포의 여러 전략 중 이번 프로젝트의 CICD 의 핵심이라고 할 수 있다. 새로운 버전 배포 후 심각한 문제가 발견될 경우, 즉시 이전 버전으로 트래픽을 되돌릴 수 있다.</p>
+
+<h4 id="bluegreen-배포에서의-롤백-용이성">Blue/Green 배포에서의 롤백 용이성</h4>
+
+<ul>
+  <li><strong>즉각적인 전환</strong>: 새로운 환경(Green)으로 트래픽을 전환한 후 문제가 발생하면, Nginx 설정을 다시 변경하여 이전 환경(Blue)으로 트래픽을 즉시 되돌릴 수 있다. 이 과정은 <code class="language-plaintext highlighter-rouge">sed</code> 명령어를 반대로 실행하거나, conf 를 직접 수정 후 Nginx를 재로드하는 것만으로 가능해진다.</li>
+  <li><strong>이전 환경 유지</strong>: 이전 버전의 애플리케이션이 실행되던 환경은 트래픽 전환 후에도 현재는 유지되도록 해두었다. 이는 롤백 시 별도의 배포 과정 없이 즉시 서비스를 복구할 수 있도록 한다.</li>
+</ul>
+
+<h4 id="명시적인-롤백-단계-또는-스크립트의-필요성">명시적인 롤백 단계 또는 스크립트의 필요성</h4>
+
+<p><code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>은, 현재는 명시적인 롤백 단계를 포함하고 있지 않다. 프로젝트의 진행, 기존 Jenkins 의 작업을 그대로 활용해서 만들면 되기 때문이다. 향후에 적용이 될 예정이다.</p>
+
+<ul>
+  <li><strong>자동 롤백</strong>: <code class="language-plaintext highlighter-rouge">post { failure { ... } }</code> 블록 내에서 배포 실패 시 자동으로 Nginx 설정을 이전 상태로 되돌리고 Nginx를 재로드하는 스크립트를 추가할 수 있다.</li>
+  <li><strong>수동 롤백 스크립트</strong>: Jenkins Job으로 별도의 롤백 스크립트를 생성하여, 특정 빌드 번호로 Nginx 트래픽을 전환할 수 있도록 할 수 있다. 이는 긴급 상황 발생 시 운영자가 빠르게 대응할 수 있도록 한다.</li>
+</ul>
+
+<h3 id="discord-알림-discord-notification">Discord 알림 (Discord Notification)</h3>
+
+<p>CI/CD 파이프라인에서 빌드 및 배포 과정의 성공 또는 실패 여부를 실시간으로 파악하는 것은 매우 중요하기에 현재는 아주 기본적인 로깅 체계를 구축했다. Jenkins는 다양한 알림 채널을 지원하지만, 현재 개발 중에 가장 많이 사용하는 Discord 를 활용한 실시간 알림 체계를 구축했고, <code class="language-plaintext highlighter-rouge">project-mini-frontend/jenkinsfile</code>은 빌드 결과에 따라 Discord 채널에 알림을 보내는 기능이 동작한다.</p>
+
+<h4 id="curl--x-post--h-content-type-applicationjson---data-message-discord_url-명령어-분석"><code class="language-plaintext highlighter-rouge">curl -X POST -H 'Content-Type: application/json' --data '${message}' ${DISCORD_URL}</code> 명령어 분석</h4>
+
+<p><code class="language-plaintext highlighter-rouge">Jenkinsfile</code>의 <code class="language-plaintext highlighter-rouge">post</code> 블록 내에서 <code class="language-plaintext highlighter-rouge">curl</code> 명령어를 사용하여 Discord 웹훅(Webhook)으로 알림 메시지를 전송한다. 이 명령어는 HTTP POST 요청을 통해 JSON 형식의 데이터를 Discord 웹훅 URL로 보낸다.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// project-mini-frontend/jenkinsfile (post success 블록 일부)</span>
+        <span class="n">success</span> <span class="o">{</span>
+            <span class="n">echo</span> <span class="s2">"Deployment succeeded. Now send a discord notification."</span>
+            <span class="n">script</span> <span class="o">{</span>
+                <span class="n">withCredentials</span><span class="o">([</span><span class="n">string</span><span class="o">(</span><span class="nl">credentialsId:</span> <span class="n">DISCORD_CREDS_ID</span><span class="o">,</span> <span class="nl">variable:</span> <span class="s1">'DISCORD_URL'</span><span class="o">)])</span> <span class="o">{</span>
+                    <span class="kt">def</span> <span class="n">message</span> <span class="o">=</span> <span class="s2">"{\"content\": \"🚀 Build Process is successfully finished : **[${env.JOB_NAME}]** - **#${env.BUILD_NUMBER}**\"}"</span>
+
+                    <span class="n">sh</span> <span class="s2">"curl -X POST -H 'Content-Type: application/json' --data '${message}' ${DISCORD_URL}"</span>
+                <span class="o">}</span>
+
+            <span class="o">}</span>
+
+        <span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">curl -X POST</code></strong>: HTTP POST 메서드를 사용하여 요청을 보낸다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">-H 'Content-Type: application/json'</code></strong>: 요청 헤더(Header)에 <code class="language-plaintext highlighter-rouge">Content-Type</code>을 <code class="language-plaintext highlighter-rouge">application/json</code>으로 지정하여, 보내는 데이터가 JSON 형식임을 명시.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">--data '${message}'</code></strong>: 요청 본문(Body)에 전송할 데이터를 지정한다. 여기서는 <code class="language-plaintext highlighter-rouge">message</code> 변수에 저장된 JSON 문자열을 보낸다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">${DISCORD_URL}</code></strong>: Discord 웹훅 URL입니다. 이 URL은 Jenkins Credentials에 <code class="language-plaintext highlighter-rouge">Secret text</code> 타입으로 저장된 <code class="language-plaintext highlighter-rouge">DISCORD_CREDS_ID</code> 자격 증명을 <code class="language-plaintext highlighter-rouge">withCredentials</code> 블록을 통해 <code class="language-plaintext highlighter-rouge">DISCORD_URL</code> 환경 변수로 주입받아 사용한다. 이는 웹훅 URL과 같은 민감한 정보가 <code class="language-plaintext highlighter-rouge">Jenkinsfile</code>에 직접 노출되는 것을 방지하여 보안을 강화하는 역할이다.</li>
+</ul>
+
+<h4 id="향후-목표">향후 목표</h4>
+
+<p>Jenkins 의 빌드 과정에 대한 report 를 포함, 빌드 과정에서 문제가 발생하지 않고, 하더라도 빠른 대응이 되기 위해 메시지를 단순히 discord로 보내는 것만으로는 한계가 있다. 이에 전문적인 로깅 툴을 연결, 그 툴에 메시지를 보내는 기능을 단계별로 넣어서, 수행하는 작업이나, 향후 들어갈 테스트 등의 항목의 결과들을 공유하도록 수정해볼 생각이다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><summary type="html"><![CDATA[25-10-24 ~ 25-10-27]]></summary></entry><entry><title type="html">TIL - NextJS 무중단 배포 적용</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/23/til-jenkins.html" rel="alternate" type="text/html" title="TIL - NextJS 무중단 배포 적용" /><published>2025-10-23T00:00:00+00:00</published><updated>2025-10-23T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/23/til-jenkins</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/23/til-jenkins.html"><![CDATA[<h2 id="25-10-23-jenkins-무중단-배포-적용">25-10-23 Jenkins 무중단 배포 적용</h2>
 
 <h3 id="1-오늘의-목표">1. 오늘의 목표</h3>
 
@@ -1181,657 +2340,4 @@ blueocean
   </li>
 </ol>
 
-<p>결론적으로 향후 진행할 프로젝트에도 캐싱 전략은 선택이 아닌 필수 요소이다. 그때마다 안전하고 효율적인 Redis 환경을 구축하기 위해, 이번에 정리한 내용들을 표준 체크리스트로 활용하고자 한다. 더 나아가, 향후에는 이러한 보안 설정들을 코드화하여 구성 관리(Configuration Management)의 일부로 포함시키는 것을 목표로 해야겠다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><category term="코딩테스트" /><summary type="html"><![CDATA[Redis, 성능과 편의성 뒤에 숨겨진 보안 위협과 대응 방안]]></summary></entry><entry><title type="html">Ubuntu 서버 설정 할 때 snap 사용 시 주의해야하는 이유는?</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/00-snap-package-management-with-issue.html" rel="alternate" type="text/html" title="Ubuntu 서버 설정 할 때 snap 사용 시 주의해야하는 이유는?" /><published>2025-10-09T00:00:00+00:00</published><updated>2025-10-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/00-snap-package-management-with-issue</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/10/09/00-snap-package-management-with-issue.html"><![CDATA[<h2 id="ubuntu에서-docker를-sudo-없이-사용하려다-발견한-snap-설치의-함정">Ubuntu에서 Docker를 sudo 없이 사용하려다 발견한 snap 설치의 함정</h2>
-
-<h3 id="문제-상황">문제 상황</h3>
-
-<p>Project 를 위하여 Ubuntu 서버 머신을 한대 구했다. Geekom의 A5 7530U 칩셋 탑재 제품으로 윈도우 데스크탑은 나쁘지 않으나, 전성비나, 항시 켜놓고 사용 하기 위함, WSL의 번거로움 등을 고려할 때, 온전한 리눅스 전용 머신의 필요성으로 미니 PC 를 한대 구매했다.</p>
-
-<p>Ubuntu 22.04 LTS 기반으로 설치 후, 개발환경 설정, 컨테이너 활용을 위해 Docker 설정까지 끝냈었다. 그리하여 Docker 명령어를 실행할 때마다 <code class="language-plaintext highlighter-rouge">sudo</code>를 입력하는 것이 번거로워, 일반 사용자 계정을 docker 그룹에 추가하려고 했다. 그런데 예상치 못한 문제들이 연쇄적으로 발생했는데…</p>
-
-<h3 id="발견한-문제들">발견한 문제들</h3>
-
-<h4 id="1-docker-그룹이-존재하지-않음">1. docker 그룹이 존재하지 않음</h4>
-
-<p>일반적으로 Docker를 설치하면 자동으로 생성되는 <code class="language-plaintext highlighter-rouge">docker</code> 그룹이 시스템에 존재하지 않았다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /etc/group | <span class="nb">grep </span>docker
-<span class="c"># 결과: 아무것도 출력되지 않음</span>
-</code></pre></div></div>
-
-<h4 id="2-systemctl로-docker-서비스를-찾을-수-없음">2. systemctl로 Docker 서비스를 찾을 수 없음</h4>
-
-<p>Docker가 분명 설치되어 있고 실행도 되는데, <code class="language-plaintext highlighter-rouge">systemctl status docker</code> 명령이 작동하지 않았다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nt">--version</span>
-<span class="c"># Docker version 24.x.x 등 정상 출력</span>
-
-systemctl status docker
-<span class="c"># Unit docker.service could not be found.</span>
-</code></pre></div></div>
-
-<h4 id="3-원인-snap으로-설치된-docker">3. 원인: snap으로 설치된 Docker</h4>
-
-<p>Docker 그룹이 설정이 안되는 경우는 공식 가이드 문서에서 볼 때 수동 설치만 해주면 되는 것이었다. <a href="https://docs.docker.com/engine/install/linux-postinstall/">링크</a>
-단, 다른 문제들에 대해서는 찾아본 결과 snap 패키지였던 것이 문제의 근본 원인이었다. (이번엔 편한게 해보겠다고 스토어로 GUI 로 설치했더니만…)</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snap list | <span class="nb">grep </span>docker
-<span class="c"># docker    xx.x.x    xxxx    latest/stable    canonical    -</span>
-</code></pre></div></div>
-
-<h3 id="snap-vs-apt-무엇이-다른가">snap vs apt: 무엇이 다른가?</h3>
-
-<h4 id="snap의-특징">snap의 특징</h4>
-
-<p>snap은 Ubuntu에서 개발한 독립적인 패키지 시스템으로, 다음과 같은 특징이 있다:</p>
-
-<ul>
-  <li><strong>완전한 격리(confinement)</strong>: 앱을 샌드박스 환경에서 실행</li>
-  <li><strong>자체 포함(self-contained)</strong>: 모든 의존성을 패키지 내부에 포함</li>
-  <li><strong>보안 우선</strong>: 시스템 리소스 접근이 제한적</li>
-  <li><strong>자동 업데이트</strong>: 백그라운드에서 자동으로 업데이트</li>
-</ul>
-
-<h4 id="apt의-특징">apt의 특징</h4>
-
-<p>전통적인 패키지 관리 시스템으로:</p>
-
-<ul>
-  <li><strong>시스템 통합</strong>: 시스템 라이브러리를 직접 공유</li>
-  <li><strong>완전한 접근</strong>: 시스템 리소스에 제약 없이 접근</li>
-  <li><strong>가벼움</strong>: 공유 라이브러리 사용으로 용량 절약</li>
-  <li><strong>수동 관리</strong>: 사용자가 직접 업데이트 제어</li>
-</ul>
-
-<hr />
-<h4 id="docker에는-왜-apt가-적합한가">Docker에는 왜 apt가 적합한가?</h4>
-
-<p>결과적으로 차이점을 고려해본 결과  Docker는 시스템 레벨에서 동작하는 도구이므로:</p>
-
-<ul>
-  <li>호스트 파일시스템에 광범위하게 접근 필요</li>
-  <li>네트워크, 프로세스, 저장소 등 시스템 리소스 제어 필요</li>
-  <li>snap의 격리 정책이 오히려 제약으로 작용</li>
-</ul>
-
-<p>일반 사용자에게는 snap이 편리하고 안전하지만, <strong>서버 개발 도구로는 apt 방식이 훨씬 적합하다는 결론을 내릴 수 있었다</strong>.</p>
-
-<h3 id="해결-방법-snap-제거-후-apt로-재설치">해결 방법: snap 제거 후 apt로 재설치</h3>
-
-<h4 id="1-기존-snap-docker-제거">1. 기존 snap Docker 제거</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>snap remove docker
-</code></pre></div></div>
-
-<h4 id="2-기존-apt-docker-패키지-제거-있을-경우-대비">2. 기존 apt Docker 패키지 제거 (있을 경우 대비)</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt remove docker docker-engine docker.io containerd runc
-</code></pre></div></div>
-
-<h4 id="3-docker-공식-저장소에서-설치">3. Docker 공식 저장소에서 설치</h4>
-
-<p><strong>필수 패키지 설치:</strong></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
-<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> ca-certificates curl gnupg lsb-release
-</code></pre></div></div>
-
-<p><strong>Docker 공식 GPG 키 추가:</strong></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo install</span> <span class="nt">-m</span> 0755 <span class="nt">-d</span> /etc/apt/keyrings
-curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /etc/apt/keyrings/docker.gpg
-<span class="nb">sudo chmod </span>a+r /etc/apt/keyrings/docker.gpg
-</code></pre></div></div>
-
-<p><strong>Docker 저장소 추가:</strong></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="se">\</span>
-  <span class="s2">"deb [arch=</span><span class="si">$(</span>dpkg <span class="nt">--print-architecture</span><span class="si">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu </span><span class="se">\</span><span class="s2">
-  </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null
-</code></pre></div></div>
-
-<p><strong>Docker 설치:</strong></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
-<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-</code></pre></div></div>
-
-<h4 id="4-일반-사용자로-docker-사용-설정">4. 일반 사용자로 Docker 사용 설정</h4>
-
-<p><strong>docker 그룹에 사용자 추가:</strong></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker <span class="nv">$USER</span>
-</code></pre></div></div>
-
-<p><strong>변경사항 적용:</strong></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>newgrp docker
-<span class="c"># 또는 로그아웃 후 재로그인</span>
-</code></pre></div></div>
-
-<p><strong>설치 확인:</strong></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nt">--version</span>
-docker run hello-world
-</code></pre></div></div>
-
-<h3 id="주의사항">주의사항</h3>
-
-<h4 id="보안-고려사항">보안 고려사항</h4>
-
-<p>docker 그룹에 속한 사용자는 <strong>root 권한과 동등한 접근</strong>이 가능하다. 이는 다음을 의미한다:</p>
-
-<ul>
-  <li>컨테이너를 통해 호스트 시스템의 모든 파일에 접근 가능</li>
-  <li>권한 상승(privilege escalation) 위험 존재</li>
-  <li>보안이 중요한 환경에서는 신중히 고려 필요</li>
-</ul>
-
-<h4 id="데이터-백업">데이터 백업</h4>
-
-<p>snap에서 apt로 전환 시 기존 데이터가 삭제된다:</p>
-
-<ul>
-  <li>snap Docker 컨테이너 및 이미지: 모두 삭제됨</li>
-  <li>볼륨 데이터 경로: <code class="language-plaintext highlighter-rouge">/var/snap/docker/</code>에서 <code class="language-plaintext highlighter-rouge">/var/lib/docker/</code>로 변경</li>
-  <li>중요한 데이터가 있다면 사전에 <code class="language-plaintext highlighter-rouge">docker save</code>, <code class="language-plaintext highlighter-rouge">docker export</code> 등으로 백업 필요</li>
-</ul>
-
-<h3 id="참고-자료">참고 자료</h3>
-
-<ul>
-  <li><a href="https://docs.docker.com/engine/install/linux-postinstall/">Docker 공식 문서 - Linux 설치 후 설정</a></li>
-  <li><a href="https://docs.docker.com/engine/install/ubuntu/">Docker 공식 문서 - Ubuntu 설치</a></li>
-  <li><a href="https://docs.docker.com/engine/security/rootless/">Docker 공식 문서 - Rootless 모드</a></li>
-</ul>
-
-<h3 id="결론">결론</h3>
-
-<p>GUI를 통한 편리한 설치가 항상 최선은 아니네 싶다. 특히 개발 도구의 경우, 패키지 관리 방식에 따라 동작 방식과 시스템 통합 수준이 크게 달라진다. Docker처럼 시스템 레벨 접근이 필요한 도구는 snap보다 전통적인 apt 방식이 더 적합하며, 이를 통해 불필요한 제약 없이, 최적화된 개발 환경을 구축할 수 있다.</p>
-
-<p>물론 일반 사용에선 전혀 그렇지 않다고 생각도 든다. 왜냐면 리눅스 시스템의 라이브러리의 의존성 문제로 업데이트를 잘못하면 큰일나는 경우를 몇 번 경험했고(…) 무지성하게 구글에서 명령어 긁어다가, install 박아버리는 순간 지옥이 펼쳐지는 경우를 생각한다면(…). 의존성을 확실하게 관리하고 마치 Docker 처럼 정확하게 컨테이너화 시키는게 확실히 이유가 있어 보였다. 이러한 지점에서 Ubuntu 가 일반 소비자용의 철학을 가진 OS 라는 점을, 새삼 느끼게 만든다. (근데 프로세스까지 독립적으로 관리하게 하는 건 좀…)</p>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="DevOps" /><category term="Docker" /><category term="Linux" /><summary type="html"><![CDATA[Ubuntu에서 Docker를 sudo 없이 사용하려다 발견한 snap 설치의 함정]]></summary></entry><entry><title type="html">Obsidian + Copilot - 나만의 글쓰기 Agent를 만들어보자</title><link href="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/10/09/01-obsidian-ai-copilot.html" rel="alternate" type="text/html" title="Obsidian + Copilot - 나만의 글쓰기 Agent를 만들어보자" /><published>2025-10-09T00:00:00+00:00</published><updated>2025-10-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/10/09/01-obsidian-ai-copilot</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/10/09/01-obsidian-ai-copilot.html"><![CDATA[<h2 id="obsidian--copilot---나만의-글쓰기-agent를-만들어보자">Obsidian + Copilot - 나만의 글쓰기 Agent를 만들어보자</h2>
-<h3 id="글쓰기의-길은-멀고도-험하다">글쓰기의 길은 멀고도 험하다</h3>
-
-<p>기술 블로그를 써라.</p>
-
-<p>프로젝트의 후기나, 느낀 점. 기술의 효용성이나 고민한 과정을 써라</p>
-
-<p>개발자로 살아가는 이상, 노하우, 기술에 대한 이해를 표현하는 것이 프로그램의 ‘질’ 또는 ‘실력’을 결정한다는 개발 분야의 공통의 법칙은 언제나 우릴 괴롭힌다.</p>
-
-<p>이에 끊임없이 글을 적어둬야 한다는 고통과 노이로제에 시달린다.</p>
-
-<p>나 역시 글쓰기를 완전 잘한다거나 글을 뽑아내는 기계도 아니다. 그나마 글을 쓰는걸 좋아하는 편이라지만, 그럼에도 해야할 일 산더미인데, 언제 적냐.. 라는 말이 매번 튀어나온다. 글쓰기가 가장 시간을 많이 쓴다는 사실은 달라지지 않는다.</p>
-
-<p>그러다가 최소 2-3주 걸릴 만한 미니 프로젝트, Obsidian + Copilot + gemini 의 에이전트 만들기를 진행해 보았다. 그리고 그걸 적용한 이 글. 이 글을 단 3일 만에 마무리 되었다면 믿겠는가?</p>
-
-<p>AI를 활용해서 글을 대신 파바박, 하루 만에 뚝딱 하고 써주진 않지만… 그럼에도 이번 미니 프로젝트를 통해, 글쓰기, 학습에서 정말 도움이 되는 Agent 생성에 도전 그리고 나름의 결과를 만들어냈다.</p>
-
-<p><strong>개인적으로 풀어내는 이 후기, 함께 적용 해본다면, 정말 괜찮게, 도움이 되는 글쓰기 보조 에이전트를 만들 수 있지 않을까?</strong> 조심스레 이야기를 시작해보고자 한다.</p>
-
-<h2 id="본론">본론</h2>
-
-<h3 id="시작은-obsidian-그리고-copilot">시작은 Obsidian 그리고 Copilot</h3>
-<p>Notion 은 많이들 쓸 것이다. 언제 어디서든, 그리고 어떤 장비든 웹 기반의 Notion은 데이터를 저장하기에 적절하다고 생각하는 이들이 많다.</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-003.png" alt="" /></p>
-
-<p>하지만 한때 이를 진지하게 써본 입장에서, Obsidian을 주력 정보 저장, 글쓰기 도구로 쓰게되었다. 이유는 다음과 같다.</p>
-
-<ol>
-  <li>Notion 업데이트 시 잔버그가 수시로 발생하는데, 데이터 영역까지 함께 문제가 되는 경우가 발생함.(데이터 삭제도 발생한다.)</li>
-  <li>한글 유저는 영어보다 특히나 버그 발생률이 높다</li>
-  <li>문서 양이 많아지면, 유료 계정임에도 검색 문제, 버벅거림 문제가 발생한다</li>
-</ol>
-
-<p>요즘은 많이 나아졌다고 하지만, 한 번쯤 API 문서 같은거 만들어두었다가 날려먹어보면, Notion은 쳐다보지도 않게 된다. 그냥 포트폴리오 를 위한 간단 공유용 정도면 모를까.</p>
-
-<p>Obsidian은 가벼우며, 검색, 태깅 등 기본적인 기능이 강력하다. 특히나 퍼포먼스가 매우 훌륭하다. 플러그인도 제공하기 때문에, 이를 활용하면 Notion 그 이상의 확장성, 사용성, 글쓰는 데 편리함을 제공해준다. 그리고 운명 같은 날이 찾아왔으니… 바로 <code class="language-plaintext highlighter-rouge">Copilot</code> 이란 플러그인을 발견했을 때였다.</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-004.png" alt="" /></p>
-
-<p>코파일럿. 누가보면 윈도우에서 만든 AI 인줄알 것 같다. 이 플러그인은 단어 의미대로의 윈도우의 AI와는 별도의 플러그인이다. 당당하게 유료 결제 버전도 존재하는데, 그에 대해선 나중에 이야기 하려고 하고, 지금은 이 녀석이 뭔가에 대해 설명해주려고 한다.</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-005.png" alt="" /></p>
-
-<h3 id="ai-좀더-통합-좀더-효율적이게-분신-만들기">AI, 좀더 통합, 좀더 효율적이게.. 분신 만들기?</h3>
-
-<p>AI 가 말 하나는 기똥차게 하고, 이미 VSC 나 각종 IDE 는 통합이 이루어졌다. 그런데 이 Copilot 은 글쓰기 도구인 Obsidian을 그렇게 만들어주는 프로그램이다. 설치 방법은 간단하다. 로컬 LLM 이나, api 키를 활용해 연결이 된다. 만약 API 발급이 궁금하면 하단의 글을 참고하면 좋다.</p>
-
-<p>연결하고, 사용을 해보니 순간 머릿속에 스치는 게 있었다.</p>
-
-<blockquote>
-  <p>“이 정도 통합이면… 나 대신 글쓰기 해줄 수 있지 않을까?”</p>
-</blockquote>
-
-<p>본론으로 돌아와서 글쓰기. 생각해보면 학습, 개발을 하다보면 글쓸 자료는 넘쳐났다. 지금까지는 gemini + 기타 다른 ai  이런 식으로 하여 사용도 해보았고. gemini 의 세부 기능을 활용한다거나 gemini-cli 라는 프로그램으로 내 맥북 내부에서 llm 을 구동해 자료를 취합, 글을 써보기도 해보았다.</p>
-
-<p>하지만 이런 방식이  대중화되거나 입소문을 많이 타진 않았다. 왜그런가? 우선, 다양한 자료, 글감은 여기저기 흩뿌려져 있는 경우가 있다. 설치도 복잡하고, 오류도 있다. 뿐만 아니라, 정리를 해서 어딘가에 모아서 글감들을 정리해도,  ‘나답게’, ‘내 냄새’ 가 나는 글로 만들 수 있냐! 라고 하면 그렇지 않기 때문에, 실상 내가 알고 있는 것들을 모아서 글을 쓰는 것과 큰 차이가 없는 것이다.</p>
-
-<p>그러는 와중에 Copilot 의 기능으로 <code class="language-plaintext highlighter-rouge">Command</code>라는 기능을 발견하였다. 단순히 LLM 을 연결만 해주는게 아니라, 직접 명령을 적어서 매크로처럼 쓸 수 있는데, 심지어 프롬프트로 전역 설정하는 것들도 있는 것이 아닌가?</p>
-
-<p><strong>그리고 아까 전 상황. 그렇다. 이정도면 나의 문체를 그대로 문서화, 프롬프트화 시켜서 등록을 해두면, ‘딸깍’ 하고 글을 써줄수 있지 않을까? 이 생각에 무릎을 탁친 나는 도전을 해보기로 하였다.</strong></p>
-
-<h4 id="나를-분석해보자-how">나를 분석해보자 How?</h4>
-
-<p>우선, 첫 시작은 나를 분석하는 것이다. 내가 누굴까? 글로 표현되는 나를 AI 가 모방하는게 우선이라고 생각했다. 나는 가능하면 나의 주관적 판단이 들어가는 것은 좋지 않다고 생각했다. 나의 주관은 나에 대한 여러 측면에 대해 ‘과소평가’ 와 ‘과대평가’가 함께 공존하고 있다고 생각하기 때문이다. 그러니 나에 대한 긍정 평가도 부정 평가도 아닌 어딘가의 제 3자 관점에서 분석을 하는 것이 가장 적절하다고 생각했다.</p>
-
-<p>그런데 이제는 간단하다. 내가 쓴 글들을 다 가져와서 분석을 시키던가, 내 블로그에 AI 가 알아서 분석해라고 하는게 가능하다. 오히려 도구를 뭘 쓸지만 고민하면 되었다.  이에 Claude 와 Gemini 의 <code class="language-plaintext highlighter-rouge">deep research</code> 기능으로, 나의 글, 나의 문체에 대한 분석을 각각 요청했다.</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-006.png" alt="" />
-<img src="/assets/images/posts/2025-10/2025-10-09-007.png" alt="" /></p>
-
-<blockquote>
-  <p>💡 핵심은 자신에 대한 분석을 준비하는 것이다. 방법의 제약은 없다. AI 를 활용해, 자신을 표현하는 자료들을 최대한 보여주면서 분석을 요청해라.</p>
-</blockquote>
-
-<h4 id="나의-분신을-등록해보았다">나의 분신을 등록해보았다.</h4>
-
-<p>음~ 나의 계획은 완벽해! 이런 착각을 하며 Claude 와 Gemini 는 열심히 생각을, GPU가 녹고 있음을 느끼고 있었다. 이제 내가 퇴고만 해주면 되는게 아닌가! 새삼 AI 의 능력은 믿어 의심치 않고 있었고, 개발까지 가지 않아도 해결 될 수 있다는 이 행복한 시대를 살고 있음에 하늘을 향해 감사인사를 하면서, 기다렸다.</p>
-
-<p>10분이 채 안되어, 결론은 순식간에 나왔고, 그 결과가 다음과 같았다.</p>
-
-<pre><code class="language-plain"># gemini의 정확한 모사 버전
-### Persona
-당신은 '성실한 기술 기록자(Diligent Technical Archivist)'입니다. 당신의 주된 목표는 커리어 발전을 위해 스스로 학습한 기술 내용을 미래의 자신이 다시 참고할 수 있도록 정확하고 체계적으로 기록하는 것입니다. 당신의 글은 타인을 가르치기 위한 것이 아니라, 스스로의 이해를 완성하고 검증하기 위한 학습 과정의 산물입니다.
-
-### Core Philosophy
-모든 내용은 '촘촘한 학습'과 '치밀한 정리'라는 핵심 철학을 따라야 합니다. 피상적인 요약 대신, 공식 문서나 신뢰할 수 있는 자료를 기반으로 한 깊이 있고 상세한 내용을 우선시합니다. 정확성과 완전성이 가장 중요한 가치이며, 모든 기술적 설명은 검증 가능해야 합니다.
-
-### Voice and Tone
-- **어조**: 체계적이고, 객관적이며, 사실에 기반한 약간의 격식체를 사용합니다.
-- **감정 배제**: 과장, 유머, 지나치게 친근한 말투는 피합니다.
-- **목적 명시**: 글의 목적이 학습과 기록임을 명확히 하되, 독자를 가르치려는 듯한 계몽적인 어조는 사용하지 않습니다.
-
-### Content Generation Modes
-당신은 아래 두 가지 모드 중 하나로 콘텐츠를 생성해야 합니다. 각 모드는 목적과 형식 면에서 명확히 구분됩니다.
-
-#### Mode 1: 심층 탐구 학습 로그 (Deep Dive Study Log)
-- **목적**: Kubernetes, Docker, CS 기초 등 근본적이고 방대한 주제를 체계적으로 학습하고 정리합니다.
-- **형식**:
-    - 예상 읽기 시간 15~30분 분량의 긴 글을 작성합니다.
-    - 공식 문서를 번역하거나 핵심 내용을 재구성하는 방식으로 정보를 전달합니다.
-    - 복잡한 시스템을 구성 요소별로 나누어 상세히 설명합니다.
-    - 제목은 '[기술명] - [세부 주제]' 형식을 따릅니다.
-    - 논리적 흐름에 따라 명확한 소제목으로 내용을 구조화합니다.
-
-#### Mode 2: 기술 메모 (Technical Memo)
-- **목적**: 특정 도구 사용법, 문제 해결 과정, 설정 방법 등 구체적이고 실용적인 정보를 빠르게 기록합니다.
-- **형식**:
-    - 예상 읽기 시간 2~5분 분량의 짧고 간결한 글을 작성합니다.
-    - '문제 상황 -&gt; 해결 과정 -&gt; 결과'의 구조를 명확히 합니다.
-    - 필요한 경우 코드 스니펫, 설정 파일, 명령어 등을 정확히 포함합니다.
-    - 제목은 'memo - [문제 또는 주제]'와 같이 직관적으로 작성합니다.
-
-### Formatting and Structure
-- **제목**: 기능적이고 내용을 명확히 설명하는 제목을 사용합니다.
-- **마크다운**: 헤딩(##, ###), 목록(리스트), 코드 블록을 적극적으로 사용하여 가독성을 높입니다.
-- **용어 사용**: 기술 용어는 한국어와 영어를 자연스럽게 혼용합니다. (예: 쿠버네티스 컨트롤 플레인(Control Plane))
-
-### Task
-이제 위의 모든 규칙을 준수하여 다음 요청을 수행해 주십시오:
-[여기에 구체적인 콘텐츠 생성 요청 입력]
-</code></pre>
-
-<pre><code class="language-plain"># claude의 정확한 모사 버전
-Paul2021-R 스타일로 글을 작성해주세요:
-
-[문체 지침]
-- 삼박자 수식어구로 리듬감 조성 (예: "종합적으로, 효율적으로, 효과적으로")
-- 격식체 기본 + "...!" 감탄부호로 친근함 표현
-- 영어 기술용어와 한국어 개념어 자연스럽게 혼용
-- 불렛포인트와 계층적 구조로 체계적 정보 정리
-
-[어조와 관점]
-- 겸손하면서도 전문적인 태도 유지
-- 솔직한 자기성찰과 현실적 사고
-- 비전공자/학습자 관점에서의 공감과 조언
-- 과정 중심적 서술 (결과보다는 시행착오 과정 중시)
-
-[표현 스타일]
-- 구체적 수치와 날짜로 생생함 표현
-- 게임/레벨링 비유로 성장 과정 설명
-- "하루 하루", "항상 고민하고, 궁금해하며" 같은 반복 패턴
-- 실패 인정 후 교훈 도출하는 구조
-</code></pre>
-
-<p>내용은 읽으면 읽을수록 찰떡 같았다. 다소의 차이점은 Gemini의 경우 철학, 그리고 Mode 라는 식으로 내 글의 종류에 따라 다르게 접근하는 방법을 포함하여 프롬프트를 만들어주었다.</p>
-
-<p>Claude 는 좀더 중립적이지만, 글의 형태를 따라하는 스타일 가이드 형태로 만들어준 것이 눈에 들어왔다. 그렇게 만들어진 내용들은 서로 특징은 다르지만 분명하게 ‘나’를 담고 있었다.</p>
-
-<p>그렇게 생각하고 보니 하는 김에 이왕이면 글을 좀더 보완한다면 어떻게 하면 좋을까? 라는 생각도 들었다.  그렇기에 내 글의 아쉬운 점을 보완하는 프롬프트까지 만들어달라고 하였다.</p>
-
-<pre><code class="language-plain"># gemini - 문체 개선 요청 버전 
-### Persona
-당신은 '전문가 멘토이자 성실한 기술 기록자(Expert Mentor and Diligent Archivist)'입니다. 당신은 자신의 심도 깊은 학습 과정을 기록함과 동시에, 당신과 비슷한 길을 걷는 다른 엔지니어들에게 의도적으로 명확하고 유용한 가이드를 제공합니다. 당신의 글은 개인적인 기록이자, 가치 있는 공유 자산입니다.
-
-### Audience Awareness
-당신의 글을 읽는 독자는 당신과 같이 똑똑한 엔지니어이지만, 당신과 동일한 사전 지식이나 맥락을 가지고 있지 않을 수 있다고 가정하십시오. 따라서 '무엇(what)'을 설명하기 전에 항상 '왜(why)'를 먼저 설명하여 동기를 부여하고 이해를 도와야 합니다.
-
-### Core Philosophy
-'촘촘한 학습'과 '치밀한 정리'의 원칙을 지키되, 이를 '명확한 전달'이라는 가치와 결합합니다. 기술적 정확성과 깊이를 유지하면서도, 독자가 개념을 직관적으로 이해할 수 있도록 돕는 것이 중요합니다.
-
-### Narrative and Contextual Framing
-모든 게시물은 반드시 다음 세 가지 구조적 요소를 포함해야 합니다.
-1.  **도입부 - 맥락 설정 (Opening Context)**: 글의 시작 부분에 이 주제를 왜 지금 다루는지, 이것이 당신의 학습 여정에서 어떤 위치에 있는지를 1~2 문단으로 설명합니다.
-2.  **본문 - 기술적 설명**: 핵심 기술 내용을 정확하고 상세하게 설명합니다.
-3.  **결론부 - 개인적 종합 (Closing Synthesis)**: 글을 마무리하며, 이번 학습을 통해 얻은 핵심적인 깨달음, 다른 기술과의 연결점, 또는 개인적인 관점을 요약하여 제시합니다.
-
-### Engagement and Readability Elements
-콘텐츠 생성 시, 다음 요소들을 능동적으로 통합하여 가독성과 몰입도를 높여야 합니다.
-- **비유 (Analogies)**: 복잡하고 추상적인 개념을 설명할 때, 독자의 직관적인 이해를 돕기 위한 적절한 비유를 포함시키십시오.
-- **핵심 요약 (Key Takeaway)**: 각 중요 섹션이 끝나거나 글 전체의 마지막에, 핵심 내용을 강조하는 인용문(blockquote) 형식의 요약 박스를 추가하십시오.
-- **질문형 소제목 (Interrogative Subheadings)**: "Service의 종류"와 같은 서술형 제목 대신, "쿠버네티스 Service에는 어떤 종류가 있으며, 각각은 언제 사용해야 하는가?"와 같은 질문형 제목을 사용하여 독자의 탐구심을 자극하십시오.
-
-### Formatting and Structure
-- **제목**: 기능적이면서도 독자의 흥미를 끌 수 있는 제목을 사용합니다.
-- **마크다운**: 헤딩, 목록, 코드 블록, 인용문을 효과적으로 사용하여 시각적 계층 구조와 가독성을 극대화합니다.
-- **용어 사용**: 기술 용어는 한국어와 영어를 자연스럽게 혼용합니다.
-
-### Task
-이제 위의 모든 규칙을 준수하여 다음 요청을 수행해 주십시오:
-[여기에 구체적인 콘텐츠 생성 요청 입력]
-</code></pre>
-
-<pre><code class="language-plain"># claude - 문체 개선 요청 버전
-Paul2021-R 스타일로 글을 작성해주세요:
-
-[문체 지침]
-- 삼박자 수식어구로 리듬감 조성 (예: "종합적으로, 효율적으로, 효과적으로")
-- 격식체 기본 + "...!" 감탄부호로 친근함 표현
-- 영어 기술용어와 한국어 개념어 자연스럽게 혼용
-- 불렛포인트와 계층적 구조로 체계적 정보 정리
-
-[어조와 관점]
-- 겸손하면서도 전문적인 태도 유지
-- 솔직한 자기성찰과 현실적 사고
-- 비전공자/학습자 관점에서의 공감과 조언
-- 과정 중심적 서술 (결과보다는 시행착오 과정 중시)
-
-[표현 스타일]
-- 구체적 수치와 날짜로 생생함 표현
-- 게임/레벨링 비유로 성장 과정 설명
-- "하루 하루", "항상 고민하고, 궁금해하며" 같은 반복 패턴
-- 실패 인정 후 교훈 도출하는 구조
-</code></pre>
-
-<p>마지막으로 Gemini 와 Claude가 서로 다른 시각. 다른 형태의 프롬프트이니, 이걸 합치면 서로 부족한 부분을 보완하고, 완벽해지지 않을까? 아까 전에 언급했던 제 3의 관점의 완전체가 이것이라 생각했다. 화룡점정.</p>
-
-<p>예전부터 gemini, 구글의 모델은 서비스 차원에서 과도한 긍정성, 아첨이 문제시 되기도 했는데, 그러니 서로 다른 관점을 엮거나 합친다면 얼마나 좋을까? 두 모델의 차이를 포함하여 온전한 프롬프트, 강력한 프롬프트를 상상했다. 머릿속에선 이미 나를 대신할 새로운 분신 1호의 탄생에 종이 울리고 있었다. 결과물을 만들 때였다.</p>
-
-<h3 id="context-engineering">Context Engineering</h3>
-<h4 id="-뭔가-이상하다--결과물의-상태가-">🤔 뭔가 이상하다 : 결과물의 상태가 ?</h4>
-
-<p>나는 눈을 의심했다. 정리하고, 프롬프트를 등록하고, 데모 글을 작성해보기 위해 자료를 준비했다. 자동화 이전, 상당한 공을 드렸음에도 결과적으로 AI 가 뽑아낸 글은 뭔가 이상하다고 느꼈다.</p>
-
-<p>분명히 나를 분석한 프롬프트고, 심지어 복합적인 시각을 녹이고자 AI 두개의, 다른 시각을 합쳐 만든 완벽한 프롬프트였다. 나를 정확하게 표현한 버전, 내 개선 포인트를 추가로 담은 버전… 온갖 노력을 다 했는데 너무 아쉬운 글들 뿐이지 않은가?</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-008.png" alt="" /></p>
-
-<p>글의 퀄리티는 내가 예상했던 수준에 미치지 못하는게 보였다. 이젠 에러 분석이 필요한 시점이었다. 내가 준비한 프롬프트는 다음과 같은 종류로 구성 되어 있었다.</p>
-
-<blockquote>
-  <ul>
-    <li>Gemini 분석의 저자의 문체를 복사한 ‘정확도’ 버전</li>
-    <li>Gemini 분석의 저자의 문체에서 개선사항을 포함한 ‘개선’ 버전</li>
-    <li>Claude 분석의 저자의 문체를 복사한 ‘정확도’ 버전</li>
-    <li>Claude 분석의 문체에서 개선사항을 포함한 ‘개선’ 버전</li>
-  </ul>
-</blockquote>
-
-<p>이 버전들을 그냥 쓴게 아니라 언급한 바 Gemini 와 Claude 에게 다시 양측 자료를 제공해주면서, 합쳐진 최종 버전을 만들라고 했었다. 즉 최종 프롬프트는 다음과 같다.</p>
-
-<ol>
-  <li>Gemini 정확도 버전 + Claude 정확도 버전 =&gt; Gemini, Claude 각각 합치기를 요청
-    <ul>
-      <li>Gemini 정확도 버전</li>
-      <li>Claude 정확도 버전</li>
-    </ul>
-  </li>
-  <li>Gemini 개선 버전 + Claude 개선 버전 =&gt; Gemini, Claude 각각 합치기를 요청
-    <ul>
-      <li>Gemini 개선 버전</li>
-      <li>Claude 개선 버전</li>
-    </ul>
-  </li>
-</ol>
-
-<p>이렇게하여 나름 통합적 사고가 가능한 프롬프트가 되었으리라 생각했다. 서로의 분석의 빈틈을 매꿔주리라 생각했던 것이다. 하지만…</p>
-
-<p>gemini 정확도 버전의 프롬프트의 글들의 구성은 간소했다. 요구사항은 잘 따른 편이었으나, 정작 문단 구조가 길고, 줄 글이 되어서 가독성이 좋지 못했다. 단순히 나를 모방했다고 하기엔 특징이 너무 부족한 무미 건조한 글이 되어 있었다.</p>
-
-<p>claude 정확도 버전은 인트로에 나의 철학이란 이름으로 42서울, 비전공자 등 굳이 쓸데없는 도입부를 만들어서 글을 작성하였다. 도입부가 굳이 쓸데없는 사족이 없어도 되는데 특정 단어들에 갇혀진 표현 뿐이었다. 학습, 공유, 자기 성장이 목적인 나에게 필요한 글의 구성은 아니었다.</p>
-
-<p>개선버전의 경우엔 다행이도 글 자체의 느낌은 훨씬 좋았다. 그러나 이상하게 AI 개입이 좀더 많고 나의 의도를 넘어선 내용이 있었다. 나의 글의 특성을 모사하진 못한게 보였다. 오히려 AI의 느낌이 강해져버렸다.</p>
-
-<p>정리하면, 선택지는 없었다. 뭔가 문제는 있었으니, 이젠 글이 문제가 아니라 프롬프트를 제대로 까봐야 한다는 판단이 들었다. 그리하여 이번에야말로 프롬프트를 제대로 읽어 보는 순간 납득이 가는 부분이 있었다.</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-009.png" alt="" /></p>
-
-<p>오리지날 원본 프롬프트들까지 준비하여 비교해본 결과, 구체적으로 차이점은 다음과 같았다.</p>
-
-<ol>
-  <li>Gemini 건 Claude 건 합치길 요청하여 얻은 결과물들은, 막상 양쪽의 모든 특성을 고려한게 아니라, 일정하게 프롬프트 내역이 빠져 있었다.</li>
-  <li>Claude 버전은 공통적으로 기존의 내용에서 상당한 양의 가이드가 사라져 있었고, 스타일 가이드적인 특성이 훨씬 강했던 원본에 비해 Gemini의 철학이나 방향성에 대한 내용이 담겨 있었다.</li>
-  <li>Gemini 버전의 경우 원본이 방향성, 철학, 태도 등이 담겨 있었는데, 이러한 부분의 내용이 사라져 있었다. 오히려 스타일 가이드가 일부만 들어가거나, 아예 빠져 있는 경우가 있었다.</li>
-</ol>
-
-<p>그리하야… 원본 프롬프트를 다시 써봐야 하겠다 는 생각에 원본 프롬프트로 글을 만들어 내는 것까지 진행해보고 난 뒤, 비로소 나는 결론을 내릴 수 있었다.</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-010.png" alt="" /></p>
-
-<p>내용을 읽어본다면 아마 납득이 갈 것이다. 원본 프롬프트들을 합쳐서 만든 프롬프트와는 달랐다. 오히려 더 나스러운 글을 만들어 낸 것이 보였고, 무엇보다 디테일 적 누락이 많은 부분 해소 되어 있었다. 이유가 무엇인가? 한참을 프롬프트와 결과물을 읽어보니, 이유를 알 수 있었다.</p>
-
-<h4 id="프롬프트는">프롬프트는…</h4>
-
-<h5 id="왜-프롬프트는-자동화가-이상하게-되었단-말인가">왜 프롬프트는 자동화가 이상하게 되었단 말인가?</h5>
-
-<p>나는 두 가지 다른 관점의 프롬프트를 분석하게 해놓았고, 그 분석된 프롬프트를 기반으로 종합시켰을 때 프롬프트의 질이 올라갈 거라고 생각했다. 하지만 이는 ‘착각’이었다.</p>
-
-<p>AI 들은 여러 관점의 합을 만들 때, ‘일반화’되어 버린다. 즉 고유한, 독특한 특징이 될 포인트를 잡는게 아니라, 여러 특징의 점을 찍다보니 결국 각이 많아지다 보면 원형이 되어 버리듯 아주 일반적인 내용화 되는 것이었고, 이런 점은 gemini 를 통해 합성한 프롬프트에서 나타났다. Claude 의 합성의 경우엔 오히려 정보가 손실된 경우도 있었고 말이다.</p>
-
-<p>이러한 현상은 일종의 AI의 ‘정보 손실’의 특성이었다. AI 어텐션 메커니즘(Attention Mechanism) 원리를 생각해보면 보다 확실히 알 수 있다. 입력 정보가 많아질 수록, 중요도가 떨어지는 정보는 요약 과정에서  우선순위 면에서 밀리고, 이 과정이 길어지면 데이터는 누락이 될 수 있었다.</p>
-
-<p>특히나 가장 ‘그럴듯 하게’ 다음 단어를 예측하는게 핵심인 AI 입장에서, 통계적으로 오히려 그럴듯한 결과를 내기 위해선 독특하거나, 독창적인 정보를 담기 보단 ‘일반적인’ 문장의 결과를 생성해내는 것이 오히려 더 프로그램 목적에 부합한다.  그 결과 오히려 모두를 포함하길 원한다는 사람의 요구가 명확히 없다면, 이는 곧 정보 손실, 두 내용의 중간 어딘가의 일반화된 내용을 출력하는 길로 이어지는 것이다.</p>
-
-<h5 id="프롬프트는-바운더리를-생성한다">프롬프트는 바운더리를 생성한다.</h5>
-
-<p>너무 당연하다고 생각할지도 모르겠지만, 이 표현이 의미하는 바는 매우 컸다. 예를 들어 키워드를 명료하게 설정한 프롬프트는 일종의 룰이 되어 버린다. ‘42서울 출신 개발자’ 라는 철학을 넣으니, 도입부에 이 키워드를 어떻게든 넣으려고 했다.</p>
-
-<p>키워드가 되면 족쇄가 되어 호흡, 흐름, 무게감을 어떻게 내가 원하는 밸런스에 맞추는게 아니라, 오히려 프롬프트를 바운더리로 잡고, 억지로 그 내용을 도출시키는데 목적이 있는 듯 보였다. 그리고 이러한 특성이 작용하면, 원하는 글이 아닌, 억지스러운 글이 되는 것이었다.</p>
-
-<p>또 한편으로, 프롬프트가 일부 사라져 구멍이 생겼던 프롬프트는, 오히려 AI 의 개입이 많아지면서 창의적인 면이나, 글이 좀더 입체적으로 보였다. 이렇게 되면 결국 본질적으로 나를 모사한다는 것과는 전혀 무관계한게 아니겠는가?</p>
-
-<p>프롬프트가 아주 중요하고, 민감한 영역이기에, 역할의 지정, 할 일의 지정 차원에서는 의미가 있지만, 거기에 특정 키워드가 마치 배경 지식으로 작동 되면, 프롬프트는 일종의 저주같이 되어, 원하는 요구사항을 들어주지 못하는 경우가 발생할 수 있는 것이었다.</p>
-
-<h5 id="전-과정을-맡기는-구조는-한계가-명확하다">전 과정을 맡기는 구조는 한계가 명확하다.</h5>
-
-<p>이후에도 여러번의 테스트를 해보았다. 하지만 결정적으로 ‘한 방에 딸깍’ 이라는 말이 어울리는 느낌의 알아서 잘, 딱 맞는 작업을 해준다? 그건 꿈이었다.</p>
-
-<p>전 프로세스를 세분화 하지 않고, 프롬프트로 무언갈 써내려가게 되면, 위의 1번의 이야기가 펼쳐지는데, 그렇다고 여기서 정말 내 스타일의 커스터마이징 잘된 글을 만드려면 프롬프트가 방대해져야 한다. 그렇다고 AI에게 모두 맡기면 AI는 빈 공간에 대한 내용을 AI 의 설정으로 채운다. 그러면 또 원하는 결과가 안 나오게 되는 여지가 생기는 것이고…</p>
-
-<p>즉, 근본적으로 꼬리에 꼬리를 무는 문제들이 생기기에 ‘전 공정’을 맡긴다는 방식 자체가 오히려 목표 달성에 문제를 일으키는 것이다.</p>
-
-<h5 id="결론-적으로">결론 적으로….</h5>
-
-<p>결론적으로 내가 얻은 핵심 통찰, 이는 AI 를 통해 내가 원하는 혹은 나 그 자체를 모방하는 글을 써내려가려면, 주기적으로 진행 과정을 검토하거나, 수정하지 않으면 안된다. 완전 자율성을 못 부여하는 것은 아니지만, 이는 프로그래밍의 영역으로 고려해야할 것으로 보였다. 나의 예상과 가설은 아주 빠르게 무너져 내린 것이었다.</p>
-
-<h4 id="빠른-판단--어떻게-해야-ai-가-내-글쓰기에-도움을-줄까">빠른 판단!  어떻게 해야 AI 가 내 글쓰기에 도움을 줄까?</h4>
-
-<p>그러나 시간을 더 들이는 것은 옳지 못하다. 해야할 일이 쌓여 있는데, 현재 가능한 선에서의 효율을 찾는 것은 핵심이리라.</p>
-
-<p>그리하여 지금 상황에서 최선은 뭘까? 하고 고민한 결과가 다음과 같았다.</p>
-
-<ul>
-  <li>딸깍 하고 한방에 되는 건 어렵다 =&gt; 오히려 역으로 단계 별로 가속화 시키는게 AI 를 잘 쓸 수 있다.</li>
-  <li>프롬프트는 어떻게 해야 가장 베스트일까? =&gt; <code class="language-plaintext highlighter-rouge">Context</code> 와 <code class="language-plaintext highlighter-rouge">Prompt</code>를 나누자!</li>
-</ul>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-011.png" alt="" /></p>
-
-<p>우선, 프롬프트를 그렇다고 지정하지 않고, 그냥 매번 타이핑 친다는 것은 대단히 힘든 일인건 사실이다. 두고두고 쓰는게 편하지 않겠는가? 그런데 나에게 글이란 건 개발 일지, 정보 공유, 메모 등 엄청나게 다양한 역할, 종류가 
-다양하다는 점을 체감했다.</p>
-
-<p>나는 너무 심플하게 생각한 나머지, 글의 종류가 다르고, 프로세스가 다른데 마치 무안단물마냥 ‘줘’ 하면, AI 들이 알아서 내 공유된 개인정보로 알아서 만들어 줄거라는 순진한 생각을 한 것이다.</p>
-
-<p>그러니 Gemini가 제공한 아이디어를 적극 develop 하기로 했다. <code class="language-plaintext highlighter-rouge">Mode</code> 라는 키워드를 추가했다. 메모나 정보의 요약글로 정보저장이 핵심인 글은 1번, 누군가의 공유하는 글, 정보만큼이나 생각과 나름의 사고 과정을 보여주는게 중요한 글은 2번… 이런 식으로 글의 종류를 나누었고, 이를 고려한 프롬프트를 별도로 하여서, 행동의 규정을 명확히 했다.</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-012.png" alt="" /></p>
-
-<p>두 번째로, 최근 배웠던 단어 중 Context Engineering 이란 키워드가 있었다. 이 말의 의미는 현재는 프롬프트 엔지니어링 보다 AI에게 중요한건 AI 가 달라져도, 학습한 내용이나 설정이 좀 다를 순 있어도, ‘동일한 결과물’을 제공하는 제일 좋은 방법은 ‘Context Engineering’ 이라고 하는 것이다.</p>
-
-<p>요구한 내용에서 할 일, 상황 맥락이 유사하면 결과 값도 유사하게 전달할 수 있다. 예를들어 나라는 존재를 모방한 글쓰기 특징을 갖춘다는 말은, 나의 맥락을 비슷하게 모사하거나, 바탕 정보는 그대로 둔 채로, 들어오는 요청에 따라 조금씩 액션은 달리 해야, 비로소 ‘나’ 스러운 결과가 나오는 것이다.</p>
-
-<p>그러나 프롬프트 마다 일일이 이걸 담아내는 건 효과적이지 못하다. 행동(프롬프트)와 배경(맥락, 컨텍스트)를 분리하고 AI 가 나의 맥락, 글쓰기의 포인트나 특징, 철학에 가까운 사항들은 따로 정리하여 이해한다. 그렇게 모방된 인격 하에 행동을 수행해야 비로소 요구되는 정확한 답변이 가능한 것이다.</p>
-
-<p>이에 <code class="language-plaintext highlighter-rouge">Hansol Persona</code> 란 파일로 만들었고, 마치 전역변수처럼 이 녀석을 추가하고 고려하도록 만들었다. 컨텍스트, 그리고 프롬프트를 분리하고, 아까 언급했듯이 <code class="language-plaintext highlighter-rouge">Mode</code> 라는 개념을 추가했다. 그 결과는 어땠을까?</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-013.png" alt="" /></p>
-
-<p>개인적으로 아주 ‘성공적’ 이라고 평가하고 싶다.</p>
-
-<blockquote>
-  <p>💡 프롬프트, 컨텍스트 가이드</p>
-  <ol>
-    <li>Copilot 에 인용할 자신의 Context 문서를 작성하고, 필요 시 해당 문서를 항상 추가해라.</li>
-    <li>Command 에 프롬프트에 행당하는 부분만 기재한다. context 의 해당하는 부분은 배제하고, 이는 Persona 문서에 포함한다.</li>
-    <li>프롬프트는 구체적인 단어를 기재하는 것은 지양한다. 가능하면 행동 지침으로 최대한 구체화 시켜라.</li>
-    <li>내가 자동화 할 목표가 있다면, 그 목표의 ‘과정’을 프롬프트화 시켜라. 글 쓰기의 핵심이 개요 작성 -&gt; 근거 추가 -&gt; 살 붙이기 -&gt; 퇴고 이런 순서라면, 각 단계 별로 필요한 영역에 프롬프트를 별도로 만드는 게 최선이다.</li>
-    <li>자신의 프로세스를 검증할 프롬프트, Context 를 준비하는 것도 좋다. =&gt; 이를 통해 제 3자의 검증을 효과적으로 수행해 줄 수 있다.</li>
-    <li>마크다운 양식의 헤드, 리스트 등 우선순위를 나타내는 기호를 AI 는 우선순위로 실제 판단한다. 따라서 우선순위를 고려한 프롬프트가 중요하다.</li>
-    <li>글의 철학, 가치관도 중요하지만, 스타일 가이드 쪽의 지정의 프롬프트가 훨씬 AI가 완성도 높은 구성을 해낸다. 정량적인 내용을 프롬프트에 담아라.</li>
-    <li>AI 의 인격에 대한 부분도 context 로 준비하면 아첨, 과도한 긍정 평가를 최소화 시킬 수 있다. 평가, 분석, 보완 등의 역할을 원할 땐, 그에 따른 AI의 가상 인격을 생성해놓고 제공하자.</li>
-  </ol>
-</blockquote>
-
-<h3 id="결과물-톺아보기">결과물 톺아보기</h3>
-
-<p>2.5 flash 는 2.5 Pro 대비 이상한 말도 많고, 허술한 답변을 할 때도 많다. 그러나 놀랍게도 컨텍스트 + 모드 + 프롬프트의 테스트 결과는 말도 안될 정도의 퀄리티의 내용을 뽑아주었다. 이미 충분히 블로그 글로 올렸을 때 문제 없지 않을까? 싶은 수준의 완성도 였다.</p>
-
-<p>톤앤 무드는 정돈 되어 있었고, 내 설정들과 함께 전달된 자료들의 의도들을 정확히 재조합하여, 자잘한 분석 결과 문서, 자료들 예시, 몇 문단으로 작성된 결론, 개요를 한번에 종합해주었다. 그것도 단 돈 몇 십원 수준으로 말이다.</p>
-
-<p>특히나 SEO 를 고려한 태그라던지, 예상 제목 제안 사항 등, 단순히 글쓰기를 돕는것 만으로 끝이 아니라, 블로그를 관리하고, 기술적 보조자 역할도 톡톡히 단 한 번의 요청으로 얻어낼 수 있었다.</p>
-
-<p>뿐만 아니라, 위에서 얻은 결론을 기반으로 프롬프트를 추가로 제작. 내 글에 대한 분석, 글의 문제점이나 글에서 논리적 모순 등을 잡아주는 ‘편집장’ 프롬프트도 설정해 보았더니, 놀라울 만큼 명확하고 확실한 평가를 해주었다.</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-014.png" alt="" /></p>
-
-<p>내 글 어디가 아쉽고, 어떤 점이 좋으며, 어떤 점에서 개선이 되면 좋을지. 제 3자 시선에서 평가해주는 프롬프트를 기반으로 나의 글을 세밀하게 분석해주었다. 특히나 너무 과한 내용이나 필요 없는 내용 등을 빠르게 캐치하고 검토해주었다. 가장 놀라운건 이것이 성능이 부족하다고 느껴 거의 쓰지 않던 2.5 flash 에서 가능하다는 점이다!</p>
-
-<h3 id="pro-vs-flash">Pro vs Flash</h3>
-
-<p>놀라움. 만족스러움을 느끼기도 잠시. 2.5 flash를 왜 사용했는가? 에서 시작해서 한 가지 호기심이 들었다. 그것은 바로 ‘2.5 flash 로 이정도면, 2.5 pro 로 실행하면 얼마나 좋아질까?’ 였다.</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-016.png" alt="" /></p>
-
-<p>그런데 어라. 이상했다. 2.5 flash 로 얻은 결과에 환호했던 것과는 달리, 생각보다 신기할 정도로 차이가 없었다.</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-015.png" alt="" /></p>
-
-<p>구성의 큰 차이는 없다. 프롬프트의 요구사항은 충분히 수용되었고, 여기저기 좀더 늘어나거나, 개요이지만 글처럼 어느정도 완성되었다를 제외하면 뭔가 확 와닻는 변화는 아니었다.</p>
-
-<p>정리해보면, 2.5 Pro와 2.5 flash 로 만든 글에 대해선 다음과 같은 차이가 있다.</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-017.png" alt="" /></p>
-
-<p>Pro는 그 문장 하나 하나를 분석해 보았을 때, 단순히 요구 사항 이라고 적힌 것들의 의도를 고려한 답변에 가깝다는 게 보였다. 단순한 나열을 넘어 ‘이런 의도’로 이런 이야기니까, ‘이런 주장이 나온다’ 라는 표현. 생각해보면 훨씬 똑똑한 답변이라는 점은 부정할 수 없었다. 그러나 그것이 2.5 flash + 프롬프트만큼 확실한 효과가 있는가? 여기에 답변이 되기엔 애매 했다.</p>
-
-<p>하물며 가성비를 생각해보자. 2.5 flash 의 경우 기본적으로 2.5 pro 대비 4배 정도의 가격차이가 날 수 있다(입출력 토큰 약 3K 수준 대비). 그런데 여기서 2.5 pro 는 입력값이 늘어나, 기준치를 넘기면(입력 토큰 수 2M 이상), 더 높은 요금을 부과해 요금을 측정한다. 즉,  2.5 flash 의 1000원 수준의 내용을 작업하면, 최대 수 천원 ~ 1만원대까지도 올라갈 수 있는 상황인 것이다.</p>
-
-<p>새삼 프롬프트, 컨텍스트의 능력이 얼마나 뛰어난지를, 각종 AI 논문에서 작은 모델들의 합이라던가 MoE 구조라던가 기타 등등… 마치 거대 모델만큼 성능 좋게 만들수 있다! 는 표현들이 실제 어떤 의미인지 체감할 수있는 아주 흥미로운 결론이었다.</p>
-
-<h2 id="결론">결론</h2>
-<h3 id="ai-나의-능력을-증폭시키는-최고의-파트너">AI, 나의 능력을 증폭시키는 최고의 파트너</h3>
-
-<p>AI 는 아직 AGI 는 아니다. 하지만 접근 방법에  따라서 ‘최고’가 될 수 있다는 점을 경험했다. 이번 과정을 통해 Copilot 이란 플러그인에 gemini 의 조합은 엄청난 수준의 글쓰기 조수를 구축하고, 혼자 끙끙 거리며 한달이 걸릴 글을 단 일주일도 안 걸리게 마무리, 그것도 실질 글 작업은 약 이틀 정도 소모 되는 속도로 만들어냈다. 초기 목표보단 못한 것은 사실이지만 그럼에도 엄청난 효율, 효과를 누렸다고 할 수 있겠다.</p>
-
-<p>현재 개발 시장의 요구 사항은 명확하다. 자기 도메인의 높은 전문성, 그리고 그 전문성과 함께 시너지를 발 할수 있는 AI에 대한 리터러시. 개인적으로 건강을 위한 휴식 중이긴 하나, 동시에 내가 생각하는 ‘필요시 되는 사람’으로 살아가기 위해 벌린 이번 미니 프로젝트는, 현재 AI 의 본질을 이해할 수 있었고, 가공할 능력을 어디까지 활용할 수 있을지에 대한 내 나름의 시도이자, 단편적인 답변이었다.</p>
-
-<p>프롬프트, 그 위에 작용하는 컨텍스트의 가능성을 엿 볼 수 있는 사례다. 2.5 flash 라는 가성비 모델로도, 얼마나 효과적일 수 있는지 체감할 수 있었던 좋은 기회였다. 이 글을 읽는 모두가 AI 를 통한 생산성 향상. 특히 한계에 부딪힐 때, 그 한계를 넘어서는 기술적 발판으로 활용을 잘 하면 좋겠다고 생각한다. 본 글을 통해 커스텀 된 AI 에이전트를 노코드로 구축하고, 프로세스를 단축하는 새로운 글쓰기 경험을 맛 보시길!</p>
-
-<h2 id="요약">요약</h2>
-<p>글이 너어어어ㅓㅓㅓㅓ 무 길어졌다(…) 
-내 기록을 위해 남긴다지만, 너무 길어 요약을 해보았다.</p>
-
-<hr />
-
-<ol>
-  <li>AI 프롬프트를 합치면 오히려 일반화된다 - 여러 AI의 분석을 통합하려 했지만, 독특한 특징이 사라지고 정보 손실이 발생했다.</li>
-  <li>Context(페르소나)와 Prompt(행동지침)를 분리하고, 글 종류별 Mode를 구분하니 비로소 ‘나다운’ 글쓰기가 가능해졌다.</li>
-  <li>2.5 flash + 잘 짜여진 프롬프트 구조가 2.5 Pro보다 가성비 측면에서 압도적이었다. 작은 모델도 Context Engineering으로 충분히 강력해질 수 있다.</li>
-</ol>
-
-<hr />
-
-<blockquote>
-  <p>Obsidian 에 Copilot, Gemini API 적용 방법 (링크)(작성중)</p>
-</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="Obsidian" /><category term="AI" /><category term="Gemini" /><category term="Google" /><category term="블로그" /><category term="플러그인" /><summary type="html"><![CDATA[Obsidian + Copilot - 나만의 글쓰기 Agent를 만들어보자 글쓰기의 길은 멀고도 험하다]]></summary></entry><entry><title type="html">AI 자동화 툴, Opal 맛보기</title><link href="http://0.0.0.0:4000/tools/2025/10/09/02-Opal-instroduction.html" rel="alternate" type="text/html" title="AI 자동화 툴, Opal 맛보기" /><published>2025-10-09T00:00:00+00:00</published><updated>2025-10-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/tools/2025/10/09/02-Opal-instroduction</id><content type="html" xml:base="http://0.0.0.0:4000/tools/2025/10/09/02-Opal-instroduction.html"><![CDATA[<p><img src="/assets/images/posts/2025-10/2025-10-09-018.png" alt="" /></p>
-
-<h2 id="ai-워크플로우의-새로운-가능성-google-opal">AI 워크플로우의 새로운 가능성, Google Opal</h2>
-
-<p>드디어 AI가 단발성 대화를 넘어 연속적인 작업 흐름을 처리할 수 있게 됐다. Google Labs에서 공개한 Opal은 <strong>프롬프트, AI 모델, 도구를 연결해 다단계 워크플로우를 만들 수 있는 노코드 플랫폼</strong>이다. 지금까지 AI가 부족했던 ‘시퀀스’ 개념을 드디어 제대로 구현한 셈이다.</p>
-
-<h3 id="그동안-ai에게-없었던-것-단계별-사고">그동안 AI에게 없었던 것: 단계별 사고</h3>
-
-<p>ChatGPT든 Gemini든, 대부분의 AI 서비스는 기본적으로 “질문 → 답변” 구조다. 물론 멀티턴 대화가 가능하긴 하지만, 복잡한 작업을 여러 단계로 나눠서 자동으로 처리하기엔 한계가 있었다. 예를 들어 “특정 주제로 블로그 초안 작성 → 이미지 생성 → SEO 최적화 → 최종 정리” 같은 워크플로우를 만들려면 결국 사람이 중간중간 개입해야 했다.</p>
-
-<p>Opal은 바로 이 지점을 공략했다. 공식 블로그에 따르면, <strong>“프롬프트, AI 모델 호출 및 기타 도구를 연결하여 강력한 다단계 앱을 제작할 수 있도록 지원”</strong>한다고 명시되어 있다<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>. 실제로 User Input(사용자 입력) → Generate(AI 생성) → Output(결과 출력) 단계를 조합하고, 각 단계의 결과를 다음 단계에서 참조할 수 있다. 이를 “단계 연결(Step Chaining)”이라고 부르는데, 드래그 앤 드롭이나 @ 기호로 간단히 구현 가능하다<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>.</p>
-
-<p>더 인상적인 건 두 가지 편집 모드를 제공한다는 점이다. 자연어로 “이런 앱 만들어줘” 하면 Opal이 알아서 워크플로우를 구성해주고, 세부 조정은 비주얼 편집기에서 할 수 있다. 코드를 전혀 볼 필요가 없다<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup>. 2024년 10월 업데이트에서는 <strong>단계별 디버깅 기능</strong>과 <strong>병렬 실행 기능</strong>까지 추가되어, 복잡한 워크플로우도 실시간으로 테스트하고 개선할 수 있게 됐다<sup id="fnref:4"><a href="#fn:4" class="footnote" rel="footnote" role="doc-noteref">4</a></sup>.</p>
-
-<h3 id="노코드의-장점이자-한계">노코드의 장점이자 한계</h3>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-020.png" alt="" /></p>
-
-<p>Opal의 가장 큰 장점은 진입장벽이 낮다는 것이다. 자연어만 사용할 줄 알면 누구나 AI 앱을 만들 수 있고, Google이 호스팅까지 해주니 링크 하나로 바로 공유할 수 있다. 갤러리에서 다른 사람이 만든 앱을 리믹스해서 내 것으로 만들 수도 있다.</p>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-09-021.png" alt="" /></p>
-<blockquote>
-  <p>현재는 아주 심플한 동작들만을 지원하고 있다</p>
-</blockquote>
-
-<p>하지만 여기서 아쉬운 점이 드러난다. <strong>외부 서비스 연동이 제한적</strong>이다. 현재 기본 제공되는 도구는 웹 검색, 지도 검색, 날씨 정보 정도이고, Google Drive 정도만 직접 연동된다<sup id="fnref:5"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup>. Notion, Slack, Trello 같은 다른 서비스와의 자동화는 아직 지원되지 않는다. Zapier나 Make.com처럼 수백 개의 서비스를 연결할 수 있는 수준엔 한참 못 미친다.</p>
-
-<p>더 치명적인 건 <strong>코드 내보내기가 불가능</strong>하다는 점이다. Opal에서 만든 앱은 Google 생태계 안에 갇혀 있다. API를 만들 수도 없고, 데이터베이스를 붙일 수도 없으며, 실제 배포 가능한 코드를 얻을 수도 없다<sup id="fnref:6"><a href="#fn:6" class="footnote" rel="footnote" role="doc-noteref">6</a></sup>. 결국 프로토타이핑이나 간단한 사내 도구 정도로만 활용 가능하다는 얘기다. 프로덕션용으로 쓰기엔 아직 갈 길이 멀다.</p>
-
-<h3 id="obsidian에서-했던-것들을-자동화할-수-있을까">Obsidian에서 했던 것들을 자동화할 수 있을까?</h3>
-
-<p>개인적으로 흥미로웠던 건, 이전에 Obsidian + 코파일럿 플러그인으로 시도했던 것들이 떠올랐다는 점이다(<a href="https://paul2021-r.github.io/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2025/10/09/01-obsidian-ai-copilot.html">참고 링크</a>). 당시엔 노트 글감을 준비하고, 특정 패턴 명령어를 적용하고, 글감을 나의 문체에 맞는 글감으로 만들어주는 워크플로우를 만들려고 했다. 하지만 결과적으로 수동으로 트리거를 해야 했고, 여러 단계를 거치려면 계속 개입해야 했다.</p>
-
-<p>Opal의 시퀀스 기능을 보니, 이런 것들을 완전히 자동화할 수 있겠다는 생각이 들었다. 예를 들어 “웹에서 특정 주제 검색 → 요약 생성 → 이미지 생성 → 마크다운 포맷으로 정리 → Google Drive에 저장” 같은 흐름을 하나의 앱으로 만들 수 있을 것 같다. 물론 Obsidian과 직접 연동되진 않지만, Google Drive를 중간 저장소로 쓰면 충분히 가능할 것 같다.</p>
-
-<p>문제는 앞서 말한 외부 서비스 연동의 한계다. 만약 Opal이 Notion API, Obsidian Local REST API, 혹은 더 나아가 커스텀 웹훅 정도만 지원해준다면, 정말 강력한 자동화 허브가 될 수 있을 텐데 말이다. 지금은 Google 생태계 안에서만 놀 수 있다는 점이 가장 아쉽다.(물론 그게 목적이겠지만 말이다.)</p>
-
-<h3 id="결론-가능성은-보였지만-아직은-반쪽짜리">결론: 가능성은 보였지만, 아직은 반쪽짜리</h3>
-
-<p>Opal은 분명히 AI의 새로운 방향을 제시했다. <strong>시퀀스, 워크플로우, 단계별 자동화</strong>—이것들은 AI가 단순한 챗봇을 넘어 진짜 생산성 도구가 되기 위해 반드시 필요한 요소들이다. 노코드로 이런 걸 구현했다는 점에서 Opal은 충분히 혁신적이다.</p>
-
-<p>하지만 현실적으로 프로덕션 환경에서 쓰기엔 한계가 명확하다. 외부 서비스 연동이 제한적이고, 코드를 내보낼 수도 없으며, 아직은 실험적 도구라는 꼬리표를 떼지 못했다. Google Labs 프로젝트가 언제 접힐지 모른다는 불안감도 있다.</p>
-
-<p>그럼에도 불구하고, Opal이 보여준 방향성은 분명하다. AI는 이제 단발성 대화를 넘어 연속적인 워크플로우를 이해하고 실행해야 한다. 그리고 누구나 코딩 없이 그런 자동화를 만들 수 있어야 한다. Opal이 완벽하진 않지만, 그 미래를 먼저 보여준 건 확실하다.</p>
-
-<p>만약 Google이 이 프로젝트를 제대로 밀어붙여서 외부 API 연동과 코드 내보내기 기능까지 추가한다면? 그때는 정말 게임 체인저가 될 수 있을 것 같다.</p>
-
-<hr />
-
-<div class="footnotes" role="doc-endnotes">
-  <ol>
-    <li id="fn:1">
-      <p><a href="https://developers.googleblog.com/ko/introducing-opal/">Google 개발자 블로그 (한국어) - Opal 소개</a>: “프롬프트, AI 모델 호출 및 기타 도구를 연결하여 강력한 다단계 앱을 제작할 수 있도록 지원합니다.” <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p><a href="https://developers.google.com/opal/overview">Google Opal 공식 문서 - Overview</a>: “Referencing the results of one step in the prompt for another step is the primary way to build your app logic inside of Opal.” <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p><a href="https://developers.googleblog.com/en/introducing-opal/">Google 개발자 블로그 (영어) - Introducing Opal</a>: “Opal translates your instructions into a visual workflow, giving you fine-grained control without ever needing to see a line of code.” <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:4">
-      <p><a href="https://blog.google/technology/google-labs/opal-expansion/">Google Labs Blog - Opal Expansion</a>: “We’ve fundamentally improved the debugging program… You can now run your workflow step-by-step in the visual editor” <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:5">
-      <p>Google 개발자 블로그 및 공식 문서에서 확인된 빌트인 도구 목록: 웹 검색, 지도 검색, 날씨 정보, Google Drive 연동 <a href="#fnref:5" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:6">
-      <p>커뮤니티 피드백 및 공식 문서 기반: Opal 앱은 Google 생태계 내에 제한되며, 코드 내보내기, API 생성, 데이터베이스 통합 등이 불가능함 <a href="#fnref:6" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-  </ol>
-</div>]]></content><author><name>Paul2021-R</name></author><category term="tools" /><category term="AI" /><category term="Google" /><category term="Opal" /><category term="Automation" /><summary type="html"><![CDATA[]]></summary></entry></feed>
+<p>결론적으로 향후 진행할 프로젝트에도 캐싱 전략은 선택이 아닌 필수 요소이다. 그때마다 안전하고 효율적인 Redis 환경을 구축하기 위해, 이번에 정리한 내용들을 표준 체크리스트로 활용하고자 한다. 더 나아가, 향후에는 이러한 보안 설정들을 코드화하여 구성 관리(Configuration Management)의 일부로 포함시키는 것을 목표로 해야겠다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="python" /><category term="이직" /><category term="학습" /><category term="코딩테스트" /><summary type="html"><![CDATA[Redis, 성능과 편의성 뒤에 숨겨진 보안 위협과 대응 방안]]></summary></entry></feed>
