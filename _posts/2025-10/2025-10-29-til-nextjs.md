@@ -1,11 +1,11 @@
 ---
 layout: post 
-title: TIL - Prettier & ESLint 적용
+title: TIL - NextJS 데모 페이지 구축 (001)
 subtitle: nextjs 기반 앱을 무중단 배포 구성하기
 categories: 학습
 tags: 학습 NextJS DevOps Jenkins Docker
 thumb: /assets/images/assets/nextjs.png
-custom-excerpt: 2025년 10월 28일 개발 내용 요약 및 학습 정리
+custom-excerpt: 2025년 10월 29일 개발 내용 요약 및 학습 정리
 banner:
   # video: https://vjs.zencdn.net/v/oceans.mp4
   loop: true
