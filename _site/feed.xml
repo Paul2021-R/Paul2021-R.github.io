@@ -1,4 +1,305 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-11-04T15:02:40+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">TIL - monitoring server 구축기 &amp;amp; 지옥같은 네트워크 문제 해결기..</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/04/til-monitoring-server.html" rel="alternate" type="text/html" title="TIL - monitoring server 구축기 &amp;amp; 지옥같은 네트워크 문제 해결기.." /><published>2025-11-04T00:00:00+00:00</published><updated>2025-11-04T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/04/til-monitoring-server</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/04/til-monitoring-server.html"><![CDATA[<h2 id="2025-10-31--2025-11-03--monitoring-서버-구축하기--네트워크-문제-해결하기">2025-10-31 ~ 2025-11-03 : Monitoring 서버 구축하기 &amp; 네트워크 문제 해결하기</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-11-05T12:20:17+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">TIL - monitoring server 구축기 (2)</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/05/til-monitoring-server-2.html" rel="alternate" type="text/html" title="TIL - monitoring server 구축기 (2)" /><published>2025-11-05T00:00:00+00:00</published><updated>2025-11-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/05/til-monitoring-server-2</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/05/til-monitoring-server-2.html"><![CDATA[<h2 id="2025-11-05--monitoring-서버-구축하기">2025-11-05 : Monitoring 서버 구축하기</h2>
+
+<p>드디어 모든 문제를 해결하였다.
+HTTPS 를 통한 종단암호화를 마쳤으며
+네트워크를 선행 구축하여 통로로 연결될 수 있도록 설정하였다. 
+이제 남은 단 하나… 모니터링…!!</p>
+
+<hr />
+
+<h2 id="서버-아키텍쳐-구조도">서버 아키텍쳐 구조도</h2>
+
+<p><img src="/assets/images/assets/project-monitoring-diagram.png" alt="" /></p>
+
+<h2 id="핵심-설정-과정-및-트러블슈팅-qa">핵심 설정 과정 및 트러블슈팅 (Q&amp;A)</h2>
+
+<p>구축 과정에서 몇 가지 중요한 개념과 문제를 마주했으며, 이를 해결하는 과정이 이번 TIL의 핵심이다.</p>
+
+<h3 id="핵심-네트워크구조">핵심 네트워크구조</h3>
+
+<p>네트워크의 설정이 난해했지만, 결국 핵심은 ‘외부’와 ‘내부’에 대한 명료함이다.</p>
+
+<ol>
+  <li><strong>내부 통신 (Docker Network):</strong> 모니터링 서버 <em>내부</em> 의 컨테이너들(e.g., <code class="language-plaintext highlighter-rouge">centre-prometheus</code>, <code class="language-plaintext highlighter-rouge">centre-grafana</code>, <code class="language-plaintext highlighter-rouge">NPM</code>)은 docker의 가상 네트워크를 통해 컨테이너 이름으로 통신한다. 이 통신은 Docker가 내부 DNS를 통해 처리하므로 외부 포트가 필요 없다.
+    <ul>
+      <li><strong>예시:</strong> NPM 프록시 설정 시 Grafana의 주소는 <code class="language-plaintext highlighter-rouge">http://centre-grafana:3000</code>이 된다.</li>
+    </ul>
+  </li>
+  <li><strong>외부 통신 (Physical LAN):</strong> 모니터링 서버가 <em>다른</em> 물리적 서버에 접근할 때는 이 가상 네트워크를 쓸 수 없다. 반드시 외부 서버의 물리적 IP 주소와 <code class="language-plaintext highlighter-rouge">service-exporters</code>에서 <code class="language-plaintext highlighter-rouge">ports</code>로 외부에 노출시킨 포트(<code class="language-plaintext highlighter-rouge">9100</code>, <code class="language-plaintext highlighter-rouge">8081</code>)를 사용해야 한다.</li>
+</ol>
+
+<h3 id="restart-정책으로-always-대신-unless-stopped를-써야-한다"><code class="language-plaintext highlighter-rouge">restart</code> 정책으로 <code class="language-plaintext highlighter-rouge">always</code> 대신 <code class="language-plaintext highlighter-rouge">unless-stopped</code>를 써야 한다</h3>
+
+<p>사실 항상 restart 의 정책이 어떻게 되는지 정확하게 알고 있지 못했기에 이번 기회에 알아보았다. 두 정책 모두 시스템 재부팅 시 컨테이너를 자동 재시작해준다. 하지만 결정적인 차이가 있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">restart: always</code>: 관리자가 유지보수를 위해 <code class="language-plaintext highlighter-rouge">docker stop</code> 명령으로 컨테이너를 <em>수동 정지</em> 해도, Docker 데몬이 재시작되거나 시스템이 재부팅되면 컨테이너를 다시 켜버린다.</li>
+  <li><code class="language-plaintext highlighter-rouge">restart: unless-stopped</code>: 관리자의 수동 정지 명령을 “존중”한다. 즉, 수동으로 정지된 컨테이너는 관리자가 명시적으로 다시 시작(<code class="language-plaintext highlighter-rouge">docker start</code>)하기 전까지는 꺼진 상태를 유지한다.</li>
+</ul>
+
+<p>이러한 결정적인 차이 때문에 유지보수 및 예측 가능성 측면에서 <code class="language-plaintext highlighter-rouge">unless-stopped</code>가 훨씬 안전한 정책이기에 향후엔 <code class="language-plaintext highlighter-rouge">unless-stopped</code>를 쓰려고 한다.</p>
+
+<h3 id="prometheus_data-grafana_data를-gitignore에-추가해야-하는가"><code class="language-plaintext highlighter-rouge">prometheus_data</code>, <code class="language-plaintext highlighter-rouge">grafana_data</code>를 <code class="language-plaintext highlighter-rouge">.gitignore</code>에 추가해야 하는가?</h3>
+
+<p>설정을 찾아보다 보니, 볼륨의 연결이 필요했다. 이에 진행하면서, 해당 볼륨의 특성을 보았다. 처음엔 생성되는 것들이 git 으로 버전 관리되는걸로 하면 권한 문제가 생길 수 있다고 판단했었다. 하지만… <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>에서 <strong>Named Volume</strong> (<code class="language-plaintext highlighter-rouge">grafana_data:/var/lib/grafana</code>)을 사용하기에 그럴 필요가 없다는 것을 배웠다.</p>
+
+<ul>
+  <li><strong>Named Volume:</strong> Docker가 관리하는 별도의 시스템 경로( <code class="language-plaintext highlighter-rouge">/var/lib/docker/volumes/...</code>)에 데이터를 저장한다. Git 리포지토리 폴더 내에 파일이 생성되지 않으므로 <code class="language-plaintext highlighter-rouge">.gitignore</code>가 필요 없다.</li>
+  <li><strong>Bind Mount:</strong> 만약 프로젝트 폴더에 직접 데이터를 저장하는 방식 (<code class="language-plaintext highlighter-rouge">./grafana_data:/var/lib/grafana</code>)을 사용했다면, 이 폴더는 Git이 추적하게 되므로 <code class="language-plaintext highlighter-rouge">.gitignore</code>에 반드시 추가해야 했을 것이다.</li>
+</ul>
+
+<h3 id="prometheus와-grafana의-cpu메모리-제한은">Prometheus와 Grafana의 CPU/메모리 제한은?</h3>
+
+<p>제한된 온프레미스 서버. 최적화된 설정을 위해 Docker 의 리소스 관리 기능을 활용하려고 생각하고, AI 와 이야기하며 현실적인 수준을 파악해보았다. 현재 설정된 리소스(Prometheus 0.5 CPU/512M, Grafana 0.3 CPU/256M)는 2대의 서버(호스트 2개 + 컨테이너 수십 개)를 모니터링하기에 충분히 넉넉하다는 판단 하에 설정하였다.</p>
+
+<p>다만, 처음엔 이정도가 맞는가? 라는 의문은 가지고 있었다. 아무리 생각해도 이정도는 하고, 윈도우 95 시절인줄 알았지만…. AI가 제시한 의도를 보고 파악할 수 있었다. 이 리소스 제한의 주 목적은 성능 자체가 아니라, 만약의 버그나 매우 복잡한 쿼리로 인해 모니터링 컨테이너 하나가 서버의 전체 리소스를 고갈시켜, 모니터링 시스템은 물론 서버 전체를 다운시키는 것을 방지하는 ‘안전벽(safety wall)’ 역할을 하고, 그렇게 볼때 다소의 보수적인 설정은 충분히 설득력이 있었다.</p>
+
+<h2 id="최종-설정-파일">최종 설정 파일</h2>
+
+<p>위의 모든 과정을 거쳐 완성된 최종 설정 파일들이다.</p>
+
+<h3 id="1-메인-서비스-서버-a5-server">1. 메인 서비스 서버 (A5 Server)</h3>
+
+<p><code class="language-plaintext highlighter-rouge">service-exporters/docker-compose.yml</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># main server watcher for monitoring structure 
+
+services:
+  #########################################################
+  #  NodeExporter_Svc: 호스트 지표 (CPU, RAM, Disk)
+  #########################################################
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: a5-node-exporter
+    restart: unless-stopped
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--path.rootfs=/rootfs'
+    pid: host
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: '64M'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  #########################################################
+  #  cAdvisor_Svc: 컨테이너 지표 (Docker)
+  #########################################################
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: a5-cadvisor
+    restart: unless-stopped
+    ports:
+      - "8081:8080" 
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    deploy:
+      resources:
+        limits:
+          cpus: '0.15'
+          memory: '128M'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+</code></pre></div></div>
+
+<h3 id="2-모니터링-서버-centre-server">2. 모니터링 서버 (Centre Server)</h3>
+
+<p><code class="language-plaintext highlighter-rouge">monitoring-stack/docker-compose.yml</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># monitoring structure + sub server watcher
+
+services:
+  #########################################################
+  #  Prometheus: The core data collection service
+  #########################################################
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: centre-prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - my-central-proxy-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '512M'
+
+  #########################################################
+  #  Grafana: The data visualization dashboard
+  #########################################################
+  grafana:
+    image: grafana/grafana:latest
+    container_name: centre-grafana
+    restart: unless-stopped
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - my-central-proxy-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.3'
+          memory: '256M'
+
+  #########################################################
+  #  NodeExporter_Mon: Host metrics for THIS server
+  #########################################################
+  node-exporter-mon:
+    image: prom/node-exporter:latest
+    container_name: centre-node-exporter
+    restart: unless-stopped
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--path.rootfs=/rootfs'
+    pid: host
+    networks:
+      - my-central-proxy-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: '64M'
+
+  #########################################################
+  #  cAdvisor_Mon: Container metrics for THIS server
+  #########################################################
+  cadvisor-mon:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: centre-cadvisor
+    restart: unless-stopped
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    networks:
+      - my-central-proxy-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.15'
+          memory: '128M'
+
+#########################################################
+#  Shared Volumes and Networks
+#########################################################
+volumes:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  my-central-proxy-network:
+    external: true
+    name: my-central-proxy-network 
+</code></pre></div></div>
+
+<h3 id="3-모니터링-두뇌-prometheus-config">3. 모니터링 “두뇌” (Prometheus Config)</h3>
+
+<p><code class="language-plaintext highlighter-rouge">monitoring-stack/prometheus/prometheus.yml</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>global:
+  scrape_interval: 15s # How often to scrape targets
+
+scrape_configs:
+  # 1. Monitor Prometheus itself (Internal)
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['centre-prometheus:9090']
+
+  # 2. Monitor the monitoring server's HOST (Internal)
+  - job_name: 'monitoring_host'
+    static_configs:
+      - targets: ['centre-node-exporter:9100']
+
+  # 3. Monitor the monitoring server's CONTAINERS (Internal)
+  - job_name: 'monitoring_containers'
+    static_configs:
+      # cAdvisor's default port inside the container is 8080
+      - targets: ['centre-cadvisor:8080']
+
+  # 4. Monitor the REMOTE main service server's HOST (External)
+  - job_name: 'service_host'
+    static_configs:
+      # A5 Server's physical IP and exposed port
+      - targets: ['192.168.0.37:9100']
+
+  # 5. Monitor the REMOTE main service server's CONTAINERS (External)
+  - job_name: 'service_containers'
+    static_configs:
+      # A5 Server's physical IP and exposed port
+      - targets: ['192.168.0.37:8081']
+</code></pre></div></div>
+
+<h3 id="4-gitignore">4. <code class="language-plaintext highlighter-rouge">.gitignore</code></h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.DS_Store
+Thumbs.db
+.env
+*.env.local
+docker-compose.override.yml
+</code></pre></div></div>
+
+<h2 id="결과">결과</h2>
+
+<p>모든 설정이 완료되고, Grafana에서 <code class="language-plaintext highlighter-rouge">https://grafana.paulryu93.ddns.net</code>에서 모든걸 볼 수 있었다.</p>
+
+<p><img src="/assets/images/posts/2025-11/20251105-008.png" alt="" /></p>
+
+<p><strong>Node Exporter (monitoring_host) 대시보드:</strong>
+<img src="/assets/images/posts/2025-11/20251105-009.png" alt="" />
+<img src="/assets/images/posts/2025-11/20251105-010.png" alt="" /></p>
+
+<p><strong>cAdvisor (monitoring_containers) 대시보드:</strong>
+<img src="/assets/images/posts/2025-11/20251105-011.png" alt="" />
+<img src="/assets/images/posts/2025-11/20251105-012.png" alt="" /></p>
+
+<p>이제 두 서버의 모든 호스트 및 컨테이너 지표를 중앙에서 실시간으로 모니터링할 수 있게 되었다!</p>
+
+<hr />
+
+<p>아직 알람 기능이라거나, 디테일한 접근은 되지 않았다. 
+그러나</p>
+<ul>
+  <li>G/B 방식의 무중단 배포와 이를 위한 CI/CD Jenkins 파이프라인 구축</li>
+  <li>Next.js 기반의 SPA 어플리케이션 서버</li>
+  <li>MSA 방식의 NestJS 와 AI를 위한 FastAPI 서버</li>
+  <li>이 모든것을 감시하는 Monitoring의 Grafana + Prometheus 설정
+은 앞으로 더욱 흥미 진진한 제대로 된 스케일러블 서비스 구축의 ingnition 이 될 것같다…ㅎ</li>
+</ul>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><category term="Monitoring" /><category term="Grafana" /><category term="Prometheus" /><summary type="html"><![CDATA[2025-11-05 : Monitoring 서버 구축하기]]></summary></entry><entry><title type="html">TIL - monitoring server 구축기 &amp;amp; 지옥같은 네트워크 문제 해결기..</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/04/til-monitoring-server.html" rel="alternate" type="text/html" title="TIL - monitoring server 구축기 &amp;amp; 지옥같은 네트워크 문제 해결기.." /><published>2025-11-04T00:00:00+00:00</published><updated>2025-11-04T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/04/til-monitoring-server</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/04/til-monitoring-server.html"><![CDATA[<h2 id="2025-10-31--2025-11-03--monitoring-서버-구축하기--네트워크-문제-해결하기">2025-10-31 ~ 2025-11-03 : Monitoring 서버 구축하기 &amp; 네트워크 문제 해결하기</h2>
 
 <p>구축하고 있는 NextJS 와, MSA 백엔드 서비스, AI 에이전트를 위한 모니터링 시스템을 구축하고 이를 기반으로 지속적으로 서비스의 상태를 확인하며 프로젝트를 진행해 나가려고 한다.</p>
 
@@ -2494,317 +2795,4 @@ blueocean
 <p><img src="/assets/images/posts/2025-10/2025-10-21-051.png" alt="" /></p>
 <blockquote>
   <p>WSL 만 아니었으면 무중단까지 간건데… 아쉽다…</p>
-</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><summary type="html"><![CDATA[2025년 10월 21일: 젠킨스(Jenkins) 서버 구축 및 무중단 배포 아키텍처 설계]]></summary></entry><entry><title type="html">TIL - HTTPS 적용 및 갱신 구조 적용하기(Nginx, NextJS)</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops.html" rel="alternate" type="text/html" title="TIL - HTTPS 적용 및 갱신 구조 적용하기(Nginx, NextJS)" /><published>2025-10-20T00:00:00+00:00</published><updated>2025-10-20T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/20/til-devops.html"><![CDATA[<h2 id="2025년-10월-20일-docker-compose와-nginx-환경에-lets-encrypt-certbot로-https-적용-및-자동-갱신-설정">2025년 10월 20일: Docker Compose와 Nginx 환경에 Let’s Encrypt (Certbot)로 HTTPS 적용 및 자동 갱신 설정</h2>
-
-<h3 id="요약">요약</h3>
-
-<p>기존에 <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>로 관리하던 Nginx 리버스 프록시와 Next.js (Blue/Green) 환경에, Let’s Encrypt의 Certbot을 도입하여 HTTPS를 적용했다. 이 과정에서 포트포워딩, Nginx 설정 충돌, 도메인 CAA 정책 등 다양한 문제를 마주쳤으며, 이를 해결한 뒤 최종적으로 호스트 서버의 <code class="language-plaintext highlighter-rouge">Crontab</code>을 이용해 인증서 자동 갱신 스크립트까지 설정하여 전체 배포 아키텍처를 완성했다.</p>
-
-<hr />
-
-<h3 id="1-최종-목표">1. 최종 목표</h3>
-
-<p>Nginx 리버스 프록시에 SSL을 적용하여 <code class="language-plaintext highlighter-rouge">http://</code> 요청을 <code class="language-plaintext highlighter-rouge">https://</code>로 강제 리디렉션하고, 443 포트를 통해 암호화된 트래픽을 처리한다. 인증서는 무료 발급 기관인 Let’s Encrypt를 사용하며, 발급 및 갱신은 Certbot을 통해 자동화한다.</p>
-
-<p><strong>사용한 핵심 기술:</strong></p>
-<ul>
-  <li>Docker Compose</li>
-  <li>Nginx (Reverse Proxy)</li>
-  <li>Certbot (Let’s Encrypt Client)</li>
-  <li><code class="language-plaintext highlighter-rouge">webroot</code> (HTTP-01) 인증 방식</li>
-</ul>
-
-<hr />
-
-<h3 id="2-https-적용-절차">2. HTTPS 적용 절차</h3>
-
-<p>HTTPS 적용은 ‘최초 발급’과 ‘최종 적용’의 두 단계로 나누어 진행했다.</p>
-
-<h4 id="1단계-certbot-서비스-및-볼륨-정의">1단계: Certbot 서비스 및 볼륨 정의</h4>
-
-<p><code class="language-plaintext highlighter-rouge">docker-compose.yml</code> 파일에 <code class="language-plaintext highlighter-rouge">certbot</code> 서비스를 추가하고, Nginx와 Certbot이 인증서 및 인증용 파일을 공유할 수 있도록 2개의 볼륨을 마운트했다.</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">./nginx/certs:/etc/letsencrypt</code>: 발급된 인증서가 저장될 경로</li>
-  <li><code class="language-plaintext highlighter-rouge">./nginx/www:/var/www/certbot</code>: Certbot이 <code class="language-plaintext highlighter-rouge">webroot</code> 인증을 위해 임시 파일을 생성할 경로</li>
-</ul>
-
-<p>또한 Nginx 서비스의 <code class="language-plaintext highlighter-rouge">ports</code>에 <code class="language-plaintext highlighter-rouge">"443:443"</code>을 추가했다.</p>
-
-<h4 id="2단계-nginx-임시-설정-인증서-발급용">2단계: Nginx 임시 설정 (인증서 발급용)</h4>
-
-<p><code class="language-plaintext highlighter-rouge">webroot</code> 방식은 80번 포트의 특정 경로(<code class="language-plaintext highlighter-rouge">/.well-known/acme-challenge/</code>)로 HTTP 요청이 들어왔을 때, Certbot이 생성한 파일을 Nginx가 서빙할 수 있어야 한다.
-이를 위해 <code class="language-plaintext highlighter-rouge">nginx/nginx.conf</code>를 80번 포트만 리스닝하고, 해당 경로의 요청만 처리하는 임시 파일로 수정했다.</p>
-
-<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># nginx.conf (임시 인증용)</span>
-<span class="k">server</span> <span class="p">{</span>
-    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
-    <span class="kn">server_name</span> <span class="s">paulryu9309.ddns.net</span><span class="p">;</span>
-
-    <span class="kn">location</span> <span class="n">/.well-known/acme-challenge/</span> <span class="p">{</span>
-        <span class="kn">root</span> <span class="n">/var/www/certbot</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kn">location</span> <span class="n">/</span> <span class="p">{</span>
-        <span class="kn">return</span> <span class="mi">404</span><span class="p">;</span> <span class="c1"># 나머지 요청은 404 처리</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h4 id="3단계-certbot-최초-발급-실행">3단계: Certbot 최초 발급 실행</h4>
-
-<p>Nginx를 임시 설정으로 실행한 뒤(<code class="language-plaintext highlighter-rouge">docker compose up -d nginx</code>), <code class="language-plaintext highlighter-rouge">docker compose run</code> 명령어로 Certbot 컨테이너를 일회성 실행했다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose run <span class="nt">--rm</span> certbot certonly <span class="nt">--webroot</span> <span class="nt">-w</span> /var/www/certbot <span class="nt">-d</span> paulryu9309.ddns.net <span class="nt">--email</span> <span class="o">[</span>이메일] <span class="nt">--agree-tos</span> <span class="nt">--no-eff-email</span>
-</code></pre></div></div>
-
-<h4 id="4단계-nginx-최종-설정-https-적용">4단계: Nginx 최종 설정 (HTTPS 적용)</h4>
-
-<p>인증서 발급이 성공한 후, <code class="language-plaintext highlighter-rouge">nginx/nginx.conf</code>를 <code class="language-plaintext highlighter-rouge">upstream</code>을 포함한 최종 버전으로 다시 수정했다.</p>
-
-<p><strong>핵심 내용:</strong></p>
-<ol>
-  <li><strong>HTTP (80) 서버</strong>: <code class="language-plaintext highlighter-rouge">/.well-known/</code> 경로는 갱신을 위해 남겨두고, 나머지 모든 요청(<code class="language-plaintext highlighter-rouge">location /</code>)은 <code class="language-plaintext highlighter-rouge">https://</code> (443 포트)로 301 리디렉션.</li>
-  <li><strong>HTTPS (443) 서버</strong>: <code class="language-plaintext highlighter-rouge">listen 443 ssl;</code>을 활성화하고, <code class="language-plaintext highlighter-rouge">ssl_certificate</code>와 <code class="language-plaintext highlighter-rouge">ssl_certificate_key</code> 경로에 1단계에서 공유한 볼륨의 인증서 경로(<code class="language-plaintext highlighter-rouge">.../live/paulryu9309.ddns.net/...</code>)를 지정. <code class="language-plaintext highlighter-rouge">location /</code>에는 <code class="language-plaintext highlighter-rouge">proxy_pass http://nextjs_app;</code>을 설정.</li>
-</ol>
-
-<h4 id="5단계-전체-시스템-재시작">5단계: 전체 시스템 재시작</h4>
-<p>최종 설정이 적용된 <code class="language-plaintext highlighter-rouge">docker compose up -d</code> 명령으로 전체 시스템을 실행하여 <code class="language-plaintext highlighter-rouge">https://paulryu9309.ddns.net</code> 접속 및 자물쇠(🔒) 아이콘을 확인했다.</p>
-
-<hr />
-
-<h3 id="3-문제-해결-과정-troubleshooting-battle">3. 문제 해결 과정 (Troubleshooting “Battle”)</h3>
-<p>HTTPS를 적용하는 과정은 순탄하지 않았으며, 여러 에러를 단계적으로 해결해야 했다.</p>
-
-<h4 id="문제-1-connection-refused-연결-거부">문제 1: <code class="language-plaintext highlighter-rouge">Connection refused</code> (연결 거부)</h4>
-<ul>
-  <li><strong>증상</strong>: Certbot이 80번 포트로 접속을 시도했으나 연결이 거부됨.</li>
-  <li><strong>원인</strong>: 로컬 환경에서 테스트 하는 것으로 가능하다고 생각했음. 원격 서버에 수동 배포 및 공유기의 <strong>포트포워딩</strong> 설정이 누락되어 있었다.</li>
-  <li><strong>해결</strong>: 수동 배포하여 초기 구동 및 80포트 접속 가능 여부 확인함. iptime 관리자 페이지에서 외부 80 포트를 Docker가 실행 중인 서버의 내부 IP 80 포트로 포트포워딩 설정하여 해결.</li>
-</ul>
-
-<h4 id="문제-2-404-not-found-파일-없음">문제 2: <code class="language-plaintext highlighter-rouge">404 Not Found</code> (파일 없음)</h4>
-<ul>
-  <li><strong>증상</strong>: <code class="language-plaintext highlighter-rouge">Connection refused</code> 해결 후, Certbot이 인증 파일을 찾을 수 없다고 응답.</li>
-  <li><strong>원인</strong>: <code class="language-plaintext highlighter-rouge">docker compose restart nginx</code>를 했음에도, Nginx가 임시 <code class="language-plaintext highlighter-rouge">nginx.conf</code> 설정을 제대로 불러오지 못함. <code class="language-plaintext highlighter-rouge">/.well-known/</code> location이 아닌 <code class="language-plaintext highlighter-rouge">location / { return 404; }</code>가 모든 요청을 처리함. 확인 결과 nginx.conf 파일의 주소 경로 오타 + 이미 설정 된 레이어가 에러를 일으킴.</li>
-  <li><strong>해결</strong>: 오타 수정 후 <code class="language-plaintext highlighter-rouge">docker compose down --rmi all</code> 후 <code class="language-plaintext highlighter-rouge">up -d nginx</code>로 컨테이너를 완전히 다시 생성하여 임시 설정을 강제로 적용.</li>
-</ul>
-
-<h4 id="문제-3-nginx-컨테이너-무한-재시작">문제 3: Nginx 컨테이너 무한 재시작</h4>
-
-<ul>
-  <li><strong>증상</strong>: Nginx 컨테이너가 <code class="language-plaintext highlighter-rouge">restarting</code> 상태를 반복.</li>
-  <li><strong>원인</strong>: <code class="language-plaintext highlighter-rouge">docker logs project-mini-nginx</code>로 로그 확인 결과, <code class="language-plaintext highlighter-rouge">nginx.conf</code>의 문법 오류(<code class="language-plaintext highlighter-rouge">[emerg]</code>). 임시 설정 파일임에도 불구하고 <code class="language-plaintext highlighter-rouge">upstream nextjs_app { ... }</code> 블록을 삭제하지 않아 발생한 오류였다.</li>
-  <li><strong>해결</strong>: 임시 <code class="language-plaintext highlighter-rouge">nginx.conf</code>에서 <code class="language-plaintext highlighter-rouge">upstream</code> 블록을 제거하여 문법 오류 해결.</li>
-</ul>
-
-<h4 id="문제-4-type-caa-caa-레코드-문제">문제 4: <code class="language-plaintext highlighter-rouge">Type: caa</code> (CAA 레코드 문제)</h4>
-
-<ul>
-  <li><strong>증상</strong>: 모든 설정이 완벽했음에도 <code class="language-plaintext highlighter-rouge">CAA record for iptime.org prevents issuance</code> 에러 발생.</li>
-  <li><strong>원인</strong>: 사용 중이던 <code class="language-plaintext highlighter-rouge">iptime.org</code> DDNS의 상위 도메인 정책(CAA 레코드)이 Let’s Encrypt 기관의 인증서 발급을 허용하지 않음.</li>
-  <li><strong>해결</strong>: <code class="language-plaintext highlighter-rouge">iptime.org</code> DDNS 사용을 포기하고, CAA 레코드 제한이 없는 <strong>No-IP</strong> DDNS (<code class="language-plaintext highlighter-rouge">paulryu9309.ddns.net</code>)로 교체하여 즉시 해결.</li>
-</ul>
-
-<h4 id="문제-5-duplicate-upstream-nextjs_app-upstream-중복">문제 5: <code class="language-plaintext highlighter-rouge">duplicate upstream "nextjs_app"</code> (Upstream 중복)</h4>
-
-<ul>
-  <li><strong>증상</strong>: 최종 HTTPS 설정 적용 후 Nginx가 다시 무한 재시작.</li>
-  <li><strong>원인</strong>: <code class="language-plaintext highlighter-rouge">docker logs</code> 확인 결과, <code class="language-plaintext highlighter-rouge">upstream</code> 정의가 중복되었다고 나옴.
-    <ol>
-      <li><code class="language-plaintext highlighter-rouge">nginx/Dockerfile</code>: <code class="language-plaintext highlighter-rouge">COPY nginx.conf ...</code>로 이미지 빌드 시점에 설정 파일이 복사되어 컨테이너 내부로 들어감.</li>
-      <li>docker-compose.yml: volumes: - ./nginx.conf:…로 컨테이너 실행 시점에 설정 파일이 또 마운트됨.</li>
-      <li>결론 적으로 Nginx가 설정 폴더 내의 두 파일을 모두 읽어 충돌 발생</li>
-    </ol>
-  </li>
-  <li><strong>해결</strong>: <code class="language-plaintext highlighter-rouge">nginx/Dockerfile</code>의 <code class="language-plaintext highlighter-rouge">COPY</code> 라인을 삭제하고, <code class="language-plaintext highlighter-rouge">docker compose</code>의 <strong>볼륨 마운트 방식만 사용</strong>하여 설정 파일을 관리하도록 통일. <code class="language-plaintext highlighter-rouge">docker compose build --no-cache nginx</code>로 이미지를 재생성하여 해결.</li>
-</ul>
-
-<hr />
-
-<h3 id="4-인증서-자동-갱신-설정">4. 인증서 자동 갱신 설정</h3>
-
-<p>Let’s Encrypt 인증서는 90일마다 만료되므로, 호스트 서버의 <code class="language-plaintext highlighter-rouge">Crontab</code>을 이용해 자동 갱신을 설정했다.</p>
-<ol>
-  <li>갱신 스크립트 (renew-ssl.sh) 생성:
- 프로젝트 루트 폴더로 cd 한 뒤, docker compose run으로 Certbot 갱신을 시도하고, docker compose exec로 Nginx를 리로드하는 쉘 스크립트를 작성했다.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c">#!/bin/sh</span>
- <span class="nb">cd</span> /home/hansol/workspace/project-mini-frontend/ <span class="c"># 실제 경로</span>
- docker compose run <span class="nt">--rm</span> certbot renew
- docker compose <span class="nb">exec </span>nginx nginx <span class="nt">-s</span> reload
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>실행 권한 부여:</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">chmod</span> +x /home/hansol/workspace/project-mini-frontend/renew-ssl.sh
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Crontab 등록:</p>
-
-    <p>crontab -e 명령어로 편집기를 열고, 매일 새벽 3시 30분에 스크립트를 실행하도록 등록했다.</p>
-
-    <div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="m">30</span> <span class="m">3</span> * * * <span class="sr">/home/</span>hansol<span class="sr">/workspace/</span>project<span class="p">-</span>mini<span class="p">-</span>frontend/renew<span class="p">-</span><span class="nb">ssl</span><span class="p">.</span><span class="k">sh</span>
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<h3 id="5-배운-점">5. 배운 점</h3>
-
-<ul>
-  <li>Dockerfile의 <code class="language-plaintext highlighter-rouge">COPY</code>는 빌드 시점(Build-time)에, Docker Compose의 <code class="language-plaintext highlighter-rouge">volumes</code>는 실행 시점(Run-time)에 작동한다. 설정 파일처럼 자주 바뀌는 것은 <code class="language-plaintext highlighter-rouge">volumes</code>로 마운트하는 것이 이미지 재빌드 없이 유연하게 대처할 수 있다.</li>
-  <li>에러 로그를 읽는 것이 문제 해결의 90%이다. <code class="language-plaintext highlighter-rouge">docker logs [컨테이너]</code>는 항상 가장 먼저 확인해야 할 정보다.</li>
-  <li>Let’s Encrypt의 <code class="language-plaintext highlighter-rouge">webroot</code> 방식은 80번 포트가 외부 인터넷에 반드시 열려있어야 한다. 공유기 환경에서는 포트포워딩이 필수이다.</li>
-  <li>도메인의 CAA 레코드는 내가 제어할 수 없는 상위 정책일 수 있다. DDNS 사용 시 서비스 제공자의 정책을 확인해야 한다.</li>
-  <li>Nginx 설정 문법이 틀리면 Nginx는 아예 시작조차 하지 않는다. <code class="language-plaintext highlighter-rouge">docker compose run --rm nginx nginx -t</code> 명령어로 문법을 미리 테스트해볼 수 있다.</li>
-</ul>
-
-<hr />
-
-<h3 id="6-코드레빗-지적-사항-학습-및-개선">6. 코드레빗 지적 사항 학습 및 개선</h3>
-
-<p>PR 을 통해 머지 전, 발생한 Major 이슈로 문제가 되는 부분이 뭔지, 그리고 그 부분의 문제 개선 내용을 요약해두었다.</p>
-
-<h4 id="certbot-네트워크-설정-없음docker-composeyml">Certbot 네트워크 설정 없음(Docker-Compose.yml)</h4>
-<p><img src="/assets/images/posts/2025-10/2025-10-20-046.png" alt="" /></p>
-<ul>
-  <li>개요 : 기본적으로 현재 방식은 공유 볼룸을 기반으로 <code class="language-plaintext highlighter-rouge">weebroot</code> 방식은 공유 되는 파일을 주고 받아, 컨테이너들 사이의 네트워크, 특히나 도커 네트워크 기반으로 설정할 필요가 없음. 그러나 AI 의 지적은 몇가지 타당성이 있기 때문에 문제시 될 수 있다.
-    <ol>
-      <li>구성의 일관성 및 명확성</li>
-      <li>docker compose run 동작 시 연결되는 네트워크 : 현재 프로젝트의 <code class="language-plaintext highlighter-rouge">project-mini-network</code>에 접속하여 연결되는 구조가 성립되어 있으나, 이러한 설정이 없으면 아무래도 기본 네트워크에 연결이 되며, 이 점은 비일관적이고 오작동을 유발 할 수도 있다.</li>
-      <li>향후 확장성 : 현재는 심플한 webroot 방식이지만 nginx의 플러그인을 활용한다면, certbot 이 nginx 컨테이너에 직접 연결될수도 있음. 그렇다면 누락시켜서 문제시 되는 거 보다 일단 네트워크는 사용하지 않더라도 연결해두는게 낫다.</li>
-    </ol>
-  </li>
-  <li>결정 : 일관성과 향후를 위해 간단하게 네트워크 통일</li>
-</ul>
-
-<h4 id="ssltls-보안-설정-부족">SSL/TLS 보안 설정 부족</h4>
-<ul>
-  <li>기본 설정 만으론 보안 표준 충족 안됨 TLS 프로토콜에 대한 버전 제안, 암호화 스위트, 기타 보안 헤더 설정이 필요
-    <ol>
-      <li><strong><code class="language-plaintext highlighter-rouge">ssl_protocols TLSv1.2 TLSv1.3;</code></strong></li>
-    </ol>
-    <ul>
-      <li><strong>설명:</strong> Nginx 서버가 허용할 TLS 프로토콜 버전을 명시적으로 지정한다.</li>
-      <li><strong>이유:</strong> <code class="language-plaintext highlighter-rouge">TLSv1.0</code>과 <code class="language-plaintext highlighter-rouge">TLSv1.1</code> 버전은 POODLE, BEAST와 같은 심각한 보안 취약점이 발견되어 사용이 권장되지 않음. 이 설정을 통해 <strong>안전하다고 검증된 <code class="language-plaintext highlighter-rouge">TLSv1.2</code>와 최신 버전인 <code class="language-plaintext highlighter-rouge">TLSv1.3</code>만</strong> 허용하여 하위 버전의 취약점을 원천적으로 차단하는 역할을 함.</li>
-    </ul>
-  </li>
-</ul>
-
-<ol>
-  <li><strong><code class="language-plaintext highlighter-rouge">ssl_prefer_server_ciphers on;</code></strong>
-    <ul>
-      <li><strong>설명:</strong> SSL/TLS 연결 협상 시, 클라이언트(브라우저)가 제안하는 암호화 스위트 목록과 서버가 제안하는 목록 중 <strong>서버(Nginx)의 목록을 우선</strong>하도록 설정한다.</li>
-      <li><strong>이유:</strong> 서버는 관리자가 의도한 강력한 암호화 방식(아래 <code class="language-plaintext highlighter-rouge">ssl_ciphers</code>에서 설정)을 사용하도록 구성되어 있음. 만약 클라이언트가 약한 암호화 방식을 우선적으로 제안하더라도, 이 옵션을 켜두면 서버가 선택한 가장 강력한 방식을 강제할 수 있다.</li>
-    </ul>
-  </li>
-  <li><strong><code class="language-plaintext highlighter-rouge">ssl_ciphers '...';</code></strong>
-    <ul>
-      <li><strong>설명:</strong> 서버가 허용할 <strong>암호화 스위트(Cipher Suites)의 목록</strong>을 강력한 순서대로 지정한다. 제안된 목록(<code class="language-plaintext highlighter-rouge">ECDHE-ECDSA-AES128-GCM-SHA256</code> 등)은 모두 강력한 보안을 제공하는 최신 알고리즘으로 설정하는 역할을 함.</li>
-      <li><strong>이유:</strong> 이 목록은 특히 <strong>PFS(Perfect Forward Secrecy)</strong> 를 지원하는 <code class="language-plaintext highlighter-rouge">ECDHE</code> 계열의 암호화를 우선한다. PFS는 만약 서버의 개인 키가 미래에 유출되더라도, 과거에 이 키로 암호화되어 저장된 트래픽(통신 내용)을 해독할 수 없도록 보장하는 매우 중요한 보안 기능이다.</li>
-    </ul>
-  </li>
-  <li><strong><code class="language-plaintext highlighter-rouge">ssl_session_cache shared:SSL:10m;</code></strong>
-    <ul>
-      <li><strong>설명:</strong> SSL 세션 정보를 서버 메모리에 캐시할 공간을 설정한다. <code class="language-plaintext highlighter-rouge">shared:SSL:10m</code>은 모든 Nginx 워커 프로세스가 공유하는 <code class="language-plaintext highlighter-rouge">SSL</code>이라는 이름의 10MB 캐시 공간을 의미한다.</li>
-      <li><strong>이유 (성능 향상):</strong> HTTPS는 연결 시마다 암호화 키를 교환하는 복잡한 과정(Handshake)을 거치는데, 이 과정은 CPU 자원을 소모함. 이 설정을 통해 한 번 연결했던 클라이언트가 다시 접속할 때(예: 페이지 내의 여러 이미지 로드) Handshake 과정을 생략하고 캐시된 세션 정보를 재사용하여 <strong>HTTPS 연결 속도를 크게 향상</strong>시키는 역할을 함. 기본적으로 설정을 안할 경우 <code class="language-plaintext highlighter-rouge">none</code> 으로 설정되므로 세션 캐시를 만들지 않음.</li>
-      <li>1MB 는 약 4천개의 세션을 저장하는데(하나의 세션이 256 바이트 정도된다), 따라서 10MB 설정은 약 40,000개의 동시 세션을 저장하는 공간이다. 따라서 기본적으로 중소 규모 웹 사이트의 트래픽을 감당할 수준이라고 보면 된다.</li>
-    </ul>
-  </li>
-  <li><strong><code class="language-plaintext highlighter-rouge">ssl_session_timeout 10m;</code></strong>
-    <ul>
-      <li><strong>설명:</strong> 위에서 만든 세션 캐시가 <strong>10분</strong> 동안 유효하도록 설정한다.</li>
-      <li><strong>이유 (성능 향상):</strong> <code class="language-plaintext highlighter-rouge">ssl_session_cache</code>와 함께 작동하여, 10분 이내에 재접속하는 사용자는 빠른 세션 재개를 통해 성능 이점을 누릴 수 있다. 비 설정 시 기본값은 5분이지만, 새션 캐시가 존재하지 않으면 의미가 없기 때문에 세트로 옵션이 설정되어야 한다.</li>
-    </ul>
-  </li>
-  <li><strong><code class="language-plaintext highlighter-rouge">add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;</code></strong>
-    <ul>
-      <li><strong>설명:</strong> <strong>HSTS(HTTP Strict Transport Security)</strong> 헤더를 브라우저에 전송한다.</li>
-      <li><strong>이유 (보안 강화):</strong> 이 헤더를 한 번이라도 받은 브라우저는 <code class="language-plaintext highlighter-rouge">max-age</code>에 설정된 시간(31536000초 = 1년) 동안 해당 도메인(및 <code class="language-plaintext highlighter-rouge">includeSubDomains</code> 설정 시 하위 도메인까지)에 <strong>절대로 HTTP로 접속하지 않고, 무조건 HTTPS로만 접속</strong>하게 된다. 이는 사용자가 실수로 <code class="language-plaintext highlighter-rouge">http://</code>로 접속 시도하는 것을 방지하고, 중간자 공격(MITM)의 일종인 <strong>SSL 스트리핑(SSL Stripping)</strong> 공격을 완벽하게 방어하는 역할을 수행한다.</li>
-    </ul>
-  </li>
-</ol>
-
-<ul>
-  <li>모르는 내용 정리
-    <ul>
-      <li>암호화 스위트 : 클라이언트와 서버 사이의 HTTPS 통신 전, 통신 암호화 규칙을 설정하는 묶음 세트. 명시적으로 설정함으로써 통신의 규약을 확정 짓는 방법
-        <ul>
-          <li>구성요소 :
-            <ul>
-              <li>키 교환 알고리즘</li>
-              <li>인증 알고리즘</li>
-              <li>대칭키 알고리즘</li>
-              <li>메시지 인증/ 무결성 알고리즘</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>OCSP 스테이플링 적용 :
-        <ul>
-          <li>개념 :
-            <ul>
-              <li>OCSP 스테이플링은 SSL/TLS 인증서의 유효성(폐기 여부)을 확인하는 책임을 클라이언트(브라우저)가 아닌 <strong>서버(Nginx)가 대신 수행</strong>하는 기능이다.</li>
-              <li>기본적으로 브라우저는 HTTPS 사이트 접속 시, 해당 인증서가 폐기되지 않았는지 확인하기 위해 인증 기관(CA) 서버에 OCSP(Online Certificate Status Protocol) 요청을 별도로 전송한다. 이 방식은 연결 속도를 저하(지연 발생)시키고, 사용자의 접속 기록이 CA에 노출되는 프라이버시 문제를 야기한다.</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>적용 예시
-        <div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># nginx.conf 내 http { ... } 또는 server { ... } 블록</span>
-  <span class="c1"># OCSP 스테이플링 활성화</span>
-  <span class="k">ssl_stapling</span> <span class="no">on</span><span class="p">;</span>
-  <span class="k">ssl_stapling_verify</span> <span class="no">on</span><span class="p">;</span>
-		
-  <span class="c1"># 스테이플링 검증을 위한 신뢰할 수 있는 인증서 체인 지정</span>
-  <span class="c1"># Let's Encrypt의 fullchain.pem은 서버 인증서와 체인 인증서를 모두 포함하고 있음</span>
-  <span class="k">ssl_trusted_certificate</span> <span class="n">/etc/letsencrypt/live/paulryu9309.ddns.net/fullchain.pem</span><span class="p">;</span>
-		
-  <span class="c1"># (선택 사항) OCSP 응답 확인을 위한 리졸버 (예: Google DNS)</span>
-  <span class="c1"># resolver 8.8.8.8;</span>
-</code></pre></div>        </div>
-      </li>
-      <li>작동 원리
-        <ol>
-          <li><strong>서버의 사전 확인:</strong> Nginx 서버가 주기적으로 CA 서버에 “내 인증서는 유효한가?”라고 질의한다.</li>
-          <li><strong>응답 캐싱:</strong> Nginx는 CA로부터 타임스탬프가 찍힌 “유효함” 응답(OCSP 응답)을 받아 캐시한다.</li>
-          <li><strong>응답 첨부 (Stapling):</strong> 클라이언트가 최초 연결(SSL Handshake)을 시도할 때, Nginx는 SSL 인증서와 함께 이 캐시된 “유효함” 응답을 <strong>“찝어서(Stapling)”</strong> 함께 전송한다.</li>
-          <li><strong>브라우저 확인 생략:</strong> 클라이언트는 서버가 제공한 OCSP 응답을 신뢰하므로, CA 서버에 직접 질의하는 단계를 생략한다.</li>
-        </ol>
-      </li>
-      <li>적용 이점
-        <ul>
-          <li><strong>성능 향상 (속도):</strong> 브라우저가 CA 서버에 추가 질의하는 과정을 생략함으로써, HTTPS 초기 연결(Handshake) 속도가 빨라진다.</li>
-          <li><strong>프라이버시 보호:</strong> 사용자의 접속 정보(IP, 방문 사이트)가 CA 서버에 노출되지 않아 개인정보 보호 수준이 향상된다.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="critical-인증서-경로-초기-설정-추가-필요-내역">Critical 인증서 경로 초기 설정 추가 필요 내역</h4>
-<p><img src="/assets/images/posts/2025-10/2025-10-20-047.png" alt="" /></p>
-<ul>
-  <li>핵심 문제 : docker 를 통해 nginx 서비스가 실행 -&gt; 이때 nginx.conf 를 참조하는데, 이때 인증서 존재여부를 보게 되니, 최초에 현재 conf(SSL 설정이 된) 로는 에러가 발생한다는 것이 문제.</li>
-  <li>개선 방안은 다음과 같다.
-    <ol>
-      <li><strong>init-letsencrypt.sh</strong> 와 같은 초기화 스크립트를 활용할 것</li>
-      <li><strong>가짜 인증서</strong>를 만드는 전략을 활용해 구동을 하고 certbot으로 진짜 인증서를 받고, 유효한 심볼링 링크를 생성하는 방식 -&gt; 초기화 스크립트는 복잡하고, 여러 수정 작업등이 존재하므로, 차라리 가짜 인증서를 certbot으로 진짜 인증서 발급 이후 새롭게 접근하는 방식. (향후 적용 예정)</li>
-    </ol>
-  </li>
-</ul>
-
-<h4 id="갱신-스크립트의-하드코딩-경로-문제">갱신 스크립트의 하드코딩 경로 문제</h4>
-<p><img src="/assets/images/posts/2025-10/2025-10-20-048.png" alt="" /></p>
-<ul>
-  <li>개요 : 하드 코딩 &amp; 에러처리의 간단한 구조이다보니 문제 있음</li>
-  <li>개선 : AI 지적한데로 개선된 형태를 그대로 차용하여 적용</li>
-</ul>
-
-<h4 id="certbot-갱신-실패-에러-핸들링-추가">Certbot 갱신 실패 에러 핸들링 추가</h4>
-
-<p><img src="/assets/images/posts/2025-10/2025-10-20-049.png" alt="" /></p>
-<ul>
-  <li>개요 : 갱신 절차에 대해 실행 결과를 확인하지 않고 해야할 일만 바로 수행하도록 되어 있음</li>
-  <li>개선 : 지적한 대로 스크립트 수정</li>
-</ul>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><summary type="html"><![CDATA[2025년 10월 20일: Docker Compose와 Nginx 환경에 Let’s Encrypt (Certbot)로 HTTPS 적용 및 자동 갱신 설정]]></summary></entry></feed>
+</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><summary type="html"><![CDATA[2025년 10월 21일: 젠킨스(Jenkins) 서버 구축 및 무중단 배포 아키텍처 설계]]></summary></entry></feed>
