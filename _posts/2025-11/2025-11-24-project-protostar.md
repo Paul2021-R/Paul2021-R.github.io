@@ -1,18 +1,18 @@
 ---
 layout: post 
 title: Protostar 프로젝트를 소개합니다
-subtitle: Project Protostar 를 위한 AI 모델을 골라보자
+subtitle: 
 categories: 학습
-tags: 학습 DevOps Docker n8n Automation AI
-thumb: https://firebasestorage.googleapis.com/v0/b/paul-obsidian.firebasestorage.app/o/pasterly%2Fimage_1762718919746_yf4tdn.png?alt=media&token=539a1c99-c059-4627-a1d4-aa7f4b9755cb
-custom-excerpt: gemini 2.5 flash-lite, gpt-oss-120b 지상 최강 가성비 AI 를 정해보자
+tags: Backend AI 프로젝트 DevOps
+thumb: /assets/images/assets/protostar-icon.png
+custom-excerpt: Project Protostar 를 소개합니다. 
 banner:
   # video: https://vjs.zencdn.net/v/oceans.mp4
   loop: true
   volume: 0.8
   muted: true                 # For mobile device background music play 
   start_at: 8.5
-  image: /assets/images/assets/opal.png
+  image: /assets/images/assets/protostar-demo.png
   opacity: 0.318
   background: "#000"
   height: "100vh"
@@ -24,7 +24,8 @@ banner:
 ## Project Protostar 를 소개합니다
 
 ### Forge Your Future
-![](https://firebasestorage.googleapis.com/v0/b/paul-obsidian.firebasestorage.app/o/pasterly%2Fimage_1763539797516_8mwy4f.png?alt=media&token=78de45c4-3f7f-4668-b8d0-fef670f3186e)
+![](/assets/images/assets/protostar-icon.png)
+![](/assets/images/assets/protostar-demo.png)
 
 회사가 뭘 원할까? 
 
