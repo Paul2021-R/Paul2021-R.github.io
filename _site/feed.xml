@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-12-05T07:19:05+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">TIL - 11월, K8s 실패 + Docker 환경으로의 전환 정리</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/12/05/00-til-change-plan.html" rel="alternate" type="text/html" title="TIL - 11월, K8s 실패 + Docker 환경으로의 전환 정리" /><published>2025-12-05T00:00:00+00:00</published><updated>2025-12-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/12/05/00-til-change-plan</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/12/05/00-til-change-plan.html"><![CDATA[<h2 id="k8s-실패--docker-환경으로의-전환-정리">K8s 실패 + Docker 환경으로의 전환 정리</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-12-05T07:22:10+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">TIL - 11월, K8s 실패 + Docker 환경으로의 전환 정리</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/12/05/00-til-change-plan.html" rel="alternate" type="text/html" title="TIL - 11월, K8s 실패 + Docker 환경으로의 전환 정리" /><published>2025-12-05T00:00:00+00:00</published><updated>2025-12-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/12/05/00-til-change-plan</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/12/05/00-til-change-plan.html"><![CDATA[<h2 id="k8s-실패--docker-환경으로의-전환-정리">K8s 실패 + Docker 환경으로의 전환 정리</h2>
 
 <p>제목처럼, K8s 로의 완전한 통합환경 구축의 실패와 이후 Docker 기반의 컨테이닝으로 실서비스 배포에 대한 전체 내용을 정리한 글이다.</p>
 
@@ -293,7 +293,517 @@ KT 회선 하나 당 공인 IP 하나가 할당된다. 따라서 정식 서비�
 
 <p>라는 점은 더욱 명확해지는 것 같다. 코더는 사라져도 찐 실력자들은 그대로 살아있을거란게 확실히 느껴진다.</p>
 
-<p>더불어, 구현해보고 나니 Protostar 의 프로젝트가 생각 이상 편리할 것이란 생각. 그리고 이를 디테일하게 해주면 최소한 ‘뭘 원하는가’ 라는 차원에서 구직자 구인자 사이의 꽤나 괜찮은 접근이 되지 않을까? 라는 생각은 명료해진 것같다. 물론, 시장의 파워나 크기를 생각해보면 의미 없어 보이긴 하지만…음</p>]]></content><author><name>Paul2021-R</name></author><category term="개발" /><category term="개발" /><category term="VibeCoding" /><category term="Antigravity" /><category term="Frontend" /><summary type="html"><![CDATA[Protostar Chatbot Demo Report]]></summary></entry><entry><title type="html">n8n 개념 정리하기</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/09/01-introduction-n8n.html" rel="alternate" type="text/html" title="n8n 개념 정리하기" /><published>2025-11-09T00:00:00+00:00</published><updated>2025-11-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/09/01-introduction-n8n</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/09/01-introduction-n8n.html"><![CDATA[<h2 id="n8n-자동화-도구-소개">n8n 자동화 도구 소개</h2>
+<p>더불어, 구현해보고 나니 Protostar 의 프로젝트가 생각 이상 편리할 것이란 생각. 그리고 이를 디테일하게 해주면 최소한 ‘뭘 원하는가’ 라는 차원에서 구직자 구인자 사이의 꽤나 괜찮은 접근이 되지 않을까? 라는 생각은 명료해진 것같다. 물론, 시장의 파워나 크기를 생각해보면 의미 없어 보이긴 하지만…음</p>]]></content><author><name>Paul2021-R</name></author><category term="개발" /><category term="개발" /><category term="VibeCoding" /><category term="Antigravity" /><category term="Frontend" /><summary type="html"><![CDATA[Protostar Chatbot Demo Report]]></summary></entry><entry><title type="html">Protostar 프로젝트를 소개합니다</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/24/project-protostar.html" rel="alternate" type="text/html" title="Protostar 프로젝트를 소개합니다" /><published>2025-11-24T00:00:00+00:00</published><updated>2025-11-24T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/24/project-protostar</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/24/project-protostar.html"><![CDATA[<h2 id="project-protostar-를-소개합니다">Project Protostar 를 소개합니다</h2>
+
+<h3 id="forge-your-future">Forge Your Future</h3>
+<p><img src="/assets/images/assets/protostar-icon.png" alt="" />
+<img src="/assets/images/assets/protostar-demo.png" alt="" /></p>
+
+<p>회사가 뭘 원할까?</p>
+
+<p>이 질문은 회사를 다니는 경력자들조차 쉬이 확답으로 이야기 하기 어려운 영역이다. 전문성, 어떤 영역에서 깊이 있게 된 사람이라면 모를까, 그렇지 않다면 항상 어려운 이야기일 것이다.</p>
+
+<p>이 사람은 과연 잘 할까?</p>
+
+<p>이 질문 역시 HR을 하는 조직, 회사 입장에서 항상 어려운 영역이다. 전문성과 체계화를 통해 이를 시스템으로 정착 시킨 회사라면 그나마 괜찮겠지만, 그렇지 않은 회사들이 절대적이며, 그렇기에 많은 회사 경영진들은 비싼 돈을 주고서도 인사 관리, 어떻게 사람을 뽑고, 쓰며, 배치 할지에 돈과 시간을 쏟아붓는다.</p>
+
+<p>그런 생각 도중에 이렇게 생각했다?</p>
+
+<p>커리어에 대한 현실적인 질문을 노동자가 받을 수 있다면?
+커리어에 대한 방대한 자료들에 직접 핵심으로 생각하는 질문을 하고, 그거에 능동적으로 답변이 가능하다면?</p>
+
+<p>이력서는 압축이 필요하다
+경력 기술서도 압축이 필요하다
+자기 소개서도 압축이 필요하고 무엇보다 ‘매력적’인 부분을 어필해야한다.</p>
+
+<p>HR 담당자의 시간은 금인데, 일일히 읽어보는게 아닌, 핵심으로 생각하는 질문을 던질 수 있고, 이에 준하는 사람을 능동적으로 찾아낼 수 있다면? 자연어로 구성된 복잡한 질문을 풀어낼 수 있다면?</p>
+
+<p>또 반대로 HR 담당자가 어떤 질문을 하고, 어떤 부분을 관심 가지는지 알 수 있다면?</p>
+
+<p>‘Forge Your Future’ 이라는 슬로건은 이러한 문제에서 시작하였다.</p>
+
+<h3 id="기술적-성장-포인트">기술적 성장 포인트</h3>
+
+<p>현재 3년간의 과정을 통해 나의 기술적 능력치는 상당히 끌어 올려졌다. 특히나 1년 간의 메인 백엔드 개발자로서의 일은, 물론 남들에겐 제대로된 사수가 없다는 사실에, 박봉이란 사실에 아쉬워 하거나, 저걸로 되겠냐? 라고 생각하고 질문하시는 분도 있었다.</p>
+
+<p>하지만 그것은 나에겐 너무나 소중한 시간이었다. 온전한 책임, 온전한 집중이 가능하고, 다른 사람이 아닌 내가 실제 부딪혀서 생기는 불만과, 부족함, 그리고 어려움을 직접 고민해볼 수 있는 ‘권한’이 제공되었다는 점만으로도 감사했고, 그 감사한 순간에 하루가 다르게 성장하는 AI는. 비록 완벽하진 않지만, 그럼에도 불구하고 내가 써야할 다양한 기술들의 적용, 방법, 핵심을 잘 설명해주는 완벽한 비서였다.</p>
+
+<p>그렇기에 1년하고도 수개월 간을 달려올 수 있었고, 그 달려옴으로 생긴 문제도 쉴 겸. 그리고 그걸 기반으로 더 큰 성장을 이루기 위해 이번 프로젝트를 기획하게 되었다. BM 차원에서나, 기획 차원에서 아쉬움도 있을 수 있고, 한계점이 명백하다고 생각은 한다. 그럼에도, 실제 구현을 해냈다. 그리고 동시에 이를 어떤 구조에서 세워 나갔는가! 를 더 중요시하기로 했기에, 몇가지 기술적 구현 목표를 설정했다.</p>
+
+<ul>
+  <li>v1 : 초기 MSA 기반 설계, Kubernetes 를 기반으로 하는 엔터프라이즈급 구성, 스케일링, 무중단(zero-downtime) 을 구축하는 걸 목표로 하고 AI와 DevOps 역량을 극대화 하자.</li>
+  <li>v2 : 국내 시장의 요구사항을 점검하여 몇 가지 기술 스택을 개선하고, 특히 k8s 기반의 대중적인 툴인 ArgoCD 를 기반으로 CI/ CD의 영역의 책임 분리, Spring 을 기반으로 하는 기술 스택의 재 활용 등을 수행했다.</li>
+  <li>v2.1 : 진행 과정에서 알게된 제약 사항, 특히 온프레미스에서 수행하게 되다보니 발생한 리소스 경합, 네트워크 문제를 해결하는 구조를 포함한다. 또한 단일 실패지점(SPOF) 에 대한 구조적 한계점을 인지하고, Admin과 Service 의 구조적 설계를 보강한다.</li>
+</ul>
+
+<p><img src="/assets/images/posts/2025-11/20251124-038.png" alt="" /></p>
+
+<p>특히 이러한 아키텍트를 하게된 목표는 다음과 같은 기준 때문이다.</p>
+
+<ol>
+  <li>3년차 개발 직군의 역량을 갖춰 보자! : k8s, Grafana, Loki, RabbitMQ(혹은 kafka)</li>
+  <li>현재의 표준화된 스케일링 도구들에 대한 이해도, 클라우드 플랫폼의 의존성을 탈피할 수단을 확실하게 배워 AWS, GCP, Azure 라는 굵직한 키워드 만큼이나, 기술 독립적인 역량을 갖추자</li>
+  <li>AI를 서비스 개발, 서비스의 테스팅, 서비스 내부에 적극적으로 쏟아 넣어, 기계적으로 해결 어려운 문제를 해결하고, 생산성을 극대화 시키는 역량을 갖추자!</li>
+</ol>
+
+<p>나의 목표는 그렇다. 이 프로젝트의 성공적인 런칭을 통해 사업을 하거나 하는건 당장은 힘드리라 생각한다. 그러나 몸의 회복을 하는 6개월의 시간을 이를 하면서 보냄으로서 다음을 철저히 준비하고, 무엇보다 ‘연차’나 ‘비개발직군’이 가지는 한계치를 뛰어넘는 역량을 증명해 내는 것. 그것이 본 프로젝트를 하는 목표의 한 축이라 할 수 있겠다. (물론, 위에서 언급한 불편함을 ‘나’에게 적용시켜서 스스로의 아쉬운 포인트를 긁어내고 싶은 점도 있긴 하다.)</p>
+
+<h3 id="디테일하게-아키텍처의-진화-문제해결을-위한-구조-탐구">디테일하게 아키텍처의 진화, 문제해결을 위한 구조 탐구</h3>
+
+<p>위에서 언급한 v1 ~ v2.1 은 내 목표를 달성하기 위한 ‘실전 구현’의 목표보다는 ‘기술검증’을 위한 도구에 가깝다. 실제로 n8n 을 테스팅 하면서 AI의 구축이나 서버의 구축은 사실 모놀리스식, 가장 빠르고 쉬운 접근법이 구현이란 차원에서 보면 맞을 수 있었다.</p>
+
+<p>하지만 목표가 있기에, 그걸 위한 구조를 짜보면서 정말 많은 공부를 했기에 얻어낸 결실이었다.</p>
+
+<p>최초 버전에서 한계점이 보였다. Java Spring 에 대한 작업을 안 해본건 아니지만, 너무 오래 되었기에 다시 보겠다는 점, 특히 WebFlux처럼 NestJS에선 당연한 도구지만 비동기, 비봉쇄의 이벤트 루프 방식의 처리를 통해 Java 진영 역시 빠르고 안정적인 단일 프로세스 기반의 비동기 처리가 가능해졌다. 이를 이해할 필요는 있어 보였다.</p>
+
+<p>또한 k8s를 단순히 CLI로 쓰는 건 매우 어렵고 복잡한 일이었다. 특히 패키지 매니징을 통해 실무에서 검증된 기술을 쓴다는 점에서 생각하면 생성되는 수십개의 노드들의 관계나 디테일을 관리하기란 생각 이상으로 어려웠고, 이를 위한 도구가 ArgoCD라는 것을 이해했을 때, 도입과 함께 CD의 기틀을 GitOps로 가야 함을 깨달았다.</p>
+
+<p>특히, 구조 상 폴리레포 형태를 포함해야하고, Git repo를 단일한 공급원으로 삼아 CI의 구성 효율화가 필요함, 원본 정보를 RAG 하기 전 상태로 유지해야 한다는 점등을 볼 때, MinIO의 필요성 등을 느꼈다.</p>
+
+<p>특히나 가장 문제점은 홈랩(Homelab)을 구축하였고, 이를 기반으로 한 서비스 배포를 생각해보고 있는데, 공인 IP 한대로는 한개의 종단간 암호화 인증 및 서비스 배포가 되기 때문에, 간단히 생각해 443 포트를 가상 도메인 방식으로 Admin, Servce 모두 연결 시킬 순 있지만. 그렇게 했다간 Service 의 과부하 일 경우 Admin 접속이 불가능하다는 문제를 파악. 이를 개선하는 것을 포함하기 위해 GCP 프리티어의 인스턴스를 활용 L4 레이어 TLS passthrough 를 도입하는 등의 변화를 겪었다.</p>
+
+<p>이러한 v2의 변화 이후엔, 더욱이 기존의 NextJS기반의 프론트엔드 작업, Jenkins 기반으로 먼저 올려두었던 프론트엔드 구축과 k8s 기반으로 동작한 백엔드 사의 문제점을 파악. 이를 고려한 통합 체계 구축이 필요했고, 특히나 최신 표전 Gateway API 사용이 필요하다는 점, 보안 운영 자동화 등을 고려하여 얻은 최종 결과 아키첵처가 v2.1 로 정리 되었다.  그리하여 간단하게 정리한, 그리고 각 구성은 다음과 같이 정리 된다.</p>
+
+<hr />
+
+<h4 id="v21-최종-아키텍처">v2.1 최종 아키텍처</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>저장소</th>
+      <th>역할</th>
+      <th>저장 데이터</th>
+      <th>위치</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**PostgreSQL**</td>
+      <td>서비스 저장용, JSONB 기능으로 MongoDB 역할 포함</td>
+      <td> </td>
+      <td>A5</td>
+    </tr>
+    <tr>
+      <td>**PostgreSQL - pgvector**</td>
+      <td>AI를 위한 RAG 용</td>
+      <td> </td>
+      <td>A5</td>
+    </tr>
+    <tr>
+      <td>**MinIO**</td>
+      <td>ObjectStorage(S3호환)</td>
+      <td>원본 파일 저장용, HTML 백업 등</td>
+      <td>Centre</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>개선 이유
+    <ol>
+      <li>현재의 온프레미스 상황에서 리소스의 분산은 효과적이지 못하고, 트래픽 대응에서 비효율적이다. (한 서버내에서 동작해야 하는 병목을 고려시)</li>
+      <li>PostgreSQL 은 기본 VectorDB 기능을 포함하고 있기 때문에 RAG 데이터와 임베딩 벡터를 단일 트랜잭션으로 관리할 수 있게 되며, 이는 데이터 정합성, 일관성을 보장할 수 있게 만든다. 두개의 DB 를 별도 운영시 생기는 복잡한 동기화 문제를 원천적으로 제거하는 역할을 함.</li>
+      <li>MinIO 는 RAG를 위한 원본데이터들의 보존, 외부 서비스(AWS 등)와 호환성 유지를 위한 도구로 사용함</li>
+    </ol>
+  </li>
+  <li>ORM
+    <ul>
+      <li><strong>NestJS (Prisma):</strong> 익숙한 스택으로 <strong>개발 속도</strong> 확보</li>
+      <li><strong>Spring (R2DBC):</strong> 새로운 논블로킹 스택 호환성을 위해,  <strong>기술 깊이</strong> 확보</li>
+      <li><strong>FastAPI (SQLModel):</strong> 파이썬 네이티브 스택으로 <strong>AI/RAG 연동성</strong> 확보</li>
+    </ul>
+  </li>
+  <li>MSA 서버 구성</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>서버명</th>
+      <th>주요 역할</th>
+      <th>내장 서비스</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**Auth 서버**</td>
+      <td>인증/인가, JWT 토큰 관리</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>**User 서버**</td>
+      <td>사용자 프로필 및 권한 관리</td>
+      <td>• 기본 유저 서비스<br />• 별지기 서비스<br />• 샛별 서비스</td>
+    </tr>
+    <tr>
+      <td>**Chat 서버**</td>
+      <td>대화 및 커리어 데이터 관리</td>
+      <td>• Chat 서비스<br />• ActiveStatics 서비스<br />• Content 서비스</td>
+    </tr>
+    <tr>
+      <td>**AI 서버**</td>
+      <td>LLM 호출 및 RAG 처리, FastAPI 기반</td>
+      <td>• RAG 서비스<br />• Crawling AI 서비스 (요약)</td>
+    </tr>
+    <tr>
+      <td>**Noti 서버**</td>
+      <td>알림 발송</td>
+      <td>• Discord Webhook<br />• Email</td>
+    </tr>
+    <tr>
+      <td>**Logging 서버**</td>
+      <td>로그 수집 및 파일 저장</td>
+      <td>• 내장 Message Queue<br />• 파일 관리</td>
+    </tr>
+    <tr>
+      <td>**Schedule 서버**</td>
+      <td>배치 작업 오케스트레이션</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>**Psychological 서버**</td>
+      <td>선행 서비스로, 심리 테스트 서비스 구현용</td>
+      <td>- 답변 저장<br />- 답변 호출<br />- AI 서비스에 판단 요청</td>
+    </tr>
+    <tr>
+      <td>**API Gateway**</td>
+      <td>모든 통신의 출입구 역할. 가장 먼저 대응하는 서버</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>**Redis 서버**</td>
+      <td>캐싱 전략용</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>**RabbitMQ**</td>
+      <td>메시지 전략용 서비스</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>**Loki**</td>
+      <td>stdout 로그를 수신하고, Grafana 로 전달 역할</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="서버별-책임-및-설계-결정">서버별 책임 및 설계 결정</h5>
+
+<ul>
+  <li>API Gateway
+    <ul>
+      <li>==Spring Cloud Gateway==</li>
+      <li>모든 API 를 마주하는 공간. 여길 통해 접근이 되며, 최초의 트래픽의 대응 역할을 수행하여서 내부 서비스들을 보호하고 동시에 조절 관리한다.</li>
+      <li>특정 사용 제한 사항이 있다면, 이에 대한 조절, 통제 역할</li>
+      <li>서비스를 위한 전역 관리 사항들에 대해 통제하고, 문제 발생시 조절하는 브레이커 역할기(서비스들 보호 및 로직 단순화를 위한 용도)</li>
+      <li><strong>기술 스택: <code class="language-plaintext highlighter-rouge">Auth 서버</code>와 동일한 Spring WebFlux(논블로킹) 스택을 사용하여, v2 기술 목표(Spring 경험) 및 아키텍처 기술 일관성 확보.</strong></li>
+      <li><strong>중앙 집중형 제어: 인증/인가, 사용량 제한(Rate Limiting), 서킷 브레이커(Circuit Breaker) 역할을 전담하여 백엔드 서비스들의 비즈니스 로직을 단순화.</strong></li>
+      <li><strong>성능 및 안정성: 비동기 논블로킹 스택으로 대규모 동시 트래픽을 효율적으로 처리하고, 장애 격리를 통해 시스템 전체 안정성 보장.</strong></li>
+    </ul>
+  </li>
+  <li>Auth 서버
+    <ul>
+      <li>==Spring WebFlux + R2DBC==</li>
+      <li>JWT 발급/검증, 리프레시 토큰 관리</li>
+      <li>다른 서비스와 분리하여 보안 계층 독립성 확보</li>
+      <li><strong>기술 스택: v2 핵심 목표인 ‘Spring 비동기 논블로킹’ 스택 경험을 위해 선정.</strong></li>
+      <li><strong>도메인 적합성: 인증/인가는 I/O(DB 조회)가 잦지만 로직이 비교적 고립되어 있어, WebFlux의 성능 이점 테스트 및 새 스택 적용에 가장 안정적인 도메인.</strong></li>
+      <li><strong>R2DBC: WebFlux의 논블로킹 철학을 DB까지 일관되게 유지하기 위해, 블로킹(Blocking) 방식의 JPA 대신 반응형(Reactive) DB 접근 기술인 R2DBC 채택.</strong></li>
+    </ul>
+  </li>
+  <li>User 서버
+    <ul>
+      <li><strong>통합 이유:</strong>
+        <ul>
+          <li>별지기/샛별은 역할(Role)이며 완전히 다른 도메인이 아님</li>
+          <li>하나의 계정이 두 역할을 동시 보유 가능 (샛별 = 별지기 + 샛별 기능)</li>
+          <li>초대 코드 기반 소규모 사용자로 병목 없음</li>
+          <li>PostgreSQL 단일 트랜잭션으로 권한 변경 관리 단순화</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>권한 체계:</strong></p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  guest → 회원가입 → stargazer → 초대코드 입력 → protostar
+  (질문 3회)         (질문 10회/일)              (모든 기능 사용)
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Chat 서버
+    <ul>
+      <li><strong>Content 서비스 통합 이유:</strong>
+        <ul>
+          <li>초기 단계에서는 Content가 Chat 도메인과 밀접 (대화를 위한 자료)</li>
+          <li>장기적으로 비대해지면 독립 서버로 분리 가능하도록 모듈화</li>
+        </ul>
+      </li>
+      <li><strong>책임:</strong>
+        <ul>
+          <li>대화 저장/조회</li>
+          <li>질문 횟수 제한 체크</li>
+          <li>피드백 관리</li>
+          <li>통계 생성 (ActiveStatics)</li>
+          <li>커리어 데이터 업로드/관리 (Content)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>AI 서버
+    <ul>
+      <li>==FastAPI 서버==
+        <ul>
+          <li>Python 생태계가 LLM 통합에 유리</li>
+          <li>Gemini API 사용으로 로컬 추론 부하 없음 (512MB-1GB 수준)</li>
+          <li>Claude API로 전환 가능하도록 추상화 계층 구현 예정</li>
+        </ul>
+      </li>
+      <li><strong>RabbitMQ 적용 (RAG 파이프라인): <code class="language-plaintext highlighter-rouge">Chat 서버</code>의 파일 업로드(빠른 응답)와 <code class="language-plaintext highlighter-rouge">AI 서버</code>의 임베딩 처리(느린 작업)를 비동기 큐로 완벽하게 분리(Decoupling). NestJS(Publisher)와 FastAPI(Consumer) 이종 스택 간의 안정적인 교차 통신 구현.</strong></li>
+    </ul>
+  </li>
+  <li>Noti 서버
+    <ul>
+      <li>==RabbitMQ== 적용으로 메시지를 구독하고, 각종 서비스에서 이벤트를 발행 이를 수신한다</li>
+      <li>Dicord 알림이나, 이메일을 알림, 비밀번호 찾기 등의 보내기를 관리하는 서버</li>
+      <li><strong>RabbitMQ 적용 (이벤트 기반 디커플링): 타 서비스(Chat, User)가 발행(Publish)한 이벤트를 구독(Subscribe)하여 처리. 알림 API(Discord/Email)의 지연/장애가 원본 서비스에 영향을 주지 않도록 완벽히 격리.</strong></li>
+    </ul>
+  </li>
+  <li>Logging 서버
+    <ul>
+      <li>==RabbitMQ== 적용으로 메시지르 구독하고 수신한다.</li>
+      <li>각 서버는 Logging 서비스에 로그 전송 후 무시 (fire-and-forget)</li>
+      <li>
+        <p>파일 저장이 핵심 역할 (장기 보관, 감사 로그)</p>
+      </li>
+      <li><strong>이중화 전략:</strong>
+        <ul>
+          <li><strong>Loki (실시간 디버깅용): 각 서버 <code class="language-plaintext highlighter-rouge">stdout</code> (표준 출력)을 Loki가 수집, Grafana에서 실시간 스트리밍 및 필터링. (영구 보관 목적 아님)</strong></li>
+          <li><strong>RabbitMQ -&gt; Files (영구 감사용): 서비스가 직접 발행하는 비즈니스 중요 로그(감사, 중요 에러)를 MQ를 통해 유실 없이 수신, <code class="language-plaintext highlighter-rouge">Logging 서버</code>가 구독하여 파일로 영구 저장. (장기 보관 및 감사 추적 목적)</strong>
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  각 서버
+├→ stdout (표준 출력) → Loki → Grafana (실시간 조회)
+└→ RabbitMQ 로 전달 -&gt; Logging 서버 → Files (영구 보관)
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Schedule 서버
+    <ul>
+      <li><strong>오케스트레이터 역할 선택 이유:</strong>
+        <ul>
+          <li>배치 작업의 가시성과 제어권 중앙 집중화를 위한 전략</li>
+          <li>“누가 언제 무엇을 실행하는가” 한눈에 파악 가능</li>
+          <li>각 서버는 비즈니스 로직을 소유, 스케줄만 Schedule 서버가 트리거</li>
+          <li>반복작업의 증대 및 복잡도 증가로 각 서버가 책임을 다해야할 시 해당 서버로 스케줄 이관 가능 (유연성 확보)</li>
+          <li>단 필요한 기능이 있을 때만 쓸 것이므로 일단 기획만 해줄 것</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="프론트엔드">프론트엔드</h5>
+<ul>
+  <li>프론트엔드 구성은 3가지로 구성됨
+    <ol>
+      <li>기술블로그에 올라가는 정적인 챗봇 컴포넌트</li>
+      <li>챗봇 컴포넌트에서 시작하여 SSR로 동작하는 챗봇 내부 UI 컴포넌트(SPA)</li>
+      <li>챗봇 설정을 위한 대시보드</li>
+    </ol>
+  </li>
+  <li>미니 프로젝트(테스트 프로젝트)
+    <ul>
+      <li>심리 테스트를 AI 로 돌리는 것을 수행할 예정</li>
+      <li>간단한 UX 로 구현 + AI 이미지 에셋으로 완성시키기</li>
+      <li>gpt-oss-120b 모델을 활용하여 API 사용 비용을 최소화 시킬 예정</li>
+      <li>Big-Five 심리 테스트 방법론 + 판타지, SF 등을 활용해 재미있는 네러티브 테스트</li>
+      <li>회원가입 기능(간단 이메일, 알림 전달 용, 유저의 기록 저장및 검색용)</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="msa-아키텍쳐-및-통신-방법">MSA 아키텍쳐 및 통신 방법</h5>
+
+<ul>
+  <li>k8s 를 사용하고, 내부에 대한 DNS 처리가 용이한 만큼, 내부에서 동작하는 DNS url 기반으로 동작하게 만들 것이다. 단 이때, 비동기적으로 동작해야 하는 경우, 혹은 FAF(Fire and Forget) 방식으로 마이크로 서비스로 전달해도 되는 것에 대해서는 RabbitMQ를 기반으로 하는 메시지 방식을 접목한다.</li>
+</ul>
+
+<ol>
+  <li>동기식 통신 (Synchronous): HTTP
+    <ul>
+      <li><strong>“질문/응답(Request/Response)”</strong> 방식의 통신으로, 요청자는 응답을 받을 때까지 기다린다. API Gateway, Auth 서버, User 서버 간의 정보 조회 등 즉각적인 응답이 필수적인 모든 곳에서 HTTP를 사용한다.</li>
+    </ul>
+    <ul>
+      <li><strong>외부 진입 (External):</strong>
+        <ul>
+          <li>모든 외부 클라이언트 트래픽은 <strong><code class="language-plaintext highlighter-rouge">Host Nginx</code></strong>를 통해 <strong><code class="language-plaintext highlighter-rouge">API Gateway</code></strong>로 진입한다.</li>
+          <li><code class="language-plaintext highlighter-rouge">API Gateway</code>는 인증/인가(<code class="language-plaintext highlighter-rouge">Auth 서버</code> 호출), 사용량 제한 등 공통 정책을 중앙에서 처리한다.</li>
+        </ul>
+      </li>
+      <li><strong>내부 통신 (Internal):</strong>
+        <ul>
+          <li><strong>“정책 A: 내부 간 직접 호출 허용”</strong>을 채택한다.</li>
+          <li>서비스 간(예: <code class="language-plaintext highlighter-rouge">User 서버</code> -&gt; <code class="language-plaintext highlighter-rouge">Chat 서버</code>)의 동기 호출은 <code class="language-plaintext highlighter-rouge">API Gateway</code>를 거치지 않고, <strong>k8s 내부 네트워크(Service Discovery, 예: <code class="language-plaintext highlighter-rouge">http://chat-service</code>)</strong>를 통해 직접 통신한다.</li>
+          <li><strong>근거:</strong> 게이트웨이를 우회하여 내부 통신 성능(Low Latency)을 극대화하고, <code class="language-plaintext highlighter-rouge">API Gateway</code>의 부하를 줄인다.</li>
+          <li><strong>v2 경험:</strong> 이 정책은 <code class="language-plaintext highlighter-rouge">User 서버</code>와 같은 호출자(Caller)가 <code class="language-plaintext highlighter-rouge">Chat 서버</code>의 장애에 대비한 <strong>서킷 브레이커(Circuit Breaker)</strong> 및 <strong>재시도(Retry)</strong> 로직을 직접 구현해야 함을 의미하며, 이는 v2의 핵심 경험 목표와 일치한다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<ol>
+  <li>비동기식 통신 (Asynchronous): RabbitMQ
+    <ul>
+      <li><strong>“발행/구독(Publish/Subscribe)”</strong> 방식의 통신으로, 요청자는 작업을 “명령”하고 즉시 응답을 받는다(Fire-and-Forget). 서비스 간의 결합도를 완벽히 분리(Decoupling)하고 장애가 전파되는 것을 막기 위해 사용한다.</li>
+    </ul>
+    <ul>
+      <li><strong>RAG 처리 파이프라인 (교차 스택 통신):</strong>
+        <ul>
+          <li><strong>흐름:</strong> <code class="language-plaintext highlighter-rouge">Chat 서버</code> (NestJS) -&gt; <strong>RabbitMQ</strong> -&gt; <code class="language-plaintext highlighter-rouge">AI 서버</code> (FastAPI)</li>
+          <li><strong>목적:</strong> 사용자의 빠른 파일 업로드(HTTP 응답)와 시간이 오래 걸리는 AI 임베딩 처리(MQ 작업)를 완벽하게 분리한다.</li>
+        </ul>
+      </li>
+      <li><strong>비동기 알림:</strong>
+        <ul>
+          <li><strong>흐름:</strong> <code class="language-plaintext highlighter-rouge">Chat 서버</code> / <code class="language-plaintext highlighter-rouge">User 서버</code> -&gt; <strong>RabbitMQ</strong> -&gt; <code class="language-plaintext highlighter-rouge">Noti 서버</code></li>
+          <li><strong>목적:</strong> Discord/Email 등 외부 API의 지연이나 장애가 <code class="language-plaintext highlighter-rouge">Chat 서버</code>와 같은 핵심 서비스에 영향을 주지 않도록 격리한다.</li>
+        </ul>
+      </li>
+      <li><strong>영구/감사 로그 수집:</strong>
+        <ul>
+          <li><strong>흐름:</strong> 모든 서비스 -&gt; <strong>RabbitMQ</strong> -&gt; <code class="language-plaintext highlighter-rouge">Logging 서버</code></li>
+          <li><strong>목적:</strong> 실시간 디버깅용 <code class="language-plaintext highlighter-rouge">stdout</code> (Loki)과는 별개로, 비즈니스 중요 로그(감사, 중요 에러)를 유실 없이 <code class="language-plaintext highlighter-rouge">Logging 서버</code>에 안정적으로 전달하여 영구 보관(Files)한다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li>k8s 관리 확정사항
+    <ol>
+      <li>Kubernetes 배포판: MicroK8s
+        <ul>
+          <li>A5(Main) 및 Centre(Sub) 서버의 Ubuntu 환경에 k8s 클러스터를 구축하기 위한 배포판으로 <strong>MicroK8s</strong>를 채택한다.</li>
+          <li><strong>선택 근거:</strong>
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">microk8s enable &lt;addon&gt;</code> 명령어를 통해 Ingress, DNS, Prometheus 등 필수 애드온을 손쉽게 활성화할 수 있다.</li>
+              <li>k3s와 달리 etcd 등 표준 Kubernetes 컴포넌트를 거의 그대로 사용하여, 향후 EKS, GKE 등 매니지드 서비스로의 이전에 필요한 경험적 일관성을 확보하는 데 유리하다.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>게이트웨이 전략: 이중(Dual) 게이트웨이
+        <ul>
+          <li>인프라 레벨과 애플리케이션 레벨의 게이트웨이를 명확히 분리하여, 각자의 역할에 집중하는 현대적 아키텍처를 구성한다.</li>
+          <li><strong>(1) 인프라 게이트웨이 (건물의 “정문”): <code class="language-plaintext highlighter-rouge">K8s Gateway API</code></strong>
+      - <code class="language-plaintext highlighter-rouge">ingress-nginx</code>의 지원 종료(2026년 예정)에 대응하여, 차세대 표준인 <strong><code class="language-plaintext highlighter-rouge">Gateway API</code></strong>를 도입한다. Nginx Gateway Fabric(NGF) 등 <code class="language-plaintext highlighter-rouge">Gateway API</code> 표준 구현체를 사용한다.
+      - <strong>역할:</strong> SSL/TLS 인증서 처리, 도메인/경로 기반 라우팅(예: <code class="language-plaintext highlighter-rouge">api.my-domain.com</code> -&gt; <code class="language-plaintext highlighter-rouge">Spring Cloud Gateway</code>) 등 클러스터의 “북-남(North-South)” 트래픽을 담당한다.</li>
+          <li><strong>(2) 애플리케이션 게이트웨이 (건물의 “안내 데스크”): <code class="language-plaintext highlighter-rouge">Spring Cloud Gateway</code></strong>
+      - V2 기획안의 <code class="language-plaintext highlighter-rouge">API Gateway</code> 서버 역할을 그대로 수행한다.
+      - <strong>역할:</strong> “정문”을 통과한 트래픽에 대해 JWT 인증/인가, 서비스별 사용량 제한(Rate Limiting), 서킷 브레이커, 비즈니스 로직 기반의 정교한 라우팅을 처리한다.</li>
+        </ul>
+      </li>
+      <li>리포지토리 전략: GitOps를 위한 분리 모델
+        <ul>
+          <li>CI(Jenkins)와 CD(ArgoCD)의 역할을 명확히 분리하기 위해 리포지토리 유형을 3가지로 표준화한다.</li>
+          <li><strong>(1) 템플릿 리포지토리 (<code class="language-plaintext highlighter-rouge">project-protostar-back</code>)</strong>
+            <ul>
+              <li>신규 마이크로서비스 생성 시 사용할 “설계 원본” 리포지토리이다.</li>
+              <li>Spring, NestJS, FastAPI 등 스택별로 최적화된 <code class="language-plaintext highlighter-rouge">Dockerfile</code> 템플릿과 공통 <code class="language-plaintext highlighter-rouge">.gitignore</code>, <code class="language-plaintext highlighter-rouge">.prettierrc</code> 설정 등을 보관한다.</li>
+              <li>이 리포는 CI/CD가 감시하지 않으며, 오직 개발자가 새 서비스 레포 생성 시에만 참조한다.</li>
+            </ul>
+          </li>
+          <li><strong>(2) 애플리케이션 소스 리포지토리 (App Repos)</strong>
+            <ul>
+              <li><strong>명명 규칙:</strong> <code class="language-plaintext highlighter-rouge">project-protostar-{service-name}</code> (예: <code class="language-plaintext highlighter-rouge">project-protostar-auth-service</code>)</li>
+              <li><strong>관리 방식:</strong> <strong>Polyrepo</strong>. 서비스별로 독립된 소스 코드 리포지토리를 가진다.</li>
+              <li><strong>담당:</strong> <strong>Jenkins(CI)</strong>가 이 레포들을 감시한다.</li>
+              <li><strong>구성:</strong> 실제 애플리케이션 소스 코드와, (1)번 템플릿에서 복사해 온 <strong>자신만의 <code class="language-plaintext highlighter-rouge">Dockerfile</code></strong>을 포함한다.</li>
+            </ul>
+          </li>
+          <li><strong>(3) K8s 설정 리포지토리 (Config Repo)</strong>
+            <ul>
+              <li><strong>명명 규칙:</strong> <code class="language-plaintext highlighter-rouge">project-protostar-k8s-config</code></li>
+              <li><strong>관리 방식:</strong> <strong>Monorepo</strong>. k8s 클러스터의 모든 상태를 정의하는 단일 리포지토리이다.</li>
+              <li><strong>담당:</strong> <strong>ArgoCD(CD)</strong>가 오직 이 리포지토리만 감시한다.</li>
+              <li><strong>구성:</strong>
+                <ul>
+                  <li>모든 App Repo 서비스의 <code class="language-plaintext highlighter-rouge">Deployment</code>, <code class="language-plaintext highlighter-rouge">Service</code>, <code class="language-plaintext highlighter-rouge">HTTPRoute</code> YAML.</li>
+                  <li>k8s 클러스터 내부에 배포될 인프라(PostgreSQL, RabbitMQ, Redis)의 YAML .</li>
+                </ul>
+              </li>
+              <li><strong>제외:</strong> Centre 서버에서 별도 운영되는 <code class="language-plaintext highlighter-rouge">MinIO</code> 관련 설정은 이 리포지토리에서 제외한다.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>CI/CD 자동화 워크플로우
+        <ul>
+          <li><strong>(1) CI (Jenkins):</strong> <code class="language-plaintext highlighter-rouge">App Repo</code>의 코드 변경을 감지 -&gt; <code class="language-plaintext highlighter-rouge">Dockerfile</code>을 이용해 빌드 및 컨테이너 이미지 푸시 -&gt; <code class="language-plaintext highlighter-rouge">Config Repo</code>를 <code class="language-plaintext highlighter-rouge">clone</code>하여 해당 서비스의 <code class="language-plaintext highlighter-rouge">Deployment.yaml</code> 내 이미지 태그를 새 버전으로 수정한 뒤 <code class="language-plaintext highlighter-rouge">commit</code> &amp; <code class="language-plaintext highlighter-rouge">push</code>한다.</li>
+          <li><strong>(2) CD (ArgoCD):</strong> <code class="language-plaintext highlighter-rouge">Config Repo</code>의 변경 사항(Jenkins가 푸시한 커밋)을 감지(<code class="language-plaintext highlighter-rouge">OutOfSync</code>) -&gt; k8s 클러스터로 변경 사항을 <code class="language-plaintext highlighter-rouge">pull</code>하여 배포(Sync)를 자동 수행한다.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="혼자서-그리고-왜">혼자서, 그리고 왜?</h3>
+
+<p><img src="/assets/images/posts/2025-11/20251124-040.png" alt="" /></p>
+<blockquote>
+  <p>2023년 300명 규모의 개발자 커뮤니티 행사 WASSSUP 당시, 실무진으로…</p>
+</blockquote>
+
+<p><img src="/assets/images/posts/2025-11/20251124-039.png" alt="" /></p>
+<blockquote>
+  <p>Peer 개발 총괄로 MT</p>
+</blockquote>
+
+<p><img src="/assets/images/posts/2025-11/20251124-041.png" alt="" /></p>
+<blockquote>
+  <p>Peer 개발 프로젝트가 처음인 신입들을 위한 Final Mission 행사</p>
+</blockquote>
+
+<p><img src="/assets/images/posts/2025-11/20251124-042.png" alt="" /></p>
+<blockquote>
+  <p>gemgem theraputics 팀 , 사업 확장 차 뉴욕 방문 당시</p>
+</blockquote>
+
+<p>3년 간 개발자로 살면서 정말 많은 일들이 있었다. 42서울에서는 동료 학습을 배웠고, 정신이 없었다. 
+그러는 와중에도 Peer라는 귀한 이들을 만나, 개발자 다운 성장, 프로젝트의 어려움을 해결해보려고 노력했다. 그 과정에서 행사도 만들어보고, 개발도 해보고, 기획과 리딩도 해보면서 정말 많은 일들을 했고, 그 마지막에 1년이란 시간을 gemgem theraputics 에서 성장할 수 있는 기회를 얻었다.</p>
+
+<p>다소 아쉬움도 있었다. 몸 건강을 잘 유지하지 못하고 고무줄 처럼 늘어난 몸무게(…)는 쉽지 않았고, 현재는 약 20kg 정도 감량하고, 더 감량하면서 이 프로젝트를 하고 있다.</p>
+
+<p>누군가는 이렇게 이야기 했다. 돈 벌고, 모은 돈 써가며 왜 시간을 쓰냐. 그냥 이직해도 되지 않냐? 더 공부할 필요 뭐 있냐. 하면서 배우면 되지.</p>
+
+<p>음, 틀린 말은 아니라고 생각한다. 
+하지만 나의 인생, 많은 실패 속에서 얻어온 것들을 기반으로 얻은 내 생각은 조금, 다소 다르다.</p>
+
+<p>돈도 중요하고, 경험도 중요하다. 무엇보다 중요한건 시대가 뭘 필요시 하냐? 에 대해 제대로 물을 줄 아는 태도와 제대로 답할 줄 아는 태도가 아닐까 싶다. AI가 등장하고 정말 편리한 개발이 되게 되었고, 개발 뿐 아니라 모든 영역이 그렇게가 가능해졌다. 하지만 그 결과 우리는 이제 엄청난 기술격차와 싸우게 되었고, 또 반대 급부로 어지간한 일은 다 할 수 있게 되었다.</p>
+
+<p>문제는 도구를 어떻게 쓰냐, 어떤 철학, 방법론을 알고 있냐에 따라 AI 를 부리는 사람으로 평가 받을 수도 있고, 반대로 AI에게 부림 받는 경우를 맞이할 지도 모르겠다.</p>
+
+<p>그러다보니 몸이 아프고, 쉼이 필요한 시점이자 동시에 이 프로젝트를 고안하고, 스스로의 힘으로 해결해보려고 하는 것은. 어쩌면 지금 나의 시대를 주체적으로 준비하고, 제대로 돈도 벌고, 제대로 기회도 얻고, 제대로 전문가의 그 길 위에 서기 위한 준비의 기간이라고, 자기 투자의 기간이라고 나는 생각한다.</p>
+
+<p>그러니 1년 차지만, 3년차를 목표로 생각하며, 3년차는 경험하지 못할 AI의 가속도를 경험하고 싶다. 그것이 어쩌면 솔직한 내 상황이리라 싶다.</p>
+
+<h3 id="결론-지평선-넘어를-보기-위해">결론, 지평선 넘어를 보기 위해</h3>
+
+<p>기술적 복잡도, 기술적 구현해야할 양 많은 것이 사실이다. 
+몰입해야 하고, 시간을 미친듯이 쏟아 넣고 있다. Obsidian에 온갖 AI 기반 프롬프트로 문제를 해결해나가고, n8n 기반으로 자동화된 소식통을 통해 현재의 ai 트랜드, 기술의 발전 경향을 탐독하고 있다.</p>
+
+<p>Protostar는 만나는 구조적 문제들에 밤을 새어가면서 만들고 있는데, 덕분에 건강 챙기기는 약간 딜레이(?) 가 생여 신경 써야할 것 같다.</p>
+
+<p>하지만 언덕 넘어를 보고 싶다는 마음 하나는 명확하다. Project Protostar는 이를 위한 한계를 뛰어넘는 발판이 되도록 만들고 싶으며, 만들고난 뒤엔 클로즈 테스트, 만약 잘되면 지속적인 서비스로 조그맣게 운영해볼 마음도 있다.</p>
+
+<p>달리자.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="Backend" /><category term="AI" /><category term="프로젝트" /><category term="DevOps" /><summary type="html"><![CDATA[Project Protostar 를 소개합니다]]></summary></entry><entry><title type="html">n8n 개념 정리하기</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/09/01-introduction-n8n.html" rel="alternate" type="text/html" title="n8n 개념 정리하기" /><published>2025-11-09T00:00:00+00:00</published><updated>2025-11-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/09/01-introduction-n8n</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/09/01-introduction-n8n.html"><![CDATA[<h2 id="n8n-자동화-도구-소개">n8n 자동화 도구 소개</h2>
 
 <p>이 글은 n8n이라는 자동화 도구에 대한 기본적인 개념을 정리한 내용이다. ‘심심풀이’ 프로젝트를 진행하며 n8n을 처음 접하는 개발자들에게 이 도구가 무엇이며, 어떤 핵심 개념을 가지고 있는지 명확히 전달하는 것이 목적이다.</p>
 
@@ -1636,336 +2146,4 @@ Nginx의 핵심 기능 중 하나인 ‘리버스 프록시’를 누구나 쉽�
 
 <p>하.. DNS-01 방식으로 삽질을 했다. 그런데 안된다는 걸 깨닫고 빠르게 하니 거의 10분? 이 안걸렸다.</p>
 
-<p>다음부턴 NPM + 쉽게 연결하기로 해결해야지 ㅠ..</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><category term="Monitoring" /><summary type="html"><![CDATA[2025-11-04 : HTTPS 인증 받기, 그리고 NPM 도입]]></summary></entry><entry><title type="html">TIL - NextJS 데모 페이지 구축 (001)</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/29/til-nextjs.html" rel="alternate" type="text/html" title="TIL - NextJS 데모 페이지 구축 (001)" /><published>2025-10-29T00:00:00+00:00</published><updated>2025-10-29T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/29/til-nextjs</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/10/29/til-nextjs.html"><![CDATA[<h2 id="2025-10-29--nextjs-프론트엔드-핵심-개념들">2025-10-29 : Next.js 프론트엔드 핵심 개념들</h2>
-
-<p>오늘은 Next.js와 React를 사용한 프론트엔드 개발을 진행하고 몇 가지 핵심 개념을 살펴보았다. 백엔드 개발자에게 생소할 수 있는 개념들을 위주로 더 자세히 정리하고 코드 예시를 포함했다.</p>
-
-<hr />
-
-<h2 id="-백엔드-개발자가-알아두면-좋은-프론트엔드-개념">💡 백엔드 개발자가 알아두면 좋은 프론트엔드 개념</h2>
-
-<h3 id="1-컴포넌트-렌더링-서버-컴포넌트-vs-클라이언트-컴포넌트-️-vs-">1. 컴포넌트 렌더링: 서버 컴포넌트 vs 클라이언트 컴포넌트 🖥️ vs 💻</h3>
-
-<p>Next.js는 컴포넌트를 <strong>서버</strong>에서 그릴지(HTML 완성) <strong>클라이언트(브라우저)</strong> 에서 그릴지(JavaScript 사용) 결정할수 있다. 이는 백엔드의 서버 사이드 렌더링(SSR) vs 프론트엔드의 클라이언트 사이드 렌더링(CSR) 개념과 유사합니다.</p>
-<ul>
-  <li><strong>컴포넌트</strong> :
-    <ul>
-      <li><strong>개념</strong> : 사용자 인터페이스에서 재사용, 독립적인 조각으로 나누어 개발하는 방식으로 생성되는 대상.
-        <ul>
-          <li>Next.js 는 React를 기반으로 하여, React의 컴포넌트 개념을 그대로 따라간다.</li>
-        </ul>
-      </li>
-      <li><strong>종류</strong> :
-        <ul>
-          <li><strong>함수 컴포넌트</strong> :
-            <ul>
-              <li>일반적인 형태</li>
-              <li><code class="language-plaintext highlighter-rouge">useState</code>, <code class="language-plaintext highlighter-rouge">useEffect</code>와 같은 React 훅을 사용하여 상태와 생명주기 기능을 활용 가능</li>
-            </ul>
-          </li>
-          <li><strong>클래스 컴포넌트</strong>
-            <ul>
-              <li>ES6클래스로 작성됨.</li>
-              <li>최신 React 개발에선 함수형을 권장함 .</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li><strong>Next.js에서 컴포넌트를 사용하는 이유</strong>
-        <ul>
-          <li>코드 구조화 및 관리 용이성</li>
-          <li>개발 생산성 향상</li>
-          <li>성능 최적화</li>
-          <li>모듈화</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><strong>서버 컴포넌트 (Server Component, RSC - 기본값):</strong>
-    <ul>
-      <li><strong>개념:</strong> 컴포넌트 코드가 서버에서 실행되어 최종 HTML로 변환된 후 브라우저로 전송된다. NestJS에서 <code class="language-plaintext highlighter-rouge">EJS</code>나 <code class="language-plaintext highlighter-rouge">Handlebars</code> 같은 템플릿 엔진을 사용해 HTML을 완성해서 보내는 것과 비슷하다.</li>
-      <li><strong>장점:</strong>
-        <ul>
-          <li><strong>초기 로딩 속도:</strong> 브라우저는 완성된 HTML을 바로 보여줄 수 있어 초기 로딩이 빠르다.</li>
-          <li><strong>SEO:</strong> 검색 엔진 봇이 완성된 HTML 컨텐츠를 쉽게 수집할 수 있다.</li>
-          <li><strong>서버 자원 접근:</strong> DB 조회, 파일 시스템 접근 등 서버에서만 가능한 작업을 직접 수행할 수 있다.</li>
-          <li><strong>번들 크기 감소:</strong> 서버에서만 실행되므로 브라우저로 보내는 JavaScript 양이 줄어든다.</li>
-        </ul>
-      </li>
-      <li><strong>제한:</strong> 사용자와의 상호작용(클릭, 입력 등)이나 브라우저 상태(예: <code class="language-plaintext highlighter-rouge">window</code> 객체)에 구조적으로 접근할 수 없다. 즉, <code class="language-plaintext highlighter-rouge">useState</code>, <code class="language-plaintext highlighter-rouge">useEffect</code>, <code class="language-plaintext highlighter-rouge">onClick</code> 등을 사용할 수 없다.</li>
-    </ul>
-  </li>
-  <li><strong>클라이언트 컴포넌트 (Client Component):</strong>
-    <ul>
-      <li><strong>개념:</strong> 파일 맨 위에 <code class="language-plaintext highlighter-rouge">"use client";</code> 지시어를 추가하여 명시하면 사용이 가능해짐. 이 컴포넌트의 JavaScript 코드는 브라우저로 다운로드되고 실행된다. 우리가 흔히 아는 React 컴포넌트.</li>
-      <li><strong>장점:</strong>
-        <ul>
-          <li><strong>상호작용:</strong> <code class="language-plaintext highlighter-rouge">useState</code> (상태 관리), <code class="language-plaintext highlighter-rouge">useEffect</code> (라이프사이클 관리), <code class="language-plaintext highlighter-rouge">onClick</code> (이벤트 핸들링) 등을 사용하여 동적인 사용자 인터페이스를 만들 수 있다.</li>
-          <li><strong>브라우저 API 접근:</strong> <code class="language-plaintext highlighter-rouge">localStorage</code>, <code class="language-plaintext highlighter-rouge">window</code> 객체 등 브라우저 환경에서만 사용 가능한 API를 활용할 수 있다.</li>
-        </ul>
-      </li>
-      <li><strong>단점:</strong>
-        <ul>
-          <li><strong>초기 로딩:</strong> 브라우저가 JavaScript 파일을 다운로드하고 실행해야 컴포넌트가 그려지므로, 서버 컴포넌트보다 초기 로딩이 느릴 수 있다(Hydration 과정 필요).</li>
-          <li><strong>번들 크기 증가:</strong> 브라우저로 보내는 JavaScript 양이 늘어나고 이는 트래픽이다.</li>
-        </ul>
-      </li>
-    </ul>
-
-    <pre><code class="language-TypeScript">  // page.tsx 맨 위에 추가하여 클라이언트 컴포넌트임을 명시
-  "use client";
-    
-  import { useState } from 'react';
-    
-  export default function MyInteractiveComponent() {
-    const [count, setCount] = useState(0);
-    
-    return (
-      &lt;button onClick={() =&gt; setCount(count + 1)}&gt; // 버튼 이벤트 
-                Count: {count}
-      &lt;/button&gt;
-    );
-  }
-</code></pre>
-  </li>
-</ul>
-
-<h3 id="2-상태state-관리와-리렌더링-usestate-훅-">2. 상태(State) 관리와 리렌더링: <code class="language-plaintext highlighter-rouge">useState</code> 훅 🔄</h3>
-
-<p>React 컴포넌트는 UI에 영향을 미치는 <strong>상태(State)</strong> 를 가질 수 있다. <code class="language-plaintext highlighter-rouge">useState</code>는 함수 컴포넌트에서 상태를 추가하고 관리하기 위한 <strong>훅(Hook)</strong> 이다.</p>
-<ul>
-  <li><strong>훅(Hook):</strong> 함수 컴포넌트에서 React의 기능(상태 관리, 라이프사이클 등)을 “연결(hook into)”할 수 있게 해주는 특별한 함수들이다. <code class="language-plaintext highlighter-rouge">useState</code>, <code class="language-plaintext highlighter-rouge">useEffect</code>, <code class="language-plaintext highlighter-rouge">useContext</code> 등이 있다.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">useState</code> 사용법:</strong>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">const [stateVariable, setStateFunction] = useState(initialState);</code></li>
-      <li><code class="language-plaintext highlighter-rouge">stateVariable</code>: 현재 상태 값을 저장하는 변수 (읽기 전용).</li>
-      <li><code class="language-plaintext highlighter-rouge">setStateFunction</code>: 이 상태 값을 <strong>업데이트하는 함수</strong>. 이 함수를 호출해야만 React가 컴포넌트를 <strong>리렌더링(Re-render)</strong> 하여 변경된 상태를 화면에 반영한다.</li>
-      <li><code class="language-plaintext highlighter-rouge">initialState</code>: 상태의 초기값. 컴포넌트가 처음 렌더링될 때 사용하다.</li>
-    </ul>
-  </li>
-  <li><strong>백엔드와의 비교:</strong>
-    <ul>
-      <li>상태는 DB에 저장되는 영구 데이터와는 다르게 컴포넌트 인스턴스가 살아있는 동안만 유지되는 <strong>메모리상의 임시 데이터</strong>이다 (NestJS 서비스의 멤버 변수와 유사)</li>
-      <li>가장 큰 차이점은 React는 <code class="language-plaintext highlighter-rouge">setStateFunction</code> 호출을 통해 상태 변경을 감지하고, <strong>선언적으로(declaratively)</strong> UI를 업데이트한다는 점이다 . 개발자는 “상태를 이렇게 바꿔줘”라고만 명령하면, React가 알아서 DOM을 효율적으로 조작하여 화면을 변경한다.</li>
-    </ul>
-
-    <pre><code class="language-TypeScript">  // page.tsx
-  "use client";
-    
-  import { useState } from 'react';
-    
-  // ... (projects 배열 정의)
-    
-  export default function Home() {
-    // isProjectsOpen: 현재 프로젝트 목록이 열려있는지 여부 (true/false)
-    // setIsProjectsOpen: isProjectsOpen 값을 변경하는 함수
-    // useState(false): 초기값은 false (닫힌 상태)
-    const [isProjectsOpen, setIsProjectsOpen] = useState(false);
-    
-    // 버튼 클릭 시 호출될 함수
-    const toggleProjects = () =&gt; {
-      // 현재 isProjectsOpen 값의 반대값으로 상태를 업데이트 (일종의 업데이트 )
-      setIsProjectsOpen(!isProjectsOpen);
-    };
-    
-    return (
-      // ... (생략)
-      &lt;button
-        onClick={toggleProjects} // 버튼 클릭 시 toggleProjects 함수 실행
-        aria-expanded={isProjectsOpen}
-      &gt;
-        {/* ... SVG 아이콘 ... */}
-      &lt;/button&gt;
-      // ...
-      {isProjectsOpen &amp;&amp; ( // isProjectsOpen이 true일 때만 하위 목록 렌더링
-        &lt;ul&gt;
-          {/* ... 프로젝트 링크 목록 ... */}
-        &lt;/ul&gt;
-      )}
-      // ...
-    );
-  }
-    
-</code></pre>
-  </li>
-</ul>
-
-<h3 id="3-스타일링-tailwind-css-유틸리티-우선-접근법-">3. 스타일링: Tailwind CSS 유틸리티 우선 접근법 🎨</h3>
-
-<p>Tailwind CSS는 미리 정의된 수많은 <strong>유틸리티 클래스</strong>를 제공한다. 개발자는 이러한 클래스들을 HTML 요소의 <code class="language-plaintext highlighter-rouge">className</code> 속성에 직접 조합하여 스타일을 적용 할 수 있다.</p>
-
-<ul>
-  <li><strong>유틸리티 우선(Utility-First):</strong> <code class="language-plaintext highlighter-rouge">button-primary</code> 같은 <strong>의미론적(semantic)</strong> 클래스 대신, <code class="language-plaintext highlighter-rouge">bg-blue-600</code>, <code class="language-plaintext highlighter-rouge">py-3</code>, <code class="language-plaintext highlighter-rouge">font-semibold</code> 같이 <strong>시각적 기능</strong>에 집중된 작은 클래스들을 조합한다.</li>
-  <li><strong>작동 방식:</strong>
-    <ol>
-      <li>개발자가 <code class="language-plaintext highlighter-rouge">className="text-center font-bold"</code>라고 작성한다</li>
-      <li>빌드 시 Tailwind CSS가 프로젝트 내의 모든 <code class="language-plaintext highlighter-rouge">className</code>을 스캔한다.</li>
-      <li>사용된 유틸리티(<code class="language-plaintext highlighter-rouge">text-center</code>, <code class="language-plaintext highlighter-rouge">font-bold</code>)에 해당하는 CSS 규칙(<code class="language-plaintext highlighter-rouge">.text-center { text-align: center; }</code>, <code class="language-plaintext highlighter-rouge">.font-bold { font-weight: 700; }</code>)을 생성해준다.</li>
-      <li>이 생성된 CSS를 <code class="language-plaintext highlighter-rouge">globals.css</code> 파일에 주입한다.</li>
-      <li>브라우저는 HTML의 <code class="language-plaintext highlighter-rouge">class</code> 속성과 CSS 파일의 규칙을 매칭하여 스타일을 적용한다.</li>
-    </ol>
-  </li>
-  <li><strong><code class="language-plaintext highlighter-rouge">tailwind.config.ts</code>:</strong> 테마(색상, 글꼴 크기 등) 커스터마이징, 플러그인 추가, <code class="language-plaintext highlighter-rouge">darkMode</code> 전략 설정 등을 위한 설정 파일이다.</li>
-  <li>
-    <p><strong><code class="language-plaintext highlighter-rouge">globals.css</code>:</strong> Tailwind의 기본 스타일(<code class="language-plaintext highlighter-rouge">@tailwind base;</code>), 컴포넌트 스타일(<code class="language-plaintext highlighter-rouge">@tailwind components;</code>), 유틸리티 스타일(<code class="language-plaintext highlighter-rouge">@tailwind utilities;</code>)을 주입하는 역할과, 직접 작성한 커스텀 CSS 클래스를 추가하는 역할을 한다.</p>
-
-    <pre><code class="language-TypeScript">  // login/page.tsx 예시
-  &lt;div className="flex min-h-screen items-center justify-center bg-gray-100"&gt;
-    {/* flex: display: flex;
-      min-h-screen: min-height: 100vh;
-      items-center: align-items: center;
-      justify-center: justify-content: center;
-      bg-gray-100: 배경색 지정
-    */}
-    &lt;div className="w-full max-w-md rounded-lg bg-white p-8 shadow-md"&gt;
-      {/*
-        w-full: width: 100%;
-        max-w-md: max-width: 28rem;
-        rounded-lg: border-radius: 0.5rem;
-        bg-white: background-color: white;
-        p-8: padding: 2rem;
-        shadow-md: box-shadow 적용
-      */}
-      &lt;h1 className="mb-6 text-center text-3xl font-bold text-gray-800"&gt;
-        로그인
-        {/*
-          mb-6: margin-bottom: 1.5rem;
-          text-center: text-align: center;
-          text-3xl: font-size: 1.875rem; line-height: 2.25rem;
-          font-bold: font-weight: 700;
-          text-gray-800: 글자색 지정
-        */}
-      &lt;/h1&gt;
-      {/* ... */}
-    &lt;/div&gt;
-  &lt;/div&gt;
-</code></pre>
-  </li>
-</ul>
-
-<h3 id="4-nextjs-특화-컴포넌트-link와-image-">4. Next.js 특화 컴포넌트: <code class="language-plaintext highlighter-rouge">&lt;Link&gt;</code>와 <code class="language-plaintext highlighter-rouge">&lt;Image&gt;</code> ✨</h3>
-
-<p>성능 향상을 위해 Next.js는 표준 HTML 태그의 기능을 확장한 자체 컴포넌트를 제공한다. 따라서 표준 HTML 태그가 아닌 태그들을 써야 하는 경우가 있다.</p>
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">&lt;Link&gt;</code> 컴포넌트:</strong>
-    <ul>
-      <li><strong>역할:</strong> 페이지 간 이동을 처리한다. 내부적으로 <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> 태그를 렌더링하지만, 동작 방식이 다르다.</li>
-      <li><strong>핵심 기능 (클라이언트 사이드 라우팅):</strong>
-        <ul>
-          <li>클릭 시 브라우저가 페이지 전체를 새로고침하지 않는다.</li>
-          <li>대신, JavaScript를 사용하여 URL을 변경하고 필요한 페이지만 동적으로 로드하여 교체한다 (SPA처럼 동작).(레이아웃 기반으로 최초 접근 위치에서 자식만 교체 한다던가…)</li>
-          <li>결과로서 매우 빠르고 부드러운 페이지 전환 경험을 제공한다.</li>
-        </ul>
-      </li>
-      <li><strong>프리페칭(Prefetching):</strong> 기본적으로 <code class="language-plaintext highlighter-rouge">&lt;Link&gt;</code>가 화면에 보이면, 해당 링크가 가리키는 페이지의 코드를 백그라운드에서 미리 다운로드한다. 사용자가 클릭했을 때 거의 즉시 페이지가 로드된다.</li>
-      <li><strong>사용법:</strong> <code class="language-plaintext highlighter-rouge">href</code> 속성으로 이동할 경로를 지정한다.</li>
-    </ul>
-
-    <pre><code class="language-TypeScript">  // page.tsx 예시
-  import Link from 'next/link';
-    
-  &lt;Link href="/login" className="text-blue-600 hover:underline"&gt;
-    Login Page
-  &lt;/Link&gt;
-</code></pre>
-  </li>
-  <li><strong><code class="language-plaintext highlighter-rouge">&lt;Image&gt;</code> 컴포넌트:</strong>
-    <ul>
-      <li><strong>역할:</strong> 이미지를 표시합니다. 내부적으로 <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> 태그를 렌더링하지만, 강력한 최적화 기능을 추가한다.</li>
-      <li><strong>핵심 기능 (자동 이미지 최적화):</strong>
-        <ul>
-          <li><strong>사이즈 최적화:</strong> 다양한 화면 크기(데스크탑, 모바일 등)에 맞는 이미지 크기를 자동으로 생성하고 제공한다.</li>
-          <li><strong>포맷 최적화:</strong> 브라우저가 지원하는 경우, 이미지를 WebP나 AVIF 같은 최신 포맷으로 자동 변환하여 용량을 최적화 시킨다.</li>
-          <li><strong>지연 로딩 (Lazy Loading):</strong> 기본적으로 이미지가 사용자의 뷰포트(화면 영역)에 들어올 때까지 로딩을 지연시켜 초기 페이지 로딩 속도를 향상시킵니다. (<code class="language-plaintext highlighter-rouge">priority</code> 속성으로 비활성화 가능, 필요한 경우 즉시 로딩을 요청할 수 있다.)</li>
-          <li><strong>CLS(Cumulative Layout Shift) 방지:</strong> <code class="language-plaintext highlighter-rouge">width</code>와 <code class="language-plaintext highlighter-rouge">height</code> 속성을 필수로 요구하여, 이미지가 로드되기 전에 해당 공간을 미리 확보함으로써 레이아웃이 갑자기 변경되는 현상을 방지한다.</li>
-        </ul>
-      </li>
-      <li><strong>사용법:</strong> <code class="language-plaintext highlighter-rouge">src</code>, <code class="language-plaintext highlighter-rouge">width</code>, <code class="language-plaintext highlighter-rouge">height</code>, <code class="language-plaintext highlighter-rouge">alt</code> 속성이 필수(이걸 몰라서 왜 에러가 뜨지? 하고 한참 해맸다.). <code class="language-plaintext highlighter-rouge">src</code>는 <code class="language-plaintext highlighter-rouge">public</code> 폴더 기준의 절대 경로 또는 외부 URL을 사용한다.</li>
-    </ul>
-
-    <pre><code class="language-TypeScript">  // page.tsx 예시
-  import Image from 'next/image';
-    
-  &lt;Image
-    src="/main.png" // public 폴더의 main.png
-    alt="메인 비주얼"
-    width={800}    // 이미지 원본 너비
-    height={800}   // 이미지 원본 높이
-    priority       // 이 이미지는 중요하므로 먼저 로드
-  /&gt;
-</code></pre>
-  </li>
-</ul>
-
-<hr />
-
-<h2 id="-질문-목록-qa">❓ 질문 목록 (Q&amp;A)</h2>
-
-<h3 id="q1-맨-위에-use-client의-역할은">Q1: 맨 위에 <code class="language-plaintext highlighter-rouge">"use client"</code>의 역할은?</h3>
-
-<p><strong>A:</strong> 해당 파일(모듈)이 <strong>클라이언트 컴포넌트</strong>임을 명시하는 지시어다. <code class="language-plaintext highlighter-rouge">"use client"</code>가 선언된 파일과 그 파일에서 import하는 모든 모듈은 클라이언트 번들에 포함되어 브라우저에서 실행된다. 이는 <code class="language-plaintext highlighter-rouge">useState</code>, <code class="language-plaintext highlighter-rouge">useEffect</code> 같은 React 훅이나 <code class="language-plaintext highlighter-rouge">onClick</code> 같은 브라우저 이벤트를 사용하기 위해 필수적이다. 반대로, 이 지시어가 없으면 기본적으로 <strong>서버 컴포넌트</strong>로 간주되므로 클라이언트 사이드의 이벤트에 대해서 인식이 불가능하다.</p>
-
-<h3 id="q2-usestatefalse는-기본값을-선정하는-건가-isprojectsopen과-setisprojectsopen-두-가지의-역할과-차이는">Q2: <code class="language-plaintext highlighter-rouge">useState(false)</code>는 기본값을 선정하는 건가? <code class="language-plaintext highlighter-rouge">isProjectsOpen</code>과 <code class="language-plaintext highlighter-rouge">setIsProjectsOpen</code> 두 가지의 역할과 차이는?</h3>
-
-<p><strong>A:</strong></p>
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">useState()</code>의 인자로 전달된 값(<code class="language-plaintext highlighter-rouge">false</code> 등)은 해당 상태 변수의 <strong>초기값(initial state)</strong>. 컴포넌트가 처음 마운트될 때 이 값으로 상태가 초기화된다.(해당 코드에선 접혀있는 상태로 시작해야 하므로 false를 넣고, 대신 statetFunction에서 not 처리를 해준다.)</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">isProjectsOpen</code>: <strong>현재 상태 값</strong>을 담고 있는 변수. JSX 내에서 이 값을 읽어 UI를 조건부로 렌더링하거나 표시할 수 있다. 이 변수는 직접 수정할 수 없다 (예: <code class="language-plaintext highlighter-rouge">isProjectsOpen = true;</code> 불가).</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">setIsProjectsOpen</code>: <code class="language-plaintext highlighter-rouge">isProjectsOpen</code> 상태를 <strong>업데이트하는 함수</strong>다. 이 함수에 새로운 상태 값을 전달하여 호출하면 (<code class="language-plaintext highlighter-rouge">setIsProjectsOpen(true);</code> 또는 <code class="language-plaintext highlighter-rouge">setIsProjectsOpen(prev =&gt; !prev);</code>), React는 상태 변경을 감지하고 컴포넌트를 리렌더링하여 UI를 갱신한다. 이것이 전형적인 React에서 상태를 변경하는 방법이다.</p>
-  </li>
-</ul>
-
-<h3 id="q3-const-toggle로-화살표-함수는-usestate에-사용하기-위해-설정해주는-일종의-변수형-메서드인-건가">Q3: <code class="language-plaintext highlighter-rouge">const toggle~</code>로 화살표 함수는 <code class="language-plaintext highlighter-rouge">useState</code>에 사용하기 위해 설정해주는 일종의 변수형 메서드인 건가?</h3>
-
-<p><strong>A:</strong> “일종의 변수형 메서드” 또는 더 정확히는 <strong>이벤트 핸들러 함수</strong>라고 볼 수 있다. <code class="language-plaintext highlighter-rouge">useState</code> 자체에 필요한 것은 아니다. 단, 상태를 변경하는 로직(예: <code class="language-plaintext highlighter-rouge">setIsProjectsOpen(!isProjectsOpen)</code>)을 <code class="language-plaintext highlighter-rouge">&lt;button&gt;</code>의 <code class="language-plaintext highlighter-rouge">onClick</code> 속성에 직접 넣는 대신, 별도의 함수(<code class="language-plaintext highlighter-rouge">toggleProjects</code>)로 분리하여 정의한 것이다. 이렇게 하면 코드가 더 깔끔해지고, 로직이 복잡해질 경우 관리하기 용이하며, 필요하다면 다른 곳에서 재사용할 수도 있다.</p>
-
-<pre><code class="language-TypeScript">// 이벤트 핸들러 함수 정의
-const toggleProjects = () =&gt; {
-  setIsProjectsOpen(prevState =&gt; !prevState); // 이전 상태를 기반으로 토글
-};
-
-// JSX에서 이벤트 핸들러로 함수 연결
-&lt;button onClick={toggleProjects}&gt;...&lt;/button&gt;
-</code></pre>
-
-<h3 id="q4-nextjs에서-주로-사용한다는-html이-아닌-자체-태그들link라던가이-있는데-왜-이걸-써야-하고-안-쓰면-안-되는-이유가-있는지">Q4: Next.js에서 주로 사용한다는 HTML이 아닌 자체 태그들(<code class="language-plaintext highlighter-rouge">Link</code>라던가)이 있는데, 왜 이걸 써야 하고, 안 쓰면 안 되는 이유가 있는지?</h3>
-
-<p><strong>A:</strong> <strong>성능 최적화와 향상된 사용자 경험</strong>을 위해서 Next.js의 자체 컴포넌트 사용이 강력히 권장한다. 안 쓴다고 해서 앱이 작동하지 않는 것은 아니지만, Next.js를 사용하는 핵심 이점들을 놓치게 된다.</p>
-
-<ul>
-  <li>
-    <p><strong><code class="language-plaintext highlighter-rouge">&lt;Link&gt;</code> vs <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>:</strong> <code class="language-plaintext highlighter-rouge">&lt;Link&gt;</code>는 <strong>클라이언트 사이드 라우팅</strong>을 구현하여 페이지 전환 시 전체 새로고침 없이 변경된 부분만 업데이트한다. 이는 훨씬 빠르고 부드러운 사용자 경험(SPA와 유사)을 제공합니다. 또한, <strong>프리페칭</strong> 기능으로 미리 다음 페이지를 로드하여 전환 속도를 더욱 높인다. 일반 <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> 태그는 전통적인 서버 방식의 페이지 이동(전체 새로고침)을 만들고, 당연히 동작은 하나 전체를 새로 그려야 한다.</p>
-  </li>
-  <li>
-    <p><strong><code class="language-plaintext highlighter-rouge">&lt;Image&gt;</code> vs <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code>:</strong> <code class="language-plaintext highlighter-rouge">&lt;Image&gt;</code>는 <strong>자동으로 이미지를 최적화</strong>한다(사이즈 조절, WebP 변환, 지연 로딩 등). 이는 페이지 로딩 속도를 크게 개선하고 대역폭 사용량을 줄여준다. 또한 <code class="language-plaintext highlighter-rouge">width</code>, <code class="language-plaintext highlighter-rouge">height</code>를 강제하여 레이아웃 쉬프트(CLS) 문제를 예방한다. 일반 <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> 태그는 이러한 최적화 기능을 제공하지 않고 직접 처리해야 한다.</p>
-  </li>
-</ul>
-
-<h3 id="q5-button-컴포넌트의-svg-태그에서--안에-넣으면-일종의-함수로-동작하는-건지-그리고-fill-stroke와-같은-classname에-안-들어간-별도의-요소들은-그냥-svg-태그의-요소들인-건지">Q5: <code class="language-plaintext highlighter-rouge">button</code> 컴포넌트의 <code class="language-plaintext highlighter-rouge">svg</code> 태그에서 <code class="language-plaintext highlighter-rouge">${}</code> 안에 넣으면 일종의 함수로 동작하는 건지? 그리고 <code class="language-plaintext highlighter-rouge">fill</code>, <code class="language-plaintext highlighter-rouge">stroke</code>와 같은 <code class="language-plaintext highlighter-rouge">className</code>에 안 들어간 별도의 요소들은 그냥 <code class="language-plaintext highlighter-rouge">svg</code> 태그의 요소들인 건지?</h3>
-
-<p><strong>A:</strong></p>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">${...}</code>: 이것은 함수 호출이 아니라, JavaScript의 <strong>템플릿 리터럴(Template Literal)</strong> 내에서 <strong>표현식 삽입(Expression Interpolation)</strong> 을 사용하는 문법이다. 백틱(<code class="language-plaintext highlighter-rouge">`</code>)으로 감싸진 문자열 안에서 <code class="language-plaintext highlighter-rouge">${}</code>를 사용하면, 중괄호 안의 JavaScript 코드가 평가되고 그 결과값이 문자열의 해당 위치에 삽입한다. 예시 코드에서는 <code class="language-plaintext highlighter-rouge">isProjectsOpen</code> 상태에 따라 <code class="language-plaintext highlighter-rouge">rotate-180</code> 클래스를 조건부로 추가하여 아이콘의 회전 상태를 제어한다.</p>
-
-    <pre><code class="language-JavaScript">  // className 속성에 템플릿 리터럴 사용
-  &lt;svg
-    className={`h-5 w-5 transition-transform ${ // 백틱(`)으로 시작
-      isProjectsOpen ? 'rotate-180' : '' // ${} 안에 삼항 연산자 표현식
-    }`} // 백틱(`)으로 끝
-    // ... (SVG 속성들)
-  &gt;
-    {/* ... */}
-  &lt;/svg&gt;
-</code></pre>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">fill</code>, <code class="language-plaintext highlighter-rouge">stroke</code>, <code class="language-plaintext highlighter-rouge">viewBox</code>, <code class="language-plaintext highlighter-rouge">xmlns</code>, <code class="language-plaintext highlighter-rouge">d</code>, <code class="language-plaintext highlighter-rouge">strokeLinecap</code>, <code class="language-plaintext highlighter-rouge">strokeLinejoin</code>, <code class="language-plaintext highlighter-rouge">strokeWidth</code>:  이 속성들은 <code class="language-plaintext highlighter-rouge">className</code>과는 별개로 <strong>SVG(Scalable Vector Graphics) 표준 명세에 정의된 고유한 속성(attributes)</strong> 이다. 벡터 그래픽의 모양, 색상, 선 스타일 등을 정의하는 데 사용됩니다. Tailwind CSS 클래스와는 직접적인 관련이 없다.</p>
-  </li>
-</ul>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><summary type="html"><![CDATA[2025-10-29 : Next.js 프론트엔드 핵심 개념들]]></summary></entry></feed>
+<p>다음부턴 NPM + 쉽게 연결하기로 해결해야지 ㅠ..</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><category term="Monitoring" /><summary type="html"><![CDATA[2025-11-04 : HTTPS 인증 받기, 그리고 NPM 도입]]></summary></entry></feed>
