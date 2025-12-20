@@ -2077,51 +2077,51 @@ function googleTranslateElementInit() {
   </section>
   <section class="sidebar" style="margin-left: 15px;">
     <!-- Get sidebar items --><style type="text/css" media="screen">
-.post-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  .post-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-/* 헤더 수준별 스타일 추가 */
-.post-menu .h-h2 {
-  font-size: 1em;
-  margin-top: 0.8em;
-}
+  /* 헤더 수준별 스타일 추가 */
+  .post-menu .h-h2 {
+    font-size: 1em;
+    margin-top: 0.8em;
+  }
 
-.post-menu .h-h3 {
-  font-size: 0.9em;
-  padding-left: 1em;
-  margin-top: 0.3em;
-}
+  .post-menu .h-h3 {
+    font-size: 0.9em;
+    padding-left: 1em;
+    margin-top: 0.3em;
+  }
 
-.post-menu .h-h4 {
-  font-size: 0.85em;
-  padding-left: 2em;
-  margin-top: 0.2em;
-}
+  .post-menu .h-h4 {
+    font-size: 0.85em;
+    padding-left: 2em;
+    margin-top: 0.2em;
+  }
 
-.post-menu .h-h5 {
-  font-size: 0.8em;
-  padding-left: 3em;
-  margin-top: 0.2em;
-}
+  .post-menu .h-h5 {
+    font-size: 0.8em;
+    padding-left: 3em;
+    margin-top: 0.2em;
+  }
 
-.post-menu .h-h6 {
-  font-size: 0.75em;
-  padding-left: 4em;
-  margin-top: 0.2em;
-}
+  .post-menu .h-h6 {
+    font-size: 0.75em;
+    padding-left: 4em;
+    margin-top: 0.2em;
+  }
 
-/* 활성 항목 스타일 강화 */
-.post-menu .active {
-  font-weight: bold;
-  color: #2a7ae2;
-}
+  /* 활성 항목 스타일 강화 */
+  .post-menu .active {
+    font-weight: bold;
+    color: #2a7ae2;
+  }
 
-.post-menu .active a {
-  color: #2a7ae2;
-}
+  .post-menu .active a {
+    color: #2a7ae2;
+  }
 </style>
 
 <div class="post-menu">
@@ -2132,7 +2132,7 @@ function googleTranslateElementInit() {
 <script>
   function generateContent() {
     var menu = document.querySelector(".post-menu");
-    var menuContent =  menu.querySelector(".post-menu-content");
+    var menuContent = menu.querySelector(".post-menu-content");
     var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
 
     // Hide menu when no headings
@@ -2144,6 +2144,10 @@ function googleTranslateElementInit() {
     var menuHTML = '';
     for (var i = 0; i < headings.length; i++) {
       var h = headings[i];
+      if (!h.getAttribute('id')) {
+        var newId = h.textContent.trim().replace(/\s+/g, '-');
+        h.setAttribute('id', newId);
+      }
       menuHTML += (
         '<li class="h-' + h.tagName.toLowerCase() + '">'
         + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
@@ -2187,7 +2191,7 @@ function googleTranslateElementInit() {
       for (var i = beginIndex + 1; i < endIndex; i++) {
         item = items[i]
         // if (!item.classList.contains('h-h2')) {
-          item.style.display = '';
+        item.style.display = '';
         // }
       }
       for (var i = endIndex; i < items.length; i++) {
@@ -2215,7 +2219,7 @@ function googleTranslateElementInit() {
         var headerHeight = headerTop + headerHeight + 20;
         if (headingRect.top <= headerHeight) {
           var id = 'h-' + h.getAttribute('id');
-          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var a = menuContent.querySelector('a[href="#' + id + '"]');
           var curActive = a.parentNode;
           if (curActive) {
             curActive.classList.add('active');
@@ -2256,25 +2260,25 @@ function googleTranslateElementInit() {
   </div>
 </footer>
 <!-- <script src="/assets/js/protostar.js" defer></script> -->
-  <!-- Protostar Chatbot -->
-  <!-- <script>
-    (function (w, d, s, o, r) {
-      w['ProtostarConfig'] = r;
-      var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
-      j.async = true; j.src = o;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'https://service-protostar.ddns.net/chatbot.js', { domain: 'https://paul2021-r.github.io/', baseUrl: 'https://service-protostar.ddns.net' });
-  </script> -->
-
-  <!-- Protostar Chatbot -->
+  <!-- Protostar Chatbot Prod -->
   <script>
     (function (w, d, s, o, r) {
       w['ProtostarConfig'] = r;
       var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
       j.async = true; j.src = o;
       f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'http://localhost:5858/chatbot.js', { domain: 'https://paul2021-r.github.io/', baseUrl: 'http://localhost:5858' });
+    })(window, document, 'script', 'https://service-protostar.ddns.net/chatbot.js', { domain: 'https://paul2021-r.github.io/', baseUrl: 'https://service-protostar.ddns.net' });
   </script>
+
+  <!-- Protostar Chatbot Local Test -->
+  <!-- <script>
+    (function (w, d, s, o, r) {
+      w['ProtostarConfig'] = r;
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
+      j.async = true; j.src = o;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'http://localhost:5858/chatbot.js', { domain: 'https://paul2021-r.github.io/', baseUrl: 'http://localhost:5858' });
+  </script> -->
 
 
 
