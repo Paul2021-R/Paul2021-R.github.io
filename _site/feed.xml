@@ -1,4 +1,235 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-12-20T07:43:40+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Toss Learner’s High 2기 init report</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/12/17/00-til-learnershigh-toss.html" rel="alternate" type="text/html" title="Toss Learner’s High 2기 init report" /><published>2025-12-17T00:00:00+00:00</published><updated>2025-12-17T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/12/17/00-til-learnershigh-toss</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/12/17/00-til-learnershigh-toss.html"><![CDATA[<h2 id="들어가면서">들어가면서</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2026-01-09T11:54:02+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Traffic Dam 구성기, 고가용성 씨앗을 심어보자</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/01/09/00-project-protostar-traffic-dam.html" rel="alternate" type="text/html" title="Traffic Dam 구성기, 고가용성 씨앗을 심어보자" /><published>2026-01-09T00:00:00+00:00</published><updated>2026-01-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/01/09/00-project-protostar-traffic-dam</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/01/09/00-project-protostar-traffic-dam.html"><![CDATA[<h2 id="chapter-1-traffic-dam-구현기-summary">Chapter 1 Traffic Dam 구현기 summary</h2>
+
+<p>SRE 기반의 유량 제어 시스템을 품은 풀스택 AI 챗봇 구현을 진행했다. Protostar 의 Prototype 에 해당하는 것 + 이에 필요한 트래픽제어기를 구현했던 내용을 기록화 시켰다.</p>
+
+<h3 id="1-핵심-성과">1. 핵심 성과</h3>
+
+<h4 id="한-줄-요약"><strong>한 줄 요약</strong></h4>
+
+<p><em>개인 프로젝트 Protostar 의 개발 중 온프레미스 서버에 <strong>CVE-2025-55182 취약점을 악용한 공격으로 CPU 자원 포화(Resource Hijacking, 800%) 발생 및 전체 서비스 불능 상태 경험</strong></em></p>
+
+<p><em>시스템 보호를 위한 <strong>Traffic Dam</strong> 에 대한 필요성, 서비스를 위한 <strong>적정 용량 산정(Capacity Planning)</strong> 의 필요성 절감</em></p>
+
+<p><em>검증을 위한 <strong>풀스택 AI 챗봇 구현</strong> 및 <strong>VU 1000 에서 에러율 0% 달성</strong> 및 <strong>예측 가능한 스케일 아웃의 기준 공식</strong> 도출</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">카테고리</th>
+      <th style="text-align: left">Before</th>
+      <th style="text-align: left">After</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">**안정성**</td>
+      <td style="text-align: left">Rate Limiter 없음, 공격 시 전체 시스템 다운 혹은 느려짐</td>
+      <td style="text-align: left">1,000 VU에서 에러율 0%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**확장성**</td>
+      <td style="text-align: left">단일 인스턴스 600 VU 한계</td>
+      <td style="text-align: left">스케일 아웃으로 1,000 VU 안정 처리</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**운영 예측성**</td>
+      <td style="text-align: left">용량 산정 기준 없음</td>
+      <td style="text-align: left">실제 용량 = 기준 × N × 0.83 공식 도출</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="핵심-수치"><strong>핵심 수치</strong></h4>
+
+<ul>
+  <li>온프레미스 핵심 비즈니스 로직 단일 인스턴스 조합에서의 트래픽 최적의 스윗 스팟 측정 : VU 600 기준</li>
+  <li>서버 리소스를 고려한 스케일 아웃 2배 진행
+    <ul>
+      <li>동시 사용자: 600 → 1,000 (67% 증가)</li>
+      <li>p95 레이턴시: 2.79초 (목표 3초 이내 달성)</li>
+      <li>스케일 아웃 효율 구체화: 83% (선형 대비)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/assets/images/posts/2026-01/20260109-002.png" alt="" /></p>
+
+<p><em>블로그 상에 구현되 챗봇 데모</em></p>
+
+<p><img src="/assets/images/posts/2026-01/20260109-003.png" alt="" /></p>
+
+<p><em>서비스를 위한 데모 프론트엔드 페이지</em></p>
+
+<hr />
+
+<h3 id="2-문제--해결--인사이트">2. 문제 → 해결 → 인사이트</h3>
+
+<h4 id="why-문제-정의"><strong>Why: 문제 정의</strong></h4>
+
+<p>개인 프로젝트 개발 도중 React Shell 취약점(CVE-2025-55182)으로 L7 공격을 받았다. 인프라를 구축만 하고 프론트 데모만 있었기에 Rate Limiter가 없었다. 무한 요청이 그대로 Next.js 서버로 들어왔고, 전체 시스템은 리소스 부족으로 시스템이 무너졌다. 처음으로 서버의 과부하를 경험하였다. 프론트엔드 취약점이었지만, 피해는 백엔드와 인프라까지 영향을 주었다.</p>
+
+<p>그렇기에 질문이 생겼다.</p>
+
+<p><strong><em>“취약점은 언제든 발생할 수 있다. 그때 시스템은 어떻게 버텨야 하는가?”</em></strong></p>
+
+<p><strong><em>“트래픽의 대응을 위한 스케일 아웃을 어떻게 해야 하는가?”</em></strong></p>
+
+<p><strong><em>“구현한 서비스가 데모이든 무엇이든 최적의 성능을 제공해주는 기준이 필요하다”</em></strong></p>
+
+<h4 id="what-해결-목표"><strong>What: 해결 목표</strong></h4>
+
+<p>Protostar 서비스 구현 도중 일어난 사건들, 백엔드 개발자로서 제대로된 서비스를 구현하기 위해선 반드시 이 작업이 필요하다고 느꼈다.</p>
+
+<p>핵심 가설을 세웠다.</p>
+
+<p><strong><em>“초당 5,000개의 악의적 요청이 들어와도, 백엔드는 초당 100개만 처리하며 죽지 않을 수 있을까?”</em></strong></p>
+
+<p>이를 검증하기 위해 Traffic Dam을 설계했다. 댐이 물을 막고 조절하듯, 트래픽을 받아내고 제어하는 시스템을 구축하는 것을 목표로 삼았다.</p>
+
+<h4 id="how-설계-및-구현"><strong>How: 설계 및 구현</strong></h4>
+
+<h5 id="아키텍처"><strong>아키텍처</strong></h5>
+
+<p><img src="/assets/images/posts/2026-01/20260109-004.png" alt="" /></p>
+
+<p><em>서비스 아키텍쳐, 온프레미스 제약을 해결하는데 시간이 걸렸다</em></p>
+
+<p>기존 설계와 인프라, 모니터링 구축이 끝난 직후였다. 구현의 목표는 풀스택 AI Chatbot 의 데모를 구현 + Traffic Dam 을 설계하여 목표에 답을 하는 것이다.</p>
+
+<ul>
+  <li><strong>Gateway Layer (NestJS):</strong> 대규모 연결 유지, 1차 트래픽 방어, SSE 기반 실시간 스트리밍</li>
+  <li><strong>Buffering Layer (Redis/BullMQ):</strong> 트래픽 임시 저장, Token Bucket Rate Limiting, Backpressure 대응 도구</li>
+  <li><strong>Processing Layer (FastAPI):</strong> LLM 처리, OpenRouter API 연동, 고정 처리량 제어</li>
+</ul>
+
+<h5 id="핵심-구현-사항"><strong>핵심 구현 사항</strong></h5>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">영역</th>
+      <th style="text-align: left">구현 내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">**실시간 통신**</td>
+      <td style="text-align: left">SSE 기반 채팅 스트리밍, Redis List 기반으로 멀티 인스턴스 간 메시지 동기화</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**트래픽 제어**</td>
+      <td style="text-align: left">Nginx 의 Sliding Window Rate Limiting, Token Bucket Rate Limiting, Max Concurrent Connection(1,000), Job Deduplication</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**장애 대응**</td>
+      <td style="text-align: left">Circuit Breaker 패턴</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**Observability**</td>
+      <td style="text-align: left">cAdvisor, node-exporter, Winston  Loki 통합, JSON 구조화 로깅, 레이어별 에러 추적, Grafana 모니터링 시스템, Discord 기반 Alert 체계</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**인프라**</td>
+      <td style="text-align: left">Docker Compose 기반 스케일 아웃, Nginx 로드밸런싱, Jenkins CI/CD(Zero-Downtime, G/B 전략)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**AI 서비스**</td>
+      <td style="text-align: left">OpenRouter 기반 LLM 연동, Protostar 프론트엔드 데모 구현</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="개발-방식-ai-assisted-development"><strong>개발 방식: AI-Assisted Development</strong></h5>
+
+<ul>
+  <li>초기에는 <strong>Antigravity + Gemini</strong> 조합으로 개발 및 배포 전 <strong>CodeRabbit AI</strong> 를 활용한 검토 파이프라인 구축. <strong>Obsidian</strong> 은 단순 지식 저장용</li>
+  <li>중반부터 <strong>Obsidian + Claude Code</strong> 체제를 추가 도입.</li>
+</ul>
+
+<p><img src="/assets/images/posts/2026-01/20260109-005.png" alt="" /></p>
+
+<p><strong>개선 이유?:</strong></p>
+
+<ul>
+  <li><strong>생산성 증대</strong>: 코드 작성과 문서화를 하나의 흐름에서 처리가 가능하며, AI와 함께 공유가 가능함.</li>
+  <li><strong>데이터 해석력 확보</strong>: k6 테스트 결과 분석, 병목 원인 추론에서 Claude의 정확도가 높았고, 이를 체계적으로 파이프라이닝이 필요, CMD + C / CMD + V 는 너무 비효율적임.</li>
+  <li><strong>설계 검증</strong>: 내 관점의 설계안에 대해 헛점, 사이드 이펙트, 엣지 케이스를 함께 검토</li>
+</ul>
+
+<p>AI를 단순하게 “<strong>코드 생성기</strong>“로 보면 안된다고 판단하였다. “빠른 도입 가속기”로 활용했다. 내가 방향을 잡고, AI를 통해 허점을 지적하도록 하여 새로운 기술에 대한 적응력을 높이고, 아키텍쳐의 기술 선택에서 가능한 최적의 선택을 도모하도록 했다.</p>
+
+<h5 id="result-검증-결과"><strong>Result: 검증 결과</strong></h5>
+
+<p>k6 기반 부하 테스트로 검증. 온프레미스 서버에서의 최대 트래픽 수치를 구체화 하였다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">구성</th>
+      <th style="text-align: left">VU</th>
+      <th style="text-align: left">에러율</th>
+      <th style="text-align: left">Latency(p95)</th>
+      <th style="text-align: left">AI TTFT(p95)</th>
+      <th style="text-align: left">RPS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">**단일(NestJS 1 + FastAPI 2)**</td>
+      <td style="text-align: left">500</td>
+      <td style="text-align: left">0%</td>
+      <td style="text-align: left">710ms</td>
+      <td style="text-align: left">849ms</td>
+      <td style="text-align: left">173.18/s</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">**2배 (NestJS 2 + FastAPI 4)**</td>
+      <td style="text-align: left">1,000</td>
+      <td style="text-align: left">0%</td>
+      <td style="text-align: left">2.79s</td>
+      <td style="text-align: left">3084ms</td>
+      <td style="text-align: left">287.77/s</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><strong>VU 1,100 이상에서 429 에러가 발생하기 시작</strong>했고, 이는 Rate Limiter가 의도대로 작동하여 <strong>시스템을 보호하도록 구현 완료</strong></li>
+  <li>전체 시스템은 스케일 아웃이 되었으나, <strong>Redis 는 단일 인스턴스로 병목이 발생</strong>했음. 이에 메시지 처리 과정의 <strong>I/O 경합이 AI TTFT 의 지연의 주 원인으로 분석</strong>됨(Latency Trade-off)</li>
+</ul>
+
+<h5 id="insight-배운-것"><strong>Insight: 배운 것</strong></h5>
+
+<ol>
+  <li><strong>스케일 아웃은 선형이 아니다:</strong> 2배 확장에 83% 효율. Nginx 로드밸런싱 불균형, 공유 자원 경합, 네트워크 오버헤드가 원인이었다.</li>
+  <li><strong>Baseline 설정과 Capacity 에 대한 구체화:</strong> 단일 코어당 핵심 로직을 거쳐 NestJS, Redis, FastAPI 로 작업을 처리 시 얼마나 걸리는 지를 파악할 수 있었고, 기록을 기반으로 실제_용량 = 기준_용량 × N × 0.83 라는 수식을 도출. 스케일 아웃 시 얼마나 트래픽을 처리할 수있을지 예상치를 설정하고, 기준을 보다 명료하게 만드는 것에 성공하였다.</li>
+  <li><strong>설계적 Stateless ≠ 집합체적 Stateless:</strong> In-memory Session, Redis 공유 카운터 등 암묵적 상태 의존성이 존재했고, Sticky Session 전략이 필요했다. 구조에 대한 이해도가 얼마나 중요한지 느낄 수 있었다.</li>
+  <li><strong>동일 에러 코드, 다른 원인:</strong> 같은 429라도 Nginx L7에서 발생한 것과 Application에서 발생한 것은 달랐다. Observability 없이는 디버깅이 불가능했기에 모니터링의 필요성, 로깅의 디테일의 중요성을 느꼈다.</li>
+  <li><strong>AI는 도구다:</strong> AI 는 복잡한 시스템의 상호작용과 DevOps 의 미세한 맥락을 이해하지 못했다. 이에, 방향(Why &amp; What)의 결정자는 나이자, 제안자는 AI 라는 형태로 설정하였다. 구현(How)은 AI 와 함께 진행하였다. 이때 ‘나’는 공식 문서와, 각 기술들의 최신 맥락을 교차검증하였으며, AI를 일종의 ‘기술 제안자’ 이자 ‘빠른 프로토타이퍼’로 세워 ‘망설이는 시간’을 획기적으로 줄일 수 있었다. 이를 통해 1인 개발의 한계를 넘는 복잡도를 이해하고, 풀스택 서비스 구현과 검증까지 진행 가능하였다.</li>
+</ol>
+
+<hr />
+
+<p><img src="/assets/images/posts/2026-01/20260109-006.png" alt="" /><br />
+<em>Grafana - Before 테스트 당시 컨테이너 상태</em></p>
+
+<p><img src="/assets/images/posts/2026-01/20260109-007.png" alt="" /><br />
+<em>Grafana - After 테스트 당시 두배 스케일 아웃 된 서버들이 병렬로 대응함</em></p>
+
+<p><img src="/assets/images/posts/2026-01/20260109-008.png" alt="" /><br />
+<em>Discord Grafana Alert 와 무중단 배포 알림</em></p>
+
+<p><img src="/assets/images/posts/2026-01/20260109-009.png" alt="" /></p>
+
+<p><em>실제 테스트 당시 모니터링 docker stats + btop + k6 화면</em></p>
+
+<h3 id="3-마무리">3. 마무리</h3>
+
+<p>이번 프로젝트를 통해 백엔드 개발자로서 증명해야 할 것이 명확해졌다. 트래픽을 처리할 수 있다면 처리하고, 처리할 수 없다면 시스템은 생존해야 한다. 대용량의 경험을 언제 해볼 수 있을까? 싶지만, 우선 대용량이 아니더라도 서버의 특성에 맞춰 적절하게 대응하는 방법을 배울 수 있던것 같으니… 이걸 기반으로 기회가 올 수 있지 않나 싶다.</p>
+
+<p>Traffic Dam은 그 첫 번째 구현이었고, 용량 산정 공식 도출까지 도달한 점은 의미 있는 성과였다. AI 기반으로 할 때 이런 점에서 좋다고 느낀다. 각 요소에 대한 의미를 놓치지 않게 이야기 하다보면 데이터의 특징이 보인다.</p>
+
+<p>다음 단계로는 DB 최적화, RAG 파이프라인, 프롬프트 엔지니어링 등 AI 서비스의 응용 레이어를 보강할 계획이다. Protostar의 완전체는 구현하기 어려울 것 같지만, 핵심 비즈니스 로직은 내 블로그를 통해 보여지고 실제로 쓸 수 있도록 만들어봐야지.</p>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><summary type="html"><![CDATA[Chapter 1 Traffic Dam 구현기 summary]]></summary></entry><entry><title type="html">Toss Learner’s High 2기 init report</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/12/17/00-til-learnershigh-toss.html" rel="alternate" type="text/html" title="Toss Learner’s High 2기 init report" /><published>2025-12-17T00:00:00+00:00</published><updated>2025-12-17T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/12/17/00-til-learnershigh-toss</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2025/12/17/00-til-learnershigh-toss.html"><![CDATA[<h2 id="들어가면서">들어가면서</h2>
 
 <p><img src="/assets/images/posts/2025-12/20251217-022.png" alt="" /></p>
 
@@ -1774,305 +2005,4 @@ Opal 자체는 확실히 GUI 기반에, 뭔가 인스턴트하게 AI 에게 맡�
 
 <p>1만 명 트래픽 시뮬레이션 결과, 총비용을 <strong>30% 이상 절감</strong>할 수 있고, ‘1만 명 트래픽’을 목표로 하는 DevOps 포트폴리오에서, 176 t/s는 ‘충분히 빠른’ 속도이며, 이 속도를 유지하면서 비용 절감까지 증명해낸 <code class="language-plaintext highlighter-rouge">gpt-oss-120b</code>가 가장 합리적이고 전략적인 선택이다. 또한 이 과정에서 가이드, 맥락 파악을 위한 프롬프트를 또 작성해 주는 것이 오히려 모델들의 잠재력을 끌어올릴 수 있다는 인사이트는 대단히 인상적이었다.</p>
 
-<p>본 프로젝트의 성공은 <strong>‘AI 모델’</strong> 자체에 달린 것이 아니라, <strong>‘꼼꼼한 프롬프트’</strong> 로 <strong>‘저렴하고 똑똑한 AI(gpt-oss-120b)’</strong> 를 통제하는 개발자의 역량에 달려 있다는… 그런 내용이 아니었나 싶다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="DevOps" /><category term="Docker" /><category term="n8n" /><category term="Automation" /><category term="AI" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">TIL - monitoring server 구축기 (2)</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/05/til-monitoring-server-2.html" rel="alternate" type="text/html" title="TIL - monitoring server 구축기 (2)" /><published>2025-11-05T00:00:00+00:00</published><updated>2025-11-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/05/til-monitoring-server-2</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/11/05/til-monitoring-server-2.html"><![CDATA[<h2 id="2025-11-05--monitoring-서버-구축하기">2025-11-05 : Monitoring 서버 구축하기</h2>
-
-<p>드디어 모든 문제를 해결하였다.
-HTTPS 를 통한 종단암호화를 마쳤으며
-네트워크를 선행 구축하여 통로로 연결될 수 있도록 설정하였다. 
-이제 남은 단 하나… 모니터링…!!</p>
-
-<hr />
-
-<h2 id="서버-아키텍쳐-구조도">서버 아키텍쳐 구조도</h2>
-
-<p><img src="/assets/images/assets/project-monitoring-diagram.png" alt="" /></p>
-
-<h2 id="핵심-설정-과정-및-트러블슈팅-qa">핵심 설정 과정 및 트러블슈팅 (Q&amp;A)</h2>
-
-<p>구축 과정에서 몇 가지 중요한 개념과 문제를 마주했으며, 이를 해결하는 과정이 이번 TIL의 핵심이다.</p>
-
-<h3 id="핵심-네트워크구조">핵심 네트워크구조</h3>
-
-<p>네트워크의 설정이 난해했지만, 결국 핵심은 ‘외부’와 ‘내부’에 대한 명료함이다.</p>
-
-<ol>
-  <li><strong>내부 통신 (Docker Network):</strong> 모니터링 서버 <em>내부</em> 의 컨테이너들(e.g., <code class="language-plaintext highlighter-rouge">centre-prometheus</code>, <code class="language-plaintext highlighter-rouge">centre-grafana</code>, <code class="language-plaintext highlighter-rouge">NPM</code>)은 docker의 가상 네트워크를 통해 컨테이너 이름으로 통신한다. 이 통신은 Docker가 내부 DNS를 통해 처리하므로 외부 포트가 필요 없다.
-    <ul>
-      <li><strong>예시:</strong> NPM 프록시 설정 시 Grafana의 주소는 <code class="language-plaintext highlighter-rouge">http://centre-grafana:3000</code>이 된다.</li>
-    </ul>
-  </li>
-  <li><strong>외부 통신 (Physical LAN):</strong> 모니터링 서버가 <em>다른</em> 물리적 서버에 접근할 때는 이 가상 네트워크를 쓸 수 없다. 반드시 외부 서버의 물리적 IP 주소와 <code class="language-plaintext highlighter-rouge">service-exporters</code>에서 <code class="language-plaintext highlighter-rouge">ports</code>로 외부에 노출시킨 포트(<code class="language-plaintext highlighter-rouge">9100</code>, <code class="language-plaintext highlighter-rouge">8081</code>)를 사용해야 한다.</li>
-</ol>
-
-<h3 id="restart-정책으로-always-대신-unless-stopped를-써야-한다"><code class="language-plaintext highlighter-rouge">restart</code> 정책으로 <code class="language-plaintext highlighter-rouge">always</code> 대신 <code class="language-plaintext highlighter-rouge">unless-stopped</code>를 써야 한다</h3>
-
-<p>사실 항상 restart 의 정책이 어떻게 되는지 정확하게 알고 있지 못했기에 이번 기회에 알아보았다. 두 정책 모두 시스템 재부팅 시 컨테이너를 자동 재시작해준다. 하지만 결정적인 차이가 있다.</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">restart: always</code>: 관리자가 유지보수를 위해 <code class="language-plaintext highlighter-rouge">docker stop</code> 명령으로 컨테이너를 <em>수동 정지</em> 해도, Docker 데몬이 재시작되거나 시스템이 재부팅되면 컨테이너를 다시 켜버린다.</li>
-  <li><code class="language-plaintext highlighter-rouge">restart: unless-stopped</code>: 관리자의 수동 정지 명령을 “존중”한다. 즉, 수동으로 정지된 컨테이너는 관리자가 명시적으로 다시 시작(<code class="language-plaintext highlighter-rouge">docker start</code>)하기 전까지는 꺼진 상태를 유지한다.</li>
-</ul>
-
-<p>이러한 결정적인 차이 때문에 유지보수 및 예측 가능성 측면에서 <code class="language-plaintext highlighter-rouge">unless-stopped</code>가 훨씬 안전한 정책이기에 향후엔 <code class="language-plaintext highlighter-rouge">unless-stopped</code>를 쓰려고 한다.</p>
-
-<h3 id="prometheus_data-grafana_data를-gitignore에-추가해야-하는가"><code class="language-plaintext highlighter-rouge">prometheus_data</code>, <code class="language-plaintext highlighter-rouge">grafana_data</code>를 <code class="language-plaintext highlighter-rouge">.gitignore</code>에 추가해야 하는가?</h3>
-
-<p>설정을 찾아보다 보니, 볼륨의 연결이 필요했다. 이에 진행하면서, 해당 볼륨의 특성을 보았다. 처음엔 생성되는 것들이 git 으로 버전 관리되는걸로 하면 권한 문제가 생길 수 있다고 판단했었다. 하지만… <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>에서 <strong>Named Volume</strong> (<code class="language-plaintext highlighter-rouge">grafana_data:/var/lib/grafana</code>)을 사용하기에 그럴 필요가 없다는 것을 배웠다.</p>
-
-<ul>
-  <li><strong>Named Volume:</strong> Docker가 관리하는 별도의 시스템 경로( <code class="language-plaintext highlighter-rouge">/var/lib/docker/volumes/...</code>)에 데이터를 저장한다. Git 리포지토리 폴더 내에 파일이 생성되지 않으므로 <code class="language-plaintext highlighter-rouge">.gitignore</code>가 필요 없다.</li>
-  <li><strong>Bind Mount:</strong> 만약 프로젝트 폴더에 직접 데이터를 저장하는 방식 (<code class="language-plaintext highlighter-rouge">./grafana_data:/var/lib/grafana</code>)을 사용했다면, 이 폴더는 Git이 추적하게 되므로 <code class="language-plaintext highlighter-rouge">.gitignore</code>에 반드시 추가해야 했을 것이다.</li>
-</ul>
-
-<h3 id="prometheus와-grafana의-cpu메모리-제한은">Prometheus와 Grafana의 CPU/메모리 제한은?</h3>
-
-<p>제한된 온프레미스 서버. 최적화된 설정을 위해 Docker 의 리소스 관리 기능을 활용하려고 생각하고, AI 와 이야기하며 현실적인 수준을 파악해보았다. 현재 설정된 리소스(Prometheus 0.5 CPU/512M, Grafana 0.3 CPU/256M)는 2대의 서버(호스트 2개 + 컨테이너 수십 개)를 모니터링하기에 충분히 넉넉하다는 판단 하에 설정하였다.</p>
-
-<p>다만, 처음엔 이정도가 맞는가? 라는 의문은 가지고 있었다. 아무리 생각해도 이정도는 하고, 윈도우 95 시절인줄 알았지만…. AI가 제시한 의도를 보고 파악할 수 있었다. 이 리소스 제한의 주 목적은 성능 자체가 아니라, 만약의 버그나 매우 복잡한 쿼리로 인해 모니터링 컨테이너 하나가 서버의 전체 리소스를 고갈시켜, 모니터링 시스템은 물론 서버 전체를 다운시키는 것을 방지하는 ‘안전벽(safety wall)’ 역할을 하고, 그렇게 볼때 다소의 보수적인 설정은 충분히 설득력이 있었다.</p>
-
-<h2 id="최종-설정-파일">최종 설정 파일</h2>
-
-<p>위의 모든 과정을 거쳐 완성된 최종 설정 파일들이다.</p>
-
-<h3 id="1-메인-서비스-서버-a5-server">1. 메인 서비스 서버 (A5 Server)</h3>
-
-<p><code class="language-plaintext highlighter-rouge">service-exporters/docker-compose.yml</code>:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># main server watcher for monitoring structure 
-
-services:
-  #########################################################
-  #  NodeExporter_Svc: 호스트 지표 (CPU, RAM, Disk)
-  #########################################################
-  node-exporter:
-    image: prom/node-exporter:latest
-    container_name: a5-node-exporter
-    restart: unless-stopped
-    ports:
-      - "9100:9100"
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /:/rootfs:ro
-    command:
-      - '--path.procfs=/host/proc'
-      - '--path.sysfs=/host/sys'
-      - '--path.rootfs=/rootfs'
-    pid: host
-    deploy:
-      resources:
-        limits:
-          cpus: '0.1'
-          memory: '64M'
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-
-  #########################################################
-  #  cAdvisor_Svc: 컨테이너 지표 (Docker)
-  #########################################################
-  cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest
-    container_name: a5-cadvisor
-    restart: unless-stopped
-    ports:
-      - "8081:8080" 
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-      - /dev/disk/:/dev/disk:ro
-    devices:
-      - /dev/kmsg
-    deploy:
-      resources:
-        limits:
-          cpus: '0.15'
-          memory: '128M'
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-</code></pre></div></div>
-
-<h3 id="2-모니터링-서버-centre-server">2. 모니터링 서버 (Centre Server)</h3>
-
-<p><code class="language-plaintext highlighter-rouge">monitoring-stack/docker-compose.yml</code>:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># monitoring structure + sub server watcher
-
-services:
-  #########################################################
-  #  Prometheus: The core data collection service
-  #########################################################
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: centre-prometheus
-    restart: unless-stopped
-    volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - prometheus_data:/prometheus
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-    networks:
-      - my-central-proxy-network
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: '512M'
-
-  #########################################################
-  #  Grafana: The data visualization dashboard
-  #########################################################
-  grafana:
-    image: grafana/grafana:latest
-    container_name: centre-grafana
-    restart: unless-stopped
-    volumes:
-      - grafana_data:/var/lib/grafana
-    networks:
-      - my-central-proxy-network
-    deploy:
-      resources:
-        limits:
-          cpus: '0.3'
-          memory: '256M'
-
-  #########################################################
-  #  NodeExporter_Mon: Host metrics for THIS server
-  #########################################################
-  node-exporter-mon:
-    image: prom/node-exporter:latest
-    container_name: centre-node-exporter
-    restart: unless-stopped
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /:/rootfs:ro
-    command:
-      - '--path.procfs=/host/proc'
-      - '--path.sysfs=/host/sys'
-      - '--path.rootfs=/rootfs'
-    pid: host
-    networks:
-      - my-central-proxy-network
-    deploy:
-      resources:
-        limits:
-          cpus: '0.1'
-          memory: '64M'
-
-  #########################################################
-  #  cAdvisor_Mon: Container metrics for THIS server
-  #########################################################
-  cadvisor-mon:
-    image: gcr.io/cadvisor/cadvisor:latest
-    container_name: centre-cadvisor
-    restart: unless-stopped
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-      - /dev/disk/:/dev/disk:ro
-    devices:
-      - /dev/kmsg
-    networks:
-      - my-central-proxy-network
-    deploy:
-      resources:
-        limits:
-          cpus: '0.15'
-          memory: '128M'
-
-#########################################################
-#  Shared Volumes and Networks
-#########################################################
-volumes:
-  prometheus_data:
-  grafana_data:
-
-networks:
-  my-central-proxy-network:
-    external: true
-    name: my-central-proxy-network 
-</code></pre></div></div>
-
-<h3 id="3-모니터링-두뇌-prometheus-config">3. 모니터링 “두뇌” (Prometheus Config)</h3>
-
-<p><code class="language-plaintext highlighter-rouge">monitoring-stack/prometheus/prometheus.yml</code>:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>global:
-  scrape_interval: 15s # How often to scrape targets
-
-scrape_configs:
-  # 1. Monitor Prometheus itself (Internal)
-  - job_name: 'prometheus'
-    static_configs:
-      - targets: ['centre-prometheus:9090']
-
-  # 2. Monitor the monitoring server's HOST (Internal)
-  - job_name: 'monitoring_host'
-    static_configs:
-      - targets: ['centre-node-exporter:9100']
-
-  # 3. Monitor the monitoring server's CONTAINERS (Internal)
-  - job_name: 'monitoring_containers'
-    static_configs:
-      # cAdvisor's default port inside the container is 8080
-      - targets: ['centre-cadvisor:8080']
-
-  # 4. Monitor the REMOTE main service server's HOST (External)
-  - job_name: 'service_host'
-    static_configs:
-      # A5 Server's physical IP and exposed port
-      - targets: ['192.168.0.37:9100']
-
-  # 5. Monitor the REMOTE main service server's CONTAINERS (External)
-  - job_name: 'service_containers'
-    static_configs:
-      # A5 Server's physical IP and exposed port
-      - targets: ['192.168.0.37:8081']
-</code></pre></div></div>
-
-<h3 id="4-gitignore">4. <code class="language-plaintext highlighter-rouge">.gitignore</code></h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.DS_Store
-Thumbs.db
-.env
-*.env.local
-docker-compose.override.yml
-</code></pre></div></div>
-
-<h2 id="결과">결과</h2>
-
-<p>모든 설정이 완료되고, Grafana에서 <code class="language-plaintext highlighter-rouge">https://grafana.paulryu93.ddns.net</code>에서 모든걸 볼 수 있었다.</p>
-
-<p><img src="/assets/images/posts/2025-11/20251105-008.png" alt="" /></p>
-
-<p><strong>Node Exporter (monitoring_host) 대시보드:</strong>
-<img src="/assets/images/posts/2025-11/20251105-009.png" alt="" />
-<img src="/assets/images/posts/2025-11/20251105-010.png" alt="" /></p>
-
-<p><strong>cAdvisor (monitoring_containers) 대시보드:</strong>
-<img src="/assets/images/posts/2025-11/20251105-011.png" alt="" />
-<img src="/assets/images/posts/2025-11/20251105-012.png" alt="" /></p>
-
-<p>이제 두 서버의 모든 호스트 및 컨테이너 지표를 중앙에서 실시간으로 모니터링할 수 있게 되었다!</p>
-
-<hr />
-
-<p>아직 알람 기능이라거나, 디테일한 접근은 되지 않았다. 
-그러나</p>
-<ul>
-  <li>G/B 방식의 무중단 배포와 이를 위한 CI/CD Jenkins 파이프라인 구축</li>
-  <li>Next.js 기반의 SPA 어플리케이션 서버</li>
-  <li>MSA 방식의 NestJS 와 AI를 위한 FastAPI 서버</li>
-  <li>이 모든것을 감시하는 Monitoring의 Grafana + Prometheus 설정
-은 앞으로 더욱 흥미 진진한 제대로 된 스케일러블 서비스 구축의 ingnition 이 될 것같다…ㅎ</li>
-</ul>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="NextJS" /><category term="DevOps" /><category term="Jenkins" /><category term="Docker" /><category term="Monitoring" /><category term="Grafana" /><category term="Prometheus" /><summary type="html"><![CDATA[2025-11-05 : Monitoring 서버 구축하기]]></summary></entry></feed>
+<p>본 프로젝트의 성공은 <strong>‘AI 모델’</strong> 자체에 달린 것이 아니라, <strong>‘꼼꼼한 프롬프트’</strong> 로 <strong>‘저렴하고 똑똑한 AI(gpt-oss-120b)’</strong> 를 통제하는 개발자의 역량에 달려 있다는… 그런 내용이 아니었나 싶다.</p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="학습" /><category term="DevOps" /><category term="Docker" /><category term="n8n" /><category term="Automation" /><category term="AI" /><summary type="html"><![CDATA[]]></summary></entry></feed>
