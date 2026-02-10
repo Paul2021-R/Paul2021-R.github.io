@@ -123,30 +123,36 @@ Podman의 `podman play kube` 명령어를 쓰면 k8s YAML을 로컬에서도 그
 무작정 달려들기보단, AI 를 기반으로 구현할 항목들을 정리했고, 목표를 지정하였다. 이직 일정과 겹쳐 딜레이가 발생할 순 있으나 최대한 현실적으로 설정해보았다. 
 
 **Phase 1 (1주): 도구 전환**
+
 - Docker → Podman 로컬 개발 환경 전환
 - 기존 Dockerfile이 Podman에서도 돌아가는지 검증
 - rootless 환경의 포트 바인딩 제약 해결 (80 → 8080)
 
 **Phase 2 (0.5주): k8s 기초**
+
 - k3s 클러스터 구축
 - Pod, Deployment, Service 개념 실습
 - kubectl 명령어 익히기
 
 **Phase 3 (0.5주): Dev 환경에 Stateless 서비스 먼저**
+
 - React, NestJS 같은 무상태 서비스부터 배포
 - 실패해도 재배포하면 끝이라 학습 비용이 낮음
 - 서비스 간 통신 (k8s 내부 DNS) 이해
 
 **Phase 4 (0.5주): Dev 환경에 Stateful 서비스 마이그레이션 해보기**
+
 - PostgreSQL, Redis 같은 상태 저장 서비스
 - StatefulSet, PersistentVolume 개념
 - 데이터 백업/복구 전략 수립
 
 **Phase 5 (1주): 자동화와 관찰성**
+
 - ArgoCD 기반 GitOps CI/CD 파이프라인 구축
 - Prometheus + Grafana 모니터링 스택
 
 **Phase 6 (1주): Production 마이그레이션**
+
 - 지금까지의 실습을 모두 클러스터링 된 온프레미스 서버로 일체 이전한다.
 
 ---
