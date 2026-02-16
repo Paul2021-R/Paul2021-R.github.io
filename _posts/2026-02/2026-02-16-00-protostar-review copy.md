@@ -1,9 +1,9 @@
 ---
 layout: post 
-title: Protostar review note - 04 - AI
+title: Protostar review note - 04 FastAPI AI
 subtitle: Protostar 구성 요소들에 대한 복습 + 심도 있는 확장을 정리한다 
 categories: 문제해결
-tags: Backend 개발 Protostar Project Review FastAPI
+tags: Backend 개발 Protostar Project Review FastAPI AI 
 thumb: https://paul2021-r.github.io/assets/images/assets/protostar-icon.png
 custom-excerpt: Protostar 구성 요소들에 대한 복습 + 심도 있는 확장을 정리한다 
 banner:
