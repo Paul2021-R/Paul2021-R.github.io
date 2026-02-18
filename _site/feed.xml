@@ -1,4 +1,1208 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2026-02-17T09:32:13+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Protostar review note - 04 FastAPI RAG</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/17/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 04 FastAPI RAG" /><published>2026-02-17T00:00:00+00:00</published><updated>2026-02-17T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/17/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/17/00-protostar-review.html"><![CDATA[<h2 id="corerag_servicepy">core/rag_service.py</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2026-02-18T03:14:43+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Protostar review note - 06 NestJS Intro</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/18/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 06 NestJS Intro" /><published>2026-02-18T00:00:00+00:00</published><updated>2026-02-18T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/18/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/18/00-protostar-review.html"><![CDATA[<h1 id="nestjs-개념-정리">NestJS 개념 정리</h1>
+<p>본 정리 내용은, 프레임워크에 대한 이해도를 복기 하면서도 짜게 되었던 구성요소들을 더 심화시켜 바라보고 풀스택을 하다보니 놓치거나 좀더 좋은 코드를 만들기 위해 필요한 개념 복습, 코드 구성에 대한 고민을 위한 추가 복습이다.</p>
+
+<p>개괄적인 전체 내용을 복습한 이후, 특정 파일 구성요소 중심으로 복습을 기록할 예정이다.</p>
+
+<ul>
+  <li>Node.js 위에서 동작하는 <strong>구조화된 백엔드 프레임워크</strong></li>
+  <li>TypeScript 네이티브 지원, Angular에서 영감을 받은 <strong>모듈/DI 기반 아키텍처</strong></li>
+  <li>Express(기본) 또는 Fastify를 HTTP 어댑터로 사용</li>
+  <li>데코레이터(<code class="language-plaintext highlighter-rouge">@Module</code>, <code class="language-plaintext highlighter-rouge">@Controller</code>, <code class="language-plaintext highlighter-rouge">@Injectable</code> 등)로 메타데이터를 선언하고, IoC 컨테이너가 의존성을 관리함</li>
+</ul>
+
+<h2 id="핵심-철학-및-특징">핵심 철학 및 특징</h2>
+<ul>
+  <li><strong>모듈성(Modularity)</strong>: 기능 단위로 모듈을 나누고, 각 모듈이 자신의 책임 범위를 캡슐화</li>
+  <li><strong>의존성 주입(DI)</strong>: NestJS IoC 컨테이너가 Provider 인스턴스를 생성·관리하며, 생성자에서 자동 주입</li>
+  <li><strong>데코레이터 기반</strong>: 클래스와 메서드에 데코레이터를 붙여 역할을 선언적으로 표현</li>
+  <li><strong>레이어드 파이프라인</strong>: 요청이 들어오면 정해진 순서(Lifecycle)대로 처리 계층을 통과</li>
+</ul>
+
+<h2 id="fastapi와의-비교">FastAPI와의 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>NestJS</th>
+      <th>FastAPI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**언어**</td>
+      <td>TypeScript</td>
+      <td>Python</td>
+    </tr>
+    <tr>
+      <td>**DI 방식**</td>
+      <td>IoC 컨테이너(자동 관리)</td>
+      <td>함수 기반 Depends(명시적 추적)</td>
+    </tr>
+    <tr>
+      <td>**구조화**</td>
+      <td>강제적(Module/Controller/Service 분리)</td>
+      <td>자유로움(도메인 설계는 개발자 몫)</td>
+    </tr>
+    <tr>
+      <td>**비동기**</td>
+      <td>Promise / RxJS Observable</td>
+      <td>async/await (ASGI 기반)</td>
+    </tr>
+    <tr>
+      <td>**주요 용도**</td>
+      <td>복잡한 비즈니스 로직, 엔터프라이즈</td>
+      <td>AI 서빙, 경량 마이크로서비스</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h1 id="요청-생명주기-request-lifecycle">요청 생명주기 (Request Lifecycle)</h1>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">main.ts</code> 주석에 직접 남겨둔 순서. NestJS의 파이프라인은 <strong>절대적으로 지켜지는 순서</strong>이므로 설계 시 이 흐름을 먼저 이해해야 한다.</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 요청 진입 (HTTP Request)
+2. Middleware     ─ 요청 자체가 이상하면 미리 컷
+3. Guards        ─ 인증/인가 (검증 실패 시 Pipe 불필요)
+4. Interceptors  ─ 요청 전처리 (로깅, 변환 등)
+5. Pipes         ─ 인증된 사용자만 데이터 검사·변환
+6. Controller &amp; Service ─ 실제 비즈니스 로직
+7. Interceptors  ─ 응답 후처리 (직렬화, 포맷 등)
+8. Exception Filters ─ 에러 일괄 처리
+9. Response
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!tip] 핵심 포인트
+Guards 다음에 Pipe가 오는 이유: <strong>인증이 안 된 요청의 데이터를 굳이 검증할 필요가 없기 때문</strong>. 순서에 논리적 이유가 있다.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="프로젝트-구조-protostar-nestjs">프로젝트 구조 (Protostar NestJS)</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>src/
+├── app.module.ts          # 루트 모듈 (전체 조립)
+├── app.controller.ts      # 루트 컨트롤러 (헬스체크 등)
+├── app.service.ts
+├── main.ts                # 진입점 (글로벌 파이프라인 설정)
+│
+├── common/                # 공통 인프라 레이어
+│   ├── constants.ts       # 전역 상수
+│   ├── decorators/        # 커스텀 데코레이터
+│   │   ├── public.decorator.ts        # @Public() - JWT 인증 우회
+│   │   └── validate-user.decorator.ts # @ValidateUser() - 유저 추출
+│   ├── filters/
+│   │   └── http-exception.filter.ts   # 전역 예외 필터
+│   ├── guards/
+│   │   ├── jwt-auth.guard.ts          # 전역 JWT 인증 가드
+│   │   ├── ai-circuit.guard.ts        # AI 서비스 상태 서킷브레이커
+│   │   └── origin.guard.ts            # Origin 화이트리스트 검사
+│   ├── interceptors/
+│   │   ├── logging.interceptor.ts            # HTTP 트래픽 로깅
+│   │   └── knowledge-upload-busy-check.interceptor.ts
+│   ├── monitoring/
+│   │   ├── ai-status-monitoring.service.ts   # AI 상태 폴링 (1초 크론)
+│   │   └── system-monitoring.service.ts
+│   ├── objectStorage/     # MinIO 연동
+│   ├── prisma/            # Prisma ORM 모듈
+│   ├── queue/
+│   │   └── queue.service.ts           # 인메모리 동시성 제어 큐
+│   ├── redis/
+│   │   └── redis.module.ts            # Redis 클라이언트 모듈
+│   └── strategy/
+│       └── jwt.strategy.ts            # Passport JWT 전략
+│
+└── features/              # 기능 도메인 레이어
+    ├── auth/              # 인증 (로그인, 회원가입, JWT 발급)
+    ├── chat/              # SSE 스트림 + Redis Pub/Sub
+    └── knowledge/         # 파일 업로드 + RAG 웹훅
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!info] 구조 설계 원칙</p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">common/</code> : 어떤 도메인에도 종속되지 않는 인프라성 코드 (가드, 인터셉터, 필터, 공유 서비스)</li>
+    <li><code class="language-plaintext highlighter-rouge">features/</code> : 실제 비즈니스 도메인 단위 (각 도메인이 자신의 module/controller/service/dto를 포함)</li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h1 id="모듈-시스템">모듈 시스템</h1>
+
+<p>NestJS의 모든 구성 요소는 <strong>모듈로 조립</strong>된다. <code class="language-plaintext highlighter-rouge">@Module</code> 데코레이터의 4가지 필드를 이해하면 전체 구조가 보인다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Module</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[],</span>      <span class="c1">// 다른 모듈에서 가져올 것들</span>
+  <span class="na">controllers</span><span class="p">:</span> <span class="p">[],</span>  <span class="c1">// 이 모듈의 HTTP 엔드포인트</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[],</span>    <span class="c1">// 이 모듈에서 DI로 관리할 서비스/가드 등</span>
+  <span class="na">exports</span><span class="p">:</span> <span class="p">[],</span>      <span class="c1">// 외부 모듈에서 사용할 수 있도록 공개</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="appmodule-분석-appmodulets">AppModule 분석 (<code class="language-plaintext highlighter-rouge">app.module.ts</code>)</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Module</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">ConfigModule</span><span class="p">.</span><span class="nf">forRoot</span><span class="p">({</span> <span class="na">isGlobal</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}),</span>   <span class="c1">// 환경변수 전역 등록</span>
+    <span class="nx">RedisModule</span><span class="p">,</span>
+    <span class="nx">ChatModule</span><span class="p">,</span>
+    <span class="nx">ThrottlerModule</span><span class="p">.</span><span class="nf">forRootAsync</span><span class="p">({</span> <span class="p">...</span> <span class="p">}),</span>       <span class="c1">// Redis 기반 Rate Limit</span>
+    <span class="nx">ObjectStorageModule</span><span class="p">,</span>
+    <span class="nx">AuthModule</span><span class="p">,</span>
+    <span class="nx">PrismaModule</span><span class="p">,</span>
+    <span class="nx">KnowledgeModule</span><span class="p">,</span>
+  <span class="p">],</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">AppService</span><span class="p">,</span>
+    <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="nx">APP_GUARD</span><span class="p">,</span> <span class="na">useClass</span><span class="p">:</span> <span class="nx">ThrottlerGuard</span> <span class="p">},</span>  <span class="c1">// 전역 Rate Limit 가드</span>
+    <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="nx">APP_GUARD</span><span class="p">,</span> <span class="na">useClass</span><span class="p">:</span> <span class="nx">JwtAuthGuard</span> <span class="p">},</span>    <span class="c1">// 전역 JWT 인증 가드</span>
+  <span class="p">],</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nc">AppModule</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!note] APP_GUARD 토큰
+<code class="language-plaintext highlighter-rouge">APP_GUARD</code> 는 NestJS가 전역 가드를 등록하는 특수 토큰. 모든 요청에 자동 적용된다.
+<code class="language-plaintext highlighter-rouge">ThrottlerGuard</code>와 <code class="language-plaintext highlighter-rouge">JwtAuthGuard</code> 두 개를 등록하면 <strong>모든 요청이 두 가드를 순서대로 통과</strong>한다.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="guards-가드">Guards (가드)</h1>
+
+<p>요청을 <strong>허용할지 차단할지 결정</strong>하는 계층. <code class="language-plaintext highlighter-rouge">canActivate()</code> 가 <code class="language-plaintext highlighter-rouge">true</code>를 반환해야 다음 단계로 진행된다.</p>
+
+<h2 id="jwtauthguard---전역-jwt-인증">JwtAuthGuard - 전역 JWT 인증</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nc">JwtAuthGuard</span> <span class="kd">extends</span> <span class="nc">AuthGuard</span><span class="p">(</span><span class="dl">'</span><span class="s1">jwt</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">reflector</span><span class="p">:</span> <span class="nx">Reflector</span><span class="p">)</span> <span class="p">{</span> <span class="k">super</span><span class="p">();</span> <span class="p">}</span>
+
+  <span class="nf">canActivate</span><span class="p">(</span><span class="nx">context</span><span class="p">:</span> <span class="nx">ExecutionContext</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Reflector로 메타데이터 확인</span>
+    <span class="kd">const</span> <span class="nx">isPublic</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">reflector</span><span class="p">.</span><span class="nx">getAllAndOverride</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">IS_PUBLIC_KEY</span><span class="p">,</span> <span class="p">[</span>
+      <span class="nx">context</span><span class="p">.</span><span class="nf">getHandler</span><span class="p">(),</span>  <span class="c1">// 메서드 레벨 메타데이터</span>
+      <span class="nx">context</span><span class="p">.</span><span class="nf">getClass</span><span class="p">(),</span>    <span class="c1">// 클래스 레벨 메타데이터</span>
+    <span class="p">]);</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">isPublic</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>  <span class="c1">// @Public() 이면 통과</span>
+    <span class="k">return</span> <span class="k">super</span><span class="p">.</span><span class="nf">canActivate</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>  <span class="c1">// 아니면 JWT 검증</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>핵심 패턴</strong>: 전역으로 JWT 인증을 걸되, <code class="language-plaintext highlighter-rouge">@Public()</code> 데코레이터로 특정 엔드포인트만 우회.
+→ 기본값이 “인증 필요”이므로 <strong>새 엔드포인트 추가 시 인증을 까먹을 위험이 없다</strong>.</p>
+
+<h2 id="aicircuitguard---서킷-브레이커">AiCircuitGuard - 서킷 브레이커</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nc">AiCircuitGuard</span> <span class="k">implements</span> <span class="nx">CanActivate</span> <span class="p">{</span>
+  <span class="nf">canActivate</span><span class="p">(</span><span class="nx">context</span><span class="p">:</span> <span class="nx">ExecutionContext</span><span class="p">):</span> <span class="nx">boolean</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">isAvailable</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">aiStatusMonitoringService</span><span class="p">.</span><span class="nf">isAvailable</span><span class="p">();</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">isAvailable</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nc">ServiceUnavailableException</span><span class="p">(</span><span class="dl">'</span><span class="s1">AI Service Unavailable.</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>AI 서비스(FastAPI 워커)가 살아있는지 확인 후 요청 차단</li>
+  <li>서킷브레이커 패턴을 Guard 레이어에서 구현</li>
+  <li><code class="language-plaintext highlighter-rouge">@UseGuards(AiCircuitGuard)</code> 로 채팅/지식 엔드포인트에만 적용</li>
+</ul>
+
+<hr />
+
+<h1 id="interceptors-인터셉터">Interceptors (인터셉터)</h1>
+
+<p>요청/응답 <strong>전후를 모두 가로채는</strong> 계층. RxJS <code class="language-plaintext highlighter-rouge">Observable</code>을 반환해야 한다.</p>
+
+<h2 id="logginginterceptor---http-트래픽-로깅">LoggingInterceptor - HTTP 트래픽 로깅</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nc">LoggingInterceptor</span> <span class="k">implements</span> <span class="nx">NestInterceptor</span> <span class="p">{</span>
+  <span class="nf">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">:</span> <span class="nx">ExecutionContext</span><span class="p">,</span> <span class="nx">next</span><span class="p">:</span> <span class="nx">CallHandler</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nf">now</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nx">next</span><span class="p">.</span><span class="nf">handle</span><span class="p">().</span><span class="nf">pipe</span><span class="p">(</span>
+      <span class="nf">tap</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// 응답이 나간 후 실행 (afterResponse)</span>
+        <span class="kd">const</span> <span class="nx">responseTime</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nf">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">now</span><span class="p">;</span>
+        <span class="c1">// Promtail/Loki 수집용 구조화 로그 출력</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nf">log</span><span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http_traffic_protostar</span><span class="dl">'</span><span class="p">,</span> <span class="na">duration_ms</span><span class="p">:</span> <span class="nx">responseTime</span><span class="p">,</span> <span class="p">...</span> <span class="p">});</span>
+      <span class="p">}),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!tip] <code class="language-plaintext highlighter-rouge">next.handle().pipe(tap(...))</code></p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">next.handle()</code> : 다음 핸들러(컨트롤러)를 실행하는 Observable</li>
+    <li><code class="language-plaintext highlighter-rouge">tap()</code> : 스트림을 변환하지 않고 <strong>사이드 이펙트만</strong> 실행 (로깅에 적합)</li>
+    <li>요청 전 로직은 <code class="language-plaintext highlighter-rouge">next.handle()</code> 호출 <strong>전</strong>, 응답 후 로직은 <code class="language-plaintext highlighter-rouge">pipe()</code> 안에 작성</li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h1 id="exception-filters-예외-필터">Exception Filters (예외 필터)</h1>
+
+<p>파이프라인의 <strong>마지막 방어선</strong>. 처리되지 않은 예외를 잡아 일관된 에러 응답으로 변환한다.</p>
+
+<h2 id="globalexceptionfilter">GlobalExceptionFilter</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Catch</span><span class="p">()</span>  <span class="c1">// 인자 없으면 모든 예외 캐치</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nc">GlobalExceptionFilter</span> <span class="k">implements</span> <span class="nx">ExceptionFilter</span> <span class="p">{</span>
+  <span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="p">:</span> <span class="nx">unknown</span><span class="p">,</span> <span class="nx">host</span><span class="p">:</span> <span class="nx">ArgumentsHost</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">status</span> <span class="o">=</span> <span class="nx">exception</span> <span class="k">instanceof</span> <span class="nx">HttpException</span>
+      <span class="p">?</span> <span class="nx">exception</span><span class="p">.</span><span class="nf">getStatus</span><span class="p">()</span>
+      <span class="p">:</span> <span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">INTERNAL_SERVER_ERROR</span><span class="p">;</span>
+
+    <span class="c1">// 5xx: logger.error / 4xx: logger.warn 으로 Loki 레벨 분리</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">status</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">logData</span><span class="p">));</span>
+    <span class="k">else</span> <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nf">warn</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">logData</span><span class="p">));</span>
+
+    <span class="nx">response</span><span class="p">.</span><span class="nf">status</span><span class="p">(</span><span class="nx">status</span><span class="p">).</span><span class="nf">json</span><span class="p">({</span>
+      <span class="na">success</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">statusCode</span><span class="p">:</span> <span class="nx">status</span><span class="p">,</span>
+      <span class="na">timestamp</span><span class="p">:</span> <span class="p">...,</span>
+      <span class="na">path</span><span class="p">:</span> <span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span>
+      <span class="na">message</span><span class="p">:</span> <span class="p">...,</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>설계 포인트</strong>:</p>
+<ul>
+  <li>모든 에러의 응답 형태를 <code class="language-plaintext highlighter-rouge">{ success: false, statusCode, timestamp, path, message }</code> 로 통일</li>
+  <li>5xx / 4xx를 로그 레벨로 분리해 Loki(로그 시스템)에서 알람 기준을 다르게 설정</li>
+</ul>
+
+<hr />
+
+<h1 id="커스텀-데코레이터">커스텀 데코레이터</h1>
+
+<p>NestJS에서 메타데이터를 활용한 커스텀 데코레이터를 만드는 두 가지 패턴.</p>
+
+<h2 id="public---메타데이터-태깅">@Public() - 메타데이터 태깅</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 정의</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">IS_PUBLIC_KEY</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">isPublic</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Public</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nc">SetMetadata</span><span class="p">(</span><span class="nx">IS_PUBLIC_KEY</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// 사용</span>
+<span class="p">@</span><span class="nd">Public</span><span class="p">()</span>
+<span class="p">@</span><span class="nd">Get</span><span class="p">(</span><span class="dl">'</span><span class="s1">stream/:sessionId</span><span class="dl">'</span><span class="p">)</span>
+<span class="nf">stream</span><span class="p">(...)</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">SetMetadata(key, value)</code> : 클래스/메서드에 메타데이터를 심는다</li>
+  <li><code class="language-plaintext highlighter-rouge">Reflector.getAllAndOverride(key, [handler, class])</code> : 메서드 → 클래스 순서로 메타데이터를 읽는다</li>
+  <li>Guard에서 이 값을 읽어 분기처리</li>
+</ul>
+
+<h2 id="validateuser---파라미터-데코레이터">@ValidateUser() - 파라미터 데코레이터</h2>
+
+<p>요청 컨텍스트에서 JWT 검증 후 주입된 유저 객체를 꺼내는 파라미터 데코레이터.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 사용</span>
+<span class="p">@</span><span class="nd">Post</span><span class="p">()</span>
+<span class="k">async</span> <span class="nf">uploadDocs</span><span class="p">(@</span><span class="nd">ValidateUser</span><span class="p">()</span> <span class="nx">user</span><span class="p">:</span> <span class="nx">User</span><span class="p">,</span> <span class="p">...)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="jwt-인증-흐름">JWT 인증 흐름</h1>
+
+<h2 id="jwtstrategy---passport-전략">JwtStrategy - Passport 전략</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nc">JwtStrategy</span> <span class="kd">extends</span> <span class="nc">PassportStrategy</span><span class="p">(</span><span class="nx">Strategy</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">constructor</span><span class="p">(</span><span class="nx">configService</span><span class="p">:</span> <span class="nx">ConfigService</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">({</span>
+      <span class="na">jwtFromRequest</span><span class="p">:</span> <span class="nx">ExtractJwt</span><span class="p">.</span><span class="nf">fromAuthHeaderAsBearerToken</span><span class="p">(),</span> <span class="c1">// Authorization: Bearer ...</span>
+      <span class="na">ignoreExpiration</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">secretOrKey</span><span class="p">:</span> <span class="nx">configService</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">JWT_SECRET</span><span class="dl">'</span><span class="p">),</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nf">validate</span><span class="p">(</span><span class="nx">payload</span><span class="p">:</span> <span class="nx">JwtPayload</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="c1">// stateless: DB 조회 없이 토큰 payload만으로 유저 정보 반환</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">sub</span><span class="p">,</span> <span class="na">email</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span> <span class="na">role</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">role</span> <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="authmodule---비동기-설정-패턴">AuthModule - 비동기 설정 패턴</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">JwtModule</span><span class="p">.</span><span class="nf">registerAsync</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span><span class="nx">ConfigModule</span><span class="p">],</span>
+  <span class="na">inject</span><span class="p">:</span> <span class="p">[</span><span class="nx">ConfigService</span><span class="p">],</span>
+  <span class="na">useFactory</span><span class="p">:</span> <span class="k">async </span><span class="p">(</span><span class="na">configService</span><span class="p">:</span> <span class="nx">ConfigService</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">JwtModuleOptions</span><span class="o">&gt;</span> <span class="o">=&gt;</span> <span class="p">({</span>
+    <span class="na">secret</span><span class="p">:</span> <span class="nx">configService</span><span class="p">.</span><span class="kd">get</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">JWT_SECRET</span><span class="dl">'</span><span class="p">),</span>
+    <span class="na">signOptions</span><span class="p">:</span> <span class="p">{</span> <span class="na">expiresIn</span><span class="p">:</span> <span class="nc">Number</span><span class="p">(</span><span class="nx">configService</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">JWT_EXPIRATION</span><span class="dl">'</span><span class="p">))</span> <span class="p">},</span>
+  <span class="p">}),</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!warning] 타입 단언 주의
+<code class="language-plaintext highlighter-rouge">configService.get&lt;string&gt;('KEY')</code> 의 제네릭은 <strong>형변환이 아닌 타입 단언</strong>이다.
+실제로 <code class="language-plaintext highlighter-rouge">string</code>이 아닌 값이 들어와도 런타임 에러가 발생하지 않는다.
+확실한 검증이 필요하면 <strong>Joi</strong> 로 환경변수 스키마를 검증해야 한다.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="sse-server-sent-events--rxjs">SSE (Server-Sent Events) + RxJS</h1>
+
+<p>채팅 스트림은 <code class="language-plaintext highlighter-rouge">@Sse</code> 데코레이터와 RxJS <code class="language-plaintext highlighter-rouge">Observable</code>로 구현되어 있다.</p>
+
+<h2 id="chatcontroller---sse-엔드포인트">ChatController - SSE 엔드포인트</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Sse</span><span class="p">(</span><span class="dl">'</span><span class="s1">stream/:sessionId</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">@</span><span class="nd">SkipThrottle</span><span class="p">()</span>            <span class="c1">// Rate Limit 우회 (스트리밍은 장기 연결)</span>
+<span class="p">@</span><span class="nd">Header</span><span class="p">(</span><span class="dl">'</span><span class="s1">X-Accel-Buffering</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">no</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// Nginx 버퍼링 비활성화</span>
+<span class="nf">stream</span><span class="p">(@</span><span class="nd">Param</span><span class="p">(</span><span class="dl">'</span><span class="s1">sessionId</span><span class="dl">'</span><span class="p">)</span> <span class="nx">sessionId</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">MessageEvent</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+
+  <span class="kd">const</span> <span class="nx">userStreamSubject</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">chatService</span><span class="p">.</span><span class="nf">addClient</span><span class="p">(</span><span class="nx">uuid</span><span class="p">,</span> <span class="nx">sessionId</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">initEvent</span> <span class="o">=</span> <span class="k">from</span><span class="p">([{</span> <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">init</span><span class="dl">'</span><span class="p">,</span> <span class="nx">uuid</span><span class="p">,</span> <span class="p">...</span> <span class="p">}</span> <span class="p">}]);</span>      <span class="c1">// 연결 즉시 전송</span>
+  <span class="kd">const</span> <span class="nx">heartbeatEvent</span> <span class="o">=</span> <span class="nf">interval</span><span class="p">(</span><span class="mi">5000</span><span class="p">).</span><span class="nf">pipe</span><span class="p">(</span><span class="nf">map</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">heartbeat</span><span class="dl">'</span> <span class="p">}</span> <span class="p">})));</span>
+  <span class="kd">const</span> <span class="nx">messageStream</span> <span class="o">=</span> <span class="nx">userStreamSubject</span><span class="p">.</span><span class="nf">asObservable</span><span class="p">().</span><span class="nf">pipe</span><span class="p">(</span><span class="nf">map</span><span class="p">(</span><span class="nx">payload</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">data</span><span class="p">:</span> <span class="nx">payload</span> <span class="p">})));</span>
+
+  <span class="k">return</span> <span class="nf">merge</span><span class="p">(</span><span class="nx">initEvent</span><span class="p">,</span> <span class="nx">heartbeatEvent</span><span class="p">,</span> <span class="nx">messageStream</span><span class="p">).</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">finalize</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">chatService</span><span class="p">.</span><span class="nf">removeClient</span><span class="p">(</span><span class="nx">uuid</span><span class="p">,</span> <span class="nx">sessionId</span><span class="p">))</span>  <span class="c1">// 연결 종료 시 정리</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="chatservice---redis-pubsub-연동">ChatService - Redis Pub/Sub 연동</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Redis 구독자와 발행자는 별도 커넥션을 사용해야 함</span>
+<span class="nf">constructor</span><span class="p">(@</span><span class="nd">Inject</span><span class="p">(</span><span class="nx">REDIS_CLIENT</span><span class="p">)</span> <span class="k">private</span> <span class="k">readonly</span> <span class="nx">redisPublisher</span><span class="p">:</span> <span class="nx">Redis</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">redisSubscriber</span> <span class="o">=</span> <span class="nx">redisPublisher</span><span class="p">.</span><span class="nf">duplicate</span><span class="p">();</span>  <span class="c1">// 커넥션 복제</span>
+<span class="p">}</span>
+
+<span class="k">async</span> <span class="nf">onModuleInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">redisSubscriber</span><span class="p">.</span><span class="nf">psubscribe</span><span class="p">(</span><span class="dl">'</span><span class="s1">chat:stream:*</span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// 패턴 구독</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">redisSubscriber</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">pmessage</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">pattern</span><span class="p">,</span> <span class="nx">channel</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nf">routeMessageToUser</span><span class="p">(</span><span class="nx">channel</span><span class="p">,</span> <span class="nx">message</span><span class="p">);</span>  <span class="c1">// 해당 유저의 Subject에 push</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>전체 흐름</strong>:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Client SSE연결 → Subject 생성 → Redis 구독
+→ POST /message → Redis에 Job 적재
+→ FastAPI 워커가 처리 후 Redis Publish
+→ NestJS가 수신 → Subject.next() → SSE 전송
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="ai-서비스-상태-모니터링-서킷-브레이커">AI 서비스 상태 모니터링 (서킷 브레이커)</h1>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nc">AiStatusMonitoringService</span> <span class="k">implements</span> <span class="nx">OnModuleInit</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="nx">isAiAvailable</span><span class="p">:</span> <span class="nx">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+  <span class="p">@</span><span class="nd">Cron</span><span class="p">(</span><span class="dl">'</span><span class="s1">*/1 * * * * *</span><span class="dl">'</span><span class="p">)</span>   <span class="c1">// 1초마다 실행</span>
+  <span class="k">async</span> <span class="nf">syncStatus</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">threshold</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nf">now</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">-</span> <span class="mi">5</span><span class="p">;</span>  <span class="c1">// 5초 이내 heartbeat만 유효</span>
+
+    <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">redis</span><span class="p">.</span><span class="nf">zremrangebyscore</span><span class="p">(</span><span class="dl">'</span><span class="s1">cluster:heartbeats</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-inf</span><span class="dl">'</span><span class="p">,</span> <span class="nx">threshold</span><span class="p">);</span>  <span class="c1">// 좀비 제거</span>
+    <span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">redis</span><span class="p">.</span><span class="nf">zcard</span><span class="p">(</span><span class="dl">'</span><span class="s1">cluster:heartbeats</span><span class="dl">'</span><span class="p">);</span>   <span class="c1">// 생존 서버 수 확인</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">isAiAvailable</span> <span class="o">=</span> <span class="nx">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!warning] Redis Timeout 설정 필요
+ioredis 기본 설정은 명령어 타임아웃이 <code class="language-plaintext highlighter-rouge">undefined</code>. Redis가 죽으면 <code class="language-plaintext highlighter-rouge">await</code> 이하에서 영구 대기.
+크론 작업에서 이가 반복되면 <strong>Promise 스택 누적 → 힙 메모리 고갈 → 이벤트 루프 고갈</strong>로 이어진다.
+<code class="language-plaintext highlighter-rouge">redis.module.ts</code>에서 <code class="language-plaintext highlighter-rouge">commandTimeout</code> 옵션으로 해결함.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="validationpipe--dto">ValidationPipe &amp; DTO</h1>
+
+<p>요청 바디를 자동으로 검증하고 변환하는 파이프라인.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.ts</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">useGlobalPipes</span><span class="p">(</span><span class="k">new</span> <span class="nc">ValidationPipe</span><span class="p">({</span>
+  <span class="na">transform</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>    <span class="c1">// 요청 데이터를 DTO 클래스 인스턴스로 자동 변환</span>
+  <span class="na">whitelist</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>    <span class="c1">// DTO에 없는 필드는 자동 제거 (보안)</span>
+<span class="p">}));</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">class-validator</code> 데코레이터 (<code class="language-plaintext highlighter-rouge">@IsString()</code>, <code class="language-plaintext highlighter-rouge">@IsEmail()</code> 등)로 DTO에서 검증 선언</li>
+  <li><code class="language-plaintext highlighter-rouge">class-transformer</code>가 JSON → 클래스 인스턴스 변환</li>
+  <li><code class="language-plaintext highlighter-rouge">whitelist: true</code> 로 DTO에 정의되지 않은 필드를 자동으로 제거 → <strong>의도치 않은 필드 주입 방지</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="lifecycle-hooks">Lifecycle Hooks</h1>
+
+<p>모듈/서비스의 초기화·종료 시점을 후킹하는 인터페이스.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nc">ChatService</span> <span class="k">implements</span> <span class="nx">OnModuleInit</span><span class="p">,</span> <span class="nx">OnModuleDestroy</span> <span class="p">{</span>
+  <span class="k">async</span> <span class="nf">onModuleInit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// NestJS 앱 완전 시작 직후 실행</span>
+    <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">redisSubscriber</span><span class="p">.</span><span class="nf">psubscribe</span><span class="p">(</span><span class="dl">'</span><span class="s1">chat:stream:*</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nf">onModuleDestroy</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 앱 종료 직전 실행 (Graceful Shutdown)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">redisSubscriber</span><span class="p">.</span><span class="nf">quit</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">main.ts</code>의 <code class="language-plaintext highlighter-rouge">app.enableShutdownHooks()</code> 와 함께 사용하면 <strong>Docker 종료 시 연결된 소켓이 안전하게 닫힌다</strong>.</p>
+
+<hr />
+
+<h1 id="인메모리-동시성-제어-큐-queueservice">인메모리 동시성 제어 큐 (QueueService)</h1>
+
+<p>지식 업로드 같은 무거운 작업의 동시 처리 수를 제한하는 <strong>직접 구현 큐</strong> 했다. 이러한 설계는 AI 를 위한 RAG 의 실시간 처리에서 과포화 상태를 만들거나 하여 서비스 안정성을 해치는 것을 막기 위해서다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nc">QueueService</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="k">readonly</span> <span class="nx">concurrency</span> <span class="o">=</span> <span class="nx">CONSTANTS</span><span class="p">.</span><span class="nx">CONCURRENCY</span><span class="p">;</span>   <span class="c1">// 최대 동시 실행 수</span>
+  <span class="k">private</span> <span class="k">readonly</span> <span class="nx">maxPending</span> <span class="o">=</span> <span class="nx">CONSTANTS</span><span class="p">.</span><span class="nx">MAX_PENDING</span><span class="p">;</span>    <span class="c1">// 최대 대기 수</span>
+  <span class="k">private</span> <span class="k">readonly</span> <span class="nx">queue</span><span class="p">:</span> <span class="nx">Task</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">private</span> <span class="nx">activeCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">public</span> <span class="nx">add</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">task</span><span class="p">:</span> <span class="nx">Task</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="p">.</span><span class="nx">maxPending</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">reject</span><span class="p">(</span><span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">System queue is full</span><span class="dl">'</span><span class="p">));</span>  <span class="c1">// 큐가 꽉 찼으면 즉시 거절</span>
+      <span class="p">}</span>
+
+      <span class="kd">const</span> <span class="nx">wrappedTask</span> <span class="o">=</span> <span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">activeCount</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span> <span class="nf">resolve</span><span class="p">(</span><span class="k">await</span> <span class="nf">task</span><span class="p">());</span> <span class="p">}</span>
+        <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span> <span class="nf">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span> <span class="p">}</span>
+        <span class="k">finally</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">activeCount</span><span class="o">--</span><span class="p">;</span> <span class="k">this</span><span class="p">.</span><span class="nf">next</span><span class="p">();</span> <span class="p">}</span>  <span class="c1">// 작업 완료 후 다음 큐 실행</span>
+      <span class="p">};</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">wrappedTask</span><span class="p">);</span>
+      <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">activeCount</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">concurrency</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nf">next</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>동작 원리</strong>:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">concurrency</code>: 동시에 실행 중인 작업 수 상한</li>
+  <li><code class="language-plaintext highlighter-rouge">maxPending</code>: 대기열 최대 크기, 초과 시 즉시 거절(Back Pressure)</li>
+  <li>Redis Throttler와는 다른 계층 - 이건 <strong>서버 내부 처리 리소스 보호</strong>가 목적</li>
+</ul>
+
+<hr />
+
+<h1 id="maints-글로벌-설정-요약">main.ts 글로벌 설정 요약</h1>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">bootstrap</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">NestFactory</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">logger</span><span class="p">:</span> <span class="nx">WinstonModule</span><span class="p">.</span><span class="nf">createLogger</span><span class="p">(...),</span>  <span class="c1">// Winston으로 로거 교체</span>
+    <span class="na">bodyParser</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>                         <span class="c1">// express json/urlencoded 직접 설정 (50mb 제한)</span>
+  <span class="p">});</span>
+
+  <span class="nx">app</span><span class="p">.</span><span class="nf">enableCors</span><span class="p">({</span> <span class="na">origin</span><span class="p">:</span> <span class="nx">staticWhitelist</span><span class="p">,</span> <span class="na">credentials</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="nx">app</span><span class="p">.</span><span class="nf">useGlobalFilters</span><span class="p">(</span><span class="k">new</span> <span class="nc">GlobalExceptionFilter</span><span class="p">());</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nf">useGlobalInterceptors</span><span class="p">(</span><span class="k">new</span> <span class="nc">LoggingInterceptor</span><span class="p">());</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nf">enableShutdownHooks</span><span class="p">();</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nf">useGlobalGuards</span><span class="p">(</span><span class="k">new</span> <span class="nc">OriginGuard</span><span class="p">());</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nf">useGlobalPipes</span><span class="p">(</span><span class="k">new</span> <span class="nc">ValidationPipe</span><span class="p">({</span> <span class="na">transform</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">whitelist</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}));</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nf">useGlobalInterceptors</span><span class="p">(</span><span class="k">new</span> <span class="nc">ClassSerializerInterceptor</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">Reflector</span><span class="p">)));</span>
+
+  <span class="k">await</span> <span class="nx">app</span><span class="p">.</span><span class="nf">listen</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">??</span> <span class="mi">3000</span><span class="p">,</span> <span class="dl">'</span><span class="s1">0.0.0.0</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!note] <code class="language-plaintext highlighter-rouge">ClassSerializerInterceptor</code>
+<code class="language-plaintext highlighter-rouge">class-transformer</code>의 <code class="language-plaintext highlighter-rouge">@Exclude()</code>, <code class="language-plaintext highlighter-rouge">@Expose()</code> 같은 데코레이터를 응답 직렬화 시 자동 적용.
+예: 비밀번호 필드를 DTO에서 <code class="language-plaintext highlighter-rouge">@Exclude()</code> 하면 응답에서 자동으로 제거됨.</p>
+</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="NestJS" /><category term="AI" /><summary type="html"><![CDATA[NestJS 개념 정리 본 정리 내용은, 프레임워크에 대한 이해도를 복기 하면서도 짜게 되었던 구성요소들을 더 심화시켜 바라보고 풀스택을 하다보니 놓치거나 좀더 좋은 코드를 만들기 위해 필요한 개념 복습, 코드 구성에 대한 고민을 위한 추가 복습이다.]]></summary></entry><entry><title type="html">Protostar review note - 07 NestJS main.ts &amp;amp; app.module.ts</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/18/01-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 07 NestJS main.ts &amp;amp; app.module.ts" /><published>2026-02-18T00:00:00+00:00</published><updated>2026-02-18T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/18/01-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/18/01-protostar-review.html"><![CDATA[<h1 id="nestjs-maints--appmodulets-분석">NestJS <code class="language-plaintext highlighter-rouge">main.ts</code> / <code class="language-plaintext highlighter-rouge">app.module.ts</code> 분석</h1>
+
+<blockquote>
+  <p>두 파일은 NestJS 앱의 <strong>조립 지점</strong>이다.</p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">app.module.ts</code>: 무엇을 연결할지 선언 (정적 구조)</li>
+    <li><code class="language-plaintext highlighter-rouge">main.ts</code>: 어떻게 실행할지 설정 (동적 부트스트랩)</li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h1 id="1-주요-개념">1. 주요 개념</h1>
+
+<h2 id="maints에-등장하는-핵심-개념"><code class="language-plaintext highlighter-rouge">main.ts</code>에 등장하는 핵심 개념</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>개념</th>
+      <th>사용처</th>
+      <th>한 줄 설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**Bootstrap 함수**</td>
+      <td><code class="language-plaintext highlighter-rouge">NestFactory.create()</code></td>
+      <td>NestJS 앱 인스턴스를 생성하는 진입점</td>
+    </tr>
+    <tr>
+      <td>**글로벌 파이프라인**</td>
+      <td><code class="language-plaintext highlighter-rouge">useGlobal*</code> 메서드들</td>
+      <td>모든 요청에 공통 적용되는 필터/인터셉터/가드/파이프</td>
+    </tr>
+    <tr>
+      <td>**CORS**</td>
+      <td><code class="language-plaintext highlighter-rouge">enableCors()</code></td>
+      <td>교차 출처 요청 허용 범위 설정. 특히 메인 프론트엔드 서비스 포인트와, AI 챗봇의 엔드포인트 등에서 차이가 있다보니 신중한 개념 이해 및 적용이 필요하다.</td>
+    </tr>
+    <tr>
+      <td>**Graceful Shutdown**</td>
+      <td><code class="language-plaintext highlighter-rouge">enableShutdownHooks()</code></td>
+      <td>OS 종료 신호(SIGTERM) 수신 시 연결 정리 후 종료. 고가용성을 위한 기본 중에 기본 개념. 컨테이너화 하기 전, 반드시 필요한 처리였다.</td>
+    </tr>
+    <tr>
+      <td>**Winston 로거**</td>
+      <td><code class="language-plaintext highlighter-rouge">WinstonModule.createLogger()</code></td>
+      <td>NestJS 기본 로거를 Winston으로 교체 및 Loki 대응으로 변경.</td>
+    </tr>
+    <tr>
+      <td>**bodyParser 직접 설정**</td>
+      <td><code class="language-plaintext highlighter-rouge">json({ limit: '50mb' })</code></td>
+      <td>파일 업로드 대응을 위한 요청 바디 크기 제한 확장(기본값으로 부족함 대비)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="appmodulets에-등장하는-핵심-개념"><code class="language-plaintext highlighter-rouge">app.module.ts</code>에 등장하는 핵심 개념</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>개념</th>
+      <th>사용처</th>
+      <th>한 줄 설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**루트 모듈**</td>
+      <td><code class="language-plaintext highlighter-rouge">AppModule</code></td>
+      <td>모든 기능 모듈을 조립하는 최상위 모듈</td>
+    </tr>
+    <tr>
+      <td>**isGlobal**</td>
+      <td><code class="language-plaintext highlighter-rouge">ConfigModule.forRoot({ isGlobal: true })</code></td>
+      <td>다른 모듈에서 import 없이 ConfigService 사용 가능</td>
+    </tr>
+    <tr>
+      <td>**forRootAsync**</td>
+      <td><code class="language-plaintext highlighter-rouge">ThrottlerModule.forRootAsync()</code></td>
+      <td>비동기로 다른 모듈(Redis)을 주입받아 설정</td>
+    </tr>
+    <tr>
+      <td>**APP_GUARD 토큰**</td>
+      <td><code class="language-plaintext highlighter-rouge">{ provide: APP_GUARD, useClass: ... }</code></td>
+      <td>DI 컨테이너를 통해 전역 가드를 등록하는 NestJS 특수 토큰</td>
+    </tr>
+    <tr>
+      <td>**Rate Limiting**</td>
+      <td><code class="language-plaintext highlighter-rouge">ThrottlerModule</code></td>
+      <td>burst/sustained 두 레벨의 요청 수 제한</td>
+    </tr>
+    <tr>
+      <td>**Redis 기반 Throttler**</td>
+      <td><code class="language-plaintext highlighter-rouge">ThrottlerStorageRedisService</code></td>
+      <td>다중 인스턴스 환경에서 Rate Limit 상태를 Redis로 공유</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h1 id="2-핵심-로직-흐름">2. 핵심 로직 흐름</h1>
+
+<h2 id="maints---부트스트랩-순서"><code class="language-plaintext highlighter-rouge">main.ts</code> - 부트스트랩 순서</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NestFactory.create(AppModule, { logger: Winston, bodyParser: false })
+  │
+  ├─ CORS 설정 (Origin 화이트리스트 검사 콜백)
+  │
+  ├─ app.use(json({ limit: '50mb' }))        ← bodyParser 수동 설정
+  ├─ app.use(urlencoded({ extended: true, limit: '50mb' }))
+  │
+  ├─ useGlobalFilters(GlobalExceptionFilter)   ← 예외 후처리
+  ├─ useGlobalInterceptors(LoggingInterceptor) ← 요청/응답 로깅
+  │
+  ├─ enableShutdownHooks()                     ← SIGTERM 처리
+  │
+  ├─ useGlobalGuards(OriginGuard)              ← Origin 재검사
+  ├─ useGlobalPipes(ValidationPipe)            ← DTO 검증/변환
+  ├─ useGlobalInterceptors(ClassSerializerInterceptor) ← 직렬화
+  │
+  └─ app.listen(PORT, '0.0.0.0')
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!warning] 등록 순서가 실행 순서를 결정하지 않는다
+<code class="language-plaintext highlighter-rouge">useGlobal*</code> 호출 순서는 파이프라인 실행 순서와 무관하다.
+NestJS는 Lifecycle에 따라 <strong>Guard → Interceptor → Pipe → Controller → Interceptor → Filter</strong> 순서를 고정으로 실행한다.
+<code class="language-plaintext highlighter-rouge">main.ts</code>의 등록 순서는 가독성을 위한 선언일 뿐이다.
+하지만 그렇기 때문에 명시적으로 순서를 이해하고, 선언해둠은 요청이 어떻게 응답으로 나가는지를 유기적으로 이해할 수 있다.</p>
+</blockquote>
+
+<h2 id="appmodulets---모듈-조립-구조"><code class="language-plaintext highlighter-rouge">app.module.ts</code> - 모듈 조립 구조</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AppModule
+  │
+  ├── imports
+  │     ├── ConfigModule (isGlobal: true)      ─ 환경변수 전역 공급
+  │     ├── RedisModule                        ─ Redis 클라이언트 공급
+  │     ├── ChatModule                         ─ SSE 채팅 도메인
+  │     ├── ThrottlerModule.forRootAsync()     ─ Redis로 상태 공유하는 Rate Limit
+  │     │     └── inject: [REDIS_CLIENT]       ─ RedisModule에서 공급된 인스턴스 주입
+  │     ├── ObjectStorageModule                ─ MinIO 연동
+  │     ├── AuthModule                         ─ JWT 인증
+  │     ├── PrismaModule                       ─ DB ORM
+  │     └── KnowledgeModule                   ─ 문서 업로드/RAG 도메인
+  │
+  └── providers
+        ├── AppService
+        ├── APP_GUARD → ThrottlerGuard         ─ 전역 Rate Limit (1순위)
+        └── APP_GUARD → JwtAuthGuard           ─ 전역 JWT 인증 (2순위)
+</code></pre></div></div>
+
+<h2 id="rate-limit-설정-상세">Rate Limit 설정 상세</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">throttlers</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">burst</span><span class="dl">'</span><span class="p">,</span>     <span class="na">ttl</span><span class="p">:</span> <span class="nf">seconds</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>  <span class="na">limit</span><span class="p">:</span> <span class="mi">2000</span>  <span class="p">},</span>  <span class="c1">// 초당 2000 req</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sustained</span><span class="dl">'</span><span class="p">,</span> <span class="na">ttl</span><span class="p">:</span> <span class="nf">seconds</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span> <span class="na">limit</span><span class="p">:</span> <span class="mi">60000</span> <span class="p">},</span>  <span class="c1">// 분당 60000 req</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>burst</strong>: 순간적인 트래픽 스파이크 허용 (초당 2000)</li>
+  <li><strong>sustained</strong>: 지속적 과부하 방지 (분당 60000 = 초당 평균 1000)</li>
+  <li>두 조건 모두 통과해야 요청이 허용됨</li>
+  <li>상태를 <code class="language-plaintext highlighter-rouge">ThrottlerStorageRedisService</code>로 Redis에 저장 방식을 적용 → <strong>수평 확장(Scale-out) 시에도 공유 가능</strong> Redis 이용 면에서 심도있게 다룰 예정</li>
+</ul>
+
+<hr />
+
+<h1 id="3-구조적-취약점--개선-방향">3. 구조적 취약점 / 개선 방향</h1>
+
+<h2 id="maints-cors-화이트리스트의-하드코딩">[main.ts] CORS 화이트리스트의 하드코딩</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">staticWhitelist</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="dl">'</span><span class="s1">https://paul2021-r.github.io</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">https://service-protostar.ddns.net</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">http://localhost:4000</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">...</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<p><strong>문제</strong>: 허용 도메인이 코드에 박혀 있어 도메인 추가/변경 시 재배포 필요. 개발 시 가장 이상적인 형태는 ‘dynamic’한 관리가 맞다고 판단했었음. 하지만 일정 및 기획 축소로 하드코딩 방식으로 진행함.</p>
+
+<p><strong>개선</strong>: 환경변수로 분리. 이후 DB 형태로 관리가 fine 한 관리가 필요.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">whitelist</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CORS_ORIGINS</span><span class="p">?.</span><span class="nf">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)</span> <span class="o">??</span> <span class="p">[];</span>
+</code></pre></div></div>
+
+<h2 id="maints-전역-originguard와-cors의-중복-검사">[main.ts] 전역 OriginGuard와 CORS의 중복 검사</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">enableCors()</code> 에서 한 번, <code class="language-plaintext highlighter-rouge">OriginGuard</code> 에서 한 번 더 Origin을 검사하고 있다.</li>
+  <li>Origin 검사 로직을 한 곳으로 통합하거나, 역할을 명확히 분리(CORS = 브라우저 사전 검사, Guard = 서버 최종 검사)하는 것이 의도를 더 명확하게 만든다.</li>
+</ul>
+
+<h2 id="appmodulets-app_guard-등록-순서-의존성">[app.module.ts] APP_GUARD 등록 순서 의존성</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">providers</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="nx">APP_GUARD</span><span class="p">,</span> <span class="na">useClass</span><span class="p">:</span> <span class="nx">ThrottlerGuard</span> <span class="p">},</span>  <span class="c1">// 1번</span>
+  <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="nx">APP_GUARD</span><span class="p">,</span> <span class="na">useClass</span><span class="p">:</span> <span class="nx">JwtAuthGuard</span> <span class="p">},</span>    <span class="c1">// 2번</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<ul>
+  <li>NestJS는 <code class="language-plaintext highlighter-rouge">APP_GUARD</code>를 등록 순서대로 실행한다.</li>
+  <li>현재 Rate Limit을 먼저 검사하는 것은 합리적이지만, <strong>문서화가 없으면 순서 변경 시 버그 발생</strong> 가능성이 있다고 함.</li>
+  <li>이에 대해 AI와 답변, Best Practice 를 확인해본 결과 다음과 같은 방향성으로 해결 가능하다.
+    <ol>
+      <li>주석을 남겨 설명을 명료하게 만들어 둔다.</li>
+      <li>하나의 단일한 가드 형태로 가드를 통합화 시켜서 적용시켜둠으로써, 맥락을 유지시킨다.</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="appmodulets-redismodule-직접-의존">[app.module.ts] RedisModule 직접 의존</h2>
+
+<ul>
+  <li>지적 부분 : <code class="language-plaintext highlighter-rouge">ThrottlerModule</code>이 <code class="language-plaintext highlighter-rouge">RedisModule</code>을 직접 <code class="language-plaintext highlighter-rouge">inject</code>로 받는 구조는, <code class="language-plaintext highlighter-rouge">RedisModule</code>의 토큰(<code class="language-plaintext highlighter-rouge">REDIS_CLIENT</code>)이 바뀌거나 모듈이 분리되면 <code class="language-plaintext highlighter-rouge">AppModule</code>도 수정해야 한다.</li>
+  <li>개선 제안 : Throttler 전용 Redis 설정을 <code class="language-plaintext highlighter-rouge">ThrottlerModule</code> 내부로 캡슐화하는 방법도 고려할 수 있다.</li>
+</ul>
+
+<h2 id="maints-bodyparser-비활성화-후-수동-설정의-맥락-누락">[main.ts] bodyParser 비활성화 후 수동 설정의 맥락 누락</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">NestFactory</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">,</span> <span class="p">{</span> <span class="na">bodyParser</span><span class="p">:</span> <span class="kc">false</span> <span class="p">})</span>
+<span class="c1">// ...</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nf">json</span><span class="p">({</span> <span class="na">limit</span><span class="p">:</span> <span class="dl">'</span><span class="s1">50mb</span><span class="dl">'</span> <span class="p">}));</span>
+</code></pre></div></div>
+
+<ul>
+  <li>기본 bodyParser를 끄고 수동으로 다는 이유가 코드에 설명되어 있지 않다.</li>
+  <li>실제 이유: <strong>파일 업로드 처리(Multer)와 충돌 방지 + 50MB 제한 확장</strong>. 주석이 없으면 다음 개발자가 이유를 모르고 제거할 위험이 있다.
+    <ul>
+      <li>이 부분은 개선이 필요하였으나, 개발 일정 고려 하드코딩으로 마무리 되었었음. 향후 개선이 필요하고, 특히나 이부분은 요청에 따라 다른 적용 내지는, 파일 확장자 별로도 고려할 사항들이 다소 존재한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="4-핵심-메서드-및-라이브러리-함수-설명">4. 핵심 메서드 및 라이브러리 함수 설명</h1>
+
+<h2 id="nestfactorycreatemodule-options"><code class="language-plaintext highlighter-rouge">NestFactory.create(module, options)</code></h2>
+
+<p>NestJS 앱 인스턴스를 생성하는 팩토리 메서드.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>옵션</th>
+      <th>타입</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">logger</code></td>
+      <td><code class="language-plaintext highlighter-rouge">LoggerService</code></td>
+      <td>기본 로거를 교체</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">bodyParser</code></td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td>Express bodyParser 자동 탑재 여부 (기본 <code class="language-plaintext highlighter-rouge">true</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cors</code></td>
+      <td><code class="language-plaintext highlighter-rouge">boolean \| CorsOptions</code></td>
+      <td>CORS 설정 (create 시점에 옵션으로도 가능)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">httpsOptions</code></td>
+      <td><code class="language-plaintext highlighter-rouge">HttpsOptions</code></td>
+      <td>HTTPS 인증서 설정</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="configmoduleforroot-isglobal-true-"><code class="language-plaintext highlighter-rouge">ConfigModule.forRoot({ isGlobal: true })</code></h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">isGlobal: true</code>: 이 모듈을 <strong>글로벌 모듈</strong>로 등록. 다른 모듈에서 <code class="language-plaintext highlighter-rouge">imports</code>에 추가 없이 <code class="language-plaintext highlighter-rouge">ConfigService</code>를 바로 주입받을 수 있다.</li>
+  <li>내부적으로 <code class="language-plaintext highlighter-rouge">process.env</code>를 래핑해서 타입 안전하게 환경변수를 조회하는 <code class="language-plaintext highlighter-rouge">ConfigService</code>를 제공.</li>
+</ul>
+
+<h2 id="throttlermoduleforrootasync-usefactory-"><code class="language-plaintext highlighter-rouge">ThrottlerModule.forRootAsync({ useFactory })</code></h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">forRoot()</code>: 정적 설정 (값이 고정)</li>
+  <li><code class="language-plaintext highlighter-rouge">forRootAsync()</code>: 비동기 설정 팩토리. 다른 Provider(여기서는 Redis 클라이언트)를 <strong>주입받아</strong> 설정값을 만들 때 사용.</li>
+  <li><code class="language-plaintext highlighter-rouge">inject</code> 배열에 넣은 토큰들이 <code class="language-plaintext highlighter-rouge">useFactory</code> 함수의 인자로 순서대로 들어온다.</li>
+</ul>
+
+<h2 id="app_guard--app_filter--app_interceptor--app_pipe"><code class="language-plaintext highlighter-rouge">APP_GUARD</code> / <code class="language-plaintext highlighter-rouge">APP_FILTER</code> / <code class="language-plaintext highlighter-rouge">APP_INTERCEPTOR</code> / <code class="language-plaintext highlighter-rouge">APP_PIPE</code></h2>
+
+<p>NestJS가 전역 파이프라인 요소를 DI 컨테이너를 통해 등록하기 위한 <strong>특수 토큰들</strong>.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 두 방식의 차이</span>
+<span class="c1">// 방식 A: DI 컨테이너 밖 (다른 서비스 주입 불가)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">useGlobalGuards</span><span class="p">(</span><span class="k">new</span> <span class="nc">OriginGuard</span><span class="p">());</span>
+
+<span class="c1">// 방식 B: DI 컨테이너 안 (다른 서비스 주입 가능)</span>
+<span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="nx">APP_GUARD</span><span class="p">,</span> <span class="na">useClass</span><span class="p">:</span> <span class="nx">JwtAuthGuard</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">OriginGuard</code>는 생성자에 주입받을 게 없어서 방식 A로도 괜찮다.</li>
+  <li><code class="language-plaintext highlighter-rouge">JwtAuthGuard</code>는 <code class="language-plaintext highlighter-rouge">Reflector</code>를 주입받아야 하므로 <strong>반드시 방식 B</strong>여야 한다.</li>
+</ul>
+
+<h2 id="appenableshutdownhooks"><code class="language-plaintext highlighter-rouge">app.enableShutdownHooks()</code></h2>
+
+<ul>
+  <li>OS 프로세스 종료 신호(<code class="language-plaintext highlighter-rouge">SIGTERM</code>, <code class="language-plaintext highlighter-rouge">SIGINT</code>)를 NestJS가 감지하도록 활성화.</li>
+  <li>신호 수신 시 <code class="language-plaintext highlighter-rouge">OnApplicationShutdown</code> 인터페이스를 구현한 서비스의 <code class="language-plaintext highlighter-rouge">onApplicationShutdown()</code> 메서드를 호출.</li>
+  <li>Docker/Kubernetes 환경에서 컨테이너가 내려갈 때 <strong>진행 중인 요청을 마저 처리하고 종료</strong>하는 Graceful Shutdown에 필수.</li>
+</ul>
+
+<h2 id="classserializerinterceptor--reflector"><code class="language-plaintext highlighter-rouge">ClassSerializerInterceptor</code> + <code class="language-plaintext highlighter-rouge">Reflector</code></h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nf">useGlobalInterceptors</span><span class="p">(</span><span class="k">new</span> <span class="nc">ClassSerializerInterceptor</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">Reflector</span><span class="p">)));</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">class-transformer</code>의 <code class="language-plaintext highlighter-rouge">@Exclude()</code>, <code class="language-plaintext highlighter-rouge">@Expose()</code>, <code class="language-plaintext highlighter-rouge">@Transform()</code> 데코레이터를 응답 직렬화에 자동 적용.</li>
+  <li><code class="language-plaintext highlighter-rouge">app.get(Reflector)</code>: DI 컨테이너 밖에서 <code class="language-plaintext highlighter-rouge">Reflector</code> 인스턴스를 직접 꺼내는 방법.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 사용 예</span>
+<span class="kd">class</span> <span class="nc">UserResponseDto</span> <span class="p">{</span>
+  <span class="nl">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+
+  <span class="p">@</span><span class="nd">Exclude</span><span class="p">()</span>
+  <span class="nx">password</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>  <span class="c1">// 응답에서 자동 제거됨</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="validationpipe-transform-true-whitelist-true-"><code class="language-plaintext highlighter-rouge">ValidationPipe({ transform: true, whitelist: true })</code></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>옵션</th>
+      <th>효과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">transform: true</code></td>
+      <td>요청 데이터를 DTO 클래스 인스턴스로 변환 (타입 캐스팅 포함)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">whitelist: true</code></td>
+      <td>DTO에 선언되지 않은 필드를 자동 제거</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">forbidNonWhitelisted: true</code></td>
+      <td>(미사용) 선언 외 필드가 있으면 400 에러</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">disableErrorMessages: true</code></td>
+      <td>(미사용) 에러 메시지 숨기기 (프로덕션 권장)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h1 id="5-대체-가능한-라이브러리-및-트레이드오프">5. 대체 가능한 라이브러리 및 트레이드오프</h1>
+
+<h2 id="winston-로거-vs-대안">Winston 로거 vs 대안</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>라이브러리</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**Winston** (현재)</td>
+      <td>성숙한 생태계, 다양한 Transport(파일/HTTP/Loki)</td>
+      <td>설정이 장황, 번들 크기 큼</td>
+    </tr>
+    <tr>
+      <td>**Pino**</td>
+      <td>성능이 가장 빠름(JSON 직렬화 최적화), <code class="language-plaintext highlighter-rouge">nest-pino</code> 공식 지원</td>
+      <td>커스터마이징이 상대적으로 제한적</td>
+    </tr>
+    <tr>
+      <td>**Bunyan**</td>
+      <td>구조화 로깅 특화</td>
+      <td>유지보수 저조, 생태계 축소</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>Loki + Promtail 스택을 쓰는 경우 <strong>Pino</strong>가 JSON 출력이 더 깔끔하고 성능도 우수해 선호되는 추세.</p>
+</blockquote>
+
+<h2 id="throttlermodule-vs-대안">ThrottlerModule vs 대안</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방법</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**@nestjs/throttler + Redis** (현재)</td>
+      <td>NestJS 네이티브, 데코레이터로 라우트별 커스텀 가능</td>
+      <td>Redis 의존성 추가</td>
+    </tr>
+    <tr>
+      <td>**Nginx Rate Limit**</td>
+      <td>앱 레이어 밖에서 처리, 성능 우수</td>
+      <td>세밀한 비즈니스 로직 적용 어려움</td>
+    </tr>
+    <tr>
+      <td>**express-rate-limit**</td>
+      <td>설정 간단</td>
+      <td>다중 인스턴스 환경에서 메모리 공유 어려움</td>
+    </tr>
+    <tr>
+      <td>**API Gateway (Kong 등)**</td>
+      <td>중앙 집중 관리</td>
+      <td>인프라 복잡도 증가</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>이미 Nginx Traffic Dam이 앞단에 있으므로, NestJS 레이어의 Throttler는 <strong>내부 서비스 보호(2차 방어선)</strong> 역할임을 고려하고, 이 역할 수준을 벗어나지 않도록 맥락이 유지되어야함.</p>
+</blockquote>
+
+<h2 id="configmodule-vs-대안">ConfigModule vs 대안</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방법</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**@nestjs/config** (현재)</td>
+      <td>NestJS 통합, <code class="language-plaintext highlighter-rouge">ConfigService</code> DI 가능</td>
+      <td>런타임 타입 검증 없음</td>
+    </tr>
+    <tr>
+      <td>**@nestjs/config + Joi**</td>
+      <td>앱 시작 시 환경변수 스키마 검증</td>
+      <td>Joi 라이브러리 추가</td>
+    </tr>
+    <tr>
+      <td>**zod + env 파싱**</td>
+      <td>타입 추론이 강력, TS 친화적</td>
+      <td>수동 연동 필요</td>
+    </tr>
+    <tr>
+      <td>**dotenv 직접**</td>
+      <td>의존성 최소화</td>
+      <td>NestJS DI와 통합 어려움</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>[!tip] <code class="language-plaintext highlighter-rouge">configService.get&lt;string&gt;('KEY')</code>는 타입 단언이지 검증이 아니다
+환경변수가 없거나 잘못된 값이 들어와도 런타임에 <code class="language-plaintext highlighter-rouge">undefined</code>가 반환될 수 있다.
+<strong>Joi 또는 zod로 시작 시점에 검증</strong>하는 것이 프로덕션 수준의 접근이라고 한다. 다음 프로젝트에서는 반드시 적용하면서 진행하면 좋으리라 본다.</p>
+</blockquote>
+
+<h2 id="bodyparser-50mb-제한-vs-대안">bodyParser 50MB 제한 vs 대안</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>접근</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**express json/urlencoded** (현재)</td>
+      <td>익숙한 방식, 세밀한 제어</td>
+      <td>파일 업로드는 별도 Multer 필요</td>
+    </tr>
+    <tr>
+      <td>**Multer 전용**</td>
+      <td>파일 업로드에 최적화</td>
+      <td>일반 JSON 바디와 혼용 복잡</td>
+    </tr>
+    <tr>
+      <td>**파일을 Object Storage에서 직접 수신**</td>
+      <td>NestJS에 파일 부하 없음</td>
+      <td>아키텍처 복잡도 증가</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h1 id="6-개발자로서-알아야-할-영역">6. 개발자로서 알아야 할 영역</h1>
+
+<h2 id="a-nestjs-ioc-컨테이너와-di-범위">A. NestJS IoC 컨테이너와 DI 범위</h2>
+
+<p><code class="language-plaintext highlighter-rouge">APP_GUARD</code> 패턴을 이해하려면 NestJS의 DI가 어떻게 동작하는지 알아야 한다.</p>
+
+<ul>
+  <li><strong>Singleton scope</strong> (기본): 모듈 당 인스턴스 하나. 앱 전체에서 공유.</li>
+  <li><strong>Request scope</strong>: 요청마다 새 인스턴스 생성. 성능 비용 있음.</li>
+  <li><strong>Transient scope</strong>: 주입받을 때마다 새 인스턴스 생성.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">APP_GUARD</code>로 등록된 <code class="language-plaintext highlighter-rouge">JwtAuthGuard</code>는 Singleton이다. <code class="language-plaintext highlighter-rouge">Reflector</code>도 Singleton으로 공유되므로, <code class="language-plaintext highlighter-rouge">app.get(Reflector)</code> 또는 생성자 주입 중 어느 방식이든 같은 인스턴스를 받는다.</p>
+
+<h2 id="b-글로벌-등록-두-가지-방식의-차이">B. 글로벌 등록 두 가지 방식의 차이</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 방식 1: main.ts에서 useGlobal* (DI 컨테이너 외부)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">useGlobalGuards</span><span class="p">(</span><span class="k">new</span> <span class="nc">OriginGuard</span><span class="p">());</span>
+
+<span class="c1">// 방식 2: AppModule에서 APP_* 토큰 (DI 컨테이너 내부)</span>
+<span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="nx">APP_GUARD</span><span class="p">,</span> <span class="na">useClass</span><span class="p">:</span> <span class="nx">JwtAuthGuard</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>결정 기준</strong>: 해당 클래스가 다른 Provider를 주입받을 필요가 있는가?</p>
+<ul>
+  <li>주입이 필요 없다 → 방식 1 (단순)</li>
+  <li>주입이 필요하다 → 반드시 방식 2</li>
+</ul>
+
+<h2 id="c-forroot-vs-forrootasync-패턴">C. <code class="language-plaintext highlighter-rouge">forRoot</code> vs <code class="language-plaintext highlighter-rouge">forRootAsync</code> 패턴</h2>
+
+<p>NestJS 동적 모듈의 표준 패턴. 라이브러리를 직접 만들거나 커스텀 모듈을 설계할 때 필수로 이해해야 한다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 동기: 정적 값</span>
+<span class="nx">ThrottlerModule</span><span class="p">.</span><span class="nf">forRoot</span><span class="p">({</span> <span class="na">ttl</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="na">limit</span><span class="p">:</span> <span class="mi">100</span> <span class="p">})</span>
+
+<span class="c1">// 비동기: 다른 Provider에서 값을 받아야 할 때</span>
+<span class="nx">ThrottlerModule</span><span class="p">.</span><span class="nf">forRootAsync</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span><span class="nx">RedisModule</span><span class="p">],</span>    <span class="c1">// 필요한 모듈 등록</span>
+  <span class="na">inject</span><span class="p">:</span> <span class="p">[</span><span class="nx">REDIS_CLIENT</span><span class="p">],</span>    <span class="c1">// 팩토리 인자로 주입할 토큰</span>
+  <span class="na">useFactory</span><span class="p">:</span> <span class="p">(</span><span class="nx">redis</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="p">...</span> <span class="p">})</span>  <span class="c1">// 실제 설정 반환</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="d-graceful-shutdown과-컨테이너-오케스트레이션">D. Graceful Shutdown과 컨테이너 오케스트레이션</h2>
+
+<p>Docker/K8s 환경에서 배포 시 <code class="language-plaintext highlighter-rouge">SIGTERM</code> 신호가 날아온다. <code class="language-plaintext highlighter-rouge">enableShutdownHooks()</code>를 활성화하지 않으면:</p>
+<ul>
+  <li>진행 중인 HTTP 요청이 강제 종료됨</li>
+  <li>Redis 구독 연결이 비정상 종료됨</li>
+  <li>DB 커넥션 풀이 정리되지 않음</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">OnModuleDestroy</code>를 구현해 각 서비스가 자신의 리소스를 정리하는 패턴은 <strong>마이크로서비스 안정성의 기본</strong>이다.</p>
+
+<h2 id="e-rate-limiting-계층-설계">E. Rate Limiting 계층 설계</h2>
+
+<p>Rate Limit은 하나의 계층에서만 하는 것이 아니라 <strong>계층별로 역할이 다르다</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[클라이언트]
+    │
+[Nginx] ── Traffic Dam (토큰 버킷, Heavy/Light Zone 구분)
+    │
+[NestJS ThrottlerGuard] ── 서비스 레벨 보호 (burst/sustained 2단계)
+    │
+[내부 QueueService] ── 개별 작업 동시성 제어
+    │
+[FastAPI 워커] ── AI 연산 보호
+</code></pre></div></div>
+
+<p>각 계층이 왜 필요한지, 어느 계층에서 무엇을 막는지 설명할 수 있어야 한다.</p>
+
+<h2 id="f-환경변수-관리의-프로덕션-수준">F. 환경변수 관리의 프로덕션 수준</h2>
+
+<p>현재 코드의 <code class="language-plaintext highlighter-rouge">configService.get&lt;string&gt;('JWT_SECRET')</code>는 <strong>타입 단언</strong>이다. 이부분은 AI 의 지적이 뼈아픈데, 프로덕션에서는:</p>
+
+<ol>
+  <li><strong>시작 시 검증</strong>: Joi 스키마로 필수 환경변수가 빠지면 앱이 시작조차 안 되게</li>
+  <li><strong>시크릿 관리</strong>: .env 파일 대신 AWS Secrets Manager, HashiCorp Vault, K8s Secret 사용</li>
+  <li><strong>런타임 재로드</strong>: 일부 설정은 재배포 없이 변경 가능하도록 설계</li>
+</ol>
+
+<p>라는 조건이 필요함을 강조했다. 알긴 하는데 바쁘다고 안했지만 뼈아프긴 하다(…)</p>
+
+<h2 id="g-구조화-로깅과-옵저버빌리티">G. 구조화 로깅과 옵저버빌리티</h2>
+
+<p><code class="language-plaintext highlighter-rouge">main.ts</code>에서 Winston을 JSON 포맷으로 설정한 이유는 <strong>Promtail이 파싱하기 위해서</strong>다. 로그를 단순 텍스트로 출력하면 Loki에서 필터링이 어렵다.</p>
+
+<p>개발자가 알아야 할 로깅 설계 원칙:</p>
+<ul>
+  <li>구조화된 JSON 로그 출력 (key-value로 파싱 가능하게)</li>
+  <li>로그 레벨 분리 (<code class="language-plaintext highlighter-rouge">error</code> / <code class="language-plaintext highlighter-rouge">warn</code> / <code class="language-plaintext highlighter-rouge">info</code> / <code class="language-plaintext highlighter-rouge">debug</code>)</li>
+  <li>요청 추적을 위한 Trace ID / Correlation ID 포함</li>
+  <li>민감 정보(비밀번호, 토큰) 로그 미노출</li>
+</ul>
+
+<h2 id="h-cors와-보안-헤더">H. CORS와 보안 헤더</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nf">enableCors</span><span class="p">({</span>
+  <span class="na">origin</span><span class="p">:</span> <span class="p">(</span><span class="nx">requestOrigin</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">credentials</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>  <span class="c1">// 쿠키/인증 헤더 허용</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">credentials: true</code>를 쓸 때는 <code class="language-plaintext highlighter-rouge">origin: '*'</code> 가 불가능하다. 명시적 화이트리스트가 필요하다는 점, 그리고 <code class="language-plaintext highlighter-rouge">OPTIONS</code> 프리플라이트 요청까지 포함해야 한다는 점을 이해해야 한다.</p>
+
+<p>추가로 알아야 할 보안 헤더: <code class="language-plaintext highlighter-rouge">helmet</code> 라이브러리로 <code class="language-plaintext highlighter-rouge">X-Content-Type-Options</code>, <code class="language-plaintext highlighter-rouge">X-Frame-Options</code>, <code class="language-plaintext highlighter-rouge">Strict-Transport-Security</code> 등 설정 가능. 현재 코드에는 미적용되어 있다.</p>
+
+<hr />
+
+<h1 id="핵심-요약-카드">핵심 요약 카드</h1>
+
+<blockquote>
+  <p>[!abstract] main.ts의 역할</p>
+  <ul>
+    <li><strong>어떻게 실행할지</strong> 결정하는 부트스트랩 파일</li>
+    <li>글로벌 파이프라인 구성 (필터, 인터셉터, 가드, 파이프)</li>
+    <li>런타임 설정 (CORS, bodyParser, 로거, 포트)</li>
+    <li><code class="language-plaintext highlighter-rouge">useGlobal*</code> 순서 ≠ 실행 순서 (Lifecycle이 고정)</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>[!abstract] app.module.ts의 역할</p>
+  <ul>
+    <li><strong>무엇을 연결할지</strong> 선언하는 조립 파일</li>
+    <li>모든 도메인 모듈의 집합점</li>
+    <li>DI 컨테이너를 통한 전역 가드 등록 (<code class="language-plaintext highlighter-rouge">APP_GUARD</code>)</li>
+    <li><code class="language-plaintext highlighter-rouge">forRootAsync</code> 패턴으로 동적 모듈 구성</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>[!question] 면접/리뷰에서 설명할 수 있어야 하는 것</p>
+  <ol>
+    <li><code class="language-plaintext highlighter-rouge">useGlobalGuards</code> vs <code class="language-plaintext highlighter-rouge">APP_GUARD</code> 토큰 방식의 차이와 선택 기준</li>
+    <li><code class="language-plaintext highlighter-rouge">ThrottlerModule</code>이 Redis를 쓰는 이유 (단일 인스턴스 vs 다중 인스턴스)</li>
+    <li><code class="language-plaintext highlighter-rouge">enableShutdownHooks()</code>를 켜야 하는 이유와 연결되는 인터페이스</li>
+    <li><code class="language-plaintext highlighter-rouge">ValidationPipe whitelist: true</code>가 보안에 미치는 영향</li>
+    <li><code class="language-plaintext highlighter-rouge">ClassSerializerInterceptor</code>와 <code class="language-plaintext highlighter-rouge">@Exclude()</code>의 관계</li>
+  </ol>
+</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="NestJS" /><category term="AI" /><summary type="html"><![CDATA[NestJS main.ts / app.module.ts 분석]]></summary></entry><entry><title type="html">Protostar review note - 05 FastAPI RAG</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/17/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 05 FastAPI RAG" /><published>2026-02-17T00:00:00+00:00</published><updated>2026-02-17T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/17/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/17/00-protostar-review.html"><![CDATA[<h2 id="corerag_servicepy">core/rag_service.py</h2>
 
 <h3 id="1-주요-개념">1. 주요 개념</h3>
 
@@ -1656,527 +2860,4 @@
       <td><code class="language-plaintext highlighter-rouge">await asyncio.shield(save_to_db_task)</code></td>
     </tr>
   </tbody>
-</table>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="FastAPI" /><summary type="html"><![CDATA[main.py]]></summary></entry><entry><title type="html">토스 러너스 하이 2기 에필로그</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/03/00-After-learner's-high-copy.html" rel="alternate" type="text/html" title="토스 러너스 하이 2기 에필로그" /><published>2026-02-03T00:00:00+00:00</published><updated>2026-02-03T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/03/00-After-learner&apos;s-high%20copy</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/03/00-After-learner&apos;s-high-copy.html"><![CDATA[<h2 id="learners-high-2nd-epilogue">Learner’s High 2nd Epilogue</h2>
-
-<p><img src="/assets/images/posts/2025-12/20251217-021.png" alt="" /></p>
-
-<h3 id="runners-high">Runner’s High</h3>
-<p>한창 다이어트를 할 때 일이다. 살을 격하게 빼던 시기, 달리기로 어떻게든 20kg 을 빼려고 발악했다.</p>
-
-<p>뛰기 시작한지 10분, 20분,</p>
-
-<p>시간이 흐를 수록 발목, 무릎이 삐걱거리게 되고, 발 바닥부터 오는 통증은 바늘 위를 뛰고 있는 듯 느껴진다. 그때는 세상 그렇게 달리기 싫었다. 아프다는 것, 그리고 그 통증이 앞으로 계속될 거라는 두려움은 항상 적응되지 않는다.</p>
-
-<p>그런데 신기하게도 30분, 기분은 상쾌해지고, 아프던 통증이 서서히 바닥부터 사라져감을 느낀다. 통-통- 발 바닥이 지면과 떨어질 때, 박자감을 즐길 수 있게되고,  찾아오는 가벼움은 어느새 10분을, 또 어느새 10분을 지나게 만든다. 이것이 러너스 하이(Runner’s high) 라는 달리기를 하면서 느끼게 되는, 정말 신기한 호르몬 세상의 부산물이다.</p>
-
-<p>그리고 토스는 이 이름을 교묘하게 비틀었다. Learner’s High. 그들은 ‘지식습득’, ‘임팩트’ 만이 아니라, 문제를 바라보며 끝까지 달릴 사람, 부딪힐 사람, 힘든 일을 사서 할 사람을 찾아 다녔고, 나는 정말 운 좋게도, 이 반열에 들어갈 수 있게 되었다.</p>
-
-<p>그렇기에 나는 단순히 기능을 구현(CRUD)을 하는것에서 넘어서 SRE 관점의 유량 제어(Traffic Dam) 기능의 설계와 구현, AI의 할루시네이션을 억제하기 위한 RAG 파이프라인, 시스템 생존을 위한 관측성 도구들 일체를 구축해보았다. 하나 같이 힘들고, 숨은 찼다. 하지만 어느새 ‘상쾌함’과 함께 해결해 나간다. 스케일 아웃을 위한 내 나름의 수치 통계를 내 보고 VU 1000에 대한 에러율 0% 구현, AI의 세션 기억력, 실시간 RAG 파이프라인 구축, 토큰 압축률 73% 구현 등을 마주했다.</p>
-
-<p>앞으로의 내용은 Learner’s high. 그리고 이것이 그 한달의 여정의 에필로그다. 해당 코스에 대한 토스 측의 디테일한 기준이나 정보는 공개 불가다. 다행이 내가 달려간 것들에 대해선 이야기 할 수 있다.그러니 <code class="language-plaintext highlighter-rouge">Backend</code>, <code class="language-plaintext highlighter-rouge">AI</code>, <code class="language-plaintext highlighter-rouge">Frontend</code>, <code class="language-plaintext highlighter-rouge">DevOps</code>, 풀 사이클로 진행했던 프로젝트의 한달의 여정을 하나씩 정리하려고 한다. 그 다음 또다른 <code class="language-plaintext highlighter-rouge">Next Step</code> 을 그려볼까 한다.</p>
-
-<p><img src="/assets/images/posts/2026-02/001.png" alt="" /></p>
-<blockquote>
-  <p>Protostar 챗봇</p>
-</blockquote>
-
-<h3 id="what-i-built">What I Built</h3>
-<h4 id="ai-devops--현대-백엔드-아키텍처의-필수-요소">AI, DevOps:  현대 백엔드 아키텍처의 필수 요소</h4>
-<p>이전 회사에서의 업무를 종료하고, 이직을 준비하기 위하여 방향성을 잡으면서 가장 먼저 생각했던건 두가지다. 하나는 ‘과연 나는 증명된 개발자인가?’ 라는 질문이며, 또 하나는 ‘다음의 시대에 백엔드 개발자들에게 요구될, AI 와 함께 일할 사람들의 자질에는 무엇이 필요할까?’ 라는 질문이다. AI 는 분명 거품도 있다. 그럼에도 임팩트가 있는 것도 사실이기에, 이 두 질문의 답을 내 스스로 내리는 것, 그것이 내가 ‘인재’임을 증명하는 길이라고 생각했다.</p>
-
-<p>그래서 며칠에 걸쳐 온갖 회사들의 공고를 분석하고, 회사 생활을 통해 얻은 인사이트를 한껏 버무렸을 때 얻은 것들은 다음과 같았다.</p>
-
-<ol>
-  <li><strong>AI 는 개발 코스트를 엄청나게 낮추었다. 코드의 단가는 사실상 0이다. ‘코드’를 전문성의 가치 기준으로 삼는 것은 부족한 판단이다.</strong></li>
-  <li><strong>AI를 통해 도전의 허들이 매우 낮아졌다. 배우기 어렵다, 시간이 없다는 말은 변명이다.</strong></li>
-  <li><strong>즉, 회사는 그만큼의 인력을 줄이거나, 동일 인력으로도 더욱 큰 임팩트를 만들고자 할 것이다. 이때 방향성은 AI 를 ‘통해’ 얻으려고 하거나, AI를 ‘기반’으로 얻으려고 할 것이다.</strong></li>
-</ol>
-
-<p>우선 AI-Assisted Development(소위 ‘바이브 코딩)은 이미 너무나 명확하다. 요구사항, PRD의 구현 수준만 명확하다면, 코드를 ‘내가 만들 필요’는 없고, 이는 1번을 명료하게 만든다. 특히나 이번 프로젝트에서는 방대한 지식을 필요로 하던 프론트엔드의 구성을, 오로지 AI 구현, 구조만 스스로 파악하는 것으로 해결했다. 이러한 점은 코드의 가치가 얼마나 낮아졌는가에 답을 제공한다. 또한 이러한 점에서 2번 역시 명확하게 연결된다.</p>
-
-<p>그러나 결론적으로 중요한건 마지막 문장이다. <code class="language-plaintext highlighter-rouge">기반</code>이라는 단어는 AI 를 ‘생산 과정’에서 도입했을 때 생길 <code class="language-plaintext highlighter-rouge">생산성의 증대</code>를 의미하며, <code class="language-plaintext highlighter-rouge">통해</code>라는 것은 AI를 도구로 서비스에 적용할 때 생길 <code class="language-plaintext highlighter-rouge">비즈니스 임팩트</code>에 대한 부분이다. AI 의 발전은 진짜이고, 이 발전에서 비롯한 기업과 서비스의 성장, 발전의 욕구는 과연 무엇을 불러올까?</p>
-
-<p>다양한 입장에 따른 해석은 될 것이다. 그러나 필연적으로 <strong>AI는 시스템의 비대화, 리소스의 제약에서 오는 하드웨어 이슈를 어떻게 해결할 것인가?</strong> 라는 질문이 무조건 함께할 것이다- 라고 생각하다. 왜냐하면 AI 는 검색 증강이 필요하고, 여러 프레임워크들의 연동은 당연히 필요하며, 자연어는 필연적으로 처리 로직의 복잡도를 올리며, 입출력하는데 엄청난 리소스, 비용을 쓴다. 하물며 LLM 은 ‘100%’를 보장하지 않아, 그 답변의 튜닝에 세심한 주의가 필요하다.</p>
-
-<p>또한 규모가 크고, 자신들의 기술을 위하여 직접 하드웨어를 가지고 온프레미스로 적용된다면? 일반적인 경우에 비해 고가용성을 얻는데 엄청난 리소스와 최적화가 필요해진다. 여기서 하나의 아이러니가 발생하는데, 그것은 <strong>AI 의 발전으로 커진 시스템을, 다시 과연 AI가 이해할 수 있는가? 라는 부분에 대한 의문</strong>이다. 클라우드 프로바이저들의 제공하는 리소스는 한정되고, 그러는 와중에 실 서비스에 가까운 성능을 내줘야 하고, 동시에 그렇게 비대한 시스템을 가진다면? 이때 생길 비용의 증대는? 이 전체 시스템을 어떻게 통합해서 관리하지? AI 는 가능한가? 여기서 나의 질문의 답은 ‘<strong>가능은 할 것이지만 당장은 아니다</strong>‘였다. 그 비용을 다루고, 완전히 스스로 자가 발전하기 위해선 지금의 하드웨어나, 지금의 AI 방법론, 비용 차원에서 부족하다. 바로 이 지점이 ‘개발자’의 존재 이유라고 생각한다.</p>
-
-<h4 id="구성--증명-그리고-그-이상을-이루기-위한-도전">구성 : 증명 그리고 그 이상을 이루기 위한 도전</h4>
-<p>‘증명’하려고 했다. 1년 2개월, 메인 서버 개발자로서의 성과가 결코 ‘과장’이 아님을 증명해야 한다. 이 과정을 통해 나는 AI 를 구축하고, 응용하고, 더 나아가선 AI의 본질을 파악하여 서버를 유지, 보수하고, 고도화 시키는 경험치가 필요하다. 결국 AI 가 하지 못하는 영역은 아키텍쳐에 대한 이해와 각 서비스의 상호작용을 이해하는 것이라 판단했다. AI, DevOps, 그리고 백엔드 이 키워드들을 합쳐 내는 것이 목표가 되었다.</p>
-
-<p>그렇게 기술적으로 달려갈 포인트는 설정 했다. 그렇다면 이번엔 무얼 해결하는 걸 만들 것인가? 그러다 문득 후배의 푸념 섞인 대화, 최근 갔다온 취업 박람회의 HR 담당자의 푸념을 듣고 한 가지 문제에 대해 번뜩이게 되었다. 신입으로 취업하기 어려운 현실, 그런데 동시에 사람이 없다고 이야기 하는 기업들. 왜 서로 말이 다른가? 이 아이러니를 해결할 방법은 없을까?</p>
-
-<p>이 아이러니는 사실 지속적으로 지적되던 이야기다. 신입은 ‘기업이 요구하는게 무엇인가’에 대한 접근이 부실하고, 현실적이지 못하다. 한 마디로 ‘역할’이 요구하는 것이 무엇인지를 파악하지 못한다. 동시에 기업은 ‘일’을 하고 있기에 이러한 현실을 제대로 가르쳐 줄 수 없다. 현실의 제약으로 당장의 결론을 요구할 수 밖에 없다. 이러한 인식의 차이, 데이터의 비대칭성을 해결하는 방법은 없을까?</p>
-
-<p>그 간극을 해결해보고자 프로젝트를 계획했다. 그것이 <code class="language-plaintext highlighter-rouge">Project Protostar(원시성)</code>다. 우주에서 막 먼지들이 뭉쳐 빛을 내며 별이 되려는 시점, 그때 불이 붙도록 돕는 촉매제. AI 를 기반으로 기업 인사들에게는 바쁜 와중에 구직자들의 방대한 자료들을 일일이 볼 필요를 없앤다. 필요한 데이터를 자연어로 요청하고 AI는 이를 효과적으로 전달해줘서 시간과 핵심을 간파한다. 구직자들에게는 AI는 현실에서 기업이 요구하는게 뭔지, 그 질문을 받아 볼 수 있는 창구 역할을 한다. 창구는 곧 구직자의 ‘현실성’을 채우는 동력이 된다. 이러한 구성은 분명 양 극단의 차이나 갭, 소통의 아이러니를 메울 수 있는 도구가 되지 않을까? 생각했고 기획을 진행했다.</p>
-
-<p><img src="/assets/images/posts/2026-02/002.png" alt="" /></p>
-<blockquote>
-  <p>비즈니스 로직과 AI 워커의 분리, 그리고 관측성을 고려한 인프라 설계</p>
-</blockquote>
-
-<p><img src="/assets/images/posts/2026-02/003.png" alt="" />
-<img src="/assets/images/posts/2026-02/004.png" alt="" /></p>
-
-<p>우선 기술적 목적을 위해, 기획적 목적을 위해 인프라에 대한 설계를 진행했다.</p>
-
-<ul>
-  <li>하나의 공유기, 온프레미스 서버 2대의 연동</li>
-  <li>HTTPS 정식 포트는 서비스를 위해 쓰지만, 관리를 위한 연결은 TLS proxy pass 로 다른 포트를 HTTPS 로 연결이 가능하게 구성한다.</li>
-  <li>모든 서버는 K8s 로 구축된다 -&gt; <strong>실패</strong> -&gt; 이후 Docker 기반으로 구축함</li>
-  <li>모든 서버는 Docker 와 하드웨어를 위해 추적 인스턴스를 갖춘다
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">Monitoring</code>: Node Exporter / cAdvisor</li>
-    </ul>
-  </li>
-  <li>서브 서버는 모니터링이 주 업무로 한다. 이에 아래의 기술스택을 포함한다.
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">Monitoring</code>: Grafana / Prometheus / Loki</li>
-      <li><code class="language-plaintext highlighter-rouge">DB</code>: MinIO (RAG 용 자료의 원본 데이터)</li>
-    </ul>
-  </li>
-  <li>메인 서버는 서비스를 주 업무로 한다. 이에 아래의 기술스택을 포함한다.
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">Frontend</code>: Next.js</li>
-      <li><code class="language-plaintext highlighter-rouge">Backend 1</code>: Nest.js - Business Logic, RateLimiter, Guard, throttle</li>
-      <li><code class="language-plaintext highlighter-rouge">Backend 2</code>: FastAPI - OpenAI API - <code class="language-plaintext highlighter-rouge">OpenRouter LLM Serving</code></li>
-      <li><code class="language-plaintext highlighter-rouge">Monitoring</code>: Promtail</li>
-      <li><code class="language-plaintext highlighter-rouge">DB</code>: Redis(Pub/Sub, message), PostgreSQL(pgVector)(DB, VectorDB)</li>
-    </ul>
-  </li>
-</ul>
-
-<p>우선 모든 서비스를 구현하는데 있어 클라우드에서는 비용 문제을 포함하여 여러 제약이 많다고 판단했다. 이런 상황에선 고가용성을 얻기 위한 테스트 등을 하기 쉽지 않다. 이에 온프레미스 환경에서 직접 모두 구현해냄으로써 DevOps 관점에서 그 전체적인 흐름, 특징 등을 제대로 이해하고 싶었다.</p>
-
-<p>VectorDB는 AI 의 RAG 의 핵심 도구이자 그 중에서도 기존의 SQL 로서의 기능과 함께 하이브리드로 사용하기 적절한 postgrSQL 을 채택했다. 비즈니스적으로 구현할 사항은 그대로 SQL을 이용하되, RAG 를 위한 벡터 데이터를 위해선 MinIO 를 기반으로 원본 데이터를 보관하고, VectorDB 를 기반으로 구직자들의 다양한 자료들을 최대한 잘 Parsing 하고, 이를 RAG 하도록 구성했다.</p>
-
-<p>또한 NestJS, FastAPI 를 구분하였는데, 이는 비즈니스 로직의 안정성 내지는 관리를 용이하게 만들며, LLM 과의 통신, AI 기능을 위한 핵심 내용만 FastAPI 가 담당하도록 구성하였다. 이는 장애 전파를 막고 독립적 스케일 아웃을 가능하게 만드려고 했다.</p>
-
-<p>왜냐하면 AI 서비스는 필연적으로 고비용/고부하 작업인데, 결국 아무리 많은 요청이 들어와도 해결하도록 만드는 것을 핵심으로 잡았기에, 유량 제어 계층(Traffic Dam) 아키텍쳐를 NestJS 에 설계 단계부터 구성했다. 이와 연동되어 FastAPI 의 상태 확인 모니터링으로, Worker 가 적절하게 일을 하는 지를 확인하고 이 정보를 Redis 를 활용해 전파, Traffic Dam 이 트래픽 뿐만 아니라 Worker 의 상태에도 맞춰서 동작할 수 있도록 구성했다.</p>
-
-<p>그외의 영역으로는 Redis는 핵심 비동기 큐의 역할로서, LLM 의 추론 및 요청을 받아내는 Worker 와 NestJS 를 독립적으로 구동시키는 핵심 역할을 하게 만들었다. 또한 그 외에도 서버끼리의 통신으로 섬세하게 트래픽 양을 제어, 각 서버가 서로에게 영향을 서로 파악하는 용도의 핵심을 Redis를 선정하였다. 이는 Kafka 나 Rabbit MQ 를 쓸 수도 있었으나, 현실적인 개발 일정, 다른 집중할 영역을 위하여 과감히 구현이 빠르게 가능하므로 선정했다. 또한 TLS Proxy Pass 를 설정한 부분은, 서비스 이용자들의 접근 루트와, 관리자의 루트를 분리함으로 관리와 서비스의 명확한 구분을 위하여 설정하게 되었다.</p>
-
-<p>이렇게 구성하게 된 것은 위에서 언급한 생각들을 정리하여 얻은 결론, 목표를 위함이다.</p>
-
-<ol>
-  <li><strong>AI 서비스의 특성을 고려하고, 백엔드의 깊이있는 구현을 위하여 비즈니스와 AI를 분리하고, 실무 수준의 구성을 갖춰낸다.</strong></li>
-  <li><strong>유량 제어를 포함, 고가용성을 확보하는 심도있는 테스트 설계, 데이터 기반의 스케일 아웃 전략 고려 등, 가능한 현재의 서버 상황의 가장 최적인 서비스 상태를 구현하는 노력을 해본다.</strong></li>
-  <li><strong>AI 챗봇으로 AI가 기억을 가지고, 적절한 답변을 가능하게 구현한다.</strong></li>
-  <li><strong>기존 실무에서 사용하고 적용했던 기술들을 직접 재구성해보고, 나의 기술 스택과 인사이트를 독자적으로 구현이 가능한지 검증한다.</strong></li>
-</ol>
-
-<h3 id="what-i-learned">What I Learned</h3>
-
-<p><img src="/assets/images/posts/2026-02/005.png" alt="" /></p>
-<blockquote>
-  <p>Before 테스트 당시 컨테이너 상태 , 제대로 FastAPI 서버 동작 하지 않음…</p>
-</blockquote>
-
-<p><img src="/assets/images/posts/2026-02/006.png" alt="" /></p>
-<blockquote>
-  <p>After 테스트 당시 컨테이너, 두배 스케일 아웃 및 새로운 컨테이너(FastAPI)의 동작이 관측 된다.</p>
-</blockquote>
-
-<h4 id="네트워크와-서버의-상호작용은-결코-기계적이지-않다">네트워크와 서버의 상호작용은 ‘결코’ 기계적이지 않다</h4>
-<p>처음 서버 끼리의 통신을 접했을 때, 그리고 연결시켜서 결과가 나왔을 때, 그 순간은 짜릿했다. 내가 만든 룰과 규칙에 따라 가공되고, 사용자에게 필요한 서비스의 데이터를 내준다. 이것은 아주 심플하고, AI가 등장한 이래로는 아니 그 이전부터 별게 아닌 기초의 영역이었다.</p>
-
-<p><strong>하지만 이번 프로젝트를 진행하기 직전, React2Shell 취약점을 경험하고 나면서 ‘가벼운 생각’은 좀더 진지하게 생각해보게 되었다</strong>. npm 패키지를 통한 악성 코드들, 취약점이 튀어나오고, 그걸 기반으로 시스템을 휘젓는 공격. 온프레미스 서버의 next.js 가 공격 당했을 때는 CPU 사용률을 800%까지 끌어 올렸고, 시스템을 엉망으로 만들었다. 인터넷 회선 장비들이 느려지고, 오작동을 하게 만들었다. 구축한 온프레미스 서버의 프론트 서버가 아닌 서버들 조차 느려지게 만드는 것을 발견하였다. 간단한 api 통신, 그러나 순수하게 짜둔 그것에 취약점이 연결되자 엄청난 일이 일어난 것이다.</p>
-
-<p>그렇기에 고민했다. 이런 일이 있다. 실제로 공격은 당한다. 그렇다면 구현하려고 생각한 Protostar에선 어떻게 대응하면 될까. 그렇기에 토스와 함께 하게된 이 프로젝트에서는, 진짜 실무에 필요한 수준의 가능한 정교한 수준의 Traffic Dam 을 구축해보고자 마음을 먹게되었다. 더불어서버들이 갖춰야 할 다른 Traffic 에 대한 제어 기술들을 가능한 철저하게 찾아보고, Token Bucket, Sliding Window 같은 전략이 어떻게 제어를 하고, 그 결과 trade-off 를 어떤 지점에서 발생되는지를 배우려고 노력했고, 지금 그 과정을 통해 배웠던 내용을 정리해본다.</p>
-
-<p>처음엔 기본 로직만 만든 채 k6 기반의 가상의 사용자를 기반으로 테스트를 진행했다. 수 천번의 연결 요청, 서버는 허덕이고, CPU 이용률은 올라간다. 그렇게 반응의 결과를 받아서, AI와 함께 분석하며 그 의미를 해석하려고 했다. 그 뒤엔 그 기록을 기반으로 Traffic Dam 과 각종 장치들을 통해 얼마나 막는게 가능할지 가정을 세워 보았고, 실제로 After Test 를 통해 비교해보았다.</p>
-
-<p>이러한 과정을 겪으면서, 가장 먼저 깨달은 점은 하드웨어의 특성도 이해하게 된다는 점, 그리고 각 서버들의 구성이나 차이를 특히 이해할 수 있게 되었다는 점이다. Scale-out 에 대한 적용 시의 특징도 파악이 되었다. 결론적으로 1대의 수평 확장을 하더라도, 감당 가능한 트래픽의 수치는 선형으로 대응하지 않으며, 오히려 효율이 83%를 기록하며 트래픽에 대응할 수 있었다.  특히나 이를 위하여 기술적으로 Stateless 하게 만들려고 신경을 썼으며, 서버 사이의 통신을 단순히 서버끼리 연결시키지 않고, Redis 를 통신의 가교로 둠으로써, 소통하는 구조를 구현하였고, 설계 구조나 이론적으로 수평으로 무한히 연결 되도 가능하도록 구현을 진행하였다.</p>
-
-<p>그런데 막상 거기까지 진행하고 나서 신기한 경험을 하게 되었다. <strong>실제 비즈니스 로직과 AI 워커 로직은 상태 정보 없이 동작하도록 구축</strong>하였고, 그렇게 테스트를 했다. 그런데 이상한 버그들이 발생하는 것을 발견하였고, 최종적으로 <strong>‘통신을 수행한다’는 기능으로 인해 오히려 Stateful 한 특성을 가진 경우를 발견하게 되었고, 그것이 오류를 일으키는 것을 발견</strong>할 수 있었다.</p>
-
-<p>대표적으로 Redis를 기반으로 대화의 세션을 이어갈 때, Redis 라는 인메모리 데이터베이스의 특성이 통신과 연동, 특정 작업이 state 적 성격을 띠게 되면서 마치 정상이 아닌데 정상처럼 카운트가 되거나 하는 일들이 벌어졌다. 즉, <strong>암묵적 상태 의존성(Implicit State Dependency)</strong> 가 발생한 것이었다. 이에 대해 알아보면서 <strong>설계적 stateless와 구성 전체의 stateless의 괴리</strong> 라고도 부르는 것이 발생 했음을 알 수 있었다.</p>
-
-<p>또한 Pub/Sub 구조에서 큐에 NestJS 가 작업을 요청하고, AI  Worker 인 FastAPI 가 이 작업을 가져가서 수행, 그 결과를 다시 Redis를 향해 전달하는 구조인데, 이때 뜬금 없이 무중단 배포의 Green/Blue 전략의 특징이 버그를 만들어내기도 하였다. 서버의 롤백과 업데이트 시 대응을 위하여 Green, Blue의 컨테이너가 켜져있는데, Redis 로만 소통을 하다보니, 롤백 등을 위해 대기만 해야하는 한쪽 서버가 함께 동작을 하게 되면서 실제로 NestJS 서버 1대에 Worker 2대가 달라붙어 작업을 처리하는 경우가 생겼다. 이때 버전의 차이, API 의 차이가 생기면 어김없이 버그가 발생했지만, 문제는 표면적으로 그걸 찾아내는 것이 매우 곤란하였다. 서버들은 정상이며, 확인이 되지 않았다. 그러나 Loki 를 통해 서버들 전체의 로깅을 보았을 때, 그때 움직이지 말아야 하는 서버가 동작하고 있음을 보았을 땐… 여러모로 십년 묵은 체증이 내려간 기분이었다.</p>
-
-<p>결론적으로 디버깅하는 과정에서 ‘스케일 아웃을 신경썼다’, ‘Stateless 가 되도록 로직을 짰다’ 라는 내 생각이 무색해지는 경험을 하고 말았다. <strong>서버 끼리의 상호작용, redis 등의 중간 연결체 등이 설정이 되었을 때 결코 ‘계산기’처럼 반응이 일정하게 나오지 않는다는 사실을 배운 것은 매우 값진 결과였다.</strong> 각각은 분명 Stateless인데(설계저 stateless), 그것들이 묶이고, 함께 동작하니(구성 전체의 stateless) 그때의 오작동은 찾아내기도 어렵고, 무엇보다 AI 는 이런 전체적인 맥락을 읽지 못했다. 결국 사람의 도전, 경험, CS 에 대한 이해도가 있어야만 이러한 일이 발생함의 힌트라도 얻을 수 있다는 사실은, 상당히 의미있는 배움이 되었고, 서비스의 설계 속에서 반드시 고려할 요소임을 알게 되었다. 결과적으로 <strong>Sticky Session 전략</strong>으로 session 을 강제하는 등의 방법론을 통해 개선 가능했다.</p>
-
-<h4 id="infrastructure-의-구축이-가지는-가치를-실감하다">Infrastructure 의 구축이 가지는 가치를 실감하다</h4>
-
-<p><img src="/assets/images/posts/2026-02/007.png" alt="" /></p>
-<blockquote>
-  <p>톡톡히 도움을 준 Jenkins</p>
-</blockquote>
-
-<p>이번 Protostar 프로젝트에서 프론트엔드와, 백엔드, 백엔드는 NestJS에서 FastAPI, 모니터링, DB들 … 여러 기술 스택을 도전하면서 계속해서 부딪히고 깨지길 반복했다. 각기 개별의 문제, AI 의 삽질, 그리고 그것들에 대해 진한 고민들. 조그만 게 하나씩 개선되어가는 일련의 작업들은 언뜻 도전적인 성장과 도전적인 변화를 일으켰다.</p>
-
-<p>거기서 내가 무얼 잘했던가? 라고 한다면 사실 개발적인 영역은 결코 아닐거라 생각한다. 언어가 익숙할 뿐 React를 비롯 Next.js 에대한 이해도는 낮았으며, FastAPI 는 특히 기본 구조 자체가 Node 의 그것과 유사하여 NestJS 를 생각하면 안되는 것이다. 앞으로 계속해서 개선의 여지는 존재 한다. 그러나 <strong>여기서 분명 내가 잘한 부분은 무엇인가? 하면 ‘전체 구조의 설계’가 시작부터 어느 정도 완결성을 갖추고 시작했다는 점이다.</strong></p>
-
-<p>Jenkins를 기반으로 CI/CD 의 파이프라인을 구축하고 GHCR를 활용해 이미지를 기록, 그리고 그것의 배포는 SSH에 키를 기반으로 진행된다. 그리고 이렇게 진행 될 때도 Green / Blue 를 빌드 번호를 기반으로 번갈아 업데이트 하는 구조를 가지고 있으며, 선택적으로 양쪽 다 업데이트가 가능하도록 설정한 Jenkinsfile의 구성. 실무에서 사용하던 도구들, 그때는 다소 누더기 같이 누벼져 있었으며 IaC(Infrastructure as Code)가 아닌 상태였다.</p>
-
-<p>그때의 불편하고, 생산성을 방해하던 아쉬운 점들을 종합해서 <strong>‘재현 가능한 인프라(Reproducible Infrastructure)’</strong> 를 구현해냈다. 이렇게 구추된 전체 CI/CD 파이프라인은 내 작업의 과정에서 단 한번의 에러 없이 지속적으로 배포의 탄력을 유지하게 해주었다. 롤백을 원할 땐, main 브랜치를 롤백하면 되는 것이었고, 급한 경우 nginx 를 통해 서비스를 제공할 Gree/ Blue 를 수동 조작도 가능했다. 시스템은 망가지지 않으며, 어떤 식으로든 7/24 마음껏 개발-검증-배포를 가능하게 만들었다. 하루에 백번 조금 모자라게 업데이트를 시도할 수 있단 사실은 그것 만으로도 얼마나 ‘탄력적’이겠는가!</p>
-
-<p>또한 <strong>품질 게이트(Quality Gate)</strong> 를 설정하여 코드를 formater, linter 등으로 Jenkinsfile을 통해 빌드 전에도 반드시 검사를 하도록 했다. 또한 CodeRabbit AI 라는 코드 검사 전용 AI를 코드 머지 및 배포 과정에 시스템적으로 배치시켰다. 이는 개인의 임의로 코드의 이상이나 버그를 급하다고 무조건 넘기지 않고, 자연스럽게 디버깅하는 과정을 넣는 결과로 이어졌다. 그러니 진행 과정에서 불안이나 부담을 느끼는게 아닌 ‘절차’ 그 자체로 만들었고, 이러한 방법을 적용했을 때, 배포 시에 코드 상에 문제로 버그가 발생할 일은 최대한 막을 수 있었다.</p>
-
-<p>처음에 온프레미스 서버는 부담 그 자체였다. 구매의 비용도 비용이고, 그 구성에 일일히 설정하는 것, 개발도 전에 먼저 파이프라인을 구축하는 것은 사실 완전히 ‘빠른 개발’과 ‘빠른 배포’에 다소 어긋나는 것일지도 모르겠다. 차라리 효율성을 위해 AWS나, GCP 를 빌릴 수도 있다.</p>
-
-<p>그러나 인프라의 모든 레이어를 직접 제어, <strong>샌드박스로서</strong> 1달의 개발 과정에서 빠른 try &amp; catch error 를 할 수 있다는 점은 백엔드 개발자의 경험치 극대화의 최적화된 방법론이라 생각한다. <strong>스스로 온전히 전체를 이해함으로써 비용 효율적인 고가용성을 설계하는 방법을 보고 느끼며 습득할 수 있었다.</strong> 이러한 경험을 기반으로 향후에는 배포를 위한 템플릿을 준비해둠으로써 프로젝트의 안정적인 개발을 어떻게 하면 될지를 배울 수 있던 기회였다 생각한다.</p>
-
-<p><img src="/assets/images/posts/2026-02/008.png" alt="" />
-<img src="/assets/images/posts/2026-02/009.png" alt="" /></p>
-<blockquote>
-  <p>무료임에도 Code 퀄리티 상승에 톡톡한 역할을 한 CodeRabbit AI 서비스, AI 끼리 싸움을 붙였다(?)</p>
-</blockquote>
-
-<h4 id="도전-그리고-반복을-통해-얻어간-devops">도전, 그리고 반복을 통해 얻어간 DevOps</h4>
-<p>본 프로젝트는 Protostar 프로젝트의 하위에서 트래픽의 제어, AI 챗봇 구현에 집중한 프로젝트이긴 했다. 그러나 앞서 설명했듯 현대적 DevOps를 이해하고 적용, k8s 의 실무적 도입 및 Docker 환경에서 탈출하는 것이 상당한 의미가 있으리라 판단했다.</p>
-
-<p>Docker의 기술적 열세, k8s 기반의 실무 및 Iac(Infrastructure as Code)에서의 Docker 가 아닌 다른 기술들을 표준으로 도입했다. 시스템의 유사한 기능으로 발생하는 이중 오버헤드를 버리고, 리눅스의 순수한 컨테이너 시스템을 적극 도입했으며, 이는 더욱 안정적인 고가용성을 확보한다는 목표를 달성했고 실제로 많은 기업들이 이 방향성을 따라가고 있다. 그리하여 3년차 이상의 연차를 가지는 백엔드 개발자의 핵심 역량으로 이미 거의 확정적으로 많은 회사들이 요구하는 기술이다. 그렇기에 나 역시 피할 수 없이 배워야 하는 영역이라고 할 수 있다.</p>
-
-<p>하지만 막막했다. 어떻게 배워야 하고, 어떻게 DevOps 의 역량으로 키워야 한단 말인가? 그렇다고 문서만 보고 한 세월 방대한 자료와 씨름을 해야 하는 건가? 사수도 없이, 스스로 모든 걸 하겠다고 하기엔 프로젝트의 달성이란 현실적인 목표 사이에서 욕심 많고 교만한 행동이라고 판단했다. 처음엔 CSI 설정이나 ArgoCD 기반의 GitOps 구성에서 어디서 어떻게 에러가 나는지를 이해하기도 쉽지 않았다. 그렇기에 AI 를 기반으로 최대한 구조를 베껴가면서 k8s 를 프로젝트 하기 전 배워나갔고, 헬름 차트를 기반으로 고가용성을 구축한 패키지를 따라서 설치하는 식으로 제대로 k8s 내부에서의 배포 환경을 구축하려고 했으나… <strong>결론적으로 본 프로젝트, 한 달 내에서는 이루지 못한다고 판단, 포기하였고, Docker 를 다시 채택하여 진행을 하게 되었다.</strong></p>
-
-<p>이유는 심플하다. AI 를 기반으로 배우면서 작업이 들어가는데, 1) 구성의 복잡도를 제로 베이스에서 구현하기는 어려웠다. 2) 특히 각 구성 요소들의 민감한 버전관리를 이해해야 하는데 AI조차 이를 이해하지 못했다. 특히나 3) 버전에 따른 스크립트 설정의 문법의 차이, 4) 실무 수준에서 사용하는 차트에 대하여 AI에 의존해서 AI 가 제작한 스크립트 코드들은 전혀 동작하지 않았고, 오류를 뿜었다. 결국 <strong>핵심은 k8s 를 만만하게 보았고 동시에 AI의 수준을 제대로 인지하지 못한, 과도한 의존이 문제인 것이다.</strong></p>
-
-<p>그리하여… 나에게 결단이 필요했다. 토스의 러너스 하이 2기를 시작하기 직전이었고 더 이상의 딜레이, k8s 를 안고 가기엔 시간이 더 걸리고, 그러면 전체 개발의 목표를 달성하기엔 쉽지 않을 것이란 계산이 되었다. 그렇기에 과감한 결단을 내릴 필요가 있었고, 그 뒤에 해야할 일은 밤낮을 가리지 않는 Docker 기반으로의 회귀, 반복되는 마이그레이션 및 배포 파이프라인에 대한 반복적인 연습이었다.</p>
-
-<p><strong>결론적으로, 그렇게 반복, 실패, 재도전과 개선 작업 등을 반복적으로 진행했다. 사실 뼈 아픈 실패였다.</strong> 그럼에도 긍정적으로 생각할 수 있는 점은 정상적인 배포 파이프라인, 구성들이 동작하게 만들기 위한 무한의 반복, 실패, 마이그레이션의 경험은 DevOps 라는 영역의 요소들에 대한 이해도, 사용 방법에 익숙해졌다는 점이다. 관리 시 뭘 보아야 하고, 에러가 나면 무얼 먼저 챙겨야 하는지 등을 알게 되었다. 특히 Docker 환경에서의 로컬, 프로덕션을 가리지 않고 매우 다양한 컨테이너들 사이에서 오케스트레이션 경험치를 쌓을 수 있었다. <strong>결국 실패와 반복은 성장으로 이어진다는 점을 명확히 배울 수 있었다.</strong></p>
-<h4 id="ai는-프롬프트와-데이터-그리고-알고리즘의-전략성이-만들어낸다">AI는 프롬프트와 데이터, 그리고 알고리즘의 전략성이 만들어낸다</h4>
-<p>AI를 도입하는 과정 역시 상당한 사건들이 있었고, 많은 것들을 배울 수 있었다.</p>
-
-<p>처음엔 Protostar 의 컨셉에 부합하는 AI 답변이 가능할까? 를 우선 검증하고 싶었다. 이에 n8n을 활용해서 AI 호출, AI에게 요청하는 것을 테스트 해보았고, 특히 <code class="language-plaintext highlighter-rouge">planner</code>, <code class="language-plaintext highlighter-rouge">executor</code>, <code class="language-plaintext highlighter-rouge">inspector</code> 라는 별도의 역할을 부여하고, 로직대로 답변이 나오는지를 판단해보는 작업은 꽤나 신기한, 개발답지 않은 개발이었다.</p>
-
-<p>그러나 막상 구성해본 결과는 다소 실망스러웠다. 우선 여러 단계를 거치는 식은 당연히 성능적 손해(지연시간, TTFT)가 크게 보였다. GPT-OSS-120B, gemini 2.5, 3.0등 왠만한 frontier 모델들, 그 외에도 여러 오픈 소스 모델 등등 OpenRouter 를 기반으로 테스트 해본 결과, 답변은 잘해주더라도 만족스러운 결과에 도달하진 못하는 것을 알 수 있었다. 특히 추론 비용(Token Cost)에서 불리한데, 심지어 긴 컨텍스트 창을 제공하는 gemini 모델들을 볼 땐, 차라리 모든 명령을 프롬프트로 적절하게 집어 넣고, <strong>단일 AI로 출력하는게 답변이 다중의 구조를 추가하는 것 만큼이나 이미 충분히 좋았다. 굳이 돌아가는 길을 갈 필요는 없던 것이다.</strong> 특히 3.0 버전 제미나이의 경우 비추론 모델이 오히려 추론 모델보다 시스템 프롬프트의 복잡성을 추가시 더 명료한 결과가 나오는 기이한 결과가 여기 저기 벤치상으로 나타났고, 응용 어플리케이션에선 최선이라고 판단되었다. (심지어 가장 싸다)</p>
-
-<p><strong>뿐만 아니라, 구현 과정에서 느끼게 된 핵심은 ‘프롬프트’에 대한 엔지니어링의 중요성 부분이었다.</strong> 간단하게 모델 PoC만을 구현하고, AI Worker의 로직을 실증하기 위해, 이력서 데이터, 나의 개인정보를 프롬프트로 추가하고, 단일 모델, 그것도 수십권 분량의 토큰을 입력으로 받을 수 있는 모델을 사용했다. 그런데 결론은? 놀랍게도 AI 는 이력서의 데이터를 받아 들이자마자 <strong>특이한 행동</strong>을 하는 것을 발견했다.</p>
-
-<p>이력서나, 경력 기술서 등, 이러한 문서가 들어오자 AI 는 제시하는 ‘요구사항’의 답을 하는 것을 우선시 하는게 아니라, <strong>프롬프트로 자료의 성격에 맞춰, 이력을 소개하는 답만 반복적으로 출력했다</strong>. 이는 <strong>‘자료 편향(Data Bias)’</strong> 이란 현상이다. 사용한 데이터에 따라 뒤에 올 가능성이 가장 높은 말을 하는게 LLM 이다보니, 이러한 과도한 데이터가 프롬프트, 체계없이 들어오는 순간 실제 요구사항은 희석되고, 데이터가 제시하는 방향성을 따르게 된다. 그 결과 이력서, 경력 기술서란 곧 홍보를 위한 글이다보니, ‘사람 처럼’ 자신의 능력을 어필하기만 하는 고장을 경험하게 되었다.</p>
-
-<p>뿐만 아니라, 데이터들의 선별에도 곤란함을 겪었는데, 고작 A4 10장 정도의 데이터를 기반으로 여러번 질문했다. 순수하게 아무런 기교 없이 프롬프트로 넣은 그것들은 데이터들의 구체적인 정보 한 줄을 설명하지 못했다. <strong>항상 뭉뚱그려진 데이터를 어수룩하게  답변을 했다.</strong> 또한 경력 자료의 특성 상 수치나 실질적인 성과에 대한 이야기를 하게 되는데, 이때 이 수치적인 부분의 누락은 치명적인 영역이었다. 함부로 이상한 수치로 바꿔 말하는 순간, 신뢰성을 어떻게 확보하겠고, 이 서비스를 누가 쓰겠는가? 그렇기에 결국 도달한 결론이 RAG(검색 증강 생성)이 필수 였으며, 연관성을 위한 자료의 적절한 파싱, Vector 화 및 VectorDB의 필요성이 대두되었다.</p>
-
-<p>여기서도 Vector 화를 위하여 문자를 파싱하는데 단순하게 ‘개행 단위’로 할 것인가? 아니면 어떤 식으로든 원본 데이터를 ‘AI 가 이해하기 편한 형태’로 만들 것인가? 라는 질문을 할수 있었고 실제로도 데이터의 질이 조금만 달라도 파편화된 데이터, 정보를 정확하게 설명하지 못하는 것을 볼 수 있었다. 이리저리 테스트 해본 결과 지금은 <strong>‘문단 단위’로 파싱하는 것</strong>을 기본으로 삼았다. 이렇게 하는 것이 헤더 단위에서의 전체 내용을 포함하기 용이했기 때문이다. 단순 개행은 의미적 응집성이 약하며, 정보의 완결성 유지가 애매하기 때문이다. 또한 원본 데이터를 가능한 핵심, 키워드, 내용을 함께 묶어서 AI 가 키워드 기반 Retrieval(Top-K)방식으로 신뢰도를 확보했다.</p>
-
-<p>이젠 대화의 ‘기억력’을 만들어야 하는 시점이 되었다. RAG 를 구축하고, DB를 통해 vector화된 데이터, 이를 위한 업로드 로직까지 했지만 한번 대화 이후 새로운 요청에는 기억을 상실한 채 답변을 할 뿐이었다. <strong>이용자들에게 맥락을 이어가는 질문을 할 수 없다는 것은 사용성에서 치명적이라고 생각했다.</strong> 한편으론 프롬프트로 데이터를 채워서 진행할 수 있었으니, 아주 간단하게 기억력 구현을 생각하면 기존의 대화를 ‘기존 대화’라는 형태로 묶어서 데이터를 보내면 얼추 되기는 하다는 점을 알 수 있었다. 하지만 현실적으로, 그렇게 할 경우 입력과 출력의 ‘토큰량’은 감당할 수 없을 만큼 폭증하는 것은 자명했다.</p>
-
-<p>그렇기에 고민한 결과, 대화를 가능한 ‘한~두 문장’으로 ‘압축’하는 비즈니스 로직을 새롭게 설계했다. AI Worker 가 답변을 생성 후, 다음 요청 전에 worker 가 다시 별도로 작업을 생성, Redis 에 등록하여 요약을 비동기로 수행하도록 구현해보았다. <strong>결과적으로 동일한 질문을 진행했을 때 토큰 압축을 통한 기억력은 매우 명료한 기억을 가지고 있으면서도, 원본 대비 약 73% 수준의 입력 토큰 수량 감소를 달성했다.</strong> 단순하게 전체 입력에 추가하는 것 대비 <strong>1.63회</strong>만 이렇게 압축해도 비용 효용성이 발생했다. 이로서 2턴 이상의 대화는 원본 대비 3 ~ 4배 정도의 비용절감이 발생할 수 있게 되었다.</p>
-
-<p>결론적으로 AI의 폭발적인 성장, 그리고 AI로 무언가를 하게 만드는 과정은 대단히 ‘신선했다’. 전부터 계속 기술에 대한 팔로우업을 했었고 그렇기에 구현도 생각보다 빠르게 가능했다. 그럼에도 막상 실제 개발 과정에서 보이는 ‘자연어 데이터’를 어떤 식의 접근으로 압축하고, 제시하고, 로직을 통해 작업하게 만드는 가, 또한 AI 에게 효과적으로 보여주느냐를 고려하는 이 과정은 개발자로서 0 아니면 1이라는 감각과는 다른, 보다 기획에 가까운 경험을 제공했다. 네트워크 관련 데이터 해석이 필요하다보니 function calling, mcp 연계 구현 등 아직 그 잠재력은 훨씬 늘어날 수 있다는 걸 생각하면, 앞으로 계속 백엔드이자 응용 어플리케이션을 위한 AI 개발의 감각과 기술에 대한 연습의 필요를 느낀 계기가 되었다. 
-<img src="/assets/images/posts/2026-02/010.png" alt="" /></p>
-<blockquote>
-  <p>RAG 용 데이터 업로드를 위한 실시간 페이지</p>
-</blockquote>
-
-<p><img src="/assets/images/posts/2026-02/011.png" alt="" /></p>
-<blockquote>
-  <p>기억력 검증</p>
-</blockquote>
-
-<p><img src="/assets/images/posts/2026-02/012.png" alt="" /></p>
-<blockquote>
-  <p>RAG 에 없는 데이터는 출력하지 않음</p>
-</blockquote>
-
-<p><img src="/assets/images/posts/2026-02/013.png" alt="" /></p>
-<blockquote>
-  <p>RAG 적용 예시</p>
-</blockquote>
-
-<h4 id="도전을-방해하는-ai-도전의-허들을-허무는-ai">도전을 방해하는 AI, 도전의 허들을 허무는 AI</h4>
-<p>마지막으로 개인적으로 확실하게 각인된 부분, 그것은 AI가 나라는 개발자에게 ‘무얼 해줄 수 있고’ 반대로 ‘무얼 방해하는가’라는 부분이다.</p>
-
-<p>1달, 풀스텍의 개발과정의 도전은 꽤나 고무적이지만, 겉으로 보기에 그렇지 결국 좌절의 연속과 망설임의 연속이었다. 새로운 것을 배운다는 자를 계속하고, 치열해진다는 것은 정신력의 소모가 너무 심한 일이였다. 이 때 AI 기반으로 새로운 k8s의 도입을 실패하고, 목표를 위해선 몇 달 공부하고 씨름하던걸 내려 놓아야 한다는 판단이 들었을 때는 끔직했다. 또 그렇고 나니 새로운 걸 배우는게 더 큰 실패를 불러올까 싶어 두려웠다.</p>
-
-<p>AI는 예민한 고가용성 도구들의 헬름차트들을 위한 스크립트를 짜준다. 아마도 ‘딸깍’하고 해결해줄것 같았다. 실제로 구버전에 대해선 어렵지 않게 쓰는것이 가능할 거라 판단된다. <strong>하지만 기술의 발전, 그 속도에 못 따라가고 있었다. 과거의 것도 가져왔지만 결국 ‘그럴 듯한 스크립트’지, 100% 현재 구동 되는 걸 가져온 것도 아니다</strong>. 결국 스스로 배우고, 최신의 버전으로 엔터프라이즈급 구현을 하기엔 충돌이나, 최신에선 기존의 오픈소스 정책이 폐지되거나, 저장소 위치가 달라지는 등의 문제를 그대로 스스로 떠 안아야 했다.</p>
-
-<p>이때 AI 의 구조상의 한계는 명확하다. AI는 여전히 ‘그럴 듯 하게’ 짜는 건 가능했지만, 복잡한 실무 수준의 그것을 하기엔 단순하게 요청-받기 하는 식으론 어렵다. 결국 인프라의 상태를 인지하지 못하는 stateless 한 조언자로서 명백한 한계를 가진다. 그리고 그 극단적인 예시가 최신의 k8s 도입 실패며, 이때 필요한 건 현재의 가장 최신에 확실한 문서를 통한 교차 검증, 사람을 통한 맥락의 이해였다.</p>
-
-<p>그러나 <strong>동시에 새롭게 배우는데 도구로서 AI는 최상의 파트너이자, 다음 수준으로 올라가기에 적절한 도구였다.</strong> 간단한 예시 코드를 가져와 돌려보고, 핵심을 파악하고 새로운 것을 도입하는데 있어서는 AI 만한게 없었다. FastAPI 에서 OpenAI 의 API 구로 OpenRouter 를 연결하고, Redis 를 기반으로 message를 활용한 접근 법을 도전한다던지, 예전 같다면 새로운라이브러리 하나에 최소 일주일 ~ 한달은 걸릴 것을 3일에서 일주일 안에 해결하도록 만들었다.</p>
-
-<p>이러한 것이 가능했던 이유는, 스스로 접근하려면 공식 문서를 한땀한땀 데모 부분을 읽고 판단해야 했지만, 그러한 영역을 포함해 데이터의 압축, 이해도, 소화력을 한꺼번에 올릴 수 있도록 돕는 AI는 이번 프로젝트를 성공적으로 마무리 할 수 있던 이유라고도 할 수 있겠다.</p>
-
-<p>결과적으로 AI 는  방해하긴 했지만, 반대로 도와주기도 했다. AI 는 중립 그 자체이며, 임팩트도, 한계도 명확했다. 그러니 문득 이런 생각을 하게 되었다. ‘AI’ 는 돈, 혹은 공공재와 같은 것이지만 특히나 여기저기 도움이 되는 도구다. 그렇다면 이것은 일종의 중립적인 도구이며, 지금은 새로운 ‘수단’을 발견했기에 열광하지, 이것으로 답을 끝내는 것은 웃긴 생각이라고 판단이 섰다. 왜냐면 아무도 돈이 많다고 그걸로 끝이라고 하지 않으며, 금이 많다고 끝이라고 하진 않는다. 그걸 써서 무언가 하는 사람의 결과가 결국 그 가치를 빛내게 만드는 것이다. 어쩌면 AI의 영역은 늘어나고, 코드의 가치는 줄어 들겠지만, 시스템 전체에 대한 통합자, 문제의 정의자로의 역할이 개발자가 할 일이 되지 않을까? <strong>결국 ‘개발자의 가치’는 그 의미를 달라질지언정 그것의 존재가 사라지진 않을 것이란, 명확한 확신을 가지게 되었다.</strong></p>
-
-<h3 id="what-i-missed">What I Missed</h3>
-<h4 id="데이터-한-끗이-실수를-만든다">데이터, 한 끗이 실수를 만든다</h4>
-<p>내가 실수 했던 영역을 정리해보면, 그렇다. 가장 뼈아픈 부분이 바로 데이터에 대한 부분이었다. SRE(Site Reliability Engineering)라는 키워드를 아는가? 사이트 신뢰성 공학, 운영에서 문제들을 수동 작업이 아닌 코드로 해결하고, 확장성을 세우는 것. 특히 허용 가능한 장애 범위를 이해하고, 트래픽 용량 계획을 세우는 등으로 필요한 대응이 미리 산정되고 준비되며, 지속적으로 이러한 구성 형태로 가용성과 성능을 관리하는 방법론이다. 이번 프로젝트 직전 처음, 트래픽에 대한 개념을 이해했고, Scale-Out 으로 진짜 대응이 되는지를 검증하자! 라는 생각을 하게 되었을 때 디테일하게 이를 이해하게 되었다. 또한 백엔드 개발자라고 표방한다면 무엇보다도 SRE 라는 것이, 가장 현실적이자, 이성적인 서비스 운영 방법론으로 이해하는게 필요하지 않을까 생각했다.</p>
-
-<p>그리하여 열의에 찬 나는 k6, AI, 온프레미스 하드웨어, 모여있는 것들을 기반으로 테스트를 돌려보았다. 핵심 로직을 그대로 모사하고, AI worker 를 통한 실제 토큰까지 받아내면서 가상 유저(Vu)의 핸들링을 기록했다. 그렇게 쌓인 결과들은 확실히 서버에 대한 ‘감’을 늘려주었으며, 특정 수준에서 병목이 발생하거나, 특정 방법에는 매우 쉽게 핸들링 하는 이러한 특성들을 이해할 수 있었다.</p>
-
-<p>하지만 데이터를 읽는데는 실패했다. 최초 Before 테스트라고 Traffic Dam 이 구축 되기 전, 기초만 설정한 상태에서 테스트를 진행하고 이를 결과로 만들었다. 기준을 그걸로 잡은 이후엔 Traffic Dam 을 설정하고 두번 째 테스트를 했으며, 이에 따라 결과를 도충하고자 했다. 분명 500명은 처리가 되었다고 생각했는데, AI TTFT(최초 토큰 발행)이 before 테스트에서 비정상이었고 이를 놓쳤다. <strong>초기 RPS와 에러율과 같은 겉보기 지표(Vanity Metrics)에 집중하느라, 직접 AI TTFT 를 재고, 지연시간 까지 측정하도록 했으면서도 제대로 해석을 하지 않았다.</strong> 그렇기에 애초에 지금 구조론 테스트를 하면 안되는 것이었고, Before 테스트의 수치 및 쌓은 데이터는 ‘<strong>쓰레기</strong>‘가 되었다.</p>
-
-<p>아찔 했다. 몇 일을 날린 데이터는 의미도 없는 것이었고, 선택이 필요했다. 결국 아주 기본적으로 이해할 수 있는 서버에 대한 내용을 제외하면 모든 Before Test 는 폐기. 그 결과 다시 로직을 전체를 수정, 제대로 동작할 수 있도록 구성을 하고 나서야 After 테스트를 진행하고 제대로된 데이터를 도출했다. 그러나 알다시피 이는 결국 Before 테스트에서 이미 가설 설정부터 잘못된 상황이었으니, ‘가설을 검증’한다는 목적에 부합하진 못 했다.</p>
-
-<p>이렇게 된 핵심은 단 하나. 데이터를 해석하는 과정에서 ‘<strong>제대로 보지 못했다는 점</strong>’. 각 요소들의 연관 관계를 고려하지 않고, AI와 함께 빠르고 간단하게 생각했던 것으로 결과적으로 Before Test 의 가치는 쓰레기가 되었던 것이다. 그나마 한바탕의 작업을 하고 난 뒤에야 다시 트래픽의 기준치를 파악, 서버 1대 당 실제 얼마나 처리가 가능한지 등을 구체화 할 수 있었다. 그리하여 현재 시스템 상, 스케일 확장 시 코어 당 0.86 수준의 효율을 유지할 수 있다는 <strong>선형 확장의 한계 및 예측 가능한 스케일 아웃 개념(용량 = 최소 기준 * N * 0.83)까지 도달</strong> 할 수 있었다.</p>
-
-<p>그러나 결론적으로 잘 된건 아니었다. SRE 라는 멋진 척은 다했지만,  결국 SRE 란 단어를 쓰는게 개발자가 아니라, <strong>데이터 무결성. 지표 간의 상관관계를 의심하고 데이터의 무결성을 증명하는 과정이 개발자의 과정임을 깨달았다.</strong> 데이터를 제대로 읽지 못한 순간 벌어진 작업들과 잘못된 방향성은 더 많은 시간을 쓰도록 만들었다. 이것이 개인 프로젝트이니까 다행이지, 만약 팀 프로젝트였다면? 보다 디테일한 거대 시스템이었다면? 더 말할 것은 없는 <strong>뼈아픈 실책</strong>이었다. <strong>백엔드 개발자의 ‘데이터’를 바라 보는 시각, 해석역량은 정말 중요한 것이었다.</strong></p>
-
-<p><img src="/assets/images/posts/2026-02/014.png" alt="" /></p>
-
-<p><img src="/assets/images/posts/2026-02/015.png" alt="" /></p>
-<blockquote>
-  <p>나름 최선을 다해 모니터링을 해보았으나…. 결국 핵심은 모니터링 데이터를 ‘내가 어떻게 보는가’ 였다.</p>
-</blockquote>
-
-<h4 id="ai의-시너지는-인간이다">AI의 시너지는 인간이다</h4>
-<p>두번 째 큰 실수는 이전에도 언급했듯 k8s 를 제대로 적용, 도입하지 못했단 사실이다. AI 에 과도하게 의존하고 접근한 첫 시작. AI 의 한계가 뭔지를 몰랐고, 도전과 적용 과정에서 예상을 뛰어넘게 빈틈이 많았다. 결국 <strong>AI에 의한 ‘그럴듯한 오답’에 휘둘린 셈</strong>이다. 모니터링 서비스 구축시 고가용성을 보장하는 헬름차트를 추천하는 AI의 말을 철썩 믿었다가, 호환성 문제와 스크립트의 문법이 버전마다 달라질 수 있다는 사실을 몰랐다. 차라리 필요한 서비스들을 먼저 만들어보고, 그 뒤에 고도화로 접근했으면 될 것을 과도한 욕심으로 결국 지지부진, 진전 없는 도전, AI와의 씨름만을 이어가게 만들었고, 결과적으로 기간의 문제로 프로젝트에 도입을 내려놓게 되었다.</p>
-
-<p>만약 공식 문서, 레포지터리를 더 정확하게 판단했다면? 단순히 AI 의 제안으로 끝이 아니라, 직접 도입의 trade-off 를 좀더 고려했다면? 분명 k8s 를 기반으로 최소한 70 ~ 80점 짜리 구축이 가능했을 것이며, 80점은 90점이 100점이 될 가능성이 생긴다. <strong>0점이 나오면, 그건 그 상태에서 목표를 달성하기 위한 예상 외의 요소가 너무 많다.</strong></p>
-
-<p>또한 그 외에 <strong>AI에 대한 중요한 부분. 그것은 AI의 특성을 고려한 문서, 작업 요청을 할 수 있어야 한다는 점이다.</strong> 그리고 거기서 ‘무엇을 할 수 있나’, 즉 다시 한 번 공식 자료들을 수집하고, 그 안에서 보다 디테일하게 AI 가 작업하게 만들었어야 에러를 찾고, 해결하기도 쉽고, 근본적으로 클린한 AI를 기반으로 한 생산이 가능하다.</p>
-
-<p>AI 는 요구사항이 디테일할 수록, 그 요구가 정확한 지식에서 베이스가 되면, 맡긴 작업에서 문제가 뭔지도 빨리 캐치가 가능하며, AI 가 구현을 할 때도 정확한 구현이 된다. 하지만 <strong>그게 아니라 일단 만들고 보는 방식은, 내부의 AI 가 뭘 써서 만들었는지를 블랙박스화 시켜 버리고 만다.</strong> 특히 신기술, 새로나온지 얼마 안된건 AI 조차 학습이 안되어 있는데, 결국 이런 것들이 한개, 두개씩 쌓이니 결국 나중엔 거대한 비효율이 되고, 프로젝트의 개발 속도를 저해시키는 요소로 방해했다.</p>
-
-<p>결과적으로, AI가 생겼다고, 검색도 확인도 AI에서 다 하고 끝내면 된다는 생각. 그 생각을 버리는 것이 필요하다고 느꼈다. <strong>인간의 정확한 가이드, 기술에 대한 교차 검증과 맥락에 대한 소유권을 가지는 것, 이것이 AI 의 효과를 극대화 시키고, 실수를 최소화 한다. 그런 점에서 공식 문서들을 반드시 확인하는 태도, AI와 시너지를 너는 가장 첫 번째 태도임을 뼈저리게 느꼈다.</strong></p>
-
-<h3 id="what-is-the-next-step">What is the ‘Next Step’</h3>
-
-<h4 id="k8s-클러스터링-gitops-보다-현대적-구조로">K8s, 클러스터링, GitOps, 보다 현대적 구조로</h4>
-<p>Docker 기반으로 구축한 온프레미스 서버 2대, 그 사이에 모니터링과 비즈니스 로직, 그리고 AI 까지. 한달이란 시간을 진짜 전력으로, 가능한 모든 시간을 할애하여 고민하고 설계하고 작업을 하는 과정은 정말 숨이 막혔다.</p>
-
-<p>하지만 점점 그렇게 하나씩 해결해 나가고, 처음엔 ‘언제 다 하지’라고 생각했던 것들이 이겨 나가고, 다시 정신을 차리고, ‘조금만 더’라는 키워드와 함께, 한 단계를 마무리 할 때마다 ‘상쾌함’을 느꼈다. 그렇게 소소한, 지금 이 단계에서의 상쾌함, 절망, 그 루프를 몇 차례나 돌았을 까. 결국 1달이란 시간은 다 지나가고, 프로젝트를 마무리하여, 챗봇을 구축하고, 그 챗봇은 기억도 하며, 데이터를 가지고 정확한 지표를 나 대신 설명해줄 수 있게 되었다.</p>
-
-<p>그렇게 하는게 러너스 하이라고, 생각하는 한 편, 그렇기 때문에 DevOps 에 대한, 백엔드에 대한 아쉬움이 다시 보이기 시작했다. 예를 들면 k8s 에 대해 그 뒤로도 틈틈히 공부를 진행했지만 이제는 Docker 가 내부에서 표준으로 돌아가지 않으며 CRI(Container Runtime Interface)를 지원하는 containerd, CRI-O 가 돌아간다는 사실을 알게 되었다. 이는 더 가벼우면서도, Docker가진 단점들을 개선하는 역할을 해줌을 알게 되었다.</p>
-
-<p>뿐만 아니라 이전 직장에서의 구현을 더 강화한, 스스로를 증명하기 위한 시스템 구축이긴 했지만, 막상 구현하고 보니 무중단 배포, 롤백 대응 등으로 불필요한 컨테이너 전략. 리소스를 보다 최적화 시킬 수 있다는 점. 그렇게 했을 때 보다 많은 서비스를 올리거나 보다 안정적인 서비스를 구현할 수 있을것 같다는 직감은, 러너스 하이 이후의 그 앞을 더 바라봐야겠구나 하는 생각을 하게 되었다.</p>
-
-<p>그래서 다음, 기존 서비스를 개선하고, 동시에 다음 프로젝트를 위한 자양분이 될 서비스 구성을 해볼 생각이다.</p>
-<ul>
-  <li><strong>k8s 를 기반으로 온프레미스 서버를 ‘클러스터링’하여서 한대의 PC에서 동작하듯 제어 가능하도록 구축한다.</strong></li>
-  <li><strong>ArgoCD의 도입은, 선언적 상태 관리로 전환, 인프라의 정합성을 보장하는 GitOps의 파이프라인을 완성하고자 한다.</strong></li>
-  <li><strong>ArgoCD 기반으로 기존의 Green/Blue 전략이 아닌 좀더 능동적으로 무중단 배포가 가능하며, 지금 이상의 리소스 최적화 전략, 스케일 확장이 접목된 형태로의 개선을 진행하고자 한다.</strong></li>
-  <li><strong>궁극적으로 K8s 기반으로 Traffic Dam, RAG 파이프라인, Observability 스택 등을 표준화한 탬플릿으로 구축함으로써, 진정한 Full-Cycle Engineering Platform을 세우는 것, 이것을 Nexus 프로젝트의 핵심 목표로 한다.</strong></li>
-  <li><strong>나아가 해당 플랫폼은, 향후 있을 개인의 다양한 프로젝트를 위한 모판으로의 구색을 갖춰둘 생각이다.</strong></li>
-</ul>
-
-<h3 id="conclusion">Conclusion</h3>
-<p>한달은 짧았다. 위에서도 언급했지만 벅차고, 두렵고, 사실 불안이 가장 컸다. 지금도 아쉬움이 남는 만큼, 과연 내가 실무의 경험치 면에서 진짜 전문가인가? 라는 질문에 답이 될지 확실하게 ‘그렇다’라는 긍정 표현을 하기엔 뭔가 아쉽다.</p>
-
-<p>그럼에도 AI 를 이해하고, DevOps 를 경험하고, 성취를 맛보면서 궁극적으로 ‘확신한’것은 내 ‘성장 가능성’, 그리고 좀더 치밀하게, 좀더 현명해질 수 있다면 분명 그 다음, 더 고도의 기술을 제어하고, 더 안정적으로 거대 시스템을 다룰 수 있으리란 확신이 섰다.</p>
-
-<p>많은 이들은 두렵다고 하고, 당연히 일자리의 소멸, AI의 대체는 개발자까지도 대체할 거란 부분이 계속 튀어나오고 있다. 나도 이러한 두려움은 허상은 아니라고 생각한다. 하지만 반대로 말하면 AI에 대한 높은 이해도, AI를 통한 시너지를 내는 사람이 된다면, 이건 반대로 내가 남들 이상의 임팩트를 낼 수 있으며, 또 그런 이해가 필요한 이들에게 도움을 줄 수 있는 기회라고 생각한다. 결국 언제나 위기였지만, 위기는 위기니까 기회가 되고, 좁은 문을 뚫는 사람은 필요한 법이 아니겠는가? 이번 기간은 정말 상쾌한 개발 기간이었고, 회복의 기간이었다. 다시 개발자로서 달릴 수 있으리란 생각을 하게 된다.</p>
-
-<p>백엔드 개발자의 본질, <strong>구현 만이 아닌 복잡한 시스템의 상호작용을 설계하고, 데이터의 흐름을 제어-통찰을 끌어내며, 비즈니스 임팩트를 기술로 증명하는 것.</strong> 그 본질에 조금 다가간 시간이 아니었나? 조심스럽게 생각해보게 된다.</p>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Toss" /><summary type="html"><![CDATA[Learner’s High 2nd Epilogue]]></summary></entry><entry><title type="html">Traffic Dam 구성기, 고가용성 씨앗을 심어보자</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/01/09/00-project-protostar-traffic-dam.html" rel="alternate" type="text/html" title="Traffic Dam 구성기, 고가용성 씨앗을 심어보자" /><published>2026-01-09T00:00:00+00:00</published><updated>2026-01-09T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/01/09/00-project-protostar-traffic-dam</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/01/09/00-project-protostar-traffic-dam.html"><![CDATA[<h2 id="chapter-1-traffic-dam-구현기-summary">Chapter 1 Traffic Dam 구현기 summary</h2>
-
-<p>SRE 기반의 유량 제어 시스템을 품은 풀스택 AI 챗봇 구현을 진행했다. Protostar 의 Prototype 에 해당하는 것 + 이에 필요한 트래픽제어기를 구현했던 내용을 기록화 시켰다.</p>
-
-<h3 id="1-핵심-성과">1. 핵심 성과</h3>
-
-<h4 id="한-줄-요약"><strong>한 줄 요약</strong></h4>
-
-<p><em>개인 프로젝트 Protostar 의 개발 중 온프레미스 서버에 <strong>CVE-2025-55182 취약점을 악용한 공격으로 CPU 자원 포화(Resource Hijacking, 800%) 발생 및 전체 서비스 불능 상태 경험</strong></em></p>
-
-<p><em>시스템 보호를 위한 <strong>Traffic Dam</strong> 에 대한 필요성, 서비스를 위한 <strong>적정 용량 산정(Capacity Planning)</strong> 의 필요성 절감</em></p>
-
-<p><em>검증을 위한 <strong>풀스택 AI 챗봇 구현</strong> 및 <strong>VU 1000 에서 에러율 0% 달성</strong> 및 <strong>예측 가능한 스케일 아웃의 기준 공식</strong> 도출</em></p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">카테고리</th>
-      <th style="text-align: left">Before</th>
-      <th style="text-align: left">After</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">**안정성**</td>
-      <td style="text-align: left">Rate Limiter 없음, 공격 시 전체 시스템 다운 혹은 느려짐</td>
-      <td style="text-align: left">1,000 VU에서 에러율 0%</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**확장성**</td>
-      <td style="text-align: left">단일 인스턴스 600 VU 한계</td>
-      <td style="text-align: left">스케일 아웃으로 1,000 VU 안정 처리</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**운영 예측성**</td>
-      <td style="text-align: left">용량 산정 기준 없음</td>
-      <td style="text-align: left">실제 용량 = 기준 × N × 0.83 공식 도출</td>
-    </tr>
-  </tbody>
-</table>
-
-<h4 id="핵심-수치"><strong>핵심 수치</strong></h4>
-
-<ul>
-  <li>온프레미스 핵심 비즈니스 로직 단일 인스턴스 조합에서의 트래픽 최적의 스윗 스팟 측정 : VU 600 기준</li>
-  <li>서버 리소스를 고려한 스케일 아웃 2배 진행
-    <ul>
-      <li>동시 사용자: 600 → 1,000 (67% 증가)</li>
-      <li>p95 레이턴시: 2.79초 (목표 3초 이내 달성)</li>
-      <li>스케일 아웃 효율 구체화: 83% (선형 대비)</li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="/assets/images/posts/2026-01/20260109-002.png" alt="" /></p>
-
-<p><em>블로그 상에 구현되 챗봇 데모</em></p>
-
-<p><img src="/assets/images/posts/2026-01/20260109-003.png" alt="" /></p>
-
-<p><em>서비스를 위한 데모 프론트엔드 페이지</em></p>
-
-<hr />
-
-<h3 id="2-문제--해결--인사이트">2. 문제 → 해결 → 인사이트</h3>
-
-<h4 id="why-문제-정의"><strong>Why: 문제 정의</strong></h4>
-
-<p>개인 프로젝트 개발 도중 React Shell 취약점(CVE-2025-55182)으로 L7 공격을 받았다. 인프라를 구축만 하고 프론트 데모만 있었기에 Rate Limiter가 없었다. 무한 요청이 그대로 Next.js 서버로 들어왔고, 전체 시스템은 리소스 부족으로 시스템이 무너졌다. 처음으로 서버의 과부하를 경험하였다. 프론트엔드 취약점이었지만, 피해는 백엔드와 인프라까지 영향을 주었다.</p>
-
-<p>그렇기에 질문이 생겼다.</p>
-
-<p><strong><em>“취약점은 언제든 발생할 수 있다. 그때 시스템은 어떻게 버텨야 하는가?”</em></strong></p>
-
-<p><strong><em>“트래픽의 대응을 위한 스케일 아웃을 어떻게 해야 하는가?”</em></strong></p>
-
-<p><strong><em>“구현한 서비스가 데모이든 무엇이든 최적의 성능을 제공해주는 기준이 필요하다”</em></strong></p>
-
-<h4 id="what-해결-목표"><strong>What: 해결 목표</strong></h4>
-
-<p>Protostar 서비스 구현 도중 일어난 사건들, 백엔드 개발자로서 제대로된 서비스를 구현하기 위해선 반드시 이 작업이 필요하다고 느꼈다.</p>
-
-<p>핵심 가설을 세웠다.</p>
-
-<p><strong><em>“초당 5,000개의 악의적 요청이 들어와도, 백엔드는 초당 100개만 처리하며 죽지 않을 수 있을까?”</em></strong></p>
-
-<p>이를 검증하기 위해 Traffic Dam을 설계했다. 댐이 물을 막고 조절하듯, 트래픽을 받아내고 제어하는 시스템을 구축하는 것을 목표로 삼았다.</p>
-
-<h4 id="how-설계-및-구현"><strong>How: 설계 및 구현</strong></h4>
-
-<h5 id="아키텍처"><strong>아키텍처</strong></h5>
-
-<p><img src="/assets/images/posts/2026-01/20260109-004.png" alt="" /></p>
-
-<p><em>서비스 아키텍쳐, 온프레미스 제약을 해결하는데 시간이 걸렸다</em></p>
-
-<p>기존 설계와 인프라, 모니터링 구축이 끝난 직후였다. 구현의 목표는 풀스택 AI Chatbot 의 데모를 구현 + Traffic Dam 을 설계하여 목표에 답을 하는 것이다.</p>
-
-<ul>
-  <li><strong>Gateway Layer (NestJS):</strong> 대규모 연결 유지, 1차 트래픽 방어, SSE 기반 실시간 스트리밍</li>
-  <li><strong>Buffering Layer (Redis/BullMQ):</strong> 트래픽 임시 저장, Token Bucket Rate Limiting, Backpressure 대응 도구</li>
-  <li><strong>Processing Layer (FastAPI):</strong> LLM 처리, OpenRouter API 연동, 고정 처리량 제어</li>
-</ul>
-
-<h5 id="핵심-구현-사항"><strong>핵심 구현 사항</strong></h5>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">영역</th>
-      <th style="text-align: left">구현 내용</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">**실시간 통신**</td>
-      <td style="text-align: left">SSE 기반 채팅 스트리밍, Redis List 기반으로 멀티 인스턴스 간 메시지 동기화</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**트래픽 제어**</td>
-      <td style="text-align: left">Nginx 의 Sliding Window Rate Limiting, Token Bucket Rate Limiting, Max Concurrent Connection(1,000), Job Deduplication</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**장애 대응**</td>
-      <td style="text-align: left">Circuit Breaker 패턴</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**Observability**</td>
-      <td style="text-align: left">cAdvisor, node-exporter, Winston  Loki 통합, JSON 구조화 로깅, 레이어별 에러 추적, Grafana 모니터링 시스템, Discord 기반 Alert 체계</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**인프라**</td>
-      <td style="text-align: left">Docker Compose 기반 스케일 아웃, Nginx 로드밸런싱, Jenkins CI/CD(Zero-Downtime, G/B 전략)</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**AI 서비스**</td>
-      <td style="text-align: left">OpenRouter 기반 LLM 연동, Protostar 프론트엔드 데모 구현</td>
-    </tr>
-  </tbody>
-</table>
-
-<h5 id="개발-방식-ai-assisted-development"><strong>개발 방식: AI-Assisted Development</strong></h5>
-
-<ul>
-  <li>초기에는 <strong>Antigravity + Gemini</strong> 조합으로 개발 및 배포 전 <strong>CodeRabbit AI</strong> 를 활용한 검토 파이프라인 구축. <strong>Obsidian</strong> 은 단순 지식 저장용</li>
-  <li>중반부터 <strong>Obsidian + Claude Code</strong> 체제를 추가 도입.</li>
-</ul>
-
-<p><img src="/assets/images/posts/2026-01/20260109-005.png" alt="" /></p>
-
-<p><strong>개선 이유?:</strong></p>
-
-<ul>
-  <li><strong>생산성 증대</strong>: 코드 작성과 문서화를 하나의 흐름에서 처리가 가능하며, AI와 함께 공유가 가능함.</li>
-  <li><strong>데이터 해석력 확보</strong>: k6 테스트 결과 분석, 병목 원인 추론에서 Claude의 정확도가 높았고, 이를 체계적으로 파이프라이닝이 필요, CMD + C / CMD + V 는 너무 비효율적임.</li>
-  <li><strong>설계 검증</strong>: 내 관점의 설계안에 대해 헛점, 사이드 이펙트, 엣지 케이스를 함께 검토</li>
-</ul>
-
-<p>AI를 단순하게 “<strong>코드 생성기</strong>“로 보면 안된다고 판단하였다. “빠른 도입 가속기”로 활용했다. 내가 방향을 잡고, AI를 통해 허점을 지적하도록 하여 새로운 기술에 대한 적응력을 높이고, 아키텍쳐의 기술 선택에서 가능한 최적의 선택을 도모하도록 했다.</p>
-
-<h5 id="result-검증-결과"><strong>Result: 검증 결과</strong></h5>
-
-<p>k6 기반 부하 테스트로 검증. 온프레미스 서버에서의 최대 트래픽 수치를 구체화 하였다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">구성</th>
-      <th style="text-align: left">VU</th>
-      <th style="text-align: left">에러율</th>
-      <th style="text-align: left">Latency(p95)</th>
-      <th style="text-align: left">AI TTFT(p95)</th>
-      <th style="text-align: left">RPS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">**단일(NestJS 1 + FastAPI 2)**</td>
-      <td style="text-align: left">500</td>
-      <td style="text-align: left">0%</td>
-      <td style="text-align: left">710ms</td>
-      <td style="text-align: left">849ms</td>
-      <td style="text-align: left">173.18/s</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">**2배 (NestJS 2 + FastAPI 4)**</td>
-      <td style="text-align: left">1,000</td>
-      <td style="text-align: left">0%</td>
-      <td style="text-align: left">2.79s</td>
-      <td style="text-align: left">3084ms</td>
-      <td style="text-align: left">287.77/s</td>
-    </tr>
-  </tbody>
-</table>
-
-<ul>
-  <li><strong>VU 1,100 이상에서 429 에러가 발생하기 시작</strong>했고, 이는 Rate Limiter가 의도대로 작동하여 <strong>시스템을 보호하도록 구현 완료</strong></li>
-  <li>전체 시스템은 스케일 아웃이 되었으나, <strong>Redis 는 단일 인스턴스로 병목이 발생</strong>했음. 이에 메시지 처리 과정의 <strong>I/O 경합이 AI TTFT 의 지연의 주 원인으로 분석</strong>됨(Latency Trade-off)</li>
-</ul>
-
-<h5 id="insight-배운-것"><strong>Insight: 배운 것</strong></h5>
-
-<ol>
-  <li><strong>스케일 아웃은 선형이 아니다:</strong> 2배 확장에 83% 효율. Nginx 로드밸런싱 불균형, 공유 자원 경합, 네트워크 오버헤드가 원인이었다.</li>
-  <li><strong>Baseline 설정과 Capacity 에 대한 구체화:</strong> 단일 코어당 핵심 로직을 거쳐 NestJS, Redis, FastAPI 로 작업을 처리 시 얼마나 걸리는 지를 파악할 수 있었고, 기록을 기반으로 실제_용량 = 기준_용량 × N × 0.83 라는 수식을 도출. 스케일 아웃 시 얼마나 트래픽을 처리할 수있을지 예상치를 설정하고, 기준을 보다 명료하게 만드는 것에 성공하였다.</li>
-  <li><strong>설계적 Stateless ≠ 집합체적 Stateless:</strong> In-memory Session, Redis 공유 카운터 등 암묵적 상태 의존성이 존재했고, Sticky Session 전략이 필요했다. 구조에 대한 이해도가 얼마나 중요한지 느낄 수 있었다.</li>
-  <li><strong>동일 에러 코드, 다른 원인:</strong> 같은 429라도 Nginx L7에서 발생한 것과 Application에서 발생한 것은 달랐다. Observability 없이는 디버깅이 불가능했기에 모니터링의 필요성, 로깅의 디테일의 중요성을 느꼈다.</li>
-  <li><strong>AI는 도구다:</strong> AI 는 복잡한 시스템의 상호작용과 DevOps 의 미세한 맥락을 이해하지 못했다. 이에, 방향(Why &amp; What)의 결정자는 나이자, 제안자는 AI 라는 형태로 설정하였다. 구현(How)은 AI 와 함께 진행하였다. 이때 ‘나’는 공식 문서와, 각 기술들의 최신 맥락을 교차검증하였으며, AI를 일종의 ‘기술 제안자’ 이자 ‘빠른 프로토타이퍼’로 세워 ‘망설이는 시간’을 획기적으로 줄일 수 있었다. 이를 통해 1인 개발의 한계를 넘는 복잡도를 이해하고, 풀스택 서비스 구현과 검증까지 진행 가능하였다.</li>
-</ol>
-
-<hr />
-
-<p><img src="/assets/images/posts/2026-01/20260109-006.png" alt="" /><br />
-<em>Grafana - Before 테스트 당시 컨테이너 상태</em></p>
-
-<p><img src="/assets/images/posts/2026-01/20260109-007.png" alt="" /><br />
-<em>Grafana - After 테스트 당시 두배 스케일 아웃 된 서버들이 병렬로 대응함</em></p>
-
-<p><img src="/assets/images/posts/2026-01/20260109-008.png" alt="" /><br />
-<em>Discord Grafana Alert 와 무중단 배포 알림</em></p>
-
-<p><img src="/assets/images/posts/2026-01/20260109-009.png" alt="" /></p>
-
-<p><em>실제 테스트 당시 모니터링 docker stats + btop + k6 화면</em></p>
-
-<h3 id="3-마무리">3. 마무리</h3>
-
-<p>이번 프로젝트를 통해 백엔드 개발자로서 증명해야 할 것이 명확해졌다. 트래픽을 처리할 수 있다면 처리하고, 처리할 수 없다면 시스템은 생존해야 한다. 대용량의 경험을 언제 해볼 수 있을까? 싶지만, 우선 대용량이 아니더라도 서버의 특성에 맞춰 적절하게 대응하는 방법을 배울 수 있던것 같으니… 이걸 기반으로 기회가 올 수 있지 않나 싶다.</p>
-
-<p>Traffic Dam은 그 첫 번째 구현이었고, 용량 산정 공식 도출까지 도달한 점은 의미 있는 성과였다. AI 기반으로 할 때 이런 점에서 좋다고 느낀다. 각 요소에 대한 의미를 놓치지 않게 이야기 하다보면 데이터의 특징이 보인다.</p>
-
-<p>다음 단계로는 DB 최적화, RAG 파이프라인, 프롬프트 엔지니어링 등 AI 서비스의 응용 레이어를 보강할 계획이다. Protostar의 완전체는 구현하기 어려울 것 같지만, 핵심 비즈니스 로직은 내 블로그를 통해 보여지고 실제로 쓸 수 있도록 만들어봐야지.</p>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><summary type="html"><![CDATA[Chapter 1 Traffic Dam 구현기 summary]]></summary></entry></feed>
+</table>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="FastAPI" /><summary type="html"><![CDATA[main.py]]></summary></entry></feed>

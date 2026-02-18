@@ -1,6 +1,6 @@
 ---
 layout: post 
-title: Protostar review note - 04 FastAPI RAG
+title: Protostar review note - 05 FastAPI RAG
 subtitle: Protostar 구성 요소들에 대한 복습 + 심도 있는 확장을 정리한다 
 categories: 문제해결
 tags: Backend 개발 Protostar Project Review FastAPI AI 
