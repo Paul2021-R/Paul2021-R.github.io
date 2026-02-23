@@ -1,4 +1,1112 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2026-02-19T03:19:37+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Protostar review note - 08 NestJS Middlewares &amp;amp; Guards &amp;amp; Interceptors &amp;amp; Pipes</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/19/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 08 NestJS Middlewares &amp;amp; Guards &amp;amp; Interceptors &amp;amp; Pipes" /><published>2026-02-19T00:00:00+00:00</published><updated>2026-02-19T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/19/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/19/00-protostar-review.html"><![CDATA[<h1 id="nestjs-파이프라인-구성요소-분석">NestJS 파이프라인 구성요소 분석</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2026-02-23T03:02:39+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Protostar review note - 09 - NestJS DB Layer (Prisma, PostgreSQL, pgvector, Redis)</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/23/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 09 - NestJS DB Layer (Prisma, PostgreSQL, pgvector, Redis)" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/23/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/23/00-protostar-review.html"><![CDATA[<h1 id="nestjs-db-layer-분석">NestJS DB Layer 분석</h1>
+<h2 id="prisma--postgresqlpgvector--redis">Prisma + PostgreSQL(pgvector) + Redis</h2>
+
+<blockquote>
+  <p>이 파일은 데이터 저장·조회에 관여하는 모든 파일을 대상으로 한다.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>분류</th>
+        <th>파일</th>
+        <th>역할</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ORM 설정</td>
+        <td><code class="language-plaintext highlighter-rouge">prisma/schema.prisma</code></td>
+        <td>스키마 선언, 모델 정의</td>
+      </tr>
+      <tr>
+        <td>ORM 설정</td>
+        <td><code class="language-plaintext highlighter-rouge">prisma/migrations/</code></td>
+        <td>DDL 변경 이력</td>
+      </tr>
+      <tr>
+        <td>ORM 서비스</td>
+        <td><code class="language-plaintext highlighter-rouge">common/prisma/prisma.module.ts</code></td>
+        <td>전역 모듈 등록</td>
+      </tr>
+      <tr>
+        <td>ORM 서비스</td>
+        <td><code class="language-plaintext highlighter-rouge">common/prisma/prisma.service.ts</code></td>
+        <td>커넥션 풀 + 생명주기 관리</td>
+      </tr>
+      <tr>
+        <td>Redis</td>
+        <td><code class="language-plaintext highlighter-rouge">common/redis/redis.module.ts</code></td>
+        <td>Redis 클라이언트 전역 공급</td>
+      </tr>
+      <tr>
+        <td>도메인</td>
+        <td><code class="language-plaintext highlighter-rouge">features/auth/auth.service.ts</code></td>
+        <td>User CRUD + 인증</td>
+      </tr>
+      <tr>
+        <td>도메인</td>
+        <td><code class="language-plaintext highlighter-rouge">features/knowledge/knowledge.service.ts</code></td>
+        <td>KnowledgeDoc CRUD</td>
+      </tr>
+      <tr>
+        <td>도메인</td>
+        <td><code class="language-plaintext highlighter-rouge">features/knowledge/ai-task.service.ts</code></td>
+        <td>DB 폴링 → Redis 큐 디스패치</td>
+      </tr>
+      <tr>
+        <td>응답 제어</td>
+        <td><code class="language-plaintext highlighter-rouge">features/auth/dto/user.dto.ts</code></td>
+        <td>DB 모델 → 응답 DTO 변환</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<hr />
+
+<h1 id="1-주요-개념">1. 주요 개념</h1>
+
+<h2 id="데이터-저장소-구성">데이터 저장소 구성</h2>
+
+<p>이 프로젝트는 두 개의 데이터 저장소를 역할에 따라 분리한다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PostgreSQL (영구 저장소)
+  ├── users          - 사용자 계정, 인증 정보
+  ├── knowledge_docs - 업로드된 원본 문서 메타데이터
+  └── vectorized_docs - 문서 청크 + 임베딩 벡터 (pgvector)
+
+Redis (휘발성 / 중간 계층)
+  ├── chat:job:queue       - 채팅 작업 큐 (List)
+  ├── chat:task:{jobId}    - 작업 페이로드 (String, TTL 300s)
+  ├── chat:stream:{uuid}   - SSE 채널 (Pub/Sub)
+  ├── ai:job:queue         - 문서 벡터화 큐 (List)
+  ├── cluster:heartbeats   - AI 워커 생존 신호 (ZSet)
+  └── throttler:*          - Rate Limit 카운터
+</code></pre></div></div>
+
+<h2 id="prisma-orm">Prisma ORM</h2>
+
+<ul>
+  <li>TypeScript 네이티브 ORM. <code class="language-plaintext highlighter-rouge">schema.prisma</code>에서 모델을 선언하면 자동으로 타입 안전한 클라이언트를 생성함.</li>
+  <li><strong>Prisma Migrate</strong>: 스키마 변경 → SQL 마이그레이션 파일 자동 생성 → <code class="language-plaintext highlighter-rouge">prisma migrate deploy</code>로 적용</li>
+  <li><strong>Prisma Client</strong>: 생성된 타입을 기반으로 <code class="language-plaintext highlighter-rouge">prisma.user.findUnique()</code> 같은 타입 안전 쿼리 제공</li>
+</ul>
+
+<h2 id="pgvector-확장">pgvector 확장</h2>
+
+<p>PostgreSQL에 벡터 연산을 추가하는 확장. 별도 벡터 DB(Pinecone, Qdrant) 없이 <strong>RDBMS 안에서 임베딩 저장·유사도 검색</strong>이 가능하다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="nv">"vector"</span><span class="p">;</span>
+<span class="c1">-- 1536차원 벡터 컬럼 (OpenAI text-embedding-3-small 출력 차원)</span>
+<span class="nv">"embedding"</span> <span class="n">vector</span><span class="p">(</span><span class="mi">1536</span><span class="p">)</span>
+<span class="c1">-- HNSW 인덱스: 근사 최근접 이웃(ANN) 검색</span>
+<span class="k">USING</span> <span class="n">hnsw</span> <span class="p">(</span><span class="nv">"embedding"</span> <span class="n">vector_cosine_ops</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="스키마-모델-구조">스키마 모델 구조</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>User (1) ─────────────── (N) KnowledgeDoc
+  │                              │
+  │                              │ (1 to N, Cascade Delete)
+  └── (1) ──────────── (N) VectorizedDoc
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>모델</th>
+      <th>PK 타입</th>
+      <th>주요 특징</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">User</code></td>
+      <td>UUID (String)</td>
+      <td>email unique, role enum(ADMIN/STARGAZER/PROTOSTAR)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">KnowledgeDoc</code></td>
+      <td>UUID (String)</td>
+      <td>status 상태머신, contentHash(SHA-256), version 증가</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">VectorizedDoc</code></td>
+      <td>UUID (String)</td>
+      <td><code class="language-plaintext highlighter-rouge">vector(1536)</code> 타입, chunkIndex, tokenCount</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="redis-모듈-redismodulets">Redis 모듈 (<code class="language-plaintext highlighter-rouge">redis.module.ts</code>)</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Global</span><span class="p">()</span>   <span class="c1">// 전역 모듈 - 모든 모듈에서 import 없이 주입 가능</span>
+<span class="p">@</span><span class="nd">Module</span><span class="p">({</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="na">provide</span><span class="p">:</span> <span class="nx">REDIS_CLIENT</span><span class="p">,</span>       <span class="c1">// 커스텀 토큰</span>
+    <span class="na">useFactory</span><span class="p">:</span> <span class="k">async </span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nc">Redis</span><span class="p">({</span>
+      <span class="na">commandTimeout</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>      <span class="c1">// 크론 작업 무한 대기 방지 핵심 설정</span>
+    <span class="p">}),</span>
+  <span class="p">}],</span>
+  <span class="na">exports</span><span class="p">:</span> <span class="p">[</span><span class="nx">REDIS_CLIENT</span><span class="p">],</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="2-핵심-로직-흐름">2. 핵심 로직 흐름</h1>
+
+<h2 id="prismaservice-생명주기">PrismaService 생명주기</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">PrismaService</span> <span class="kd">extends</span> <span class="nc">PrismaClient</span> <span class="k">implements</span> <span class="nx">OnModuleInit</span><span class="p">,</span> <span class="nx">OnModuleDestroy</span> <span class="p">{</span>
+  <span class="nf">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// pg Pool 생성 → PrismaPg 어댑터 → PrismaClient에 주입</span>
+    <span class="kd">const</span> <span class="nx">pool</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pool</span><span class="p">({</span> <span class="na">connectionString</span><span class="p">:</span> <span class="nx">DATABASE_URL</span> <span class="p">});</span>
+    <span class="kd">const</span> <span class="nx">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrismaPg</span><span class="p">(</span><span class="nx">pool</span><span class="p">);</span>
+    <span class="k">super</span><span class="p">({</span> <span class="nx">adapter</span> <span class="p">});</span>   <span class="c1">// PrismaClient에 커넥션 풀 위임</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nf">onModuleInit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 1. URL에서 비밀번호 마스킹 (로그 보안)</span>
+    <span class="c1">// 2. $connect() → SELECT 1 (헬스체크)</span>
+    <span class="c1">// 3. 성공/실패 로그</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nf">onModuleDestroy</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">$disconnect</span><span class="p">();</span>  <span class="c1">// Prisma 연결 종료</span>
+    <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">pool</span><span class="p">.</span><span class="nf">end</span><span class="p">();</span>     <span class="c1">// pg Pool 종료 (pool.end 누락 시 프로세스 행 발생)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!note] 왜 <code class="language-plaintext highlighter-rouge">PrismaPg</code> 어댑터를 쓰는가?
+Prisma 기본 모드는 자체 바이너리 엔진을 사용한다. <code class="language-plaintext highlighter-rouge">@prisma/adapter-pg</code>는 이를 <strong>Node.js pg 드라이버로 대체</strong>한다.
+장점: 서버리스/엣지 환경 대응, 커넥션 풀(<code class="language-plaintext highlighter-rouge">pg.Pool</code>) 직접 제어 가능.
+이 프로젝트에서는 pgvector 연동 안정성과 커넥션 풀 직접 관리를 위해 선택.</p>
+</blockquote>
+
+<h2 id="문서-업로드--벡터화-전체-흐름">문서 업로드 → 벡터화 전체 흐름</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Client]
+  │
+  ├─ POST /api/v1/upload/knowledge-docs
+  │     │
+  │     ├─ KnowledgeUploadBusyCheckInterceptor (큐 포화 확인)
+  │     ├─ FilesInterceptor (Multer 파싱)
+  │     └─ KnowledgeService.uploadFiles()
+  │           ├─ 업로드 한도 확인 (prisma.knowledgeDoc.count)
+  │           ├─ QueueService.add() → processSingleFileUpload()
+  │           │     ├─ SHA-256 contentHash 계산
+  │           │     ├─ MinIO에 파일 업로드
+  │           │     └─ prisma.knowledgeDoc.create (status: UPLOADED)
+  │           └─ 응답 반환
+  │
+[AiTaskService] @Cron (매 1분)
+  │  prisma.knowledgeDoc.findMany({ status: UPLOADED, take: 10 })
+  │  → redis.rpush('ai:job:queue', payload)
+  │  → prisma.knowledgeDoc.update({ status: PROCESSING })
+  │
+[FastAPI 워커]
+  │  ai:job:queue 소비 → 임베딩 생성 → VectorizedDoc INSERT
+  │  → POST /api/v1/upload/knowledge-docs/webhook (완료 알림)
+  │
+[KnowledgeService.updateDocStatusViaWebhook()]
+     prisma.knowledgeDoc.update({ status: COMPLETED, metaData: {...} })
+</code></pre></div></div>
+
+<h2 id="auth-흐름에서의-db-사용">Auth 흐름에서의 DB 사용</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// signup</span>
+<span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nf">findUnique</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="nx">email</span> <span class="p">}</span> <span class="p">})</span>  <span class="c1">// 중복 체크</span>
+<span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nf">create</span><span class="p">({</span> <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="nx">email</span><span class="p">,</span> <span class="na">password</span><span class="p">:</span> <span class="nx">bcrypt</span><span class="p">.</span><span class="nf">hash</span><span class="p">(...),</span> <span class="nx">role</span> <span class="p">}</span> <span class="p">})</span>
+
+<span class="c1">// signin</span>
+<span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nf">findUnique</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="nx">email</span> <span class="p">}</span> <span class="p">})</span>  <span class="c1">// 유저 조회</span>
+<span class="nx">bcrypt</span><span class="p">.</span><span class="nf">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span>        <span class="c1">// 해시 비교</span>
+<span class="nx">jwtService</span><span class="p">.</span><span class="nf">sign</span><span class="p">({</span> <span class="na">sub</span><span class="p">:</span> <span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">role</span> <span class="p">})</span> <span class="c1">// JWT 발급</span>
+</code></pre></div></div>
+
+<h2 id="docstatus-상태머신">DocStatus 상태머신</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UPLOADED → PROCESSING → COMPLETED
+                    └──→ FAILED
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>상태</th>
+      <th>전환 주체</th>
+      <th>시점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UPLOADED</code></td>
+      <td><code class="language-plaintext highlighter-rouge">KnowledgeService</code></td>
+      <td>파일 업로드 완료 직후</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PROCESSING</code></td>
+      <td><code class="language-plaintext highlighter-rouge">AiTaskService</code> (크론)</td>
+      <td>Redis 큐에 디스패치 시</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">COMPLETED</code></td>
+      <td>웹훅 (<code class="language-plaintext highlighter-rouge">updateDocStatusViaWebhook</code>)</td>
+      <td>FastAPI 워커 처리 완료</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FAILED</code></td>
+      <td>웹훅 (<code class="language-plaintext highlighter-rouge">updateDocStatusViaWebhook</code>)</td>
+      <td>FastAPI 워커 처리 실패</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>[!note] 마이그레이션과 스키마의 상태 불일치
+<code class="language-plaintext highlighter-rouge">migration.sql</code>에 <code class="language-plaintext highlighter-rouge">DocStatus</code> 에 <code class="language-plaintext highlighter-rouge">QUEUED</code>가 있지만, 현재 <code class="language-plaintext highlighter-rouge">schema.prisma</code>에는 없다.
+이후 마이그레이션에서 제거한 것으로 보이며, <code class="language-plaintext highlighter-rouge">AiTaskService</code>가 크론으로 <code class="language-plaintext highlighter-rouge">UPLOADED</code>를 직접 폴링하는 방식으로 QUEUED 상태를 대체한 설계.</p>
+</blockquote>
+
+<h2 id="userdto---db-모델--응답-변환">UserDto - DB 모델 → 응답 변환</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nc">UserDto</span> <span class="p">{</span>
+  <span class="p">@</span><span class="nd">Expose</span><span class="p">()</span> <span class="nx">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="p">@</span><span class="nd">Expose</span><span class="p">()</span> <span class="nx">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="p">@</span><span class="nd">Exclude</span><span class="p">()</span> <span class="nx">password</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>   <span class="c1">// 절대 외부 노출 금지</span>
+  <span class="p">@</span><span class="nd">Expose</span><span class="p">()</span> <span class="nx">role</span><span class="p">:</span> <span class="nx">Role</span><span class="p">;</span>
+
+  <span class="nf">constructor</span><span class="p">(</span><span class="nx">dto</span><span class="p">:</span> <span class="nx">User</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="nx">dto</span><span class="p">.</span><span class="nx">password</span><span class="p">;</span>  <span class="c1">// 할당은 하되, @Exclude로 직렬화 시 제거</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">ClassSerializerInterceptor</code>가 응답을 직렬화할 때 <code class="language-plaintext highlighter-rouge">@Exclude()</code> 필드를 자동으로 제거한다. <code class="language-plaintext highlighter-rouge">password</code>를 생성자에서 할당하는 이유는 TypeScript 컴파일러의 strict 체크를 통과하기 위함이며, 실제 응답에는 포함되지 않는다.</p>
+
+<hr />
+
+<h1 id="3-구조적-취약점--개선-방향">3. 구조적 취약점 / 개선 방향</h1>
+
+<h2 id="aitaskservice-race-condition---직접-코드에-todo로-명시">[AiTaskService] Race Condition - 직접 코드에 TODO로 명시</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * TODO: 현재 상태는 데이터의 상태에 따라 race condition 발생 여지가 있음.
+ * 동시성을 고려한 설계로 개선될 필요 있음.
+ */</span>
+<span class="p">@</span><span class="nd">Cron</span><span class="p">(</span><span class="nx">CronExpression</span><span class="p">.</span><span class="nx">EVERY_MINUTE</span><span class="p">)</span>
+<span class="k">async</span> <span class="nf">dispatchPendingTasks</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">targets</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">findMany</span><span class="p">({</span>
+    <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="na">status</span><span class="p">:</span> <span class="nx">DocStatus</span><span class="p">.</span><span class="nx">UPLOADED</span> <span class="p">},</span>  <span class="c1">// 1. 조회</span>
+    <span class="na">take</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="p">});</span>
+  <span class="c1">// ... 처리 후</span>
+  <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">update</span><span class="p">({</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">status</span><span class="p">:</span> <span class="nx">DocStatus</span><span class="p">.</span><span class="nx">PROCESSING</span> <span class="p">},</span>  <span class="c1">// 2. 상태 변경</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>문제</strong>: <code class="language-plaintext highlighter-rouge">findMany</code> 이후 <code class="language-plaintext highlighter-rouge">update</code> 전 사이에 다른 인스턴스(수평 확장 시)가 동일 문서를 가져갈 수 있다. 결과: <strong>같은 문서가 중복 처리</strong>됨.</p>
+
+<p><strong>개선 방향</strong>:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- PostgreSQL의 SELECT FOR UPDATE SKIP LOCKED 사용</span>
+<span class="c1">-- Prisma에서는 $queryRaw로 직접 실행</span>
+<span class="k">SELECT</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">knowledge_docs</span>
+<span class="k">WHERE</span> <span class="n">status</span> <span class="o">=</span> <span class="s1">'UPLOADED'</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">created_at</span> <span class="k">ASC</span>
+<span class="k">LIMIT</span> <span class="mi">10</span>
+<span class="k">FOR</span> <span class="k">UPDATE</span> <span class="n">SKIP</span> <span class="n">LOCKED</span><span class="p">;</span>
+</code></pre></div></div>
+<p>또는 Redis 분산 락(Redlock 패턴)으로 크론 실행 자체를 단일화.</p>
+
+<h2 id="aitaskservice-uploaded--processing-전환-실패-처리-부재">[AiTaskService] UPLOADED → PROCESSING 전환 실패 처리 부재</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span><span class="p">(</span><span class="kd">const</span> <span class="nx">doc</span> <span class="k">of</span> <span class="nx">targets</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">redis</span><span class="p">.</span><span class="nf">rpush</span><span class="p">(</span><span class="dl">'</span><span class="s1">ai:job:queue</span><span class="dl">'</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>          <span class="c1">// Redis 성공</span>
+    <span class="k">await</span> <span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">update</span><span class="p">({</span> <span class="na">status</span><span class="p">:</span> <span class="nx">PROCESSING</span> <span class="p">});</span> <span class="c1">// DB 실패?</span>
+  <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(...);</span>  <span class="c1">// 로그만 남기고 계속 진행</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Redis에 푸시는 됐지만 DB 상태 업데이트가 실패하면 → 다음 크론 실행 때 같은 문서가 <strong>다시 UPLOADED로 조회되어 중복 디스패치</strong>된다. 트랜잭션 또는 보상 로직이 필요하다.</p>
+
+<h2 id="knowledgeservice-파일-삭제와-db-삭제의-원자성-부재">[KnowledgeService] 파일 삭제와 DB 삭제의 원자성 부재</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="nf">deleteFile</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">objectStorageService</span><span class="p">.</span><span class="nf">deleteFile</span><span class="p">(</span><span class="nx">doc</span><span class="p">.</span><span class="nx">minioKey</span><span class="p">);</span>  <span class="c1">// MinIO 삭제</span>
+  <span class="c1">// ↑ 여기서 실패하면? 아래 DB 삭제가 안 됨</span>
+  <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="k">delete</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="p">});</span>  <span class="c1">// DB 삭제</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>MinIO 삭제 성공 + DB 삭제 실패 → <strong>MinIO에는 없는데 DB에는 있는 좀비 레코드</strong> 발생 가능.
+MinIO 삭제 실패 → <code class="language-plaintext highlighter-rouge">try/catch</code>로 무시하고 DB 삭제 진행 → <strong>DB는 삭제됐는데 MinIO에는 파일이 남는</strong> 고아 파일 발생.</p>
+
+<p>현재 코드는 MinIO 삭제 실패를 <code class="language-plaintext highlighter-rouge">logger.error</code>로만 처리하고 DB 삭제는 계속 진행한다. 영구 저장소 기준으로 <strong>DB가 Source of Truth</strong>이므로 현재 방향은 맞지만, MinIO 고아 파일 정리 배치가 없다.</p>
+
+<h2 id="schemaprisma-hnsw-인덱스-주석-처리">[schema.prisma] HNSW 인덱스 주석 처리</h2>
+
+<pre><code class="language-prisma">// @@index([embedding], type: Hnsw) // pgvector indexing
+</code></pre>
+
+<p><code class="language-plaintext highlighter-rouge">migration.sql</code>에서 HNSW 인덱스를 생성했다가 두 번째 마이그레이션에서 DROP했다. 스키마에도 주석으로만 남아있다.</p>
+
+<p><strong>영향</strong>: HNSW 인덱스 없이 코사인 유사도 검색 시 <strong>순차 스캔(Seq Scan)</strong> 발생 → 벡터 수가 많아질수록 성능 저하.</p>
+
+<p><strong>이유 추정</strong>: HNSW 인덱스는 삽입 시 인덱스를 유지해야 하므로 쓰기 성능이 낮아진다. 데모 수준의 데이터량에서는 오버헤드가 더 클 수 있어 일시 제거한 것으로 보임. 프로덕션 데이터 증가 시 재활성화 필요.</p>
+
+<h2 id="knowledgeservice-콘텐츠-중복-업로드-미검증">[KnowledgeService] 콘텐츠 중복 업로드 미검증</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="nf">processSingleFileUpload</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">hash</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">calculateHash</span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">buffer</span><span class="p">);</span>  <span class="c1">// SHA-256 계산</span>
+  <span class="c1">// ... 해시를 DB에 저장하지만 중복 체크 쿼리가 없음</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">create</span><span class="p">({</span> <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">contentHash</span><span class="p">:</span> <span class="nx">hash</span><span class="p">,</span> <span class="p">...</span> <span class="p">}</span> <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">contentHash</code>를 저장하지만 업로드 전 <strong>같은 해시가 이미 있는지 확인하지 않는다</strong>. 동일 파일을 여러 번 업로드해도 모두 저장된다.</p>
+
+<h2 id="웹훅-실패-시-재시도-정책-부재-todo-명시">[웹훅] 실패 시 재시도 정책 부재 (TODO 명시)</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">update</span><span class="p">({</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">status</span><span class="p">,</span>   <span class="c1">// TODO: 실패 시 재요청 해야 하지 않을까?</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">FAILED</code> 상태가 된 문서를 어떻게 재처리할지 정책이 없다. 수동 재업로드 외에 자동 재시도 메커니즘(Dead Letter Queue, 재처리 크론)이 없다.</p>
+
+<hr />
+
+<h1 id="4-핵심-메서드-및-라이브러리-함수-설명">4. 핵심 메서드 및 라이브러리 함수 설명</h1>
+
+<h2 id="prisma-client-주요-메서드">Prisma Client 주요 메서드</h2>
+
+<p>| 메서드 | 설명 | 예시 |
+|—|—|—|
+| <code class="language-plaintext highlighter-rouge">findUnique</code> | PK 또는 unique 필드로 단건 조회. 없으면 <code class="language-plaintext highlighter-rouge">null</code> | <code class="language-plaintext highlighter-rouge">prisma.user.findUnique({ where: { email } })</code> |
+| <code class="language-plaintext highlighter-rouge">findMany</code> | 조건에 맞는 다수 조회. <code class="language-plaintext highlighter-rouge">take</code>, <code class="language-plaintext highlighter-rouge">orderBy</code>, <code class="language-plaintext highlighter-rouge">where</code> 활용 | <code class="language-plaintext highlighter-rouge">prisma.knowledgeDoc.findMany({ take: 10, orderBy: { createdAt: 'asc' } })</code> |
+| <code class="language-plaintext highlighter-rouge">create</code> | 레코드 생성 | <code class="language-plaintext highlighter-rouge">prisma.knowledgeDoc.create({ data: { ... } })</code> |
+| <code class="language-plaintext highlighter-rouge">update</code> | 조건에 맞는 레코드 수정. <code class="language-plaintext highlighter-rouge">{ increment: 1 }</code> 원자적 증가 가능 | <code class="language-plaintext highlighter-rouge">prisma.knowledgeDoc.update({ where: { id }, data: { version: { increment: 1 } } })</code> |
+| <code class="language-plaintext highlighter-rouge">delete</code> | 단건 삭제 | <code class="language-plaintext highlighter-rouge">prisma.knowledgeDoc.delete({ where: { id } })</code> |
+| <code class="language-plaintext highlighter-rouge">count</code> | 조건에 맞는 수 반환 | <code class="language-plaintext highlighter-rouge">prisma.knowledgeDoc.count({ where: { uploaderId } })</code> |
+| <code class="language-plaintext highlighter-rouge">$connect</code> | 명시적 DB 연결 | <code class="language-plaintext highlighter-rouge">await this.$connect()</code> |
+| <code class="language-plaintext highlighter-rouge">$disconnect</code> | 명시적 DB 연결 종료 | <code class="language-plaintext highlighter-rouge">await this.$disconnect()</code> |
+| <code class="language-plaintext highlighter-rouge">$queryRaw</code> | 원시 SQL 실행 | <code class="language-plaintext highlighter-rouge">await this.$queryRaw\</code>SELECT 1# NestJS DB Layer 분석</p>
+<h2 id="prisma--postgresqlpgvector--redis-1">Prisma + PostgreSQL(pgvector) + Redis</h2>
+
+<blockquote>
+  <p>이 파일은 데이터 저장·조회에 관여하는 모든 파일을 대상으로 한다.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>분류</th>
+        <th>파일</th>
+        <th>역할</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ORM 설정</td>
+        <td>&lt;!JEKYLL@5120@0&gt;</td>
+        <td>스키마 선언, 모델 정의</td>
+      </tr>
+      <tr>
+        <td>ORM 설정</td>
+        <td>&lt;!JEKYLL@5120@1&gt;</td>
+        <td>DDL 변경 이력</td>
+      </tr>
+      <tr>
+        <td>ORM 서비스</td>
+        <td>&lt;!JEKYLL@5120@2&gt;</td>
+        <td>전역 모듈 등록</td>
+      </tr>
+      <tr>
+        <td>ORM 서비스</td>
+        <td>&lt;!JEKYLL@5120@3&gt;</td>
+        <td>커넥션 풀 + 생명주기 관리</td>
+      </tr>
+      <tr>
+        <td>Redis</td>
+        <td>&lt;!JEKYLL@5120@4&gt;</td>
+        <td>Redis 클라이언트 전역 공급</td>
+      </tr>
+      <tr>
+        <td>도메인</td>
+        <td>&lt;!JEKYLL@5120@5&gt;</td>
+        <td>User CRUD + 인증</td>
+      </tr>
+      <tr>
+        <td>도메인</td>
+        <td>&lt;!JEKYLL@5120@6&gt;</td>
+        <td>KnowledgeDoc CRUD</td>
+      </tr>
+      <tr>
+        <td>도메인</td>
+        <td>&lt;!JEKYLL@5120@7&gt;</td>
+        <td>DB 폴링 → Redis 큐 디스패치</td>
+      </tr>
+      <tr>
+        <td>응답 제어</td>
+        <td>&lt;!JEKYLL@5120@8&gt;</td>
+        <td>DB 모델 → 응답 DTO 변환</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<hr />
+
+<h1 id="1-주요-개념-1">1. 주요 개념</h1>
+
+<h2 id="데이터-저장소-구성-1">데이터 저장소 구성</h2>
+
+<p>이 프로젝트는 두 개의 데이터 저장소를 역할에 따라 분리한다.</p>
+
+<p>&lt;!JEKYLL@5120@9&gt;</p>
+
+<h2 id="prisma-orm-1">Prisma ORM</h2>
+
+<ul>
+  <li>TypeScript 네이티브 ORM. &lt;!JEKYLL@5120@10&gt;에서 모델을 선언하면 자동으로 타입 안전한 클라이언트를 생성함.</li>
+  <li><strong>Prisma Migrate</strong>: 스키마 변경 → SQL 마이그레이션 파일 자동 생성 → &lt;!JEKYLL@5120@11&gt;로 적용</li>
+  <li><strong>Prisma Client</strong>: 생성된 타입을 기반으로 &lt;!JEKYLL@5120@12&gt; 같은 타입 안전 쿼리 제공</li>
+</ul>
+
+<h2 id="pgvector-확장-1">pgvector 확장</h2>
+
+<p>PostgreSQL에 벡터 연산을 추가하는 확장. 별도 벡터 DB(Pinecone, Qdrant) 없이 <strong>RDBMS 안에서 임베딩 저장·유사도 검색</strong>이 가능하다.</p>
+
+<p>&lt;!JEKYLL@5120@13&gt;</p>
+
+<h2 id="스키마-모델-구조-1">스키마 모델 구조</h2>
+
+<p>&lt;!JEKYLL@5120@14&gt;</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>모델</th>
+      <th>PK 타입</th>
+      <th>주요 특징</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&lt;!JEKYLL@5120@15&gt;</td>
+      <td>UUID (String)</td>
+      <td>email unique, role enum(ADMIN/STARGAZER/PROTOSTAR)</td>
+    </tr>
+    <tr>
+      <td>&lt;!JEKYLL@5120@16&gt;</td>
+      <td>UUID (String)</td>
+      <td>status 상태머신, contentHash(SHA-256), version 증가</td>
+    </tr>
+    <tr>
+      <td>&lt;!JEKYLL@5120@17&gt;</td>
+      <td>UUID (String)</td>
+      <td>&lt;!JEKYLL@5120@18&gt; 타입, chunkIndex, tokenCount</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="redis-모듈-jekyll512019">Redis 모듈 (&lt;!JEKYLL@5120@19&gt;)</h2>
+
+<p>&lt;!JEKYLL@5120@20&gt;</p>
+
+<hr />
+
+<h1 id="2-핵심-로직-흐름-1">2. 핵심 로직 흐름</h1>
+
+<h2 id="prismaservice-생명주기-1">PrismaService 생명주기</h2>
+
+<p>&lt;!JEKYLL@5120@21&gt;</p>
+
+<blockquote>
+  <p>[!note] 왜 &lt;!JEKYLL@5120@22&gt; 어댑터를 쓰는가?
+Prisma 기본 모드는 자체 바이너리 엔진을 사용한다. &lt;!JEKYLL@5120@23&gt;는 이를 <strong>Node.js pg 드라이버로 대체</strong>한다.
+장점: 서버리스/엣지 환경 대응, 커넥션 풀(&lt;!JEKYLL@5120@24&gt;) 직접 제어 가능.
+이 프로젝트에서는 pgvector 연동 안정성과 커넥션 풀 직접 관리를 위해 선택.</p>
+</blockquote>
+
+<h2 id="문서-업로드--벡터화-전체-흐름-1">문서 업로드 → 벡터화 전체 흐름</h2>
+
+<p>&lt;!JEKYLL@5120@25&gt;</p>
+
+<h2 id="auth-흐름에서의-db-사용-1">Auth 흐름에서의 DB 사용</h2>
+
+<p>&lt;!JEKYLL@5120@26&gt;</p>
+
+<h2 id="docstatus-상태머신-1">DocStatus 상태머신</h2>
+
+<p>&lt;!JEKYLL@5120@27&gt;</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>상태</th>
+      <th>전환 주체</th>
+      <th>시점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&lt;!JEKYLL@5120@28&gt;</td>
+      <td>&lt;!JEKYLL@5120@29&gt;</td>
+      <td>파일 업로드 완료 직후</td>
+    </tr>
+    <tr>
+      <td>&lt;!JEKYLL@5120@30&gt;</td>
+      <td>&lt;!JEKYLL@5120@31&gt; (크론)</td>
+      <td>Redis 큐에 디스패치 시</td>
+    </tr>
+    <tr>
+      <td>&lt;!JEKYLL@5120@32&gt;</td>
+      <td>웹훅 (&lt;!JEKYLL@5120@33&gt;)</td>
+      <td>FastAPI 워커 처리 완료</td>
+    </tr>
+    <tr>
+      <td>&lt;!JEKYLL@5120@34&gt;</td>
+      <td>웹훅 (&lt;!JEKYLL@5120@35&gt;)</td>
+      <td>FastAPI 워커 처리 실패</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>[!note] 마이그레이션과 스키마의 상태 불일치
+&lt;!JEKYLL@5120@36&gt;에 &lt;!JEKYLL@5120@37&gt; 에 &lt;!JEKYLL@5120@38&gt;가 있지만, 현재 &lt;!JEKYLL@5120@39&gt;에는 없다.
+이후 마이그레이션에서 제거한 것으로 보이며, &lt;!JEKYLL@5120@40&gt;가 크론으로 &lt;!JEKYLL@5120@41&gt;를 직접 폴링하는 방식으로 QUEUED 상태를 대체한 설계.</p>
+</blockquote>
+
+<h2 id="userdto---db-모델--응답-변환-1">UserDto - DB 모델 → 응답 변환</h2>
+
+<p>&lt;!JEKYLL@5120@42&gt;</p>
+
+<p>&lt;!JEKYLL@5120@43&gt;가 응답을 직렬화할 때 &lt;!JEKYLL@5120@44&gt; 필드를 자동으로 제거한다. &lt;!JEKYLL@5120@45&gt;를 생성자에서 할당하는 이유는 TypeScript 컴파일러의 strict 체크를 통과하기 위함이며, 실제 응답에는 포함되지 않는다.</p>
+
+<hr />
+
+<h1 id="3-구조적-취약점--개선-방향-1">3. 구조적 취약점 / 개선 방향</h1>
+
+<h2 id="aitaskservice-race-condition---직접-코드에-todo로-명시-1">[AiTaskService] Race Condition - 직접 코드에 TODO로 명시</h2>
+
+<p>&lt;!JEKYLL@5120@46&gt;</p>
+
+<p><strong>문제</strong>: &lt;!JEKYLL@5120@47&gt; 이후 &lt;!JEKYLL@5120@48&gt; 전 사이에 다른 인스턴스(수평 확장 시)가 동일 문서를 가져갈 수 있다. 결과: <strong>같은 문서가 중복 처리</strong>됨.</p>
+
+<p><strong>개선 방향</strong>:
+&lt;!JEKYLL@5120@49&gt;
+또는 Redis 분산 락(Redlock 패턴)으로 크론 실행 자체를 단일화.</p>
+
+<h2 id="aitaskservice-uploaded--processing-전환-실패-처리-부재-1">[AiTaskService] UPLOADED → PROCESSING 전환 실패 처리 부재</h2>
+
+<p>&lt;!JEKYLL@5120@50&gt;</p>
+
+<p>Redis에 푸시는 됐지만 DB 상태 업데이트가 실패하면 → 다음 크론 실행 때 같은 문서가 <strong>다시 UPLOADED로 조회되어 중복 디스패치</strong>된다. 트랜잭션 또는 보상 로직이 필요하다.</p>
+
+<h2 id="knowledgeservice-파일-삭제와-db-삭제의-원자성-부재-1">[KnowledgeService] 파일 삭제와 DB 삭제의 원자성 부재</h2>
+
+<p>&lt;!JEKYLL@5120@51&gt;</p>
+
+<p>MinIO 삭제 성공 + DB 삭제 실패 → <strong>MinIO에는 없는데 DB에는 있는 좀비 레코드</strong> 발생 가능.
+MinIO 삭제 실패 → &lt;!JEKYLL@5120@52&gt;로 무시하고 DB 삭제 진행 → <strong>DB는 삭제됐는데 MinIO에는 파일이 남는</strong> 고아 파일 발생.</p>
+
+<p>현재 코드는 MinIO 삭제 실패를 &lt;!JEKYLL@5120@53&gt;로만 처리하고 DB 삭제는 계속 진행한다. 영구 저장소 기준으로 <strong>DB가 Source of Truth</strong>이므로 현재 방향은 맞지만, MinIO 고아 파일 정리 배치가 없다.</p>
+
+<h2 id="schemaprisma-hnsw-인덱스-주석-처리-1">[schema.prisma] HNSW 인덱스 주석 처리</h2>
+
+<p>&lt;!JEKYLL@5120@54&gt;</p>
+
+<p>&lt;!JEKYLL@5120@55&gt;에서 HNSW 인덱스를 생성했다가 두 번째 마이그레이션에서 DROP했다. 스키마에도 주석으로만 남아있다.</p>
+
+<p><strong>영향</strong>: HNSW 인덱스 없이 코사인 유사도 검색 시 <strong>순차 스캔(Seq Scan)</strong> 발생 → 벡터 수가 많아질수록 성능 저하.</p>
+
+<p><strong>이유 추정</strong>: HNSW 인덱스는 삽입 시 인덱스를 유지해야 하므로 쓰기 성능이 낮아진다. 데모 수준의 데이터량에서는 오버헤드가 더 클 수 있어 일시 제거한 것으로 보임. 프로덕션 데이터 증가 시 재활성화 필요.</p>
+
+<h2 id="knowledgeservice-콘텐츠-중복-업로드-미검증-1">[KnowledgeService] 콘텐츠 중복 업로드 미검증</h2>
+
+<p>&lt;!JEKYLL@5120@56&gt;</p>
+
+<p>&lt;!JEKYLL@5120@57&gt;를 저장하지만 업로드 전 <strong>같은 해시가 이미 있는지 확인하지 않는다</strong>. 동일 파일을 여러 번 업로드해도 모두 저장된다.</p>
+
+<h2 id="웹훅-실패-시-재시도-정책-부재-todo-명시-1">[웹훅] 실패 시 재시도 정책 부재 (TODO 명시)</h2>
+
+<p>&lt;!JEKYLL@5120@58&gt;</p>
+
+<p>&lt;!JEKYLL@5120@59&gt; 상태가 된 문서를 어떻게 재처리할지 정책이 없다. 수동 재업로드 외에 자동 재시도 메커니즘(Dead Letter Queue, 재처리 크론)이 없다.</p>
+
+<hr />
+
+<h1 id="4-핵심-메서드-및-라이브러리-함수-설명-1">4. 핵심 메서드 및 라이브러리 함수 설명</h1>
+
+<h2 id="prisma-client-주요-메서드-1">Prisma Client 주요 메서드</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>메서드</th>
+      <th>설명</th>
+      <th>예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&lt;!JEKYLL@5120@60&gt;</td>
+      <td>PK 또는 unique 필드로 단건 조회. 없으면 &lt;!JEKYLL@5120@61&gt;</td>
+      <td>&lt;!JEKYLL@5120@62&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;!JEKYLL@5120@63&gt;</td>
+      <td>조건에 맞는 다수 조회. &lt;!JEKYLL@5120@64&gt;, &lt;!JEKYLL@5120@65&gt;, &lt;!JEKYLL@5120@66&gt; 활용</td>
+      <td>&lt;!JEKYLL@5120@67&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;!JEKYLL@5120@68&gt;</td>
+      <td>레코드 생성</td>
+      <td>&lt;!JEKYLL@5120@69&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;!JEKYLL@5120@70&gt;</td>
+      <td>조건에 맞는 레코드 수정. &lt;!JEKYLL@5120@71&gt; 원자적 증가 가능</td>
+      <td>&lt;!JEKYLL@5120@72&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;!JEKYLL@5120@73&gt;</td>
+      <td>단건 삭제</td>
+      <td>&lt;!JEKYLL@5120@74&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;!JEKYLL@5120@75&gt;</td>
+      <td>조건에 맞는 수 반환</td>
+      <td>&lt;!JEKYLL@5120@76&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;!JEKYLL@5120@77&gt;</td>
+      <td>명시적 DB 연결</td>
+      <td>&lt;!JEKYLL@5120@78&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;!JEKYLL@5120@79&gt;</td>
+      <td>명시적 DB 연결 종료</td>
+      <td>&lt;!JEKYLL@5120@80&gt;</td>
+    </tr>
+    <tr>
+      <td>`</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="prismaadapter-pg--pgpool"><code class="language-plaintext highlighter-rouge">@prisma/adapter-pg</code> + <code class="language-plaintext highlighter-rouge">pg.Pool</code></h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">pool</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pool</span><span class="p">({</span> <span class="na">connectionString</span><span class="p">:</span> <span class="nx">databaseUrl</span> <span class="p">});</span>
+<span class="kd">const</span> <span class="nx">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrismaPg</span><span class="p">(</span><span class="nx">pool</span><span class="p">);</span>
+<span class="k">super</span><span class="p">({</span> <span class="nx">adapter</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pg.Pool</code>: Node.js PostgreSQL 드라이버의 커넥션 풀. 최대 동시 연결 수 관리.</li>
+  <li><code class="language-plaintext highlighter-rouge">PrismaPg</code>: Prisma가 자체 엔진 대신 <code class="language-plaintext highlighter-rouge">pg</code> 드라이버를 사용하도록 하는 어댑터.</li>
+  <li><code class="language-plaintext highlighter-rouge">onModuleDestroy</code>에서 <strong><code class="language-plaintext highlighter-rouge">pool.end\()</code>를 별도로 호출</strong>해야 한다. <code class="language-plaintext highlighter-rouge">\$disconnect\()</code>만으로는 <code class="language-plaintext highlighter-rouge">pg.Pool</code>이 닫히지 않아 프로세스가 정상 종료되지 않는다.</li>
+</ul>
+
+<h2 id="bcrypt"><code class="language-plaintext highlighter-rouge">bcrypt</code></h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 회원가입: 비밀번호 해싱</span>
+<span class="kd">const</span> <span class="nx">hashedPassword</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bcrypt</span><span class="p">.</span><span class="nf">hash</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>  <span class="c1">// saltRounds: 10</span>
+
+<span class="c1">// 로그인: 해시 비교</span>
+<span class="k">await</span> <span class="nx">bcrypt</span><span class="p">.</span><span class="nf">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span>  <span class="c1">// boolean 반환</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">saltRounds: 10</code>: 해싱 비용. 2^10 = 1024번 반복. 높을수록 안전하지만 느림.</li>
+  <li><code class="language-plaintext highlighter-rouge">bcrypt.compare</code>는 <strong>상수 시간 비교</strong>를 수행해 타이밍 공격을 방지한다. 일반 <code class="language-plaintext highlighter-rouge">===</code> 비교를 쓰면 안 된다.</li>
+</ul>
+
+<h2 id="cryptocreatehashsha256"><code class="language-plaintext highlighter-rouge">crypto.createHash\('sha256')</code></h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="nf">calculateHash</span><span class="p">(</span><span class="nx">buffer</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">crypto</span><span class="p">.</span><span class="nf">createHash</span><span class="p">(</span><span class="dl">'</span><span class="s1">sha256</span><span class="dl">'</span><span class="p">).</span><span class="nf">update</span><span class="p">(</span><span class="nx">buffer</span><span class="p">).</span><span class="nf">digest</span><span class="p">(</span><span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>파일 내용의 SHA-256 해시를 <code class="language-plaintext highlighter-rouge">contentHash</code>로 저장. 향후 중복 파일 감지, 무결성 검증에 활용 가능하도록 설계된 필드.</p>
+
+<h2 id="pgvector-관련-sql"><code class="language-plaintext highlighter-rouge">pgvector</code> 관련 SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 확장 활성화</span>
+<span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="nv">"vector"</span><span class="p">;</span>
+
+<span class="c1">-- 벡터 컬럼 정의</span>
+<span class="nv">"embedding"</span> <span class="n">vector</span><span class="p">(</span><span class="mi">1536</span><span class="p">)</span>
+
+<span class="c1">-- HNSW 인덱스 (코사인 유사도 기준)</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="k">USING</span> <span class="n">hnsw</span> <span class="p">(</span><span class="nv">"embedding"</span> <span class="n">vector_cosine_ops</span><span class="p">);</span>
+
+<span class="c1">-- 유사도 검색 (FastAPI 워커 측에서 실행)</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">vectorized_docs</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">embedding</span> <span class="o">&lt;=&gt;</span> <span class="s1">'[0.1, 0.2, ...]'</span>  <span class="c1">-- cosine distance</span>
+<span class="k">LIMIT</span> <span class="mi">5</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="unsupportedvector1536-in-prisma-schema"><code class="language-plaintext highlighter-rouge">Unsupported\(\"vector\(1536)\")</code> in Prisma Schema</h2>
+
+<pre><code class="language-prisma">embedding Unsupported("vector(1536)")?
+</code></pre>
+
+<p>Prisma가 공식적으로 <code class="language-plaintext highlighter-rouge">vector</code> 타입을 지원하지 않아 <code class="language-plaintext highlighter-rouge">Unsupported</code> 타입으로 선언. 이 필드는 Prisma Client에서 직접 쓰기/읽기가 불가능하고, <code class="language-plaintext highlighter-rouge">\$queryRaw</code>나 별도 클라이언트(FastAPI + psycopg2)를 통해서만 접근 가능하다.</p>
+
+<h2 id="version--increment-1----원자적-증가"><code class="language-plaintext highlighter-rouge">version: { increment: 1 }</code> - 원자적 증가</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">update</span><span class="p">({</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">version</span><span class="p">:</span> <span class="p">{</span> <span class="na">increment</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>  <span class="c1">// Prisma 원자적 연산</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Prisma의 원자적 연산 문법. <code class="language-plaintext highlighter-rouge">version = version + 1</code>을 SQL 레벨에서 실행하므로 <strong>애플리케이션에서 현재 값을 읽어 +1 하는 방식보다 안전</strong>하다 (read-modify-write race 방지).</p>
+
+<hr />
+
+<h1 id="5-대체-가능한-라이브러리-및-트레이드오프">5. 대체 가능한 라이브러리 및 트레이드오프</h1>
+
+<h2 id="orm-prisma-vs-대안">ORM: Prisma vs 대안</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>라이브러리</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Prisma</strong> (현재)</td>
+      <td>타입 자동 생성, 스키마 중심 개발, 마이그레이션 자동화</td>
+      <td>복잡한 쿼리 표현력 제한, <code class="language-plaintext highlighter-rouge">Unsupported</code> 타입 문제</td>
+    </tr>
+    <tr>
+      <td><strong>TypeORM</strong></td>
+      <td>NestJS와 오랜 통합 역사, 데코레이터 기반</td>
+      <td>타입 안전성이 Prisma보다 약함, 설정 복잡</td>
+    </tr>
+    <tr>
+      <td><strong>Drizzle ORM</strong></td>
+      <td>최신 TS 친화적, SQL에 가까운 표현, 경량</td>
+      <td>상대적으로 생태계 미성숙</td>
+    </tr>
+    <tr>
+      <td><strong>Knex.js</strong></td>
+      <td>SQL 쿼리 빌더, 유연성 최대</td>
+      <td>타입 추론 없음, 보일러플레이트 많음</td>
+    </tr>
+    <tr>
+      <td><strong>Raw SQL (pg)</strong></td>
+      <td>최대 유연성, 최고 성능</td>
+      <td>타입 안전성 없음, 마이그레이션 수동 관리</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>pgvector처럼 Prisma가 공식 지원하지 않는 타입을 많이 사용한다면 <strong>Drizzle ORM</strong> 또는 <strong>TypeORM + @Column({ type: ‘vector’ })</strong> 커스텀이 더 자연스럽다.</p>
+</blockquote>
+
+<h2 id="비밀번호-해싱-bcrypt-vs-대안">비밀번호 해싱: bcrypt vs 대안</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>라이브러리</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>bcrypt</strong> (현재)</td>
+      <td>가장 검증된 방식, 광범위한 채택</td>
+      <td>CPU 바운드, Node.js에서 비동기 처리 필요</td>
+    </tr>
+    <tr>
+      <td><strong>Argon2</strong></td>
+      <td>OWASP 권장, 메모리 하드 함수 (GPU 공격 저항)</td>
+      <td>상대적으로 낮은 범용 채택률</td>
+    </tr>
+    <tr>
+      <td><strong>scrypt</strong></td>
+      <td>Node.js 내장 crypto 지원</td>
+      <td>설정 복잡</td>
+    </tr>
+    <tr>
+      <td><strong>PBKDF2</strong></td>
+      <td>FIPS 인증, Node.js 내장</td>
+      <td>bcrypt보다 GPU 공격에 취약</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>2024년 이후 OWASP는 <strong>Argon2id</strong>를 1순위로 권장한다. 신규 프로젝트라면 <code class="language-plaintext highlighter-rouge">argon2</code> 패키지 사용이 더 현대적.</p>
+</blockquote>
+
+<h2 id="벡터-저장소-pgvector-vs-전용-벡터-db">벡터 저장소: pgvector vs 전용 벡터 DB</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방법</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>pgvector</strong> (현재)</td>
+      <td>별도 인프라 없음, RDBMS와 동일 트랜잭션</td>
+      <td>대규모에서 전용 DB 대비 성능 제한</td>
+    </tr>
+    <tr>
+      <td><strong>Pinecone</strong></td>
+      <td>완전 관리형, 대규모 ANN 검색 최적화</td>
+      <td>비용, 외부 API 의존, 벤더 잠금</td>
+    </tr>
+    <tr>
+      <td><strong>Qdrant</strong></td>
+      <td>오픈소스, 고성능, 다양한 인덱스 타입</td>
+      <td>별도 인프라 운영 필요</td>
+    </tr>
+    <tr>
+      <td><strong>Weaviate</strong></td>
+      <td>멀티모달 지원, GraphQL API</td>
+      <td>복잡한 설정</td>
+    </tr>
+    <tr>
+      <td><strong>Chroma</strong></td>
+      <td>로컬 개발 친화적, Python 네이티브</td>
+      <td>프로덕션 안정성 아직 검증 중</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>이 프로젝트 규모(1인 서비스, 수백~수천 개 벡터)에서는 <strong>pgvector</strong>가 적절한 선택. 문서 수만~수백만이 되면 Qdrant나 Pinecone 전환을 고려해야 한다.</p>
+</blockquote>
+
+<h2 id="redis-클라이언트-ioredis-vs-대안">Redis 클라이언트: ioredis vs 대안</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>라이브러리</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>ioredis</strong> (현재)</td>
+      <td>Sentinel/Cluster 지원, Pub/Sub, 파이프라인</td>
+      <td>설정이 다소 복잡</td>
+    </tr>
+    <tr>
+      <td><strong>node-redis</strong></td>
+      <td>Node.js 공식 Redis 클라이언트, Promise 네이티브</td>
+      <td>ioredis보다 생태계 좁음</td>
+    </tr>
+    <tr>
+      <td><strong>@nestjs/bull (BullMQ)</strong></td>
+      <td>NestJS 전용 Redis 큐, 재시도/DLQ 내장</td>
+      <td>큐 기능만 사용 시 과도한 추상화</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>이 프로젝트는 Redis를 큐 + Pub/Sub + Rate Limit Storage + 헬스체크 모두에 사용한다. <strong>BullMQ</strong>를 도입하면 큐 재시도, Dead Letter Queue 등을 프레임워크 수준에서 지원받을 수 있다.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="6-개발자로서-알아야-할-영역">6. 개발자로서 알아야 할 영역</h1>
+
+<h2 id="a-커넥션-풀-connection-pool-이해">A. 커넥션 풀 (Connection Pool) 이해</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">pool</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pool</span><span class="p">({</span> <span class="na">connectionString</span><span class="p">:</span> <span class="nx">databaseUrl</span> <span class="p">});</span>
+<span class="c1">// 기본값: max 10개 커넥션</span>
+</code></pre></div></div>
+
+<ul>
+  <li>커넥션 풀 없이 요청마다 DB 연결을 새로 맺으면 <strong>TCP 핸드셰이크 + DB 인증 오버헤드</strong>가 누적됨</li>
+  <li>풀 크기를 너무 크게 설정하면 PostgreSQL 서버의 max_connections를 초과해 연결 거부 발생</li>
+  <li><code class="language-plaintext highlighter-rouge">onModuleDestroy</code>에서 <strong><code class="language-plaintext highlighter-rouge">pool.end\()</code>까지 호출해야 프로세스가 깨끗하게 종료</strong>된다. 누락 시 Node.js 이벤트 루프가 열린 소켓 때문에 종료되지 않는다.</li>
+</ul>
+
+<h2 id="b-마이그레이션-전략">B. 마이그레이션 전략</h2>
+
+<p>Prisma Migrate의 워크플로:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 개발 환경: 스키마 변경 후 마이그레이션 파일 생성</span>
+prisma migrate dev <span class="nt">--name</span> <span class="s2">"add_chunk_index"</span>
+
+<span class="c"># 프로덕션 환경: 생성된 마이그레이션 적용만</span>
+prisma migrate deploy
+
+<span class="c"># 현재 DB 상태 확인</span>
+prisma migrate status
+</code></pre></div></div>
+
+<p><strong>이 프로젝트에서 확인된 마이그레이션 이력</strong>:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">20260113083301\_init\_schema</code>: 초기 스키마 + HNSW 인덱스 생성</li>
+  <li><code class="language-plaintext highlighter-rouge">20260113083332</code>: HNSW 인덱스 DROP (성능/쓰기 트레이드오프 재검토)</li>
+</ol>
+
+<p>→ 마이그레이션은 <strong>순방향만</strong> 지원. DROP INDEX도 새 마이그레이션 파일로 이력을 남기는 것이 Prisma의 방식.</p>
+
+<h2 id="c-상태머신-설계와-데이터-일관성">C. 상태머신 설계와 데이터 일관성</h2>
+
+<p><code class="language-plaintext highlighter-rouge">DocStatus</code> enum은 <strong>상태머신</strong>이다. 상태 전환에는 아래 원칙이 필요하다:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 허용된 전환만 가능해야 한다
+   COMPLETED → PROCESSING 같은 역행은 불가
+
+2. 전환 실패 시 보상 트랜잭션이 있어야 한다
+   Redis push 성공 + DB update 실패 → 중복 처리 위험
+
+3. 터미널 상태(COMPLETED, FAILED)에서의 처리 정책
+   FAILED → 재시도 정책이 있어야 한다
+</code></pre></div></div>
+
+<p>현재 코드에서 2, 3번이 TODO로 남아있다. 프로덕션 수준에서는 <strong>Outbox 패턴</strong> 또는 <strong>Two-Phase Commit</strong> 고려가 필요하다.</p>
+
+<h2 id="d-n1-쿼리-문제-이해">D. N+1 쿼리 문제 이해</h2>
+
+<p>Prisma에서 쉽게 발생하는 안티패턴:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ N+1: 문서 10개를 가져온 후 각각 uploader를 조회</span>
+<span class="kd">const</span> <span class="nx">docs</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">findMany</span><span class="p">({</span> <span class="na">take</span><span class="p">:</span> <span class="mi">10</span> <span class="p">});</span>
+<span class="k">for </span><span class="p">(</span><span class="kd">const</span> <span class="nx">doc</span> <span class="k">of</span> <span class="nx">docs</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nf">findUnique</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">uploaderId</span> <span class="p">}</span> <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ include로 한 번에 JOIN</span>
+<span class="kd">const</span> <span class="nx">docs</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">findMany</span><span class="p">({</span>
+  <span class="na">take</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="na">include</span><span class="p">:</span> <span class="p">{</span> <span class="na">uploader</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>   <span class="c1">// LEFT JOIN users</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>이 프로젝트의 <code class="language-plaintext highlighter-rouge">findAll</code>, <code class="language-plaintext highlighter-rouge">uploadFiles</code> 등에서는 현재 단순 조회만 하고 있어 N+1 위험이 낮지만, 관계 데이터를 함께 조회할 경우 반드시 <code class="language-plaintext highlighter-rouge">include</code> 또는 <code class="language-plaintext highlighter-rouge">select</code>로 JOIN을 명시해야 한다.</p>
+
+<h2 id="e-global-모듈-설계-원칙">E. <code class="language-plaintext highlighter-rouge">\$Global\()</code> 모듈 설계 원칙</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Global</span><span class="p">()</span>  <span class="c1">// PrismaModule, RedisModule 모두 Global 등록</span>
+<span class="p">@</span><span class="nd">Module</span><span class="p">({</span> <span class="na">exports</span><span class="p">:</span> <span class="p">[</span><span class="nx">PrismaService</span><span class="p">]</span> <span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nc">PrismaModule</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">@Global\()</code>로 등록하면 다른 모듈에서 <code class="language-plaintext highlighter-rouge">imports: \[PrismaModule]</code> 없이 <code class="language-plaintext highlighter-rouge">PrismaService</code>를 주입받을 수 있다.</li>
+  <li><strong>남용 금지</strong>: 모든 모듈을 Global로 만들면 의존성 그래프가 불투명해진다.</li>
+  <li><strong>적절한 사용</strong>: <code class="language-plaintext highlighter-rouge">PrismaService</code>, <code class="language-plaintext highlighter-rouge">RedisModule</code>처럼 앱 전체에서 필수로 사용하는 인프라성 모듈에만 적용.</li>
+</ul>
+
+<h2 id="f-소프트-삭제soft-delete-vs-하드-삭제hard-delete">F. 소프트 삭제(Soft Delete) vs 하드 삭제(Hard Delete)</h2>
+
+<p>현재 코드는 <code class="language-plaintext highlighter-rouge">prisma.knowledgeDoc.delete\()</code>로 <strong>하드 삭제</strong>를 한다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 현재: 하드 삭제</span>
+<span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="k">delete</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<p>프로덕션에서 고려할 소프트 삭제 패턴:</p>
+
+<pre><code class="language-prisma">// schema.prisma에 삭제 시각 추가
+model KnowledgeDoc {
+  deletedAt DateTime? @map("deleted_at")
+}
+</code></pre>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 소프트 삭제</span>
+<span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">update</span><span class="p">({</span>
+  <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">},</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">deletedAt</span><span class="p">:</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">()</span> <span class="p">},</span>
+<span class="p">});</span>
+
+<span class="c1">// 조회 시 필터</span>
+<span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">findMany</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="na">deletedAt</span><span class="p">:</span> <span class="kc">null</span> <span class="p">}</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<p><strong>VectorizedDoc</strong>은 <code class="language-plaintext highlighter-rouge">onDelete: Cascade</code>이므로 <code class="language-plaintext highlighter-rouge">KnowledgeDoc</code> 삭제 시 자동 연쇄 삭제된다. 소프트 삭제 도입 시 벡터 데이터 정리 정책도 함께 설계해야 한다.</p>
+
+<h2 id="g-비밀번호-처리의-응용-레이어-통제">G. 비밀번호 처리의 응용 레이어 통제</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// UserDto</span>
+<span class="p">@</span><span class="nd">Exclude</span><span class="p">()</span>
+<span class="nx">password</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>   <span class="c1">// 응답 직렬화 시 ClassSerializerInterceptor가 제거</span>
+
+<span class="nf">constructor</span><span class="p">(</span><span class="nx">dto</span><span class="p">:</span> <span class="nx">User</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="nx">dto</span><span class="p">.</span><span class="nx">password</span><span class="p">;</span>  <span class="c1">// 내부적으로는 할당 (TS strict 통과용)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>DB에서 조회한 Prisma 모델(<code class="language-plaintext highlighter-rouge">User</code>)에는 <code class="language-plaintext highlighter-rouge">password</code>가 포함된다. 이를 응답에 포함시키지 않으려면:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">select</code> 쿼리에서 제외: <code class="language-plaintext highlighter-rouge">prisma.user.findUnique\({ select: { password: false } })</code></li>
+  <li>DTO + <code class="language-plaintext highlighter-rouge">@Exclude\()</code>: 현재 방식. 쿼리는 가져오되 직렬화 시 제거.</li>
+</ol>
+
+<p>방식 1이 DB 레벨에서 원천 차단이지만, 방식 2는 응용 레이어에서 통제하는 NestJS 표준 패턴이다.</p>
+
+<hr />
+
+<h1 id="핵심-요약-카드">핵심 요약 카드</h1>
+
+<blockquote>
+  <p>[!abstract] 데이터 저장소 역할 분리</p>
+  <ul>
+    <li><strong>PostgreSQL</strong>: 영구 데이터 (유저, 문서 메타데이터, 벡터)</li>
+    <li><strong>Redis</strong>: 임시·중간 계층 (작업 큐, SSE 채널, Rate Limit 카운터, AI 생존 신호)</li>
+    <li><strong>MinIO</strong>: 원본 파일 바이너리 (오브젝트 스토리지)</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>[!abstract] 핵심 설계 패턴</p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">PrismaService</code> → <code class="language-plaintext highlighter-rouge">extends PrismaClient</code> + <code class="language-plaintext highlighter-rouge">OnModuleInit/Destroy</code> → 커넥션 생명주기 관리</li>
+    <li><code class="language-plaintext highlighter-rouge">DocStatus</code> 상태머신 → 크론 폴링 + 웹훅 콜백으로 분산 처리 상태 동기화</li>
+    <li><code class="language-plaintext highlighter-rouge">@Global\()</code> 모듈 → 인프라 서비스의 전역 공급</li>
+    <li><code class="language-plaintext highlighter-rouge">UserDto</code> + <code class="language-plaintext highlighter-rouge">@Exclude\()</code> → 응용 레이어에서 민감 데이터 통제</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>[!question] 설명할 수 있어야 하는 것</p>
+  <ol>
+    <li><code class="language-plaintext highlighter-rouge">PrismaPg</code> 어댑터를 쓰는 이유와 <code class="language-plaintext highlighter-rouge">pool.end\()</code>를 별도 호출해야 하는 이유</li>
+    <li><code class="language-plaintext highlighter-rouge">AiTaskService</code>에 Race Condition이 발생할 수 있는 시나리오와 해결책</li>
+    <li>HNSW 인덱스가 없을 때 벡터 검색 성능에 어떤 영향이 있는가</li>
+    <li><code class="language-plaintext highlighter-rouge">bcrypt.compare</code>가 일반 <code class="language-plaintext highlighter-rouge">===</code> 비교보다 안전한 이유</li>
+    <li><code class="language-plaintext highlighter-rouge">version: { increment: 1 }</code>을 read-modify-write 대신 쓰는 이유</li>
+    <li><code class="language-plaintext highlighter-rouge">@Exclude\()</code> 필드가 생성자에서 할당되지만 응답에 노출되지 않는 원리</li>
+  </ol>
+</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="NestJS" /><category term="AI" /><summary type="html"><![CDATA[NestJS DB Layer 분석 Prisma + PostgreSQL(pgvector) + Redis]]></summary></entry><entry><title type="html">Protostar review note - 08 NestJS Middlewares &amp;amp; Guards &amp;amp; Interceptors &amp;amp; Pipes</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/19/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 08 NestJS Middlewares &amp;amp; Guards &amp;amp; Interceptors &amp;amp; Pipes" /><published>2026-02-19T00:00:00+00:00</published><updated>2026-02-19T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/19/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/19/00-protostar-review.html"><![CDATA[<h1 id="nestjs-파이프라인-구성요소-분석">NestJS 파이프라인 구성요소 분석</h1>
 <h2 id="middleware--guards--interceptors--pipes">Middleware → Guards → Interceptors → Pipes</h2>
 
 <blockquote>
@@ -3184,208 +4292,4 @@ NestJS는 Lifecycle에 따라 <strong>Guard → Interceptor → Pipe → Control
       <li><code class="language-plaintext highlighter-rouge">nginx -s reload</code> 등, 마지막 부분에서는 인증서 갱신이 되더라도 안정적이고, 트래픽이 끊기지 않게 만들고자 reload 를 사용함으로써 무중단 운영이 되도록 신경을 썼다.</li>
     </ol>
   </li>
-</ol>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><summary type="html"><![CDATA[핵심 특징 5가지 물리적 / 논리적 망 분리 : 서비스 존과 매니징 존을 분리하였고, 이를 통한 운영 안정성을 확보함. 트래픽 제어를 위한 Nginx 레이어에서의 Traffic Dam : 토큰 버킷 알고리즘 기반의 트래픽 제어 Heavy Zone, Light Zone 으로 구분하여서 매크로성을 엄격히 막아야 하는 위치(Backend), 정적 리소스 로딩을 위한 일반 존(Frontend)로 구분하여 로딩속성과 백엔드 서비스 보호를 양립함. 투명한 IP 보존(L4, L7 Proxy Protocol) 두대의 서버, 한대의 공유기의 네트워크 환경에서 클라이언트의 원본 IP 를 추적하기 위함, 동시에 각 서버의 HTTPS 접속을 구현함으로서 서비스 서버와 메인터넌스 서버에 접속하는 루트를 분리. 이를 통한 서비스 서버의 문제가 발생하더라도, 이를 모니터링하는 서버의 접속은 문제 없도록 만들어냄 중앙집중형 관제 시스템 Prometheus 의 Pull 방식과 함께 Promtail을 통해 Loki 기반의 서버 어플리케이션들의 로그를 수집하도록 했음 통합 대시보드를 통해 서버들의 상태, 관리의 중앙 집중구조를 구현함. AI 서비스를 위한 최적화 데이터베이스 구현 pgvector 확장을 위하여 init.spl에서 확장기능을 활성화 시켜 벡터 DB 기능을 사용하였다. 별도의 벡터 DB 가 아닌, RDBMS 인프라 내에서 임베딩 벡터를 저장, 검색함으로써 관리 복잡도를 줄여줌]]></summary></entry><entry><title type="html">Protostar review note - 00 - FastAPI intro</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/10/02-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 00 - FastAPI intro" /><published>2026-02-10T00:00:00+00:00</published><updated>2026-02-10T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/10/02-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/10/02-protostar-review.html"><![CDATA[<h1 id="fastapi-개념-정리">FastAPI 개념 정리</h1>
-<ul>
-  <li>현대적, 성능이 뛰어난 웹 프레임워크 서버</li>
-  <li>RESTFul API 를 구축하는데 최적화, 3.14의 멀티코어 병렬 처리와 uv 같은 고속 툴 체인을 결합하여 백엔드 개발의 표준 방식으로 자리 잡게됨.
-    <h2 id="핵시-철학-및-특징">핵시 철학 및 특징</h2>
-  </li>
-  <li>고성능: 웹엔진(Starlette), 데이터 검증(Pydantic)</li>
-  <li>빠른 개발 속도: 파이썬의 <code class="language-plaintext highlighter-rouge">Type Hints</code>를 활용해 코딩 시간을 획기적으로 줄임.</li>
-  <li>자동 문서화: 별도 작업 없이 Swagger UI 와 ReDoc을 통해 대화형 API 문서를 생성함.</li>
-  <li>데이터 검증 및 직렬화: JSON 데이터를 파이썬 객체로 자동 변환, 타입에러를 통한 안정성 확보</li>
-</ul>
-
-<h2 id="기술-근간">기술 근간</h2>
-<p>|**구성 요소**|**역할**|
-|—|—|
-|**Starlette**|가볍고 빠른 ASGI 프레임워크로, 라우팅, 웹소켓, 미들웨어 등 핵심 웹 기능을 담당합니다.|
-|**Pydantic**|파이썬 타입 힌트를 기반으로 데이터 검증(Validation)과 설정 관리(Serialization)를 수행합니다.|
-|**Uvicorn / uv**|비동기 서버(ASGI)로, FastAPI 애플리케이션을 실행하는 엔진 역할을 합니다.|</p>
-<ul>
-  <li>ASGI(Asynchronous Server Gateway Interface): Python 비동기 웹 표준. WSGI(Sync)와 달리 async/await 지원으로 고성능 웹앱 가능
-    <ul>
-      <li>라우팅 / 미들웨어 / 요청, 응답 처리 / 라이프 사이클 관리 역할을 함</li>
-    </ul>
-  </li>
-  <li>pydantic: 타입힌트를 기반 검증, 파싱 라이브러리
-    <ul>
-      <li>python dataclass 확장, Json -&gt; python 객체 자동 변환 + 검증 역할</li>
-      <li>FastAPI 연계될 때는
-        <ul>
-          <li>Path/Query/Form 모델: 함수 인자로 사용, 자동 파싱 / 검증</li>
-          <li>Response 모델: 출력 스키마를 정의 하며 자동 생성해줌</li>
-          <li>Validator / Field 커스텀: 각종 데코레이터, Field 로 입력을 수신해줌.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="주요-개념-및-동작-로직">주요 개념 및 동작 로직</h2>
-<ol>
-  <li>비동기 처리(Async / Await)</li>
-  <li>의존성 주입: 함수를 할당해두고 Annotated와 Depends 를 활용해, 이를 추적해서 사용하도록 함으로써 코드 재사용성을 극대화함.</li>
-  <li>타입 힌트 기반 검증</li>
-  <li>애플리케이션 구조: 2026년 현재 도메인 주도 설계 적용, 비즈니스 로직의 서비스 레이어와 Router 레이어(HTTP 통신 수신)을 분리하는 방식이 권장 됨.</li>
-</ol>
-
-<h2 id="프레임-워크">프레임 워크</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">**구분**</th>
-      <th style="text-align: left">**Django**</th>
-      <th style="text-align: left">**Flask**</th>
-      <th style="text-align: left">**FastAPI**</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">**성격**</td>
-      <td style="text-align: left">Batteries-included (모든 기능 포함)</td>
-      <td style="text-align: left">Micro-framework (최소 기능)</td>
-      <td style="text-align: left">Modern API-first (현대적 API 특화)</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">**성능**</td>
-      <td style="text-align: left">상대적으로 무거움</td>
-      <td style="text-align: left">보통 (동기 위주)</td>
-      <td style="text-align: left">**매우 빠름 (비동기)**</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">**주요 용도**</td>
-      <td style="text-align: left">대규모 웹 서비스, 관리자 페이지</td>
-      <td style="text-align: left">소규모 프로토타입</td>
-      <td style="text-align: left">**마이크로서비스, AI 모델 서빙**</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">**데이터 검증**</td>
-      <td style="text-align: left">Forms / Serializers 사용</td>
-      <td style="text-align: left">수동 설정 필요</td>
-      <td style="text-align: left">**자동 (Pydantic)**</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-<h1 id="의존성-주입-세부적으로-알아보기">의존성 주입 세부적으로 알아보기</h1>
-
-<h3 id="함수-의존성-예시-코드">함수 의존성 예시 코드</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">Annotated</span>
-  <span class="kn">from</span> <span class="n">fastapi</span> <span class="kn">import</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">FastAPI</span>
-
-  <span class="n">app</span> <span class="o">=</span> <span class="nc">FastAPI</span><span class="p">()</span>
-
-  <span class="c1"># 1. 의존성(Dependable) 함수 정의
-</span>  <span class="c1"># 공통적으로 사용할 로직을 일반 함수(또는 async 함수)로 만듭니다.
-</span>  <span class="k">async</span> <span class="k">def</span> <span class="nf">common_parameters</span><span class="p">(</span><span class="n">q</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="bp">None</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
-      <span class="k">return</span> <span class="p">{</span><span class="sh">"</span><span class="s">q</span><span class="sh">"</span><span class="p">:</span> <span class="n">q</span><span class="p">,</span> <span class="sh">"</span><span class="s">skip</span><span class="sh">"</span><span class="p">:</span> <span class="n">skip</span><span class="p">,</span> <span class="sh">"</span><span class="s">limit</span><span class="sh">"</span><span class="p">:</span> <span class="n">limit</span><span class="p">}</span>
-
-  <span class="c1"># 2. 경로 함수(Path Operation)에 주입
-</span>  <span class="c1"># Annotated를 사용하여 반환 타입(dict)과 의존성 선언(Depends)을 결합합니다.
-</span>  <span class="nd">@app.get</span><span class="p">(</span><span class="sh">"</span><span class="s">/items/</span><span class="sh">"</span><span class="p">)</span>
-  <span class="k">async</span> <span class="k">def</span> <span class="nf">read_items</span><span class="p">(</span><span class="n">commons</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nc">Depends</span><span class="p">(</span><span class="n">common_parameters</span><span class="p">)]):</span>
-      <span class="k">return</span> <span class="p">{</span><span class="sh">"</span><span class="s">message</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Items list</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">params</span><span class="sh">"</span><span class="p">:</span> <span class="n">commons</span><span class="p">}</span>
-
-  <span class="nd">@app.get</span><span class="p">(</span><span class="sh">"</span><span class="s">/users/</span><span class="sh">"</span><span class="p">)</span>
-  <span class="k">async</span> <span class="k">def</span> <span class="nf">read_users</span><span class="p">(</span><span class="n">commons</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nc">Depends</span><span class="p">(</span><span class="n">common_parameters</span><span class="p">)]):</span>
-      <span class="k">return</span> <span class="p">{</span><span class="sh">"</span><span class="s">message</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Users list</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">params</span><span class="sh">"</span><span class="p">:</span> <span class="n">commons</span><span class="p">}</span>
-</code></pre></div></div>
-
-<h3 id="리소스-관리를-위한-의존성-예시-코드">리소스 관리를 위한 의존성 예시 코드</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">Annotated</span>
-  <span class="kn">from</span> <span class="n">fastapi</span> <span class="kn">import</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">FastAPI</span>
-
-  <span class="n">app</span> <span class="o">=</span> <span class="nc">FastAPI</span><span class="p">()</span>
-
-  <span class="c1"># 데이터베이스 세션을 시뮬레이션하는 의존성
-</span>  <span class="k">async</span> <span class="k">def</span> <span class="nf">get_db_session</span><span class="p">():</span>
-      <span class="n">db</span> <span class="o">=</span> <span class="sh">"</span><span class="s">Database Connection Created</span><span class="sh">"</span>
-      <span class="k">try</span><span class="p">:</span>
-          <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">연결 생성</span><span class="sh">"</span><span class="p">)</span>
-          <span class="k">yield</span> <span class="n">db</span>  <span class="c1"># 엔드포인트 함수에 db 객체 전달
-</span>      <span class="k">finally</span><span class="p">:</span>
-          <span class="c1"># 엔드포인트 작업이 끝나면(성공/실패 상관없이) 실행됩니다.
-</span>          <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">연결 종료 및 정리 로직 실행</span><span class="sh">"</span><span class="p">)</span>
-
-  <span class="nd">@app.get</span><span class="p">(</span><span class="sh">"</span><span class="s">/db-task</span><span class="sh">"</span><span class="p">)</span>
-  <span class="k">async</span> <span class="k">def</span> <span class="nf">perform_db_task</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nc">Depends</span><span class="p">(</span><span class="n">get_db_session</span><span class="p">)]):</span>
-      <span class="k">return</span> <span class="p">{</span><span class="sh">"</span><span class="s">status</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">success</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">data</span><span class="sh">"</span><span class="p">:</span> <span class="n">db</span><span class="p">}</span>
-</code></pre></div></div>
-
-<h3 id="결론">결론</h3>
-<ul>
-  <li>FastAPI 의 의존성 부여는, NestJS나 Spring 에서 지향하듯 시스템에서 의존성을 관리해주는 형태는 아니다.</li>
-  <li>오히려 특정 함수가 있고, 찾아서 쓰라는 식의 Raw 한 접근에 가깝다.</li>
-  <li><strong>Request Lifecycle</strong>: 기본적으로 FastAPI는 <strong>하나의 HTTP 요청</strong> 안에서 같은 의존성이 여러 번 호출되면, 함수를 매번 실행하지 않고 <strong>처음 계산된 결과를 캐싱</strong>해서 돌려준다.(캐싱이 내장)
-    <ul>
-      <li><strong>재사용성</strong>: 예를 들어 <code class="language-plaintext highlighter-rouge">get_current_user</code>라는 의존성을 여러 함수가 참조해도, 실제 유저를 DB에서 찾는 로직은 한 요청당 딱 한 번만 실행된다.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h1 id="protostar-fastapi-ai-worker">Protostar FastAPI (AI Worker)</h1>
-
-<p><img src="https://img.shields.io/badge/Python-3.13+-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python" />
-<img src="https://img.shields.io/badge/FastAPI-0.122+-009688?style=for-the-badge&amp;logo=fastapi&amp;logoColor=white" alt="FastAPI" />
-<img src="https://img.shields.io/badge/Redis-Job_Queue-DC382D?style=for-the-badge&amp;logo=redis&amp;logoColor=white" alt="Redis" />
-<img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&amp;logo=docker&amp;logoColor=white" alt="Docker" /></p>
-
-<p><strong>Project Protostar</strong>의 두뇌 역할을 담당하는 AI Worker 서비스다. 
-비동기 작업 큐(Redis Queue)를 기반으로 고성능 AI 추론, RAG(Retrieval-Augmented Generation) 파이프라인, 그리고 데이터 요약 작업을 병렬로 처리하도록 구조화 되어있다.</p>
-
-<h2 id="-시스템-아키텍처-system-architecture">🏗 시스템 아키텍처 (System Architecture)</h2>
-
-<p>본 프로젝트는 서비스의 안정성과 확장성을 위해 <strong>멀티 워커(Multi-Worker) 구조</strong>를 채택하고 있다.</p>
-
-<p><img src="/assets/images/posts/2026-02/017.png" alt="" /></p>
-
-<h3 id="-핵심-구성-요소-core-components">🛠 핵심 구성 요소 (Core Components)</h3>
-
-<ol>
-  <li><strong>채팅 워커 (Chat Worker)</strong>:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">chat:job:queue</code>를 구독(Consume)하여 실시간 대화를 처리한다.</li>
-      <li>RAG를 통한 지식 검색 및 스트리밍 응답(Streaming Response)을 지원한다.</li>
-      <li>해당 워커를 통해 사용자의 질문에 대한 답변을 생성하고, 이를 사용자에게 스트리밍으로 전달한다.</li>
-    </ul>
-  </li>
-  <li><strong>지식 워커 (Knowledge Worker)</strong>:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">ai:job:queue</code>를 구독하여 문서 벡터화 작업을 수행한다.</li>
-      <li>MinIO에서 파일을 가져와 텍스트 추출 -&gt; 청킹(Chunking) -&gt; 임베딩 -&gt; DB 저장을 담당한다.</li>
-      <li>해당 워커를 통해 문서의 내용을 벡터화하여 저장하고, 이를 통해 RAG를 구현한다.</li>
-    </ul>
-  </li>
-  <li><strong>요약 워커 (Summary Worker)</strong>:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">chat:summary:queue</code>를 구독하여 대화 내용을 배경에서 요약한다.</li>
-      <li>다음 대화 시 컨텍스트(Context)를 효율적으로 관리할 수 있도록 돕는다.</li>
-      <li>해당 워커를 통해 세션 당 기억력을 확보하고, 장기기 기억 시의 토큰 소비량을 약 73% 까지 압축하는 결과를 만들었다.</li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h2 id="-프로젝트-구조-project-structure">📂 프로젝트 구조 (Project Structure)</h2>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  app/
-  ├── core/               # 핵심 비즈니스 로직
-  │   ├── ai.py           # LLM 인터페이스 및 스트리밍 처리
-  │   ├── worker.py       # 메인 채팅 워커 (Chat Worker)
-  │   ├── worker_knowledge.py # RAG 전처리 워커 (Knowledge Worker)
-  │   ├── worker_summary.py   # 대화 요약 워커 (Summary Worker)
-  │   ├── rag_service.py  # 벡터 검색 및 RAG 로직
-  │   ├── minio_client.py # MinIO 연동 클라이언트
-  │   └── database.py     # SQLAlchemy &amp; DB 설정
-  ├── prompts/            # 시스템 프롬프트 관리
-  ├── main.py             # FastAPI 진입점 및 인스턴스 관리
-  └── pyproject.toml      # 의존성 및 패키지 관리 (uv)
-</code></pre></div></div>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="FastAPI" /><summary type="html"><![CDATA[FastAPI 개념 정리 현대적, 성능이 뛰어난 웹 프레임워크 서버 RESTFul API 를 구축하는데 최적화, 3.14의 멀티코어 병렬 처리와 uv 같은 고속 툴 체인을 결합하여 백엔드 개발의 표준 방식으로 자리 잡게됨. 핵시 철학 및 특징 고성능: 웹엔진(Starlette), 데이터 검증(Pydantic) 빠른 개발 속도: 파이썬의 Type Hints를 활용해 코딩 시간을 획기적으로 줄임. 자동 문서화: 별도 작업 없이 Swagger UI 와 ReDoc을 통해 대화형 API 문서를 생성함. 데이터 검증 및 직렬화: JSON 데이터를 파이썬 객체로 자동 변환, 타입에러를 통한 안정성 확보]]></summary></entry></feed>
+</ol>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><summary type="html"><![CDATA[핵심 특징 5가지 물리적 / 논리적 망 분리 : 서비스 존과 매니징 존을 분리하였고, 이를 통한 운영 안정성을 확보함. 트래픽 제어를 위한 Nginx 레이어에서의 Traffic Dam : 토큰 버킷 알고리즘 기반의 트래픽 제어 Heavy Zone, Light Zone 으로 구분하여서 매크로성을 엄격히 막아야 하는 위치(Backend), 정적 리소스 로딩을 위한 일반 존(Frontend)로 구분하여 로딩속성과 백엔드 서비스 보호를 양립함. 투명한 IP 보존(L4, L7 Proxy Protocol) 두대의 서버, 한대의 공유기의 네트워크 환경에서 클라이언트의 원본 IP 를 추적하기 위함, 동시에 각 서버의 HTTPS 접속을 구현함으로서 서비스 서버와 메인터넌스 서버에 접속하는 루트를 분리. 이를 통한 서비스 서버의 문제가 발생하더라도, 이를 모니터링하는 서버의 접속은 문제 없도록 만들어냄 중앙집중형 관제 시스템 Prometheus 의 Pull 방식과 함께 Promtail을 통해 Loki 기반의 서버 어플리케이션들의 로그를 수집하도록 했음 통합 대시보드를 통해 서버들의 상태, 관리의 중앙 집중구조를 구현함. AI 서비스를 위한 최적화 데이터베이스 구현 pgvector 확장을 위하여 init.spl에서 확장기능을 활성화 시켜 벡터 DB 기능을 사용하였다. 별도의 벡터 DB 가 아닌, RDBMS 인프라 내에서 임베딩 벡터를 저장, 검색함으로써 관리 복잡도를 줄여줌]]></summary></entry></feed>
