@@ -1,4 +1,633 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2026-02-23T03:02:39+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Protostar review note - 09 - NestJS DB Layer (Prisma, PostgreSQL, pgvector, Redis)</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/23/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 09 - NestJS DB Layer (Prisma, PostgreSQL, pgvector, Redis)" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/23/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/23/00-protostar-review.html"><![CDATA[<h1 id="nestjs-db-layer-분석">NestJS DB Layer 분석</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2026-02-26T05:47:08+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Protostar review note - 10 - NestJS Auth Domain</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/26/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 10 - NestJS Auth Domain" /><published>2026-02-26T00:00:00+00:00</published><updated>2026-02-26T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/26/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/26/00-protostar-review.html"><![CDATA[<h1 id="nestjs-auth-도메인-분석">NestJS Auth 도메인 분석</h1>
+
+<blockquote>
+  <p>이 파일은 인증(Authentication) 전체를 담당하는 Auth 도메인을 다룬다.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>파일</th>
+        <th>역할</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">auth.controller.ts</code></td>
+        <td>signup / signin 엔드포인트 노출</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">auth.service.ts</code></td>
+        <td>회원가입·로그인 비즈니스 로직</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">auth.module.ts</code></td>
+        <td>JwtModule 비동기 설정, 모듈 조립</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">dto/signup.dto.ts</code></td>
+        <td>회원가입 요청 유효성 검증</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">dto/signin.dto.ts</code></td>
+        <td>로그인 요청 유효성 검증</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">dto/user.dto.ts</code></td>
+        <td>DB User → 응답 변환, password 제거</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">common/strategy/jwt.strategy.ts</code></td>
+        <td>Passport JWT 검증 전략</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">common/guards/jwt-auth.guard.ts</code></td>
+        <td>전역 JWT 인증 가드</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<hr />
+
+<h1 id="1-주요-개념">1. 주요 개념</h1>
+
+<h2 id="인증-vs-인가">인증 vs 인가</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>영어</th>
+      <th>이 프로젝트에서의 구현</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**인증** (Authentication)</td>
+      <td>"너 누구야?"</td>
+      <td>JWT 토큰 검증, bcrypt 비밀번호 비교</td>
+    </tr>
+    <tr>
+      <td>**인가** (Authorization)</td>
+      <td>"너 이거 해도 돼?"</td>
+      <td>Role enum (ADMIN / STARGAZER / PROTOSTAR) + roleKey</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>현재 코드에서 인가(Role 기반 접근 제어)는 회원가입 시 ADMIN 역할 부여에만 적용되어 있고, 엔드포인트별 Role 가드는 구현되어 있지 않다.</p>
+
+<h2 id="stateless-jwt">Stateless JWT</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// JwtStrategy.validate()</span>
+<span class="k">async</span> <span class="nf">validate</span><span class="p">(</span><span class="nx">payload</span><span class="p">:</span> <span class="nx">JwtPayload</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+  <span class="c1">// stateless: DB 조회 없이 토큰 payload만으로 유저 정보 반환</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">sub</span><span class="p">,</span> <span class="na">email</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span> <span class="na">role</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">role</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>토큰이 유효하면 DB를 거치지 않고 payload에서 바로 유저 정보를 꺼낸다. 장점은 빠른 인증(DB I/O 없음)이고, 단점은 토큰 발급 후 계정 정지·역할 변경 등이 즉시 반영되지 않는다는 점이다.</p>
+
+<h2 id="role-기반-접근-제어-rbac">Role 기반 접근 제어 (RBAC)</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Role</span> <span class="p">{</span>
+  <span class="nx">ADMIN</span>       <span class="c1">// 관리자 (roleKey 필요)</span>
+  <span class="nx">STARGAZER</span>   <span class="c1">// 일반 사용자 (기본값)</span>
+  <span class="nx">PROTOSTAR</span>   <span class="c1">// 프리미엄 사용자</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>ADMIN 회원가입 시 <code class="language-plaintext highlighter-rouge">roleKey</code>라는 비밀 키를 함께 제출해야 한다. 이는 관리자 계정 무단 생성을 막는 단순하지만 실용적인 방어 수단이다.</p>
+
+<h2 id="public-데코레이터"><code class="language-plaintext highlighter-rouge">@Public()</code> 데코레이터</h2>
+
+<p>Auth 엔드포인트는 로그인 전이므로 JWT 토큰이 없다. 전역 <code class="language-plaintext highlighter-rouge">JwtAuthGuard</code>를 우회하기 위해 <code class="language-plaintext highlighter-rouge">@Public()</code>을 붙인다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Public</span><span class="p">()</span>   <span class="c1">// JwtAuthGuard 전역 인증 우회</span>
+<span class="p">@</span><span class="nd">Post</span><span class="p">(</span><span class="dl">'</span><span class="s1">signup</span><span class="dl">'</span><span class="p">)</span>
+<span class="k">async</span> <span class="nf">signup</span><span class="p">(@</span><span class="nd">Body</span><span class="p">()</span> <span class="nx">dto</span><span class="p">:</span> <span class="nx">SignupDto</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="2-핵심-로직-흐름">2. 핵심 로직 흐름</h1>
+
+<h2 id="전체-auth-흐름">전체 Auth 흐름</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[회원가입]
+Client → POST /api/v1/auth/signup
+  │
+  ├─ ValidationPipe: SignupDto 검증
+  │    @IsEmail / @MinLength(8) / @IsEnum(Role) / @IsOptional
+  │
+  ├─ AuthService.signup()
+  │    ├─ prisma.user.findUnique({ email })  ← 중복 이메일 체크
+  │    ├─ role === ADMIN → roleKey 검증 (ConfigService.get('ROLE_KEY'))
+  │    ├─ bcrypt.hash(password, 10)          ← 비밀번호 해싱
+  │    └─ prisma.user.create(...)            ← DB 저장
+  │
+  └─ return new UserDto(user)               ← password @Exclude 응답
+
+[로그인]
+Client → POST /api/v1/auth/signin
+  │
+  ├─ ValidationPipe: SigninDto 검증
+  │
+  ├─ AuthService.signin()
+  │    ├─ prisma.user.findUnique({ email })  ← 유저 조회
+  │    ├─ bcrypt.compare(password, hash)     ← 비밀번호 검증
+  │    └─ jwtService.sign({ sub, email, role }) ← JWT 발급
+  │
+  └─ return { user: UserDto, accessToken }
+
+[이후 모든 요청]
+Client → Authorization: Bearer &lt;token&gt;
+  │
+  └─ JwtAuthGuard → JwtStrategy.validate(payload)
+       → request.user = { id, email, role }
+       → @ValidateUser() 로 꺼내서 사용
+</code></pre></div></div>
+
+<h2 id="authmodulets---jwtmodule-비동기-설정"><code class="language-plaintext highlighter-rouge">auth.module.ts</code> - JwtModule 비동기 설정</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Module</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">JwtModule</span><span class="p">.</span><span class="nf">registerAsync</span><span class="p">({</span>
+      <span class="na">imports</span><span class="p">:</span> <span class="p">[</span><span class="nx">ConfigModule</span><span class="p">],</span>
+      <span class="na">inject</span><span class="p">:</span> <span class="p">[</span><span class="nx">ConfigService</span><span class="p">],</span>
+      <span class="na">useFactory</span><span class="p">:</span> <span class="k">async </span><span class="p">(</span><span class="na">config</span><span class="p">:</span> <span class="nx">ConfigService</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">JwtModuleOptions</span><span class="o">&gt;</span> <span class="o">=&gt;</span> <span class="p">({</span>
+        <span class="na">secret</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">JWT_SECRET</span><span class="dl">'</span><span class="p">),</span>
+        <span class="na">signOptions</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">expiresIn</span><span class="p">:</span> <span class="nc">Number</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">JWT_EXPIRATION</span><span class="dl">'</span><span class="p">)),</span>
+        <span class="p">},</span>
+      <span class="p">}),</span>
+    <span class="p">}),</span>
+  <span class="p">],</span>
+  <span class="na">controllers</span><span class="p">:</span> <span class="p">[</span><span class="nx">AuthController</span><span class="p">],</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span><span class="nx">AuthService</span><span class="p">,</span> <span class="nx">JwtStrategy</span><span class="p">],</span>
+  <span class="na">exports</span><span class="p">:</span> <span class="p">[</span><span class="nx">AuthService</span><span class="p">,</span> <span class="nx">JwtModule</span><span class="p">],</span>   <span class="c1">// JwtModule export → 다른 모듈에서 JwtService 사용 가능</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nc">AuthModule</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<h2 id="signupdto-검증-흐름">SignupDto 검증 흐름</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nc">SignupDto</span> <span class="p">{</span>
+  <span class="p">@</span><span class="nd">IsEmail</span><span class="p">()</span>               <span class="c1">// 이메일 형식 검증 (RFC 5322)</span>
+  <span class="nx">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+
+  <span class="p">@</span><span class="nd">IsString</span><span class="p">()</span>
+  <span class="p">@</span><span class="nd">MinLength</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>            <span class="c1">// 최소 8자 (brute force 최소 방어)</span>
+  <span class="nx">password</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+
+  <span class="p">@</span><span class="nd">IsOptional</span><span class="p">()</span>            <span class="c1">// 없으면 DB default(STARGAZER) 적용</span>
+  <span class="p">@</span><span class="nd">IsEnum</span><span class="p">(</span><span class="nx">Role</span><span class="p">)</span>            <span class="c1">// 'ADMIN' | 'STARGAZER' | 'PROTOSTAR' 외 값 차단</span>
+  <span class="nx">role</span><span class="p">?:</span> <span class="nx">Role</span><span class="p">;</span>
+
+  <span class="p">@</span><span class="nd">IsOptional</span><span class="p">()</span>
+  <span class="p">@</span><span class="nd">IsString</span><span class="p">()</span>
+  <span class="nx">roleKey</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>        <span class="c1">// ADMIN 역할 신청 시 비밀 키</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">ValidationPipe({ whitelist: true })</code>와 함께 동작하므로, 위 필드 외의 값은 자동 제거된다.</p>
+
+<h2 id="admin-rolekey-검증-흐름">ADMIN roleKey 검증 흐름</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="nf">signup</span><span class="p">(</span><span class="nx">dto</span><span class="p">:</span> <span class="nx">SignupDto</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">role</span> <span class="o">===</span> <span class="nx">Role</span><span class="p">.</span><span class="nx">ADMIN</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">roleKey</span> <span class="o">!==</span> <span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="kd">get</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">ROLE_KEY</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nf">warn</span><span class="p">(</span><span class="s2">`Failed admin signup attempt for </span><span class="p">${</span><span class="nx">email</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">ForbiddenException</span><span class="p">(</span><span class="dl">'</span><span class="s1">Invalid Admin role key</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>ADMIN 이외 역할(STARGAZER, PROTOSTAR)은 roleKey 없이 가입 가능</li>
+  <li>키가 틀릴 경우 <code class="language-plaintext highlighter-rouge">ForbiddenException(403)</code> 반환</li>
+  <li>시도 자체를 <code class="language-plaintext highlighter-rouge">logger.warn</code>으로 기록 → Loki로 수집되어 이상 접근 감지 가능</li>
+</ul>
+
+<h2 id="userdto---응답에서-password-제거">UserDto - 응답에서 password 제거</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nc">UserDto</span> <span class="p">{</span>
+  <span class="p">@</span><span class="nd">Expose</span><span class="p">()</span> <span class="nx">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="p">@</span><span class="nd">Expose</span><span class="p">()</span> <span class="nx">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="p">@</span><span class="nd">Expose</span><span class="p">()</span> <span class="nx">name</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="p">@</span><span class="nd">Exclude</span><span class="p">()</span> <span class="nx">password</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>   <span class="c1">// ClassSerializerInterceptor가 직렬화 시 제거</span>
+  <span class="p">@</span><span class="nd">Expose</span><span class="p">()</span> <span class="nx">role</span><span class="p">:</span> <span class="nx">Role</span><span class="p">;</span>
+  <span class="p">@</span><span class="nd">Expose</span><span class="p">()</span> <span class="nx">createdAt</span><span class="p">:</span> <span class="nb">Date</span><span class="p">;</span>
+
+  <span class="nf">constructor</span><span class="p">(</span><span class="nx">dto</span><span class="p">:</span> <span class="nx">User</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">dto</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">email</span> <span class="o">=</span> <span class="nx">dto</span><span class="p">.</span><span class="nx">email</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="nx">dto</span><span class="p">.</span><span class="nx">password</span><span class="p">;</span>  <span class="c1">// 할당은 하되, 직렬화 시 자동 제거</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">dto</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">role</span> <span class="o">=</span> <span class="nx">dto</span><span class="p">.</span><span class="nx">role</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">createdAt</span> <span class="o">=</span> <span class="nx">dto</span><span class="p">.</span><span class="nx">createdAt</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!note] 왜 할당하고 @Exclude 하는가
+TypeScript strict 모드에서 <code class="language-plaintext highlighter-rouge">password</code>를 초기화하지 않으면 컴파일 에러가 발생한다.
+생성자에서 할당은 하되, <code class="language-plaintext highlighter-rouge">ClassSerializerInterceptor</code>가 JSON 직렬화 시 <code class="language-plaintext highlighter-rouge">@Exclude()</code> 필드를 제거한다.
+응답 JSON에는 절대 포함되지 않는다.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="3-구조적-취약점--개선-방향">3. 구조적 취약점 / 개선 방향</h1>
+
+<h2 id="authcontroller-logger가-선언만-되고-사용되지-않음">[AuthController] Logger가 선언만 되고 사용되지 않음</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nc">AuthController</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="k">readonly</span> <span class="nx">logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Logger</span><span class="p">(</span><span class="nx">AuthController</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+  <span class="c1">// 실제 사용 없음</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>컨트롤러에서 로그를 남기지 않는다. 회원가입·로그인 시도(성공/실패 모두)는 보안 감사(Audit Log) 관점에서 기록이 필요하다. 현재는 <code class="language-plaintext highlighter-rouge">AuthService</code>에서 ADMIN 실패만 warn으로 남기고 있다.</p>
+
+<h2 id="signupdto-비밀번호-복잡도-검증-없음">[SignupDto] 비밀번호 복잡도 검증 없음</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">MinLength</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="nx">password</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="c1">// MaxLength, 특수문자, 대소문자 조합 등 미검증</span>
+</code></pre></div></div>
+
+<p>최소 길이(8자)만 검증한다. 프로덕션에서는 <code class="language-plaintext highlighter-rouge">@Matches(/정규식/)</code> 또는 별도 검증 로직으로 복잡도를 강제해야 한다.</p>
+
+<p><strong>개선 예시:</strong></p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Matches</span><span class="p">(</span><span class="sr">/^</span><span class="se">(?=</span><span class="sr">.*</span><span class="se">[</span><span class="sr">a-z</span><span class="se">])(?=</span><span class="sr">.*</span><span class="se">[</span><span class="sr">A-Z</span><span class="se">])(?=</span><span class="sr">.*</span><span class="se">\d)(?=</span><span class="sr">.*</span><span class="se">[</span><span class="sr">@$!%*?&amp;</span><span class="se">])</span><span class="sr">.</span><span class="se">{8,}</span><span class="sr">$/</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">비밀번호는 대소문자, 숫자, 특수문자를 포함해야 합니다</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="nx">password</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="authservice-admin-rolekey-평문-비교">[AuthService] ADMIN roleKey 평문 비교</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span><span class="p">(</span><span class="nx">roleKey</span> <span class="o">!==</span> <span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="kd">get</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">ROLE_KEY</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>환경변수의 roleKey를 평문으로 직접 비교한다. 타이밍 공격(Timing Attack) 가능성이 이론적으로 존재하지만, 이 키는 비밀번호가 아니라 정적 관리자 키이므로 실용적 위험도는 낮다. <code class="language-plaintext highlighter-rouge">crypto.timingSafeEqual()</code>로 개선 가능하다.</p>
+
+<h2 id="auth-전체-토큰-갱신refresh-token-미구현">[Auth 전체] 토큰 갱신(Refresh Token) 미구현</h2>
+
+<p>현재는 <code class="language-plaintext highlighter-rouge">accessToken</code> 하나만 발급한다. 만료 시 재로그인이 필요하다. 프로덕션 수준에서는 단기 <code class="language-plaintext highlighter-rouge">accessToken</code> + 장기 <code class="language-plaintext highlighter-rouge">refreshToken</code> 구조가 표준이다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>현재: accessToken (만료 시 재로그인)
+
+개선:
+  accessToken  (단기, 15분~1시간)
+  refreshToken (장기, 7~30일, DB/Redis에 저장)
+  → /auth/refresh 엔드포인트로 갱신
+</code></pre></div></div>
+
+<h2 id="auth-전체-계정-잠금--로그인-시도-제한-없음">[Auth 전체] 계정 잠금 / 로그인 시도 제한 없음</h2>
+
+<p><code class="language-plaintext highlighter-rouge">bcrypt.compare</code>가 실패해도 별다른 제한 없이 무제한 시도 가능하다. <code class="language-plaintext highlighter-rouge">ThrottlerGuard</code>가 전역으로 초당 2000 req를 허용하고 있으므로 Credential Stuffing 공격에 취약하다.</p>
+
+<p><strong>개선 방향</strong>: Redis에 <code class="language-plaintext highlighter-rouge">login:fail:{email}</code> 카운터를 두고, N회 초과 시 계정 임시 잠금.</p>
+
+<h2 id="jwtmodule-expiresin-타입-변환-주의">[JwtModule] expiresIn 타입 변환 주의</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">expiresIn</span><span class="p">:</span> <span class="nc">Number</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">JWT_EXPIRATION</span><span class="dl">'</span><span class="p">)),</span>
+</code></pre></div></div>
+
+<p>환경변수는 문자열로 읽히므로 <code class="language-plaintext highlighter-rouge">Number()</code> 변환이 필요하다. 환경변수가 숫자가 아닌 문자열(<code class="language-plaintext highlighter-rouge">'7d'</code> 같은 값)이 들어오면 <code class="language-plaintext highlighter-rouge">NaN</code>이 되어 토큰이 즉시 만료된다.</p>
+
+<hr />
+
+<h1 id="4-핵심-메서드-및-라이브러리-함수-설명">4. 핵심 메서드 및 라이브러리 함수 설명</h1>
+
+<h2 id="bcrypthashpassword-saltrounds"><code class="language-plaintext highlighter-rouge">bcrypt.hash(password, saltRounds)</code></h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">hashedPassword</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bcrypt</span><span class="p">.</span><span class="nf">hash</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="c1">// saltRounds: 10 → 2^10 = 1024번 반복 해싱</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">saltRounds</code>가 높을수록 안전하지만 연산 비용 증가</li>
+  <li>기본값 10은 일반 서버에서 약 100ms 소요 → 브루트포스 1초에 10회 시도 제한 효과</li>
+  <li><strong>랜덤 salt 자동 생성·포함</strong>: 같은 비밀번호도 매번 다른 해시 생성 → Rainbow Table 공격 방지</li>
+</ul>
+
+<h2 id="bcryptcompareplaintext-hash"><code class="language-plaintext highlighter-rouge">bcrypt.compare(plaintext, hash)</code></h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">bcrypt</span><span class="p">.</span><span class="nf">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span>  <span class="c1">// boolean</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>상수 시간(Constant-time) 비교</strong>: 문자열 길이나 내용에 무관하게 항상 동일한 시간 소요</li>
+  <li>일반 <code class="language-plaintext highlighter-rouge">===</code> 비교는 첫 번째 다른 문자에서 즉시 반환 → 타이밍 공격으로 해시 추론 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">bcrypt.compare</code>는 이를 방지하도록 설계됨</li>
+</ul>
+
+<h2 id="jwtservicesignpayload"><code class="language-plaintext highlighter-rouge">jwtService.sign(payload)</code></h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">jwtService</span><span class="p">.</span><span class="nf">sign</span><span class="p">({</span>
+  <span class="na">sub</span><span class="p">:</span> <span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>     <span class="c1">// JWT 표준 클레임: subject (유저 ID)</span>
+  <span class="na">email</span><span class="p">:</span> <span class="nx">user</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span>
+  <span class="na">role</span><span class="p">:</span> <span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sub</code>: JWT 표준에서 주체(subject) 식별자. 유저 ID를 관례상 여기에 넣는다.</li>
+  <li>서명에는 <code class="language-plaintext highlighter-rouge">JWT_SECRET</code> 환경변수 사용 (HS256 알고리즘)</li>
+  <li>검증 시 <code class="language-plaintext highlighter-rouge">JwtStrategy</code>가 자동으로 서명 유효성 + 만료 여부를 확인</li>
+</ul>
+
+<h2 id="passportstrategystrategy---jwtstrategy"><code class="language-plaintext highlighter-rouge">PassportStrategy(Strategy)</code> - JwtStrategy</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nc">JwtStrategy</span> <span class="kd">extends</span> <span class="nc">PassportStrategy</span><span class="p">(</span><span class="nx">Strategy</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">constructor</span><span class="p">(</span><span class="nx">config</span><span class="p">:</span> <span class="nx">ConfigService</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">({</span>
+      <span class="na">jwtFromRequest</span><span class="p">:</span> <span class="nx">ExtractJwt</span><span class="p">.</span><span class="nf">fromAuthHeaderAsBearerToken</span><span class="p">(),</span>
+      <span class="c1">// Authorization: Bearer &lt;token&gt; 헤더에서 추출</span>
+      <span class="na">ignoreExpiration</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>  <span class="c1">// 만료된 토큰 거부</span>
+      <span class="nx">secretOrKey</span><span class="p">,</span>              <span class="c1">// 서명 검증 키</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nf">validate</span><span class="p">(</span><span class="nx">payload</span><span class="p">:</span> <span class="nx">JwtPayload</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">sub</span><span class="p">,</span> <span class="na">email</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span> <span class="na">role</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">role</span> <span class="p">};</span>
+    <span class="c1">// 반환값 → request.user 에 자동 세팅</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">validate()</code>의 반환값이 <code class="language-plaintext highlighter-rouge">request.user</code>가 된다. 이후 <code class="language-plaintext highlighter-rouge">@ValidateUser()</code> 커스텀 데코레이터로 꺼내 사용한다.</p>
+
+<h2 id="class-validator-데코레이터"><code class="language-plaintext highlighter-rouge">class-validator</code> 데코레이터</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>데코레이터</th>
+      <th>검증 내용</th>
+      <th>사용처</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@IsEmail()</code></td>
+      <td>RFC 5322 이메일 형식</td>
+      <td>email 필드</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@IsString()</code></td>
+      <td>문자열 타입</td>
+      <td>password, roleKey</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@MinLength(8)</code></td>
+      <td>최소 8자</td>
+      <td>password</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@IsEnum(Role)</code></td>
+      <td>허용된 enum 값만 통과</td>
+      <td>role</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@IsOptional()</code></td>
+      <td>필드 없어도 허용</td>
+      <td>role, roleKey</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">ValidationPipe</code>가 이 데코레이터들을 읽어 검증 실패 시 <code class="language-plaintext highlighter-rouge">400 BadRequestException</code>을 자동 반환한다.</p>
+
+<hr />
+
+<h1 id="5-대체-가능한-라이브러리-및-트레이드오프">5. 대체 가능한 라이브러리 및 트레이드오프</h1>
+
+<h2 id="passport-jwt-vs-직접-구현">Passport JWT vs 직접 구현</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방법</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**passport-jwt** (현재)</td>
+      <td>NestJS 공식 통합, 전략 패턴으로 OAuth 등 확장 용이</td>
+      <td>추상화 레이어 많아 흐름 파악 어려움</td>
+    </tr>
+    <tr>
+      <td>**jose**</td>
+      <td>웹 표준(RFC) 기반, 엣지 환경 지원, 경량</td>
+      <td>Passport 생태계 없음, 직접 미들웨어 구현 필요</td>
+    </tr>
+    <tr>
+      <td>**jsonwebtoken**</td>
+      <td>간단하고 투명한 구현</td>
+      <td>단일 JWT만 지원, 전략 확장 없음</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>OAuth2, Google/GitHub 소셜 로그인 등을 나중에 추가할 계획이라면 Passport가 유리하다. JWT만 쓸 것이라면 <code class="language-plaintext highlighter-rouge">jose</code>가 더 현대적인 선택이다.</p>
+</blockquote>
+
+<h2 id="bcrypt-vs-argon2">bcrypt vs Argon2</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>라이브러리</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**bcrypt** (현재)</td>
+      <td>가장 검증된 방식, 광범위한 채택</td>
+      <td>GPU 병렬 공격에 상대적으로 취약</td>
+    </tr>
+    <tr>
+      <td>**Argon2id**</td>
+      <td>OWASP 1순위 권장, 메모리 하드 함수 (GPU 저항)</td>
+      <td>상대적으로 낮은 범용 채택률</td>
+    </tr>
+    <tr>
+      <td>**scrypt**</td>
+      <td>Node.js 내장 지원</td>
+      <td>파라미터 설정 복잡</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>OWASP Password Storage Cheat Sheet(2024)는 <strong>Argon2id</strong>를 1순위로 권장한다. 신규 프로젝트에서는 <code class="language-plaintext highlighter-rouge">argon2</code> 패키지 도입이 더 권장된다.</p>
+</blockquote>
+
+<h2 id="토큰-저장-방식">토큰 저장 방식</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방식</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**응답 body → 클라이언트 저장** (현재)</td>
+      <td>구현 단순</td>
+      <td>XSS 공격으로 localStorage 탈취 위험</td>
+    </tr>
+    <tr>
+      <td>**HttpOnly Cookie**</td>
+      <td>XSS 방어 (JS 접근 불가)</td>
+      <td>CSRF 공격 가능성, SameSite 설정 필요</td>
+    </tr>
+    <tr>
+      <td>**Refresh Token Rotation**</td>
+      <td>토큰 탈취 감지 가능</td>
+      <td>구현 복잡도 증가</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h1 id="6-개발자로서-알아야-할-영역">6. 개발자로서 알아야 할 영역</h1>
+
+<h2 id="a-jwt-토큰-구조-이해">A. JWT 토큰 구조 이해</h2>
+
+<p>JWT는 <code class="language-plaintext highlighter-rouge">Header.Payload.Signature</code> 세 부분으로 구성된다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eyJhbGciOiJIUzI1NiJ9          ← Header (알고리즘)
+.eyJzdWIiOiJ1c2VyLWlkIn0      ← Payload (데이터, Base64, 평문!)
+.SflKxwRJSMeKKF2QT4fwpMeJf36  ← Signature (위변조 방지)
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!warning] Payload는 암호화가 아니다
+JWT Payload는 <strong>Base64 인코딩</strong>일 뿐, 누구나 디코딩할 수 있다.
+<code class="language-plaintext highlighter-rouge">email</code>, <code class="language-plaintext highlighter-rouge">role</code> 같은 민감하지 않은 정보만 담아야 한다.
+비밀번호, 개인정보 등을 Payload에 넣으면 안 된다.</p>
+</blockquote>
+
+<p>이 프로젝트의 Payload: <code class="language-plaintext highlighter-rouge">{ sub: userId, email, role }</code> → 적절한 수준.</p>
+
+<h2 id="b-stateless-jwt의-한계와-대응">B. Stateless JWT의 한계와 대응</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제 시나리오:
+1. 유저 A가 로그인 → accessToken 발급 (7일 유효)
+2. 관리자가 유저 A 계정 정지
+3. 유저 A는 7일 동안 여전히 API 사용 가능
+   → DB는 정지됐지만 토큰은 유효하므로 JwtStrategy가 DB 조회 없이 통과
+</code></pre></div></div>
+
+<p>해결 방법:</p>
+<ol>
+  <li><strong>토큰 만료 시간 단축</strong> (15분) + Refresh Token 구조</li>
+  <li><strong>Redis 블랙리스트</strong>: 로그아웃/정지된 토큰의 <code class="language-plaintext highlighter-rouge">jti</code>(JWT ID)를 Redis에 저장, 검증 시 조회</li>
+  <li><strong>DB 조회 방식으로 전환</strong>: validate()에서 DB 조회 (Stateless 장점 포기)</li>
+</ol>
+
+<h2 id="c-isenumrole--prisma-enum-연동">C. <code class="language-plaintext highlighter-rouge">@IsEnum(Role)</code> + Prisma enum 연동</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// DTO</span>
+<span class="p">@</span><span class="nd">IsEnum</span><span class="p">(</span><span class="nx">Role</span><span class="p">)</span>  <span class="c1">// Prisma가 생성한 Role enum 재사용</span>
+<span class="nx">role</span><span class="p">?:</span> <span class="nx">Role</span><span class="p">;</span>
+
+<span class="c1">// Prisma schema</span>
+<span class="kr">enum</span> <span class="nx">Role</span> <span class="p">{</span>
+  <span class="nx">ADMIN</span>
+  <span class="nx">STARGAZER</span>
+  <span class="nx">PROTOSTAR</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Prisma가 생성한 <code class="language-plaintext highlighter-rouge">Role</code> enum을 DTO에서 그대로 사용한다. 스키마가 단일 출처(Single Source of Truth)가 되어 enum 값이 추가되면 DTO까지 자동으로 반영된다.</p>
+
+<h2 id="d-validationpipe와-dto의-관계">D. ValidationPipe와 DTO의 관계</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Request Body (JSON)
+      │
+      ▼
+ValidationPipe
+  1. JSON → SignupDto 클래스 인스턴스로 변환 (transform: true)
+  2. 각 @Is* 데코레이터 검증 실행
+  3. @IsOptional() 필드는 없어도 통과
+  4. whitelist: true → DTO에 없는 필드 제거
+  5. 검증 실패 → 400 BadRequestException 자동 반환
+      │
+      ▼
+Controller (@Body() dto: SignupDto)
+</code></pre></div></div>
+
+<h2 id="e-모듈-exports-설계">E. 모듈 exports 설계</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// auth.module.ts</span>
+<span class="nx">exports</span><span class="p">:</span> <span class="p">[</span><span class="nx">AuthService</span><span class="p">,</span> <span class="nx">JwtModule</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">JwtModule</code>을 export하는 이유: 다른 모듈에서 <code class="language-plaintext highlighter-rouge">JwtService</code>를 주입받아 토큰 발급·검증이 필요할 때를 대비한 것이다. 현재 코드에서 실제로 사용되는 모듈은 없지만, 확장성을 위한 설계이다.</p>
+
+<h2 id="f-로그인-실패-응답-보안-원칙">F. 로그인 실패 응답 보안 원칙</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 현재 코드</span>
+<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">user</span> <span class="o">||</span> <span class="o">!</span><span class="p">(</span><span class="k">await</span> <span class="nx">bcrypt</span><span class="p">.</span><span class="nf">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="p">)))</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nc">UnauthorizedException</span><span class="p">(</span><span class="dl">'</span><span class="s1">Invalid credentials</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이메일이 없는 경우와 비밀번호가 틀린 경우를 <strong>동일한 메시지</strong>로 응답한다. 이는 의도적인 설계다.</p>
+
+<p>“이메일이 존재하지 않습니다” vs “비밀번호가 틀립니다”로 구분하면 공격자가 이메일 존재 여부를 확인하는 <strong>계정 열거 공격(Account Enumeration)</strong>이 가능해진다. 항상 동일한 에러 메시지를 반환해야 한다.</p>
+
+<hr />
+
+<h1 id="핵심-요약-카드">핵심 요약 카드</h1>
+
+<blockquote>
+  <p>[!abstract] Auth 도메인 흐름 한 줄 요약</p>
+  <ul>
+    <li><strong>signup</strong>: DTO 검증 → 중복 체크 → bcrypt 해싱 → DB 저장 → UserDto 반환</li>
+    <li><strong>signin</strong>: DTO 검증 → 유저 조회 → bcrypt 비교 → JWT 발급 → UserDto + token 반환</li>
+    <li><strong>이후 요청</strong>: Bearer token → JwtStrategy.validate() → request.user → @ValidateUser()</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>[!abstract] 보안 설계 포인트</p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">@Public()</code> : Auth 엔드포인트만 전역 JWT 가드 우회</li>
+    <li>ADMIN roleKey : 관리자 계정 무단 생성 방지</li>
+    <li>bcrypt.compare : 상수 시간 비교로 타이밍 공격 방지</li>
+    <li>동일 에러 메시지 : 계정 열거 공격 방지</li>
+    <li>@Exclude() password : 응답에서 비밀번호 자동 제거</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>[!question] 설명할 수 있어야 하는 것</p>
+  <ol>
+    <li>JWT Payload가 암호화가 아닌 이유와 담아도 되는 정보의 기준</li>
+    <li>Stateless JWT의 한계 - 계정 정지가 즉시 반영되지 않는 이유</li>
+    <li><code class="language-plaintext highlighter-rouge">bcrypt.compare</code>가 <code class="language-plaintext highlighter-rouge">===</code> 비교보다 안전한 이유</li>
+    <li>로그인 실패 시 이메일/비밀번호 구분 없이 동일 메시지를 주는 이유</li>
+    <li><code class="language-plaintext highlighter-rouge">@IsOptional()</code> + <code class="language-plaintext highlighter-rouge">@IsEnum(Role)</code> 조합이 어떻게 동작하는가</li>
+    <li><code class="language-plaintext highlighter-rouge">JwtModule</code>을 exports에 포함한 이유</li>
+  </ol>
+</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="NestJS" /><category term="AI" /><summary type="html"><![CDATA[NestJS Auth 도메인 분석]]></summary></entry><entry><title type="html">Protostar review note - 09 - NestJS DB Layer (Prisma, PostgreSQL, pgvector, Redis)</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/23/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 09 - NestJS DB Layer (Prisma, PostgreSQL, pgvector, Redis)" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/23/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/23/00-protostar-review.html"><![CDATA[<h1 id="nestjs-db-layer-분석">NestJS DB Layer 분석</h1>
 <h2 id="prisma--postgresqlpgvector--redis">Prisma + PostgreSQL(pgvector) + Redis</h2>
 
 <blockquote>
@@ -4066,230 +4695,4 @@ NestJS는 Lifecycle에 따라 <strong>Guard → Interceptor → Pipe → Control
 
 <p>ProtoStar는 더 이상 불완전연소된 프로젝트가 아니라, 이제 <strong>내가 엔터프라이즈급 인프라를 구축할 수 있다는 것을 증명하는 살아있는 증거</strong>가 되도록 만들고 싶다. 또한 AI가 개인이 할 수 있는 영역을 극대화 시켜줄 것이니 Nexus 는 그 토대가 될 것이다. 내가 만들 다양한 어플리케이션들의 토대가 되어줄 것이다. 십년의 대장정의 모험이 있다고 하면, 그 기반 중에 기반이 되리라 생각한다.</p>
 
-<p>경험이 현실이 되고, 현실이 직무가 된다. 단순히 개발자라고 불리고 싶진 않다. ‘전문가’가 되어 회사의 시스템들의 운용을 정말 ‘현실적으로’ 해내길 원한다. 그 초석을 만들고 싶다.</p>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="Backend" /><category term="개발" /><category term="Nexus" /><category term="K8s" /><summary type="html"><![CDATA[Project Nexus: Docker를 넘어, 진짜 인프라로]]></summary></entry><entry><title type="html">Protostar review note - 00 - infrastructure</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/10/01-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 00 - infrastructure" /><published>2026-02-10T00:00:00+00:00</published><updated>2026-02-10T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/10/01-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/10/01-protostar-review.html"><![CDATA[<h2 id="핵심-특징-5가지">핵심 특징 5가지</h2>
-<ol>
-  <li>물리적 / 논리적 망 분리 : 서비스 존과 매니징 존을 분리하였고, 이를 통한 운영 안정성을 확보함.</li>
-  <li>트래픽 제어를 위한 Nginx 레이어에서의 Traffic Dam :
-    <ul>
-      <li>토큰 버킷 알고리즘 기반의 트래픽 제어
-        <ul>
-          <li>Heavy Zone, Light Zone 으로 구분하여서 매크로성을 엄격히 막아야 하는 위치(Backend), 정적 리소스 로딩을 위한 일반 존(Frontend)로 구분하여 로딩속성과 백엔드 서비스 보호를 양립함.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>투명한 IP 보존(L4, L7 Proxy Protocol)
-    <ul>
-      <li>두대의 서버, 한대의 공유기의 네트워크 환경에서 클라이언트의 원본 IP 를 추적하기 위함, 동시에 각 서버의 HTTPS 접속을 구현함으로서 서비스 서버와 메인터넌스 서버에 접속하는 루트를 분리. 이를 통한 서비스 서버의 문제가 발생하더라도, 이를 모니터링하는 서버의 접속은 문제 없도록 만들어냄</li>
-    </ul>
-  </li>
-  <li>중앙집중형 관제 시스템
-    <ul>
-      <li>Prometheus 의 Pull 방식과 함께 Promtail을 통해 Loki 기반의 서버 어플리케이션들의 로그를 수집하도록 했음</li>
-      <li>통합 대시보드를 통해 서버들의 상태, 관리의 중앙 집중구조를 구현함.</li>
-    </ul>
-  </li>
-  <li>AI 서비스를 위한 최적화 데이터베이스 구현
-    <ul>
-      <li>pgvector 확장을 위하여 init.spl에서 확장기능을 활성화 시켜 벡터 DB 기능을 사용하였다. 별도의 벡터 DB 가 아닌, RDBMS 인프라 내에서 임베딩 벡터를 저장, 검색함으로써 관리 복잡도를 줄여줌</li>
-    </ul>
-  </li>
-</ol>
-
-<h2 id="구체적인-구성요소-해석">구체적인 구성요소 해석</h2>
-<h3 id="docker">Docker</h3>
-<h4 id="include">include</h4>
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># protostar-server-configs/docker-compose.yml</span>
-<span class="na">include</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">path</span><span class="pi">:</span> <span class="s">./main-server/docker-compose.yml</span>
-    <span class="na">env_file</span><span class="pi">:</span> <span class="s">./main-server/.env</span>
-  <span class="pi">-</span> <span class="na">path</span><span class="pi">:</span> <span class="s">./sub-server/docker-compose.yml</span>
-    <span class="na">env_file</span><span class="pi">:</span> <span class="s">./sub-server/.env</span>
-</code></pre></div></div>
-
-<pre><code class="language-plain">COMPOSE_PROFILES="main"
-</code></pre>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># protostar-server-configs/main-server/docker-compose.yml</span>
-<span class="na">services</span><span class="pi">:</span>
-  <span class="na">nginx-main</span><span class="pi">:</span>
-    <span class="na">profiles</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">main"</span><span class="pi">]</span> 
-    <span class="na">container_name</span><span class="pi">:</span> <span class="s">${DOMAIN:-main}-nginx</span>
-    <span class="na">image</span><span class="pi">:</span> <span class="s">nginx:alpine</span>
-    <span class="na">ulimits</span><span class="pi">:</span>
-      <span class="na">nofile</span><span class="pi">:</span>
-        <span class="na">soft</span><span class="pi">:</span> <span class="m">65535</span>
-        <span class="na">hard</span><span class="pi">:</span> <span class="m">65535</span>
-    <span class="na">ports</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">80:80"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">443:443"</span>
-    <span class="na">volumes</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">./nginx/nginx_target.conf:/etc/nginx/nginx.conf</span>
-        <span class="s">.</span>
-        <span class="s">.</span>
-        <span class="s">.</span>
-        <span class="s">(생략)</span>
-</code></pre></div></div>
-<ul>
-  <li>기존의 모놀리식 설정 파일을 팀별/ 기능별  쪼개서 관리하기 위한 목적의 명령어</li>
-  <li>기존에는 <code class="language-plaintext highlighter-rouge">-f docker-compose.yml</code>  이렇게 별도로 파일을 지정하여 설정을 실행함. 하지만 <code class="language-plaintext highlighter-rouge">include</code>는 파일 내부에 선언적으로 설정함. <code class="language-plaintext highlighter-rouge">.env</code> 등의 환경 설정을 통해, 키워드를 설정하고, 이를 통해  세부 docker-compose.yml 파일에서 <code class="language-plaintext highlighter-rouge">profiles</code> 키워드를 찾아서 그 내용을 실행하게 만듬.</li>
-  <li>왜 <code class="language-plaintext highlighter-rouge">include</code> 는 강력한가?
-    <ol>
-      <li>상대 경로 독립성 보장 :
-        <ul>
-          <li>기존 <code class="language-plaintext highlighter-rouge">-f</code> 옵션 방식은 루트 디렉토리 기준 상대경로가 꼬일 수 있음.</li>
-          <li>해당 명령을 통해선 프로필로 직접 해석하기 때문에, 루트 디렉토리 기준 꼬이지 않고 동작하며, <code class="language-plaintext highlighter-rouge">main-server</code> 라는 부분만 옯겨도 수정 없이 바로 사용이 가능하다.</li>
-        </ul>
-      </li>
-      <li>환경 변수 스코프 분리 :
-        <ul>
-          <li>만약 모놀리식에 하나의 <code class="language-plaintext highlighter-rouge">.env</code> 형태라고 치자, 물리적으로 나뉜 설정이 혼재되고 관리하기 어려워진다.</li>
-          <li>이에비하면 <code class="language-plaintext highlighter-rouge">main-server</code>, <code class="language-plaintext highlighter-rouge">sub-server</code>는 각각 <code class="language-plaintext highlighter-rouge">.env</code> 파일을 지정할수 있고, 관리 면에서 물리적인 분리로, 변수 이름 충돌 등의 문제가 발생하지 않게 됨.</li>
-        </ul>
-      </li>
-      <li>단일 진입점
-        <ul>
-          <li>물리적으로 설정이 완벽하게 분리되지만, 동시에 하나의 진입점에서 명령어를 친다는 점은 관리가 매우 편리함.</li>
-          <li>개발자는 메인 <code class="language-plaintext highlighter-rouge">.env</code>의 키워드만 바꿔줌으로써 전체 아키텍쳐 안에서 필요한 환경만 한번에 불러올 수 있음.
-            <h4 id="restart-정책---always-vs-unless-stopped">restart 정책  : <code class="language-plaintext highlighter-rouge">always</code> vs <code class="language-plaintext highlighter-rouge">unless-stopped</code></h4>
-            <h5 id="1-restart-always-좀비-모드">1. <code class="language-plaintext highlighter-rouge">restart: always</code> (좀비 모드)</h5>
-          </li>
-        </ul>
-      </li>
-    </ol>
-  </li>
-  <li><strong>동작:</strong> 컨테이너가 멈추면 무조건 다시 살려냄.</li>
-  <li><strong>수동 종료 시:</strong> <code class="language-plaintext highlighter-rouge">docker stop</code>으로 멈춰도, 도커 데몬이 재시작되거나(예: 서버 재부팅) 하면 <strong>다시 살아난다.</strong></li>
-  <li><strong>특징:</strong> 개발자가 “이제 그만 죽어 있어”라고 명령해도, 컴퓨터를 껐다 켜면 “짜잔” 하고 다시 살아난다. 무조건 켜져 있어야 하는 핵심 데몬에 적합하다.</li>
-</ul>
-
-<h5 id="2-restart-unless-stopped-매너-모드">2. <code class="language-plaintext highlighter-rouge">restart: unless-stopped</code> (매너 모드)</h5>
-
-<ul>
-  <li><strong>동작:</strong> <code class="language-plaintext highlighter-rouge">always</code>와 똑같이 컨테이너가 죽으면 살려내지만, <strong>“명시적으로 멈춘 상태”는 존중</strong>.</li>
-  <li><strong>수동 종료 시:</strong> <code class="language-plaintext highlighter-rouge">docker stop</code>으로 멈춘 상태에서 서버를 재부팅하면, <strong>계속 멈춰 있다.</strong> (되살아나지 않음)</li>
-  <li><strong>특징:</strong> “내가 껐으면 끈 거야”라는 의도를 기억한다. 유지보수를 위해 잠시 꺼둔 DB나 서비스를 재부팅 후에도 꺼진 채로 유지하고 싶을 때 유용</li>
-</ul>
-
-<p>결론적으로, 이러한 특성 때문에 온프레미스 환경에서 운영중이고 유지보수나 점검을 해야할 때 멋데로 다시 켜지거나 하여 충돌, 데이터 오염을 최소화 하고자, 개발자의 의도를 최우선으로 삼았기 때문에 모든 아키텍쳐는 <code class="language-plaintext highlighter-rouge">unless-stopped</code> 로 설정 되어 있음</p>
-
-<h4 id="deployresourceslimits-vs-deployresourcsreservations">deploy.resources.limits vs deploy.resourcs.reservations</h4>
-
-<ol>
-  <li>Limits : 컨테이너의 사용 가능한 자원의 최대치를 제한을 건다. 특정 컨테이너가 과도한 리소스 점유를 방지하는 역할</li>
-  <li>Resrvations : 컨테이너 구동에 필요한 최소한의 자원을 예약하거나, 자원 부족 시 우선순위를 결정하는 기준이 됨.
-    <ol>
-      <li>메모리의 경우, 평소엔 limits 까지 쓰이지만, reservations 설정이 있으면, host 의 메모리 부족 시 <code class="language-plaintext highlighter-rouge">reservations</code>의 값을 기반으로 컨테이너의 메모리 먼저 회수, 종료 함으로써 최소 사양으로 돌아가고 살아 있지만, 그 외의 리소스는 최대한 외부의 서비스가 쓸 수 있도록 제공해주는 역할을 함.</li>
-    </ol>
-  </li>
-</ol>
-
-<h4 id="logging-설정">logging 설정</h4>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">.</span>
-<span class="s">.</span>
-<span class="s">.</span>
-<span class="na">logging</span><span class="pi">:</span>
-  <span class="na">driver</span><span class="pi">:</span> <span class="s2">"</span><span class="s">json-file"</span>
-  <span class="na">options</span><span class="pi">:</span>
-    <span class="na">max-size</span><span class="pi">:</span> <span class="s2">"</span><span class="s">10m"</span>
-    <span class="na">max-file</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3"</span>
-    <span class="s">.</span>
-    <span class="s">.</span>
-    <span class="s">.</span>
-</code></pre></div></div>
-
-<ul>
-  <li>Docker 컨테이너의 로그가 무한정 커질 수 있으니, 로그의 로테이션을 설정함으로써 로깅을 제한을 걸기 위해 쓸 수 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">driver: "json-file"</code> : 로깅하는 방식, 호스트 머신에 어떤 포맷으로 적용할지,</li>
-  <li><code class="language-plaintext highlighter-rouge">max-size</code> : 최대치 설정</li>
-  <li><code class="language-plaintext highlighter-rouge">max-file</code> : 최대 파일 개수, 설정 만큼 파일이 차고 용량 역시 정한 만큼 넘어가면, 가장 오래된 로그는 삭제한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">node-exporter</code> , <code class="language-plaintext highlighter-rouge">cadvisor</code> 같은 모니터링에 적용된다. 이유는 간단하다. 여기서의 수집되는 데이터들이 Grafana에 모이고 있기 때문에 물리적 파일 형태로 갖추는 건 긴급한 상황 보기 위한 수준만 있으면 되고, 그 이상은 이미 Grafna 대시보드에 수집됨.</li>
-</ul>
-
-<h4 id="network-external">network ‘external’</h4>
-<ul>
-  <li>네트워크를 해당 <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> 에서 만들 수도 있다. 하지만 여러 컨테이너가 연결되어 있을 수 잇다보니, 또한 여러 컨테이너를 추가로 붙이는 경우에도 이렇게 설정하면 외부에 이미 되어 있으니 생성하라고 하지 않을 수 있으며, 당연히 네트워크 그룹으로 묶이니 소통이 편리해진다.</li>
-  <li><strong>네트워크의 수명과 컨테이너의 분리</strong>
-    <ol>
-      <li>실수로 인한 고립 방지 : 기본 설정만 할 경우 네트워크가 자동 생성, 삭제된다.</li>
-      <li>다른 프로젝트와의 연결 : 공용도로로 연결되기 때문에, 향후 다른 서비스를 별도로 붙이더라도 손쉽게 붙이기가 가능함.</li>
-    </ol>
-  </li>
-</ul>
-
-<h3 id="shell-script">Shell Script</h3>
-
-<ul>
-  <li>SSL인증서 갱신을 위하여 구현하였던 쉘 스크립트.</li>
-</ul>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">#!/bin/bash</span>
-
-  <span class="c"># 1. 스크립트가 있는 '진짜' 폴더 위치 계산 (절대 경로)</span>
-  <span class="nv">SCRIPT_DIR</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span> <span class="nb">cd</span> <span class="s2">"</span><span class="si">$(</span> <span class="nb">dirname</span> <span class="s2">"</span><span class="k">${</span><span class="nv">BASH_SOURCE</span><span class="p">[0]</span><span class="k">}</span><span class="s2">"</span> <span class="si">)</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span> <span class="si">)</span><span class="s2">"</span>
-
-  <span class="c"># 2. Crontab용 PATH 설정</span>
-  <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
-  <span class="c"># 에러 발생 시 멈춤</span>
-  <span class="nb">set</span> <span class="nt">-e</span>
-
-  <span class="nb">echo</span> <span class="s2">"========================================"</span>
-  <span class="nb">echo</span> <span class="s2">"🚀 SSL Renewal Started at </span><span class="si">$(</span><span class="nb">date</span><span class="si">)</span><span class="s2">"</span>
-  <span class="nb">echo</span> <span class="s2">"   Target Dir: </span><span class="nv">$SCRIPT_DIR</span><span class="s2">"</span>
-  <span class="nb">echo</span> <span class="s2">"========================================"</span>
-
-  <span class="c"># --- [핵심] 환경 감지 로직 (COMPOSE_PROFILES 활용) ---</span>
-  <span class="c"># .env 파일을 읽어서 COMPOSE_PROFILES 변수에 'main'이 포함되어 있는지 확인합니다.</span>
-
-  <span class="nv">ENV_FILE</span><span class="o">=</span><span class="s2">"</span><span class="nv">$SCRIPT_DIR</span><span class="s2">/.env"</span>
-
-  <span class="c"># .env 파일 로드 (변수 불러오기)</span>
-  <span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$ENV_FILE</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
-      </span><span class="nb">source</span> <span class="s2">"</span><span class="nv">$ENV_FILE</span><span class="s2">"</span>
-  <span class="k">fi</span>
-
-  <span class="c"># COMPOSE_PROFILES 변수 확인 (메인 서버인지 판단)</span>
-  <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$COMPOSE_PROFILES</span><span class="s2">"</span> <span class="o">==</span> <span class="k">*</span><span class="s2">"main"</span><span class="k">*</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
-      </span><span class="nb">echo</span> <span class="s2">"&gt;&gt; Detected Environment: Main Server (A5) (Profile: </span><span class="nv">$COMPOSE_PROFILES</span><span class="s2">)"</span>
-      <span class="nv">CERTBOT_SVC</span><span class="o">=</span><span class="s2">"certbot-main"</span>
-      <span class="nv">NGINX_SVC</span><span class="o">=</span><span class="s2">"nginx-main"</span>
-  <span class="k">else
-      </span><span class="nb">echo</span> <span class="s2">"&gt;&gt; Detected Environment: Standard/Sub Server (Profile: </span><span class="k">${</span><span class="nv">COMPOSE_PROFILES</span><span class="k">:-</span><span class="nv">none</span><span class="k">}</span><span class="s2">)"</span>
-      <span class="nv">CERTBOT_SVC</span><span class="o">=</span><span class="s2">"certbot"</span>
-      <span class="nv">NGINX_SVC</span><span class="o">=</span><span class="s2">"nginx"</span>
-  <span class="k">fi
-
-  </span><span class="nb">echo</span> <span class="s2">"   Target Services -&gt; Certbot: </span><span class="nv">$CERTBOT_SVC</span><span class="s2"> / Nginx: </span><span class="nv">$NGINX_SVC</span><span class="s2">"</span>
-  <span class="nb">echo</span> <span class="s2">"========================================"</span>
-
-  <span class="c"># 3. Docker Compose 실행 (공통 변수 사용)</span>
-  <span class="nv">DC_CMD</span><span class="o">=</span><span class="s2">"docker compose --project-directory </span><span class="nv">$SCRIPT_DIR</span><span class="s2"> --env-file </span><span class="nv">$ENV_FILE</span><span class="s2">"</span>
-
-  <span class="nb">echo</span> <span class="s2">"[Step 1] Certbot Renew..."</span>
-  <span class="nv">$DC_CMD</span> run <span class="nt">--rm</span> <span class="s2">"</span><span class="nv">$CERTBOT_SVC</span><span class="s2">"</span> renew
-
-  <span class="nb">echo</span> <span class="s2">"[Step 2] Nginx Reload..."</span>
-  <span class="nv">$DC_CMD</span> <span class="nb">exec</span> <span class="s2">"</span><span class="nv">$NGINX_SVC</span><span class="s2">"</span> nginx <span class="nt">-s</span> reload
-
-  <span class="nb">echo</span> <span class="s2">"========================================"</span>
-  <span class="nb">echo</span> <span class="s2">"✅ SSL Renewal Completed!"</span>
-  <span class="nb">echo</span> <span class="s2">"========================================"</span>
-</code></pre></div></div>
-
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">crontab</code>으로 스케줄링을 걸면, 실행 위치가 엉뚱한 곳이 될 수 있음. <code class="language-plaintext highlighter-rouge">.env</code>와 <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> 를 정확히 찾기 위한 장치가 필요하여 스크립트 위치를 계산한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">cron</code> 환경은 일반 사용자 쉘과는 다름. 따라서 <code class="language-plaintext highlighter-rouge">PATH</code>가 최소 지정으로 <code class="language-plaintext highlighter-rouge">docker</code> 명령어를 못찾을 수 있어서 지정해주는게 안전한 실행을 발생 시킴</li>
-  <li><code class="language-plaintext highlighter-rouge">if [조건]; then [실행할 명령]; fi</code> : 조건문</li>
-  <li><code class="language-plaintext highlighter-rouge">[[ ... ]]</code> : 확장 테스트 명령, 일반 <code class="language-plaintext highlighter-rouge">[ ... ]</code> 에서 <code class="language-plaintext highlighter-rouge">==</code> 우측에 와일드카드를 써도 패턴 매칭안되고 단순 문자열 취급. ‘패턴매칭’ 이 동작하고, 키워드가 맞는지 검사하는게 된다.</li>
-  <li>결과적으로 if 문을 통해 환경을 파악하고, 적용해야하는 컨테이너 이름들의 값을 확정지은다.</li>
-  <li><code class="language-plaintext highlighter-rouge">DC_CMD="~"</code> 명령어도 변수로 담아 둘 수 있으며, 이를 통해 반복 입력을 최소화한다.</li>
-  <li>결론
-    <ol>
-      <li>이 스크립트는 환경 인식을 통한 코드 중복을 제거하여, 스크립트를 여러개 만들지 않는 구조를 채택함</li>
-      <li>Cron 환경을 고려하여 환경변수, 현재 위치 등을 파악하고, 먼저 안전하게 수행하도록 함.</li>
-      <li><code class="language-plaintext highlighter-rouge">nginx -s reload</code> 등, 마지막 부분에서는 인증서 갱신이 되더라도 안정적이고, 트래픽이 끊기지 않게 만들고자 reload 를 사용함으로써 무중단 운영이 되도록 신경을 썼다.</li>
-    </ol>
-  </li>
-</ol>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><summary type="html"><![CDATA[핵심 특징 5가지 물리적 / 논리적 망 분리 : 서비스 존과 매니징 존을 분리하였고, 이를 통한 운영 안정성을 확보함. 트래픽 제어를 위한 Nginx 레이어에서의 Traffic Dam : 토큰 버킷 알고리즘 기반의 트래픽 제어 Heavy Zone, Light Zone 으로 구분하여서 매크로성을 엄격히 막아야 하는 위치(Backend), 정적 리소스 로딩을 위한 일반 존(Frontend)로 구분하여 로딩속성과 백엔드 서비스 보호를 양립함. 투명한 IP 보존(L4, L7 Proxy Protocol) 두대의 서버, 한대의 공유기의 네트워크 환경에서 클라이언트의 원본 IP 를 추적하기 위함, 동시에 각 서버의 HTTPS 접속을 구현함으로서 서비스 서버와 메인터넌스 서버에 접속하는 루트를 분리. 이를 통한 서비스 서버의 문제가 발생하더라도, 이를 모니터링하는 서버의 접속은 문제 없도록 만들어냄 중앙집중형 관제 시스템 Prometheus 의 Pull 방식과 함께 Promtail을 통해 Loki 기반의 서버 어플리케이션들의 로그를 수집하도록 했음 통합 대시보드를 통해 서버들의 상태, 관리의 중앙 집중구조를 구현함. AI 서비스를 위한 최적화 데이터베이스 구현 pgvector 확장을 위하여 init.spl에서 확장기능을 활성화 시켜 벡터 DB 기능을 사용하였다. 별도의 벡터 DB 가 아닌, RDBMS 인프라 내에서 임베딩 벡터를 저장, 검색함으로써 관리 복잡도를 줄여줌]]></summary></entry></feed>
+<p>경험이 현실이 되고, 현실이 직무가 된다. 단순히 개발자라고 불리고 싶진 않다. ‘전문가’가 되어 회사의 시스템들의 운용을 정말 ‘현실적으로’ 해내길 원한다. 그 초석을 만들고 싶다.</p>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="Backend" /><category term="개발" /><category term="Nexus" /><category term="K8s" /><summary type="html"><![CDATA[Project Nexus: Docker를 넘어, 진짜 인프라로]]></summary></entry></feed>
