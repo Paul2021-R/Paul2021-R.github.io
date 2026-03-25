@@ -1,4 +1,1792 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2026-02-26T05:47:08+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Protostar review note - 10 - NestJS Auth Domain</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/26/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 10 - NestJS Auth Domain" /><published>2026-02-26T00:00:00+00:00</published><updated>2026-02-26T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/26/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/26/00-protostar-review.html"><![CDATA[<h1 id="nestjs-auth-도메인-분석">NestJS Auth 도메인 분석</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2026-03-25T06:53:54+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Paul’s Archives</title><subtitle>성장하는 개발자, 소통하는 개발자, 빠른 적용을 최 우선으로 삼는 개발자. 다음을 항상 생각하며, 개발 속에서 가치를 만들어내는 것을 목표로 합니다.</subtitle><author><name>Paul2021-R</name></author><entry><title type="html">Project Nexus 후기</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/03/25/next.html" rel="alternate" type="text/html" title="Project Nexus 후기" /><published>2026-03-25T00:00:00+00:00</published><updated>2026-03-25T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/03/25/next</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/03/25/next.html"><![CDATA[<h1 id="project-the-nexus-최종-보고서-및-인사이트-정리">Project The Nexus 최종 보고서 및 인사이트 정리</h1>
+
+<p><img src="/assets/images/posts/2026-03/003.png" alt="" /></p>
+
+<p><img src="/assets/images/posts/2026-03/004.png" alt="" /></p>
+
+<h2 id="1-서론">1. 서론</h2>
+<p>본 문서는 2026년 2월 8일부터 3월 12일까지 진행된 ‘Project The Nexus’의 구축 과정과 기술적 의사결정, 그리고 이를 통해 도출된 인사이트를 정리한 글이다.</p>
+
+<p>기존에 진행했던 ‘Protostar’ 프로젝트는 Docker(도커) 기반으로 성공적인 서비스를 구현했다. 여러 현실적인 문제들로 쿠버네티스에서 바로 시작하지 못했던 해당 프로젝트는 실제 서비스로서 구현은 성공하였지만, 그럼에도  데몬 종속성으로 인한 단일 장애점(SPOF), 보안 취약성, 파편화된 스크립트 관리 등 고가용성 측면에서 명백한 한계가 있단 생각이 들었다.</p>
+
+<p>이를 극복하고 처음부터 생각하고 있던 3년 차 수준의 엔터프라이즈급 인프라 역량을 증명하기 위해, Docker-free 환경과 Kubernetes(쿠버네티스, 이하 k8s) 기반의 GitOps(깃옵스) 서버 클러스터 구축을 목표로 본 프로젝트를 시작하였다.</p>
+
+<h2 id="2-본론-핵심-아키텍처-및-구현-과정">2. 본론: 핵심 아키텍처 및 구현 과정</h2>
+
+<h3 id="21-인프라-아키텍처-및-환경-구성">2.1. 인프라 아키텍처 및 환경 구성</h3>
+<p>온프레미스(On-premise) 서버 2대를 활용하여 <strong>멀티 노드 단일 클러스터(Multi-node Single Cluster)</strong> 구조를 채택했다. 이렇게 한 이유는 다음과 같다.</p>
+
+<ul>
+  <li><strong>역할 분리</strong>: 안정성이 최우선인 마스터 노드는 Centre 서버에, 고성능 처리가 필요한 워커 노드는 A5 서버에 배치하여 물리적 자원의 효율성을 극대화했다. 기존에도 분명 이렇게 되어 있긴 했지만, 각 서버는 제어가 단일화는 아니었기에 역할만 분리하고 싶었다.</li>
+  <li><strong>논리적 격리</strong>: <code class="language-plaintext highlighter-rouge">infra</code>와 <code class="language-plaintext highlighter-rouge">service</code>로 Namespace(네임스페이스)를 분리하고, <code class="language-plaintext highlighter-rouge">env</code> 및 <code class="language-plaintext highlighter-rouge">tier</code> 라벨을 통해 리소스의 역할을 명확히 정의했다. 이렇게 함으로써 마스터 노드에서 적절하게 논리적 표현만으로 자원을 분리할 수 있었다.</li>
+  <li><strong>선언적 관리</strong>: Kustomize(커스터마이즈)를 도입하여 <code class="language-plaintext highlighter-rouge">base</code>와 <code class="language-plaintext highlighter-rouge">overlays</code> 구조로 Dev/Prod 환경의 YAML 스크립트를 중복 없이 관리할 수 있는 기반을 마련했다. Dev 서버에서의 테스트와 Production 서버의 적용을 용이하게 만들어냈다.</li>
+</ul>
+
+<p><img src="/assets/images/posts/2026-03/006.png" alt="" /></p>
+<blockquote>
+  <p>연결된 노드와 그 역할, Master노드의 경우 최초엔 아무것도 하질 못해, 이 역시 옵션을 수정했다</p>
+</blockquote>
+
+<h3 id="22-네트워크-라우팅-및-로드밸런싱-고도화">2.2. 네트워크 라우팅 및 로드밸런싱 고도화</h3>
+<p>k3s에 기본 탑재된 Traefik(트래픽) 대신, 차세대 공식 스펙인 <strong>Gateway API</strong> 기반의 NGF(NGINX Gateway Fabric)를 도입하여 L7 라우팅을 구현했다. 이렇게 한 것은 기본은 쉽지만 k3s 에 묶여 있고, 간단한 프로젝트가 아닌 실무적 차원에서의 관리를 목표로 하였기에 트래픽은 적절하지 않다고 판단하였다. 뿐만 아니라 공인 IP가 한개 뿐인 상황에서 여러 서비스 운용을 위해선, 관리 차원의 포트와 서비스 차원의 포트를 분리할 필요가 있었는데, 이를 구현하기 위해선 트래픽은 다소 부족한 스펙이었다고 판단되었다.</p>
+<ul>
+  <li><strong>MetalLB 도입 (2026-02-23)</strong>: 트래픽 선택과 유사하게 온프레미스 환경에서 k3s 내장 ServiceLB(Klipper)가 두개의 물리적으로 구분된 노드들 사이에서 80/443 포트 충돌을 제어하지 못하는 구조적 한계를 발견했다. 이를 해결하기 위해 ServiceLB를 비활성화하고 MetalLB를 L2 모드로 도입하여, IPAddressPool을 통해 노드별로 명확한 트래픽 제어와 로드밸런싱을 구현했고, 이로써 각 장치(Centre, A5)는 독립적으로 80/443 포트를 점유할 수 있게 되었다.</li>
+  <li><strong>HTTPS 및 보안</strong>: cert-manager와 PROXY Protocol을 연동하여 클라이언트 IP를 보존하면서도 완벽한 HTTPS 통신을 구현했다. 또한, 컨테이너 보안 컨텍스트(<code class="language-plaintext highlighter-rouge">allowPrivilegeEscalation: false</code>, <code class="language-plaintext highlighter-rouge">runAsNonRoot</code>)를 적용하여 기본 root 권한 실행을 차단했다.</li>
+</ul>
+
+<p><img src="/assets/images/posts/2026-03/005.png" alt="" /></p>
+<blockquote>
+  <p>MetalLB를 도입한 후의 네트워크 구성도</p>
+</blockquote>
+
+<h3 id="23-stateful-서비스의-안정적-관리">2.3. Stateful 서비스의 안정적 관리</h3>
+
+<p>PostgreSQL과 Redis 같은 상태 저장 서비스는 Deployment가 아닌 <strong>StatefulSet</strong>과 <strong>Headless Service(<code class="language-plaintext highlighter-rouge">clusterIP: None</code>)</strong> 조합으로 배포했다.</p>
+
+<ul>
+  <li>
+    <p><strong>고정 식별자 부여</strong>: 중간 프록시 없이 Pod IP를 직접 반환하는 Headless Service를 통해 각 Pod에 고유한 DNS를 부여하고, 개별 PVC(PersistentVolumeClaim)를 매핑하여 데이터의 영속성을 보장했다.</p>
+  </li>
+  <li>
+    <p><strong>백업 및 복구</strong>: ConfigMap을 활용해 초기화 스크립트를 파일로 마운트하고, 커스텀 포맷(<code class="language-plaintext highlighter-rouge">-F c</code>) 기반의 <code class="language-plaintext highlighter-rouge">pg_dump</code> 및 <code class="language-plaintext highlighter-rouge">pg_restore</code> 파이프라인을 검증하여 실무 수준의 데이터 복구 전략을 수립해, 기존의 서비스 운용 시 있었던 데이터들을 유실 없이 마이그레이션이 가능했다. 향후에는 무중단으로 마이그레이션이 가능한 방법도 구비해두고자 생각했다.</p>
+  </li>
+</ul>
+
+<h3 id="24-gitops-기반-cicd-및-관찰성observability-확보">2.4. GitOps 기반 CI/CD 및 관찰성(Observability) 확보</h3>
+<p>수동 배포의 파편화를 막기 위해 소스코드 변경부터 클러스터 반영까지 이어지는 자동화 파이프라인을 구축했다.</p>
+
+<ul>
+  <li><strong>CI/CD 파이프라인 (2026-03-11)</strong>: Jenkins(젠킨스)의 Kaniko(카니코) 에이전트를 통해 이미지를 빌드 방법을 적용하여 빌드를 진행하고 GHCR에 푸시한 뒤, GitOps 전용 레포지토리의 태그를 업데이트하면 ArgoCD가 이를 감지하여 클러스터에 자동 동기화하는 무중단 배포 흐름을 완성했다.</li>
+  <li><strong>운영 원칙 수립</strong>: “인프라 툴은 인프라 툴로 관리하지 않는다”는 원칙 하에 ArgoCD의 관리 범위를 <code class="language-plaintext highlighter-rouge">service</code> 네임스페이스로 한정하여, 장애 발생 시 진단 도구 자체가 다운되는 리스크를 원천 차단하고, 오로지 서비스 영역에 대해서만 ArgoCD가 관리할 수 있도록 설정하였다.</li>
+  <li><strong>모니터링 스택</strong>: kube-prometheus-stack과 Loki(Monolithic 모드)를 도입하여 메트릭과 로그를 중앙 집중화하고 시스템 가시성을 확보했다. 또한 기존의 MinIO 등의 스토리지 역시 추가함으로써 모니터링 스펙이 S3에 의존하지 않도록 구현하였고, 반대로 호환성 역시 유지시켰다.</li>
+</ul>
+
+<p><img src="/assets/images/posts/2026-03/001.png" alt="" /></p>
+<blockquote>
+  <p>적용된 ArgoCD</p>
+</blockquote>
+
+<p><img src="/assets/images/posts/2026-03/002.png" alt="" /></p>
+<blockquote>
+  <p>적용된 모니터링 스택의 설정된 대시보드들</p>
+</blockquote>
+
+<h3 id="25-ai-워크로드를-위한-gpu-자원-통합">2.5. AI 워크로드를 위한 GPU 자원 통합</h3>
+<p>차세대 AI 서비스 연동을 위해 k3s 클러스터에 GPU 자원을 도입 테스트를 진행했다.</p>
+
+<ul>
+  <li><strong>GPU Operator 도입</strong>: 초기 수동 배포 시 발생한 라이브러리 경로 및 CDI 설정 충돌 문제를 분석한 후, 공식 권장 방식인 NVIDIA GPU Operator(Helm)를 도입했다. 이를 통해 RTX 4080 SUPER 자원을 k8s 스케줄러가 인식할 수 있는 리소스로 성공적으로 노출시키고, 이를 기반으로 LLM 추론 워크로드를 서비스에 연결시키는 것을 실행해보았다. 실질 서비스 차원에서 사용은 불가능한 수준이었기에, 테스트 정도만 진행했으며, 향후 AI 서비스의 온프레미스 도입을 테스트 해본 정도로 의의를 가졌다.</li>
+</ul>
+
+<hr />
+
+<h2 id="3-결론-및-후기">3. 결론 및 후기</h2>
+
+<p>Project The Nexus는 단순한 기술 스택의 전환을 넘어, “할 줄 안다”에서 “제대로 한다”로 도약하기 위한 검증의 시간이었다. 그리고 처음엔 이직을 위한 <code class="language-plaintext highlighter-rouge">완성</code> 단계로 생각했다. Docker Compose로 컨테이너를 띄우는 수준을 벗어나, 네트워크, 스토리지, 권한(RBAC), 그리고 배포 파이프라인까지 아우르는 진정한 의미의 오케스트레이션 역량을 내재화하는 것이다.</p>
+
+<p>과정 속에서 마주한 시행착오들은 시스템 엔지니어링의 본질을 깨닫게 해주었다. MetalLB로의 교체 과정이나 GPU Operator 도입 시 겪었던 의존성 충돌 문제들은, 개별 컴포넌트 단독으로 볼 때는 완벽해 보여도 전체 시스템으로 통합될 때는 예상치 못한 비극을 초래할 수 있다는 사실을 가르쳐 주었다. 하지만 이러한 부족함을 투명하게 마주하고, 공식 문서와 아키텍처의 원리를 파고들어 근본적인 원인을 분석해 낸 시간은 자신감과 확신, 그리고 여전히 벽이 높고 두텁다는 사실을 이해할 수 있었다.</p>
+
+<p>이제 불완전 연소되었던 Protostar는 엔터프라이즈급 인프라 위에서 온전하게 동작하는 서비스로 재탄생했다.</p>
+
+<p>그리고 처음엔 이직을 위한, 성공적인 결과물을 만드는게 내 목적이었다.</p>
+
+<p>하지만 삶은 참 희안하다. 암이 찾아왔고, 깃헙을 처음 개설하고 7년, 개발을 배운다고 뜬 눈으로 지샌 시간들이 나에게 쉼을 요구해왔다. 간도 망가졌다는 소식은 생각보다 여러 생각을 들게 했다.</p>
+
+<p>하지만 반대로 생각해보니 좋은 기회일지도 모른다고 생각했다. 기회를 스스로 만들지 않고 회사에 붙어 있을 수 만은 없고, 휴식도, 건강도, 삶의 패턴도 바꾸고 변화를 도모해야할 때라는 생각이 결론이 되었다. 많은 일들은 있었지만. 그러니 걸어 가려고 한다. 새롭게, 서비스도 개발해보고, 노마드 코더로 살아보자. 방법이 뭐든 있겠지.</p>
+
+<p>다행인건, 이젠 진짜 어디 가서 최소한 풀스택이라고 이야기 할 만큼은 되고, 버그 못찾고 AI 에게 쫓아가야만 하는 에겐남도 아니지 않겠는가? 산전 수전에 AI까지 갖춘 개발자이자, 경험가이다. 그리고 안되고 망하면, 망하더라도 해본게 있는데 굶어 죽진 않겠지.</p>
+
+<p>앞으로는 서비스를 만들어낼 것이다. 그저 개발 도구 리뷰하고 AI쩔어욧! 하고 어그로를 끄는게 아닌, 진짜 제대로 개발한 걸로 서비스로 취급받고, 돈 만들어내는, 앞으로 할 일이 참 많다.</p>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="Nexus" /><summary type="html"><![CDATA[Project The Nexus 최종 보고서 및 인사이트 정리]]></summary></entry><entry><title type="html">Protostar review note - 12 - NestJS Knowledge Domain</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/28/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 12 - NestJS Knowledge Domain" /><published>2026-02-28T00:00:00+00:00</published><updated>2026-02-28T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/28/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/28/00-protostar-review.html"><![CDATA[<h1 id="protostar-review---12---nestjs-knowledge-domain">Protostar Review - 12 - NestJS Knowledge Domain</h1>
+
+<blockquote>
+  <p>[!info] 분석 대상 파일</p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">src/features/knowledge/knowledge.controller.ts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">src/features/knowledge/knowledge.service.ts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">src/features/knowledge/ai-task.service.ts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">src/features/knowledge/dto/rag-webhook.dto.ts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">src/features/knowledge/dto/update-knowledge.ts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">src/features/knowledge/knowledge.module.ts</code></li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h2 id="1-주요-개념">1. 주요 개념</h2>
+
+<h3 id="1-1-knowledge-document-라이프사이클">1-1. Knowledge Document 라이프사이클</h3>
+
+<p>Knowledge Domain은 사용자가 업로드한 마크다운 문서를 AI가 처리하여 RAG(Retrieval-Augmented Generation)에 활용하는 전체 흐름을 담당한다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[사용자 업로드]
+      │
+      ▼
+ KnowledgeDoc 생성 (status: UPLOADED)
+      │
+      ▼
+ AiTaskService @Cron (EVERY_MINUTE)
+      │  → DB에서 UPLOADED 문서 조회 (take: 10)
+      │  → Redis List에 job 발행 (rpush ai:job:queue)
+      │  → DB status → PROCESSING
+      ▼
+ FastAPI AI Worker
+      │  → 벡터화 처리
+      │  → Webhook 콜백 (POST /knowledge/webhook)
+      ▼
+ RagWebhookDto 수신
+      │  → status: COMPLETED / FAILED
+      │  → resultMeta: chunkCount, embeddingModel, vectorStoreKey
+      ▼
+ KnowledgeDoc status 업데이트
+</code></pre></div></div>
+
+<h3 id="1-2-파일-중복-방지---sha-256-해시">1-2. 파일 중복 방지 - SHA-256 해시</h3>
+
+<p>동일한 파일의 중복 업로드를 방지하기 위해 <strong>파일 버퍼의 SHA-256 해시</strong>를 DB에 저장한다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">hash</span> <span class="o">=</span> <span class="nf">createHash</span><span class="p">(</span><span class="dl">'</span><span class="s1">sha256</span><span class="dl">'</span><span class="p">).</span><span class="nf">update</span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">buffer</span><span class="p">).</span><span class="nf">digest</span><span class="p">(</span><span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// DB에서 동일 hash 존재 여부 확인 → 중복이면 ConflictException</span>
+</code></pre></div></div>
+
+<ul>
+  <li>파일명이 달라도 내용이 같으면 중복으로 간주</li>
+  <li>사용자별로 scoped (userId + hash 조합으로 검사)</li>
+</ul>
+
+<h3 id="1-3-업로드-제한---personal_max_uploads">1-3. 업로드 제한 - PERSONAL_MAX_UPLOADS</h3>
+
+<p><code class="language-plaintext highlighter-rouge">constants.ts</code>에 정의된 <code class="language-plaintext highlighter-rouge">PERSONAL_MAX_UPLOADS = 10</code>을 통해 사용자당 최대 문서 수를 제한한다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">count</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="nx">userId</span> <span class="p">}</span> <span class="p">});</span>
+<span class="k">if </span><span class="p">(</span><span class="nx">count</span> <span class="o">&gt;=</span> <span class="nx">PERSONAL_MAX_UPLOADS</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nc">ForbiddenException</span><span class="p">(...)</span>
+</code></pre></div></div>
+
+<h3 id="1-4-webhook-패턴---비동기-처리-결과-수신">1-4. Webhook 패턴 - 비동기 처리 결과 수신</h3>
+
+<p>AI Worker(FastAPI)가 벡터화를 완료하면 NestJS의 Webhook 엔드포인트를 호출한다.</p>
+
+<ul>
+  <li>인증: 요청 헤더의 <code class="language-plaintext highlighter-rouge">x-webhook-secret</code>과 환경변수 <code class="language-plaintext highlighter-rouge">WEBHOOK_SECRET</code> 비교</li>
+  <li><code class="language-plaintext highlighter-rouge">@IsEnum(['COMPLETED', 'FAILED'])</code> — Prisma <code class="language-plaintext highlighter-rouge">DocStatus</code> 타입에서 두 값만 허용</li>
+  <li>중첩 객체 검증: <code class="language-plaintext highlighter-rouge">@ValidateNested()</code> + <code class="language-plaintext highlighter-rouge">@Type(() =&gt; RagResultMeataDto)</code></li>
+</ul>
+
+<h3 id="1-5-multermodule-파일-제한">1-5. MulterModule 파일 제한</h3>
+
+<p><code class="language-plaintext highlighter-rouge">KnowledgeModule</code>에서 <code class="language-plaintext highlighter-rouge">MulterModule.registerAsync</code>로 파일 업로드 규칙을 정의한다.</p>
+
+<ul>
+  <li>파일 크기 제한: <strong>50MB</strong></li>
+  <li>파일 형식 제한: <code class="language-plaintext highlighter-rouge">.md</code> (마크다운) 파일만 허용</li>
+  <li><code class="language-plaintext highlighter-rouge">fileFilter</code> 콜백: 허용되지 않는 파일은 <code class="language-plaintext highlighter-rouge">callback(new Error(...), false)</code> 반환</li>
+</ul>
+
+<h3 id="1-6-replacefile---버전-관리">1-6. replaceFile - 버전 관리</h3>
+
+<p>기존 파일 교체 시 단순 덮어쓰기가 아니라 <strong>version 필드를 increment</strong> 한다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">update</span><span class="p">({</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">storageKey</span><span class="p">:</span> <span class="nx">newStorageKey</span><span class="p">,</span>
+    <span class="na">hash</span><span class="p">:</span> <span class="nx">newHash</span><span class="p">,</span>
+    <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">UPLOADED</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">version</span><span class="p">:</span> <span class="p">{</span> <span class="na">increment</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>MinIO의 기존 오브젝트를 삭제하고 새 파일을 업로드한다.</p>
+
+<hr />
+
+<h2 id="2-핵심-로직-흐름">2. 핵심 로직 흐름</h2>
+
+<h3 id="2-1-단일-파일-업로드-post-knowledgeupload">2-1. 단일 파일 업로드 (POST /knowledge/upload)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Request (multipart/form-data: file)
+  → @UseInterceptors(FileInterceptor('file'))
+  → @UseInterceptors(KnowledgeUploadBusyCheckInterceptor)  ← 큐 포화 차단
+  → Controller: uploadKnowledge(user, file, dto)
+  → KnowledgeService.uploadKnowledge(userId, file)
+      ├─ PERSONAL_MAX_UPLOADS 체크
+      ├─ SHA-256 해시 생성
+      ├─ 중복 해시 검사 → ConflictException
+      ├─ storageKey = `knowledge/${userId}/${uuid}-${originalname}`
+      ├─ ObjectStorageService.uploadFile(buffer, storageKey, mimetype)
+      └─ prisma.knowledgeDoc.create({ status: UPLOADED, hash, storageKey })
+</code></pre></div></div>
+
+<h3 id="2-2-복수-파일-업로드-post-knowledgeuploads">2-2. 복수 파일 업로드 (POST /knowledge/uploads)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Request (multipart/form-data: files[])
+  → @UseInterceptors(FilesInterceptor('files', 10))  ← 최대 10개
+  → KnowledgeService.uploadKnowledges(userId, files[])
+      └─ Promise.allSettled(files.map(f =&gt; uploadKnowledge(userId, f)))
+         → 일부 실패해도 나머지 처리 계속
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Promise.allSettled</code> 사용으로 부분 성공/실패 처리 가능.</p>
+
+<h3 id="2-3-aitaskservice-크론-작업">2-3. AiTaskService 크론 작업</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Cron(CronExpression.EVERY_MINUTE)
+dispatchAiJobs()
+  → prisma.knowledgeDoc.findMany({ where: { status: 'UPLOADED' }, take: 10 })
+  → for each doc:
+      ├─ redis.rpush('ai:job:queue', JSON.stringify({ docId, storageKey, userId }))
+      └─ prisma.knowledgeDoc.update({ status: 'PROCESSING' })
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!warning] Race Condition
+<code class="language-plaintext highlighter-rouge">findMany</code> → <code class="language-plaintext highlighter-rouge">rpush</code> → <code class="language-plaintext highlighter-rouge">update</code> 가 트랜잭션이 아니므로 다중 인스턴스 환경에서 동일 문서가 중복 발행될 수 있다. PostgreSQL의 <code class="language-plaintext highlighter-rouge">SELECT ... FOR UPDATE SKIP LOCKED</code> 또는 Redis 분산 락으로 해결 필요.</p>
+</blockquote>
+
+<h3 id="2-4-webhook-수신-post-knowledgewebhook">2-4. Webhook 수신 (POST /knowledge/webhook)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Request (JSON: RagWebhookDto)
+  → Guard: x-webhook-secret 검증
+  → ValidationPipe: RagWebhookDto 검증 (@ValidateNested로 resultMeta까지)
+  → KnowledgeService.handleWebhook(dto)
+      ├─ status === 'COMPLETED': update(chunkCount, embeddingModel, vectorStoreKey)
+      └─ status === 'FAILED': update(errorMessage, status: FAILED)
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="3-구조적-취약점--개선-방향">3. 구조적 취약점 / 개선 방향</h2>
+
+<h3 id="3-1-aitaskservice-race-condition-critical">3-1. AiTaskService Race Condition (Critical)</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 현재: findMany 후 개별 update (비원자적)</span>
+<span class="kd">const</span> <span class="nx">docs</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">findMany</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">UPLOADED</span><span class="dl">'</span> <span class="p">},</span> <span class="na">take</span><span class="p">:</span> <span class="mi">10</span> <span class="p">});</span>
+<span class="k">for </span><span class="p">(</span><span class="kd">const</span> <span class="nx">doc</span> <span class="k">of</span> <span class="nx">docs</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">redis</span><span class="p">.</span><span class="nf">rpush</span><span class="p">(</span><span class="dl">'</span><span class="s1">ai:job:queue</span><span class="dl">'</span><span class="p">,</span> <span class="p">...);</span>
+  <span class="k">await</span> <span class="nx">prisma</span><span class="p">.</span><span class="nx">knowledgeDoc</span><span class="p">.</span><span class="nf">update</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">id</span> <span class="p">},</span> <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PROCESSING</span><span class="dl">'</span> <span class="p">}</span> <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ 개선안 1: PostgreSQL FOR UPDATE SKIP LOCKED</span>
+<span class="kd">const</span> <span class="nx">docs</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">prisma</span><span class="p">.</span><span class="nx">$queryRaw</span><span class="s2">`
+  SELECT * FROM knowledge_docs
+  WHERE status = 'UPLOADED'
+  LIMIT 10
+  FOR UPDATE SKIP LOCKED
+`</span><span class="p">;</span>
+
+<span class="c1">// ✅ 개선안 2: BullMQ 사용 (Redis 기반 분산 작업 큐)</span>
+<span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">ai-task</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">docId</span><span class="p">,</span> <span class="nx">storageKey</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="3-2-personal_max_uploads-카운트-방식">3-2. PERSONAL_MAX_UPLOADS 카운트 방식</h3>
+
+<p>현재 <code class="language-plaintext highlighter-rouge">count()</code> 호출 후 UPLOADED/PROCESSING 상태의 문서까지 포함하여 카운트한다. FAILED 상태 문서가 슬롯을 차지하는 문제가 있다. 상태별 카운트 분리 또는 소프트 삭제 패턴 도입이 필요하다.</p>
+
+<h3 id="3-3-replacefile의-minio-삭제-후-업로드-패턴">3-3. replaceFile의 MinIO 삭제 후 업로드 패턴</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deleteFile → uploadFile (순차)
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">deleteFile</code> 성공 후 <code class="language-plaintext highlighter-rouge">uploadFile</code> 실패 시 파일이 유실된다. 두 작업을 원자적으로 처리하려면 업로드 선행 후 삭제하는 방식이 더 안전하다.</p>
+
+<h3 id="3-4-단일복수-파일-엔드포인트-분리">3-4. 단일/복수 파일 엔드포인트 분리</h3>
+
+<p><code class="language-plaintext highlighter-rouge">/upload</code>(단건)와 <code class="language-plaintext highlighter-rouge">/uploads</code>(다건)가 별도 엔드포인트로 분리되어 있다. RESTful 관점에서는 <code class="language-plaintext highlighter-rouge">/upload</code>로 통일하고 Content-Type 기반으로 처리하는 것이 일반적이지만, NestJS Multer 인터셉터 선택의 단순성을 위해 분리한 것으로 보인다.</p>
+
+<hr />
+
+<h2 id="4-핵심-메서드-및-라이브러리-함수">4. 핵심 메서드 및 라이브러리 함수</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>메서드/데코레이터</th>
+      <th>위치</th>
+      <th>역할</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@UseInterceptors(FilesInterceptor('files', 10))</code></td>
+      <td>controller</td>
+      <td>multipart 복수 파일 파싱 (최대 10개)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@UseInterceptors(FileInterceptor('file'))</code></td>
+      <td>controller</td>
+      <td>multipart 단일 파일 파싱</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">createHash('sha256').update(buf).digest('hex')</code></td>
+      <td>service</td>
+      <td>파일 버퍼 SHA-256 해시</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@Cron(CronExpression.EVERY_MINUTE)</code></td>
+      <td>ai-task</td>
+      <td>1분 주기 크론 실행</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">redis.rpush(key, value)</code></td>
+      <td>ai-task</td>
+      <td>Redis List에 우측 삽입 (FIFO 큐)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Promise.allSettled(promises)</code></td>
+      <td>service</td>
+      <td>부분 실패 허용 병렬 처리</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@ValidateNested()</code></td>
+      <td>DTO</td>
+      <td>중첩 객체까지 class-validator 적용</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@Type(() =&gt; TargetClass)</code></td>
+      <td>DTO</td>
+      <td>class-transformer 형변환 (필수 짝꿍)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulterModule.registerAsync</code></td>
+      <td>module</td>
+      <td>비동기 설정 기반 Multer 구성</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="validatenested--type-중첩-검증">@ValidateNested + @Type() 중첩 검증</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nc">RagWebhookDto</span> <span class="p">{</span>
+  <span class="p">@</span><span class="nd">IsOptional</span><span class="p">()</span>
+  <span class="p">@</span><span class="nd">ValidateNested</span><span class="p">()</span>          <span class="c1">// 중첩 객체 검증 활성화</span>
+  <span class="p">@</span><span class="nd">Type</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">RagResultMeataDto</span><span class="p">)</span>  <span class="c1">// plain object → 클래스 인스턴스 변환</span>
+  <span class="nx">resultMeta</span><span class="p">?:</span> <span class="nx">RagResultMeataDto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">@ValidateNested()</code>만 사용하면 plain object에 적용되지 않는다. 반드시 <code class="language-plaintext highlighter-rouge">@Type()</code>으로 인스턴스 변환이 선행되어야 한다.</p>
+
+<hr />
+
+<h2 id="5-대체-가능한-라이브러리-및-트레이드오프">5. 대체 가능한 라이브러리 및 트레이드오프</h2>
+
+<h3 id="5-1-작업-큐-redis-raw-rpush-vs-bullmq">5-1. 작업 큐: Redis raw rpush vs BullMQ</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>Redis raw rpush (현재)</th>
+      <th>BullMQ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>구현 복잡도</td>
+      <td>낮음</td>
+      <td>중간</td>
+    </tr>
+    <tr>
+      <td>재시도</td>
+      <td>수동 구현 필요</td>
+      <td>내장 (backoff 설정)</td>
+    </tr>
+    <tr>
+      <td>우선순위 큐</td>
+      <td>수동 ZSet 구현 필요</td>
+      <td>내장</td>
+    </tr>
+    <tr>
+      <td>지연 작업</td>
+      <td>수동</td>
+      <td>내장</td>
+    </tr>
+    <tr>
+      <td>분산 환경 Race Condition</td>
+      <td>발생 가능</td>
+      <td>Worker 원자성 보장</td>
+    </tr>
+    <tr>
+      <td>모니터링</td>
+      <td>별도 구현</td>
+      <td>Bull Board 등 UI 제공</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>MVP 수준에서는 raw rpush가 간단하지만, 프로덕션 확장 시 BullMQ 전환이 권장된다.</p>
+
+<h3 id="5-2-분산-크론-cron-vs-분산-락">5-2. 분산 크론: @Cron vs 분산 락</h3>
+
+<p>현재 <code class="language-plaintext highlighter-rouge">@Cron</code>은 각 인스턴스마다 독립 실행된다. 수평 확장 시 중복 실행이 발생한다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>방법</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Redis SETNX 락</td>
+      <td>크론 실행 전 Redis 락 획득, 1분 TTL</td>
+    </tr>
+    <tr>
+      <td>PostgreSQL SELECT FOR UPDATE SKIP LOCKED</td>
+      <td>DB 레벨에서 중복 방지</td>
+    </tr>
+    <tr>
+      <td>BullMQ Scheduler</td>
+      <td>단일 스케줄러 추상화</td>
+    </tr>
+    <tr>
+      <td>Kafka/RabbitMQ</td>
+      <td>메시지 브로커로 단일 컨슈머 보장</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="5-3-파일-해시-sha-256-vs-파일명-기반">5-3. 파일 해시: SHA-256 vs 파일명 기반</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>SHA-256 해시 (현재)</th>
+      <th>파일명 기반</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>중복 탐지 정확도</td>
+      <td>높음 (내용 기반)</td>
+      <td>낮음 (이름 변경 시 통과)</td>
+    </tr>
+    <tr>
+      <td>성능</td>
+      <td>버퍼 전체 해시 (50MB 최대)</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>사용 목적에 적합성</td>
+      <td>지식 베이스 문서 중복 방지에 적합</td>
+      <td>부적합</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="6-개발자로서-알아야-할-영역">6. 개발자로서 알아야 할 영역</h2>
+
+<h3 id="6-1-multer와-nestjs-통합">6-1. Multer와 NestJS 통합</h3>
+
+<p>NestJS는 Express의 <code class="language-plaintext highlighter-rouge">multer</code> 미들웨어를 <code class="language-plaintext highlighter-rouge">@nestjs/platform-express</code>를 통해 래핑한다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 메모리 스토리지 (기본) - file.buffer 사용 가능</span>
+<span class="c1">// 디스크 스토리지 - 대용량 처리에 적합</span>
+
+<span class="c1">// 파일 접근</span>
+<span class="p">@</span><span class="nd">UploadedFile</span><span class="p">()</span> <span class="nx">file</span><span class="p">:</span> <span class="nx">Express</span><span class="p">.</span><span class="nx">Multer</span><span class="p">.</span><span class="nx">File</span>
+<span class="c1">// file.buffer, file.originalname, file.mimetype, file.size</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">fileFilter</code>에서 <code class="language-plaintext highlighter-rouge">callback(null, false)</code>를 반환하면 파일이 필드에 첨부되지 않고 <code class="language-plaintext highlighter-rouge">undefined</code>가 되므로, 컨트롤러에서 file 존재 여부를 별도로 검증해야 한다.</p>
+
+<h3 id="6-2-webhook-보안-패턴">6-2. Webhook 보안 패턴</h3>
+
+<p>내부 서비스 간 Webhook 인증 방법:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Shared Secret (현재): Header x-webhook-secret 검증
+2. HMAC-SHA256: payload + secret → 서명 검증
+3. mTLS: 클라이언트 인증서 검증
+4. API Key + IP 화이트리스트
+</code></pre></div></div>
+
+<p>현재 방식은 단순하지만, secret이 평문으로 헤더에 전송된다. HMAC 서명 방식이 더 안전하다.</p>
+
+<h3 id="6-3-db-상태-머신-패턴">6-3. DB 상태 머신 패턴</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UPLOADED → PROCESSING → COMPLETED
+                      → FAILED
+</code></pre></div></div>
+
+<p>상태 전이를 명확히 정의하면:</p>
+<ul>
+  <li>잘못된 상태에서 작업 방지 가능 (<code class="language-plaintext highlighter-rouge">findMany({ status: 'UPLOADED' })</code>)</li>
+  <li>모니터링이 용이 (<code class="language-plaintext highlighter-rouge">count({ where: { status: 'FAILED' } })</code>)</li>
+  <li>재처리 로직 구현 단순화 (<code class="language-plaintext highlighter-rouge">update({ status: 'UPLOADED' })</code> 로 재큐잉)</li>
+</ul>
+
+<h3 id="6-4-class-validator-중첩-검증-필수-지식">6-4. class-validator 중첩 검증 필수 지식</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ValidationPipe 설정 (main.ts)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">useGlobalPipes</span><span class="p">(</span><span class="k">new</span> <span class="nc">ValidationPipe</span><span class="p">({</span> <span class="na">whitelist</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">transform</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}));</span>
+
+<span class="c1">// DTO에서 중첩 객체 검증 시 필수 패턴</span>
+<span class="p">@</span><span class="nd">ValidateNested</span><span class="p">()</span>
+<span class="p">@</span><span class="nd">Type</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">ChildDto</span><span class="p">)</span>  <span class="c1">// class-transformer 없으면 검증 무시됨</span>
+<span class="nx">childObject</span><span class="p">?:</span> <span class="nx">ChildDto</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">transform: true</code> 설정과 <code class="language-plaintext highlighter-rouge">@Type()</code> 데코레이터가 함께 작동해야 중첩 검증이 동작한다.</p>
+
+<hr />
+
+<h2 id="핵심-요약-카드">핵심 요약 카드</h2>
+
+<blockquote>
+  <p>[!summary] Knowledge Domain 3줄 요약</p>
+  <ol>
+    <li><strong>파일 업로드</strong> → SHA-256 중복 검사 → MinIO 저장 → DB(UPLOADED) 기록</li>
+    <li><strong>크론 디스패치</strong> → UPLOADED 문서 조회 → Redis Queue push → DB(PROCESSING) 갱신 (Race Condition 존재)</li>
+    <li><strong>Webhook 수신</strong> → FastAPI 결과 콜백 → DB(COMPLETED/FAILED) 최종 반영</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <p>[!danger] Race Condition 핵심 포인트
+<code class="language-plaintext highlighter-rouge">AiTaskService</code>의 <code class="language-plaintext highlighter-rouge">findMany → rpush → update</code> 패턴은 다중 인스턴스 환경에서 동일 문서가 중복 발행될 수 있다.
+해결책: <strong>PostgreSQL <code class="language-plaintext highlighter-rouge">FOR UPDATE SKIP LOCKED</code></strong> 또는 <strong>BullMQ</strong> 도입.</p>
+</blockquote>
+
+<blockquote>
+  <p>[!tip] @ValidateNested 함정
+<code class="language-plaintext highlighter-rouge">@ValidateNested()</code>는 반드시 <code class="language-plaintext highlighter-rouge">@Type(() =&gt; TargetClass)</code>와 함께 써야 동작한다.
+<code class="language-plaintext highlighter-rouge">@Type()</code> 없이 <code class="language-plaintext highlighter-rouge">@ValidateNested()</code>만 쓰면 plain object는 클래스 인스턴스로 변환되지 않아 내부 검증이 무시된다.</p>
+</blockquote>
+
+<blockquote>
+  <p>[!example] 상태 머신 이해
+<code class="language-plaintext highlighter-rouge">DocStatus</code>: <code class="language-plaintext highlighter-rouge">UPLOADED</code> → <code class="language-plaintext highlighter-rouge">PROCESSING</code> → <code class="language-plaintext highlighter-rouge">COMPLETED</code> | <code class="language-plaintext highlighter-rouge">FAILED</code>
+실패한 문서는 <code class="language-plaintext highlighter-rouge">status = UPLOADED</code>로 재설정하면 다음 크론에서 재처리된다.</p>
+</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="NestJS" /><category term="AI" /><summary type="html"><![CDATA[Protostar Review - 12 - NestJS Knowledge Domain]]></summary></entry><entry><title type="html">Protostar review note - 13 - NestJS Common Services</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/28/01-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 13 - NestJS Common Services" /><published>2026-02-28T00:00:00+00:00</published><updated>2026-02-28T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/28/01-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/28/01-protostar-review.html"><![CDATA[<h1 id="protostar-review---13---nestjs-common-services">Protostar Review - 13 - NestJS Common Services</h1>
+
+<blockquote>
+  <p>[!info] 분석 대상 파일</p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">src/common/objectStorage/objectStorage.service.ts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">src/common/objectStorage/objectStorage.module.ts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">src/common/queue/queue.service.ts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">src/common/monitoring/ai-status-monitoring.service.ts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">src/common/monitoring/system-monitoring.service.ts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">src/common/monitoring/monitoring.module.ts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">src/common/constants.ts</code></li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h2 id="1-주요-개념">1. 주요 개념</h2>
+
+<h3 id="1-1-전역-상수-모듈-패턴-constantsts">1-1. 전역 상수 모듈 패턴 (constants.ts)</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">CHAT_MAX_CONNECTIONS</span> <span class="o">=</span> <span class="mi">600</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">SSE_HEARTBEAT_INTERVAL</span> <span class="o">=</span> <span class="mi">30000</span><span class="p">;</span>  <span class="c1">// 30s</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">SSE_RETRY_SECONDS</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">CONCURRENCY</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">MAX_PENDING</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">PERSONAL_MAX_UPLOADS</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>서비스 전반에 걸쳐 사용되는 매직 넘버를 단일 파일에 중앙화한다. 변경 시 한 곳만 수정하면 된다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CHAT_MAX_CONNECTIONS = 600</code>: SSE 동시 연결 최대값 (Nginx 등 상위 계층에서도 동일하게 설정되어야 의미가 있다)</li>
+  <li><code class="language-plaintext highlighter-rouge">CONCURRENCY = 3</code>: QueueService의 동시 처리 작업 수</li>
+  <li><code class="language-plaintext highlighter-rouge">MAX_PENDING = 10</code>: QueueService의 대기 큐 크기</li>
+</ul>
+
+<h3 id="1-2-minio--s3-호환성-objectstorageservice">1-2. MinIO ↔ S3 호환성 (ObjectStorageService)</h3>
+
+<p>MinIO는 AWS S3 API와 호환된다. 따라서 AWS SDK v3 (<code class="language-plaintext highlighter-rouge">@aws-sdk/client-s3</code>)를 그대로 사용할 수 있다.</p>
+
+<p>핵심 설정:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">forcePathStyle: true</code> — MinIO는 Virtual-hosted style(<code class="language-plaintext highlighter-rouge">bucket.endpoint</code>)이 아닌 Path style(<code class="language-plaintext highlighter-rouge">endpoint/bucket</code>)을 사용하므로 필수</li>
+  <li><code class="language-plaintext highlighter-rouge">endpoint: MINIO_ENDPOINT</code> — AWS 기본 엔드포인트 대신 MinIO 서버 URL 지정</li>
+  <li><code class="language-plaintext highlighter-rouge">region: MINIO_REGION</code> — MinIO는 region 의미가 없지만 SDK 필수값이므로 임의 설정</li>
+</ul>
+
+<h3 id="1-3-queueservice---인메모리-동시성-제어">1-3. QueueService - 인메모리 동시성 제어</h3>
+
+<p>Node.js는 싱글 스레드이지만 비동기 I/O로 인해 동시성이 발생한다. CPU-bound 작업 또는 외부 리소스 보호를 위해 동시 실행 수를 제한하는 큐가 필요하다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>activeCount ≤ CONCURRENCY(3): 즉시 실행
+activeCount &gt; CONCURRENCY(3), pendingQueue.length &lt; MAX_PENDING(10): 대기 큐 추가
+pendingQueue.length ≥ MAX_PENDING(10): 즉시 거부 (ServiceUnavailableException)
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">isBusy()</code> 메서드는 <code class="language-plaintext highlighter-rouge">KnowledgeUploadBusyCheckInterceptor</code>에서 사전 차단 용도로 사용된다.</p>
+
+<h3 id="1-4-이중-모니터링-구조-monitoringmodule">1-4. 이중 모니터링 구조 (MonitoringModule)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>서비스</th>
+      <th>감시 대상</th>
+      <th>주기</th>
+      <th>저장소</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AiStatusMonitoringService</code></td>
+      <td>FastAPI AI Worker 헬스</td>
+      <td>@Cron 1초</td>
+      <td>Redis ZSet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SystemMonitoringService</code></td>
+      <td>Node.js 프로세스 메모리</td>
+      <td>setInterval 5초</td>
+      <td>Logger(Winston)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>두 서비스가 하나의 <code class="language-plaintext highlighter-rouge">MonitoringModule</code>로 묶여 있으며, <code class="language-plaintext highlighter-rouge">AiCircuitGuard</code>도 함께 exports되어 다른 모듈에서 임포트하면 자동으로 사용 가능하다.</p>
+
+<h3 id="1-5-objectstorageservice-라이프사이클">1-5. ObjectStorageService 라이프사이클</h3>
+
+<p><code class="language-plaintext highlighter-rouge">OnModuleInit</code> / <code class="language-plaintext highlighter-rouge">OnModuleDestroy</code>를 구현하여 애플리케이션 시작 시 연결을 검증하고 종료 시 리소스를 해제한다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>onModuleInit():
+  HeadBucketCommand → 버킷 존재 확인
+    ├─ 성공: "✅ Connected &amp; Bucket Found"
+    ├─ 404 NotFound: createBucket() → 버킷 자동 생성
+    └─ 기타 에러: throw → 앱 부트스트랩 실패 (의도적)
+
+onModuleDestroy():
+  s3Client.destroy() → SDK 내부 연결 풀 해제
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="2-핵심-로직-흐름">2. 핵심 로직 흐름</h2>
+
+<h3 id="2-1-objectstorageservice-파일-업로드삭제">2-1. ObjectStorageService 파일 업로드/삭제</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 업로드</span>
+<span class="k">async</span> <span class="nf">uploadFile</span><span class="p">(</span><span class="nx">buffer</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">,</span> <span class="nx">mimeType</span><span class="p">,</span> <span class="nx">specificBucketName</span><span class="p">?)</span>
+  <span class="err">→</span> <span class="nc">PutObjectCommand</span><span class="p">({</span> <span class="nx">Bucket</span><span class="p">,</span> <span class="na">Key</span><span class="p">:</span> <span class="nx">fileName</span><span class="p">,</span> <span class="na">Body</span><span class="p">:</span> <span class="nx">buffer</span><span class="p">,</span> <span class="nx">ContentType</span><span class="p">,</span> <span class="na">ACL</span><span class="p">:</span> <span class="dl">'</span><span class="s1">public-read</span><span class="dl">'</span> <span class="p">})</span>
+  <span class="err">→</span> <span class="k">return</span> <span class="nx">fileName</span>  <span class="c1">// storageKey 반환</span>
+
+<span class="c1">// 삭제</span>
+<span class="k">async</span> <span class="nf">deleteFile</span><span class="p">(</span><span class="nx">fileName</span><span class="p">,</span> <span class="nx">specificBucketName</span><span class="p">?)</span>
+  <span class="err">→</span> <span class="nc">DeleteObjectCommand</span><span class="p">({</span> <span class="nx">Bucket</span><span class="p">,</span> <span class="na">Key</span><span class="p">:</span> <span class="nx">fileName</span> <span class="p">})</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">specificBucketName</code>이 제공되면 기본 버킷 대신 해당 버킷을 사용한다. <code class="language-plaintext highlighter-rouge">null</code>도 허용하는 <code class="language-plaintext highlighter-rouge">null coalescing</code> 패턴을 사용한다.</p>
+
+<h3 id="2-2-queueservice-흐름">2-2. QueueService 흐름</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>enqueue(task: () =&gt; Promise&lt;T&gt;): Promise&lt;T&gt;
+  ├─ activeCount &lt; CONCURRENCY → execute(task) 즉시 실행
+  └─ pendingQueue.length &lt; MAX_PENDING → Promise를 대기열에 추가
+       └─ 실행 중인 작업 완료 시 → next() 호출로 다음 작업 실행
+  └─ 대기열 포화 → ServiceUnavailableException 즉시 throw
+
+execute(task):
+  activeCount++
+  try { return await task() }
+  finally { activeCount--; next() }  // 항상 다음 작업 실행 시도
+
+isBusy(): pendingQueue.length &gt;= MAX_PENDING
+</code></pre></div></div>
+
+<h3 id="2-3-aistatusmonitoringservice-흐름">2-3. AiStatusMonitoringService 흐름</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Cron('* * * * * *')  // 1초마다
+checkAiWorkerStatus():
+  → redis.zremrangebyscore('ai:worker:heartbeat', 0, now-10000)  // 10초 지난 heartbeat 제거
+  → redis.zcard('ai:worker:heartbeat')  // 현재 살아있는 워커 수
+  → count &gt; 0 → isAvailable = true
+  → count === 0 → isAvailable = false
+
+isAvailable(): boolean  // AiCircuitGuard에서 호출
+</code></pre></div></div>
+
+<p>FastAPI 워커는 주기적으로 <code class="language-plaintext highlighter-rouge">zadd ai:worker:heartbeat SCORE(timestamp) MEMBER(workerId)</code>를 호출한다. 10초 이상 heartbeat이 없으면 오프라인으로 판단한다.</p>
+
+<h3 id="2-4-systemmonitoringservice-흐름">2-4. SystemMonitoringService 흐름</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>onModuleInit():
+  process.env.NODE_ENV === 'production' 이면만 시작
+    → setInterval(logSystemMetrics, 5000)
+
+logSystemMetrics():
+  → process.memoryUsage()
+  → logger.log({ type, rss, heapTotal, heapUsed, external, arrayBuffers, timestamp })
+</code></pre></div></div>
+
+<p>Winston logger가 구조화된 JSON 로그를 출력하며, 외부 로그 수집기(Loki, Elasticsearch 등)에서 메트릭 기반 알림 설정에 활용된다.</p>
+
+<hr />
+
+<h2 id="3-구조적-취약점--개선-방향">3. 구조적 취약점 / 개선 방향</h2>
+
+<h3 id="3-1-objectstorageservice---acl-public-read-하드코딩">3-1. ObjectStorageService - ACL ‘public-read’ 하드코딩</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 현재: 모든 파일이 공개 접근 가능</span>
+<span class="nx">ACL</span><span class="p">:</span> <span class="dl">'</span><span class="s1">public-read</span><span class="dl">'</span>
+
+<span class="c1">// ✅ 개선안: Pre-signed URL 패턴</span>
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">getSignedUrl</span><span class="p">(</span><span class="nx">s3Client</span><span class="p">,</span> <span class="k">new</span> <span class="nc">GetObjectCommand</span><span class="p">({</span> <span class="nx">Bucket</span><span class="p">,</span> <span class="nx">Key</span> <span class="p">}),</span> <span class="p">{</span> <span class="na">expiresIn</span><span class="p">:</span> <span class="mi">3600</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<p>현재 MinIO에 업로드된 지식 문서가 public-read이므로 URL을 알면 누구나 접근 가능하다. 민감한 문서의 경우 private ACL + Pre-signed URL이 적합하다.</p>
+
+<h3 id="3-2-queueservice---수평-확장-불가">3-2. QueueService - 수평 확장 불가</h3>
+
+<p>인메모리 큐이므로 <strong>단일 인스턴스에서만 동작</strong>한다. NestJS 인스턴스가 2개 이상 실행되면:</p>
+<ul>
+  <li>각 인스턴스가 독립적인 큐를 갖게 됨</li>
+  <li>전체 동시 처리 수가 인스턴스 수 × CONCURRENCY로 늘어남</li>
+  <li>FastAPI AI Worker 부하 계산이 복잡해짐</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 개선안: BullMQ (Redis 기반 분산 큐)
+- 여러 인스턴스가 하나의 Redis 큐를 공유
+- Worker 수, 동시성, 재시도 모두 중앙 관리 가능
+</code></pre></div></div>
+
+<h3 id="3-3-systemmonitoringservice---setinterval-vs-cron">3-3. SystemMonitoringService - setInterval vs @Cron</h3>
+
+<p>현재 <code class="language-plaintext highlighter-rouge">setInterval</code>을 사용하지만 NestJS에서는 <code class="language-plaintext highlighter-rouge">@Cron</code>이 더 적합하다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>setInterval (현재)</th>
+      <th>@Cron</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NestJS 라이프사이클 통합</td>
+      <td>수동 clearInterval 필요</td>
+      <td>자동 정리</td>
+    </tr>
+    <tr>
+      <td>테스트 용이성</td>
+      <td>낮음</td>
+      <td>높음 (TestingModule에서 제어)</td>
+    </tr>
+    <tr>
+      <td>동적 비활성화</td>
+      <td>어려움</td>
+      <td>SchedulerRegistry로 가능</td>
+    </tr>
+    <tr>
+      <td>코드 일관성</td>
+      <td>낮음 (AiStatus는 @Cron)</td>
+      <td>높음</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="3-4-chat_max_connections-미사용">3-4. CHAT_MAX_CONNECTIONS 미사용</h3>
+
+<p><code class="language-plaintext highlighter-rouge">constants.ts</code>에 <code class="language-plaintext highlighter-rouge">CHAT_MAX_CONNECTIONS = 600</code>이 정의되어 있지만, 현재 코드에서 실제로 이 값을 검사하는 로직이 없다. Nginx의 upstream 설정이나 SSE 연결 수 제한과 연계되어야 의미가 있다.</p>
+
+<hr />
+
+<h2 id="4-핵심-메서드-및-라이브러리-함수">4. 핵심 메서드 및 라이브러리 함수</h2>
+
+<h3 id="objectstorageservice-aws-sdk-v3">ObjectStorageService (AWS SDK v3)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>커맨드</th>
+      <th>역할</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HeadBucketCommand</code></td>
+      <td>버킷 존재 여부만 확인 (내용 조회 없이 메타데이터만)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CreateBucketCommand</code></td>
+      <td>새 버킷 생성</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PutObjectCommand</code></td>
+      <td>파일 업로드 (Body: Buffer)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DeleteObjectCommand</code></td>
+      <td>파일 삭제</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">s3Client.send(command)</code></td>
+      <td>커맨드 실행 (Command Pattern)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">s3Client.destroy()</code></td>
+      <td>내부 HTTP 연결 풀 종료</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="processmemoryusage-반환값">process.memoryUsage() 반환값</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="nl">rss</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>        <span class="c1">// Resident Set Size - OS가 프로세스에 할당한 총 메모리</span>
+  <span class="nx">heapTotal</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>  <span class="c1">// V8 힙 총 할당량</span>
+  <span class="nx">heapUsed</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>   <span class="c1">// V8 힙 실제 사용량</span>
+  <span class="nx">external</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>   <span class="c1">// V8 외부 C++ 객체 메모리 (Buffer 등)</span>
+  <span class="nx">arrayBuffers</span><span class="p">:</span> <span class="kr">number</span> <span class="c1">// ArrayBuffer/SharedArrayBuffer 메모리</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">heapUsed / heapTotal</code>로 힙 사용률을 계산하며, <code class="language-plaintext highlighter-rouge">rss</code>가 지속적으로 증가하면 메모리 누수를 의심한다.</p>
+
+<h3 id="monitoringmodule-구조">MonitoringModule 구조</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Module</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">ScheduleModule</span><span class="p">.</span><span class="nf">forRoot</span><span class="p">(),</span>  <span class="c1">// @Cron 사용을 위한 스케줄러 초기화</span>
+    <span class="nx">RedisModule</span><span class="p">,</span>               <span class="c1">// AiStatusMonitoringService가 Redis 사용</span>
+  <span class="p">],</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span><span class="nx">AiStatusMonitoringService</span><span class="p">,</span> <span class="nx">SystemMonitoringService</span><span class="p">,</span> <span class="nx">AiCircuitGuard</span><span class="p">],</span>
+  <span class="na">exports</span><span class="p">:</span>   <span class="p">[</span><span class="nx">AiStatusMonitoringService</span><span class="p">,</span> <span class="nx">SystemMonitoringService</span><span class="p">,</span> <span class="nx">AiCircuitGuard</span><span class="p">],</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">AiCircuitGuard</code>를 providers와 exports 양쪽에 등록함으로써, MonitoringModule을 import하는 모듈에서 별도 선언 없이 DI 가능하다.</p>
+
+<hr />
+
+<h2 id="5-대체-가능한-라이브러리-및-트레이드오프">5. 대체 가능한 라이브러리 및 트레이드오프</h2>
+
+<h3 id="5-1-minio-sdk-vs-aws-sdk-v3">5-1. MinIO SDK vs AWS SDK v3</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>AWS SDK v3 (현재)</th>
+      <th>MinIO JS SDK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>S3 호환성</td>
+      <td>완전 호환</td>
+      <td>MinIO 특화 기능 제공</td>
+    </tr>
+    <tr>
+      <td>AWS 전환 용이성</td>
+      <td>✅ 설정만 변경</td>
+      <td>❌ SDK 교체 필요</td>
+    </tr>
+    <tr>
+      <td>presigned URL</td>
+      <td>GetSignedUrl 사용</td>
+      <td>presignedGetObject</td>
+    </tr>
+    <tr>
+      <td>번들 크기</td>
+      <td>트리셰이킹 지원</td>
+      <td>상대적으로 무거움</td>
+    </tr>
+    <tr>
+      <td>**결론**</td>
+      <td>이식성 우선 시 권장</td>
+      <td>MinIO 전용 기능 필요 시</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>AWS SDK v3는 AWS → MinIO 또는 MinIO → S3 전환 시 endpoint 설정만 바꾸면 된다는 장점이 크다.</p>
+
+<h3 id="5-2-메모리-모니터링-winston-로그-vs-prom-client">5-2. 메모리 모니터링: Winston 로그 vs prom-client</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>Winston 로그 (현재)</th>
+      <th>prom-client</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Prometheus 연동</td>
+      <td>별도 파싱 필요</td>
+      <td>직접 /metrics 노출</td>
+    </tr>
+    <tr>
+      <td>Grafana 연동</td>
+      <td>Loki → 쿼리 복잡</td>
+      <td>Prometheus → 직접 연동</td>
+    </tr>
+    <tr>
+      <td>구현 복잡도</td>
+      <td>낮음</td>
+      <td>중간</td>
+    </tr>
+    <tr>
+      <td>실시간 알림</td>
+      <td>로그 기반 지연</td>
+      <td>AlertManager 즉시</td>
+    </tr>
+    <tr>
+      <td>**결론**</td>
+      <td>단순 로깅에 적합</td>
+      <td>프로덕션 모니터링에 권장</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="5-3-인메모리-queueservice-vs-bullmq">5-3. 인메모리 QueueService vs BullMQ</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>QueueService (현재)</th>
+      <th>BullMQ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>수평 확장</td>
+      <td>불가</td>
+      <td>Redis 기반 공유 큐</td>
+    </tr>
+    <tr>
+      <td>재시도</td>
+      <td>없음</td>
+      <td>내장 (backoff)</td>
+    </tr>
+    <tr>
+      <td>모니터링 UI</td>
+      <td>없음</td>
+      <td>Bull Board</td>
+    </tr>
+    <tr>
+      <td>영속성</td>
+      <td>없음 (재시작 시 유실)</td>
+      <td>Redis에 영속</td>
+    </tr>
+    <tr>
+      <td>구현 복잡도</td>
+      <td>낮음</td>
+      <td>중간</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="6-개발자로서-알아야-할-영역">6. 개발자로서 알아야 할 영역</h2>
+
+<h3 id="6-1-s3-호환-스토리지-개념">6-1. S3 호환 스토리지 개념</h3>
+
+<p>AWS S3의 핵심 개념:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bucket: 최상위 컨테이너 (폴더와 유사)
+Object Key: 버킷 내 고유 식별자 (경로 포함: "knowledge/userId/uuid-filename.md")
+ACL: 접근 제어 (private, public-read, public-read-write)
+Pre-signed URL: 임시 서명된 접근 URL (만료 시간 설정 가능)
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">forcePathStyle</code>은 MinIO, LocalStack 등 자체 호스팅 S3 호환 서비스에 반드시 필요하다.</p>
+
+<h3 id="6-2-nodejs-단일-스레드와-동시성">6-2. Node.js 단일 스레드와 동시성</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Node.js Event Loop
+  ├─ 단일 스레드: JS 코드 실행 (CPU-bound 작업 블로킹)
+  └─ libuv thread pool: I/O, DNS, 암호화 등 비동기 처리
+
+동시성이 발생하는 상황:
+  - await 키워드 사용 시 이벤트 루프가 다음 콜백 처리
+  - 여러 async 함수가 await 없이 실행되면 동시 진행
+</code></pre></div></div>
+
+<p>QueueService는 이 동시성으로 인해 외부 API(AI Worker, MinIO) 호출이 동시에 여러 개 진행될 수 있는 상황을 제어한다.</p>
+
+<h3 id="6-3-global-모듈-패턴">6-3. @Global() 모듈 패턴</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Global</span><span class="p">()</span>
+<span class="p">@</span><span class="nd">Module</span><span class="p">({</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span><span class="nx">ObjectStorageService</span><span class="p">],</span>
+  <span class="na">exports</span><span class="p">:</span> <span class="p">[</span><span class="nx">ObjectStorageService</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nc">ObjectStorageModule</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">@Global()</code> 모듈은 <code class="language-plaintext highlighter-rouge">AppModule</code>에서 한 번만 등록하면, 다른 모든 모듈에서 imports 없이 DI 가능하다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AppModule
+  └─ imports: [ObjectStorageModule]  ← 한 번만 등록
+
+KnowledgeModule
+  └─ providers: [KnowledgeService]
+
+KnowledgeService
+  └─ constructor(private readonly objectStorage: ObjectStorageService)  ← imports 없어도 주입됨
+</code></pre></div></div>
+
+<p>과용하면 결합도가 높아지므로, 진정으로 전역적인 유틸리티(DB, Cache, Storage 등)에만 적용한다.</p>
+
+<h3 id="6-4-nestjs-라이프사이클-훅-활용">6-4. NestJS 라이프사이클 훅 활용</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>훅</th>
+      <th>타이밍</th>
+      <th>용도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnModuleInit</code></td>
+      <td>모듈 초기화 완료 후</td>
+      <td>DB 연결, 버킷 확인, 초기 데이터 로드</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnModuleDestroy</code></td>
+      <td>앱 종료 신호 수신 시</td>
+      <td>커넥션 해제, 인터벌 정리, 플러시</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnApplicationShutdown</code></td>
+      <td>SIGTERM 등 수신 시</td>
+      <td>진행 중인 작업 완료 대기</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Graceful Shutdown을 위해 <code class="language-plaintext highlighter-rouge">app.enableShutdownHooks()</code>를 main.ts에 추가하면 <code class="language-plaintext highlighter-rouge">OnModuleDestroy</code>가 종료 신호에 반응한다.</p>
+
+<hr />
+
+<h2 id="핵심-요약-카드">핵심 요약 카드</h2>
+
+<blockquote>
+  <p>[!summary] Common Services 3줄 요약</p>
+  <ol>
+    <li><strong>ObjectStorageService</strong>: AWS SDK v3로 MinIO를 S3 호환 방식으로 연결, onModuleInit에서 버킷 자동 생성</li>
+    <li><strong>QueueService</strong>: 인메모리 동시성 큐(CONCURRENCY=3, MAX_PENDING=10), 단일 인스턴스 한정</li>
+    <li><strong>MonitoringModule</strong>: AI Worker 헬스(Redis ZSet @Cron 1s) + Node.js 메모리(setInterval 5s) 이중 감시</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <p>[!tip] MinIO-S3 호환의 핵심 설정</p>
+  <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nc">S3Client</span><span class="p">({</span>
+  <span class="na">endpoint</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http://minio:9000</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// MinIO 서버 URL</span>
+  <span class="na">forcePathStyle</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>           <span class="c1">// ← 이게 없으면 연결 실패</span>
+  <span class="na">region</span><span class="p">:</span> <span class="dl">'</span><span class="s1">us-east-1</span><span class="dl">'</span><span class="p">,</span>           <span class="c1">// 임의값이지만 SDK 필수</span>
+<span class="p">})</span>
+</code></pre></div>  </div>
+</blockquote>
+
+<blockquote>
+  <p>[!warning] QueueService 수평 확장 불가
+<code class="language-plaintext highlighter-rouge">activeCount</code>와 <code class="language-plaintext highlighter-rouge">pendingQueue</code>는 인메모리 변수다.
+인스턴스가 2개 실행되면 각자 독립적인 큐를 가지며, 전체 동시 처리 수가 2배로 늘어난다.
+분산 환경에서는 <strong>BullMQ + Redis</strong> 로 대체해야 한다.</p>
+</blockquote>
+
+<blockquote>
+  <p>[!example] process.memoryUsage() 핵심 지표</p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">heapUsed / heapTotal</code> → 힙 사용률 (70% 이상이면 경고)</li>
+    <li><code class="language-plaintext highlighter-rouge">rss</code> 지속 증가 → 메모리 누수 의심</li>
+    <li><code class="language-plaintext highlighter-rouge">external</code> 증가 → Buffer/Stream 누수 의심</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>[!abstract] @Global() 사용 기준
+DB, Cache, Storage처럼 앱 전반에서 쓰이는 인프라 레이어에만 적용.
+도메인 서비스에 @Global() 남용 시 모듈 의존성 그래프가 불명확해진다.</p>
+</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="NestJS" /><category term="AI" /><summary type="html"><![CDATA[Protostar Review - 13 - NestJS Common Services]]></summary></entry><entry><title type="html">Protostar review note - 11 - NestJS Chat Domain (SSE + Redis PubSub)</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/27/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 11 - NestJS Chat Domain (SSE + Redis PubSub)" /><published>2026-02-27T00:00:00+00:00</published><updated>2026-02-27T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/27/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/27/00-protostar-review.html"><![CDATA[<h1 id="nestjs-chat-도메인-분석">NestJS Chat 도메인 분석</h1>
+<h2 id="sse--redis-pubsub--rxjs">SSE + Redis Pub/Sub + RxJS</h2>
+
+<blockquote>
+  <p>이 파일은 실시간 AI 채팅 스트리밍을 담당하는 Chat 도메인을 다룬다.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>파일</th>
+        <th>역할</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">chat.controller.ts</code></td>
+        <td>SSE 스트림 엔드포인트, 메시지 디스패치</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">chat.service.ts</code></td>
+        <td>Redis Pub/Sub, RxJS Subject, 연결 관리</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">chat.module.ts</code></td>
+        <td>MonitoringModule 의존, 모듈 조립</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">dto/create-chat.dto.ts</code></td>
+        <td>채팅 메시지 요청 검증 (조건부 검증 포함)</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">interface/ChatMessage.ts</code></td>
+        <td>SSE 스트림 메시지 타입 계약</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<hr />
+
+<h1 id="1-주요-개념">1. 주요 개념</h1>
+
+<h2 id="왜-websocket이-아닌-sse인가">왜 WebSocket이 아닌 SSE인가</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>SSE (현재)</th>
+      <th>WebSocket</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**방향**</td>
+      <td>서버 → 클라이언트 단방향</td>
+      <td>양방향</td>
+    </tr>
+    <tr>
+      <td>**프로토콜**</td>
+      <td>HTTP/1.1 위에서 동작</td>
+      <td>별도 WS 프로토콜</td>
+    </tr>
+    <tr>
+      <td>**Nginx 설정**</td>
+      <td><code class="language-plaintext highlighter-rouge">X-Accel-Buffering: no</code> 만 추가</td>
+      <td>Upgrade 헤더 프록시 설정 필요</td>
+    </tr>
+    <tr>
+      <td>**재연결**</td>
+      <td>브라우저가 자동 재연결</td>
+      <td>클라이언트가 직접 구현</td>
+    </tr>
+    <tr>
+      <td>**적합한 경우**</td>
+      <td>AI 스트리밍, 알림, 로그</td>
+      <td>실시간 채팅, 게임, 협업 도구</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>AI 응답은 <strong>서버 → 클라이언트 단방향</strong>이므로 SSE가 구조적으로 더 적합하다. WebSocket의 양방향성은 이 서비스에서 불필요한 복잡도다.</p>
+
+<h2 id="두-단계-채팅-흐름">두 단계 채팅 흐름</h2>
+
+<p>이 프로젝트의 채팅은 <strong>연결(SSE)과 요청(POST)이 분리</strong>된 비동기 구조다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Step 1: GET /api/v1/chat/stream/:sessionId  → SSE 연결 수립 (롱 커넥션)
+Step 2: POST /api/v1/chat/message           → 메시지 전송 (일반 HTTP)
+Step 3: FastAPI 워커가 처리 후 Redis Publish
+Step 4: NestJS가 수신 → SSE로 클라이언트에게 스트리밍
+</code></pre></div></div>
+
+<p>POST와 SSE가 분리된 이유: SSE는 서버가 일방적으로 데이터를 밀어내는 구조라 클라이언트가 요청 본문을 SSE 연결로 보낼 수 없다.</p>
+
+<h2 id="rxjs-subject--observable-패턴">RxJS Subject + Observable 패턴</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>streamMap: Map&lt;string, Subject&lt;ChatMessage&gt;&gt;
+  ↑ 유저 연결 시 Subject 생성·저장
+  ↓ Redis에서 메시지 수신 시 Subject.next() 호출
+  → Subject.asObservable() → SSE 스트림으로 전송
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Subject</code>는 Observable이면서 동시에 Observer다. 외부에서 <code class="language-plaintext highlighter-rouge">.next()</code>로 데이터를 밀어 넣으면 구독자(SSE 연결)에게 즉시 전달된다.</p>
+
+<h2 id="redis-pubsub---구독자-커넥션-분리">Redis Pub/Sub - 구독자 커넥션 분리</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">constructor</span><span class="p">(@</span><span class="nd">Inject</span><span class="p">(</span><span class="nx">REDIS_CLIENT</span><span class="p">)</span> <span class="k">private</span> <span class="k">readonly</span> <span class="nx">redisPublisher</span><span class="p">:</span> <span class="nx">Redis</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">redisSubscriber</span> <span class="o">=</span> <span class="nx">redisPublisher</span><span class="p">.</span><span class="nf">duplicate</span><span class="p">();</span>  <span class="c1">// 별도 커넥션</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Redis 규칙: <strong>Pub/Sub 모드에 진입한 커넥션은 SUBSCRIBE 명령어만 수신 가능</strong>하다. 일반 GET/SET 명령을 함께 쓰려면 반드시 커넥션을 분리해야 한다. <code class="language-plaintext highlighter-rouge">duplicate()</code>는 동일 설정으로 새 커넥션을 생성한다.</p>
+
+<hr />
+
+<h1 id="2-핵심-로직-흐름">2. 핵심 로직 흐름</h1>
+
+<h2 id="전체-흐름-시퀀스">전체 흐름 시퀀스</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Client]
+  │
+  ├─ GET /stream/:sessionId?uuid={uuid}
+  │    │
+  │    ├─ AiCircuitGuard: AI 서비스 가용 여부 확인
+  │    ├─ ChatService.isOkayToConnect(): 최대 연결 수 확인
+  │    ├─ ChatService.addClient(uuid, sessionId)
+  │    │    └─ streamMap.set(`${uuid}-${sessionId}`, new Subject())
+  │    │
+  │    └─ Observable 반환 (merge)
+  │         ├─ initEvent:      { type: 'init', uuid, sessionId }   즉시 1회
+  │         ├─ heartbeatEvent: { type: 'heartbeat' }               매 N초
+  │         └─ messageStream:  Subject.asObservable()              Redis 메시지 수신 시
+  │
+  ├─ POST /message  { uuid, sessionId, mode, content, context }
+  │    │
+  │    ├─ AiCircuitGuard: AI 가용 여부 확인
+  │    ├─ ChatService.dispatchJob(dto)
+  │    │    ├─ 1. hasActiveStream(): uuid-sessionId 가 streamMap에 있는지 확인
+  │    │    ├─ 2. mode=page_context → sanitize(context)   XSS 제거
+  │    │    ├─ 3. jobId = uuidv4()
+  │    │    └─ 4. Redis pipeline
+  │    │          ├─ SET  chat:task:{jobId}  payload  EX 300
+  │    │          └─ RPUSH chat:job:queue    jobId
+  │    │
+  │    └─ return { success, status: 'queued', jobId }
+  │
+[FastAPI 워커]
+  │  chat:job:queue 소비 → LLM 처리 → 토큰 스트리밍
+  │  → PUBLISH chat:stream:{uuid}-{sessionId}  메시지
+  │
+[ChatService - Redis Subscriber]
+  │  pmessage 이벤트 수신
+  │  → routeMessageToUser(channel, message)
+  │      └─ streamMap.get(sessionId).next(payload)
+  │
+[Client SSE]
+     Subject.next() → Observable → SSE Event 전송
+</code></pre></div></div>
+
+<h2 id="sse-엔드포인트-상세">SSE 엔드포인트 상세</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Public</span><span class="p">()</span>
+<span class="p">@</span><span class="nd">Get</span><span class="p">(</span><span class="dl">'</span><span class="s1">stream/:sessionId</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">@</span><span class="nd">Sse</span><span class="p">(</span><span class="dl">'</span><span class="s1">stream/:sessionId</span><span class="dl">'</span><span class="p">)</span>            <span class="c1">// NestJS SSE 데코레이터</span>
+<span class="p">@</span><span class="nd">UseGuards</span><span class="p">(</span><span class="nx">AiCircuitGuard</span><span class="p">)</span>
+<span class="p">@</span><span class="nd">SkipThrottle</span><span class="p">()</span>                      <span class="c1">// 장기 연결 - Rate Limit 카운트 제외</span>
+<span class="p">@</span><span class="nd">Header</span><span class="p">(</span><span class="dl">'</span><span class="s1">X-Accel-Buffering</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">no</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// Nginx 버퍼링 비활성화 (실시간 전송)</span>
+<span class="p">@</span><span class="nd">Header</span><span class="p">(</span><span class="dl">'</span><span class="s1">Cache-Control</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">no-cache</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">@</span><span class="nd">Header</span><span class="p">(</span><span class="dl">'</span><span class="s1">Connection</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">keep-alive</span><span class="dl">'</span><span class="p">)</span>
+<span class="nf">stream</span><span class="p">(@</span><span class="nd">Param</span><span class="p">(</span><span class="dl">'</span><span class="s1">sessionId</span><span class="dl">'</span><span class="p">)</span> <span class="nx">sessionId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="p">@</span><span class="nd">Query</span><span class="p">(</span><span class="dl">'</span><span class="s1">uuid</span><span class="dl">'</span><span class="p">)</span> <span class="nx">earlyUUID</span><span class="p">?:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="kd">const</span> <span class="nx">targetUuid</span> <span class="o">=</span> <span class="nx">earlyUUID</span> <span class="o">||</span> <span class="nf">uuidv4</span><span class="p">();</span>  <span class="c1">// 클라이언트가 UUID를 미리 알고 싶을 때</span>
+
+  <span class="kd">const</span> <span class="nx">userStreamSubject</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">chatService</span><span class="p">.</span><span class="nf">addClient</span><span class="p">(</span><span class="nx">targetUuid</span><span class="p">,</span> <span class="nx">sessionId</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">initEvent</span> <span class="o">=</span> <span class="k">from</span><span class="p">([{</span> <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">init</span><span class="dl">'</span><span class="p">,</span> <span class="na">uuid</span><span class="p">:</span> <span class="nx">targetUuid</span> <span class="p">}</span> <span class="p">}]);</span>
+
+  <span class="kd">const</span> <span class="nx">heartbeatEvent</span> <span class="o">=</span> <span class="nf">interval</span><span class="p">(</span><span class="nx">SSE_HEARTBEAT_INTERVAL</span><span class="p">).</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">map</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">heartbeat</span><span class="dl">'</span><span class="p">,</span> <span class="na">timestamp</span><span class="p">:</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">toISOString</span><span class="p">()</span> <span class="p">}</span> <span class="p">}))</span>
+  <span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">messageStream</span> <span class="o">=</span> <span class="nx">userStreamSubject</span><span class="p">.</span><span class="nf">asObservable</span><span class="p">().</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">map</span><span class="p">(</span><span class="nx">payload</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">data</span><span class="p">:</span> <span class="nx">payload</span> <span class="p">}))</span>
+  <span class="p">);</span>
+
+  <span class="k">return</span> <span class="nf">merge</span><span class="p">(</span><span class="nx">initEvent</span><span class="p">,</span> <span class="nx">heartbeatEvent</span><span class="p">,</span> <span class="nx">messageStream</span><span class="p">).</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">finalize</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">chatService</span><span class="p">.</span><span class="nf">removeClient</span><span class="p">(</span><span class="nx">targetUuid</span><span class="p">,</span> <span class="nx">sessionId</span><span class="p">);</span>
+      <span class="c1">// TODO: Redis Unsubscribe Logic</span>
+    <span class="p">})</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="dispatchjob-내부-처리"><code class="language-plaintext highlighter-rouge">dispatchJob</code> 내부 처리</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="nf">dispatchJob</span><span class="p">(</span><span class="nx">dto</span><span class="p">:</span> <span class="nx">CreateChatDto</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 1. UUID-sessionId 쌍이 실제 연결 중인지 확인 (보안)</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nf">hasActiveStream</span><span class="p">(</span><span class="nx">dto</span><span class="p">.</span><span class="nx">uuid</span><span class="p">,</span> <span class="nx">dto</span><span class="p">.</span><span class="nx">sessionId</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Unauthorized</span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// SSE 없이 POST만 보내는 시도 차단</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 2. page_context 모드일 때만 context XSS 제거</span>
+  <span class="kd">let</span> <span class="nx">cleanContext</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">dto</span><span class="p">.</span><span class="nx">mode</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">page_context</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">dto</span><span class="p">.</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">cleanContext</span> <span class="o">=</span> <span class="nf">sanitize</span><span class="p">(</span><span class="nx">dto</span><span class="p">.</span><span class="nx">context</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">allowedTags</span><span class="p">:</span> <span class="p">[],</span>          <span class="c1">// 모든 HTML 태그 제거</span>
+      <span class="na">allowedAttributes</span><span class="p">:</span> <span class="p">{},</span>    <span class="c1">// 모든 속성 제거</span>
+      <span class="na">disallowedTagsMode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">discard</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">});</span>
+    <span class="nx">cleanContext</span> <span class="o">=</span> <span class="nx">cleanContext</span><span class="p">.</span><span class="nf">trim</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 3. Redis pipeline으로 원자적 2-step 저장</span>
+  <span class="kd">const</span> <span class="nx">jobId</span> <span class="o">=</span> <span class="nf">uuidv4</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">pipeline</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">redisPublisher</span><span class="p">.</span><span class="nf">pipeline</span><span class="p">();</span>
+  <span class="nx">pipeline</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="s2">`chat:task:</span><span class="p">${</span><span class="nx">jobId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">payload</span><span class="p">),</span> <span class="dl">'</span><span class="s1">EX</span><span class="dl">'</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
+  <span class="nx">pipeline</span><span class="p">.</span><span class="nf">rpush</span><span class="p">(</span><span class="dl">'</span><span class="s1">chat:job:queue</span><span class="dl">'</span><span class="p">,</span> <span class="nx">jobId</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">pipeline</span><span class="p">.</span><span class="nf">exec</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="nx">jobId</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="redis-패턴-구독-psubscribe">Redis 패턴 구독 (<code class="language-plaintext highlighter-rouge">psubscribe</code>)</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">redisSubscriber</span><span class="p">.</span><span class="nf">psubscribe</span><span class="p">(</span><span class="dl">'</span><span class="s1">chat:stream:*</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// 패턴 매칭: chat:stream:uuid-sessionId 형태의 모든 채널 구독</span>
+
+<span class="k">this</span><span class="p">.</span><span class="nx">redisSubscriber</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">pmessage</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">pattern</span><span class="p">,</span> <span class="nx">channel</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// pattern: 'chat:stream:*'</span>
+  <span class="c1">// channel: 'chat:stream:abc123-session456'</span>
+  <span class="c1">// message: JSON 문자열</span>
+  <span class="k">this</span><span class="p">.</span><span class="nf">routeMessageToUser</span><span class="p">(</span><span class="nx">channel</span><span class="p">,</span> <span class="nx">message</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">subscribe</code>는 정확한 채널명, <code class="language-plaintext highlighter-rouge">psubscribe</code>는 <strong>글로브 패턴</strong>으로 구독한다. 유저별로 동적 채널이 생성되는 구조에서는 <code class="language-plaintext highlighter-rouge">psubscribe</code>가 필수다.</p>
+
+<h2 id="연결-수-제어-static-activeconnections">연결 수 제어 (<code class="language-plaintext highlighter-rouge">static activeConnections</code>)</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">static</span> <span class="nx">activeConnections</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// 클래스 레벨 공유 변수</span>
+
+<span class="k">public</span> <span class="nf">incrementActiveConnections</span><span class="p">():</span> <span class="nx">boolean</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">ChatService</span><span class="p">.</span><span class="nx">activeConnections</span> <span class="o">&gt;=</span> <span class="nx">CHAT_MAX_CONNECTIONS</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="nx">ChatService</span><span class="p">.</span><span class="nx">activeConnections</span><span class="o">++</span><span class="p">;</span>
+  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">static</code> 변수를 사용하는 이유: NestJS에서 서비스는 기본 Singleton이므로 인스턴스 변수(<code class="language-plaintext highlighter-rouge">this.activeConnections</code>)로도 충분하다. 다만 <code class="language-plaintext highlighter-rouge">static</code>으로 선언하면 클래스 레벨에서 절대적으로 공유됨을 명시적으로 표현한다.</p>
+
+<hr />
+
+<h1 id="3-구조적-취약점--개선-방향">3. 구조적 취약점 / 개선 방향</h1>
+
+<h2 id="chatcontroller-todo-redis-unsubscribe-미구현">[ChatController] TODO: Redis Unsubscribe 미구현</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="nf">merge</span><span class="p">(</span><span class="nx">initEvent</span><span class="p">,</span> <span class="nx">heartbeatEvent</span><span class="p">,</span> <span class="nx">messageStream</span><span class="p">).</span><span class="nf">pipe</span><span class="p">(</span>
+  <span class="nf">finalize</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">chatService</span><span class="p">.</span><span class="nf">removeClient</span><span class="p">(</span><span class="nx">targetUuid</span><span class="p">,</span> <span class="nx">sessionId</span><span class="p">);</span>
+    <span class="c1">//TODO: Implement Redis Unsubscribe Logic</span>
+  <span class="p">})</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>현재 SSE 연결이 끊겨도 <code class="language-plaintext highlighter-rouge">chat:stream:*</code> 패턴 구독 자체는 유지된다. 연결된 유저가 없는 채널로 메시지가 들어오면 <code class="language-plaintext highlighter-rouge">routeMessageToUser</code>에서 <code class="language-plaintext highlighter-rouge">streamMap</code>에 해당 키가 없어 무시되므로 기능상 문제는 없다. 하지만 연결 수가 많아지면 불필요한 Redis 메시지를 수신해 CPU를 소모한다.</p>
+
+<p><strong>개선 방향</strong>: 유저별 채널 구독(<code class="language-plaintext highlighter-rouge">subscribe</code>)으로 전환하고, 연결 종료 시 해당 채널 <code class="language-plaintext highlighter-rouge">unsubscribe</code>.</p>
+
+<h2 id="chatservice-streammap-키-충돌-가능성">[ChatService] streamMap 키 충돌 가능성</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">streamMap</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">uuid</span><span class="p">}</span><span class="s2">-</span><span class="p">${</span><span class="nx">sessionId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">subject</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>UUID + sessionId를 <code class="language-plaintext highlighter-rouge">-</code>로 단순 연결한다. 두 값 모두 클라이언트가 임의로 전송할 수 있으므로, 키 충돌이 발생하면 기존 Subject가 덮어씌워진다. 분리자를 더 안전하게 구성하거나 UUID 형식을 서버에서 강제하면 위험을 줄일 수 있다.</p>
+
+<h2 id="chatservice-routemessagetouser-채널-파싱-취약성">[ChatService] <code class="language-plaintext highlighter-rouge">routeMessageToUser</code> 채널 파싱 취약성</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="nf">routeMessageToUser</span><span class="p">(</span><span class="nx">channel</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">messageString</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">sessionId</span> <span class="o">=</span> <span class="nx">channel</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">:</span><span class="dl">'</span><span class="p">).</span><span class="nf">pop</span><span class="p">();</span>  <span class="c1">// 마지막 세그먼트</span>
+  <span class="c1">// channel: "chat:stream:uuid-sessionId"</span>
+  <span class="c1">// → split(':') → ['chat', 'stream', 'uuid-sessionId']</span>
+  <span class="c1">// → pop() → 'uuid-sessionId'</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">channel.split(':').pop()</code>으로 <code class="language-plaintext highlighter-rouge">uuid-sessionId</code> 전체를 꺼내서 streamMap 키로 사용하고 있다. 그런데 <code class="language-plaintext highlighter-rouge">streamMap</code>에는 <code class="language-plaintext highlighter-rouge">${uuid}-${sessionId}</code> 형태로 저장하므로 FastAPI 워커가 채널명을 정확히 <code class="language-plaintext highlighter-rouge">chat:stream:{uuid}-{sessionId}</code> 형태로 발행해야 한다. 이 <strong>채널 이름 형식이 암묵적 계약</strong>이 되어 있어, 한쪽이 변경되면 전체가 깨진다.</p>
+
+<h2 id="createchatdto-mode를-prisma-enum이-아닌-리터럴-유니온으로-선언">[CreateChatDto] <code class="language-plaintext highlighter-rouge">mode</code>를 Prisma enum이 아닌 리터럴 유니온으로 선언</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">IsEnum</span><span class="p">([</span><span class="dl">'</span><span class="s1">general</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">page_context</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">test</span><span class="dl">'</span><span class="p">])</span>
+<span class="nx">mode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">general</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">page_context</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">test</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>배열 리터럴로 enum을 직접 정의하고 있다. <code class="language-plaintext highlighter-rouge">'test'</code> 모드가 프로덕션에 그대로 노출되어 있다. 내부 테스트용 모드는 프로덕션 빌드에서 제거하거나 별도 가드로 막아야 한다.</p>
+
+<h2 id="chatservice-정적-연결-수와-streammap-크기의-불일치-가능성">[ChatService] 정적 연결 수와 streamMap 크기의 불일치 가능성</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="nf">getStreamMapSize</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">streamMap</span><span class="p">.</span><span class="nx">size</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">public</span> <span class="nf">getActiveConnections</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">ChatService</span><span class="p">.</span><span class="nx">activeConnections</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>두 값이 항상 일치해야 하지만, 예외 상황(예: <code class="language-plaintext highlighter-rouge">addClient</code> 이후 <code class="language-plaintext highlighter-rouge">incrementActiveConnections</code> 실패 경로 등)에서 불일치가 발생할 수 있다. 두 상태를 <code class="language-plaintext highlighter-rouge">streamMap.size</code>로 단일화하면 불일치 자체를 없앨 수 있다.</p>
+
+<h2 id="dispatchjob-hasactivestream-인가-우회-가능성">[dispatchJob] <code class="language-plaintext highlighter-rouge">hasActiveStream</code> 인가 우회 가능성</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nf">hasActiveStream</span><span class="p">(</span><span class="nx">dto</span><span class="p">.</span><span class="nx">uuid</span><span class="p">,</span> <span class="nx">dto</span><span class="p">.</span><span class="nx">sessionId</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Unauthorized</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>uuid와 sessionId가 모두 클라이언트 제공값이다. 공격자가 타인의 uuid-sessionId를 알면 그 유저의 SSE 스트림에 메시지를 삽입할 수 있다. 현재는 uuid가 서버에서 발급되거나 클라이언트가 생성하는 임의값이어서 예측이 어렵지만, JWT 기반 유저 식별과 연동하면 더 안전해진다.</p>
+
+<hr />
+
+<h1 id="4-핵심-메서드-및-라이브러리-함수-설명">4. 핵심 메서드 및 라이브러리 함수 설명</h1>
+
+<h2 id="sse-데코레이터"><code class="language-plaintext highlighter-rouge">@Sse()</code> 데코레이터</h2>
+
+<p>NestJS에서 SSE 엔드포인트를 선언하는 데코레이터. 반환값이 반드시 <code class="language-plaintext highlighter-rouge">Observable&lt;MessageEvent&gt;</code>이어야 한다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// MessageEvent 형식</span>
+<span class="p">{</span> <span class="nl">data</span><span class="p">:</span> <span class="kr">any</span> <span class="p">}</span>  <span class="c1">// SSE의 data: 필드에 직렬화되어 전송</span>
+</code></pre></div></div>
+
+<p>브라우저는 <code class="language-plaintext highlighter-rouge">EventSource</code> API로 SSE를 소비하고, 연결이 끊기면 자동으로 재연결을 시도한다.</p>
+
+<h2 id="rxjs-merge">RxJS <code class="language-plaintext highlighter-rouge">merge()</code></h2>
+
+<p>여러 Observable을 하나로 합치는 연산자. 각 소스에서 값이 발행될 때마다 즉시 다운스트림으로 전달한다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="nf">merge</span><span class="p">(</span><span class="nx">initEvent</span><span class="p">,</span> <span class="nx">heartbeatEvent</span><span class="p">,</span> <span class="nx">messageStream</span><span class="p">)</span>
+<span class="c1">// initEvent: 즉시 1회 발행 후 완료</span>
+<span class="c1">// heartbeatEvent: N초마다 계속 발행</span>
+<span class="c1">// messageStream: Redis 메시지 수신 시 발행</span>
+<span class="c1">// → 세 스트림을 하나의 SSE 스트림으로 병합</span>
+</code></pre></div></div>
+
+<h2 id="rxjs-finalize">RxJS <code class="language-plaintext highlighter-rouge">finalize()</code></h2>
+
+<p>Observable이 <strong>완료되거나 에러로 종료될 때</strong> 반드시 실행되는 콜백. <code class="language-plaintext highlighter-rouge">try/finally</code>의 Observable 버전.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+  <span class="nf">finalize</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">chatService</span><span class="p">.</span><span class="nf">removeClient</span><span class="p">(</span><span class="nx">uuid</span><span class="p">,</span> <span class="nx">sessionId</span><span class="p">);</span>
+    <span class="c1">// SSE 연결 종료(정상/비정상 모두)될 때 Subject 정리 + 연결 수 감소</span>
+  <span class="p">})</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="rxjs-subject">RxJS <code class="language-plaintext highlighter-rouge">Subject</code></h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">subject</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Subject</span><span class="o">&lt;</span><span class="nx">ChatMessage</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">streamMap</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">uuid</span><span class="p">}</span><span class="s2">-</span><span class="p">${</span><span class="nx">sessionId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">subject</span><span class="p">);</span>
+
+<span class="c1">// 외부에서 데이터 밀어 넣기</span>
+<span class="nx">subject</span><span class="p">.</span><span class="nf">next</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>         <span class="c1">// Redis 메시지 수신 시</span>
+
+<span class="c1">// SSE에 연결</span>
+<span class="nx">subject</span><span class="p">.</span><span class="nf">asObservable</span><span class="p">()</span>         <span class="c1">// 읽기 전용 Observable로 노출</span>
+  <span class="p">.</span><span class="nf">pipe</span><span class="p">(</span><span class="nf">map</span><span class="p">(</span><span class="nx">payload</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">data</span><span class="p">:</span> <span class="nx">payload</span> <span class="p">})))</span>
+
+<span class="c1">// 연결 종료 시</span>
+<span class="nx">subject</span><span class="p">.</span><span class="nf">complete</span><span class="p">();</span>            <span class="c1">// 스트림 종료 신호 → SSE 연결 끊김</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Subject</code>를 직접 외부에 노출하지 않고 <code class="language-plaintext highlighter-rouge">asObservable()</code>로 래핑하는 이유: 외부에서 <code class="language-plaintext highlighter-rouge">.next()</code>를 호출하지 못하도록 <strong>쓰기 권한을 제한</strong>하기 위해서다.</p>
+
+<h2 id="rxjs-intervalms">RxJS <code class="language-plaintext highlighter-rouge">interval(ms)</code></h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">heartbeatEvent</span> <span class="o">=</span> <span class="nf">interval</span><span class="p">(</span><span class="nx">SSE_HEARTBEAT_INTERVAL</span><span class="p">).</span><span class="nf">pipe</span><span class="p">(</span>
+  <span class="nf">map</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">heartbeat</span><span class="dl">'</span><span class="p">,</span> <span class="p">...</span> <span class="p">}</span> <span class="p">}))</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>지정된 밀리초마다 숫자(0, 1, 2, …)를 발행하는 Observable. <code class="language-plaintext highlighter-rouge">map</code>으로 heartbeat 페이로드로 변환한다. Heartbeat 목적: 프록시(Nginx)나 브라우저가 유휴 연결을 끊지 않도록 유지시키는 keepalive 신호.</p>
+
+<h2 id="sanitize-html"><code class="language-plaintext highlighter-rouge">sanitize-html</code></h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">cleanContext</span> <span class="o">=</span> <span class="nf">sanitize</span><span class="p">(</span><span class="nx">dto</span><span class="p">.</span><span class="nx">context</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">allowedTags</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">allowedAttributes</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="na">disallowedTagsMode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">discard</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>HTML 문자열에서 허용되지 않은 태그와 속성을 제거한다. <code class="language-plaintext highlighter-rouge">allowedTags: []</code>는 <strong>모든 HTML 태그를 제거</strong>한다는 의미. <code class="language-plaintext highlighter-rouge">page_context</code> 모드에서 페이지 본문 텍스트를 그대로 LLM에 전달하는데, 악의적인 <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> 태그나 이벤트 핸들러가 프롬프트 인젝션으로 악용될 수 있어 세탁이 필요하다.</p>
+
+<h2 id="redis-pipeline">Redis <code class="language-plaintext highlighter-rouge">pipeline()</code></h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">pipeline</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">redisPublisher</span><span class="p">.</span><span class="nf">pipeline</span><span class="p">();</span>
+<span class="nx">pipeline</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">taskKey</span><span class="p">,</span> <span class="nx">taskPayload</span><span class="p">,</span> <span class="dl">'</span><span class="s1">EX</span><span class="dl">'</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
+<span class="nx">pipeline</span><span class="p">.</span><span class="nf">rpush</span><span class="p">(</span><span class="dl">'</span><span class="s1">chat:job:queue</span><span class="dl">'</span><span class="p">,</span> <span class="nx">jobId</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">pipeline</span><span class="p">.</span><span class="nf">exec</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>여러 Redis 명령을 하나의 네트워크 왕복으로 묶어 전송하는 최적화. 각각 <code class="language-plaintext highlighter-rouge">await</code>하면 RTT(Round-Trip Time)가 명령 수만큼 발생하지만, pipeline은 한 번에 전송하고 한 번에 응답을 받는다. 단, 트랜잭션(MULTI/EXEC)은 아니므로 개별 명령 실패 시 rollback은 없다.</p>
+
+<h2 id="validateif-조건부-검증"><code class="language-plaintext highlighter-rouge">@ValidateIf</code> 조건부 검증</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">ValidateIf</span><span class="p">((</span><span class="nx">o</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">o</span><span class="p">.</span><span class="nx">mode</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">page_context</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// mode가 page_context일 때만 검증</span>
+<span class="p">@</span><span class="nd">IsString</span><span class="p">()</span>
+<span class="p">@</span><span class="nd">IsNotEmpty</span><span class="p">()</span>
+<span class="nx">context</span><span class="p">?:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kc">null</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">mode</code>가 <code class="language-plaintext highlighter-rouge">'page_context'</code>일 때만 <code class="language-plaintext highlighter-rouge">context</code> 필드를 필수로 검증한다. 다른 모드에서는 <code class="language-plaintext highlighter-rouge">context</code>가 없어도 통과한다. 복잡한 조건부 유효성 검증을 선언적으로 표현하는 class-validator 패턴이다.</p>
+
+<h2 id="from---단발성-observable"><code class="language-plaintext highlighter-rouge">from([])</code> - 단발성 Observable</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">initEvent</span> <span class="o">=</span> <span class="k">from</span><span class="p">([</span>
+  <span class="p">{</span> <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">init</span><span class="dl">'</span><span class="p">,</span> <span class="na">uuid</span><span class="p">:</span> <span class="nx">targetUuid</span> <span class="p">}</span> <span class="p">}</span>
+<span class="p">]);</span>
+</code></pre></div></div>
+
+<p>배열에서 Observable을 생성한다. 배열의 모든 요소를 순서대로 발행하고 즉시 완료된다. <code class="language-plaintext highlighter-rouge">merge</code>에 포함되면 연결 즉시 init 이벤트를 한 번 보내고 그 소스는 종료되지만, 다른 소스(heartbeat, messageStream)가 계속 살아있으므로 전체 Observable은 유지된다.</p>
+
+<hr />
+
+<h1 id="5-대체-가능한-라이브러리-및-트레이드오프">5. 대체 가능한 라이브러리 및 트레이드오프</h1>
+
+<h2 id="sse-vs-websocket-vs-long-polling">SSE vs WebSocket vs Long Polling</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방법</th>
+      <th>방향</th>
+      <th>복잡도</th>
+      <th>적합한 경우</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**SSE** (현재)</td>
+      <td>단방향(서버→클라이언트)</td>
+      <td>낮음</td>
+      <td>AI 스트리밍, 알림, 피드</td>
+    </tr>
+    <tr>
+      <td>**WebSocket**</td>
+      <td>양방향</td>
+      <td>높음</td>
+      <td>실시간 채팅, 게임, 협업</td>
+    </tr>
+    <tr>
+      <td>**Long Polling**</td>
+      <td>단방향(흉내)</td>
+      <td>중간</td>
+      <td>SSE 미지원 환경, 레거시 브라우저</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>SSE는 HTTP/2 위에서 멀티플렉싱되어 성능이 더 좋다. HTTP/1.1에서는 브라우저당 동일 도메인 연결 수 제한(6개)이 있어 탭이 많으면 문제가 될 수 있다.</p>
+</blockquote>
+
+<h2 id="redis-pubsub-vs-대안">Redis Pub/Sub vs 대안</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방법</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**Redis Pub/Sub** (현재)</td>
+      <td>구현 단순, 기존 Redis 재사용</td>
+      <td>메시지 영속성 없음, 미연결 시 소실</td>
+    </tr>
+    <tr>
+      <td>**Redis Streams**</td>
+      <td>메시지 영속성, Consumer Group</td>
+      <td>구현 복잡도 증가</td>
+    </tr>
+    <tr>
+      <td>**Kafka**</td>
+      <td>대용량, 재처리 가능, 내구성</td>
+      <td>별도 인프라, 운영 복잡도</td>
+    </tr>
+    <tr>
+      <td>**BullMQ**</td>
+      <td>NestJS 통합 용이, 재시도 내장</td>
+      <td>Pub/Sub보다 큐 개념에 가까움</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>현재 구조에서 FastAPI 워커가 응답을 Publish할 때 NestJS가 연결되어 있지 않으면 메시지가 소실된다. <strong>Redis Streams</strong>로 전환하면 재처리가 가능하지만 구현 복잡도가 높아진다. 서비스 규모를 고려할 때 현재 방식이 합리적인 선택이다.</p>
+</blockquote>
+
+<h2 id="rxjs-subject-vs-대안">RxJS <code class="language-plaintext highlighter-rouge">Subject</code> vs 대안</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방법</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**Subject** (현재)</td>
+      <td>간결, RxJS 생태계 통합</td>
+      <td>Cold/Hot Observable 개념 이해 필요</td>
+    </tr>
+    <tr>
+      <td>**EventEmitter**</td>
+      <td>Node.js 내장, 친숙</td>
+      <td>RxJS 파이프라인과 통합 어려움</td>
+    </tr>
+    <tr>
+      <td>**BehaviorSubject**</td>
+      <td>최신 값 캐싱 가능</td>
+      <td>AI 스트리밍에는 불필요</td>
+    </tr>
+    <tr>
+      <td>**ReplaySubject**</td>
+      <td>이전 값 재전송 가능</td>
+      <td>메모리 사용 증가</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>AI 스트리밍은 실시간 토큰 전달이 목적이므로 이전 값 캐싱이 필요 없다. <code class="language-plaintext highlighter-rouge">Subject</code>가 가장 적합하다.</p>
+</blockquote>
+
+<h2 id="sanitize-html-vs-대안"><code class="language-plaintext highlighter-rouge">sanitize-html</code> vs 대안</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>라이브러리</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**sanitize-html** (현재)</td>
+      <td>설정 유연, 태그·속성 화이트리스트</td>
+      <td>번들 크기 다소 큼</td>
+    </tr>
+    <tr>
+      <td>**DOMPurify**</td>
+      <td>브라우저 표준 DOM 파서 사용, 가장 강력</td>
+      <td>서버사이드(Node.js)에서 jsdom 필요</td>
+    </tr>
+    <tr>
+      <td>**xss**</td>
+      <td>경량, 빠름</td>
+      <td>세밀한 설정 제한적</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h1 id="6-개발자로서-알아야-할-영역">6. 개발자로서 알아야 할 영역</h1>
+
+<h2 id="a-sse-프로토콜-이해">A. SSE 프로토콜 이해</h2>
+
+<p>SSE는 HTTP 응답을 끊지 않고 지속적으로 데이터를 보내는 방식이다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP/1.1 200 OK
+Content-Type: text/event-stream
+Cache-Control: no-cache
+Connection: keep-alive
+
+data: {"type":"init","uuid":"..."}
+
+data: {"type":"heartbeat"}
+
+data: {"type":"message","content":"AI 응답..."}
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">data:</code> 접두사가 붙은 줄이 이벤트 데이터</li>
+  <li>빈 줄(<code class="language-plaintext highlighter-rouge">\n\n</code>)이 이벤트 구분자</li>
+  <li><code class="language-plaintext highlighter-rouge">@Sse()</code> 데코레이터가 <code class="language-plaintext highlighter-rouge">Content-Type: text/event-stream</code> 헤더를 자동 설정</li>
+</ul>
+
+<h2 id="b-x-accel-buffering-no가-필요한-이유">B. <code class="language-plaintext highlighter-rouge">X-Accel-Buffering: no</code>가 필요한 이유</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Header</span><span class="p">(</span><span class="dl">'</span><span class="s1">X-Accel-Buffering</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">no</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Nginx는 기본적으로 업스트림(NestJS) 응답을 <strong>버퍼링</strong>했다가 클라이언트에게 보낸다. SSE는 실시간 전송이 목적이므로 버퍼링이 쌓이면 데이터가 지연된다. <code class="language-plaintext highlighter-rouge">X-Accel-Buffering: no</code>는 Nginx에게 “이 응답은 버퍼링하지 말고 즉시 전달하라”고 지시한다.</p>
+
+<h2 id="c-비동기-채팅-아키텍처의-설계-이유">C. 비동기 채팅 아키텍처의 설계 이유</h2>
+
+<p>일반적인 채팅은 <code class="language-plaintext highlighter-rouge">요청 → 응답</code>의 동기 HTTP 구조다. 이 프로젝트가 <strong>SSE 연결 + POST 분리</strong> 구조를 택한 이유:</p>
+
+<ol>
+  <li><strong>AI 처리 시간이 불확실</strong>: LLM 추론은 수초~수십 초 소요. HTTP 타임아웃 위험.</li>
+  <li><strong>토큰 스트리밍</strong>: AI가 토큰을 생성하는 즉시 사용자에게 보내야 UX가 좋다.</li>
+  <li><strong>워커 분리</strong>: NestJS가 AI 추론을 직접 하지 않고 FastAPI 워커에 위임. NestJS는 트래픽 관리에 집중.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>동기 방식의 문제:
+  POST /chat → [30초 대기] → 응답  (타임아웃 위험, 스트리밍 불가)
+
+현재 비동기 방식:
+  POST /chat → { jobId: '...' }     (즉시 응답)
+  SSE 연결 → 토큰 하나씩 실시간 수신  (스트리밍 가능)
+</code></pre></div></div>
+
+<h2 id="d-hot-observable-vs-cold-observable">D. Hot Observable vs Cold Observable</h2>
+
+<p>RxJS에서 Subject는 <strong>Hot Observable</strong>이다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cold Observable: 구독할 때마다 처음부터 실행 (HTTP 요청, 타이머 등)
+Hot Observable:  이미 실행 중인 스트림을 공유 (Subject, 이벤트 등)
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Subject</code>에 구독 전 발행된 값은 받지 못한다. 이 프로젝트에서 SSE 연결 전에 FastAPI 워커가 응답을 Publish하면 <strong>해당 메시지는 유실</strong>된다. init 이벤트와 heartbeat으로 “연결됨”을 클라이언트에게 알리고, 그 이후 POST로 메시지를 보내도록 유도하는 이유가 여기 있다.</p>
+
+<h2 id="e-redis-pubsub에서-subscriber가-별도-커넥션이어야-하는-이유">E. Redis Pub/Sub에서 Subscriber가 별도 커넥션이어야 하는 이유</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">redisSubscriber</span> <span class="o">=</span> <span class="nx">redisPublisher</span><span class="p">.</span><span class="nf">duplicate</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Redis 공식 문서: “Once the client enters the subscribed state it is not supposed to issue any other commands, except for additional SUBSCRIBE, PSUBSCRIBE, UNSUBSCRIBE, PUNSUBSCRIBE, PING, RESET and QUIT commands.”</p>
+
+<p>구독 모드에 진입한 커넥션은 <strong>일반 Redis 명령(GET, SET, RPUSH 등)을 실행할 수 없다</strong>. <code class="language-plaintext highlighter-rouge">duplicate()</code>로 분리하지 않으면 Pub/Sub과 일반 명령을 같은 커넥션에서 쓰다가 에러가 발생한다.</p>
+
+<h2 id="f-프롬프트-인젝션과-sanitize의-한계">F. 프롬프트 인젝션과 sanitize의 한계</h2>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">cleanContext</span> <span class="o">=</span> <span class="nf">sanitize</span><span class="p">(</span><span class="nx">dto</span><span class="p">.</span><span class="nx">context</span><span class="p">,</span> <span class="p">{</span> <span class="na">allowedTags</span><span class="p">:</span> <span class="p">[],</span> <span class="p">...</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">sanitize-html</code>은 <strong>HTML 기반 XSS를 방어</strong>한다. 하지만 LLM에 대한 <strong>프롬프트 인젝션</strong>(예: “이전 지시를 무시하고…“)은 HTML이 아닌 자연어 공격이므로 sanitize로는 막을 수 없다. 프롬프트 인젝션 방어는 시스템 프롬프트 설계 레벨에서 다뤄야 하는 별도 영역이다.</p>
+
+<hr />
+
+<h1 id="핵심-요약-카드">핵심 요약 카드</h1>
+
+<blockquote>
+  <p>[!abstract] Chat 도메인 핵심 구조</p>
+  <ul>
+    <li><strong>SSE</strong> : 서버 → 클라이언트 단방향 실시간 스트리밍</li>
+    <li><strong>Subject</strong> : Redis 메시지를 SSE 스트림으로 라우팅하는 브리지</li>
+    <li><strong>Redis Pub/Sub</strong> : NestJS ↔ FastAPI 워커 간 실시간 메시지 전달</li>
+    <li><strong>두 단계 분리</strong> : POST(메시지 전송) + SSE(응답 수신) 비동기 구조</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>[!abstract] 핵심 보안 설계</p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">hasActiveStream</code> 확인 → SSE 없이 POST만 보내는 시도 차단</li>
+    <li><code class="language-plaintext highlighter-rouge">sanitize-html</code> → page_context의 HTML 태그 제거</li>
+    <li><code class="language-plaintext highlighter-rouge">@ValidateIf</code> → 모드에 따른 조건부 필드 필수화</li>
+    <li><code class="language-plaintext highlighter-rouge">CHAT_MAX_CONNECTIONS</code> → 서버 연결 수 상한 제어</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>[!question] 설명할 수 있어야 하는 것</p>
+  <ol>
+    <li>WebSocket 대신 SSE를 선택한 이유</li>
+    <li>Redis Subscriber가 Publisher와 <strong>반드시</strong> 별도 커넥션이어야 하는 이유</li>
+    <li><code class="language-plaintext highlighter-rouge">Subject</code>와 <code class="language-plaintext highlighter-rouge">BehaviorSubject</code>의 차이와 이 프로젝트에서 Subject를 선택한 이유</li>
+    <li><code class="language-plaintext highlighter-rouge">merge(initEvent, heartbeat, messageStream)</code>에서 initEvent가 완료돼도 전체 스트림이 유지되는 이유</li>
+    <li><code class="language-plaintext highlighter-rouge">X-Accel-Buffering: no</code>가 없으면 어떤 문제가 발생하는가</li>
+    <li><code class="language-plaintext highlighter-rouge">pipeline()</code>이 트랜잭션(MULTI/EXEC)과 다른 점</li>
+  </ol>
+</blockquote>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="NestJS" /><category term="AI" /><summary type="html"><![CDATA[NestJS Chat 도메인 분석 SSE + Redis Pub/Sub + RxJS]]></summary></entry><entry><title type="html">Protostar review note - 10 - NestJS Auth Domain</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/26/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 10 - NestJS Auth Domain" /><published>2026-02-26T00:00:00+00:00</published><updated>2026-02-26T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/26/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/26/00-protostar-review.html"><![CDATA[<h1 id="nestjs-auth-도메인-분석">NestJS Auth 도메인 분석</h1>
 
 <blockquote>
   <p>이 파일은 인증(Authentication) 전체를 담당하는 Auth 도메인을 다룬다.</p>
@@ -1046,47 +2834,47 @@ MinIO 삭제 실패 → <code class="language-plaintext highlighter-rouge">try/c
     <tbody>
       <tr>
         <td>ORM 설정</td>
-        <td>&lt;!JEKYLL@5120@0&gt;</td>
+        <td>&lt;!JEKYLL@5140@0&gt;</td>
         <td>스키마 선언, 모델 정의</td>
       </tr>
       <tr>
         <td>ORM 설정</td>
-        <td>&lt;!JEKYLL@5120@1&gt;</td>
+        <td>&lt;!JEKYLL@5140@1&gt;</td>
         <td>DDL 변경 이력</td>
       </tr>
       <tr>
         <td>ORM 서비스</td>
-        <td>&lt;!JEKYLL@5120@2&gt;</td>
+        <td>&lt;!JEKYLL@5140@2&gt;</td>
         <td>전역 모듈 등록</td>
       </tr>
       <tr>
         <td>ORM 서비스</td>
-        <td>&lt;!JEKYLL@5120@3&gt;</td>
+        <td>&lt;!JEKYLL@5140@3&gt;</td>
         <td>커넥션 풀 + 생명주기 관리</td>
       </tr>
       <tr>
         <td>Redis</td>
-        <td>&lt;!JEKYLL@5120@4&gt;</td>
+        <td>&lt;!JEKYLL@5140@4&gt;</td>
         <td>Redis 클라이언트 전역 공급</td>
       </tr>
       <tr>
         <td>도메인</td>
-        <td>&lt;!JEKYLL@5120@5&gt;</td>
+        <td>&lt;!JEKYLL@5140@5&gt;</td>
         <td>User CRUD + 인증</td>
       </tr>
       <tr>
         <td>도메인</td>
-        <td>&lt;!JEKYLL@5120@6&gt;</td>
+        <td>&lt;!JEKYLL@5140@6&gt;</td>
         <td>KnowledgeDoc CRUD</td>
       </tr>
       <tr>
         <td>도메인</td>
-        <td>&lt;!JEKYLL@5120@7&gt;</td>
+        <td>&lt;!JEKYLL@5140@7&gt;</td>
         <td>DB 폴링 → Redis 큐 디스패치</td>
       </tr>
       <tr>
         <td>응답 제어</td>
-        <td>&lt;!JEKYLL@5120@8&gt;</td>
+        <td>&lt;!JEKYLL@5140@8&gt;</td>
         <td>DB 모델 → 응답 DTO 변환</td>
       </tr>
     </tbody>
@@ -1101,25 +2889,25 @@ MinIO 삭제 실패 → <code class="language-plaintext highlighter-rouge">try/c
 
 <p>이 프로젝트는 두 개의 데이터 저장소를 역할에 따라 분리한다.</p>
 
-<p>&lt;!JEKYLL@5120@9&gt;</p>
+<p>&lt;!JEKYLL@5140@9&gt;</p>
 
 <h2 id="prisma-orm-1">Prisma ORM</h2>
 
 <ul>
-  <li>TypeScript 네이티브 ORM. &lt;!JEKYLL@5120@10&gt;에서 모델을 선언하면 자동으로 타입 안전한 클라이언트를 생성함.</li>
-  <li><strong>Prisma Migrate</strong>: 스키마 변경 → SQL 마이그레이션 파일 자동 생성 → &lt;!JEKYLL@5120@11&gt;로 적용</li>
-  <li><strong>Prisma Client</strong>: 생성된 타입을 기반으로 &lt;!JEKYLL@5120@12&gt; 같은 타입 안전 쿼리 제공</li>
+  <li>TypeScript 네이티브 ORM. &lt;!JEKYLL@5140@10&gt;에서 모델을 선언하면 자동으로 타입 안전한 클라이언트를 생성함.</li>
+  <li><strong>Prisma Migrate</strong>: 스키마 변경 → SQL 마이그레이션 파일 자동 생성 → &lt;!JEKYLL@5140@11&gt;로 적용</li>
+  <li><strong>Prisma Client</strong>: 생성된 타입을 기반으로 &lt;!JEKYLL@5140@12&gt; 같은 타입 안전 쿼리 제공</li>
 </ul>
 
 <h2 id="pgvector-확장-1">pgvector 확장</h2>
 
 <p>PostgreSQL에 벡터 연산을 추가하는 확장. 별도 벡터 DB(Pinecone, Qdrant) 없이 <strong>RDBMS 안에서 임베딩 저장·유사도 검색</strong>이 가능하다.</p>
 
-<p>&lt;!JEKYLL@5120@13&gt;</p>
+<p>&lt;!JEKYLL@5140@13&gt;</p>
 
 <h2 id="스키마-모델-구조-1">스키마 모델 구조</h2>
 
-<p>&lt;!JEKYLL@5120@14&gt;</p>
+<p>&lt;!JEKYLL@5140@14&gt;</p>
 
 <table>
   <thead>
@@ -1131,26 +2919,26 @@ MinIO 삭제 실패 → <code class="language-plaintext highlighter-rouge">try/c
   </thead>
   <tbody>
     <tr>
-      <td>&lt;!JEKYLL@5120@15&gt;</td>
+      <td>&lt;!JEKYLL@5140@15&gt;</td>
       <td>UUID (String)</td>
       <td>email unique, role enum(ADMIN/STARGAZER/PROTOSTAR)</td>
     </tr>
     <tr>
-      <td>&lt;!JEKYLL@5120@16&gt;</td>
+      <td>&lt;!JEKYLL@5140@16&gt;</td>
       <td>UUID (String)</td>
       <td>status 상태머신, contentHash(SHA-256), version 증가</td>
     </tr>
     <tr>
-      <td>&lt;!JEKYLL@5120@17&gt;</td>
+      <td>&lt;!JEKYLL@5140@17&gt;</td>
       <td>UUID (String)</td>
-      <td>&lt;!JEKYLL@5120@18&gt; 타입, chunkIndex, tokenCount</td>
+      <td>&lt;!JEKYLL@5140@18&gt; 타입, chunkIndex, tokenCount</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="redis-모듈-jekyll512019">Redis 모듈 (&lt;!JEKYLL@5120@19&gt;)</h2>
+<h2 id="redis-모듈-jekyll514019">Redis 모듈 (&lt;!JEKYLL@5140@19&gt;)</h2>
 
-<p>&lt;!JEKYLL@5120@20&gt;</p>
+<p>&lt;!JEKYLL@5140@20&gt;</p>
 
 <hr />
 
@@ -1158,26 +2946,26 @@ MinIO 삭제 실패 → <code class="language-plaintext highlighter-rouge">try/c
 
 <h2 id="prismaservice-생명주기-1">PrismaService 생명주기</h2>
 
-<p>&lt;!JEKYLL@5120@21&gt;</p>
+<p>&lt;!JEKYLL@5140@21&gt;</p>
 
 <blockquote>
-  <p>[!note] 왜 &lt;!JEKYLL@5120@22&gt; 어댑터를 쓰는가?
-Prisma 기본 모드는 자체 바이너리 엔진을 사용한다. &lt;!JEKYLL@5120@23&gt;는 이를 <strong>Node.js pg 드라이버로 대체</strong>한다.
-장점: 서버리스/엣지 환경 대응, 커넥션 풀(&lt;!JEKYLL@5120@24&gt;) 직접 제어 가능.
+  <p>[!note] 왜 &lt;!JEKYLL@5140@22&gt; 어댑터를 쓰는가?
+Prisma 기본 모드는 자체 바이너리 엔진을 사용한다. &lt;!JEKYLL@5140@23&gt;는 이를 <strong>Node.js pg 드라이버로 대체</strong>한다.
+장점: 서버리스/엣지 환경 대응, 커넥션 풀(&lt;!JEKYLL@5140@24&gt;) 직접 제어 가능.
 이 프로젝트에서는 pgvector 연동 안정성과 커넥션 풀 직접 관리를 위해 선택.</p>
 </blockquote>
 
 <h2 id="문서-업로드--벡터화-전체-흐름-1">문서 업로드 → 벡터화 전체 흐름</h2>
 
-<p>&lt;!JEKYLL@5120@25&gt;</p>
+<p>&lt;!JEKYLL@5140@25&gt;</p>
 
 <h2 id="auth-흐름에서의-db-사용-1">Auth 흐름에서의 DB 사용</h2>
 
-<p>&lt;!JEKYLL@5120@26&gt;</p>
+<p>&lt;!JEKYLL@5140@26&gt;</p>
 
 <h2 id="docstatus-상태머신-1">DocStatus 상태머신</h2>
 
-<p>&lt;!JEKYLL@5120@27&gt;</p>
+<p>&lt;!JEKYLL@5140@27&gt;</p>
 
 <table>
   <thead>
@@ -1189,23 +2977,23 @@ Prisma 기본 모드는 자체 바이너리 엔진을 사용한다. &lt;!JEKYLL@
   </thead>
   <tbody>
     <tr>
-      <td>&lt;!JEKYLL@5120@28&gt;</td>
-      <td>&lt;!JEKYLL@5120@29&gt;</td>
+      <td>&lt;!JEKYLL@5140@28&gt;</td>
+      <td>&lt;!JEKYLL@5140@29&gt;</td>
       <td>파일 업로드 완료 직후</td>
     </tr>
     <tr>
-      <td>&lt;!JEKYLL@5120@30&gt;</td>
-      <td>&lt;!JEKYLL@5120@31&gt; (크론)</td>
+      <td>&lt;!JEKYLL@5140@30&gt;</td>
+      <td>&lt;!JEKYLL@5140@31&gt; (크론)</td>
       <td>Redis 큐에 디스패치 시</td>
     </tr>
     <tr>
-      <td>&lt;!JEKYLL@5120@32&gt;</td>
-      <td>웹훅 (&lt;!JEKYLL@5120@33&gt;)</td>
+      <td>&lt;!JEKYLL@5140@32&gt;</td>
+      <td>웹훅 (&lt;!JEKYLL@5140@33&gt;)</td>
       <td>FastAPI 워커 처리 완료</td>
     </tr>
     <tr>
-      <td>&lt;!JEKYLL@5120@34&gt;</td>
-      <td>웹훅 (&lt;!JEKYLL@5120@35&gt;)</td>
+      <td>&lt;!JEKYLL@5140@34&gt;</td>
+      <td>웹훅 (&lt;!JEKYLL@5140@35&gt;)</td>
       <td>FastAPI 워커 처리 실패</td>
     </tr>
   </tbody>
@@ -1213,15 +3001,15 @@ Prisma 기본 모드는 자체 바이너리 엔진을 사용한다. &lt;!JEKYLL@
 
 <blockquote>
   <p>[!note] 마이그레이션과 스키마의 상태 불일치
-&lt;!JEKYLL@5120@36&gt;에 &lt;!JEKYLL@5120@37&gt; 에 &lt;!JEKYLL@5120@38&gt;가 있지만, 현재 &lt;!JEKYLL@5120@39&gt;에는 없다.
-이후 마이그레이션에서 제거한 것으로 보이며, &lt;!JEKYLL@5120@40&gt;가 크론으로 &lt;!JEKYLL@5120@41&gt;를 직접 폴링하는 방식으로 QUEUED 상태를 대체한 설계.</p>
+&lt;!JEKYLL@5140@36&gt;에 &lt;!JEKYLL@5140@37&gt; 에 &lt;!JEKYLL@5140@38&gt;가 있지만, 현재 &lt;!JEKYLL@5140@39&gt;에는 없다.
+이후 마이그레이션에서 제거한 것으로 보이며, &lt;!JEKYLL@5140@40&gt;가 크론으로 &lt;!JEKYLL@5140@41&gt;를 직접 폴링하는 방식으로 QUEUED 상태를 대체한 설계.</p>
 </blockquote>
 
 <h2 id="userdto---db-모델--응답-변환-1">UserDto - DB 모델 → 응답 변환</h2>
 
-<p>&lt;!JEKYLL@5120@42&gt;</p>
+<p>&lt;!JEKYLL@5140@42&gt;</p>
 
-<p>&lt;!JEKYLL@5120@43&gt;가 응답을 직렬화할 때 &lt;!JEKYLL@5120@44&gt; 필드를 자동으로 제거한다. &lt;!JEKYLL@5120@45&gt;를 생성자에서 할당하는 이유는 TypeScript 컴파일러의 strict 체크를 통과하기 위함이며, 실제 응답에는 포함되지 않는다.</p>
+<p>&lt;!JEKYLL@5140@43&gt;가 응답을 직렬화할 때 &lt;!JEKYLL@5140@44&gt; 필드를 자동으로 제거한다. &lt;!JEKYLL@5140@45&gt;를 생성자에서 할당하는 이유는 TypeScript 컴파일러의 strict 체크를 통과하기 위함이며, 실제 응답에는 포함되지 않는다.</p>
 
 <hr />
 
@@ -1229,34 +3017,34 @@ Prisma 기본 모드는 자체 바이너리 엔진을 사용한다. &lt;!JEKYLL@
 
 <h2 id="aitaskservice-race-condition---직접-코드에-todo로-명시-1">[AiTaskService] Race Condition - 직접 코드에 TODO로 명시</h2>
 
-<p>&lt;!JEKYLL@5120@46&gt;</p>
+<p>&lt;!JEKYLL@5140@46&gt;</p>
 
-<p><strong>문제</strong>: &lt;!JEKYLL@5120@47&gt; 이후 &lt;!JEKYLL@5120@48&gt; 전 사이에 다른 인스턴스(수평 확장 시)가 동일 문서를 가져갈 수 있다. 결과: <strong>같은 문서가 중복 처리</strong>됨.</p>
+<p><strong>문제</strong>: &lt;!JEKYLL@5140@47&gt; 이후 &lt;!JEKYLL@5140@48&gt; 전 사이에 다른 인스턴스(수평 확장 시)가 동일 문서를 가져갈 수 있다. 결과: <strong>같은 문서가 중복 처리</strong>됨.</p>
 
 <p><strong>개선 방향</strong>:
-&lt;!JEKYLL@5120@49&gt;
+&lt;!JEKYLL@5140@49&gt;
 또는 Redis 분산 락(Redlock 패턴)으로 크론 실행 자체를 단일화.</p>
 
 <h2 id="aitaskservice-uploaded--processing-전환-실패-처리-부재-1">[AiTaskService] UPLOADED → PROCESSING 전환 실패 처리 부재</h2>
 
-<p>&lt;!JEKYLL@5120@50&gt;</p>
+<p>&lt;!JEKYLL@5140@50&gt;</p>
 
 <p>Redis에 푸시는 됐지만 DB 상태 업데이트가 실패하면 → 다음 크론 실행 때 같은 문서가 <strong>다시 UPLOADED로 조회되어 중복 디스패치</strong>된다. 트랜잭션 또는 보상 로직이 필요하다.</p>
 
 <h2 id="knowledgeservice-파일-삭제와-db-삭제의-원자성-부재-1">[KnowledgeService] 파일 삭제와 DB 삭제의 원자성 부재</h2>
 
-<p>&lt;!JEKYLL@5120@51&gt;</p>
+<p>&lt;!JEKYLL@5140@51&gt;</p>
 
 <p>MinIO 삭제 성공 + DB 삭제 실패 → <strong>MinIO에는 없는데 DB에는 있는 좀비 레코드</strong> 발생 가능.
-MinIO 삭제 실패 → &lt;!JEKYLL@5120@52&gt;로 무시하고 DB 삭제 진행 → <strong>DB는 삭제됐는데 MinIO에는 파일이 남는</strong> 고아 파일 발생.</p>
+MinIO 삭제 실패 → &lt;!JEKYLL@5140@52&gt;로 무시하고 DB 삭제 진행 → <strong>DB는 삭제됐는데 MinIO에는 파일이 남는</strong> 고아 파일 발생.</p>
 
-<p>현재 코드는 MinIO 삭제 실패를 &lt;!JEKYLL@5120@53&gt;로만 처리하고 DB 삭제는 계속 진행한다. 영구 저장소 기준으로 <strong>DB가 Source of Truth</strong>이므로 현재 방향은 맞지만, MinIO 고아 파일 정리 배치가 없다.</p>
+<p>현재 코드는 MinIO 삭제 실패를 &lt;!JEKYLL@5140@53&gt;로만 처리하고 DB 삭제는 계속 진행한다. 영구 저장소 기준으로 <strong>DB가 Source of Truth</strong>이므로 현재 방향은 맞지만, MinIO 고아 파일 정리 배치가 없다.</p>
 
 <h2 id="schemaprisma-hnsw-인덱스-주석-처리-1">[schema.prisma] HNSW 인덱스 주석 처리</h2>
 
-<p>&lt;!JEKYLL@5120@54&gt;</p>
+<p>&lt;!JEKYLL@5140@54&gt;</p>
 
-<p>&lt;!JEKYLL@5120@55&gt;에서 HNSW 인덱스를 생성했다가 두 번째 마이그레이션에서 DROP했다. 스키마에도 주석으로만 남아있다.</p>
+<p>&lt;!JEKYLL@5140@55&gt;에서 HNSW 인덱스를 생성했다가 두 번째 마이그레이션에서 DROP했다. 스키마에도 주석으로만 남아있다.</p>
 
 <p><strong>영향</strong>: HNSW 인덱스 없이 코사인 유사도 검색 시 <strong>순차 스캔(Seq Scan)</strong> 발생 → 벡터 수가 많아질수록 성능 저하.</p>
 
@@ -1264,15 +3052,15 @@ MinIO 삭제 실패 → &lt;!JEKYLL@5120@52&gt;로 무시하고 DB 삭제 진행
 
 <h2 id="knowledgeservice-콘텐츠-중복-업로드-미검증-1">[KnowledgeService] 콘텐츠 중복 업로드 미검증</h2>
 
-<p>&lt;!JEKYLL@5120@56&gt;</p>
+<p>&lt;!JEKYLL@5140@56&gt;</p>
 
-<p>&lt;!JEKYLL@5120@57&gt;를 저장하지만 업로드 전 <strong>같은 해시가 이미 있는지 확인하지 않는다</strong>. 동일 파일을 여러 번 업로드해도 모두 저장된다.</p>
+<p>&lt;!JEKYLL@5140@57&gt;를 저장하지만 업로드 전 <strong>같은 해시가 이미 있는지 확인하지 않는다</strong>. 동일 파일을 여러 번 업로드해도 모두 저장된다.</p>
 
 <h2 id="웹훅-실패-시-재시도-정책-부재-todo-명시-1">[웹훅] 실패 시 재시도 정책 부재 (TODO 명시)</h2>
 
-<p>&lt;!JEKYLL@5120@58&gt;</p>
+<p>&lt;!JEKYLL@5140@58&gt;</p>
 
-<p>&lt;!JEKYLL@5120@59&gt; 상태가 된 문서를 어떻게 재처리할지 정책이 없다. 수동 재업로드 외에 자동 재시도 메커니즘(Dead Letter Queue, 재처리 크론)이 없다.</p>
+<p>&lt;!JEKYLL@5140@59&gt; 상태가 된 문서를 어떻게 재처리할지 정책이 없다. 수동 재업로드 외에 자동 재시도 메커니즘(Dead Letter Queue, 재처리 크론)이 없다.</p>
 
 <hr />
 
@@ -1290,44 +3078,44 @@ MinIO 삭제 실패 → &lt;!JEKYLL@5120@52&gt;로 무시하고 DB 삭제 진행
   </thead>
   <tbody>
     <tr>
-      <td>&lt;!JEKYLL@5120@60&gt;</td>
-      <td>PK 또는 unique 필드로 단건 조회. 없으면 &lt;!JEKYLL@5120@61&gt;</td>
-      <td>&lt;!JEKYLL@5120@62&gt;</td>
+      <td>&lt;!JEKYLL@5140@60&gt;</td>
+      <td>PK 또는 unique 필드로 단건 조회. 없으면 &lt;!JEKYLL@5140@61&gt;</td>
+      <td>&lt;!JEKYLL@5140@62&gt;</td>
     </tr>
     <tr>
-      <td>&lt;!JEKYLL@5120@63&gt;</td>
-      <td>조건에 맞는 다수 조회. &lt;!JEKYLL@5120@64&gt;, &lt;!JEKYLL@5120@65&gt;, &lt;!JEKYLL@5120@66&gt; 활용</td>
-      <td>&lt;!JEKYLL@5120@67&gt;</td>
+      <td>&lt;!JEKYLL@5140@63&gt;</td>
+      <td>조건에 맞는 다수 조회. &lt;!JEKYLL@5140@64&gt;, &lt;!JEKYLL@5140@65&gt;, &lt;!JEKYLL@5140@66&gt; 활용</td>
+      <td>&lt;!JEKYLL@5140@67&gt;</td>
     </tr>
     <tr>
-      <td>&lt;!JEKYLL@5120@68&gt;</td>
+      <td>&lt;!JEKYLL@5140@68&gt;</td>
       <td>레코드 생성</td>
-      <td>&lt;!JEKYLL@5120@69&gt;</td>
+      <td>&lt;!JEKYLL@5140@69&gt;</td>
     </tr>
     <tr>
-      <td>&lt;!JEKYLL@5120@70&gt;</td>
-      <td>조건에 맞는 레코드 수정. &lt;!JEKYLL@5120@71&gt; 원자적 증가 가능</td>
-      <td>&lt;!JEKYLL@5120@72&gt;</td>
+      <td>&lt;!JEKYLL@5140@70&gt;</td>
+      <td>조건에 맞는 레코드 수정. &lt;!JEKYLL@5140@71&gt; 원자적 증가 가능</td>
+      <td>&lt;!JEKYLL@5140@72&gt;</td>
     </tr>
     <tr>
-      <td>&lt;!JEKYLL@5120@73&gt;</td>
+      <td>&lt;!JEKYLL@5140@73&gt;</td>
       <td>단건 삭제</td>
-      <td>&lt;!JEKYLL@5120@74&gt;</td>
+      <td>&lt;!JEKYLL@5140@74&gt;</td>
     </tr>
     <tr>
-      <td>&lt;!JEKYLL@5120@75&gt;</td>
+      <td>&lt;!JEKYLL@5140@75&gt;</td>
       <td>조건에 맞는 수 반환</td>
-      <td>&lt;!JEKYLL@5120@76&gt;</td>
+      <td>&lt;!JEKYLL@5140@76&gt;</td>
     </tr>
     <tr>
-      <td>&lt;!JEKYLL@5120@77&gt;</td>
+      <td>&lt;!JEKYLL@5140@77&gt;</td>
       <td>명시적 DB 연결</td>
-      <td>&lt;!JEKYLL@5120@78&gt;</td>
+      <td>&lt;!JEKYLL@5140@78&gt;</td>
     </tr>
     <tr>
-      <td>&lt;!JEKYLL@5120@79&gt;</td>
+      <td>&lt;!JEKYLL@5140@79&gt;</td>
       <td>명시적 DB 연결 종료</td>
-      <td>&lt;!JEKYLL@5120@80&gt;</td>
+      <td>&lt;!JEKYLL@5140@80&gt;</td>
     </tr>
     <tr>
       <td>`</td>
@@ -3783,916 +5571,4 @@ NestJS는 Lifecycle에 따라 <strong>Guard → Interceptor → Pipe → Control
   <li><strong>pgvector vs Specialized Vector DB (Milvus, Qdrant)</strong></li>
   <li><strong>차이</strong>: pgvector는 기존 RDBMS 내부에서 관리하지만, 전용 DB는 벡터 연산에 최적화된 엔진을 별도로 가진다.</li>
   <li><strong>트레이드 오프</strong>: pgvector는 관리가 편하고 데이터 정관계를 유지하기 좋으나, 초고대규모 데이터셋에서는 전용 DB의 인덱싱 성능과 분산 처리 능력이 앞선다. 결과적으로 고가용성 서버를 위한 별도 데이터DB의 구축은 AI 서비스 트래픽을 위해 고려 대상이 될 수 있다.</li>
-</ul>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="FastAPI" /><category term="AI" /><summary type="html"><![CDATA[core/rag_service.py]]></summary></entry><entry><title type="html">Protostar review note - 04 FastAPI AI</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/16/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 04 FastAPI AI" /><published>2026-02-16T00:00:00+00:00</published><updated>2026-02-16T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/16/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/16/00-protostar-review.html"><![CDATA[<h2 id="coreaipy">core/ai.py</h2>
-<p>이 파일은 OpenAI 호환 API(OpenRouter)를 사용하여 AI 비서(Protostar)의 응답을 생성하고, RAG(Retrieval-Augmented Generation) 구성을 위한 파일 청킹(Chunking) 및 프롬프트 구성을 담당하는 핵심 모듈이다.</p>
-
-<h3 id="1-주요-개념">1. 주요 개념</h3>
-
-<ul>
-  <li><strong>RAG (Retrieval-Augmented Generation)</strong>: 언어 모델(LLM)이 답변을 생성하기 전에, 외부의 신뢰할 수 있는 데이터베이스(이력서, 블로그 글 등)에서 관련 문서를 검색하여 컨텍스트로 제공하는 기술이다. 이를 통해 할루시네이션(환각)을 줄이고 최신/개인화된 정보를 바탕으로 답변할 수 있다.</li>
-  <li><strong>Chunking (청킹)</strong>: 긴 문서를 LLM의 컨텍스트 윈도우(Context Window)에 맞게, 그리고 검색 효율성을 높이기 위해 의미 있는 작은 조각으로 나누는 과정이다.</li>
-  <li><strong>Streaming (스트리밍)</strong>: 전체 답변이 생성될 때까지 기다리지 않고, 토큰 단위로 생성되는 즉시 클라이언트에게 전송하여 체감 대기 시간을 줄이는 기술이다.</li>
-</ul>
-
-<h3 id="2-핵심-로직-흐름">2. 핵심 로직 흐름</h3>
-
-<ul>
-  <li><strong>문서 적재 및 청킹 (<code class="language-plaintext highlighter-rouge">load_and_chunk_files</code>)</strong>:
-    <ol>
-      <li>로컬 디렉토리의 Markdown(<code class="language-plaintext highlighter-rouge">.md</code>) 파일들을 읽어 들인다.</li>
-      <li>빈 줄(<code class="language-plaintext highlighter-rouge">\n\n</code>)을 기준으로 분리한다.</li>
-      <li>문단 단위의 청크(Chunk)로 나눈다.</li>
-      <li>길이가 너무 짧은 문자열은 버리고, 파일명과 문단 번호를 메타데이터처럼 문자열에 포함시켜 리스트에 저장한다.</li>
-    </ol>
-  </li>
-  <li><strong>응답 스트리밍 생성 (<code class="language-plaintext highlighter-rouge">generate_response_stream</code>)</strong>:
-    <ol>
-      <li>외부(Worker)에서 전달받은 RAG 검색 결과(<code class="language-plaintext highlighter-rouge">context</code>)와 대화 이력(<code class="language-plaintext highlighter-rouge">history</code>), 사용자 질문(<code class="language-plaintext highlighter-rouge">prompt</code>)을 조립한다.</li>
-      <li>LLM에 전달할 메시지 배열을 구성한다. 시스템 프롬프트에는 페르소나 및 엄격한 규칙(한국어 사용, 3문단 이내 등)이 정의된다.</li>
-      <li>생성된 응답은 <code class="language-plaintext highlighter-rouge">async for</code> 문을 통해 토큰(Token)이 생성될 때마다 비동기 제너레이터(<code class="language-plaintext highlighter-rouge">yield</code>)로 즉시 반환한다.</li>
-    </ol>
-  </li>
-  <li><strong>응답 요약 (<code class="language-plaintext highlighter-rouge">generate_summary</code>)</strong>:
-    <ol>
-      <li>대화를 저장한다.</li>
-      <li>별도의 작업으로 Redis 를 통해 다시 ‘수주’를 맡긴다.</li>
-      <li>수주를 받으면 새로운 Worker 가 해당 수주를 챙겨서, DB 상의 대화 원문을 읽는다.</li>
-      <li>다음 컨텍스트 활용을 위해, 생성된 긴 응답 텍스트를 다시 LLM에 통과시켜 3문장 이내의 간결한 한 문단으로 요약을 요청한다.</li>
-      <li>저장한다.</li>
-      <li>(이후) 동일 세션에서의 대화 시 이 내용이DB 상에 발견되면, 요약본과 함께 전달된다. (요약 없을 시 원본 대화 그대로 들어감)</li>
-    </ol>
-  </li>
-</ul>
-
-<h3 id="3-대체-가능한-라이브러리-및-메서드-트레이드오프">3. 대체 가능한 라이브러리 및 메서드 (트레이드오프)</h3>
-
-<ul>
-  <li><strong>텍스트 청킹(Text Chunking) 로직</strong>
-    <ul>
-      <li><strong>현재 방식</strong>: <code class="language-plaintext highlighter-rouge">content.split("\n\n")</code>을 사용하여 빈 줄(문단) 기준으로 문자열을 단순 분리한다.</li>
-      <li><strong>대체 라이브러리</strong>: <code class="language-plaintext highlighter-rouge">LangChain</code>의 <code class="language-plaintext highlighter-rouge">RecursiveCharacterTextSplitter</code> 또는 <code class="language-plaintext highlighter-rouge">LlamaIndex</code>의 문장 분리 도구.</li>
-      <li><strong>트레이드오프</strong>: 현재의 단순 분리 방식은 외부 의존성이 없고 실행 속도가 매우 빠르다는 장점(Lightweight)이 있다. 단락 내의 길이가 너무 길어질 경우 LLM의 토큰 제한을 초과할 수 있고, 문맥이 끊기는 가장자리 데이터의 손실이 발생할 수 있다. 반면 LangChain 등을 사용하면 오버랩(Overlap) 기능을 통해 문맥 단절을 방지하고 정확한 토큰 수 기반으로 분리할 수 있지만, 라이브러리 의존성이 추가되고 메모리 및 연산 오버헤드가 증가한다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="4-구조적-취약점-및-개선-방향">4. 구조적 취약점 및 개선 방향</h3>
-
-<ul>
-  <li><strong>취약점</strong>: 전반적으로 파일 및 토큰의 섬세한 관리적 차원에서의 한계가 존재한다.
-    <ol>
-      <li>파일 로딩 시 <code class="language-plaintext highlighter-rouge">read()</code>로 전체 텍스트를 메모리에 한 번에 올리고 단순 문자열로 자르기 때문에, 파일 크기가 커지거나 구조가 복잡해지면 OOM(Out of Memory) 위험이 있다.</li>
-      <li>LLM으로 전달되는 토큰 한도에 대한 예외 처리가 부재하다.</li>
-    </ol>
-  </li>
-  <li><strong>개선 방향</strong>: 텍스트 분할 시 토큰 카운터 기반의 청크 분할 기법(예: Tiktoken 결합)을 도입하고 Chunk 간 Overlap을 두어 문맥 손실을 방지해야 한다.</li>
-</ul>
-
-<h3 id="5-핵심-메서드-및-라이브러리-함수">5. 핵심 메서드 및 라이브러리 함수</h3>
-
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">AsyncOpenAI</code> (openai 라이브러리)</strong>: 비동기(Asynchronous) 환경에서 OpenAI API(또는 호환되는 OpenRouter API)와 통신하기 위한 클라이언트 객체이다. FastAPI와 같은 비동기 프레임워크에서 I/O 블로킹 없이 LLM 요청을 처리하기 위해 필수적이다.
-    <ul>
-      <li>현재 사용 중인 OpenRouter 에서는 API 호환이 되서 SDK 를 OpenAI 를 사용하였다. 하지만 OpenRouter 에서 현재 OpenRouter SDK Beta가 나온 상태이고 이거에 대응할 필요가 있다.</li>
-    </ul>
-  </li>
-  <li><strong><code class="language-plaintext highlighter-rouge">client.chat.completions.create(..., stream=True)</code></strong>: LLM의 응답을 한 번에 기다리지 않고, 텍스트가 생성되는 즉시 스트리밍 형태로 받아오기 위한 핵심 메서드이다. 실시간 챗봇 체감 속도를 높이는 데 기여한다.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">textwrap.dedent</code> (내장 모듈)</strong>: Python 코드 내에서 멀티라인 문자열(Multi-line string)로 시스템 프롬프트를 작성할 때, 코드 가독성을 위해 추가된 들여쓰기 공백을 텍스트에서 깔끔하게 제거해주는 함수이다. 불필요한 공백 토큰을 줄여 LLM의 인식을 돕는다.</li>
-</ul>
-
-<h2 id="coreworkerpy">core/worker.py</h2>
-
-<p>이 파일은 Redis를 백엔드로 사용하는 비동기 작업 워커(Worker) 시스템이다. 클라이언트의 채팅 요청을 큐에서 꺼내어 처리하고, RAG 문서를 검색하여 AI 모듈에 전달한 뒤, 생성된 응답 조각을 Redis Pub/Sub을 통해 다시 전송하는 역할을 수행한다. 기본적으로 AI 를 기반으로 하는 모든 작업은 해당의 로직을 따라 진행된다.</p>
-
-<h3 id="1-주요-개념-1">1. 주요 개념</h3>
-
-<ul>
-  <li><strong>Message Queue (메시지 큐)</strong>: 요청을 즉시 처리하지 않고 큐(<code class="language-plaintext highlighter-rouge">chat:job:queue</code>)에 담아두었다가, 워커가 자신의 처리 능력(Capacity)에 맞게 순차적으로 꺼내어 처리하는 비동기 처리 패턴을 취하여, 요청하는 대상(Nestjs)과 처리자(FastAPI)를 구분하여 시스템 안정성을 향상 시키고, 수평적 스케일 아웃 호환성을 유지시킨다.</li>
-  <li><strong>Pub/Sub (발행/구독 모델)</strong>: 워커가 AI 모델로부터 스트리밍으로 전달받은 토큰(조각)을 특정 채널(<code class="language-plaintext highlighter-rouge">chat:stream:{uuid}-{session_id}</code>)에 발행(Publish)하면, 이를 구독(Subscribe)하고 있는 웹서버(NestJS 등)가 클라이언트에게 즉시 전달하는 실시간 메시징 패턴이다.</li>
-  <li><strong>Semaphore (세마포어)</strong>: <code class="language-plaintext highlighter-rouge">asyncio.Semaphore(MAX_CONCURRENT_JOBS)</code>를 활용하여 동시에 처리할 수 있는 최대 코루틴(작업)의 수를 제한하는 동시성 제어 기법이다. 이를 통해 시스템의 과도한 작업이 올라감으로써 생길 문제들을 제어한다.</li>
-</ul>
-
-<h3 id="2-핵심-로직-흐름-1">2. 핵심 로직 흐름</h3>
-
-<ul>
-  <li><strong>작업 리스닝 루프 (<code class="language-plaintext highlighter-rouge">run_worker</code>)</strong>:
-    <ol>
-      <li>무한 루프(<code class="language-plaintext highlighter-rouge">while True</code>)를 돌며 Redis의 특정 큐(<code class="language-plaintext highlighter-rouge">chat:job:queue</code>)에서 대기 중인 작업을 감시한다.</li>
-      <li>세마포어(Semaphore)를 획득하여 동시 처리량을 조절한다.</li>
-      <li>큐에 작업이 들어오면 백그라운드 태스크로 분리하여 실행을 요청한다.</li>
-    </ol>
-  </li>
-  <li><strong>단일 작업 처리 (<code class="language-plaintext highlighter-rouge">process_chat_job</code>)</strong>:
-    <ol>
-      <li>JSON 형태의 작업 데이터를 파싱한 후</li>
-      <li><code class="language-plaintext highlighter-rouge">general</code> 모드일 경우 RAG 문서 검색을 수행하여 컨텍스트를 구성한다. (그렇지 않은 경우는 블로그의 글을 요약하는 등의 특수 목적이므로, 이에 따른 로직에 들어간다.)</li>
-      <li>DB에 사용자 질문을 기록하고 과거 대화 이력을 조회한다.
-        <ul>
-          <li>별도의 워커가 대화를 요약해서 저장해둔다. 요약한 내용이 있을 시 이를 가져가고, 요약이 없다면 원본 대화 내용 일부를 전달한다.</li>
-        </ul>
-      </li>
-      <li><code class="language-plaintext highlighter-rouge">generate_response_stream</code>을 호출한다.</li>
-    </ol>
-  </li>
-  <li><strong>실시간 스트리밍 및 후처리</strong>:
-    <ol>
-      <li>AI가 생성한 응답 조각(Token)을 하나씩 받을 때마다, 즉시 Redis의 Pub/Sub 채널(<code class="language-plaintext highlighter-rouge">chat:stream:{uuid}-{sessionId}</code>)로 발행(<code class="language-plaintext highlighter-rouge">publish</code>)하여 클라이언트(NestJS 등)로 데이터를 전송한다.</li>
-      <li>완료 시 <code class="language-plaintext highlighter-rouge">done</code> 신호를 전송하고, 최종 조립된 전체 텍스트를 DB에 저장한 후 요약 작업을 위한 큐로 메시지 ID를 밀어 넣는다(<code class="language-plaintext highlighter-rouge">rpush</code>). (새롭게 만든 답변에 대한 요약)</li>
-    </ol>
-  </li>
-</ul>
-
-<h3 id="3-대체-가능한-라이브러리-및-메서드-트레이드오프-1">3. 대체 가능한 라이브러리 및 메서드 (트레이드오프)</h3>
-
-<ul>
-  <li><strong>작업 큐 및 워커 루프</strong>
-    <ul>
-      <li><strong>현재 방식</strong>: Redis의 <code class="language-plaintext highlighter-rouge">brpop</code> 명령어를 무한 루프(<code class="language-plaintext highlighter-rouge">while True</code>)로 직접 폴링(Polling)하며 <code class="language-plaintext highlighter-rouge">asyncio.create_task</code>로 작업을 실행한다.</li>
-      <li><strong>대체 라이브러리</strong>: <code class="language-plaintext highlighter-rouge">Celery</code>, <code class="language-plaintext highlighter-rouge">ARQ</code> (Asyncio Redis Queue), <code class="language-plaintext highlighter-rouge">RQ</code> 등 전문 Task Queue 프레임워크.</li>
-      <li><strong>트레이드오프</strong>: 현재의 커스텀 루프 방식은 설정이 직관적이고 코드가 가벼워 추가적인 데몬이나 프레임워크 학습이 필요 없다는 장점이 있다. 그러나, 워커 프로세스가 갑자기 종료될 경우 현재 처리 중이던 데이터를 복구할 수 있는 기능(Message ACK)이 기본적으로 없으며, 재시도(Retry) 로직이나 스케줄링을 직접 구현해야 하는 단점이 있다. Celery나 ARQ를 사용하면 이러한 안정성(Reliability) 기능이 보장되지만, 아키텍처가 무거워지고 설정이 복잡해진다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="4-구조적-취약점-및-개선-방향-1">4. 구조적 취약점 및 개선 방향</h3>
-
-<ul>
-  <li><strong>취약점</strong>: <code class="language-plaintext highlighter-rouge">brpop</code>으로 큐에서 데이터를 꺼낸 직후(Pop) 워커가 크래시(다운)되면, 해당 작업은 완료되지 않은 상태로 영구적으로 유실(Data Loss)되며, Redis Pub/Sub 특성상 발행 시점에 구독자가 없으면 스트리밍 데이터 역시 유실된다.</li>
-  <li><strong>개선 방향</strong>: 작업 유실 방지를 위해 단순 List 기반의 큐 대신 Redis Streams 기반의 큐 연산(XREADGROUP)을 도입하거나 비동기 큐 전문 라이브러리(ARQ 등)로 마이그레이션 해야 한다. (자세한 내용이 필요하면 요청 바람)</li>
-</ul>
-
-<h3 id="5-핵심-메서드-및-라이브러리-함수-1">5. 핵심 메서드 및 라이브러리 함수</h3>
-
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">redis_client.brpop("chat:job:queue", timeout=5)</code></strong>: 지정된 큐(List 자료구조)에 데이터가 들어올 때까지 대기(Block)하다가, 데이터가 들어오면 꺼내오는(Pop) Redis 명령어이다. CPU를 점유하는 무한 폴링(Polling) 방식보다 시스템 자원을 효율적으로 사용한다.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">redis_client.publish(channel, message)</code></strong>: Redis의 Pub/Sub 메커니즘을 사용하여 지정된 채널을 구독 중인 모든 클라이언트에게 비동기적으로 메시지를 전송한다. 이를 통해 스트리밍 데이터 조각을 타 서비스로 즉각 브로드캐스트할 수 있다.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">asyncio.Semaphore</code></strong>: 동시에 실행될 수 있는 코루틴(작업)의 최대 개수(예: <code class="language-plaintext highlighter-rouge">MAX_CONCURRENT_JOBS = 100</code>)를 제한하는 동기화 객체이다. 외부 API Rate Limit이나 DB 커넥션 풀의 한도를 초과하지 않도록 보호하는 역할을 한다.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">asyncio.create_task</code></strong>: 이벤트 루프에 코루틴 실행을 예약하여 블로킹 없이 백그라운드에서 비동기 작업을 병행(Concurrent) 처리하게 하는 내장 함수이다. <code class="language-plaintext highlighter-rouge">run_worker</code> 루프가 각 Job을 넘기고 즉시 다음 Job을 대기할 수 있게 만든다.</li>
-</ul>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="FastAPI" /><category term="AI" /><summary type="html"><![CDATA[core/ai.py 이 파일은 OpenAI 호환 API(OpenRouter)를 사용하여 AI 비서(Protostar)의 응답을 생성하고, RAG(Retrieval-Augmented Generation) 구성을 위한 파일 청킹(Chunking) 및 프롬프트 구성을 담당하는 핵심 모듈이다.]]></summary></entry><entry><title type="html">Protostar review note - 03 - FastAPI DBs</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/14/00-protostar-review.html" rel="alternate" type="text/html" title="Protostar review note - 03 - FastAPI DBs" /><published>2026-02-14T00:00:00+00:00</published><updated>2026-02-14T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/14/00-protostar-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/14/00-protostar-review.html"><![CDATA[<h2 id="coreminio_clientpy">core/minio_client.py</h2>
-
-<p>이 모듈은 MinIO 오브젝트 스토리지와의 연결을 관리하고 파일을 다운로드하는 래퍼(Wrapper) 클래스를 정의하고 있다.</p>
-
-<h3 id="1-코드-분석-및-개념">1. 코드 분석 및 개념</h3>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">__init__</code>: 설정값(endpoint, access_key 등)을 가져와 동기식 <code class="language-plaintext highlighter-rouge">Minio</code> 클라이언트 객체를 초기화한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">check_connection</code>: 서버 시작 시 버킷이 존재하는지 확인하여 연결 상태를 로깅한다. 동기 함수인 <code class="language-plaintext highlighter-rouge">bucket_exists</code>를 <code class="language-plaintext highlighter-rouge">asyncio.to_thread</code>로 감싸서 실행한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">get_file_content</code>: 지정된 버킷에서 객체를 읽어 바이트 배열로 반환한다. 이 역시 I/O 블로킹을 막기 위해 <code class="language-plaintext highlighter-rouge">asyncio.to_thread</code>를 사용하여 별도의 스레드에서 <code class="language-plaintext highlighter-rouge">get_object</code>와 <code class="language-plaintext highlighter-rouge">read()</code>를 수행한다.</li>
-  <li><strong>개념 (비동기 오프로딩):</strong> 파이썬의 <code class="language-plaintext highlighter-rouge">asyncio</code> 환경에서 동기 라이브러리(MinIO SDK)가 메인 이벤트 루프를 블로킹하는 것을 방지하기 위해 <code class="language-plaintext highlighter-rouge">asyncio.to_thread</code>를 사용한다. 이는 무거운 I/O 작업을 백그라운드 스레드 풀로 넘겨 비동기적으로 결과를 기다리는 기법이다.</li>
-</ul>
-
-<h3 id="2-대체-가능한-라이브러리-및-메서드">2. 대체 가능한 라이브러리 및 메서드</h3>
-
-<p>동기식 <code class="language-plaintext highlighter-rouge">minio</code> 라이브러리를 스레드로 래핑하는 대신, 처음부터 비동기를 지원하는 <strong><code class="language-plaintext highlighter-rouge">aioboto3</code></strong> 라이브러리를 사용할 수 있다. AWS S3 호환 스토리지를 비동기로 다루는 표준적인 방법이다.</p>
-
-<h3 id="3-트레이드오프-trade-off">3. 트레이드오프 (Trade-off)</h3>
-
-<ul>
-  <li><strong>현재 방식 (<code class="language-plaintext highlighter-rouge">minio</code> + <code class="language-plaintext highlighter-rouge">asyncio.to_thread</code>):</strong> 공식 MinIO 라이브러리를 사용하므로 API 문서 참고와 구현이 매우 직관적이고 쉽다. 하지만 요청이 많아질 경우 스레드 컨텍스트 스위칭 오버헤드가 발생하며, 진정한 의미의 Non-blocking I/O 성능을 100% 발휘하지 못한다.
-    <ul>
-      <li>Why:
-        <ul>
-          <li>공식 MinIO 라이브러리를 사용한 이유가 여기에 있다. 기본적으로 원본 데이터는 최초 다운로드 받는 정도이며, 모든 비즈니스 로직은 NestJS 가 이를 대응함.</li>
-          <li>결과적으로 이후엔 RAG 기반으로 변환한 데이터를 pgVector 기반으로 대응하므로, 현재의 방식으로 하더라도 스레드 컨텍스트 스위칭 오버헤드가 발생하더라도 큰 문제가 없음.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><strong>대체 방식 (<code class="language-plaintext highlighter-rouge">aioboto3</code>):</strong> 완전한 비동기 I/O를 지원하므로 대규모 동시성 처리에 매우 효율적이다. 하지만 Boto3 기반이므로 MinIO에 특화된 기능 접근이 까다로울 수 있고, 러닝 커브가 존재한다. 따라서 구체적으로 더 다양한 작업들이 이어진다면 해당 기능을 활용해야 하며 특히 S3 등을 쓴다면 더욱 그러하다.</li>
-</ul>
-
-<h3 id="4-구조적-취약점-및-개선-방향">4. 구조적 취약점 및 개선 방향</h3>
-
-<ul>
-  <li><strong>취약점:</strong> <code class="language-plaintext highlighter-rouge">get_file_content</code> 내에서 <code class="language-plaintext highlighter-rouge">response.read()</code>를 호출하여 파일 전체를 한 번에 메모리에 올린다. 대용량 파일을 요청할 경우 서버 I/O 병목 및 메모리 고갈(OOM, Out Of Memory)이 발생할 위험이 크다.
-    <ul>
-      <li>현 상황에서 사용하는 파일 자료가 md 텍스트 파일로 제한되어 있기 때문에 넘어갔음.</li>
-    </ul>
-  </li>
-  <li><strong>개선 방향:</strong> 대용량 파일 처리, 파일 종류에 따라 OOM 방지를 위해 전체 데이터를 메모리에 올리지 않고 <strong>청크(Chunk) 단위의 스트리밍 반환 구조</strong>로 개선해야 한다. (자세한 내용 요청 시 응답 가능)</li>
-</ul>
-
-<hr />
-
-<h2 id="coredatabasepy">core/database.py</h2>
-
-<p>PostgreSQL 데이터베이스와의 비동기 연결 및 ORM 세션을 설정하는 모듈이다.</p>
-
-<h3 id="1-코드-분석">1. 코드 분석</h3>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">engine</code> 및 <code class="language-plaintext highlighter-rouge">AsyncSessionLocal</code>: 비동기 처리용 <code class="language-plaintext highlighter-rouge">create_async_engine</code>을 활용하여 커넥션 풀(pool_size=10, max_overflow=20)을 구성하고 세션 팩토리를 만든다.</li>
-  <li><code class="language-plaintext highlighter-rouge">init_db()</code>: 애플리케이션 시작 시 호출되어 모델을 임포트하고, <code class="language-plaintext highlighter-rouge">create_all</code>을 통해 데이블을 강제 생성한다. 에러 발생 시 <code class="language-plaintext highlighter-rouge">sys.exit(1)</code>로 서버를 종료한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">get_db()</code>: FastAPI의 의존성 주입(Dependency Injection)에 사용될 제너레이터(Generator)로, 세션을 열고 안전하게 닫거나 롤백하는 라이프사이클을 관리한다.</li>
-</ul>
-
-<h3 id="2-대체-가능한-라이브러리-및-메서드-1">2. 대체 가능한 라이브러리 및 메서드</h3>
-
-<p>현재 <strong><code class="language-plaintext highlighter-rouge">SQLAlchemy</code></strong> ORM을 사용 중인데, 대체제로 <strong><code class="language-plaintext highlighter-rouge">Prisma Client Python</code></strong> 또는 ORM을 배제한 순수 비동기 드라이버인 <strong><code class="language-plaintext highlighter-rouge">asyncpg</code></strong>를 직접 사용할 수 있다.</p>
-
-<h3 id="3-트레이드오프-trade-off-1">3. 트레이드오프 (Trade-off)</h3>
-
-<ul>
-  <li><strong>SQLAlchemy ORM:</strong> 매우 강력하고 파이썬 생태계의 표준 격이라 호환성이 좋으나, 매핑 오버헤드로 인해 순수 드라이버보다 속도가 다소 느리다. DB의 중요성, 트랜잭션 퍼포먼스의 우선도가 떨어지는 일반적인 서비스의 경우 사용이 편리함.</li>
-  <li><strong>asyncpg:</strong> 파이썬 DB 드라이버 중 압도적으로 빠르지만, 모든 쿼리를 날(Raw) SQL 스트링으로 관리해야 하므로 생산성과 유지보수성이 급격히 떨어진다. DB가 특성적으로 매우 중요한 서비스라면 이렇게 가고 Raw SQL 을 이용하는게 좋을 수 있다.</li>
-</ul>
-
-<h3 id="4-구조적-취약점-및-개선-방향-1">4. 구조적 취약점 및 개선 방향</h3>
-
-<ul>
-  <li><strong>취약점:</strong> <code class="language-plaintext highlighter-rouge">init_db</code>에서 <code class="language-plaintext highlighter-rouge">Base.metadata.create_all</code>을 사용하고 있으며 연결 실패 시 <code class="language-plaintext highlighter-rouge">sys.exit(1)</code>로 서버를 다운시킨다. 프로덕션 환경에서는 테이블 변경 이력 관리가 안 되며, 일시적인 네트워크 장애에도 컨테이너가 죽어버리는 결함이 발생할 수 있다.</li>
-  <li><strong>개선 방향:</strong>
-    <ul>
-      <li>프로덕션 스키마 관리를 위해 <code class="language-plaintext highlighter-rouge">create_all</code> 대신 <strong>Alembic 마이그레이션 툴</strong>을 도입하는게 유효할 수 있다.</li>
-      <li><code class="language-plaintext highlighter-rouge">init_db</code>에 데이터베이스 연결 <strong>재시도(Backoff Retry) 로직</strong>을 추가해야 한다.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h2 id="coreredispy">core/redis.py</h2>
-
-<p>인메모리 데이터 저장소인 Redis와의 비동기 연결 풀을 구성하고 클라이언트 객체를 제공하는 모듈이다.</p>
-
-<h3 id="1-코드-분석-및-개념-1">1. 코드 분석 및 개념</h3>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">pool</code>: <code class="language-plaintext highlighter-rouge">redis.ConnectionPool.from_url</code>을 사용해 최대 1000개의 연결을 유지할 수 있는 비동기 커넥션 풀을 생성한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">get_redis_client()</code>: 생성된 풀을 기반으로 <code class="language-plaintext highlighter-rouge">Redis</code> 인스턴스를 반환한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">init_test_redis()</code>: 서버 시작 단계에서 <code class="language-plaintext highlighter-rouge">ping()</code>을 날려 상태를 체크하고, 실패하면 자원 해제 후 <code class="language-plaintext highlighter-rouge">sys.exit(1)</code>로 프로세스를 종료한다.</li>
-  <li><strong>개념 (In-memory DB):</strong> 모든 데이터를 디스크가 아닌 메모리에 저장하여 압도적인 읽기/쓰기 속도를 자랑한다. 세션 관리, 캐싱, 큐(Queue) 등 일시적이고 빠른 접근이 필요한 데이터 처리에 주로 쓰인다.</li>
-</ul>
-
-<h3 id="2-대체-가능한-라이브러리-및-메서드-2">2. 대체 가능한 라이브러리 및 메서드</h3>
-
-<p>현재 사용 중인 <code class="language-plaintext highlighter-rouge">redis.asyncio</code>는 과거 <code class="language-plaintext highlighter-rouge">aioredis</code>가 병합된 공식 표준 라이브러리이므로 파이썬 생태계에서는 가장 최적의 선택이다. 저장소 수준에서 대체를 고려한다면 <strong><code class="language-plaintext highlighter-rouge">Memcached</code></strong>를 사용할 수 있지만, Redis 의 본래의 제공 기능을 위하여 최대한 공식 표준 라이브러리를 사용했다.</p>
-
-<h3 id="3-트레이드오프-trade-off-2">3. 트레이드오프 (Trade-off)</h3>
-
-<ul>
-  <li><strong>Redis:</strong> 문자열, 리스트, 해시, 셋 등 다양한 자료구조를 지원하고 디스크 영속성(Persistence)을 부분 지원하나, 구조가 복잡해지면 메모리 파편화나 관리 비용이 증가한다.</li>
-  <li><strong>Memcached:</strong> 단순한 키-값(Key-Value) 캐싱에는 오버헤드가 적어 아주 미세하게 더 빠르고 메모리 관리가 단순하지만, 다양한 자료구조를 활용할 수 없고 시스템 재시작 시 데이터가 100% 날아간다.</li>
-</ul>
-
-<h3 id="4-구조적-취약점-및-개선-방향-2">4. 구조적 취약점 및 개선 방향</h3>
-
-<ul>
-  <li><strong>취약점:</strong> <code class="language-plaintext highlighter-rouge">database.py</code>와 마찬가지로 <code class="language-plaintext highlighter-rouge">init_test_redis</code>에서 연결 예외 발생 시 <code class="language-plaintext highlighter-rouge">sys.exit(1)</code>로 강제 종료를 발생시킨다. Redis는 주로 캐싱 용도이므로 서버 전체가 죽어야 할 만큼의 치명적 장애가 아닐 수 있다 (Graceful degradation 부재).</li>
-  <li><strong>개선 방향:</strong> Redis 연결 장애 시 애플리케이션을 강제 종료하는 대신, 기능을 우회(Fallback)하거나 <strong>지수 백오프(Exponential Backoff)를 활용한 재시도 구조</strong>로 안정성을 높여야 한다.</li>
-</ul>
-
-<p>앞서 작성된 <code class="language-plaintext highlighter-rouge">## core/redis.py</code> 문서의 후속 내용으로, 프로젝트 전체 아키텍처 관점에서 Redis가 어떻게 활용되고 있는지 분석한 5번 항목을 추가해 드립니다.</p>
-
-<h3 id="5-protostar-프로젝트-전체에서의-redis-활용-부분-정리">5. Protostar 프로젝트 전체에서의 Redis 활용 부분 정리</h3>
-
-<p>현재 프로젝트의 <code class="language-plaintext highlighter-rouge">core/redis.py</code>에서 생성된 비동기 Redis 클라이언트는 FastAPI 애플리케이션 전반에서 다음과 같은 핵심적인 역할을 수행한다.</p>
-
-<ul>
-  <li><strong>백그라운드 비동기 작업 큐 (Task Queue 및 Message Broker):</strong> FastAPI 웹 서버는 클라이언트의 요청에 대해 최대한 빠르게 응답해야 하므로, 실행 시간이 오래 걸리는 무거운 I/O 작업(예: LLM 기반의 AI 요약, RAG 문서 벡터화 연산 등)을 메인 이벤트 루프에서 직접 처리해서는 안 된다. 메인 API 서버(생산자)는 클라이언트 요청을 받으면 <strong>Redis 큐에 작업 명세(Task)를 밀어 넣고(Push) 즉시 응답을 반환(Fire and Forget)</strong>한다. 이후 <code class="language-plaintext highlighter-rouge">worker_knowledge.py</code>, <code class="language-plaintext highlighter-rouge">worker_summary.py</code> 등의 독립된 백그라운드 워커(소비자)들이 Redis에서 작업을 꺼내어(Pop) 비동기적으로 안전하게 처리하는 <strong>메시지 브로커(Message Broker)</strong> 역할을 수행한다.</li>
-  <li><strong>분산 컴포넌트 간의 상태 공유 (State Management):</strong> API 서버(FastAPI)와 여러 워커 프로세스(AI/요약/지식 처리 등)가 서로 독립적인 컨테이너로 분리되어 동작하는 분산 환경에서, 각 작업의 진행 상태(예: 대기 중, 처리 중, 완료, 실패)나 임시 결과물 데이터를 실시간으로 빠르고 안전하게 주고받기 위한 <strong>중앙 인메모리 상태 저장소</strong>로 기능한다. 데이터베이스(PostgreSQL)에 매번 접근하는 것에 비해 압도적으로 빠른 속도를 보장한다.</li>
-  <li><strong>데이터 캐싱 (Caching) 및 부하 분산:</strong> AI 모델이 생성한 요약 결과나 동일한 문서에 대한 반복적인 질의응답 처리 결과를 메모리에 일시적으로 저장(TTL 설정)해 두는 캐싱 용도로도 활용된다. 이를 통해 불필요한 연산과 데이터베이스 I/O를 줄여 전반적인 응답 속도를 극대화하고, 트래픽이 몰리는 상황(Spike)에서 시스템 후단 시스템의 부하를 효과적으로 경감시킨다.</li>
-</ul>
-
-<hr />
-
-<h2 id="asyncio-및-코루틴coroutine-추가-정리">asyncio 및 코루틴(Coroutine) 추가 정리</h2>
-
-<h3 id="1-비동기-논블로킹과-코루틴의-개념">1. 비동기 논블로킹과 코루틴의 개념</h3>
-
-<p>비동기 프로그래밍을 명확히 이해하기 위해서는 패러다임과 이를 구현하는 도구를 구분해야 한다.</p>
-
-<ul>
-  <li><strong>비동기 논블로킹 (Async Non-blocking):</strong> I/O 작업(네트워크 요청, 파일 읽기 등) 시 결과를 마냥 기다리지 않고(Non-blocking), 제어권을 넘겨 다른 작업을 수행하다가 완료되면 다시 돌아와 처리하는(Async) <strong>프로그래밍 패러다임</strong>이다.</li>
-  <li><strong>코루틴 (Coroutine):</strong> 파이썬에서 비동기 논블로킹 패러다임을 실제로 구현하기 위해 사용하는 <strong>특수한 함수 구조(도구)</strong> 이다. 일반 함수(Subroutine)와 달리 실행 도중 일시 정지(Pause/Yield)하고, 나중에 멈춘 지점부터 다시 재개(Resume)할 수 있는 특징을 가진다.</li>
-</ul>
-
-<h3 id="2-코루틴-객체와-await의-동작-원리">2. 코루틴 객체와 <code class="language-plaintext highlighter-rouge">await</code>의 동작 원리</h3>
-
-<p><code class="language-plaintext highlighter-rouge">async def</code>로 정의된 함수를 호출하거나 비동기 래퍼 함수를 실행하면 즉시 작업이 실행되지 않는다.</p>
-
-<ul>
-  <li><strong>코루틴 객체 반환:</strong> 함수 호출 시 실제 결과값이 아닌, “나중에 실행될 작업 명세서(대기표)” 역할을 하는 <strong>코루틴(Coroutine) 객체</strong>가 반환된다.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">await</code> 키워드:</strong> 코루틴 객체 앞에 <code class="language-plaintext highlighter-rouge">await</code>를 붙여야만 이벤트 루프에 의해 실제 작업이 스케줄링 및 실행되며, 작업이 완료된 후 최종 결과값을 반환받을 수 있다.</li>
-</ul>
-
-<h3 id="3-asyncioto_thread를-활용한-동기-io-오프로딩">3. <code class="language-plaintext highlighter-rouge">asyncio.to_thread</code>를 활용한 동기 I/O 오프로딩</h3>
-
-<p>FastAPI와 같은 비동기 프레임워크 환경에서 외부 라이브러리(예: MinIO SDK)의 동기식 블로킹 함수를 그대로 호출하면 메인 이벤트 루프가 멈추는 병목 현상이 발생함. 이를 해결하기 위해 <code class="language-plaintext highlighter-rouge">asyncio.to_thread</code>를 사용한다.</p>
-
-<ul>
-  <li><strong>역할:</strong> 무거운 동기 함수 호출을 백그라운드 스레드 풀(Thread Pool)로 넘겨서 실행하고, 메인 스레드는 블로킹 없이 다른 코루틴을 처리할 수 있게 한다.</li>
-  <li><strong>반환 타입의 변화:</strong>
-    <ol>
-      <li><code class="language-plaintext highlighter-rouge">asyncio.to_thread(...)</code> 호출 직후: <code class="language-plaintext highlighter-rouge">&lt;class 'coroutine'&gt;</code> 타입을 반환한다.</li>
-      <li><code class="language-plaintext highlighter-rouge">await asyncio.to_thread(...)</code> 실행 완료 후: 원본 동기 함수가 뱉어내는 <strong>본래의 데이터 타입</strong>(예: <code class="language-plaintext highlighter-rouge">bool</code>, <code class="language-plaintext highlighter-rouge">bytes</code>)을 그대로 반환한다.</li>
-    </ol>
-  </li>
-</ul>
-
-<h3 id="4-ide-타입-추론-한계-극복-type-annotation">4. IDE 타입 추론 한계 극복 (Type Annotation)</h3>
-
-<p>외부 라이브러리(Boto3, MinIO 등)의 동기 함수를 <code class="language-plaintext highlighter-rouge">asyncio.to_thread</code>로 감쌀 때, 원본 라이브러리에 최신 파이썬 타입 힌트가 누락되어 있다면 IDE(VS Code 등)는 최종 반환 타입을 <code class="language-plaintext highlighter-rouge">unknown</code>이나 <code class="language-plaintext highlighter-rouge">Any</code>로 인식하여 자동완성을 지원하지 못한다.</p>
-
-<ul>
-  <li><strong>해결 방안:</strong> 개발자가 직접 반환 타입을 명시(Type Annotation)하여 가독성과 유지보수성을 높여야 한다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 명시적 타입 힌팅 적용 예시
-</span><span class="n">found</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="p">.</span><span class="nf">to_thread</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">bucket_exists</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">bucket_name</span><span class="p">)</span>
-<span class="n">content</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="p">.</span><span class="nf">to_thread</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">read</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h3 id="5-nestjs-nodejs와-python-asyncio의-비동기-동작-방식-차이">5. NestJS (Node.js)와 Python <code class="language-plaintext highlighter-rouge">asyncio</code>의 비동기 동작 방식 차이</h3>
-
-<p>비동기 함수를 다룰 때 파이썬과 Node.js(NestJS) 생태계는 근본적인 동작 방식에 큰 차이가 있다. 가장 핵심적인 차이는 비동기 함수를 호출했을 때 반환되는 객체의 실행 상태(Hot vs Cold)이다.</p>
-
-<ul>
-  <li><strong>NestJS (Node.js) 방식: “Hot Promise” 🔥</strong>
-    <ul>
-      <li><strong>동작 원리:</strong> Node.js 환경에서는 비동기 함수(<code class="language-plaintext highlighter-rouge">async function</code>)를 호출하는 그 즉시 내부 로직이 동기적으로 실행되기 시작한다 (함수 내부에서 첫 번째 <code class="language-plaintext highlighter-rouge">await</code>를 만날 때까지).</li>
-      <li><strong>특징:</strong> 반환되는 <code class="language-plaintext highlighter-rouge">Promise</code> 객체는 이미 실행 중인(Hot) 상태이다. 따라서 <code class="language-plaintext highlighter-rouge">await</code> 키워드를 생략하고 함수를 호출만 해두어도(던져 놓기만 해도), 이벤트 루프가 이를 이미 인지하고 백그라운드에서 남은 작업을 알아서 처리한다.</li>
-    </ul>
-  </li>
-  <li><strong>Python (<code class="language-plaintext highlighter-rouge">asyncio</code>) 방식: “Cold Coroutine” ❄️</strong>
-    <ul>
-      <li><strong>동작 원리:</strong> 파이썬에서는 비동기 함수(<code class="language-plaintext highlighter-rouge">async def</code>)를 호출하면, 실제 코드는 단 1%도 실행되지 않고 오직 “나중에 이 작업을 실행하겠다”는 작업 명세서인 <strong>코루틴(Coroutine) 객체</strong>만 반환한다.</li>
-      <li><strong>특징:</strong> 반환된 코루틴은 아직 전혀 실행되지 않은(Cold) 상태이다. 파이썬의 이벤트 루프는 개발자가 명시적으로 큐에 등록해주기 전까지 이 코루틴 객체를 쳐다보지도 않는다.</li>
-      <li><strong>주의점:</strong> <code class="language-plaintext highlighter-rouge">await</code> 없이 비동기 함수만 호출하고 방치하면 작업 자체가 아예 실행되지 않으며, 파이썬은 프로그램 종료 시 <code class="language-plaintext highlighter-rouge">RuntimeWarning: coroutine was never awaited</code>라는 경고 에러를 발생시킨다.</li>
-    </ul>
-  </li>
-  <li><strong>핵심 요약 (Fire and Forget 패턴의 구현):</strong>
-    <ul>
-      <li>NestJS에서는 단순히 비동기 함수를 <code class="language-plaintext highlighter-rouge">await</code> 없이 호출하는 것만으로 백그라운드 실행(Fire and Forget)이 성립된다.</li>
-      <li>하지만 파이썬에서 결과를 기다리지 않고 백그라운드에서 알아서 실행되게 하려면, 함수를 덩그러니 던져놓는 것이 아니라 반드시 <strong><code class="language-plaintext highlighter-rouge">asyncio.create_task(my_async_function())</code></strong>를 사용하여 이벤트 루프의 스케줄러에 명시적으로 밀어 넣어주어야 한다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="sqlalchemy-라이브러리의-개념-및-주요-특징">SQLAlchemy 라이브러리의 개념 및 주요 특징</h2>
-
-<p>본 문서는 파이썬 생태계에서 가장 널리 사용되는 데이터베이스 툴킷이자 ORM(Object-Relational Mapping) 라이브러리인 <strong>SQLAlchemy</strong>의 핵심 개념과 특징을 정리한 것이다. Protostar 프로젝트의 데이터베이스 연동(<code class="language-plaintext highlighter-rouge">core/database.py</code>)에도 핵심적으로 사용되었다.</p>
-
-<h3 id="1-sqlalchemy란">1. SQLAlchemy란?</h3>
-
-<p>SQLAlchemy는 파이썬 프로그램과 관계형 데이터베이스(RDBMS) 간의 소통을 돕는 강력한 SQL 툴킷이자 ORM 라이브러리이다.</p>
-
-<h3 id="2-핵심-개념">2. 핵심 개념</h3>
-
-<ul>
-  <li><strong>ORM (Object-Relational Mapping):</strong> 데이터베이스의 ‘테이블’을 파이썬의 ‘클래스(Class)’로, 테이블의 ‘로우(Row/Record)’를 파이썬의 ‘인스턴스(Instance)’로 매핑하는 기술이다. 이를 통해 데이터베이스를 철저히 객체 지향적인 관점에서 다룰 수 있음. 편리함.</li>
-  <li><strong>Engine (엔진):</strong> SQLAlchemy 애플리케이션의 심장부로, 데이터베이스와의 통신을 담당하는 기본 인터페이스. 내부적으로 커넥션 풀(Connection Pool)과 Dialect(데이터베이스 방언 해석기)를 관리하여, DB 연결을 효율적으로 재사용하고 각기 다른 DB(PostgreSQL, MySQL 등)의 문법 차이를 추상화한다.</li>
-  <li><strong>Session (세션):</strong> ORM 객체들의 ‘작업 공간(Workspace)’이다. 데이터베이스 트랜잭션(Transaction)을 캡슐화하며, 세션 내에서 변경된 객체 상태를 추적하다가 <code class="language-plaintext highlighter-rouge">commit()</code>이 호출될 때 비로소 실제 DB에 반영(Flush)한다.</li>
-  <li><strong>Declarative Base:</strong> 클래스 정의와 동시에 테이블 메타데이터를 생성해 주는 기본 클래스이다. 클래스 변수로 컬럼의 타입과 제약조건을 정의하면, SQLAlchemy가 이를 데이터베이스 스키마로 변환한다.</li>
-</ul>
-
-<h3 id="3-주요-특징-및-장단점-trade-off">3. 주요 특징 및 장단점 (Trade-off)</h3>
-
-<p><strong>장점:</strong></p>
-<ul>
-  <li><strong>데이터베이스 독립성 (DB Agnostic):</strong> 엔진의 URL만 변경하면 코드 수정 없이 PostgreSQL, MySQL, SQLite 등 다른 데이터베이스로 쉽게 마이그레이션이 가능하다.</li>
-  <li><strong>보안 (SQL Injection 방지):</strong> 내부적으로 쿼리를 파라미터화하여 실행하므로 SQL 인젝션 공격으로부터 매우 안전하다.</li>
-  <li><strong>비동기(Asyncio) 지원:</strong> <code class="language-plaintext highlighter-rouge">sqlalchemy.ext.asyncio</code> 모듈을 통해 파이썬의 비동기 I/O 패러다임을 완벽히 지원한다. FastAPI와 같은 비동기 웹 프레임워크와 결합 시 훌륭한 시너지를 낸다.</li>
-</ul>
-
-<p><strong>단점 (트레이드오프):</strong></p>
-<ul>
-  <li><strong>학습 곡선(Learning Curve):</strong> 기능이 방대하고 구조가 복잡하여(Core와 ORM 계층의 분리 등) 초기 진입 장벽이 다소 높은 편이다.</li>
-  <li><strong>성능 오버헤드:</strong> 파이썬 객체를 SQL로 번역하고, 결과를 다시 객체로 변환하는 매핑 과정이 존재하므로 순수 SQL 드라이버(예: <code class="language-plaintext highlighter-rouge">asyncpg</code>)나 가벼운 쿼리 빌더를 사용할 때보다 미세하게 속도가 느리고 메모리 사용량이 많다.</li>
-</ul>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="FastAPI" /><summary type="html"><![CDATA[core/minio_client.py]]></summary></entry><entry><title type="html">NanoClaw review note - 01 - NanoClaw Init</title><link href="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/14/01-nano-claw-reverse-review.html" rel="alternate" type="text/html" title="NanoClaw review note - 01 - NanoClaw Init" /><published>2026-02-14T00:00:00+00:00</published><updated>2026-02-14T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/14/01-nano-claw-reverse-review</id><content type="html" xml:base="http://0.0.0.0:4000/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/2026/02/14/01-nano-claw-reverse-review.html"><![CDATA[<h2 id="0-why-this-project">0. Why this Project?</h2>
-<ul>
-  <li>본 프로젝트는 AI 응용 어플리케이션 구축에서 필요한 내용, agentic AI 구축을 위하여 필요한 것들에 대한 이해도를 높이고, 현재 진행중인 Nexus 프로젝트 이후 AI 기반의 서비스 구축 능력을 갖추기 위한 첫 도전이다.</li>
-  <li>당장 무언가를 만들기보단, 잘 만들어진 예시를 기반으로 RAG 이상의 기능 구현을 어떤 식으로 접근하면 좋을지 사전 학습 겸 하여 진행하게 되었다.</li>
-  <li><a href="https://github.com/Paul2021-R/nanoclaw-for-study">코드 레포지터리</a></li>
-</ul>
-
-<hr />
-
-<h2 id="1-루트-디렉토리-전체-구조">1. 루트 디렉토리 전체 구조</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nanoclaw/
-├── src/                   # 핵심 소스 코드
-├── container/             # 컨테이너 빌드 &amp; 에이전트 런너
-├── docs/                  # 아키텍처 문서
-├── groups/                # 그룹별 격리 메모리
-├── config-examples/       # 설정 예시 파일
-├── launchd/               # macOS 서비스 데몬 설정
-├── assets/                # 로고, 아이콘 등 정적 자산
-├── .github/               # GitHub Actions &amp; PR 템플릿
-├── package.json           # 프로젝트 의존성 &amp; 스크립트
-├── tsconfig.json          # TypeScript 컴파일 설정
-├── vitest.config.ts       # 테스트 프레임워크 설정
-├── CLAUDE.md              # Claude AI에게 주는 프로젝트 맥락
-├── README.md / README_zh.md  # 프로젝트 문서 (영어/중국어)
-├── CONTRIBUTING.md        # 기여 가이드
-└── LICENSE                # 라이선스 (MIT)
-</code></pre></div></div>
-
-<h3 id="src--핵심-애플리케이션-코드"><code class="language-plaintext highlighter-rouge">src/</code> — 핵심 애플리케이션 코드</h3>
-
-<p>프로젝트의 심장부이다. 모든 비즈니스 로직이 여기에 모여 있다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>파일</th>
-      <th>역할</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">index.ts</code></td>
-      <td>**오케스트레이터(Orchestrator)** — 상태 관리, 메시지 루프, 에이전트 호출을 총괄하는 진입점이다</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">config.ts</code></td>
-      <td>트리거 패턴, 경로, 인터벌, 타임아웃 등 **전역 설정값**을 관리한다</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">router.ts</code></td>
-      <td>메시지 포맷팅 및 **아웃바운드 라우팅**을 담당한다</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">container-runner.ts</code></td>
-      <td>Agent 컨테이너를 **스폰(Spawn)하고 마운트를 설정**하는 핵심 모듈이다</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">ipc.ts</code></td>
-      <td>호스트↔컨테이너 간 **IPC(프로세스 간 통신)** 감시 및 태스크 처리를 담당한다</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">db.ts</code></td>
-      <td>**SQLite** 기반의 데이터 관리 (대화 기록, 스케줄 등)를 수행한다</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">task-scheduler.ts</code></td>
-      <td>**cron/interval/once** 기반의 예약 작업 관리를 담당한다</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">group-queue.ts</code></td>
-      <td>그룹별 메시지 **큐(Queue)** 관리를 처리한다</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">mount-security.ts</code></td>
-      <td>컨테이너에 마운트할 경로의 **보안 검증** (allowlist/blocklist)을 수행한다</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">types.ts</code></td>
-      <td>프로젝트 전체에서 사용되는 **타입 정의** (Channel, Message, Task 등)를 담고 있다</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">logger.ts</code></td>
-      <td><code class="language-plaintext highlighter-rouge">pino</code> 기반의 **구조화된 로깅** 설정이다</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">whatsapp-auth.ts</code></td>
-      <td>WhatsApp **QR 인증** 전용 스크립트이다</td>
-    </tr>
-  </tbody>
-</table>
-
-<h4 id="srcchannels--채널-추상화-계층"><code class="language-plaintext highlighter-rouge">src/channels/</code> — 채널 추상화 계층</h4>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>channels/
-├── whatsapp.ts        # WhatsApp 연결, 인증, 송/수신 구현체
-└── whatsapp.test.ts   # WhatsApp 채널 테스트
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">Channel</code> 인터페이스를 통해 메시징 플랫폼을 추상화한 구조이다. 현재는 WhatsApp만 구현되어 있지만, 이 패턴 덕분에 Telegram 등 다른 채널도 쉽게 추가할 수 있는 확장 가능한 설계이다.</p>
-
-<h3 id="container--에이전트-컨테이너-환경"><code class="language-plaintext highlighter-rouge">container/</code> — 에이전트 컨테이너 환경</h3>
-
-<p>Claude Agent가 실제로 <strong>실행되는 격리된 환경</strong>을 구성하는 폴더이다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>container/
-├── Dockerfile         # 에이전트 실행 환경 이미지 빌드 정의
-├── build.sh           # 컨테이너 빌드 스크립트
-├── agent-runner/      # 컨테이너 내부에서 실행되는 별도 Node.js 패키지
-│   ├── package.json   # agent-runner 전용 의존성
-│   ├── tsconfig.json
-│   └── src/           # IPC MCP stdio 등 내부 통신 로직
-└── skills/            # 에이전트에게 주입되는 스킬
-    └── agent-browser/ # 브라우저 자동화 도구
-</code></pre></div></div>
-
-<p>핵심 포인트는 <strong>호스트 프로세스(src/)와 에이전트 런타임(container/agent-runner/)이 완전히 분리</strong>되어 있다는 것이다. 에이전트는 Apple Container(Linux VM) 안에서 돌아가기 때문에, 설령 AI가 위험한 명령을 실행하더라도 호스트 시스템에는 영향을 줄 수 없는 <strong>샌드박스(Sandbox)</strong> 구조이다. (AI의 자유와 시스템의 안전을 동시에 챙기는 아주 영리한 설계이다!)</p>
-
-<h3 id="groups--그룹별-격리-메모리"><code class="language-plaintext highlighter-rouge">groups/</code> — 그룹별 격리 메모리</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>groups/
-├── global/
-│   └── CLAUDE.md      # 모든 그룹에 공통 적용되는 Claude 메모리
-└── main/
-    └── CLAUDE.md      # main 그룹 전용 Claude 메모리
-</code></pre></div></div>
-
-<p>각 WhatsApp 그룹(또는 개인 대화)은 고유한 폴더를 가지며, 해당 폴더의 <code class="language-plaintext highlighter-rouge">CLAUDE.md</code>가 <strong>그 그룹만의 개인화된 AI 메모리</strong> 역할을 한다. <code class="language-plaintext highlighter-rouge">global/</code>은 모든 그룹에 공통으로 적용되는 설정이고, <code class="language-plaintext highlighter-rouge">main/</code>은 메인(개인) 대화 전용이다. 그룹마다 파일시스템과 메모리가 <strong>완전히 격리</strong>되는 구조인 것이다.</p>
-
-<h3 id="docs--프로젝트-문서"><code class="language-plaintext highlighter-rouge">docs/</code> — 프로젝트 문서</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docs/
-├── SPEC.md                         # 전체 프로젝트 사양서 (가장 중요!)
-├── REQUIREMENTS.md                 # 아키텍처 의사결정 기록
-├── SDK_DEEP_DIVE.md                # Claude Agent SDK 심층 분석
-├── SECURITY.md                     # 보안 모델 문서
-├── DEBUG_CHECKLIST.md              # 디버깅 체크리스트
-└── APPLE-CONTAINER-NETWORKING.md   # Apple Container 네트워킹 가이드
-</code></pre></div></div>
-
-<p>단순한 README를 넘어서 <strong>아키텍처 결정 근거(ADR)</strong>, <strong>보안 모델</strong>, <strong>SDK 분석</strong> 등이 체계적으로 정리되어 있다. 특히 <code class="language-plaintext highlighter-rouge">SPEC.md</code>와 <code class="language-plaintext highlighter-rouge">REQUIREMENTS.md</code>는 프로젝트를 이해하는 데 가장 중요한 문서이다.</p>
-
-<h3 id="config-examples--설정-예시"><code class="language-plaintext highlighter-rouge">config-examples/</code> — 설정 예시</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config-examples/
-└── mount-allowlist.json   # 컨테이너 마운트 허용 경로 설정 예시
-</code></pre></div></div>
-
-<p>컨테이너에 어떤 호스트 디렉토리를 마운트할 수 있는지 제어하는 <strong>보안 설정의 예시 파일</strong>이다. 실제 설정은 <code class="language-plaintext highlighter-rouge">~/.config/nanoclaw/mount-allowlist.json</code>에 위치하며, 의도적으로 프로젝트 루트 <strong>바깥</strong>에 두어 에이전트가 임의로 수정할 수 없도록 설계했다. (파일 하나에 보안 철학이 담겨 있는 셈이다!)</p>
-
-<h3 id="launchd--macos-서비스-데몬"><code class="language-plaintext highlighter-rouge">launchd/</code> — macOS 서비스 데몬</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>launchd/
-└── com.nanoclaw.plist     # macOS LaunchAgent 설정
-</code></pre></div></div>
-
-<p>nanoclaw을 macOS의 <strong>백그라운드 서비스</strong>로 등록하기 위한 plist 파일이다. <code class="language-plaintext highlighter-rouge">launchctl load</code>/<code class="language-plaintext highlighter-rouge">unload</code> 명령으로 시스템 시작 시 자동 실행되도록 구성할 수 있다.</p>
-
-<h3 id="루트-설정-파일들">루트 설정 파일들</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>파일</th>
-      <th>역할</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">package.json</code></td>
-      <td>프로젝트 의존성, 스크립트, 엔진 버전 정의</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">tsconfig.json</code></td>
-      <td>TypeScript 컴파일러 설정</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">vitest.config.ts</code></td>
-      <td>Vitest 테스트 프레임워크 설정</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">.prettierrc</code></td>
-      <td>코드 포맷팅 규칙</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">.gitignore</code></td>
-      <td>Git 추적 제외 파일 목록</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">.mcp.json</code></td>
-      <td>MCP(Model Context Protocol) 설정</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">CLAUDE.md</code></td>
-      <td>Claude AI에게 프로젝트 구조와 명령을 알려주는 컨텍스트 파일</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-<p>nanoclaw은 <strong>“메시징 인터페이스 → 메시지 라우팅 → 격리된 컨테이너에서 AI 실행 → 결과 반환”</strong> 이라는 깔끔한 파이프라인 구조를 가진 프로젝트이다. 호스트와 에이전트의 완전한 분리, 그룹별 메모리 격리, 마운트 보안까지 — AI 백엔드 아키텍처의 정석을 잘 보여주고 있다.</p>
-
-<hr />
-
-<h2 id="향후-학습-방향성">향후 학습 방향성</h2>
-
-<h3 id="-1단계-전체-흐름-파악-big-picture">🥇 1단계: 전체 흐름 파악 (Big Picture)</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>순서</th>
-      <th>파일</th>
-      <th>이유</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>①</td>
-      <td>SPEC.md</td>
-      <td>코드를 보기 전에 전체 사양서를 먼저 읽으면, 각 모듈이 **왜** 그렇게 설계됐는지 맥락확인하기</td>
-    </tr>
-    <tr>
-      <td>②</td>
-      <td>types.ts</td>
-      <td>Channel, NewMessage, ScheduledTask 등 핵심 타입들이 정의되어 있어서 전체 데이터 흐름의 파악하기</td>
-    </tr>
-    <tr>
-      <td>③</td>
-      <td>config.ts</td>
-      <td>트리거 패턴, 타임아웃, 동시 컨테이너 수 등 시스템 동작을 결정하는 **설정값**들 역으로 분석하기</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="-2단계-핵심-파이프라인-메시지--ai-실행--응답">🥈 2단계: 핵심 파이프라인 (메시지 → AI 실행 → 응답)</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>순서</th>
-      <th>파일</th>
-      <th>이유</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>④</td>
-      <td>index.ts</td>
-      <td>**오케스트레이터** — 메시지가 들어오면 어떻게 처리되는지, AI 에이전트를 언제 호출하는지 전체 흐름의 중심</td>
-    </tr>
-    <tr>
-      <td>⑤</td>
-      <td>container-runner.ts</td>
-      <td>**가장 중요한 파일** Claude Agent를 Apple Container 안에서 어떻게 스폰하고, 마운트를 설정하고, 결과를 받아오는지가 다 여기 있어요. AI 실행 아키텍처의 핵심. 파악해둘 것</td>
-    </tr>
-    <tr>
-      <td>⑥</td>
-      <td>ipc.ts</td>
-      <td>호스트↔컨테이너 간의 **IPC 통신 메커니즘** — AI 에이전트가 결과를 어떻게 전달하는지 파악하기</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="-3단계-보조-시스템">🥉 3단계: 보조 시스템</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>순서</th>
-      <th>파일</th>
-      <th>이유</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>⑦</td>
-      <td>mount-security.ts</td>
-      <td>AI에게 파일 접근을 주되, **어디까지 허용할 것인가**의 보안 로직. 실무에서 AI 서비스를 운영할 때 반드시 고려해야 할 부분.</td>
-    </tr>
-    <tr>
-      <td>⑧</td>
-      <td>task-scheduler.ts</td>
-      <td>AI에게 **예약 작업**을 시킬 수 있는 스케줄러. cron/interval/once 패턴이 깔끔하게 구현되어 있으므로 알아둘 것</td>
-    </tr>
-    <tr>
-      <td>⑨</td>
-      <td>db.ts</td>
-      <td>대화 기록, 태스크 로그 등을 SQLite로 어떻게 관리하는지 볼 수 있음</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="-4단계-컨테이너-내부-에이전트-시점">🔍 4단계: 컨테이너 내부 (에이전트 시점)</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>순서</th>
-      <th>파일</th>
-      <th>이유</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>⑩</td>
-      <td>container/agent-runner/</td>
-      <td>컨테이너 **안에서** 돌아가는 에이전트의 런타임 코드. 호스트 코드와 어떻게 IPC로 대화하는지를 에이전트 시점에서 확인할 것</td>
-    </tr>
-    <tr>
-      <td>⑪</td>
-      <td>SDK_DEEP_DIVE.md</td>
-      <td>Claude Agent SDK를 깊게 파헤친 문서. SDK 활용법을 체계적으로 이해할 수 있음.</td>
-    </tr>
-  </tbody>
-</table>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="AI" /><category term="Study" /><category term="Review" /><category term="NanoClaw" /><summary type="html"><![CDATA[0. Why this Project? 본 프로젝트는 AI 응용 어플리케이션 구축에서 필요한 내용, agentic AI 구축을 위하여 필요한 것들에 대한 이해도를 높이고, 현재 진행중인 Nexus 프로젝트 이후 AI 기반의 서비스 구축 능력을 갖추기 위한 첫 도전이다. 당장 무언가를 만들기보단, 잘 만들어진 예시를 기반으로 RAG 이상의 기능 구현을 어떤 식으로 접근하면 좋을지 사전 학습 겸 하여 진행하게 되었다. 코드 레포지터리]]></summary></entry><entry><title type="html">Project Nexus - Docker를 넘어, 진짜 인프라로</title><link href="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2026/02/10/00-init-project-nexus.html" rel="alternate" type="text/html" title="Project Nexus - Docker를 넘어, 진짜 인프라로" /><published>2026-02-10T00:00:00+00:00</published><updated>2026-02-10T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2026/02/10/00-init-project-nexus</id><content type="html" xml:base="http://0.0.0.0:4000/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2026/02/10/00-init-project-nexus.html"><![CDATA[<h2 id="project-nexus-docker를-넘어-진짜-인프라로">Project Nexus: Docker를 넘어, 진짜 인프라로</h2>
-
-<blockquote>
-  <p>불완전 연소된 ProtoStar를 살리고 다음을 준비하기 위한 플레이그라운드의 필요성, 3년차 개발자 수준의 인프라 역량을 만드는 여정</p>
-</blockquote>
-
-<hr />
-
-<h3 id="출발점-불완전연소된-protostar-그리고">출발점: 불완전연소된 ProtoStar 그리고…</h3>
-
-<p>1년차 메인 서버 개발자로 역할을 수행했다. 그리고 이젠 3년차 개발자의 역량을 갖추어야 다음 도전이 가능하리라 생각하고 있었다. <strong>그런데 AI는 여기서 한 발 더 나아가, 개발자에게 요구되는 역량을 크게 변화시켰다.</strong></p>
-
-<p>그 점을 고려하지 않는다면 생존에서 불가피할 것이라는 생각을 하였고, 결과적으로 AI 와 DevOps 의 역량을 갖추고, 백엔드 개발자로서 제대로된 인프라를 구축하는 역량을, <strong>소프트웨어 아키텍처이자, 오케스트레이터가 되어야 한다고 판단했다.</strong></p>
-
-<p>그리하여 토스 러너스 하이 2기와 함께 시작한 Protostar 프로젝트는 나름 성공적이었다. Next.js 기반의 프론트엔드-챗봇을 구현하고, 백엔드는 Nest.js, FastAPI 를 이용하며 고가용성 체계를 구축하는 과정은 확실히 단순한 백엔드 설계를 넘어서는 여러 도전 요소들을 갖고 있고, 그 결과가 현재 블로그 상에 올라가 있는 챗봇이다.</p>
-
-<p>자못 훌륭하며, 개인적으로 1달이란 시간에 이걸 했다는 사실은 자부심을 가지기에 충분하지 않을까? AI도 DevOps 도 백엔드 설계 역량도 보여줄 수 있는 것들이 있었으니,  자랑스럽게 자랑을 인터뷰 상에서 할 수 있다면 좋겠다 생각한다.</p>
-
-<p><strong>하지만 한편으로 아쉬움은 있다.</strong></p>
-
-<p>기획의 한계, 고려사항들이 있단 점에서 온전한 서비스로의 확장은 포기했다-는 점은 제외하더라도,
-기술적 아쉬움, 특히 DevOps 경험에 대한 아쉬움이 크게 남았다.</p>
-
-<p>k8s 방식을 정복할 시간이 부족해 포기했다. 또한 무엇보다 Docker 로 구현 시 안되는 건 없지만, 그렇다고 <strong>‘온전하게’ 유기적으로 동작하지 않는다고 느낀 부분들이 있었다.</strong> Docker Swarm, ReplicaSet 등을 기반으로 고가용성을 구현할 순 있다. 하지만 한계는 명백했다. <strong>k8s 를 선택했을 때 얻을 수 있는 이점에 대해 다시 한 번 떠오르게 되었다.</strong></p>
-
-<p>뿐만 아니라 온프레미스 서버에 약 100여만원을 투자하여 나만의 홈랩을 꾸미게 되면서 깨달은게 있다.</p>
-
-<p>실무 경험이 중요한 이유는, 실무 수준에서의 책임감, 안정성, 고려할 사항 등, 단순히 개인의 자그마한 데모 수준에서는 알 수 없는 ‘실무의 깊이’와 ‘실무의 너비’가 존재한다. 그런 점에서 인프라를 개인의 신분으로 지원 없이 AWS, GCP 등에 올린다면? 유료 사용에서 한계가 발생하고, 할 수 있는 수준의 제약이 발생했을 것이다.</p>
-
-<p>그런데 홈랩으로 꾸미게 되면서, 그러한 한계가 상당 부분 사라졌다. 결국 ‘규모의 경제’는 곧 경험인 것이다.</p>
-
-<p>덕분에 과감히 인프라 선택이 가능하고, 효과적으로 기술을 적용할 수 있었다. 그렇다면 할 일은 무엇인가? 그건 결국 ‘앞으로 가는 것’ 아니겠는가? 결국 인프라는 있으니 더 명료하게 IaC(Infrastructure as Code)를 구현하고, 내가 경험할 수 있는 최선의 인프라 위에서 또 다른 도전을 해야 그게 진짜가 되지 않을까?</p>
-
-<p><strong>그런 점에서 나만의 플레이그라운드, 기반이 필요하다고 판단했다. 그것이 Nexus(기반), 완전한 k8s 기반의 GitOps 서버 클러스터 구축 프로젝트이다.</strong></p>
-
-<hr />
-
-<h3 id="깨달음-지향할-푯대는-어디로-향하는가">깨달음: 지향할 푯대는 어디로 향하는가?</h3>
-
-<h4 id="docker만-쓰던-시절의-한계">Docker만 쓰던 시절의 한계</h4>
-
-<p>Docker는 훌륭한 도구다. 메인 서버로 1년 간 살면서, Docker 로 옮긴 레거시 서버들은 덕분에 엄청난 포텐셜을 얻었고, 최적화, 관리 편의성을 얻었기에 지금의 내 경험, 이력을 만들 수 있었다고 해도 과언이 아니다. 그런 점에서 서비스를 바로 시작하기에 Docker 만한 컨테이닝은 없다고 생각한다.</p>
-
-<p>하지만 막상 ‘고가용성’이란 목표를 지향했을 때 Docker 는 굉장히 아쉬움을 불러일으켰다.</p>
-
-<ol>
-  <li><strong>데몬에 종속된 구조</strong>: dockerd가 죽으면 모든 컨테이너가 영향을 받는다. 단일 장애점(SPOF)이 존재한다는 점은 고가용성을 생각할 때, 문제였다. 하나의 컨테이너가 과도한 사용량을 차지하게 되었을 때, 전체 시스템은 문제가 발생한다. AWS 에서 인스턴스를 여러개 분산하는 대안도 있다. 그러나 이는 또 다른 복잡도의 서막이며 대안이 되진 못했다. 어디까지나 보완책이었다.</li>
-  <li><strong>보안 취약성</strong>: 기본적으로 root 권한이 필요하다는게 생각보다 큰 부담이었다. rootless 모드는 있지만 2차 시민 취급이었다. 또한 이러한 보안 이슈로 공식 이미지들 마다 다르게 권한이 설정되는 등으로 문제가 되었다.</li>
-  <li><strong>k8s와의 괴리감</strong>: Docker Compose로 개발하고, k8s YAML로 배포한다? 로컬과 프로덕션 환경이 달라지고 이는 완벽하지 않은 환경 통제였다. ‘완벽함’이 필요한 백엔드 환경 구축에서 한 점의 오차는 ‘아마추어’란 사실을 증명하는 꼴이라고 생각이 들었다. 플랫폼이 다르면 증상도 달라지고, 특히 이전 후기에서도 다뤘듯, 각 개별 설계가 의존성이 없어도, 관계의 통합은 의존성을 만들고 새로운 증상을 유도한다.</li>
-  <li><strong>스크립트 단위의 파편화된 관리 구조</strong>: Dockerfile, docker-compose.yml, Jenkinsfile, 쉘 스크립트 등, CI/CD 파이프라이닝을 구축해보고 얻은 결론은 명확했다. 각각 분리되어 각 역할을 보기엔 명료해보이고 유기적이게 보인다. 하지만 반대로 그렇기에 한 곳을 수정하면 예상하지 못한 곳의 문제가 발생할 수 있고, 이는 결국 ‘단독’으로 볼 때만 ‘희극’이며 ‘전체’를 볼 땐 ‘비극’이었다.</li>
-  <li><strong>상태관리의 어려움</strong>: PostgreSQL 이나, Redis, 모니터링 등의 Stateful 서비스에 대한 백업/ 복구 전략에서 수동으로 해야 하는 영역이 존재하며, 고가용성 구성이 상당히 복잡했다.</li>
-</ol>
-
-<h4 id="엔터프라이즈-환경에서-요구하는-역량">엔터프라이즈 환경에서 요구하는 역량</h4>
-
-<p>AI를 기반으로 약 100개 정도의 주요 기업들의 백엔드 엔지니어 직군의 공고문을 딥리서치 해보았다. 내가 3년차 수준을 인정 받길 원한다면 단순히 “Docker 써봤어요”로는 부족했다. 이를 압축해서 정리하면 다음과 같았다.</p>
-
-<ul>
-  <li><strong>컨테이너 오케스트레이션</strong>: Kubernetes를 실무에서 사용할 수 있고, 이를 기반으로 서비스의 생명주기 제어가 가능한가?</li>
-  <li><strong>보안 의식</strong>: 특히 최근의 중요사항이자, 국내에서도 중요해지고 있는 영역으로 서버들 사이의 격리가 명료한가? rootless 컨테이너, 권한 분리, 이미지 스캐닝의 경험이 있는가?</li>
-  <li><strong>자동화</strong>: CI/CD 파이프라인의 현대화, GitOps, 롤링 업데이트 등을 통해 서비스의 무결성이 확보되는가? 개발 생산성을 확보 하는가?</li>
-  <li><strong>관찰성</strong>: 메트릭, 로그, 추적 시스템 구축하여 운영 문제를 소프트웨어 엔지니어링 방식으로 해결할 수 있는가? SRE(Site Reliability Engineering) 방식으로 대규모 시스템의 안정성, 확장성, 가용성을 극대화 가능한가?</li>
-</ul>
-
-<p>결국 안정성, 효율성, 운영 최적화된 역량이 필요했다. 이러한 영역에 대한 나만의 답이 필요했고, 결국 내가 생존하기 위하여 필요한 ‘전문성’이란 무엇인가를 명확하게 정리할 수 있었다.</p>
-
-<hr />
-
-<h3 id="전략-초-현실주의">전략: ‘초’ 현실주의</h3>
-
-<h4 id="온프레미스-서버를-프로덕션-클러스터로">온프레미스 서버를 프로덕션 클러스터로</h4>
-
-<p>보다 현실적이게 짜야 한다고 생각했다. 연습용의 minikube 정도가 아니라 프로덕션처럼 운영을 위한 구성과 실천이 되어야 한다고 판단했다. 오버 엔지니어링, 허세를 하고 싶단 말은 아니다. 현실적으로 과도하지 않으면서도 진짜 엔터프라이즈급을 지향해본다는 그 벨런스를 중요시했다. 향후 더 많은 기술의 플레이그라운드 만들기를 지향한다.</p>
-
-<p>Protostar가 구동 중인 서버 어플리케이션들은 현재 두 대의 온프레미스 서버에서 동작하고 있다. 메인 서버는 서비스를, 서브 서버는 모니터링 / 빌드 및 배포 파이프라인을 담당하고 있다.</p>
-
-<p>여기서 단순히 k8s 를 위한 플랫폼을 설치, k8s 용 스크립트 작성을 해도 되지만… 보다 현실적이고, 무엇보다 IaC 를 극대화하기 위해선, 온프레미스 서버들이 마치 하나처럼 동작하게 만드는 것이 반드시 필요하다고 생각했다.</p>
-
-<p><strong>결론적으로 계획은 이렇다:</strong></p>
-<ul>
-  <li>개발용으로는 단일 개발 PC에서 작업하여 Podman 기반으로 Docker-free 를 달성.</li>
-  <li>Production 은 두 개의 온프레미스 서버에 k3s 기반 Kubernetes 클러스터링을 한다. namespace 를 기반으로 역할을 설정한다. 즉, 한 대 같은 두 대를 만들고, 각 영역은 ‘목적’을 포함시킨다.</li>
-  <li>현재 가동 중인 ProtoStar 서비스를 이 환경으로 완전히 마이그레이션한다.(서비스 + 모니터링 스택)</li>
-  <li>위의 작업들의 종결 이후, 새로운 서비스들 역시 여기서 동작하며, 테스팅 되며, 배포 된다.</li>
-</ul>
-
-<h4 id="로컬에서-프로덕션까지-일관된-환경">로컬에서 프로덕션까지 일관된 환경</h4>
-
-<p>가장 중요한 원칙: <strong>로컬 개발 환경과 프로덕션 환경을 최대한 비슷하게 만들어내는 것이다.</strong></p>
-
-<p><strong>기존 방식:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>로컬 / 프로덕션: Docker Compose 기반, Jenkins 파이프라이닝 때문에 환경변수를 비롯 차이점 있음
-→ 환경이 달라서 "내 컴퓨터에선 되는데요?" 발생, 결과적으로 이미지 차원의 변경 발생 시 2회 적용 되어야 함
-</code></pre></div></div>
-
-<p><strong>새로운 방식:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>로컬: Podman + k8s YAML
-프로덕션: k3s + k8s YAML
-→ 같은 YAML 파일을 로컬과 클러스터에서 모두 사용
-</code></pre></div></div>
-
-<p>Podman의 <code class="language-plaintext highlighter-rouge">podman play kube</code> 명령어를 쓰면 k8s YAML을 로컬에서도 그대로 실행할 수 있다. 이게 핵심이다.</p>
-
-<h4 id="계획">계획</h4>
-
-<p>무작정 달려들기보단, AI 를 기반으로 구현할 항목들을 정리했고, 목표를 지정하였다. 이직 일정과 겹쳐 딜레이가 발생할 순 있으나 최대한 현실적으로 설정해보았다.</p>
-
-<p><strong>Phase 1 (1주): 도구 전환</strong></p>
-
-<ul>
-  <li>Docker → Podman 로컬 개발 환경 전환</li>
-  <li>기존 Dockerfile이 Podman에서도 돌아가는지 검증</li>
-  <li>rootless 환경의 포트 바인딩 제약 해결 (80 → 8080)</li>
-</ul>
-
-<p><strong>Phase 2 (0.5주): k8s 기초</strong></p>
-
-<ul>
-  <li>k3s 클러스터 구축</li>
-  <li>Pod, Deployment, Service 개념 실습</li>
-  <li>kubectl 명령어 익히기</li>
-</ul>
-
-<p><strong>Phase 3 (0.5주): Dev 환경에 Stateless 서비스 먼저</strong></p>
-
-<ul>
-  <li>React, NestJS 같은 무상태 서비스부터 배포</li>
-  <li>실패해도 재배포하면 끝이라 학습 비용이 낮음</li>
-  <li>서비스 간 통신 (k8s 내부 DNS) 이해</li>
-</ul>
-
-<p><strong>Phase 4 (0.5주): Dev 환경에 Stateful 서비스 마이그레이션 해보기</strong></p>
-
-<ul>
-  <li>PostgreSQL, Redis 같은 상태 저장 서비스</li>
-  <li>StatefulSet, PersistentVolume 개념</li>
-  <li>데이터 백업/복구 전략 수립</li>
-</ul>
-
-<p><strong>Phase 5 (1주): 자동화와 관찰성</strong></p>
-
-<ul>
-  <li>ArgoCD 기반 GitOps CI/CD 파이프라인 구축</li>
-  <li>Prometheus + Grafana 모니터링 스택</li>
-</ul>
-
-<p><strong>Phase 6 (1주): Production 마이그레이션</strong></p>
-
-<ul>
-  <li>지금까지의 실습을 모두 클러스터링 된 온프레미스 서버로 일체 이전한다.</li>
-</ul>
-
-<hr />
-
-<h3 id="도구-왜-이-스택인가">도구: 왜 이 스택인가</h3>
-
-<h4 id="podman-보안과-확장성">Podman: 보안과 확장성</h4>
-
-<p><strong>선택 이유 세 가지:</strong></p>
-
-<ol>
-  <li><strong>Rootless가 기본</strong>: 일반 사용자 권한으로 컨테이너 실행. 보안 침해 시 피해 범위가 제한된다.</li>
-  <li><strong>Daemonless 아키텍처</strong>: 중앙 데몬 없이 각 컨테이너가 독립적으로 실행. dockerd가 죽어서 전체가 멈추는 일이 없다.</li>
-  <li><strong>Pod 네이티브 지원</strong>: k8s Pod 개념을 로컬에서도 그대로 사용 가능. 같은 Pod 안의 컨테이너끼리 localhost로 통신한다.</li>
-</ol>
-
-<p><strong>리스크:</strong></p>
-<ul>
-  <li>커뮤니티가 Docker보다 작아서 문제 발생 시 레퍼런스가 적을 수 있음</li>
-  <li>일부 Docker 전용 도구와 호환성 이슈 가능 (예: Docker Desktop 기능들)</li>
-</ul>
-
-<h4 id="kubernetes-k3s-업계-표준">Kubernetes (k3s): 업계 표준</h4>
-
-<p><strong>선택 이유 세 가지:</strong></p>
-
-<ol>
-  <li><strong>업계 표준</strong>: 대부분의 엔터프라이즈 환경이 k8s를 사용. 실무 경험으로 직결된다.</li>
-  <li><strong>선언적 구성</strong>: YAML로 원하는 상태를 선언하면 k8s가 알아서 그 상태를 유지한다.</li>
-  <li><strong>확장성</strong>: 단일 노드에서 시작해도 나중에 멀티 클러스터로 확장이 자연스럽다.</li>
-</ol>
-
-<p><strong>k3s를 선택한 이유:</strong></p>
-<ul>
-  <li>표준 k8s보다 가볍고 빠름 (메모리 사용량 절반)</li>
-  <li>온프레미스 환경에 최적화</li>
-  <li>Traefik Ingress가 기본 내장</li>
-</ul>
-
-<p><strong>리스크:</strong></p>
-<ul>
-  <li>학습 곡선이 가파름. Pod, Deployment, Service, Ingress 등 개념이 많음</li>
-  <li>초기 설정이 복잡할 수 있음</li>
-</ul>
-
-<h4 id="gitops-argocd-자동화와-추적성">GitOps (ArgoCD): 자동화와 추적성</h4>
-
-<p><strong>선택 이유 세 가지:</strong></p>
-
-<ol>
-  <li><strong>Git이 진실의 원천</strong>: 모든 배포 상태가 Git 저장소에 기록됨. 언제든 이전 상태로 롤백 가능.</li>
-  <li><strong>자동 동기화</strong>: Git에 푸시하면 자동으로 클러스터에 반영. 수동 배포 작업 제거.</li>
-  <li><strong>가시성</strong>: 무엇이 언제 누구에 의해 배포되었는지 명확하게 추적 가능.</li>
-</ol>
-
-<p><strong>리스크:</strong></p>
-<ul>
-  <li>초기 설정이 복잡할 수 있음</li>
-  <li>Git과 클러스터 상태가 어긋날 경우 디버깅이 어려울 수 있음</li>
-</ul>
-
-<hr />
-
-<h3 id="마무리-왜-이-여정이-중요한가">마무리: 왜 이 여정이 중요한가</h3>
-
-<p>이 프로젝트는 단순히 기술 스택을 바꾸는 것이 아니다. <strong>“할 줄 안다”에서 “제대로 한다”로의 전환을 생각하고 있다.</strong></p>
-
-<p>Docker Compose로 띄우는 것과 k8s 클러스터를 운영하는 것은 완전히 다른 차원이다. 전자는 개발자의 편의를 위한 도구이고, 후자는 프로덕션 환경을 위한 플랫폼이다.</p>
-
-<p>ProtoStar는 더 이상 불완전연소된 프로젝트가 아니라, 이제 <strong>내가 엔터프라이즈급 인프라를 구축할 수 있다는 것을 증명하는 살아있는 증거</strong>가 되도록 만들고 싶다. 또한 AI가 개인이 할 수 있는 영역을 극대화 시켜줄 것이니 Nexus 는 그 토대가 될 것이다. 내가 만들 다양한 어플리케이션들의 토대가 되어줄 것이다. 십년의 대장정의 모험이 있다고 하면, 그 기반 중에 기반이 되리라 생각한다.</p>
-
-<p>경험이 현실이 되고, 현실이 직무가 된다. 단순히 개발자라고 불리고 싶진 않다. ‘전문가’가 되어 회사의 시스템들의 운용을 정말 ‘현실적으로’ 해내길 원한다. 그 초석을 만들고 싶다.</p>]]></content><author><name>Paul2021-R</name></author><category term="프로젝트" /><category term="Backend" /><category term="개발" /><category term="Nexus" /><category term="K8s" /><summary type="html"><![CDATA[Project Nexus: Docker를 넘어, 진짜 인프라로]]></summary></entry></feed>
+</ul>]]></content><author><name>Paul2021-R</name></author><category term="문제해결" /><category term="Backend" /><category term="개발" /><category term="Protostar" /><category term="Project" /><category term="Review" /><category term="FastAPI" /><category term="AI" /><summary type="html"><![CDATA[core/rag_service.py]]></summary></entry></feed>
